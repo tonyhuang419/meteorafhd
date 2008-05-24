@@ -1,0 +1,27 @@
+<!--<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+	"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="name">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message>${getText("name.require")}</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[(^.{4,20})]]></param>
+			<message>${getText("name.regex")}</message>
+		</field-validator>
+	</field>
+	<field name="pwd">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message>${getText("pwd.require")}</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[(^.{4,10})]]></param>
+			<message>${getText("pwd.regex")}</message>
+		</field-validator>
+	</field>
+</validators>
+-->

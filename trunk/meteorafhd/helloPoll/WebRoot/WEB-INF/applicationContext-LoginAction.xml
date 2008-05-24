@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="loginTool" class="fhd.right.action.LoginTool"/>
+	<bean id="login" class="fhd.right.action.LoginAction" scope="prototype">
+		<property name="loginBean" ref="loginTool"/>
+		<property name="pollDAOBean" ref="DAOPoll"/>
+	</bean>	
+	<!--scope="prototype"-->
+	
+	<bean id="baseAjax" class="fhd.right.action.BaseAjax">
+		<property name="pollDAOBean" ref="DAOPoll"/>
+		<property name="bidRecordBean" ref="DAOBidRecord"/>
+		<property name="poll" ref="Poll"/>
+		<property name="bidRecord" ref="BidRecord"/>	
+	</bean>
+	
+	<bean id="ModifyPollAction" class="fhd.right.action.ModifyPollAction"
+		parent="baseAjax"/>
+	<bean id="ToolBidReocrdAction" class="fhd.right.action.ToolBidReocrdAction"
+		parent="baseAjax"/>
+	<!--//上2行待修改？？？？-->
+	
+	
+	<bean id ="CreatePollAction" class="fhd.right.action.CreatePollAction" parent="baseAjax"/>
+	<bean id="theBeforeAdvice" class="fhd.right.action.BeforeAjaxAdvice"/>
+	
+	<bean id="createAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>create</value>
+		</property>
+		<property name="advice">
+			<ref bean="theBeforeAdvice"/>
+		</property>
+	</bean>
+	
+	<bean id="CreatePollActionBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>fhd.right.action.ICreatePollAction</value>
+		</property>
+		<property name="target">
+			<ref local="CreatePollAction"/>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>theBeforeAdvice</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="helloPoll"
+  id="myeclipse.1199639516046"
+  context-root="/helloPoll"
+  j2ee-spec="1.4"
+  archive="helloPoll.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
