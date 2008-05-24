@@ -1,0 +1,11 @@
+#
+#Tue May 16 15:56:53 CST 2006
+configFile=/h/src/hibernate.cfg.xml
+libInstallFolder=
+addLibs2Classpath=false
+addLibs2Project=false
+createConfigFile=true
+keyGenerator=native
+version=3.0
+basePersistenceClass=
+useJavaTypes=false
