@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="goForm" type="com.fhdone.struts.form.GoForm" />
+		<form-bean name="testDynaForm"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="info" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action attribute="goForm" input="/form/go.jsp" name="goForm"
+			path="/go" scope="session"
+			type="com.fhdone.struts.action.GoAction">
+			<forward name="to" path="/form/to.jsp" />
+		</action>
+
+		<action attribute="goForm" input="/form/to.jsp" name="goForm"
+			path="/to" scope="session"
+			type="com.fhdone.struts.action.ToAction">
+			<forward name="display" path="/form/display.jsp" />
+		</action>
+		
+		<action attribute="testDynaForm" input="/form/testDyna.jsp"
+			name="testDynaForm" path="/testDyna" scope="request"
+			type="com.fhdone.struts.action.TestDynaAction" >
+      <forward name="dynaS" path="/form/go.jsp" />
+		</action>
+
+
+
+
+
+	</action-mappings>
+
+
+	<message-resources
+		parameter="com.fhdone.struts.ApplicationResources" />
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,
+				/WEB-INF/validation.xml" />
+	</plug-in>
+</struts-config>
+
