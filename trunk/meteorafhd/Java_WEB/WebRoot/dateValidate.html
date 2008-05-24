@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>dateValidate.html</title>
+
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="this is my page">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+		<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+		<script type="text/javascript">
+		var xmlHttp;
+		function createXMLHttpRequest()
+		{
+			if(window.ActiveXObject){
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			else if(window.XMLHttpRequest){
+				 xmlHttp=new XMLHttpRequest();
+			}
+		} 
+		
+	  function validate(){
+	  	createXMLHttpRequest();
+		var date = document.getElementById("id_date");
+		var url = "servlet/ValidationServlet";
+		xmlHttp.open("GET",url,true);
+		xmlHttp.onreadystatechange = callback;
+		xmlHttp.send(null);
+	  }
+  
+		function callback(){
+			if(xmlHttp.readyState==4)
+		    {
+		     	if(xmlHttp.status==200)
+		     	{
+				 	var mes = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.nodeValue;
+				 	setMessage(mes);
+				}
+			 }
+		}
+		function setMessage(message){
+			var messageArea = document.getElementById("dateMessage");
+			messageArea.innerHTML = message;
+		}
+	</script>
+	</head>
+
+	<body>
+		<p>
+			Date:
+			<input type="text" maxlength="20" size="30" value="请输入日期"
+				name="t_date" id="id_date" onchange="validate();">
+		</p>
+		<div id="dateMessage"></div>
+	</body>
+</html>
