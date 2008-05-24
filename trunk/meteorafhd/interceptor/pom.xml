@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>interceptor</groupId>
+  <artifactId>interceptor</artifactId>
+  <name/>
+  <version>0.0.1-SNAPSHOT</version>
+  <description/>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-core</artifactId>
+      <version>2.0.9</version>
+    </dependency>
+  </dependencies>
+</project>
