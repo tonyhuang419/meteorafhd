@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+       
+<struts-config>
+<!-- ============ Data Source =================================== -->
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+    <form-bean      name="FormBasicForm"
+                    type="htmltaglibs.forms.FormBasicForm"/>
+   <form-bean      name="CheckBoxForm"
+                    type="htmltaglibs.forms.CheckBoxForm"/>
+   <form-bean      name="HtmlSelectForm"
+                    type="htmltaglibs.forms.HtmlSelectForm"/>
+   <form-bean      name="HtmlErrorForm"
+                    type="htmltaglibs.forms.HtmlErrorForm"/>
+   <form-bean      name="HtmlFileForm"
+                    type="htmltaglibs.forms.HtmlFileForm"/>
+   
+  </form-beans>
+
+ 
+  <!-- ========== Global Forward Definitions ============================== -->
+  <global-forwards>
+    <forward   name="index"                   path="/index.jsp"/>
+    <forward   name="HtmlBasic"               path="/HtmlBasic.jsp"/>
+    <forward   name="FormBasic"               path="/FormBasic.jsp"/>
+    <forward   name="CheckBox"               path="/CheckBox.jsp"/>
+    <forward   name="HtmlSelect"               path="/HtmlSelect.jsp"/>
+    <forward   name="HtmlError"               path="/HtmlError.jsp"/>
+    <forward   name="HtmlFile"               path="/HtmlFile.jsp"/>
+    
+   
+  </global-forwards>
+
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+    <action-mappings>
+   <action    path="/HtmlBasic"
+              type="htmltaglibs.actions.HtmlBasicAction"
+    >
+      <forward name="success" path="/HtmlBasic.jsp"/>
+    </action>
+
+
+     <action    path="/FormBasic"
+              type="htmltaglibs.actions.FormBasicAction"
+              name="FormBasicForm"
+              scope="session"
+              input="/FormBasic.jsp"
+              validate="false">
+      <forward name="success" path="/FormBasic.jsp"/>
+    </action>
+
+   <action    path="/CheckBox"
+              type="htmltaglibs.actions.CheckBoxAction"
+              name="CheckBoxForm"
+              scope="session"
+              input="/CheckBox.jsp"
+              validate="false">
+
+      <forward name="success" path="/CheckBox.jsp"/>
+    </action>
+
+  <action    path="/HtmlSelect"
+              type="htmltaglibs.actions.HtmlSelectAction"
+              name="HtmlSelectForm"
+              scope="session"
+              input="/HtmlSelect.jsp"
+              validate="true">
+      <forward name="success" path="/HtmlSelect.jsp"/>
+    </action>
+  <action    path="/HtmlError"
+              type="htmltaglibs.actions.HtmlErrorAction"
+              name="HtmlErrorForm"
+              scope="session"
+              input="/HtmlError.jsp"
+              validate="true">
+
+      <forward name="success" path="/HtmlError.jsp"/>
+    </action>
+
+  <action    path="/HtmlFile"
+              type="htmltaglibs.actions.HtmlFileAction"
+              name="HtmlFileForm"
+              scope="session"
+              input="/HtmlFile.jsp"
+              validate="false">
+      <forward name="success" path="/HtmlFile.jsp"/>
+    </action>
+</action-mappings>
+
+
+<message-resources parameter="HtmlErrors" />
+<message-resources parameter="HtmlErrors" key="HtmlErrors" />
+<message-resources parameter="HtmlSelectColors" key="htmlselect.Colors" />
+</struts-config>
