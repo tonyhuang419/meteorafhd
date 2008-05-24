@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="stride-form" type="formBean.StrideFormBean"></form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action
+			path="/action1"
+			type="action.StridePage1Action"
+			name="stride-form"
+			scope="session"
+			input="/pages/index1.jsp"
+		>
+		<forward name="index2" path="/pages/index2.jsp"></forward>
+		
+		</action>
+		
+		<action
+			path="/action2"
+			type="action.StridePage2Action"
+			name="stride-form"
+			scope="session"
+			input="/pages/index2.jsp"
+		>
+		<forward name="result" path="/pages/result.jsp"></forward>
+		
+		</action>
+		
+	</action-mappings>
+	<message-resources parameter="ApplicationResources" />
+</struts-config>
+
