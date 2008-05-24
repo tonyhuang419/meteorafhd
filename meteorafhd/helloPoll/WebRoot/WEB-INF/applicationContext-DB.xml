@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="Poll" class="com.fhd.poll.db.Poll"/>
+	<bean id="BidRecord" class="com.fhd.poll.db.BidRecord"/>
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/test"/>
+		<property name="user" value="root"/>
+			
+		<!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3307/fhdone?autoReconnect=true"/>
+		<property name="user" value="fhdone"/>-->
+		<property name="password" value="lzhouwen"/>
+		<property name="maxPoolSize" value="20"/>
+		<property name="minPoolSize" value="1"/>
+		<property name="initialPoolSize" value="1"/>
+		<property name="maxIdleTime" value="20"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.jdbc.batch_size">20</prop> 
+            </props>
+        </property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.fhd.poll.db.Poll</value>
+				<value>com.fhd.poll.db.BidRecord</value>
+			</list>
+		</property>	
+    </bean>
+
+	<bean id="daoTemplate" abstract="true">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="DAOPoll" class="com.fhd.poll.db.DAO.DAOPoll" 
+		parent="daoTemplate"/>
+	<bean id="DAOBidRecord" class="com.fhd.poll.db.DAO.DAOBidRecord" 
+		parent="daoTemplate"/>
+	
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+	
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager"/>
+    	<property name="transactionAttributes">
+		    <props>
+			    <prop key="read">PROPAGATION_REQUIRED,readOnly</prop>
+		    	<prop key="*">PROPAGATION_REQUIRED</prop>
+		    </props>
+	    </property>
+	</bean>
+
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	    <property name="beanNames">
+            <list>
+                <value>DAOPoll</value>
+				<value>DAOBidRecord</value>
+            </list>
+	    </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value> 
+            </list>
+        </property>
+    </bean>
+	
+</beans>

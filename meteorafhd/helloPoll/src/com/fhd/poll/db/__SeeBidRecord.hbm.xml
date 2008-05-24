@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping
+    PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.fhd.test">
+	<sql-query name="seeBidRecord">
+    	<![CDATA[
+			select poll.mjname,whobuy,price,biddate from bidrecord 
+			inner join poll on bidrecord.mjid = poll.mjid
+			where bidrecord.mjid = :mjid
+			]]>
+    </sql-query>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="loginx" extends="struts-default">
+		<action name="*Login" class="login" method="{0}">
+			<!--<interceptor-ref name="token"/>
+			<interceptor-ref name="params"/>-->
+			<result name="two">/WEB-INF/formPoll/login2.jsp</result>
+			<result name="input">/formPoll/login.jsp</result>
+			<result name="guest">/WEB-INF/formPoll/guestShow.jsp</result>
+			<result name="success">/WEB-INF/formPoll/adminShow.jsp</result>
+			<!--<result name="invalid.token">/login.action</result>-->
+		</action>
+	</package>
+</struts>

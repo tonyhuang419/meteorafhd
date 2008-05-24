@@ -1,0 +1,32 @@
+<!DOCTYPE dwr PUBLIC 
+	"-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN" 
+	"http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+
+<dwr>
+	<allow>
+		<!--<create creator="new" javascript="validator">
+			<param name="class"
+				value="org.apache.struts2.validators.DWRValidator" />
+		</create>
+		<convert converter="bean"
+			match="com.opensymphony.xwork2.ValidationAwareSupport" />	-->
+		<create creator="spring" javascript="ModifyPoll">
+			<param name="beanName" value="ModifyPollAction" />
+		</create>
+		<create creator="spring" javascript="CreatePoll">
+			<param name="beanName" value="CreatePollActionBean" />
+		</create>
+		<create creator="spring" javascript="ToolBidReocrd">
+			<param name="beanName" value="ToolBidReocrdAction" />
+		</create>
+	</allow>
+
+	<!--<signatures>
+		<![CDATA[
+        import java.util.Map;
+        import org.apache.struts2.validators.DWRValidator;
+        DWRValidator.doPost(String, String, Map<String, String>);
+        ]]>
+	</signatures>-->
+</dwr>
+
