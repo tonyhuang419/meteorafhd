@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue May 16 15:56:54 CST 2006                         -->
+<hibernate-mapping package="com.entity">
+
+    <class name="Std" table="std">
+        <id name="sid" column="sid" type="integer">
+            <generator class="native"/>
+        </id>
+ 
+        <property name="sname" column="sname" type="string"  not-null="true" />
+        <property name="addr" column="addr" type="string"  not-null="true" />
+    </class>
+    
+</hibernate-mapping>
