@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+       
+<struts-config>
+  
+  <!-- ========== Global Forward Definitions ============================== -->
+  <global-forwards>
+    <forward   name="index"                 path="/index.jsp"/>
+    <forward   name="LogicCompare"           path="/LogicCompare.jsp"/>
+    <forward   name="LogicMatch"         path="/LogicMatch.jsp"/>
+    <forward   name="LogicPresence"              path="/LogicPresence.jsp"/>
+    <forward   name="LogicIterate"              path="/LogicIterate.jsp"/>
+    <forward   name="LogicForward"              path="/LogicForward.jsp"/>
+    <forward   name="LogicRedirect"              path="/LogicRedirect.jsp"/>
+
+
+  </global-forwards>
+
+<message-resources parameter="ApplicationResources"  />
+
+</struts-config>
