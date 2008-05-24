@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/login.do" location="60,15" dimension="262,84" />
+  <StrutsActivity path="/form/welcome.jsp" location="120,240" dimension="150,100" />
+  <StrutsActivity path="/form/login.jsp" location="450,30" dimension="130,48" />
+  <StrutsActivity path="/form/upload.jsp" location="350,150" dimension="136,48" />
+  <StrutsActivity path="/upload.do" location="420,270" dimension="268,84" />
+  <StrutsTransition id="/form/upload.jsp,null,/upload.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="435,198" />
+      <AbsolutePoint location="435,270" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/login.do,s,/form/welcome.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="191,99" />
+      <AbsolutePoint location="191,240" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/upload.do,s,/form/welcome.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="420,312" />
+      <AbsolutePoint location="270,312" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/login.jsp,null,/login.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="450,54" />
+      <AbsolutePoint location="322,54" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

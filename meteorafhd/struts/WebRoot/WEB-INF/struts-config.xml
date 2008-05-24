@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+    <form-bean name="loginForm" type="com.fhdone.struts.form.LoginForm" />
+    <form-bean name="uploadForm" type="com.fhdone.struts.form.UploadForm" />
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+    <action
+      attribute="loginForm"
+      input="/form/login.jsp"
+      name="loginForm"
+      path="/login"
+      scope="request"
+      type="com.fhdone.struts.action.LoginAction" >
+      <forward name="s" path="/form/welcome.jsp" />
+    </action>
+    
+    <action
+      attribute="uploadForm"
+      input="/form/upload.jsp"
+      name="uploadForm"
+      path="/upload"
+      scope="request"
+      type="com.fhdone.struts.action.UploadAction" >
+      <forward name="s" path="/form/welcome.jsp" /> 
+    </action>
+
+  </action-mappings>
+
+  <message-resources parameter="com.fhdone.struts.ApplicationResources" />
+</struts-config>
+
