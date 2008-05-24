@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name ="DMI" extends ="struts-default">
+        
+		<action name ="*Action" class ="DMI.LoginAction" method="{0}">
+            <result name ="success">/welcome.jsp </result>
+            <result name ="input">/DynamicMI/login.jsp </result>
+			<result name ="error">/error.jsp </result>
+        </action>
+		
+		<!--
+		<action name ="DMILogin" class ="DMI.LoginAction">
+            <result name ="success" > /welcome.jsp </result>
+            <result name ="error" > /DynamicMI/login.jsp </result>
+        </action>
+          <action name ="Another" class ="DMI.LoginAction" method="another">
+            <result name ="success" > /error.jsp </result>
+        </action>
+			-->
+    </package>
+</struts>
