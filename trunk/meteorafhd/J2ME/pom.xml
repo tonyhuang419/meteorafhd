@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>J2ME</groupId>
+  <artifactId>J2ME</artifactId>
+  <name/>
+  <version>0.0.1-SNAPSHOT</version>
+  <description/>
+  <dependencies>
+    <dependency>
+      <groupId>org.microemu</groupId>
+      <artifactId>microemu-midp</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+  </dependencies>
+</project>
