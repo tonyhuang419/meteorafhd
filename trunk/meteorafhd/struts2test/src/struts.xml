@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	
+	<include file="struts-default.xml" />
+	<include file="DMI/DMI_Struts.xml" />
+	<include file="lee/ttstruts.xml" />
+	
+	<package name="hello.hello" extends="struts-default">
+		<action name="Login" class="hello.HelloAction">
+			<result name="error">/error.jsp</result>
+			<result name="success">/welcome.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+	</package>
+
+	<package name="fileUploadDemo" extends="struts-default">
+		<action name="fileUpload" class="hello.FileUploadAction">
+			<interceptor-ref name="fileUploadStack" />
+			<result name="success">/ShowUpload.jsp</result>
+		</action>
+	</package>
+	
+	<package name="testt" extends="struts-default">
+		<action name="testt" class="hello.testt">
+			<result name="list">/testt.jsp</result>
+		</action>
+	</package>
+	
+	<package name="testtt" extends="struts-default">
+		<action name="testtt" class="hello.testtt">
+			<result type="freemarker">testtt.ftl</result>
+		</action>
+	</package>
+	
+	<package name="helloworld" extends="struts-default">
+		<action name="helloworld" class="hello.HelloWorld">
+			<result name="success">/testt.jsp</result>
+		</action>
+	</package>
+	
+</struts>

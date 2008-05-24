@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>struts2test</groupId>
+  <artifactId>struts2test</artifactId>
+  <name/>
+  <version>0.0.1-SNAPSHOT</version>
+  <description/>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-core</artifactId>
+      <version>2.0.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.opensymphony</groupId>
+      <artifactId>xwork</artifactId>
+      <version>2.1.0</version>
+    </dependency>
+  </dependencies>
+</project>
