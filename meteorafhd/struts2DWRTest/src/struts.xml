@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources"
+		value="globalMessages" />
+	<constant name="struts.i18n.encoding" value="GBK" />
+
+	<package name="dwr" extends="struts-default">
+		<action name="regist" class="action.RegistAction">
+			<result name="input">/regist.jsp</result>
+			<result>/show.jsp</result>
+		</action>
+	</package>
+
+	<package name="json" extends="json-default">
+		<action name="json" class="action.JsonAction">
+			<result type="json" />
+		</action>
+	</package>
+</struts>
