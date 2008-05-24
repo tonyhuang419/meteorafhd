@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>smtp.gmail.com</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+		<property name="username">
+			<value>meteorafhd</value>
+		</property>
+		<property name="password">
+			<value>lzhouwen</value>
+		</property>
+	</bean>
+	<!-- 简单的message -->
+	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="to">
+			<value>meteorafhd@gmail.com</value>
+		</property>
+		<property name="from">
+			<value>meteorafhd@gmail.com</value>
+		</property>
+		<property name="subject">
+			<!-- Email 标题 -->
+			<value>aaaaaaaaaaa</value>
+		</property>
+	</bean>
+	<!-- 测试发送的类 -->
+	<bean id="testMailSender" class="mail.TestSenderMail">
+		<property name="mailMessage">
+			<ref bean="mailMessage"/>
+		</property>
+		<property name="mailSender">
+			<ref bean="mailSender"/>
+		</property>
+	</bean>
+</beans>
