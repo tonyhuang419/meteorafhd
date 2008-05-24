@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>addStu.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body> 
+   <form method="post" name="stuInfo" action="servlet/stuListServlet.do">
+   Name: <input type="text" maxlength="20" size="20" name="name"><br><br>
+   No:&nbsp;&nbsp;&nbsp;  <input type="text" maxlength="20" size="20" name="no"><br><br>
+   <input type="submit" name="addStu" value="Add">
+   <input type="button" name="display" value="Display" onclick="top.location.href  =  'stu_x.jsp'" >
+   </form> 
+  
+  </body>
+</html>
