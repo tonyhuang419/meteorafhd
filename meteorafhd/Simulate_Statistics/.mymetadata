@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Simulate_Statistics"
+  id="myeclipse.1205388490500"
+  context-root="/Simulate Statistics"
+  j2ee-spec="1.4"
+  archive="Simulate_Statistics.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
