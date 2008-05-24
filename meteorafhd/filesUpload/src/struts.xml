@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    <struts> 
+    	<constant name="objectFactory" value="spring"/>
+	    <package name ="fileUploadDemo" extends ="struts-default" > 
+	        <action name ="fileUpload" class ="fileUpLoad"> 
+	            <interceptor-ref name ="fileUploadStack"/> 
+	            <result name ="success" >/ShowUpload.jsp</result>
+	        </action>
+	    </package> 
+	</struts> 
+
+    
