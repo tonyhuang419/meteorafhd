@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.1"?>
+
+<product name="demo" id="testRCP.product" application="org.eclipse.ant.core.antRunner" useFeatures="false">
+
+   <configIni use="default"/>
+
+   <plugins>
+   </plugins>
+
+</product>
