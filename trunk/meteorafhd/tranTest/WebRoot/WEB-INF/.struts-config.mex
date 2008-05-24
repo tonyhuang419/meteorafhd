@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/go.do" location="50,50" dimension="244,84" />
+  <StrutsActivity path="/to.do" location="345,195" dimension="244,84" />
+  <StrutsActivity path="/form/to.jsp" location="60,195" dimension="150,46" />
+  <StrutsActivity path="/form/go.jsp" location="390,45" dimension="112,48" />
+  <StrutsActivity path="/form/display.jsp" location="390,360" dimension="142,48" />
+  <StrutsActivity path="/testDyna.do" location="650,150" dimension="280,84" />
+  <StrutsActivity path="/form/testDyna.jsp" location="630,345" dimension="148,48" />
+  <StrutsTransition id="/go.do,to,/form/to.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="172,134" />
+      <AbsolutePoint location="172,195" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/to.do,display,/form/display.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="467,279" />
+      <AbsolutePoint location="467,360" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/testDyna.jsp,null,/testDyna.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="704,345" />
+      <AbsolutePoint location="704,234" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/to.jsp,null,/to.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="210,218" />
+      <AbsolutePoint location="345,218" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/testDyna.do,dynaS,/form/go.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,180" />
+      <AbsolutePoint location="446,180" />
+      <AbsolutePoint location="446,93" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/go.jsp,null,/go.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="390,69" />
+      <AbsolutePoint location="294,69" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
