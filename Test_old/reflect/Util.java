@@ -19,14 +19,14 @@ public class Util {
 		return base ;
 	} 
 	public static void main(String[] args) throws Exception{
-		Son1 son1 =(Son1) Util.convertStr2ServiceBean("reflect.Son1","setName","wang da sha");
-		System.out.println("son1.getName() :"+son1.getName()) ;
+//		Son1 son1 =(Son1) Util.convertStr2ServiceBean("reflect.Son1","setName","wang da sha");
+//		System.out.println("son1.getName() :"+son1.getName()) ;
 
-		Class son2 = Class.forName("reflect.Son2") ;
-		Method method[] = son2.getDeclaredMethods();
-		for (int i = 0; i < method.length; i++){
-			System.out.println(method[i].toString() );
-		}
+//		Class son2 = Class.forName("reflect.Son2") ;
+//		Method method[] = son2.getDeclaredMethods();
+//		for (int i = 0; i < method.length; i++){
+//			System.out.println(method[i].toString() );
+//		}
 		
 //		Class son1 = Class.forName("reflect.Son1") ;
 //		Field Field[] = son1.getDeclaredFields();
@@ -39,5 +39,11 @@ public class Util {
 //		for (int i = 0; i < Field.length; i++){
 //			System.out.println(Field[i].toString() );
 //		}
+		
+		Class son1 = Class.forName("reflect.Son1") ;
+		Method method[] = son1.getMethods();
+		for(int i=0;i<method.length;i++){
+			System.out.println(method[i].getName());
+		}
 	}
 } 
