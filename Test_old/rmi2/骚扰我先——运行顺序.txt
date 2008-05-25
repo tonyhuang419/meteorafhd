@@ -1,0 +1,8 @@
+第一个cmd
+javac *.java
+rmic RServer
+rmiregistry
+第二个cmd
+java RServer
+第三个cmd
+java RClientUI
