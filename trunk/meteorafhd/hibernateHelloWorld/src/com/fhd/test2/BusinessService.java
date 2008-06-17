@@ -146,10 +146,27 @@ public class BusinessService {
 	public void test() throws Exception{
 //		saveTeacherAndStudent();
 //		saveTeacherAndStudentWithCascade();
-		Student student=findStudent(1);
-		List students = findTeacherByStudent(student);
-		printStudents(students);
+//		Student student=findStudent(1);
+//		List students = findTeacherByStudent(student);
+//		printStudents(students);
+		testHQL();
 	}
+	
+	public void testHQL() {
+		Session session = sessionFactory.openSession();
+		String hql ="from Student s,Teacher t where s.id = t.id";
+		Query query = session.createQuery(hql);
+		List orders = query.list();
+		Iterator it = orders.iterator();
+		while(it.hasNext()){
+			Object[] o = (Object[])it.next();
+			Student s = (Student)o[0];		
+			Teacher t = (Teacher)o[1];
+			System.out.print (s.getStudentName()+"    ");
+			System.out.println(t.getTeacherName());
+		}
+	}
+	
 	public static void main(String args[]) throws Exception {
 		new BusinessService().test();
 		sessionFactory.close();
