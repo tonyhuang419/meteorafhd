@@ -13,7 +13,7 @@
 		<property name="connection.useUnicode">true</property>
 		<property name="connection.characterEncoding">UTF-8</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">lzhouwen</property>
+		<property name="connection.password">root</property>
 
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.min_size">1</property>
@@ -26,11 +26,11 @@
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
-		<!--<mapping resource="com/fhd/test/Message.hbm.xml" />
+		<mapping resource="com/fhd/test/Message.hbm.xml" />
 		<mapping resource="com/fhd/test2/student.hbm.xml" />
-		<mapping resource="com/fhd/test2/teacher.hbm.xml" />-->
+		<mapping resource="com/fhd/test2/teacher.hbm.xml" />
 		<mapping resource="com/fhd/test3/People.hbm.xml" />
 		<mapping resource="com/fhd/test3/Address.hbm.xml" />
 	</session-factory>
