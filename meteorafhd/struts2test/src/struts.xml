@@ -42,4 +42,9 @@
 		</action>
 	</package>
 	
+	<package name="jsonexp"  extends="json-default">
+		<action name="jsonexp" class="json.JSONExp">
+			<result type="json"/>
+		</action>
+	</package>
 </struts>
