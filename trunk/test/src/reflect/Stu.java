@@ -1,8 +1,8 @@
 package reflect;
 
 public class Stu {
-	private String name;
-	private int age;
+	private String name = null;
+	private int age = -1;
 	
 	public String getName() {
 		return name;
@@ -16,5 +16,15 @@ public class Stu {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+//	@Override
+//	public boolean equals(Object obj) {
+//		Stu s = (Stu)obj;
+//		if(this.age == s.age &&  this.name.equals(s.name)){
+//			return true;
+//		}else{
+//			return false;
+//		}
+//	}
 	
 }
