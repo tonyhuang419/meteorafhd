@@ -40,4 +40,5 @@
 		</s:form>
 
 	</body>
+	<s:debug/>
 </html>

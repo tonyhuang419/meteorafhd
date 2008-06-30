@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class HelloAction  extends ActionSupport
 {  
+	private Testgetout t = new Testgetout();
 	private String username;  
 	private String password;  
 	public String getPassword()  {  
@@ -23,5 +24,18 @@ public class HelloAction  extends ActionSupport
 		if (username.equals("fhdone"))  
 			strReturn = "success";  
 		return strReturn;  
-	}  
-}  
+	}
+	public Testgetout getT() {
+		return t;
+	}
+	public void setT(Testgetout t) {
+		this.t = t;
+	} 
+}
+
+
+class Testgetout{
+	public String method(String str){
+		return "let me out" + str;
+	}
+}

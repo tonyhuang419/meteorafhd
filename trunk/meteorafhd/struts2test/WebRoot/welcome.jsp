@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
-
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -8,5 +8,7 @@
 
 	<body>
 		你好啊亲爱滴,我等你很久了
+		<s:property value="#t.method('ss')"/>
 	</body>
+	<s:debug/>
 </html>
