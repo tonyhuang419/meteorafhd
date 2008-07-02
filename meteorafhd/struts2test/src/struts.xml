@@ -30,6 +30,12 @@
 		</action>
 	</package>
 	
+	<package name="testsession" extends="struts-default">
+		<action name="testsession" class="testSession.TestSession">
+			<result name="success">/testsession.jsp</result>
+		</action>
+	</package>
+	
 	<package name="testtt" extends="struts-default">
 		<action name="testtt" class="hello.testtt">
 			<result type="freemarker">testtt.ftl</result>
