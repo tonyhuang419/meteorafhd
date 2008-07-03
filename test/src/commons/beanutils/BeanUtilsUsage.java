@@ -1,4 +1,4 @@
-package commons.beanunits;
+package commons.beanutils;
 
 import org.apache.commons.beanutils.BasicDynaBean;
 import org.apache.commons.beanutils.BasicDynaClass;
