@@ -1,6 +1,10 @@
 package reflect;
 
-public class Stu {
+import java.io.Serializable;
+
+public class Stu implements Serializable{
+	
+	private static final long serialVersionUID = 30558140697032965L;
 	private String name = null;
 	private int age = -1;
 	
@@ -15,6 +19,9 @@ public class Stu {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 	
 //	@Override
