@@ -2,17 +2,21 @@ package reflect;
 
 import java.lang.reflect.Field;
 
-import org.apache.commons.lang.StringUtils;
-
 public class SeeBeanFields {
 	public void  seeBeanFields(Object obj){
 
 		Class c = obj.getClass();
-		Field objFields[] = c.getDeclaredFields(); 
-		Field.setAccessible(objFields, true); 
-
+		
+		Field objFields[] = c.getDeclaredFields(); 	
+//		System.out.println(objFields.length);
+		
+//		Field objFields2[] = c.getFields();
+//		System.out.println(objFields2.length);
+		
+		
 		int length = objFields.length;
-
+		
+		Field.setAccessible(objFields, true); 
 		for(int i = 0;i < length; i++){
 			try{
 				System.out.print(objFields[i].getName()+" : ");
@@ -21,30 +25,11 @@ public class SeeBeanFields {
 				e.printStackTrace();
 			}
 		}
-
-	}
-
-	public static void main(String[] args ){
-		SeeBeanFields see = new SeeBeanFields();
-
-		//test 1
-		Stu s1 = new Stu();
-		s1.setName("jack");
-		s1.setAge(19);
 		
-		see.seeBeanFields(s1);
-
-		System.out.println(StringUtils.center(" another test ", 40, "="));
-		
-//		test2
-		Teacher t1 = new Teacher();
-		t1.setName("jerry");
-		t1.setAge(25);
-		t1.setSex(true);
-		t1.setMarks("nothing");
-		
-		see.seeBeanFields(t1);
-
-
+//		BeanWrapper srcBW = new BeanWrapperImpl(obj);
+//		for(int i = 0;i < length; i++){
+//			Object srcPropertyValue = srcBW.getPropertyValue(objFields[i].getName());
+//			System.out.println(objFields[i].getName()+ ":" + srcPropertyValue.toString());
+//		}
 	}
 }
