@@ -149,8 +149,9 @@ public class BusinessService {
 //		Student student=findStudent(1);
 //		List students = findTeacherByStudent(student);
 //		printStudents(students);
-//		testHQL();
-		testHQLOutjoin();
+		testHQL();
+//		testHQLOutjoin();
+//		testHQLSubInquiry();
 	}
 	
 	public void testHQL() {
@@ -186,6 +187,25 @@ public class BusinessService {
 		}
 	}
 	
+	public void testHQLSubInquiry() {
+//		select * from students s where s.id in ( select tt.id from teachers tt);
+		Session session = sessionFactory.openSession();
+		String hql = "from Student s where s.id in " +
+				" ( select tt.id from Teacher tt )";
+		Query query = session.createQuery(hql);
+		List orders = query.list();
+		Iterator it = orders.iterator();
+		while(it.hasNext()){
+			Object o = (Object)it.next();
+			Student s = (Student)o;		
+			//Teacher t = (Teacher)o[1];
+			System.out.print(s.getid()+"   ");
+			System.out.print (s.getStudentName()+"   ");
+			System.out.println (s.getTeacher().getid()+"   ");
+			//System.out.print(t.getTeacherName()+"   ");
+			//System.out.println(t.getid());
+		}
+	}
 	
 	public static void main(String args[]) throws Exception {
 		new BusinessService().test();
