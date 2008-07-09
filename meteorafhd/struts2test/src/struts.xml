@@ -53,4 +53,11 @@
 			<result type="json"/>
 		</action>
 	</package>
+	
+	<package name="testa"  extends="struts-default">
+		<action name="testa" class="test.TestAction">
+			<result name="success">/testAction.jsp</result>
+		</action>
+	</package>
+	
 </struts>
