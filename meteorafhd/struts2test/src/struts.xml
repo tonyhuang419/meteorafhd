@@ -54,8 +54,8 @@
 		</action>
 	</package>
 	
-	<package name="testa"  extends="struts-default">
-		<action name="testa" class="test.TestAction">
+	<package name="testAction"  extends="struts-default">
+		<action name="testAction" class="test.TestAction">
 			<result name="success">/testAction.jsp</result>
 		</action>
 	</package>
