@@ -2,23 +2,13 @@ package test;
 
 
 public class TestAction {
-	private Stu s = null;
+	private Stu s = new Stu();
 
 
-	public String execute()  { 
-		if( "jack".equals(s.getName())){
-			System.out.println(s.getName());
-			System.out.println(s.getAge());
-			s.setName("tom");
-			s.setAge(20);	
-		}
-		else{
-			System.out.println(s.getName());
-			System.out.println(s.getAge());
-			s = new Stu();
-			s.setName("jack");
-			s.setAge(19);
-		}
+	public String execute(){
+		s.setAge(19);
+		s.setName(s.getName());
+
 		return "success";  
 	}
 
@@ -29,7 +19,6 @@ public class TestAction {
 	public void setS(Stu s) {
 		this.s = s;
 	}
-
 
 
 }

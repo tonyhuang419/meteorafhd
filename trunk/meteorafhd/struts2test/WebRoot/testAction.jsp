@@ -8,7 +8,7 @@
 	</head>
 
 	<body> 
-	<s:form action="/stryts2test/testa.action" theme="simple">
+	<s:form action="/stryts2test/testAction.action" theme="simple">
 		<s:property value="s.name"/><br>
 		<s:textfield name="s.name"></s:textfield>
 		<br>
