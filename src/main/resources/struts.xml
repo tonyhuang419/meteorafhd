@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- Add packages here -->
+	<package name="yx" extends="struts-default,jasperreports-default">
+		<global-results>
+			<result name="error">/commons/jsp/error.jsp</result>
+			<result name="Exception">exception.jspresult</result>
+			<result name="SQLException">exception.jspresult</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.sql.SQLException"
+				result="SQLException" />
+			<exception-mapping exception="java.lang.Exception"
+				result="Exception" />
+		</global-exception-mappings>
+		<action name="FileUpLoadAction"
+			class="com.baoz.yx.action.fileManager.FileUpLoadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/filemanage/fileUpfail.jsp
+			</result>
+		</action>
+		<action name="downloadFile"
+			class="com.baoz.yx.action.fileManager.FileDownClickAction">
+			<result name="success" type="stream">
+				<param name="contentType">
+					application/x-msdownload
+				</param>
+				<param name="contentDisposition">
+					attachment;filename=${fileName}
+				</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<!-- 历史合同数据 -->
+		<action name="uploadHistoryContract" method="importData"
+			class="com.baoz.yx.action.system.hisdata.ImoprtHistoryContractAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/system/hisdata/imoprtHistoryContract.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/jsp/system/hisdata/imoprtHistoryContractResult.jsp
+			</result>
+		</action>
+		<!-- 合同项目成本录入 -->
+		<action name="contractProjectUpload" method="importData"
+			class="com.baoz.yx.action.contract.contractProject.ContractProjectUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+				<param name ="allowedTypes">xls</param> 		
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/jsp/contract/contractProject/projectExcelLogger.jsp
+			</result>
+		</action>
+		<!-- 合同项目号导入 -->
+		<action name="contractProjectDepartmentUpload" method="importData"
+			class="com.baoz.yx.action.contract.contractProject.ContractProjectDepartmentUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+				<param name ="allowedTypes">xls</param> 		
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/jsp/contract/contractProject/projectExcelLogger.jsp
+			</result>
+		</action>
+		<!--  Add By xusheng-->
+		<!--  以下为开票申请报表打印-->
+		<!--  开票申请生成PDF-->
+		<action name="applyBillPDF"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/compiled_jasper_template.jasper
+				</param>
+				<param name="dataSource">myList</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<!--  开票申请生成HTMLF-->
+		<action name="applyBillHTML"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/compiled_jasper_template.jasper
+				</param>
+				<param name="dataSource">myList</param>
+				<param name="format">HTML</param>
+			</result>
+		</action>
+		<!--  开票申请生成XML-->
+		<action name="applyBillXML"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/compiled_jasper_template.jasper
+				</param>
+				<param name="dataSource">myList</param>
+				<param name="format">XML</param>
+			</result>
+		</action>
+		<!--  开票申请生成CSV-->
+		<action name="applyBillCSV"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/compiled_jasper_template.jasper
+				</param>
+				<param name="dataSource">myList</param>
+				<param name="format">CSV</param>
+			</result>
+		</action>
+		<!--  开票申请生成excel-->
+		<action name="applyBillXLS"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/compiled_jasper_template.jasper
+				</param>
+				<param name="dataSource">myList</param>
+				<param name="format">XLS</param>
+			</result>
+		</action>
+        <!-- 历史合同项目成本录入 -->
+		<action name="contractProjectRemark" method="importData" class="com.baoz.yx.action.system.hisdata.ImportHistoryContractProjectRemarkAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="input">/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp</result>
+            <result name ="success">/WEB-INF/jsp/system/hisdata/importHistoryContractProjectRemark.jsp</result>
+        </action>
+        <!-- 历史合同项目录入 -->
+		<action name="contractProjectGathering" method="importData" class="com.baoz.yx.action.system.hisdata.ImportHistoryContractGatheringAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="input">/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp</result>
+            <result name ="success">/WEB-INF/jsp/system/hisdata/importHistoryContractGathering.jsp</result>
+        </action>
+		<!--  以下为外协合同付款申请报表打印-->
+		<!--  外协合同付款申请生成PDF-->
+		<action name="assistancePayForPDF"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/AssistanceContract.jasper
+				</param>
+				<param name="dataSource">payForList</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<!--  外协合同付款申请生成HTML-->
+		<action name="assistancePayForHTML"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/AssistanceContract.jasper
+				</param>
+				<param name="dataSource">payForList</param>
+				<param name="format">HTML</param>
+			</result>
+		</action>
+		<!--  外协合同付款申请生成XML-->
+		<action name="assistancePayForXML"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/AssistanceContract.jasper
+				</param>
+				<param name="dataSource">payForList</param>
+				<param name="format">XML</param>
+			</result>
+		</action>
+		<!--  外协合同付款申请生成CSV-->
+		<action name="assistancePayForCSV"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/AssistanceContract.jasper
+				</param>
+				<param name="dataSource">payForList</param>
+				<param name="format">CSV</param>
+			</result>
+		</action>
+		<!--  外协合同付款申请生成Excel-->
+		<action name="assistancePayForXLS"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/AssistanceContract.jasper
+				</param>
+				<param name="dataSource">payForList</param>
+				<param name="format">XLS</param>
+			</result>
+		</action>
+		
+			<action name="billAndInvoicePDF"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/billAndInvoice.jasper
+				</param>
+				<param name="dataSource">billAndInvoiceList</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<!--  Add By xusheng-->
+	</package>
+</struts>
