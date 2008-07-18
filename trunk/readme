@@ -1,0 +1,81 @@
+tag4    招标文件
+tag3    设备清单   合计次数是怎么回事？？？是人输入的，还是计算出来的？ 
+tag2    BPMS
+tag1    设备总表
+
+
+今天问题一：在招表文件中 新增是动态的，还是静态的，如果是动态的，那么下面的保存跟这个又有什么关系？
+          那么显示招标信息，是不是只显示与当前选中过程经济id相同的招标文件信息都显示出来。
+          
+          阶段履历表  YXOSectionRecord 
+          private Long  typeCode;   // 类型代码（工程经济组成）   这个是不是费用组成？？
+          
+          
+           工程经济设计思路：
+          
+          招标文件录入
+          设备清单录入   获得该过程经理的所有：招标文件信息，设备清单文件信息，
+          
+         假设我的实体对象为User（有两个属性age,name）,我先要静态的添加多个用户，然后点保存，就把数据保存到
+        数据库中去了。那么我在jsp文件 下面第一行输入age,第二行输入name
+   newtd1.innerHTML='<input type="text" class="bg_table02" size="20" style="text-align:center" name="" value="'+info.options[info.selectedIndex].text+'" style="border:0px" />';
+   newtd2.innerHTML='<input type="text" class="bg_table02" size="12" style="text-align:center" name="" value="'+money.value+'" style="border:0px"/>';
+            
+     以前是name="实体对象.属性"就可以了，那现在做为一个列表保存，这个name=""应该怎么写呢？在存取用户信息的action中
+     又怎么写呢？
+     先申明一个：private List<Object> obj;
+     
+              然后这样保存吗？commonService.save(obj)
+ （申购采购确认查询）             
+ ProVerityQueryAction              ----->programEconomy/proVerifyQuery.jsp   填写查询信息页面      
+ 
+ 工程经济模块
+ 功能描述               action                             jsp                              service      ----》处理jsp
+ 工程经济确认   ProgramEconomyVerifyQueryAction   programEconomy/economyVerifyList.jsp
+ 查询操作
+ 
+ 工程经济查询  ProVerityQueryAction               programEconomy/proVerifyQuery.jsp
+            ProgramEconomyManageQueryAction 
+            
+            
+            
+            
+进入录入管理    EnterManageQueryAction              programEconomy/enterManageList.jsp
+操作
+
+录入管理查看   programEconomy.action?method=economyView   programEconomy/economyView.jsp           
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ EconomyVerifyL 工程经济确认    programEconomy/economyVerifyLMain.jsp
+ 
+ EconomyManageM 工程经济管理    programEconomy/economyManageMain.jsp
+ 
+EconomyLoginM 工程经济录入管理  programEconomy/economyLoginMain.jsp
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        
+     
