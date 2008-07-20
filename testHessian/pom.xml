@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>testHessian</groupId>
+  <artifactId>testHessian</artifactId>
+  <name/>
+  <version>0.0.1-SNAPSHOT</version>
+  <description/>
+  <dependencies>
+    <dependency>
+      <groupId>com.caucho</groupId>
+      <artifactId>hessian</artifactId>
+      <version>3.1.5</version>
+    </dependency>
+  </dependencies>
+</project>
