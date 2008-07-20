@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>testMootools</title>
+</head>
+<link  rel="stylesheet" href="jd.gallery.css" type="text/css" media="screen" />
+
+<script src="mootools.v1.11.js"></script>
+<script src="jd.gallery.js"></script> 
+<script src="HistoryManager.js"></script> 
+<!-- <script src="prototype-1.6.0.2.js"></script> -->
+<script language="javascript">
+
+
+<style type="text/css">
+<!--
+#myGallery
+{
+width: 487px !important;
+height: 650px !important;
+} 
+-->
+</style>
+
+
+<!--
+//	$ = function (id) { return (typeof (id)=='object')?id:document.getElementById(id); }; 
+	-->
+
+	//var x = $("xx");
+	//alert(typeof(x));
+	
+
+
+
+function startGallery() {
+	var myGallery = new gallery($('myGallery'), {
+
+	showArrows: true,
+
+
+	useHistoryManager: true
+});
+	HistoryManager.start();
+}
+window.addEvent('domready', startGallery);
+
+</script>
+
+<body>
+<!--
+<div id="xx"></div>
+-->
+
+<div id="myGallery">
+<div class="imageElement">
+<h3>Item 1 Title</h3>
+<p>Item 1 Description</p>
+<a href="mypage1.html" title="open image" class="open"></a>
+<img src="20070923_01.jpg" class="full" />
+<img  src="20070923_01t.jpg" class="thumbnail" />
+</div>
+<div class="imageElement">
+<h3>Item 2 Title</h3>
+<p>Item 2 Description</p>
+<a href="mypage2.html" title="open image" class="open"></a>
+<img  src="20070923_04.jpg" class="full" />
+<img  src="20070923_04t.jpg" class="thumbnail" />
+</div>
+</div> 
+</body>
+</html>
