@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Offset</title>
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.STYLE2 {
+	color: #009966;
+	font-weight: bold;
+}
+.STYLE3 {
+	color: #0000FF;
+	font-weight: bold;
+}
+.STYLE4 {
+	color: #FF00FF;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<script language="javascript">
+var offsetE1;
+var infoDiv;
+var infoTable;
+var infoTbody;
+
+function init(){
+	infoDiv = document.getElementById("infoDiv");
+	infoTable = document.getElementById("infoTable");
+	infoTbody = document.getElementById("infoTbody");
+}
+function disappear(){
+	init();
+	var ind = infoTbody.childNodes.length;
+	for(var i=ind-1;i>0;i--){
+		infoTbody.removeChild(infoTbody.childNodes[i]);
+	}
+	infoDiv.style.border = "none";
+	//infoDiv.style.display = "none";
+}
+
+function getOffsets(element){
+	offsetE1 = element;
+	var end = offsetE1.offsetWidth;
+	//alert(end);
+	var top = calcOffsetTop(offsetE1);
+	//alert(top);
+	infoDiv.style.border = "black 1px solid";
+	//infoDiv.style.display = "block";
+	infoDiv.style.left = end + 15 + "px";
+	infoDiv.style.top = top + "px";
+}
+function calcOffsetTop(field){
+	return calcOffset(field,"offsetTop");
+}
+function calcOffset(field,attr){
+	var offset = 0;
+	while(field){
+		offset += field[attr];
+		field = field.offsetParent;
+	}
+	return offset;
+}
+</script>
+<body>
+<table width="100" height="180">
+<tr><td height="50" onmouseover="getOffsets(this);" onmouseout="disappear();"><div align="center" class="STYLE1">打击我吧</div></td></tr>
+<tr><td height="50" onmouseover="getOffsets(this);" onmouseout="disappear();"><div align="center" class="STYLE2">无论如何</div></td></tr>
+<tr><td height="50" onmouseover="getOffsets(this);" onmouseout="disappear();" ><div align="center" class="STYLE3">我都继续</div></td></tr>
+<tr><td height="50" onmouseover="getOffsets(this);" onmouseout="disappear();" ><div align="center" class="STYLE4">向前飞翔</div></td></tr>
+</table>
+
+<div style="position:absolute;" id="infoDiv">
+<table id="infoTable">
+<tbody id="infoTbody">i'm info</tbody>
+</table>
+</div>
+
+</body>
+</html>

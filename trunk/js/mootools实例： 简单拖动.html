@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<script src="mootools.js" type="text/javascript"></script>
+<script language="javascript">
+<!--
+window.onload = function(){
+new Drag.Move('myMove', {});
+$('testBut1').addEvent('click', function(){
+   /*
+   var _Div = document.createElement("div");
+   _Div.id = 'myMove';
+   _Div.className = 'div';
+   _Div.style.width = '0px';
+   _Div.style.height = '0px';
+   document.body.appendChild(_Div);
+   */
+   var myBox = $('myMove');
+   var fx = myBox.effects({duration: 500, wait: false});
+    fx.start({
+     'width': 300,
+     'height': 300
+    });
+
+});
+$('testBut2').addEvent('click', function(){
+   var myBox = $('myMove');
+   var fx = myBox.effects({onComplete: function(){ /*document.body.removeChild(myBox);*/ }, duration: 500, wait: false});
+    fx.start({
+     'width': 0,
+     'height': 0
+    });
+
+});
+
+}
+//-->
+</script>
+<style type="text/css">
+.div{
+   width:200px;
+   height:200px;
+   cursor:move;
+   background-color:#FFFF00;
+   padding:5px;
+   font-size:12px;
+   overflow:hidden
+}
+</style>
+</HEAD>
+<BODY>
+<h3>MooTool 实例</h3>
+<hr>
+<div id="myMove" class="div">
+我的ID=myMove!<BR><BR>
+Mootool 让拖曳变得更简单!<BR><BR>
+new Drag.Move('myMove', {});
+</div>
+<input type="button" id="testBut1" name="testBut1" value="动画显示myMove">
+<input type="button" id="testBut2" name="testBut2" value="动画隐藏myMove">
+</BODY>
+</HTML>
