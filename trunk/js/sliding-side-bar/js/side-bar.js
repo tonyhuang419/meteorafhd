@@ -1,5 +1,5 @@
 var isExtended = 0;
-var height = 450;
+var height = 250;
 var width = 200;
 var slideDuration = 1000;
 var opacityDuration = 1500;
