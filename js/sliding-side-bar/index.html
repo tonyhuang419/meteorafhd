@@ -1,17 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Sliding Side Bar</title>
 
 <style media="all" type="text/css">
-	
+
 	body{
-		position:relative;
-		paddign:0px;
-		font-size:100%;
+		margin:0 auto;
+		text-align:center;
 	}
-	
+
 	h2{
 		color:#FFFFFF;
 		font-size:90%;
@@ -60,64 +60,99 @@
 		text-decoration:underline;
 	}
 	
-	#sideBar{
+	#framework{
+		position:absolute;
+		width:80%;
+		height:70%;
+		top:10%;
+		left:10%;
+		text-align:left;
+		border:solid;
+	}
+	
+	#framework  #sideBar{
 		position: absolute;
 		width: auto;
 		height: auto;
-		top: 200px;
-		right:-7px;
+		top: 30px;
+		right:0px;
 		background-image:url(images/background.gif);
 		background-position:top left;
 		background-repeat:repeat-y;
 	}
 	
-	#sideBarTab{
+	#framework  #sideBar #sideBarTab{
 		float:left;
 		height:137px;
 		width:28px;
 	}
 	
-	#sideBarTab img{
+	#framework  #sideBar #sideBarTab img{
 		border:0px solid #FFFFFF;
 	}
 	
-	#sideBarContents{
+	#framework  #sideBar #sideBarContents{
 		overflow:hidden !important;
 	}
 	
-	#sideBarContentsInner{
+	#framework  #sideBar #sideBarContentsInner{
 		width:200px;
 	}
 	
+	#framework .showMagazine{
+		position:relative;
+		top:10px;
+		right:10px;
+		bottom:10px;
+		left:10px;
+	}
+	
+	#framework .hideMagazine{
+		position:relative;
+		top:10px;
+		right:10px;
+		bottom:10px;
+		left:10px;
+
+		display:none;
+	}
+
 </style>
 
-<script type="text/javascript" src="js/mootools.js"></script>
+<script type="text/javascript" src="js/mootools.v1.11.uncompressed.js"></script>
 <script type="text/javascript" src="js/side-bar.js"></script>
+
+<script language="javascript">
+function setPos(){
+	framework.style.left=(document.body.scrollWidth-200)/2
+}
+</script>
 
 </head>
 
 <body>
+<div id="framework" onresize=setPos(); onload=setPos();>
 
-<div id="sideBar">
-	
-	<a href="#" id="sideBarTab"><img src="images/slide-button.gif" alt="sideBar" title="sideBar" /></a>
-	
-	<div id="sideBarContents" style="width:0px;">
-		<div id="sideBarContentsInner">
-			<h2>side<span>bar</span></h2>
-			
-			<ul>
-				<li><a href="#">Link One</a></li>
-				<li><a href="#">Link Two</a></li>
-				<li><a href="#">Link Three</a></li>
-				<li><a href="#">Link Four</a></li>
-				<li><a href="#">Link Five</a></li>
-			</ul>
-			
-		</div>
-	</div>
-	
+    <div id="frond" class="showMagazine"> 我是封面 </div>
+    <div id="article1" class="hideMagazine"> 麻里麻里烘 </div>
+    <div id="article2" class="hideMagazine"> 菠萝菠萝蜜 </div>
+    <div id="back" class="hideMagazine"> 我是封底 </div>
+    <div id="sideBar"> <a href="#" id="sideBarTab"><img src="images/slide-button.gif" alt="sideBar" title="sideBar" /></a>
+        <div id="sideBarContents" style="width:0px;">
+          <div id="sideBarContentsInner">
+            <h2>side<span>bar</span></h2>
+            <ul>
+              <li><a href="#">Link One</a></li>
+              <li><a href="#">Link Two</a></li>
+              <li><a href="#">Link Three</a></li>
+              <li><a href="#">Link Four</a></li>
+              <li><a href="#">Link Five</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
 </div>
-
 </body>
+
 </html>
