@@ -40,10 +40,12 @@ function getPos(){
 </head>
 
 <body onKeyDown="GetKey();">
-
 <div id="xx" style="width:10px; height:10px; top:100px; left:100px; background:#000000" onclick="getPos();">
-
 </div>
+<input  type="text" id="textName2" name="textName1" /><br>text2:
+<input  type="text" id="textName1" name="textName1"/><br>
+<input type="button" name="Submit" value="text1" onclick=alert(document.getElementById('textName2').value) />
+<input type="button" name="Submit2" value="text2" onclick=alert(document.getElementById('textName1').value) /> 
 
 </body>
 </html>

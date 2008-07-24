@@ -8,18 +8,17 @@
 <style media="all" type="text/css">
 
 	body{
-		margin:0 auto;
 		text-align:center;
+
 	}
-	
+
 	#framework{
-		position:absolute;
+		margin:0 auto;		
 		width:800px;
 		height:500px;
-		top:5%;
-		left:5%;
 		text-align:left;
 		border:solid;
+		margin-top:30px;	
 	}
 
 	#framework  #sideBar  h2{
@@ -71,14 +70,16 @@
 	}
 	
 	#framework  #sideBar{
-		position: absolute;
-		width: auto;
-		height: auto;
-		top: 5%;
-		right:0px;
-		background-image:url(images/background.gif);
-		background-position:top left;
-		background-repeat:repeat-y;
+	position:relative;
+	width: auto;
+	height: auto;
+	top: 3%;
+	right:0px;
+	float:right;
+	background-image:url(images/background.gif);
+	background-position:top left;
+	background-repeat:repeat-y;
+	z-index: 1;
 	}
 	
 	#framework  #sideBar #sideBarTab{
@@ -102,55 +103,73 @@
 		width:95%;
 	}
 	
-	#framework .showMagazine{
-		position:relative;
-		margin-top:10px;
-		margin-right:30px;	
-		margin-left:10px;
+	#framework .hideMagazine{
+		display:none;	
 	}
 	
-	#framework .hideMagazine{
-		position:relative;	
-		margin-top: 10px;
+	#framework .showMagazine{
+		position:absolute;
+		width:790px;
+		height:475px;
+		margin-top: 0px;
 		margin-right:30px;	
 		margin-left:10px;		
-		display:none;
+		display:block;
+		overflow:auto;
+
 	}
 
 </style>
 
-<script type="text/javascript" src="js/mootools.js"></script>
+<script type="text/javascript" src="js/mootools.v1.11.uncompressed.js"></script>
 <script type="text/javascript" src="js/side-bar2.js"></script>
 
 <script language="javascript">
-function setPos(){
-	$('framework').style.left=(document.body.scrollWidth-800)/2
+function display(obj){
+	document.getElementById("front").className = "hideMagazine";
+	document.getElementById("back").className = "hideMagazine";
+	
+	var str = "article";
+	var n = 1;
+	var articleX = document.getElementById(str+n);
+	while( articleX!=null ){
+		articleX.className = "hideMagazine";
+		n++;
+		articleX = document.getElementById(str+n);
+	}
+	
+	document.getElementById(obj).className = "showMagazine";
+	
 }
 </script>
 
 </head>
 
-<body onload="setPos();">
+<body>
 <div id="framework" onload="setPos();">
-  <div id="frond" class="showMagazine"> 我是封我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面面 </div>
-  <div id="article1" class="hideMagazine"> 麻里麻里烘 </div>
-    <div id="article2" class="hideMagazine"> 菠萝菠萝蜜 </div>
-    <div id="back" class="hideMagazine"> 我是封底 </div>
-    <div id="sideBar"><a href="#" id="sideBarTab"><img src="images/slide-button.gif" alt="sideBar" title="sideBar" /></a>
+  <div id="sideBar"><a href="#" id="sideBarTab"><img src="images/slide-button.gif" alt="sideBar" title="sideBar" /></a>
       <div id="sideBarContents" style="width:0px;">
           <div id="sideBarContentsInner">
             <h2>side<span>bar</span></h2>
-            <ul>
-              <li><a href="#">Link One</a></li>
-              <li><a href="#">Link Two</a></li>
-              <li><a href="#">Link Three</a></li>
-              <li><a href="#">Link Four</a></li>
-              <li><a href="#">Link Five</a></li>
+            <ul id="magazineInfo">
+              <li><a href="#"  onclick="display('front');">Link One</a></li>
+              <li><a href="#"  onclick="display('article1');">Link Two</a></li>
+              <li><a href="#"  onclick="display('article2');">Link Three</a></li>
+              <li><a href="#"  onclick="">Link Four</a></li>
+              <li><a href="#"  onclick="display('back');">Link Five</a></li>
             </ul>
           </div>
       </div>
   </div>
+  
+<br>
+	  <div id="front" class="showMagazine"> 我是封我是封面我是封面我是封面我<br>是封面我是封面我是封面我是封面我是封面我是封<br>面我是封面我是封面我是<br>封面我是封面我是封面我是封面我是封面我是封面我是<br>封面我是封面我是封面我是封面我是封<br>面我是封面我是封面我是封面我是封面我<br>是封面我是封面我是封面我是<br>封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面<br>我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面面 </div>
+  <div id="article1" class="hideMagazine"> AAAAAAAAAAAAAAAAAAAAAA<br>AAAAAAAAAA麻里麻里<br>麻里麻里烘麻里麻里烘麻<br>里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘烘 </div>
+    <div id="article2" class="hideMagazine">BBBBBBBBBBBBBBBBBBBB 菠萝菠萝菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝蜜菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝萝蜜菠萝菠萝蜜蜜 </div>
+    <div id="back" class="hideMagazine"> 我是封<br>底我是封底我是封底<br>我是封底我是封底<br>我是封底我是封底我是封底我是封底我是<br>封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封<br>底我是封底我是封底我是封底我是封底我是封底 </div>
+	
 
+	
 </div>
 </body>
 <script language="javascript">
