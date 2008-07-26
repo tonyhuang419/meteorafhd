@@ -1,127 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Sliding Side Bar</title>
 
-<style media="all" type="text/css">
-
-	body{
-		text-align:center;
-
-	}
-
-	#framework{
-		margin:0 auto;		
-		width:800px;
-		height:500px;
-		text-align:left;
-		border:solid;
-		margin-top:30px;	
-	}
-
-	#framework  #sideBar  h2{
-		color:#FFFFFF;
-		font-size:90%;
-		font-family:arial;
-		margin:10px 10px 10px 10px;
-		font-weight:bold;
-	}
-	
-	#framework  #sideBar  h2 span{
-		font-size:105%;
-		font-weight:normal;
-	}
-	
-	#framework  #sideBar  ul{
-		margin:0px 0px 0px 0px;
-		padding:0px 0px 0px 0px;
-	}
-	
-	#framework  #sideBar  li{
-		margin:0px 10px 3px 10px;
-		padding:2px;
-		list-style-type:none;
-		display:block;
-		background-color:#DA1074;
-		width:170px;
-	}
-	
-	#framework  #sideBar  li a{
-		width:100%;
-	}
-	
-	#framework  #sideBar  li a:link,
-	#framework  #sideBar  li a:visited{
-		color:#FFFFFF;
-		font-family:verdana;
-		font-size:70%;
-		text-decoration:none;
-		display:block;
-		margin:0px 0px 0px 0px;
-		padding:0px;
-		width:100%;
-	}
-	
-	#framework  #sideBar  li a:hover{
-		color:#FFFFFF;
-		text-decoration:underline;
-	}
-	
-	#framework  #sideBar{
-	position:relative;
-	width: auto;
-	height: auto;
-	top: 3%;
-	right:0px;
-	float:right;
-	background-image:url(images/background.gif);
-	background-position:top left;
-	background-repeat:repeat-y;
-	z-index: 1;
-	}
-	
-	#framework  #sideBar #sideBarTab{
-		float:left;
-		height:130px;
-		width:28px;
-	}
-	
-	#framework  #sideBar #sideBarTab img{
-		border:0px solid #FFFFFF;
-	}
-	
-	#framework  #sideBar #sideBarContents{
-		overflow:hidden !important;
-		float:left;
-		height:320px;
-		width:200px;
-	}
-	
-	#framework  #sideBar #sideBarContentsInner{
-		width:95%;
-	}
-	
-	#framework .hideMagazine{
-		display:none;	
-	}
-	
-	#framework .showMagazine{
-		position:absolute;
-		width:790px;
-		height:475px;
-		margin-top: 0px;
-		margin-right:30px;	
-		margin-left:10px;		
-		display:block;
-		overflow:auto;
-
-	}
-
-</style>
-
-<script type="text/javascript" src="js/mootools.v1.11.uncompressed.js"></script>
+<link href="css/side-bar2.css" rel="stylesheet" type="text/css"   />
+<script type="text/javascript" src="js/mootools.js"></script>
 <script type="text/javascript" src="js/side-bar2.js"></script>
 
 <script language="javascript">
@@ -139,14 +23,22 @@ function display(obj){
 	}
 	
 	document.getElementById(obj).className = "showMagazine";
-	
 }
+
+
 </script>
+
+
+<style media="all" type="text/css">
+
+
+</style>
 
 </head>
 
 <body>
-<div id="framework" onload="setPos();">
+<div id="framework">
+
   <div id="sideBar"><a href="#" id="sideBarTab"><img src="images/slide-button.gif" alt="sideBar" title="sideBar" /></a>
       <div id="sideBarContents" style="width:0px;">
           <div id="sideBarContentsInner">
@@ -161,13 +53,11 @@ function display(obj){
           </div>
       </div>
   </div>
-  
-<br>
+
 	  <div id="front" class="showMagazine"> 我是封我是封面我是封面我是封面我<br>是封面我是封面我是封面我是封面我是封面我是封<br>面我是封面我是封面我是<br>封面我是封面我是封面我是封面我是封面我是封面我是<br>封面我是封面我是封面我是封面我是封<br>面我是封面我是封面我是封面我是封面我<br>是封面我是封面我是封面我是<br>封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面<br>我是封面我是封面我是封面我是封面我是封面我是封面我是封面我是封面面 </div>
   <div id="article1" class="hideMagazine"> AAAAAAAAAAAAAAAAAAAAAA<br>AAAAAAAAAA麻里麻里<br>麻里麻里烘麻里麻里烘麻<br>里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘麻里麻里烘烘 </div>
     <div id="article2" class="hideMagazine">BBBBBBBBBBBBBBBBBBBB 菠萝菠萝菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝蜜菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝菠萝蜜菠萝菠萝蜜<br>菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠<br>萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝菠萝蜜菠萝<br>菠萝萝蜜菠萝菠萝蜜蜜 </div>
     <div id="back" class="hideMagazine"> 我是封<br>底我是封底我是封底<br>我是封底我是封底<br>我是封底我是封底我是封底我是封底我是<br>封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封底我是封<br>底我是封底我是封底我是封底我是封底我是封底 </div>
-	
 
 	
 </div>
