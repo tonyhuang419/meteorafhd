@@ -8,8 +8,8 @@ var opacityDuration = 1500;
 
 function calSize(){
 	var frameX = document.getElementById("framework");
-	height = frameX.offsetHeight * 0.85;
-	width = frameX.offsetWidth  * 0.15;	
+	height = frameX.offsetHeight * 0.9;
+	width = frameX.offsetWidth  * 0.17;	
 }
 	
 function extendContract(){
