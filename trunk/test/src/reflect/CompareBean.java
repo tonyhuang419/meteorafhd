@@ -2,7 +2,6 @@ package reflect;
 
 import java.lang.reflect.Field;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
