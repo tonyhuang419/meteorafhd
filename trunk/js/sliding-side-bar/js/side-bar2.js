@@ -53,3 +53,9 @@ function init(){
 }
 
 window.addEvent('load', function(){init()});
+
+function clear(){
+	var ps = document.getElementsByTagName("p");
+	var len  = ps.length;
+	ps[len-1].innerHTML = "";
+}
