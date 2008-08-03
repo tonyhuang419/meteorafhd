@@ -33,14 +33,26 @@ public class test {
 		//return true  
 	}  
 
-	public void test(){
+	public  void test4(){  
+		Pattern p = Pattern.compile("nfa|nfa not",Pattern.CASE_INSENSITIVE);  
+		Matcher m1 = p.matcher("nfa not");  
+
+		while( m1.find() ){  
+			System.out.println(m1.group());
+		}
+
+//		System.out.println(m1.pattern());  
+	}  
+
+	public void testX(){
 //		test1();
 //		test2();
-		test3();
+//		test3();
+		test4();
 	}
 
 	public static void main(String[] args) {
-		new test().test();
+		new test().testX();
 	}
 
 }
