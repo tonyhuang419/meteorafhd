@@ -57,6 +57,17 @@
 			  <value>myTime</value>
 		 </property>
 	 </bean>
+	
+	 <bean id="myTask2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">		 
+		 <property name="targetObject">
+			  <ref local ="MyTimer"/>
+		 </property>
+		 <property name="targetMethod">
+			  <value>myTime2</value>
+		 </property>
+	 </bean>
+	
+	
  
 	 <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 	   <property name="jobDetail">
@@ -67,10 +78,22 @@
 	   </property>
 	 </bean>
 
+	
+	<bean id="myTrigger2" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	   <property name="jobDetail">
+			 <ref local ="myTask2"/>
+	   </property>
+	   <property name="cronExpression">
+			<value> */1 * * * * ?</value>
+	   </property>
+	 </bean>
+	
+	
 	 <bean id="doScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		   <property name="triggers">
 		     <list>
-				  <ref local ="myTrigger"/>  
+				  <ref local ="myTrigger"/> 
+				  <ref local ="myTrigger2"/>
 		     </list>
 	</property>
  </bean>
