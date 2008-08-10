@@ -43,12 +43,26 @@ public class test {
 
 //		System.out.println(m1.pattern());  
 	}  
+	
+	public  void test5(){  
+		Pattern p = Pattern.compile("(.*)x");  
+		Matcher m1 = p.matcher("1234x2345");  
+
+		while( m1.find() ){  
+			int gc = m1.groupCount();  
+			for(int i = 0; i <= gc; i++)  
+				System.out.println("group " + i + " :" + m1.group(i));  
+		}  
+
+//		System.out.println(m1.pattern());  
+	}
 
 	public void testX(){
 //		test1();
 //		test2();
 //		test3();
-		test4();
+//		test4();
+		test5();
 	}
 
 	public static void main(String[] args) {
