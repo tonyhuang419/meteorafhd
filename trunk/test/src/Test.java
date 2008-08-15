@@ -45,8 +45,13 @@ public class Test {
 		System.out.println(xx.equals("4L"));
 	}
 	
+	public void testUpcase(){
+		String x = "a1b2";
+		System.out.println(x.toUpperCase());
+	}
+	
 	public void testEnter(){
-		testxxxx();
+		testUpcase();
 	}
 
 	public static void main(String[] args) {

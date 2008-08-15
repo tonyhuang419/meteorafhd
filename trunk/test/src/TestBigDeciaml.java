@@ -19,9 +19,25 @@ public class TestBigDeciaml {
 		
 	}
 	
+	public void testX(){
+		DecimalFormat   format = new   DecimalFormat("###0.00");   
+		
+		BigDecimal b = new BigDecimal("123456789123456789123456789123456789");
+		Double d = new Double(b.toString());
+		
+		Double dd = new Double("123456789123456781234567899");
+		
+		System.out.println(format.format(d));
+		System.out.println(format.format(dd));
+		
+		//整数部分超过7位就自动使用科学计数法，解决办法在上面
+		System.out.println(new Double("1234567.123456789"));
+	}
+	
 	public void test(){
-		System.out.println(testDivide(new BigDecimal("1188888888888888888888888888111.23"), new BigDecimal("17678678687112")));
-		System.out.println(testMultipy(new BigDecimal("72342332434.9"), new BigDecimal("1234234321.000023")));
+		testX();
+//		System.out.println(testDivide(new BigDecimal("1188888888888888888888888888111.23"), new BigDecimal("17678678687112")));
+//		System.out.println(testMultipy(new BigDecimal("72342332434.9"), new BigDecimal("1234234321.000023")));
 	}
 	
 	public static void main(String args[]){
