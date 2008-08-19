@@ -114,40 +114,40 @@ public class Helloworld extends ClassLoader implements Opcodes {
         // Same example with a GeneratorAdapter (more convenient but slower)
         // ------------------------------------------------------------------------
 
-        cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        cw.visit(V1_1, ACC_PUBLIC, "Example", null, "java/lang/Object", null);
-
-        // creates a GeneratorAdapter for the (implicit) constructor
-        Method m = Method.getMethod("void <init> ()");
-        GeneratorAdapter mg = new GeneratorAdapter(ACC_PUBLIC,
-                m,
-                null,
-                null,
-                cw);
-        mg.loadThis();
-        mg.invokeConstructor(Type.getType(Object.class), m);
-        mg.returnValue();
-        mg.endMethod();
-
-        // creates a GeneratorAdapter for the 'main' method
-        m = Method.getMethod("void main (String[])");
-        mg = new GeneratorAdapter(ACC_PUBLIC + ACC_STATIC, m, null, null, cw);
-        mg.getStatic(Type.getType(System.class),
-                "out",
-                Type.getType(PrintStream.class));
-        mg.push("Hello world!");
-        mg.invokeVirtual(Type.getType(PrintStream.class),
-                Method.getMethod("void println (String)"));
-        mg.returnValue();
-        mg.endMethod();
-
-        cw.visitEnd();
-
-        code = cw.toByteArray();
-        loader = new Helloworld();
-        exampleClass = loader.defineClass("Example", code, 0, code.length);
-
-        // uses the dynamically generated class to print 'Helloworld'
-        exampleClass.getMethods()[0].invoke(null, new Object[] { null });
+//        cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+//        cw.visit(V1_1, ACC_PUBLIC, "Example", null, "java/lang/Object", null);
+//
+//        // creates a GeneratorAdapter for the (implicit) constructor
+//        Method m = Method.getMethod("void <init> ()");
+//        GeneratorAdapter mg = new GeneratorAdapter(ACC_PUBLIC,
+//                m,
+//                null,
+//                null,
+//                cw);
+//        mg.loadThis();
+//        mg.invokeConstructor(Type.getType(Object.class), m);
+//        mg.returnValue();
+//        mg.endMethod();
+//
+//        // creates a GeneratorAdapter for the 'main' method
+//        m = Method.getMethod("void main (String[])");
+//        mg = new GeneratorAdapter(ACC_PUBLIC + ACC_STATIC, m, null, null, cw);
+//        mg.getStatic(Type.getType(System.class),
+//                "out",
+//                Type.getType(PrintStream.class));
+//        mg.push("Hello world!");
+//        mg.invokeVirtual(Type.getType(PrintStream.class),
+//                Method.getMethod("void println (String)"));
+//        mg.returnValue();
+//        mg.endMethod();
+//
+//        cw.visitEnd();
+//
+//        code = cw.toByteArray();
+//        loader = new Helloworld();
+//        exampleClass = loader.defineClass("Example", code, 0, code.length);
+//
+//        // uses the dynamically generated class to print 'Helloworld'
+//        exampleClass.getMethods()[0].invoke(null, new Object[] { null });
     }
 }
