@@ -1,4 +1,4 @@
-package asmTest;
+package asmTest.officialExamples;
 /***
  * ASM examples: examples showing how ASM can be used
  * Copyright (c) 2000-2007 INRIA, France Telecom
@@ -29,14 +29,10 @@ package asmTest;
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 import java.io.FileOutputStream;
-import java.io.PrintStream;
 
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.Type;
-import org.objectweb.asm.commons.GeneratorAdapter;
-import org.objectweb.asm.commons.Method;
 
 /**
  * @author Eric Bruneton
