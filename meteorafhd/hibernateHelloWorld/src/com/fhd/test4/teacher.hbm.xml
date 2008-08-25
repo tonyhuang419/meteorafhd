@@ -12,4 +12,6 @@
         <column name="teachername" length="15" />
     </property>
   </class>
+
+
 </hibernate-mapping>
