@@ -34,8 +34,20 @@ public class TestBigDeciaml {
 		System.out.println(new Double("1234567.123456789"));
 	}
 	
+	
+	public void testXX(){
+		DecimalFormat   format = new   DecimalFormat("###0.00");   
+		
+		Double dd = new Double("1234567890123456789");
+		
+		System.out.println(dd);
+		System.out.println(format.format(dd));
+
+	}
+	
 	public void test(){
-		testX();
+//		testX();
+		testXX();
 //		System.out.println(testDivide(new BigDecimal("1188888888888888888888888888111.23"), new BigDecimal("17678678687112")));
 //		System.out.println(testMultipy(new BigDecimal("72342332434.9"), new BigDecimal("1234234321.000023")));
 	}
