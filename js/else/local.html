@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-W3CDTD XHTML 1.0 TransitionalEN" "http:www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http:www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+
+<script language="javascript">
+/*
+function compareStrings(string1,string2)
+{
+   alert(string1.localeCompare(string2));  中文无效
+}
+
+compareStrings("啊","吧");   
+compareStrings("a","b"); 
+compareStrings("b","a"); 
+
+alert(-64>>2);
+
+alert(-0+-0);
+alert(0==0);
+alert(-0==0);
+alert(+0==0);
+alert(-0==+0);
+
+alert(-5-"5");
+alert(-5+"5");
+alert(5-"5");
+alert(5-"-5");
+
+alert( 3!=2 || 3!=1) , alert("1"), alert(2) ;
+
+function cc(){ }
+alert(typeof cc())    return undefined
+
+function ccx(){
+	alert("1");
+}
+alert(ccx.valueOf());
+
+
+-------------------------
+function a(){alert("a")}
+var b = a;
+
+this function will stack overflow
+function a(){
+	b();
+	a();
+	alert("ok");
+}
+
+a = function(){
+	b();
+	alert("ok");
+}
+
+a();
+
+-------------------------
+
+
+function Lakers() {
+this.name = "kobe bryant";
+this.age = "28";
+this.gender = "boy";
+}
+var people=new Lakers();
+with(people)
+{
+var str = "姓名: " + name + "<br>";
+str += "年龄：" + age + "<br>";
+str += "性别：" + gender;
+document.write(str);
+} 
+alert(Lakers.toString());
+*/
+
+
+function t()
+{
+	alert("I'm a attach event");
+}
+
+
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+	//alert("i'm ie");
+	document.attachEvent("onclick", t);
+	
+}
+if (window.navigator.userAgent.indexOf("Firefox")>=1){
+	//alert("i'm firefox");
+	document.addEventListener("click",t,false);
+}
+
+
+
+</script>
+
+
+
+<title>test</title>
+</head>
+
+<body>
+<form>
+
+</form>
+</body>
+
+<script language="javascript">
+
+</script>
+
+</html>
