@@ -53,8 +53,13 @@ public class Test {
 	public void testEnter(){
 		testUpcase();
 	}
+	
+	public void subString(){
+		String str = "123456789";
+		System.out.println(str.substring(2,3));
+	}
 
 	public static void main(String[] args) {
-		new Test().testEnter();
+		new Test().subString();
 	}
 }
