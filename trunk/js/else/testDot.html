@@ -9,12 +9,15 @@
 function testDot(){
 	//alert(document.forms(0).x[0].value);
 	//alert(document.forms(0).x[1].value);
-	var x ="x";
-	var y ="y";
-	alert(x);
-	alert(y);
+	//var x ="x";
+	//var y ="y";
+	//alert(x);
+	//alert(y);
 }
 
+if(event.keyCode==13 && event.srcElement.type!='button' && event.srcElement.type!='submit' && event.srcElement.type!='reset' && event.srcElement.type!='textarea' && event.srcElement.type!=''){
+	event.keyCode=9;
+}
 
 </script>
 
