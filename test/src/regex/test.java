@@ -50,11 +50,30 @@ public class test {
 
 		while( m1.find() ){  
 			int gc = m1.groupCount();  
-			for(int i = 0; i <= gc; i++)  
+			for(int i = 0; i <= gc; i++) {
 				System.out.println("group " + i + " :" + m1.group(i));  
+			}
 		}  
 
 //		System.out.println(m1.pattern());  
+	}
+	
+	
+	public void test6(){
+		Pattern p = Pattern.compile("\\d{1}"); 
+		Matcher m1 = p.matcher("123456789");  
+		
+		while( m1.find() ){ 
+			int gc = m1.groupCount();  
+			
+			for(int i = 0; i <= gc; i++) {
+				System.out.print(m1.start()+"  ");
+				System.out.print(m1.end()+"  ");
+				System.out.println(m1.group());  
+			}
+		}
+		
+	
 	}
 
 	public void testX(){
@@ -62,7 +81,8 @@ public class test {
 //		test2();
 //		test3();
 //		test4();
-		test5();
+//		test5();
+		test6();
 	}
 
 	public static void main(String[] args) {
