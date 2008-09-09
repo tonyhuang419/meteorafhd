@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+<title>Calculation Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function formatCurrency(num) {
+num = num.toString().replace(/\$|\,/g,'');
+if(isNaN(num))
+num = "0";
+sign = (num == (num = Math.abs(num)));
+num = Math.floor(num*100+0.50000000001);
+cents = num%100;
+num = Math.floor(num/100).toString();
+if(cents<10)
+cents = "0" + cents;
+for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+num = num.substring(0,num.length-(4*i+3))+','+
+num.substring(num.length-(4*i+3));
+return (((sign)?'':'-')+ num + '.' + cents);
+}
+
+
+function cleanReg(str){
+	str = str.replace(/.\d\d$/,'');
+	str = str.replace(/,/g,'');
+	return str;
+}
+
+alert(cleanReg("123,4.11"));
+//-->
+</script>
+
+</head>
+
+<body>
+<form name="form">
+<input name="A6" type="text" value="0">
+<input name="Submit" type="button" onClick="this.form.A6.value=formatCurrency(this.form.A6.value)" />
+</form>
+</body>
+</html>
