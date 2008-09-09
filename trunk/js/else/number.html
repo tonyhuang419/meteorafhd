@@ -24,12 +24,12 @@ return (((sign)?'':'-')+ num + '.' + cents);
 
 
 function cleanReg(str){
-	str = str.replace(/.\d\d$/,'');
+	str = str.replace(/\.\d*$/,'');
 	str = str.replace(/,/g,'');
 	return str;
 }
 
-alert(cleanReg("123,4.11"));
+alert(cleanReg("123,4.1123"));
 //-->
 </script>
 
