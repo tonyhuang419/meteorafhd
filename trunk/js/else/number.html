@@ -29,8 +29,16 @@ function cleanReg(str){
 	return str;
 }
 
-alert(cleanReg("123,4.1123"));
+//alert(cleanReg("123,4.1123"));
 //-->
+
+function regS(str){
+	str = str.replace(/\$|\,|\s/g,'');
+	return str;
+}
+alert(regS("1  2$"));
+
+
 </script>
 
 </head>
