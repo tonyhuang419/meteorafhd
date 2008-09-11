@@ -86,11 +86,13 @@ function t()
 if (window.navigator.userAgent.indexOf("MSIE")>=1){
 	//alert("i'm ie");
 	document.attachEvent("onclick", t);
+	document.detachEvent("onclick", t)
 	
 }
 if (window.navigator.userAgent.indexOf("Firefox")>=1){
 	//alert("i'm firefox");
-	document.addEventListener("click",t,false);
+	document.addEventListener("click",t,true);   //如果是true，不会被remove
+	document.removeEventListener("click",t,false);
 }
 
 
