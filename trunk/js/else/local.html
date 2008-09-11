@@ -77,6 +77,9 @@ alert(Lakers.toString());
 */
 
 
+//addEventListener和attachEvent ie 和 FF 下的两种用法（1 解析浏览器 2 查看document对象）
+
+/*
 function t()
 {
 	alert("I'm a attach event");
@@ -94,19 +97,54 @@ if (window.navigator.userAgent.indexOf("Firefox")>=1){
 	document.addEventListener("click",t,true);   //如果是true，不会被remove
 	document.removeEventListener("click",t,false);
 }
+*/
 
+/*
+function t()
+{
+	alert("I'm a attach event");
+}
+
+var EventUtil = new Object;
+//oTarget：目标；sEventType：事件名称；funName：事件触发的函数名；
+EventUtil.addEvent=function(oTarget,sEventType,funName){
+	if(oTarget.addEventListener){			//for DOM;
+ 		 oTarget.addEventListener(sEventType,funName, false);
+ 	}else if(oTarget.attachEvent){
+  		oTarget.attachEvent("on"+sEventType,funName);
+	 }else{
+  		oTarget["on"+sEventType]=funName;
+ 	}
+	alert("...");
+};
+
+
+EventUtil.removeEvent=function(oTarget,sEventType,funName){
+	if(oTarget.removeEventListener){//for DOM;
+		oTarget.removeEventListener(sEventType,funName, false);
+	}else if(oTarget.detachEvent){
+		oTarget.detachEvent("on"+sEventType,funName);
+	}else{
+		oTarget["on"+sEventType]=null;
+	}
+};
+
+EventUtil.addEvent(document,"click",t);
+EventUtil.removeEvent(document,"click",t);
+
+*/
 
 
 </script>
 
 
 
-<title>test</title>
+<title>local</title>
 </head>
 
 <body>
 <form>
-
+aaaaa
 </form>
 </body>
 

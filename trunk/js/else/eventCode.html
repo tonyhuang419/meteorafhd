@@ -1,13 +1,14 @@
-<em><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+X<em><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 <title>xx</title>
 
 <script language="javascript">
-function document.onkeyup()
+document.onkeyup = function (event)
 {
-    alert(event.keyCode)
+	var e=event || window.event;
+    alert(e.keyCode);
 }
 
 
