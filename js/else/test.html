@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 
 
 <script language="javascript">
@@ -32,7 +32,6 @@ function getPos(){
 
 }
 
-
 </script>
 
 
@@ -47,5 +46,22 @@ function getPos(){
 <input type="button" name="Submit" value="text1" onclick=alert(document.getElementById('textName2').value) />
 <input type="button" name="Submit2" value="text2" onclick=alert(document.getElementById('textName1').value) /> 
 
+<input  type="text" name="a" value="a"/>
+<input  type="text" name="a" value="b"/>
+
 </body>
+
+<script language="javascript">
+/* IE
+alert(document.all.a[0].value);
+alert(document.all.a(0).value);
+*/
+
+/* FF
+var x = document.getElementsByName("a");
+alert(x[0].value);
+*/
+
+</script>
+
 </html>

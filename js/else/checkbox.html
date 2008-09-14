@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W5C//DTD XHTML 5.0 Transitional//EN" "http://www.w5.org/TR/xhtml5/DTD/xhtml5-transitional.dtd">
+<html xmlns="http://www.w5.org/5999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb5555" />
+
+
+<script language="javascript">
+
+</script>
+
+
+<title>checkbox</title>
+</head>
+
+<body>
+<input name="father" type="checkbox"  id="father01"  onclick="checkX(this);" /> father01 <br/>
+----<input name="son" type="checkbox"  id="son0101" onclick="checkX(this);"/> son0101 <br/>
+----<input name="son" type="checkbox"  id="son0102" onclick="checkX(this);"/> son0102 <br/>
+----<input name="son" type="checkbox"  id="son0103" onclick="checkX(this);"/> son0103 <br/>
+----<input name="son" type="checkbox"  id="son0104" onclick="checkX(this);"/> son0104 <br/>
+----<input name="son" type="checkbox"  id="son0105" onclick="checkX(this);"/> son0105 <br/>
+
+<input name="father" type="checkbox"  id="father02" onclick="checkX(this);"/> father02 <br/>
+----<input name="son" type="checkbox"  id="son0201" onclick="checkX(this);"/> son0201 <br/>
+----<input name="son" type="checkbox"  id="son0202" onclick="checkX(this);"/> son0202 <br/>
+----<input name="son" type="checkbox"  id="son0203" onclick="checkX(this);"/> son0203 <br/>
+----<input name="son" type="checkbox"  id="son0204" onclick="checkX(this);"/> son0204 <br/>
+----<input name="son" type="checkbox"  id="son0205" onclick="checkX(this);"/> son0205 <br/>
+
+<input name="father" type="checkbox"  id="father03"onclick="checkX(this);" /> father03 <br/>
+----<input name="son" type="checkbox"  id="son0301" onclick="checkX(this);"/> son0301 <br/>
+----<input name="son" type="checkbox"  id="son0302" onclick="checkX(this);"/> son0302 <br/>
+----<input name="son" type="checkbox"  id="son0303" onclick="checkX(this);"/> son0303 <br/>
+----<input name="son" type="checkbox"  id="son0304" onclick="checkX(this);"/> son0304 <br/>
+----<input name="son" type="checkbox"  id="son0305" onclick="checkX(this);"/> son0305 <br/>
+
+<input name="father" type="checkbox"  id="father04" onclick="checkX(this);"/> father04 <br/>
+----<input name="son" type="checkbox"  id="son0401" onclick="checkX(this);"/> son0401 <br/>
+----<input name="son" type="checkbox"  id="son0402" onclick="checkX(this);"/> son0402 <br/>
+----<input name="son" type="checkbox"  id="son0403" onclick="checkX(this);"/> son0403 <br/>
+----<input name="son" type="checkbox"  id="son0404" onclick="checkX(this);"/> son0404 <br/>
+----<input name="son" type="checkbox"  id="son0405" onclick="checkX(this);"/> son0405 <br/>
+
+<input name="father" type="checkbox"  id="father05" onclick="checkX(this);"/> father05 </br>
+----<input name="son" type="checkbox"  id="son0501" onclick="checkX(this);"/> son0501 </br>
+----<input name="son" type="checkbox"  id="son0502" onclick="checkX(this);"/> son0502 </br>
+----<input name="son" type="checkbox"  id="son0503" onclick="checkX(this);"/> son0503 </br>
+----<input name="son" type="checkbox"  id="son0504" onclick="checkX(this);"/> son0504 </br>
+----<input name="son" type="checkbox"  id="son0505" onclick="checkX(this);"/> son0505 </br>
+
+</body>
+
+<script language="javascript">
+
+//获取兄弟节点
+function getSibling(sonId){
+	var fid =  getSonId(sonId)
+	fid = fid.substring(0,2);
+	var sonArray = new Array();
+	var sons = document.getElementsByName("son");
+	var sonId ="";
+	for(var i=0;i<sons.length;i++){
+		sonId = getSonId(sons[i].id);
+		if (whosSon(sonId) == fid ){
+			sonArray.push(sons[i].id);
+		}	
+	}
+	return sonArray;
+}
+
+//兄弟节点是否被选中
+function siblingCheck(sonId){
+	var sonArray = new Array();
+	var xname = "";
+	sonArray = getSibling(sonId);
+	for(var c in  sonArray ){
+		xname =  sonArray[c];
+		if(document.getElementById(xname).checked){ 
+			return true;
+		}
+	}
+	return false;
+}
+
+
+//是否为father
+function isFather(str){
+	if( str.indexOf("father")!=-1){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+//是否为son
+function isSon(str){
+	if( str.indexOf("son")!=-1){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+//0 father  1 son
+function fatherOrSon(str){
+	if(isFather(str)){
+		return 0;
+	}
+	else if (isSon(str)){
+		return 1;
+	}
+}
+
+
+//根据父节点，找到子节点
+function getSonArray(fatherId){
+	var sonArray = new Array();
+	var sonId = "";
+	var sons = document.getElementsByName("son");
+	for(var i=0;i<sons.length;i++){
+		sonId = getSonId(sons[i].id);
+		fid = getFatherId(fatherId);
+		if(fid == whosSon(sonId)){
+			sonArray.push(sons[i].id);
+		}
+	}
+	return sonArray;
+}
+
+
+//根据子节点，找到父节点
+function getFatherIdBySonId(sonId){
+	var fid =  getSonId(sonId)
+	return "father" + fid.substring(0,2);
+
+}
+
+//获取fatherId
+function getFatherId(str){
+	return str.substring(str.length - 2 , str.length);
+}
+
+//获取sonId
+function getSonId(str){
+	return str.substring(str.length - 4 , str.length);
+}
+
+//通过sonId，找到fatherId
+function whosSon(sonId){
+	return sonId.substring(0 , 2);
+}
+
+
+//选中节点
+function checkX(obj){
+	cid = obj.id;
+	//如果是父节点
+	if ( fatherOrSon(cid) ==  0 ){
+		var sonArray = new Array();
+		sonArray = getSonArray(cid);
+		
+		var f = document.getElementById(cid);
+		if(f.checked == true){	
+			for(var i=0; i<sonArray.length; i++){
+				var tc = document.getElementById(sonArray[i]);
+				tc.checked = true;
+			}	
+		}
+		else{
+			for(var i=0; i<sonArray.length; i++){
+				var tc = document.getElementById(sonArray[i]);
+				tc.checked = false;
+			}
+		
+		}
+	}
+	//如果是子节点
+	else if ( fatherOrSon(cid) ==  1 ){
+		//子节点checked属性false，将被选中
+		if(document.getElementById(getFatherIdBySonId(cid)).checked == false){
+			var fc =  document.getElementById(getFatherIdBySonId(cid));
+			fc.checked = true;		
+		}
+		//子节点checked属性true，检查所有子节点，是否取消父节点选中
+		else{
+			var fc =  document.getElementById(getFatherIdBySonId(cid));
+			if(siblingCheck(cid)){
+				fc.checked = true;	
+			}
+			else{			
+				fc.checked = false;	
+			}
+		}
+	}
+}
+
+</script>
+
+</html>
