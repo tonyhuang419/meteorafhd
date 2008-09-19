@@ -61,5 +61,9 @@ public class Test {
 
 	public static void main(String[] args) {
 		new Test().subString();
+		
+		String s=null;
+		s +="a";
+		System.out.println(s);
 	}
 }
