@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class Test {
 	public static void main(String[] args)  {
@@ -14,12 +16,12 @@ public class Test {
 
 //		String str = t.urlRead();
 //		if(str==null){
-//			System.out.println("error happen");
+//		System.out.println("error happen");
 //		}
 //		else{
-//			System.out.println(str);
+//		System.out.println(str);
 //		}
-		
+
 		t.urlPost();
 	}
 
@@ -35,14 +37,26 @@ public class Test {
 
 
 	public String urlRead(){
+		
+		String data = null;
+		try{
+			data = URLEncoder.encode("url", "UTF-8") + "=" + URLEncoder.encode("/", "UTF-8");
+			data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode("fhdone@gmail.com", "UTF-8");
+			data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode("happyamiga", "UTF-8");
+		}catch(UnsupportedEncodingException uee){
+			uee.printStackTrace();
+		}
+
+		System.out.println(data);
+		
 		StringBuffer sb = new StringBuffer("");
 		String str = null;
 		try{
-			URL url = new URL("http://www.baidu.com");
+			URL url = new URL("http://www.kaixin001.com/login/login.php");
 			URLConnection connection = url.openConnection();
 			InputStream in = connection.getInputStream();
 //			byte[] data = new byte[1024];
-			BufferedReader br = new BufferedReader(new InputStreamReader(in),1024);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
 			while( (str = br.readLine()) !=null){
 //				System.out.println(str);
 				sb.append(str+"\n");
@@ -56,13 +70,25 @@ public class Test {
 	}
 
 	public void urlPost(){
+		String data = null;
+		try{
+			data = URLEncoder.encode("url", "UTF-8") + "=" + URLEncoder.encode("/", "UTF-8");
+			data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode("meteorafhd@yahoo.com.cn", "UTF-8");
+			data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode("happyamiga", "UTF-8");
+		}catch(UnsupportedEncodingException uee){
+			uee.printStackTrace();
+		}
+
+		System.out.println(data);
+		
 		String sTmp="http://www.kaixin001.com/login/login.php";
+
 		try{
 			URL url=new URL(sTmp);
 			URLConnection connection = url.openConnection();
 			connection.setDoOutput(true) ;
 			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
-			out.write("url=%2F&email=fhdone@gmail.com&password=happyamiga");//这里组织域信息
+			out.write(data);//这里组织域信息
 			out.flush();
 			out.close();
 
