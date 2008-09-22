@@ -72,9 +72,9 @@ public class Test {
 	public void urlPost(){
 		String data = null;
 		try{
-			data = URLEncoder.encode("url", "UTF-8") + "=" + URLEncoder.encode("/", "UTF-8");
-			data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode("meteorafhd@yahoo.com.cn", "UTF-8");
-			data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode("happyamiga", "UTF-8");
+			data =   "url" + "=" + URLEncoder.encode("/", "UTF-8");
+			data += "&email"     + "=" + URLEncoder.encode("meteorafhd@yahoo.com.cn", "UTF-8");
+			data += "&password" + "=" + URLEncoder.encode("happyamiga", "UTF-8");
 		}catch(UnsupportedEncodingException uee){
 			uee.printStackTrace();
 		}
