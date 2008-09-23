@@ -6,23 +6,26 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+
 
 public class Test {
 	public static void main(String[] args)  {
 		Test t = new Test();
 
-//		String str = t.urlRead();
-//		if(str==null){
-//		System.out.println("error happen");
-//		}
-//		else{
-//		System.out.println(str);
-//		}
+		String str = t.urlRead();
+		if(str==null){
+		System.out.println("error happen");
+		}
+		else{
+		System.out.println(str);
+		}
 
-		t.urlPost();
+
+//		t.urlPost();
 	}
 
 
@@ -37,28 +40,24 @@ public class Test {
 
 
 	public String urlRead(){
-		
+
 		String data = null;
 		try{
-			data = URLEncoder.encode("url", "UTF-8") + "=" + URLEncoder.encode("/", "UTF-8");
-			data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode("fhdone@gmail.com", "UTF-8");
-			data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode("happyamiga", "UTF-8");
+			data = "?action=" + URLEncoder.encode("login", "GBK");
+			data += "&username=" + URLEncoder.encode("非法_用户", "GBK");
+			data += "&password=" + URLEncoder.encode("happyamiga", "GBK");
 		}catch(UnsupportedEncodingException uee){
 			uee.printStackTrace();
 		}
 
-		System.out.println(data);
-		
 		StringBuffer sb = new StringBuffer("");
 		String str = null;
 		try{
-			URL url = new URL("http://www.kaixin001.com/login/login.php");
+			URL url = new URL("http://bbs.taisha.org/logging.php"+data);
 			URLConnection connection = url.openConnection();
 			InputStream in = connection.getInputStream();
-//			byte[] data = new byte[1024];
-			BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in,"GBK"),1024);
 			while( (str = br.readLine()) !=null){
-//				System.out.println(str);
 				sb.append(str+"\n");
 			}
 			in.close();
@@ -69,33 +68,37 @@ public class Test {
 		return null;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void urlPost(){
+
+		String sTmp="http://bbs.taisha.org/logging.php";
 		String data = null;
-		try{
-			data =   "url" + "=" + URLEncoder.encode("/", "UTF-8");
-			data += "&email"     + "=" + URLEncoder.encode("meteorafhd@yahoo.com.cn", "UTF-8");
-			data += "&password" + "=" + URLEncoder.encode("happyamiga", "UTF-8");
-		}catch(UnsupportedEncodingException uee){
+		try {
+			data = "action=" + URLEncoder.encode("login", "GBK");
+			data += "&username=" + URLEncoder.encode("非法_用户", "GBK");
+			data += "&password=" + URLEncoder.encode("happyamiga", "GBK");
+		} catch (UnsupportedEncodingException uee) {
 			uee.printStackTrace();
 		}
 
 		System.out.println(data);
 		
-		String sTmp="http://www.kaixin001.com/login/login.php";
-
 		try{
 			URL url=new URL(sTmp);
-			URLConnection connection = url.openConnection();
-			connection.setDoOutput(true) ;
-			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
-			out.write(data);//这里组织域信息
+			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			connection.setRequestMethod("POST");
+			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "GBK");
+			out.write(data);
 			out.flush();
 			out.close();
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "GBK"));
+
 			String line = null;
 			StringBuffer content= new StringBuffer();
-			while((line = in.readLine()) != null){//line为返回值，这就可以判断是否成功、
+			while((line = in.readLine()) != null){
 				content.append(line);
 				System.out.println(line);
 			}
@@ -110,6 +113,7 @@ public class Test {
 			System.out.println("错误：");
 			System.out.println(e.getStackTrace());
 		}
+
 	}
 
 }
