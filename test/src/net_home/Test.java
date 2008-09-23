@@ -16,16 +16,15 @@ public class Test {
 	public static void main(String[] args)  {
 		Test t = new Test();
 
-		String str = t.urlRead();
-		if(str==null){
-		System.out.println("error happen");
-		}
-		else{
-		System.out.println(str);
-		}
+//		String str = t.urlRead();
+//		if(str==null){
+//			System.out.println("error happen");
+//		}
+//		else{
+//			System.out.println(str);
+//		}
 
-
-//		t.urlPost();
+		t.urlPost();
 	}
 
 
@@ -44,6 +43,8 @@ public class Test {
 		String data = null;
 		try{
 			data = "?action=" + URLEncoder.encode("login", "GBK");
+			data += "&formhash=" + URLEncoder.encode("19904bb8", "GBK");
+			data += "&referer=" + URLEncoder.encode("index.php", "GBK");
 			data += "&username=" + URLEncoder.encode("非法_用户", "GBK");
 			data += "&password=" + URLEncoder.encode("happyamiga", "GBK");
 		}catch(UnsupportedEncodingException uee){
@@ -53,6 +54,7 @@ public class Test {
 		StringBuffer sb = new StringBuffer("");
 		String str = null;
 		try{
+			System.out.println("http://bbs.taisha.org/logging.php"+data);
 			URL url = new URL("http://bbs.taisha.org/logging.php"+data);
 			URLConnection connection = url.openConnection();
 			InputStream in = connection.getInputStream();
@@ -68,33 +70,33 @@ public class Test {
 		return null;
 	}
 
-	@SuppressWarnings("deprecation")
-	public void urlPost(){
 
-		String sTmp="http://bbs.taisha.org/logging.php";
-		String data = null;
+	public void urlPost(){
+		String sTmp="http://www.kaixin001.com/login/login.php";
+		String data = "";
 		try {
-			data = "action=" + URLEncoder.encode("login", "GBK");
-			data += "&username=" + URLEncoder.encode("非法_用户", "GBK");
-			data += "&password=" + URLEncoder.encode("happyamiga", "GBK");
+			data += "url=" + URLEncoder.encode("/", "UTF-8");
+			data += "&email=" + URLEncoder.encode("meteorafhd@gmail.com", "UTF-8");
+			data += "&password=" + URLEncoder.encode("happyamiga", "UTF-8");
 		} catch (UnsupportedEncodingException uee) {
 			uee.printStackTrace();
 		}
 
 		System.out.println(data);
-		
+
 		try{
 			URL url=new URL(sTmp);
 			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setRequestMethod("POST");
-			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "GBK");
+			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
 			out.write(data);
 			out.flush();
 			out.close();
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "GBK"));
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					connection.getInputStream(), "UTF-8"));
 
 			String line = null;
 			StringBuffer content= new StringBuffer();
@@ -113,7 +115,6 @@ public class Test {
 			System.out.println("错误：");
 			System.out.println(e.getStackTrace());
 		}
-
 	}
 
 }
