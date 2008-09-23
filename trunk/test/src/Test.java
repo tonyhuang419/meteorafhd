@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 
@@ -60,10 +61,17 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		new Test().subString();
+//		new Test().subString();
+//		
+//		String s=null;
+//		s +="a";
+//		System.out.println(s);
+		BigDecimal b = new BigDecimal("0");
 		
-		String s=null;
-		s +="a";
-		System.out.println(s);
+		Double n = new Double("12345678912");
+		System.out.println(n);
+		System.out.println(n.toString());
+		
+		System.out.println(b.add(new BigDecimal(n.toString())));
 	}
 }

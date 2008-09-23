@@ -1,3 +1,7 @@
+/*
+ * need jdk6
+ */
+
 package net_home;
 
 import java.io.IOException;
