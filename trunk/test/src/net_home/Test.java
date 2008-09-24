@@ -75,8 +75,8 @@ public class Test {
 		String sTmp="http://www.kaixin001.com/login/login.php";
 		String data = "";
 		try {
-			data += "url=" + URLEncoder.encode("/", "UTF-8");
-			data += "&email=" + URLEncoder.encode("meteorafhd@gmail.com", "UTF-8");
+//			data += "url=" + URLEncoder.encode("/", "UTF-8");
+			data += "&name=" + URLEncoder.encode("meteorafhd@gmail.com", "UTF-8");
 			data += "&password=" + URLEncoder.encode("happyamiga", "UTF-8");
 		} catch (UnsupportedEncodingException uee) {
 			uee.printStackTrace();
@@ -88,8 +88,8 @@ public class Test {
 			URL url=new URL(sTmp);
 			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 			connection.setDoOutput(true);
-			connection.setDoInput(true);
-			connection.setRequestMethod("POST");
+//			connection.setDoInput(true);
+//			connection.setRequestMethod("GET");
 			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
 			out.write(data);
 			out.flush();
