@@ -1,0 +1,48 @@
+[2008-09-25 22:35:13]: 读取账号文件: C:\Documents and Settings\Meteora.F\桌面\s\kaixin\bite\fhdone.ini
+[2008-09-25 22:35:13]: Login as [fhdone@gmail.com]: Ok!
+[2008-09-25 22:35:17]: 当前Acc = acc=32
+[2008-09-25 22:35:17]: 体力已耗尽恢复体力 (体力0)
+[2008-09-25 22:35:17]: Logout: Ok!
+
+[2008-09-25 22:35:17]: 读取账号文件: C:\Documents and Settings\Meteora.F\桌面\s\kaixin\bite\meteora.ini
+[2008-09-25 22:35:17]: Login as [meteorafhd@gmail.com]: Ok!
+[2008-09-25 22:35:22]: 当前Acc = acc=32
+[2008-09-25 22:35:22]: 正在倪青龙的房间休息(10小时40分) (体力4)
+[2008-09-25 22:35:22]: Logout: Ok!
+
+[2008-09-25 22:35:22]: 读取账号文件: C:\Documents and Settings\Meteora.F\桌面\s\kaixin\bite\yahoo.ini
+[2008-09-25 22:35:22]: Login as [meteorafhd@yahoo.com.cn]: Ok!
+[2008-09-25 22:35:26]: 当前Acc = acc=32
+[2008-09-25 22:35:26]: 正常 (体力60)
+[2008-09-25 22:35:26]: 开始咬BiteList里的人：
+[2008-09-25 22:35:28]: 咬完BiteList的人后: 正常 (体力60)
+[2008-09-25 22:35:28]: 还有体力，继续咬剩下的人：
+[2008-09-25 22:35:28]: 还有可以咬的人数：0
+[2008-09-25 22:35:29]: 咬完所有人后: 正常 (体力60)
+[2008-09-25 22:35:29]: Logout: Ok!
+
+[2008-09-25 22:35:29]: Wait 60 mins to re-bite...
+[2008-09-25 22:35:51]: 读取账号文件: C:\Documents and Settings\Meteora.F\桌面\s\kaixin\bite\fhdone.ini
+[2008-09-25 22:35:51]: Login as [fhdone@gmail.com]: Ok!
+[2008-09-25 22:35:55]: 当前Acc = acc=32
+[2008-09-25 22:35:55]: 体力已耗尽恢复体力 (体力0)
+[2008-09-25 22:35:55]: Logout: Ok!
+
+[2008-09-25 22:35:55]: 读取账号文件: C:\Documents and Settings\Meteora.F\桌面\s\kaixin\bite\meteora.ini
+[2008-09-25 22:35:55]: Login as [meteorafhd@gmail.com]: Ok!
+[2008-09-25 22:36:00]: 当前Acc = acc=32
+[2008-09-25 22:36:00]: 正在倪青龙的房间休息(10小时40分) (体力4)
+[2008-09-25 22:36:00]: Logout: Ok!
+
+[2008-09-25 22:36:00]: 读取账号文件: C:\Documents and Settings\Meteora.F\桌面\s\kaixin\bite\yahoo.ini
+[2008-09-25 22:36:00]: Login as [meteorafhd@yahoo.com.cn]: Ok!
+[2008-09-25 22:36:03]: 当前Acc = acc=32
+[2008-09-25 22:36:03]: 正常 (体力60)
+[2008-09-25 22:36:03]: 开始咬BiteList里的人：
+[2008-09-25 22:36:04]: 咬完BiteList的人后: 正常 (体力60)
+[2008-09-25 22:36:04]: 还有体力，继续咬剩下的人：
+[2008-09-25 22:36:05]: 还有可以咬的人数：0
+[2008-09-25 22:36:06]: 咬完所有人后: 正常 (体力60)
+[2008-09-25 22:36:06]: Logout: Ok!
+
+[2008-09-25 22:36:06]: Wait 60 mins to re-bite...
