@@ -25,7 +25,10 @@ HttpTimeout=120
 HttpTryTimes=3
 
 # 设置Acc获取方式 0-页面，1-网络，2-直接使用Acc变量赋值, 3-使用Acc代码计算
-GetAccType=3
+GetAccType=0
 
 # Acc变量，如果GetAccType为2则直接指定，如果GetAccType为3，则把Acc代码段复制上去
-Acc= var  d0d66  =  "f08200b89169";var  gaa9d  =  "00e64c4d598d";function  acc(){ var acc = gaa9d.substr(2,2) + '777' + d0d66.substr(2,2); return acc;}
+#Acc=
+
+# 是否将log写入文件 否:0  是:1
+EnableLog=0

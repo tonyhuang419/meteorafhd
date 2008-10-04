@@ -31,3 +31,7 @@ HttpTryTimes=3
 
 # 是否使用Acc参数 如果留空，程序会自动更新
 #Acc=
+
+# 是否将log写入文件 否:0  是:1
+EnableLog = 0
+
