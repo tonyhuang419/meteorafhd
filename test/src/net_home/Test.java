@@ -46,7 +46,7 @@ public class Test {
 			data += "&formhash=" + URLEncoder.encode("19904bb8", "GBK");
 			data += "&referer=" + URLEncoder.encode("index.php", "GBK");
 			data += "&username=" + URLEncoder.encode("非法_用户", "GBK");
-			data += "&password=" + URLEncoder.encode("happyamiga", "GBK");
+			data += "&password=" + URLEncoder.encode("...", "GBK");
 		}catch(UnsupportedEncodingException uee){
 			uee.printStackTrace();
 		}
@@ -77,7 +77,7 @@ public class Test {
 		try {
 //			data += "url=" + URLEncoder.encode("/", "UTF-8");
 			data += "&name=" + URLEncoder.encode("meteorafhd@gmail.com", "UTF-8");
-			data += "&password=" + URLEncoder.encode("happyamiga", "UTF-8");
+			data += "&password=" + URLEncoder.encode("...", "UTF-8");
 		} catch (UnsupportedEncodingException uee) {
 			uee.printStackTrace();
 		}
