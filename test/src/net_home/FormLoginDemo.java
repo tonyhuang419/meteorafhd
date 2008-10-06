@@ -31,13 +31,21 @@ public class FormLoginDemo {
 		FormLoginDemo f = new FormLoginDemo();
 		HttpClient client = f.loginUrl();
 		if( client != null ){
-			f.parker(client); 
+//			f.parker(client); 
 		}
 		else{
 			System.out.println("login fail");
 		}
 //		new Time().x();
-
+		f.logout(client);
+		
+		
+		if( client != null ){
+			f.parker(client); 
+		}
+		else{
+			System.out.println("login fail");
+		}
 
 	}
 
@@ -135,10 +143,23 @@ public class FormLoginDemo {
 		}
 		return null;		
 	}
+	
+	private void logout(HttpClient client){
+		String methodUrl = "/login/logout.php";
+		client.getHostConfiguration().setHost(urlStr, port, protocal );
+		HttpMethod method = getGetMethod(methodUrl);//使用POST方式提交数据
+		try{
+			client.executeMethod(method);
+			System.out.println("logout success");
+		}
+		catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+	}
 
 
 
-	private void showCookie(String localSite ,HttpClient client){
+	public void showCookie(String localSite ,HttpClient client){
 		CookieSpec cookiespec = CookiePolicy.getDefaultSpec();
 		Cookie[] cookies = cookiespec.match("www.kaixin001.com", 80, "/", false, client.getState().getCookies());
 		if (cookies.length == 0) {
@@ -155,7 +176,7 @@ public class FormLoginDemo {
 	 * @return
 	 */
 	private static HttpMethod getGetMethod(String methodUrl){
-		return new GetMethod("/login/login.php");
+		return new GetMethod(methodUrl);
 	}
 	/** *//**
 	 * 使用POST方式提交数据
