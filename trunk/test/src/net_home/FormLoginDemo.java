@@ -184,7 +184,7 @@ public class FormLoginDemo {
 	 */
 	private static HttpMethod getPostMethod(String methodUrl){
 		String email = "meteorafhd@gmail.com";
-		String pw = "happyamiga";
+		String pw = "...";
 		PostMethod post = new PostMethod(methodUrl);
 		NameValuePair x = new NameValuePair("url","/");
 		NameValuePair name = new NameValuePair("email",email);
