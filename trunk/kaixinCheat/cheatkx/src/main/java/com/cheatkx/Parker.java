@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,14 +26,14 @@ public class Parker {
 		Parker p = new Parker();
 		HttpClient client = login.login(urlStr,port,protocal);
 		if( client != null ){
-			p.parker(client); 
+//			p.parker(client); 
+			p.showUserCar(client);
 		}
 		else{
 			System.out.println("login fail");
 		}
-		login.showCookie(urlStr, client);
-		login.logout(client,urlStr,port,protocal);
-		
+//		login.showCookie(urlStr, client);
+		login.logout(client,urlStr,port,protocal);	
 	}
 	
 	
@@ -44,18 +45,36 @@ public class Parker {
 		HttpMethod method  = post;
 		try{
 			client.executeMethod(method);
-			String str;
-			StringBuffer sb = new StringBuffer();
-			InputStream in = method.getResponseBodyAsStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
-			while( (str = br.readLine()) !=null){
-				sb.append(str).append("\n");
-			}
-			in.close();
-			method.releaseConnection();
-			logger.info(sb.toString());	
+			printInfo(method);	
 		}catch(IOException ioe){
 			ioe.printStackTrace();
 		}
+	}
+	
+	private void showUserCar( HttpClient client ){
+		String verify = "3327550_1040_3327550_1223361302_1a76b8b559c210f0818dcffaf9725675";
+		String puid = "3327550";
+		String methodUrl = "/parking/usercar.php?verify="+verify+"&puid="+puid;
+		HttpMethod method = new GetMethod(methodUrl);
+		try{
+			client.executeMethod(method);
+			printInfo(method);		
+		}
+		catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+	}
+	
+	private void printInfo(HttpMethod method)  throws IOException{
+		String str;
+		StringBuffer sb = new StringBuffer();
+		InputStream in = method.getResponseBodyAsStream();
+		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
+		while( (str = br.readLine()) !=null){
+			sb.append(str).append("\n");
+		}
+		in.close();
+		method.releaseConnection();
+		logger.info(sb.toString());
 	}
 }

@@ -21,6 +21,9 @@ import org.apache.commons.logging.LogFactory;
 
 public class Login {
 
+	static String email = "meteorafhd@gmail.com";
+	static String  password = "happyamiga";
+	
 	protected Log logger = LogFactory.getLog(this.getClass());
 	
 
@@ -29,13 +32,11 @@ public class Login {
 		HttpClient client = new HttpClient();
 		client.getHostConfiguration().setHost(urlStr, port, protocal );
 		
-		String email = "meteorafhd@gmail.com";
-		String pw = "...";
 		PostMethod post = new PostMethod(methodUrl);
 		NameValuePair x = new NameValuePair("url","/");
 		NameValuePair name = new NameValuePair("email",email);
-		NameValuePair password = new NameValuePair("password",pw);
-		post.setRequestBody(new NameValuePair[] {x, name,password});
+		NameValuePair passwordX = new NameValuePair("password",password);
+		post.setRequestBody(new NameValuePair[] {x, name,passwordX});
 		
 //		HttpMethod method = getPostMethod(methodUrl);
 		
