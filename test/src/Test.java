@@ -68,10 +68,13 @@ public class Test {
 //		System.out.println(s);
 		BigDecimal b = new BigDecimal("0");
 		
-		Double n = new Double("12345678912");
-		System.out.println(n);
-		System.out.println(n.toString());
+//		Double n = new Double("12345678912");
+//		System.out.println(n);
+//		System.out.println(n.toString());
 		
-		System.out.println(b.add(new BigDecimal(n.toString())));
+//		System.out.println(b.add(new BigDecimal(n.toString())));
+		
+		System.out.println(new Double("1000000"));
+		System.out.println(new Double("10000000"));
 	}
 }
