@@ -9,7 +9,7 @@ TryTimes=3
 
 # 设置每次链接的延时(秒), 默认是0，表示不延时。 
 # 如果遇到开心网服务器拒绝你的频繁，请适当加大这个数值
-DelayConnect=0
+DelayConnect=3
 
 # 设置每次链接的超时(秒)，默认是120秒
 HttpTimeout=120

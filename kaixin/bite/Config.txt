@@ -4,7 +4,7 @@
 RepeatTime=60
 
 # 设置每次链接的延时(秒), 0表示不延时。 如果遇到开心网服务器拒绝你的频繁，请适当加大这个数值
-DelayConnect=0
+DelayConnect=5
 
 # 代理服务器地址
 #ProxyServer=server
