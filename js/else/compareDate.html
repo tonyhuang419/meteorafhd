@@ -1,0 +1,54 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+function compateDate ( _date){
+	
+		var todayStr = getToday();
+		var arrTodaytDate = todayStr.split("-"); 
+		var arrDate = _date.split("-");  
+		
+		var newToday = arrTodaytDate[0] + fullZero(arrTodaytDate[1]) + fullZero(arrTodaytDate[2]);
+		var newDate = arrDate[0] + fullZero(arrDate[1]) + fullZero(arrDate[2]);
+		
+
+		//alert(20080927 > 20080928);
+		//alert(typeof(newDate))
+		//alert(newDate )
+		//alert(newToday)
+
+		if( newDate > newToday ){
+			return true;
+		}
+		else{
+			return false;
+		}
+	
+}
+
+function getToday(){
+	var today =  new Date();
+	var year = today.getYear();
+	var month = today.getMonth() + 1;
+	var date = today.getDate();
+	return  year + "-" + month + "-" + date;	
+}
+
+function fullZero(str){
+	if(str.length == 1){
+		return "0"+str;
+	}
+	else{
+		return str;
+	}
+}	
+
+alert(compateDate('2008-9-26'));
+
+//var d = new Date();
+//alert(d.getYear()+"-"+d.getMonth()+"-"+d.getDay());
+
+</script>
+</head>
+
+</html>
+
