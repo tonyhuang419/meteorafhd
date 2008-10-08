@@ -28,15 +28,16 @@ public class Login {
 	
 
 	public HttpClient login(String urlStr, int port, String protocal ){
+		
 		String methodUrl = "/login/login.php";
 		HttpClient client = new HttpClient();
 		client.getHostConfiguration().setHost(urlStr, port, protocal );
 		
 		PostMethod post = new PostMethod(methodUrl);
-		NameValuePair x = new NameValuePair("url","/");
+//		NameValuePair x = new NameValuePair("url","/");
 		NameValuePair name = new NameValuePair("email",email);
 		NameValuePair passwordX = new NameValuePair("password",password);
-		post.setRequestBody(new NameValuePair[] {x, name,passwordX});
+		post.setRequestBody(new NameValuePair[] { name,passwordX});
 		
 //		HttpMethod method = getPostMethod(methodUrl);
 		
