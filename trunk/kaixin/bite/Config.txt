@@ -1,7 +1,7 @@
 ﻿# 开心网咬人 配置文件 Config.txt
 
 # 循环咬人时间(分钟), 0表示只执行一次
-RepeatTime=60
+RepeatTime=15
 
 # 设置每次链接的延时(秒), 0表示不延时。 如果遇到开心网服务器拒绝你的频繁，请适当加大这个数值
 DelayConnect=5
@@ -23,12 +23,6 @@ HttpTimeout=120
 
 # 设置每次HTTP请求失败后尝试的次数，默认是3次
 HttpTryTimes=3
-
-# 设置Acc获取方式 0-页面，1-网络，2-直接使用Acc变量赋值, 3-使用Acc代码计算
-GetAccType=0
-
-# Acc变量，如果GetAccType为2则直接指定，如果GetAccType为3，则把Acc代码段复制上去
-#Acc=
 
 # 是否将log写入文件 否:0  是:1
 EnableLog=0
