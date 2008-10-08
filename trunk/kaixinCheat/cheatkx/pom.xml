@@ -36,5 +36,21 @@
     	<artifactId>log4j</artifactId>
     	<version>1.2.14</version>
     </dependency>
+	  
+	<dependency>
+      <groupId>com.jmxremote_optional.jar</groupId>
+      <artifactId>com.jmxremote_optional.jar</artifactId>
+      <version>x</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib-sources/jmxremote_optional.jar</systemPath>
+    </dependency>	  
+	<dependency>
+      <groupId>com.jmxtools.jar</groupId>
+      <artifactId>com.jmxtools.jar</artifactId>
+      <version>y</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib-sources/jmxtools.jar</systemPath>
+    </dependency>
+	  
   </dependencies>
 </project>
