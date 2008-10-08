@@ -52,7 +52,7 @@ public class Parker {
 	}
 	
 	private void showUserCar( HttpClient client ){
-		String verify = "3327550_1040_3327550_1223361302_1a76b8b559c210f0818dcffaf9725675";
+		String verify = "3327550_1040_3327550_1223431369_9fcfeb250a862a7f8a9a9849e4e76141";
 		String puid = "3327550";
 		String methodUrl = "/parking/usercar.php?verify="+verify+"&puid="+puid;
 		HttpMethod method = new GetMethod(methodUrl);
