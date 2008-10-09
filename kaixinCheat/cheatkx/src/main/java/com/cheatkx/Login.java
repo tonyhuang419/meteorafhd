@@ -88,7 +88,7 @@ public class Login {
 					ioe.printStackTrace();
 				}
 			} else {
-				logger.info("Invalid redirect");
+				logger.info("Invalid redirect,login failed");
 				return null;
 			}
 		}
