@@ -1,7 +1,24 @@
 ﻿# 开心网朋友买卖 配置文件 Config.txt
+# 设置每次链接的延时(秒), 0表示不延时。 如果遇到开心网服务器拒绝你的频繁，请适当加大这个数值
+DelayConnect=5
+
+# 代理服务器地址
+#ProxyServer=server
+
+# 代理服务器端口
+#ProxyPort=80
+
+# 代理服务器用户
+#ProxyUser=abc
+
+# 代理服务器用户密码
+#ProxyPass=123
 
 # 循环买卖时间(分钟), 0表示只执行一次
 RepeatTime=60
 
 # 是否使用Acc参数 如果留空，程序会从网络自动更新
 #Acc=
+
+# 是否将log写入文件 否:0  是:1
+EnableLog = 0
