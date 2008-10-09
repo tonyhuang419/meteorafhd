@@ -17,7 +17,7 @@ public class Tools {
 
 	static public String processUserData(String context){
 		String ud = "";
-		Pattern p = Pattern.compile("v_userdata = .*;\\s"); 
+		Pattern p = Pattern.compile("v_userdata = \\{.*;\\s"); 
 		Matcher matcher = p.matcher(context);
 		if(matcher.find()){  
 			String temp = matcher.group(0);
