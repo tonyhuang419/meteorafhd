@@ -10,8 +10,8 @@ public class MapTest {
 
 	public void testMain(){
 //		test1();
-//		test2();
-		test3();
+		test2();
+//		test3();
 	}
 
 	public void test1(){
@@ -38,6 +38,8 @@ public class MapTest {
 //		System.out.println(m1.get(1));
 //		System.out.println(m1.get(2));
 
+		System.out.println(m1.keySet().size());
+		
 		for(Object m: m1.keySet()){
 			System.out.println(m+":" + m1.get(m)); 
 		}
@@ -80,10 +82,7 @@ public class MapTest {
 
 	public static void main(String[] args) {
 
-
 		new MapTest().testMain();
-
-
 
 	}
 }
