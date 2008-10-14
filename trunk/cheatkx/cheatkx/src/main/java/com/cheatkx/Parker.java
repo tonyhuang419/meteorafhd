@@ -1,9 +1,6 @@
 package com.cheatkx;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
@@ -48,7 +45,7 @@ public class Parker {
 			client.executeMethod(method);
 			String context = Tools.printInfo(method);
 			g_verify = Tools.getVerify(context);			
-			logger.info(Tools.processUserData(context));
+			logger.info(" v_userdata: "+Tools.processUserData(context));
 			
 		}catch(IOException ioe){
 			ioe.printStackTrace();
