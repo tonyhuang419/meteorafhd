@@ -37,7 +37,7 @@ public class Tools {
 			String temp = matcher.group(0);
 //			logger.info(temp);
 			verify = temp.substring(12, temp.length()-3);
-			logger.info("verify" + verify);
+			logger.info(" verify: " + verify);
 		}  
 //		}
 		return verify;
