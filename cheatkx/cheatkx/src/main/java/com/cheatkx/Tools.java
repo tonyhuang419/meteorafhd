@@ -25,7 +25,7 @@ public class Tools {
 		Matcher matcher = p.matcher(context);
 		if(matcher.find()){  
 			String temp = matcher.group(0);
-			ud = temp.substring(13, temp.length()-4);
+			ud = temp.substring(13, temp.length()-2);
 		}
 		return ud;
 	}
