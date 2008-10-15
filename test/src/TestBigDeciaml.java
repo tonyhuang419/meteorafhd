@@ -36,12 +36,16 @@ public class TestBigDeciaml {
 	
 	
 	public void testXX(){
-		DecimalFormat   format = new   DecimalFormat("###0.00");   
+//		DecimalFormat   format = new   DecimalFormat("###0.00");   
 		
-		Double dd = new Double("1234567890123456789");
+//		Double dd = new Double("1234567890123456789");
 		
-		System.out.println(dd);
-		System.out.println(format.format(dd));
+		BigDecimal b = new BigDecimal("1234567890");
+		Double d = new Double(b.toString());
+		System.out.println(d);
+		
+//		System.out.println(dd);
+//		System.out.println(format.format(dd));
 
 	}
 	
