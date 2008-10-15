@@ -15,6 +15,10 @@ public class Tools {
 
 	static private Log logger = LogFactory.getLog(Tools.class);
 
+	
+	/**
+	 * 获取v_userdata
+	 */
 	static public String processUserData(String context){
 		String ud = "";
 		Pattern p = Pattern.compile("v_userdata = \\{.*;\\s"); 
@@ -26,6 +30,9 @@ public class Tools {
 		return ud;
 	}
 
+	/**
+	 * 获取g_verify
+	 */
 	static public String getVerify(String context){
 		String verify = "";
 //		int pos = context.indexOf("g_verify");

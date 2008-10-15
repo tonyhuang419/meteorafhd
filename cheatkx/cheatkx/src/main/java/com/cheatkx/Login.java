@@ -26,7 +26,9 @@ public class Login {
 	
 	protected Log logger = LogFactory.getLog(this.getClass());
 	
-
+	/**
+	 * login
+	 */
 	public HttpClient login(String urlStr, int port, String protocal ){
 		
 		String methodUrl = "/login/login.php";
@@ -95,6 +97,9 @@ public class Login {
 		return null;		
 	}
 	
+	/**
+	 * logout
+	 */
 	public void logout(HttpClient client,String urlStr,int port,String protocal){
 		String methodUrl = "/login/logout.php";
 		client.getHostConfiguration().setHost(urlStr, port, protocal );
@@ -110,6 +115,9 @@ public class Login {
 	}
 
 
+	/**
+	 *  showCookie
+	 */
 	public void showCookie(String localSite ,HttpClient client){
 		CookieSpec cookiespec = CookiePolicy.getDefaultSpec();
 		Cookie[] cookies = cookiespec.match("www.kaixin001.com", 80, "/", false, client.getState().getCookies());

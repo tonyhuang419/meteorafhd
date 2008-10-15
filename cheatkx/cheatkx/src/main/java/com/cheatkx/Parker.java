@@ -13,7 +13,7 @@ public class Parker {
 	static String urlStr = "www.kaixin001.com";
 	static int port = 80;
 	static String protocal = "http";
-	String g_verify;
+	String g_verify;       				//验证字符串
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 	
@@ -35,7 +35,7 @@ public class Parker {
 		login.logout(client,urlStr,port,protocal);	
 	}
 	
-	
+
 	private void parker( HttpClient client  ){
 		String methodUrl = "/app/app.php?aid=1040";
 //		client.getHostConfiguration().setHost(urlStr, port, protocal );		
@@ -46,12 +46,12 @@ public class Parker {
 			String context = Tools.printInfo(method);
 			g_verify = Tools.getVerify(context);			
 			logger.info(" v_userdata: "+Tools.processUserData(context));
-			
 		}catch(IOException ioe){
 			ioe.printStackTrace();
 		}
 	}
 	
+
 	private void showUserCar( HttpClient client ){
 		String verify = g_verify;
 		String puid = "3327550";
