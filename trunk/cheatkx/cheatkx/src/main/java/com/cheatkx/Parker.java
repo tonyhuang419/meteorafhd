@@ -46,6 +46,7 @@ public class Parker {
 			String context = Tools.printInfo(method);
 			g_verify = Tools.getVerify(context);			
 			logger.info(" v_userdata: "+Tools.processUserData(context));
+			logger.info("..........................");
 		}catch(IOException ioe){
 			ioe.printStackTrace();
 		}
