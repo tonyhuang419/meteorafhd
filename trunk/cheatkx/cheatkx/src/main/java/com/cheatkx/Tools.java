@@ -21,11 +21,12 @@ public class Tools {
 	 */
 	static public String processUserData(String context){
 		String ud = "";
-		Pattern p = Pattern.compile("v_userdata = \\{.*;\\s"); 
+		Pattern p = Pattern.compile("v_userdata = (\\{.*);\\s"); 
 		Matcher matcher = p.matcher(context);
 		if(matcher.find()){  
-			String temp = matcher.group(0);
-			ud = temp.substring(13, temp.length()-2);
+			ud = matcher.group(1);
+//			ud = temp.substring(13, temp.length()-2);
+			logger.info("v_userdata: " + ud );
 		}
 		return ud;
 	}
@@ -38,12 +39,10 @@ public class Tools {
 //		int pos = context.indexOf("g_verify");
 //		if(pos!=-1){
 //		logger.info(context);
-		Pattern p = Pattern.compile("g_verify = \".*\";\\s"); 
+		Pattern p = Pattern.compile("g_verify = \"(.*)\";\\s"); 
 		Matcher matcher = p.matcher(context); 
 		if(matcher.find()){  
-			String temp = matcher.group(0);
-//			logger.info(temp);
-			verify = temp.substring(12, temp.length()-3);
+			verify = matcher.group(1);
 			logger.info(" verify: " + verify);
 		}  
 //		}

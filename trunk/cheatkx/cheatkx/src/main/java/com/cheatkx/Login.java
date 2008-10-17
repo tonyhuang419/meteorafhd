@@ -73,7 +73,9 @@ public class Login {
 					InputStream in = redirect.getResponseBodyAsStream();
 					BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
 					while( (str = br.readLine()) !=null){
+						//逐行读取并验证
 						if ( str.indexOf("我的首页 - 开心网")!=-1 ){
+							logger.info("login success");
 //							System.out.println("1");
 							return client;
 						}
@@ -83,7 +85,9 @@ public class Login {
 					}
 					in.close();
 					redirect.releaseConnection();
+					//防止信息存在换行
 					if( sb.indexOf("我的首页 - 开心网")!=-1 ){
+						logger.info("login success");
 						return client;
 					}
 				}catch(IOException ioe){
