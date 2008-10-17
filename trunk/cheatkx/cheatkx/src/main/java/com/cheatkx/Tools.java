@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -27,6 +30,12 @@ public class Tools {
 			ud = matcher.group(1);
 //			ud = temp.substring(13, temp.length()-2);
 			logger.info("v_userdata: " + ud );
+		}
+		
+		JSONObject jb = JSONObject.fromObject(ud);  
+		JSONArray array = jb.getJSONArray("error"); 
+		for(int i=0;i<array.size();i++){
+			System.out.println(array.get(i));
 		}
 		return ud;
 	}
