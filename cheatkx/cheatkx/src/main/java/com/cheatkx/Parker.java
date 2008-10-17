@@ -45,8 +45,6 @@ public class Parker {
 			client.executeMethod(method);
 			String context = Tools.printInfo(method);
 			g_verify = Tools.getVerify(context);			
-			logger.info(" v_userdata: "+Tools.processUserData(context));
-			logger.info("..........................");
 		}catch(IOException ioe){
 			ioe.printStackTrace();
 		}
@@ -60,7 +58,8 @@ public class Parker {
 		HttpMethod method = new GetMethod(methodUrl);
 		try{
 			client.executeMethod(method);
-//			String context = Tools.printInfo(method);		
+			String context = Tools.printInfo(method);
+			Tools.processUserData(context);
 		}
 		catch(IOException ioe){
 			ioe.printStackTrace();
