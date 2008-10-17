@@ -33,10 +33,11 @@ public class Tools {
 		}
 		
 		JSONObject jb = JSONObject.fromObject(ud);  
-		JSONArray array = jb.getJSONArray("error"); 
-		for(int i=0;i<array.size();i++){
-			System.out.println(array.get(i));
-		}
+		Object o = jb.get("user"); 
+		
+//		for(int i=0;i<array.size();i++){
+//			System.out.println(array.get(i));
+//		}
 		return ud;
 	}
 

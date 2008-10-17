@@ -12,8 +12,9 @@ public class App
 	}
 
 	public void test(){
-		test1();
-		test2();
+//		test1();
+//		test2();
+		test3();
 	}
 
 	public void  test1(){
@@ -31,6 +32,15 @@ public class App
 		}
 	}
 
-	
+	public void test3(){
+		String str = "{ user:{vuid:3327550,uid:3327550} }";
+		JSONObject jo = JSONObject.fromObject(str);  
+		Object obj = jo.get("user");
+		System.out.println(obj.toString());
+		
+		jo = JSONObject.fromObject(obj.toString());  
+		obj = jo.get("vuid");
+		System.out.println(obj.toString());
+	}
 	
 }
