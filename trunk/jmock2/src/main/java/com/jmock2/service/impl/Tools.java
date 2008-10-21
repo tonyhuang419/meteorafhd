@@ -8,4 +8,9 @@ public class Tools implements ITools {
 		return a + b;
 	}
 
+	
+	public String sayHello(String str){
+		return str;
+	}
+	
 }
