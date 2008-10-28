@@ -66,7 +66,7 @@ public class Test {
 //		String s=null;
 //		s +="a";
 //		System.out.println(s);
-		BigDecimal b = new BigDecimal("0");
+//		BigDecimal b = new BigDecimal("0");
 		
 //		Double n = new Double("12345678912");
 //		System.out.println(n);
@@ -74,7 +74,18 @@ public class Test {
 		
 //		System.out.println(b.add(new BigDecimal(n.toString())));
 		
-		System.out.println(new Double("1000000"));
-		System.out.println(new Double("10000000"));
+//		System.out.println(new Double("1000000"));
+//		System.out.println(new Double("10000000"));
+		
+//		Integer i = 0;
+//		String s = "s";
+//		boolean x = Integer.class.isAssignableFrom(s.getClass());
+//		boolean y = Integer.class.isAssignableFrom(i.getClass());
+//		System.out.println(x+" "+y);
+		
+		Object i = null;
+		Double b = (Double)i;
+		System.out.println(b);
+		
 	}
 }
