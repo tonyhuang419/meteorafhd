@@ -83,9 +83,18 @@ public class Test {
 //		boolean y = Integer.class.isAssignableFrom(i.getClass());
 //		System.out.println(x+" "+y);
 		
-		Object i = null;
-		Double b = (Double)i;
-		System.out.println(b);
+//		Object i = null;
+//		Double b = (Double)i;
+//		System.out.println(b);
 		
+//		Double d = 0d;
+//		Object o = 0d;
+//		System.out.println(o.equals(0d));
+//		Long x = new Long("1");
+
+		double x = 3/2+0.3;
+		System.out.println(x);
+		
+	
 	}
 }
