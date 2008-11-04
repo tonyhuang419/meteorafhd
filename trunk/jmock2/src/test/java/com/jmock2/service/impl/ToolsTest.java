@@ -19,6 +19,15 @@ public class ToolsTest {
 		tools = context.mock(ITools.class); 
 	}
 
+	@Test
+	public void testSayHello(){
+		context.checking(new Expectations() {{
+			oneOf (tools).sayHello("hello");
+			will(returnValue("hello")); 
+		}});
+		junit.framework.Assert.assertEquals(tools.sayHello("hello"), "hello");
+	}
+	
 
 	@Test
 	public void testAdd(){
