@@ -17,13 +17,17 @@ public class TestStaticService {
 	@Test
 	public void testGetStr(){
 		staticService = mockContext.mock(StaticService.class);
+		final String str = "str";
+		
 		mockContext.checking(new Expectations(){  
 			{  
 				oneOf(staticService).getStr();
-				will(returnValue("str"));  
+				will(returnValue(str));  
 			}  
 		}); 
+		
+		new StaticService().setStr(str);
 		String result = StaticService.getStr();
-		junit.framework.Assert.assertEquals(result, "str");
+		junit.framework.Assert.assertEquals(result, str);
 	}
 }
