@@ -16,18 +16,24 @@ public class HelloWorld{
 	
 
 	def testRepeat(){
+		/*
+		 * output:  0 1 2 3 4
+		 */
 		for(def i = 0; i < 5; i++){
-			/*
-			 * output:  0 1 2 3 4
-			 */
 			print i+" ";    //comment:semicolon can be omitted
 		}
-		
+	
+		/*
+		 * output:  0 1 2 3 4
+		 */
 		println "";
 		 for(i in 0..4){
 			  print i+" ";
 			 }
 
+		 /*
+		  * output:  0 1 2 3 4
+		  */
 		println "";
 			for(i in 0..<5){
 				print i+" ";
