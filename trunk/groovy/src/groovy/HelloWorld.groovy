@@ -5,16 +5,74 @@ public class HelloWorld{
 	public static void main(def args){
 		new HelloWorld().testX();
 	}
-	
-	
+		
 	def testX(){
 //		testHelloWorld("hello world X");
 //		testType();
-		testRepeat();
+//		testRepeat();
+//		testCollection();
+//		testMap();
+		testClosure();
 	}
 	
 	
+	
+	def testClosure(){
+		def acoll = ["Groovy", "Java", "Ruby"];
+		acoll.each{
+			println it;     //comment: "it" is a default value;
+		}
+		
+		acoll.each{ value ->   // value replace "it"
+			println value;
+		}
 
+		def hash = [name:"Andy", "VPN-#":45];
+		hash.each{ key, value ->
+		 	println "${key} : ${value}"
+		}
+
+		def coll = ["Groovy", "Java", "Ruby"];
+		coll.add("FHDone");
+		coll.each{
+			println it.toLowerCase();
+		}
+
+	}
+	
+	def testMap(){
+		def hash = [name:"Andy", "VPN-#":45];
+		println hash.getClass();    //output:  class java.util.LinkedHashMap
+		assert hash.getClass() == java.util.LinkedHashMap;
+		hash.put("id", 23);
+		assert hash.get("name") == "Andy";
+		println(hash.get("id"));	 //output:  23
+		println(hash.id);			//output:  23
+		println(hash.name);			//output:  Andy
+		
+		/**********************************************/
+		def str = "s";
+		println str.class;   		//output:  class java.lang.String
+		println str.getClass();   	//output:  class java.lang.String
+		str = 1.111111;
+		println str.class;   		//output:  class java.math.BigDecimal
+		println str.getClass();   	//output:  class java.math.BigDecimal
+
+	}
+	
+	def testCollection(){
+		def coll = ["Groovy", "Java", "Ruby"];
+		assert  coll instanceof Collection;
+		assert  coll instanceof ArrayList;
+		
+		coll.add("Python");
+		coll << "Smalltalk";
+		coll[5] = "Perl";
+
+		println(coll[1]);
+	}
+	
+	
 	def testRepeat(){
 		/*
 		 * output:  0 1 2 3 4
@@ -38,7 +96,6 @@ public class HelloWorld{
 			for(i in 0..<5){
 				print i+" ";
 			}	 
-
 	}
 	
 	def testType(){
@@ -60,7 +117,5 @@ public class HelloWorld{
 		println str.class
 	}
 	
-
-
 }
 
