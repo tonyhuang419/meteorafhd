@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TestHelloWorld {
 
 	@Test
-	public void testSong() {
+	public void testSongToString() {
 		Song sng  = new Song();
 		sng.setArtist("Village People");
 		sng.setName("Y.M.C.A");
