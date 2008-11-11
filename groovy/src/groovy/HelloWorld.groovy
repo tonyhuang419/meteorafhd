@@ -1,5 +1,21 @@
 package groovy;
 
+class Song {
+	 def name
+	 String  artist
+	 def genre
+	 
+	 def getGenre(){
+		 genre?.toUpperCase();
+	}
+
+	 
+	 String toString(){
+		 "${name}, ${artist}, ${genre}"
+	}
+
+}
+
 public class HelloWorld{
 	
 	public static void main(def args){
@@ -12,10 +28,30 @@ public class HelloWorld{
 //		testRepeat();
 //		testCollection();
 //		testMap();
-		testClosure();
+//		testClosure();
+		this.testClass();
 	}
 	
 	
+	def testClass(){
+		 def sng = new Song(name:"Le Freak", artist:"Chic", genre:"Disco");
+		 println(sng.name);
+		 
+		 def sng2 = new Song(name:"Kung Fu Fighting", genre:"Disco");
+		 println(sng2.name);
+		 println(sng2.toString());
+		 
+		 def sng3 = new Song()
+		 sng3.name = "Funkytown"
+		 sng3.artist = "Lipps Inc."
+		 sng3.setGenre("Disco")
+		 println(sng3.name);
+		 println(sng3.toString());
+		 println(sng3.hashCode());
+		 println(sng3.getGenre());  //notice: the function in Class is " genre?.toUpperCase();"
+
+	}
+
 	
 	def testClosure(){
 		def acoll = ["Groovy", "Java", "Ruby"];
@@ -118,4 +154,7 @@ public class HelloWorld{
 	}
 	
 }
+
+
+
 
