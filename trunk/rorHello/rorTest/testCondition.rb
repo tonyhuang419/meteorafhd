@@ -16,3 +16,7 @@ testCase(11);
 puts (2..5) === 1
 puts (2..5)  === 3 
 
+i=0;
+print "#{i+=1}\n" while i<3
+
+
