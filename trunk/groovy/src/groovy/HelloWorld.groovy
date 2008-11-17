@@ -8,7 +8,6 @@ class Song {
 	 def getGenre(){
 		 genre?.toUpperCase();
 	}
-
 	 
 	 String toString(){
 		 "${name}, ${artist}, ${genre}"
@@ -29,7 +28,7 @@ public class HelloWorld{
 //		testCollection();
 //		testMap();
 //		testClosure();
-		this.testClass();
+//		this.testClass();
 	}
 	
 	
