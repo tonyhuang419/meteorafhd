@@ -11,7 +11,7 @@ public class TestHelloWorld {
 		sng.setArtist("Village People");
 		sng.setName("Y.M.C.A");
 		sng.setGenre("Disco");
-		System.out.println(sng.toString());
+//		System.out.println(sng.toString());
 		Assert.assertEquals("Y.M.C.A, Village People, Disco",  sng.toString());
 	}
 }
