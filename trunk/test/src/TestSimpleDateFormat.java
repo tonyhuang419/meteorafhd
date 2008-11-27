@@ -16,8 +16,12 @@ public class TestSimpleDateFormat {
 		String str = dateFormat.format(d);
 		System.out.println(str);
 		
-//		str = dateFormat.format(null);
+//		str = dateFormat.format(null);  //error, throw exception
 //		System.out.println(str);
+		
+//		str = dateFormat.format(" ");  //error, throw exception
+//		System.out.println(str);
+		
 	}
 	
 	public void test2(){
