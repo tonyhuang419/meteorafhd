@@ -17,10 +17,10 @@ public class CompareBean {
 //		System.out.println(compareBean.getName());
 		//check type
 		if( !srcBean.equals(compareBean)){
-			System.out.println("pity!type not match...classtype error");
+			System.out.println("pity!type not match...classType error");
 			return ;
 		}else{
-			System.out.println("great!type  match success");
+			System.out.println("great! Type  match success");
 		}
 
 		Field srcFields[] = srcBean.getDeclaredFields(); 

@@ -15,6 +15,9 @@ public class TestSimpleDateFormat {
 		Date d = new Date();
 		String str = dateFormat.format(d);
 		System.out.println(str);
+		
+//		str = dateFormat.format(null);
+//		System.out.println(str);
 	}
 	
 	public void test2(){
