@@ -5,17 +5,8 @@ import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
-public class Parker {
-	
-	static String urlStr = "www.kaixin001.com";
-	static int port = 80;
-	static String protocal = "http";
-	String g_verify;       				//验证字符串
-
-	protected Log logger = LogFactory.getLog(this.getClass());
+public class Parker extends BaseKaixin{
 	
 	public static void main(String[] args) throws IOException
 	{
