@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.httpclient.HttpMethod;
@@ -33,7 +32,7 @@ public class Tools {
 		}
 		
 		JSONObject jb = JSONObject.fromObject(ud);  
-		Object o = jb.get("user"); 
+//		Object o = jb.get("user"); 
 		
 //		for(int i=0;i<array.size();i++){
 //			System.out.println(array.get(i));
