@@ -1,4 +1,3 @@
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 
@@ -58,10 +57,13 @@ public class Test {
 	public void subString(){
 		String str = "123456789";
 		System.out.println(str.substring(2,3));
+		if( str instanceof String){
+			System.out.println("  str instanceof String ");
+		}
 	}
 
 	public static void main(String[] args) {
-//		new Test().subString();
+		new Test().subString();
 //		
 //		String s=null;
 //		s +="a";
@@ -92,8 +94,8 @@ public class Test {
 //		System.out.println(o.equals(0d));
 //		Long x = new Long("1");
 
-		double x = 3/2+0.3;
-		System.out.println(x);
+//		double x = 3/2+0.3;
+//		System.out.println(x);
 		
 	
 	}
