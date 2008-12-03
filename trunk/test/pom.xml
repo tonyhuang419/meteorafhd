@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>test</groupId>
   <artifactId>test</artifactId>
-  <name/>
-  <version>0.0.1-SNAPSHOT</version>
-  <description/>
+  <name></name>
+  <version>0.0.1</version>
+  <description>test use</description>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -17,7 +16,6 @@
       <artifactId>commons-lang</artifactId>
       <version>2.4</version>
     </dependency>
-
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
@@ -26,8 +24,8 @@
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
+      <version>1.8.0-BETA</version>
       <classifier>javadoc.javadoc</classifier>
-          <version>1.8.0-BETA</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -40,19 +38,40 @@
       <version>3.2</version>
     </dependency>
     <dependency>
-    	<groupId>asm</groupId>
-    	<artifactId>asm</artifactId>
-    	<version>3.1</version>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>3.1</version>
     </dependency>
-    <dependency>
-    	<groupId>asm</groupId>
-    	<artifactId>asm-commons</artifactId>
-    	<version>3.1</version>
-    </dependency>
+	<dependency>
+		<groupId>asm</groupId>
+		<artifactId>asm-commons</artifactId>
+		<version>3.1</version>
+	</dependency>
     <dependency>
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>
       <version>3.1-rc1</version>
+    </dependency>
+	<dependency>
+		<groupId>jcommon</groupId>
+		<artifactId>jcommon</artifactId>
+		<version>1.0.14</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/lib/jcommon-1.0.14.jar</systemPath>
+    </dependency>
+	<dependency>
+		<groupId>jfree</groupId>
+		<artifactId>jfreechart</artifactId>
+		<version>1.0.11</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/lib/jfreechart-1.0.11.jar</systemPath>
+    </dependency>
+	 <dependency>
+		<groupId>gnujaxp</groupId>
+		<artifactId>gnujaxp</artifactId>
+		<version>1.0.00</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/lib/gnujaxp.jar</systemPath>
     </dependency>
   </dependencies>
 </project>
