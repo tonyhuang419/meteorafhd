@@ -19,6 +19,7 @@
 <p>
 <cewolf:img chartid="line" renderer="../cewolf" width="400" height="300"/>
 <P>
+<HR>
 
 </body>
 </html>

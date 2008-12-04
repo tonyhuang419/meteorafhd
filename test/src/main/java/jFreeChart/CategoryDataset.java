@@ -25,7 +25,8 @@ public class CategoryDataset {
 				"Category",		//domain 轴 Lable   这里先简单理解为横坐标Lable好了
 				"Value", //range 轴 Lable   这里也先简单理解为纵坐标Lable好了
 				createDataset() , //  dataset
-				PlotOrientation.VERTICAL, //垂直显示
+//				PlotOrientation.VERTICAL, //垂直显示
+				PlotOrientation.HORIZONTAL,
 				true, // legend
 				true,  // tooltips
 				false); //URLs
