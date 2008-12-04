@@ -1,12 +1,13 @@
+package def;
 
 import java.util.ArrayList;
 
 public class Convertnumber { //extends JRDefaultScriptlet
-//	¹¹Ôìº¯Êý
+//	ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
 	public Convertnumber() {
 	}
 
-//	´«ÈëÊý×ÖÐ¡Ð´£¬·µ»Ø´óÐ´ºº×Ö
+//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
 	private static String convert(String number) {
 		int num = 0;
 		String numStr = null;
@@ -15,22 +16,22 @@ public class Convertnumber { //extends JRDefaultScriptlet
 
 		int longNum = number.length();
 		//System.out.println("***number***:" + number);
-		bList.add("Áã");
+		bList.add("ï¿½ï¿½");
 		bList.add("Ò¼");
-		bList.add("·¡");
-		bList.add("Èþ");
-		bList.add("ËÁ");
-		bList.add("Îé");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
 		bList.add("Â½");
-		bList.add("Æâ");
-		bList.add("°Æ");
-		bList.add("¾Á");
-		bList.add("Íò");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
 		bList.add("Çª");
-		bList.add("°Û");
+		bList.add("ï¿½ï¿½");
 		bList.add("Ê°");
 		bList.add("Ôª");
-		bList.add("Õû");
+		bList.add("ï¿½ï¿½");
 		for (int i = 0; i < longNum; i++) {
 			numStr = number.substring(i, i + 1);
 			num = Integer.parseInt(numStr);
@@ -89,25 +90,25 @@ public class Convertnumber { //extends JRDefaultScriptlet
 		return numStr;
 	}
 
-	//×ª»»Ð¡Êý²¿·Ö
+	//×ªï¿½ï¿½Ð¡ï¿½ï¿½ï¿½
 	public String convertSmlnumber(String number){
 		ArrayList<String> cList = new ArrayList<String>();
 		ArrayList<String> bList = new ArrayList<String>();
-		bList.add("Áã");
+		bList.add("ï¿½ï¿½");
 		bList.add("Ò¼");
-		bList.add("·¡");
-		bList.add("Èþ");
-		bList.add("ËÁ");
-		bList.add("Îé");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
 		bList.add("Â½");
-		bList.add("Æâ");
-		bList.add("°Æ");
-		bList.add("¾Á");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
 
 		cList.add("Ôª");
-		cList.add("½Ç");
-		cList.add("·Ö");
-		cList.add("Àå");
+		cList.add("ï¿½ï¿½");
+		cList.add("ï¿½ï¿½");
+		cList.add("ï¿½ï¿½");
 
 		String strnum = "";
 		String rtnstr = "";
@@ -127,11 +128,11 @@ public class Convertnumber { //extends JRDefaultScriptlet
 				rtnstr +=(String)cList.get(i+1);
 			}
 		}
-		//È¥µôÄ©Î²ÁªÏµµÄ"Áã"
+		//È¥ï¿½ï¿½Ä©Î²jÏµï¿½ï¿½"ï¿½ï¿½"
 		while(rtnstr.substring(rtnstr.length()-1,rtnstr.length()).equals(bList.get(0))){
 			rtnstr = rtnstr.substring(0,rtnstr.length()-1);
 		}
-		//Èç¹ûÖÐ¼äÁ½¸öÁªÏµÎªÁã,ÔòÈ¥µôÒ»¸ö
+		//ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½}ï¿½ï¿½jÏµÎªï¿½ï¿½,ï¿½ï¿½È¥ï¿½ï¿½Ò»ï¿½ï¿½
 		for(int m=0;m<rtnstr.length()-1;m++){
 			if(rtnstr.substring(m,m+1).equals(rtnstr.substring(m+1,m+2))){
 				rtnstr = rtnstr.substring(0,m)+rtnstr.substring(m+1,rtnstr.length());
@@ -144,11 +145,11 @@ public class Convertnumber { //extends JRDefaultScriptlet
 		String numberStr = "";
 		boolean flag = false;
 		ArrayList<String> bList = new ArrayList<String>();
-		bList.add("ÔªÕû");
-		bList.add("Íò");
-		bList.add("ÒÚ");
+		bList.add("Ôªï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
+		bList.add("ï¿½ï¿½");
 
-		//ÅÐ¶ÏÊÇ·ñÎª¸¡µãÊý£¬Èç¹ûÊÇÔò¡°¼û½Ç½øÒ»¡±
+		//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¡°¼ï¿½Ç½ï¿½Ò»ï¿½ï¿½
 		int num = number.indexOf(".");
 		String substr = "";
 		if (num != -1) {
@@ -181,7 +182,7 @@ public class Convertnumber { //extends JRDefaultScriptlet
 			bList.get(num - 1);
 			num--;
 		}
-		//´¦Àí¸¡µãÊý
+		//ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
 		if(flag == true && Integer.parseInt(substr) != 0){
 			numberStr = numberStr.substring(0,numberStr.length()-2)+convertSmlnumber(substr);
 		}

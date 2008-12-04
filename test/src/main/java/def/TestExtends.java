@@ -1,3 +1,4 @@
+package def;
 
 public class TestExtends extends InheritX{
 	public void sayHello(){

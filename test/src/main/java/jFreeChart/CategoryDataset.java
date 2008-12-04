@@ -18,13 +18,13 @@ public class CategoryDataset {
 
 	public static void main(String[] args)   
 	{  
-		DefaultCategoryDataset  categorydataset = createDataset();
+//		DefaultCategoryDataset  categorydataset = createDataset();
 		
 		JFreeChart jfreechart = ChartFactory.createBarChart(
 				"Bar Chart Demo", //图形标题名称
 				"Category",		//domain 轴 Lable   这里先简单理解为横坐标Lable好了
 				"Value", //range 轴 Lable   这里也先简单理解为纵坐标Lable好了
-				categorydataset, //  dataset
+				createDataset() , //  dataset
 				PlotOrientation.VERTICAL, //垂直显示
 				true, // legend
 				true,  // tooltips
