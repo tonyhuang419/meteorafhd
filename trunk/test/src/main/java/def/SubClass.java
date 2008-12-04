@@ -1,3 +1,4 @@
+package def;
 
 public class SubClass extends BaseClass{
 	

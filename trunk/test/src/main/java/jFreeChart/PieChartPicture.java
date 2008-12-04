@@ -58,14 +58,14 @@ public class PieChartPicture {
 		chartFrame.pack();
 		chartFrame.setVisible(true); 
 
-		FileOutputStream fos_jpg = null;   
-		try {   
-			fos_jpg=new FileOutputStream("D:\\ 项目状态分布.jpg");   
-			ChartUtilities.writeChartAsJPEG(fos_jpg,1.0f,chart,640,480);   
-			fos_jpg.close();   
-		} catch (Exception e) {   
-			e.printStackTrace();
-		}   
+//		FileOutputStream fos_jpg = null;   
+//		try {   
+//			fos_jpg=new FileOutputStream("D:\\ 项目状态分布.jpg");   
+//			ChartUtilities.writeChartAsJPEG(fos_jpg,1.0f,chart,640,480);   
+//			fos_jpg.close();   
+//		} catch (Exception e) {   
+//			e.printStackTrace();
+//		}   
 	}   
 	private static PieDataset getDataSet() {   
 		DefaultPieDataset dataset = new DefaultPieDataset();   

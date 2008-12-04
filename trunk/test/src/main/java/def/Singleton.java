@@ -1,3 +1,4 @@
+package def;
 
 public class Singleton {
 	private static Singleton obj = new Singleton();
