@@ -19,7 +19,7 @@
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>maven-jetty-plugin</artifactId>
 			<configuration>
-				<webApp>${basedir}/target/yx.war</webApp>
+				<webApp>${basedir}/target/test.war</webApp>
 			</configuration>
 		</plugin>
 		<plugin>
@@ -29,6 +29,16 @@
 				<outputEncoding>UTF-8</outputEncoding>
 			</configuration>
 		</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<outputDirectory>${basedir}</outputDirectory>
+					<source>1.5</source>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
+					<doctitle>test</doctitle>
+				</configuration>
+			</plugin>
   	</plugins>
   </build>
   <dependencies>
@@ -98,12 +108,47 @@
 		<scope>system</scope>
 		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jfreechart-1.0.11.jar</systemPath>
     </dependency>
-	 <dependency>
-		<groupId>gnujaxp</groupId>
-		<artifactId>gnujaxp</artifactId>
-		<version>1.0.00</version>
+	<dependency>
+		<groupId>cewolf</groupId>
+		<artifactId>cewolf</artifactId>
+		<version>1.0</version>
 		<scope>system</scope>
-		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/gnujaxp.jar</systemPath>
-    </dependency>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cewolf-1.0.jar</systemPath>
+    </dependency> 
+	 <dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-awt-util</artifactId>
+		<version>1.6</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/batik-awt-util-1.6.jar</systemPath>
+    </dependency> 
+	<dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-dom</artifactId>
+		<version>1.6</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/batik-dom-1.6.jar</systemPath>
+    </dependency> 
+	 <dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-svggen</artifactId>
+		<version>1.6</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/batik-svggen-1.6.jar</systemPath>
+    </dependency> 
+	 <dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-util</artifactId>
+		<version>1.6</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/batik-util-1.6.jar</systemPath>
+    </dependency> 
+	 <dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-xml</artifactId>
+		<version>1.6</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/batik-xml-1.6.jar</systemPath>
+    </dependency> 
   </dependencies>
 </project>
