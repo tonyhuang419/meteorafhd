@@ -32,7 +32,6 @@ public class Test {
 
 	public void testxxx(){
 		String x = "xx123";
-
 		System.out.println(x.contains("xx")); 
 		System.out.println(x.contentEquals("xx123"));
 	}
@@ -62,9 +61,22 @@ public class Test {
 			System.out.println("  str instanceof String ");
 		}
 	}
+	
+	public void testX(){
+//		int i = 2;
+//		Integer ii = 20;
+//		i = ii;
+//		System.out.println(i);
+//		ii = i;
+//		System.out.println(ii);
+		
+		Double d = new Double("1.2222222222222222222");
+		System.out.println(d);
+		System.out.println(d.floatValue());
+	}
 
 	public static void main(String[] args) {
-		new Test().subString();
+		new Test().testX();
 //		
 //		String s=null;
 //		s +="a";
