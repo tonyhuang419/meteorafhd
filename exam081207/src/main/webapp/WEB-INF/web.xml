@@ -9,7 +9,12 @@
 		<filter-class>
 			org.apache.struts2.dispatcher.FilterDispatcher
 		</filter-class>
+		<init-param>
+			<param-name>actionPackages</param-name>
+			<param-value>com.exam.action</param-value>
+		</init-param>
 	</filter>
+
 
 	<filter-mapping>
 		<filter-name>struts2</filter-name>

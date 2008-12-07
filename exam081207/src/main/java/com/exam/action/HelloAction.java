@@ -1,9 +1,21 @@
 package com.exam.action;
 
+import org.apache.struts2.config.Result;
+import org.apache.struts2.config.Results;
 
-public class HelloAction  {
-	public String execute()  {  
-		System.out.println("111"); 
+
+@Results( 
+		{ @Result(name = "success", value = "/test.jsp")
+})
+public class HelloAction  extends BaseAction{
+
+
+	public String executeX()  {  
 		return "success";  
 	} 
+
+	public String xx()  {  
+		return "success";  
+	} 
+
 }  
