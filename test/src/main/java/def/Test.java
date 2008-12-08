@@ -71,9 +71,12 @@ public class Test {
 		//		ii = i;
 		//		System.out.println(ii);
 
-		Double d = new Double("1.2222222222222222222");
-		System.out.println(d);
-		System.out.println(d.floatValue());
+//		Double d = new Double("1.2222222222222222222");
+//		System.out.println(d);
+//		System.out.println(d.floatValue());
+		
+		Object id = null;
+		System.out.println((Long)id);
 		
 	}
 
