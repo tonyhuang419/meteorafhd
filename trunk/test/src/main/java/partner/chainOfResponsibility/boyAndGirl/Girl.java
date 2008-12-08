@@ -1,4 +1,4 @@
-package partner.chainOfResponsibility;
+package partner.chainOfResponsibility.boyAndGirl;
 
 public class Girl {
 	public static void main(String[] args){
