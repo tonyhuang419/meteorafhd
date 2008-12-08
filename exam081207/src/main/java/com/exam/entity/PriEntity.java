@@ -1,0 +1,65 @@
+package com.exam.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public class PriEntity {
+	 @Column(updatable=false, nullable=true, length=20)
+	  private Long created;
+
+	  @Column(updatable=false, nullable=true, length=20)
+	  private Date createdby;
+
+	  @Column(length=20)
+	  private Long updated;
+
+	  @Column(length=20)
+	  private Date updatedby;
+
+	  @Column(nullable=true, length=2)
+	  private String isActive;
+
+	public Long getCreated() {
+		return created;
+	}
+
+	public void setCreated(Long created) {
+		this.created = created;
+	}
+
+	public Date getCreatedby() {
+		return createdby;
+	}
+
+	public void setCreatedby(Date createdby) {
+		this.createdby = createdby;
+	}
+
+	public Long getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Long updated) {
+		this.updated = updated;
+	}
+
+	public Date getUpdatedby() {
+		return updatedby;
+	}
+
+	public void setUpdatedby(Date updatedby) {
+		this.updatedby = updatedby;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
+	  
+}

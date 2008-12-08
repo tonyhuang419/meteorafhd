@@ -12,7 +12,6 @@ public class BaseAction implements Action{
 
 	private String	method;
 
-	@Override
 	final public String execute() throws Exception {
 		if (StringUtils.isEmpty(method)) {
 			logger.info("defalut method has be called");
