@@ -8,6 +8,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,9 @@ import com.exam.service.ICommonService;
 @Service("commonService")
 @Transactional
 public class CommonService implements ICommonService {
+	
+	@Autowired
+	@Qualifier("sessionFactory")
 	protected SessionFactory sessionFactory;
 
 	public Session getSession(){
@@ -37,7 +42,7 @@ public class CommonService implements ICommonService {
 
 
 	@SuppressWarnings("unchecked")
-	public List list(String hql, Object[] args){
+	public List list(String hql, Object... args){
 		Query q = getSession().createQuery(hql);
 		for (int i = 0; i < args.length; ++i)
 			q.setParameter(i, args[i]);
@@ -45,8 +50,8 @@ public class CommonService implements ICommonService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List list(String oql, int start, int rowNum, Object[] args){
-		Query q = getSession().createQuery(oql);
+	public List list(String hql, int start, int rowNum, Object... args){
+		Query q = getSession().createQuery(hql);
 		for (int i = 0; i < args.length; ++i)
 			q.setParameter(i, args[i]);
 
@@ -78,7 +83,7 @@ public class CommonService implements ICommonService {
 			}
 	}
 
-	public Object uniqueResult(String hql, Object[] args){
+	public Object uniqueResult(String hql, Object... args){
 		Query q = getSession().createQuery(hql);
 		for (int i = 0; i < args.length; ++i)
 			q.setParameter(i, args[i]);
@@ -121,16 +126,7 @@ public class CommonService implements ICommonService {
 	}
 
 
-	public SessionFactory getSessionFactory() {
-		return this.sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	public Number executeStat(String hql, Object[] args)
-	{
+	public Number executeStat(String hql, Object[] args){
 		return ((Number)uniqueResult(hql, args));
 	}
 

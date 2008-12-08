@@ -3,7 +3,7 @@ package com.exam;
 
 import org.springframework.test.AbstractTransactionalSpringContextTests;
 
-public class YingXiaoBaseTest extends
+public class ExamBaseTest extends
 		AbstractTransactionalSpringContextTests {
 
 	@Override

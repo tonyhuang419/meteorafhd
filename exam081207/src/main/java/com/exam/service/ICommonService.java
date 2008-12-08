@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
+import org.hibernate.Session;
 
 
 public  interface ICommonService{
 
-	public  SessionFactory getSessionFactory() ;
+	public  Session getSession() ;
 
 	public  void save(Object paramObject);
 
@@ -18,10 +18,10 @@ public  interface ICommonService{
 	public  void save(Collection<Object> paramCollection);
 
 	@SuppressWarnings("unchecked")
-	public  List list(String paramString, Object[] paramArrayOfObject);
+	public  List list(String hql, Object... args);
 
 	@SuppressWarnings("unchecked")
-	public  List list(String paramString, int paramInt1, int paramInt2, Object[] paramArrayOfObject);
+	public  List list(String hql, int paramInt1, int paramInt2, Object... args);
 
 	@SuppressWarnings("unchecked")
 	public  Object load(Class paramClass, Serializable paramSerializable);
@@ -34,7 +34,7 @@ public  interface ICommonService{
 
 	public  void update(Collection<Object> paramCollection);
 
-	public  Object uniqueResult(String paramString, Object[] paramArrayOfObject);
+	public  Object uniqueResult(String hql, Object... args);
 
 	@SuppressWarnings("unchecked")
 	public  List listSQL(String sql, Object... args);
