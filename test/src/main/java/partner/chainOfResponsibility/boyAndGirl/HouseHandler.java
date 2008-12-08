@@ -1,4 +1,4 @@
-package partner.chainOfResponsibility;
+package partner.chainOfResponsibility.boyAndGirl;
 
 //检查是否有房
 public class HouseHandler implements Handler{

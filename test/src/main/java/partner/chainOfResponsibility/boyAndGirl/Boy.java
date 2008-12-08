@@ -1,4 +1,4 @@
-package partner.chainOfResponsibility;
+package partner.chainOfResponsibility.boyAndGirl;
 
 public class Boy {
 	private boolean hasCar; //是否有车

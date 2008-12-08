@@ -1,4 +1,4 @@
-package partner.chainOfResponsibility;
+package partner.chainOfResponsibility.boyAndGirl;
 
 //检查是否有责任心
 public class ResponsibilityHandler implements Handler{ 
