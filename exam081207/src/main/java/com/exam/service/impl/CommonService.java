@@ -18,7 +18,7 @@ import com.exam.service.ICommonService;
 @Service("commonService")
 @Transactional
 public class CommonService implements ICommonService {
-	
+
 	@Autowired
 	@Qualifier("sessionFactory")
 	protected SessionFactory sessionFactory;
@@ -28,37 +28,43 @@ public class CommonService implements ICommonService {
 	}
 
 	public void delete(Object obj){
-		if (obj != null)
+		if (obj != null){
 			getSession().delete(obj);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public void delete(Collection<Object> obj){
-		if (obj != null)
-			for (Iterator localIterator = obj.iterator(); localIterator.hasNext(); ) { Object o = localIterator.next();
-			delete(o);
+		if (obj != null){
+			for (Iterator localIterator = obj.iterator(); localIterator.hasNext(); ) {
+				Object o = localIterator.next();
+				delete(o);
 			}
+		}
 	}
 
 
 	@SuppressWarnings("unchecked")
 	public List list(String hql, Object... args){
 		Query q = getSession().createQuery(hql);
-		for (int i = 0; i < args.length; ++i)
+		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
+		}
 		return q.list();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List list(String hql, int start, int rowNum, Object... args){
 		Query q = getSession().createQuery(hql);
-		for (int i = 0; i < args.length; ++i)
+		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
-
-		if (start > 0)
+		}
+		if (start > 0){
 			q.setFirstResult(start);
-		if (rowNum > 0)
+		}
+		if (rowNum > 0){
 			q.setMaxResults(rowNum);
+		}
 		return q.list();
 	}
 
@@ -77,16 +83,19 @@ public class CommonService implements ICommonService {
 
 	@SuppressWarnings("unchecked")
 	public void save(Collection<Object> obList){
-		if (obList != null)
-			for (Iterator localIterator = obList.iterator(); localIterator.hasNext(); ) { Object o = localIterator.next();
-			save(o);
+		if (obList != null){
+			for (Iterator localIterator = obList.iterator(); localIterator.hasNext(); ){
+				Object o = localIterator.next();
+				save(o);
 			}
+		}
 	}
 
 	public Object uniqueResult(String hql, Object... args){
 		Query q = getSession().createQuery(hql);
-		for (int i = 0; i < args.length; ++i)
+		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
+		}
 		q.setMaxResults(1);
 		return q.uniqueResult();
 	}
@@ -97,10 +106,12 @@ public class CommonService implements ICommonService {
 
 	@SuppressWarnings("unchecked")
 	public void update(Collection<Object> c){
-		if (c != null)
-			for (Iterator localIterator = c.iterator(); localIterator.hasNext(); ) { Object o = localIterator.next();
-			save(o);
+		if (c != null){
+			for (Iterator localIterator = c.iterator(); localIterator.hasNext(); ) { 
+				Object o = localIterator.next();
+				save(o);
 			}
+		}
 	}
 
 	@SuppressWarnings("unchecked")
