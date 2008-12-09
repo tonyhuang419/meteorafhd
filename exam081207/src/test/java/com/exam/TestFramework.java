@@ -67,11 +67,26 @@ public class TestFramework extends ExamBaseTest {
 //		}
 //	}
 	
+//	@Test
+//	public void testGeneraFour() {
+//		Employee e = (Employee)commonService.uniqueResult("from Employee e where e.id = 1 ");
+//		e.setJobNum("111");
+//		commonService.saveOrUpdate(e);
+//	}
+	
 	@Test
-	public void testGeneraFour() {
-		Employee e = (Employee)commonService.uniqueResult("from Employee e where e.id = 1 ");
-		e.setJobNum("111");
-		commonService.saveOrUpdate(e);
+	public void testGeneraFive() {
+		Employee e = new Employee();
+		e.setJobNum("11111");
+		commonService.save(e);
+		logger.info(e.getId());
+//		e = (Employee)commonService.load(Employee.class, e.getId());
+//		logger.info(e.getJobNum());
+//		e = (Employee)commonService.load(Employee.class, e.getId());
+//		logger.info(e.getJobNum());
+		
+		e = (Employee)commonService.uniqueResult(" from Employee e where e.id = ? ", e.getId());
+		e = (Employee)commonService.uniqueResult(" from Employee e where e.id = ? ", e.getId());
 	}
 
 }
