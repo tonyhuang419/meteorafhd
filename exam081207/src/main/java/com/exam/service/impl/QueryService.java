@@ -27,4 +27,14 @@ public class QueryService implements IQueryService {
 		return pi;
 	}
 
+	
+	public PageInfo listQueryResultBySql(String sql, PageInfo pi, Object... args){
+		if (pi == null) {
+			pi = new PageInfo();
+		}
+		pi.setTotalCount((Integer)commonService.listSQL(sql, args).get(0));
+		pi.setResult(commonService.listSQL(sql, pi.getStartOfPage(), pi.getPageSize(), args));
+		return pi;
+	}
+	
 }

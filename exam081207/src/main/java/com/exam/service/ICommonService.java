@@ -15,8 +15,6 @@ public  interface ICommonService{
 
 	public  void saveOrUpdate(Object paramObject);
 
-	public  void save(Collection<Object> paramCollection);
-
 	@SuppressWarnings("unchecked")
 	public  List list(String hql, Object... args);
 
@@ -28,11 +26,7 @@ public  interface ICommonService{
 
 	public  void delete(Object paramObject);
 
-	public  void delete(Collection<Object> paramCollection);
-
 	public  void update(Object paramObject);
-
-	public  void update(Collection<Object> paramCollection);
 
 	public  Object uniqueResult(String hql, Object... args);
 

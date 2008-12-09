@@ -33,16 +33,6 @@ public class CommonService implements ICommonService {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public void delete(Collection<Object> obj){
-		if (obj != null){
-			for (Iterator localIterator = obj.iterator(); localIterator.hasNext(); ) {
-				Object o = localIterator.next();
-				delete(o);
-			}
-		}
-	}
-
 
 	@SuppressWarnings("unchecked")
 	public List list(String hql, Object... args){
@@ -81,16 +71,6 @@ public class CommonService implements ICommonService {
 		getSession().saveOrUpdate(obj);
 	}
 
-	@SuppressWarnings("unchecked")
-	public void save(Collection<Object> obList){
-		if (obList != null){
-			for (Iterator localIterator = obList.iterator(); localIterator.hasNext(); ){
-				Object o = localIterator.next();
-				save(o);
-			}
-		}
-	}
-
 	public Object uniqueResult(String hql, Object... args){
 		Query q = getSession().createQuery(hql);
 		for (int i = 0; i < args.length; ++i){
@@ -102,16 +82,6 @@ public class CommonService implements ICommonService {
 
 	public void update(Object o){
 		getSession().update(o);
-	}
-
-	@SuppressWarnings("unchecked")
-	public void update(Collection<Object> c){
-		if (c != null){
-			for (Iterator localIterator = c.iterator(); localIterator.hasNext(); ) { 
-				Object o = localIterator.next();
-				save(o);
-			}
-		}
 	}
 
 	@SuppressWarnings("unchecked")

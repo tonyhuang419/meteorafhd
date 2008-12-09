@@ -27,14 +27,15 @@
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="hbm2ddl.auto">update</property>
-				<property name="cache.provider_class">
-			org.hibernate.cache.EhCacheProvider
-		</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider </property>
 		<property name="cache.use_query_cache">true</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		
-		<mapping class="com.exam.entity.Teacher" />
+		<mapping class="com.exam.entity.Book" />
+		<mapping class="com.exam.entity.Customer" />
+		<mapping class="com.exam.entity.Employee" />
+		<mapping class="com.exam.entity.Orders" />
 
 		
 	</session-factory>

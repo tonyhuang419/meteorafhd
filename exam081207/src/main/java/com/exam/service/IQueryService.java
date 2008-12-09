@@ -7,5 +7,7 @@ public interface IQueryService {
 	public   int getTotalNum(String s, Object aobj[]);
 
 	public   PageInfo listQueryResult(String hql, PageInfo pageinfo, Object aobj[]);
-
+	
+	public PageInfo listQueryResultBySql(String sql, PageInfo pi, Object... args);
+	
 }
