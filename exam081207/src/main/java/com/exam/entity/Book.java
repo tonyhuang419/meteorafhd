@@ -33,26 +33,26 @@ public class Book extends PriEntity implements Serializable {
 	@Column(length = 20)
 	private Long  id;
 
-	@Column(name = "title", length = 50)
+	@Column(name = "title", length = 100)
 	private String title;
 
-	@Column(name = "isbn", length = 50)
+	@Column(name = "isbn", length = 100)
 	private String isbn;
 
-	@Column(name = "authorName", length = 50)
+	@Column(name = "authorName", length = 100)
 	private String authorName;
 
-	@Column(name = "editior", length = 50)
+	@Column(name = "editior", length = 100)
 	private String editior;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "year", length = 20)
 	private Date year;
 
-	@Column(name = "category", length = 50)
+	@Column(name = "category", length = 100)
 	private String category;
 
-	@Column(name = "publisher", length = 50)
+	@Column(name = "publisher", length = 100)
 	private String publisher;
 
 	@Column(name = "quantityInStock", length = 20)

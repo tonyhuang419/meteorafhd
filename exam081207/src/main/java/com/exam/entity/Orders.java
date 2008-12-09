@@ -31,10 +31,10 @@ public class Orders extends PriEntity implements Serializable {
 	@Column(length = 20)
 	private Long  id;
 
-	@Column(name = "orderNum", length = 50)
+	@Column(name = "orderNum", length = 100)
 	private String orderNum;
 
-	@Column(name = "customerName", length = 50)
+	@Column(name = "customerName", length = 100)
 	private String customerName;
 
 	@Column(name = "bookDealPrice", length = 20)
@@ -46,7 +46,7 @@ public class Orders extends PriEntity implements Serializable {
 	@Column(name = "sendDate", length = 20)
 	private Date sendDate;
 
-	@Column(name = "sendAddress", length = 50)
+	@Column(name = "sendAddress", length = 100)
 	private String sendAddress;
 
 	@ManyToOne ( fetch = FetchType.LAZY )

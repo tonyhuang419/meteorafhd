@@ -29,31 +29,31 @@ public class Customer implements Serializable {
 	@Column(length = 20)
 	private int id;
 
-	@Column(name = "phone", length = 50)
+	@Column(name = "phone", length = 100)
 	private String phone;
 
-	@Column(name = "email", length = 50)
+	@Column(name = "email", length = 100)
 	private String email;
 
-	@Column(name = "street", length = 50)
+	@Column(name = "street", length = 100)
 	private String street;
 
-	@Column(name = "city", length = 50)
+	@Column(name = "city", length = 100)
 	private String city;
 
-	@Column(name = "state", length = 50)
+	@Column(name = "state", length = 100)
 	private String state;
 
-	@Column(name = "zipcode", length = 50)
+	@Column(name = "zipcode", length = 100)
 	private String zipcode;
 
-	@Column(name = "username", length = 50)
+	@Column(name = "username", length = 100)
 	private String username;
 
-	@Column(name = "password", length = 50)
+	@Column(name = "password", length = 100)
 	private String password;
 
-	@Column(name = "creditcardinfo", length = 50)
+	@Column(name = "creditcardinfo", length = 100)
 	private String creditcardinfo;
 
 	@OneToMany(mappedBy="fkCustomerId" , fetch = FetchType.LAZY )

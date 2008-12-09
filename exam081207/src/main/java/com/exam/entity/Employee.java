@@ -29,13 +29,13 @@ public class Employee implements Serializable {
 	@Column(length = 20)
 	private Long id;
 
-	@Column(name = "name", length = 50)
+	@Column(name = "name", length = 100)
 	private String name;
 
-	@Column(name = "password", length = 50)
+	@Column(name = "password", length = 100)
 	private String password;
 
-	@Column(name = "jobNum", length = 50)
+	@Column(name = "jobNum", length = 100)
 	private String jobNum;
 
 	@Column(name = "role", length = 2)
