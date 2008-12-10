@@ -7,14 +7,6 @@
 	<name>exam</name>
 	<version>0.0.1</version>
 	<description>exam081207</description>
-	<scm>
-		<connection>
-			scm:svn:http://meteorafhd.googlecode.com/svn/exam081207</connection>
-		<developerConnection>
-			scm:svn:https://meteorafhd.googlecode.com/svn/exam081207</developerConnection>
-		<tag>trunk</tag>
-		<url>http://meteorafhd.googlecode.com/svn/exam</url>
-	</scm>
 	<build>
 		<plugins>
 			<plugin>
