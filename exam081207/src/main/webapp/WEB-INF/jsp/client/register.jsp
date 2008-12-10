@@ -11,12 +11,13 @@
 <s:hidden id="formMethod" name="method" />
 <table align="center">
 
-<tr  align="center">
+<tr  align=""left"">
 <td><font color="red">* </font>用户名：</td>
 <td><s:textfield name="customer.username" id="username"></s:textfield></td></tr>
-<tr  align="center">
+<tr  align="left">
 <td><font color="red">* </font>密  码：</td>
 <td><s:password name="customer.password" id="password"></s:password></td></tr>
+<tr  align="left">
 <td><font color="red">* </font>确认密码：</td>
 <td><s:password name="password" id="password"></s:password></td></tr>
 

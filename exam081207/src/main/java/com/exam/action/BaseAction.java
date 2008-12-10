@@ -5,9 +5,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class BaseAction implements Action{
+public class BaseAction extends ActionSupport{
+	private static final long serialVersionUID = 6222135106052344007L;
+
 	protected Log logger = LogFactory.getLog(this.getClass());
 
 	private String	method;
