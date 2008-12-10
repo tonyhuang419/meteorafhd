@@ -4,3 +4,4 @@
 <meta http-equiv="Expires" content="0" />
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <script src="/exam081207/commons/scripts/mootools-1.2-core-nc.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/validator.js" type="text/javascript"></script>

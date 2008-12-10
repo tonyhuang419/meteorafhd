@@ -6,17 +6,18 @@
 </head>
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
+<iframe name="errorsFrame" frameborder="0" framespacing="0" height="0" width="100%" scrolling="no"></iframe>
 <s:form  method="post" theme="simple" id="registerForm" action="register" >
 <s:hidden id="formMethod" name="method" />
 <table align="center">
 
 <tr  align="center">
-<td>用户名：</td>
+<td><font color="red">* </font>用户名：</td>
 <td><s:textfield name="customer.username" id="username"></s:textfield></td></tr>
 <tr  align="center">
-<td>密  码：</td>
+<td><font color="red">* </font>密  码：</td>
 <td><s:password name="customer.password" id="password"></s:password></td></tr>
-<td>确认密码：</td>
+<td><font color="red">* </font>确认密码：</td>
 <td><s:password name="password" id="password"></s:password></td></tr>
 
 <tr align="center" >
@@ -33,9 +34,24 @@
 
 <script type="text/javascript">
 function doRegister(){
-	var formX = $("registerForm");
-	$("formMethod").value = "registerCustomer";
-	formX.submit();
+	if(!validate()){
+		var formX = $("registerForm");
+		$("formMethod").value = "registerCustomer";
+		formX.submit();
+	}
+}
+
+function validate(){
+	var ev = new Validator();
+	with(registerForm){
+      	ev.test("notblank","用户名不能为空",$("username").value);
+      	ev.test("notblank","密码不能为空",$("password").value);
+	 }  
+	 if (ev.size() > 0) {
+	     ev.writeErrors(errorsFrame, "errorsFrame");
+	     return true;
+	 }
+	 return false;
 }
 </script>
 </html>
