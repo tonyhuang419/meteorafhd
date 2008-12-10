@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.exam.action.BaseAction;
 import com.exam.service.ILoginService;
+import com.exam.vo.ProcessResult;
 
 
 @Results( {
 	@Result(name = "login", value = "/WEB-INF/jsp/client/login.jsp"),
-	@Result(name = "welcome", value = "/WEB-INF/jsp/client/welcome.jsp")
+	@Result(name = "welcome", value = "/WEB-INF/jsp/client/welcome.jsp"),
+	@Result(name = "register", value = "/WEB-INF/jsp/client/register.jsp"),
 })
 public class LoginAction extends BaseAction{
 	
@@ -21,9 +23,14 @@ public class LoginAction extends BaseAction{
 	
 	private String username;
 	private String password;
+	private ProcessResult rs;
 	
 	public String login(){
 		return "login";
+	}
+	
+	public String register(){
+		return "register";
 	}
 	
 	public String validateUser(){
@@ -32,10 +39,11 @@ public class LoginAction extends BaseAction{
 			return "welcome";
 		}
 		else{
+			rs = new ProcessResult();
+			rs.addErrorMessage("用户名或密码错");
 			logger.info("login fail");
 			return "login";
 		}
-		
 	}
 
 	public String getUsername() {
@@ -53,4 +61,13 @@ public class LoginAction extends BaseAction{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public ProcessResult getRs() {
+		return rs;
+	}
+
+	public void setRs(ProcessResult rs) {
+		this.rs = rs;
+	}
+
 }
