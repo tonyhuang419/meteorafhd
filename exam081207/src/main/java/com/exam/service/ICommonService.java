@@ -1,7 +1,6 @@
 package com.exam.service;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -22,7 +21,7 @@ public  interface ICommonService{
 	public  List list(String hql, int paramInt1, int paramInt2, Object... args);
 
 	@SuppressWarnings("unchecked")
-	public  Object load(Class paramClass, Serializable paramSerializable);
+	public  Object load(Class c, Serializable id);
 
 	public  void delete(Object paramObject);
 

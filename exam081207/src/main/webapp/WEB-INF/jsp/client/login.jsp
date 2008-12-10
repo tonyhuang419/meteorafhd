@@ -6,7 +6,8 @@
 </head>
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
-<s:form  method="post" theme="simple" id="loginForm" >
+<s:form  method="post" theme="simple" id="loginForm" action="login" >
+<s:hidden id="formMethod" name="method" />
 <table align="center">
 <tr  align="center">
 <td>用户名：</td>
@@ -25,7 +26,9 @@
 </body>
 <script type="text/javascript">
 function doLogin(){
-	alert($("username").value.length);
+	var formX = $("loginForm");
+	$("formMethod").value = "validateUser";
+	formX.submit();
 }
 </script>
 </html>

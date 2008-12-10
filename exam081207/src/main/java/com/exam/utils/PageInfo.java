@@ -48,7 +48,8 @@ public class PageInfo  implements Serializable
 
 	public void setCurPage(int curPage)
 	{
-		this.curPage = curPage;
+//		this.curPage = curPage;
+		setCurPage(Math.min(getCurPage(), getTotalPageCount()));
 	}
 
 	public int getCurPage()
