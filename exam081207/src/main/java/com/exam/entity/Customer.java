@@ -3,6 +3,7 @@ package com.exam.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,7 @@ import org.hibernate.annotations.Proxy;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true, dynamicInsert = true, dynamicUpdate = true)
 @Proxy(lazy = false)
-public class Customer implements Serializable {
+public class Customer  extends PriEntity implements Serializable {
 	private static final long serialVersionUID = -8488739926510773555L;
 
 	@Id
@@ -56,7 +57,7 @@ public class Customer implements Serializable {
 	@Column(name = "creditcardinfo", length = 100)
 	private String creditcardinfo;
 
-	@OneToMany(mappedBy="fkCustomerId" , fetch = FetchType.LAZY )
+	@OneToMany(mappedBy="fkCustomerId" , cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
 	private Set<Orders> orders;
 
 	public int getId() {

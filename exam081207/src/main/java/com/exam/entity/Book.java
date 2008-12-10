@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +47,7 @@ public class Book extends PriEntity implements Serializable {
 	private String editior;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "year", length = 20)
+	@Column(name = "year" )
 	private Date year;
 
 	@Column(name = "category", length = 100)
@@ -55,13 +56,13 @@ public class Book extends PriEntity implements Serializable {
 	@Column(name = "publisher", length = 100)
 	private String publisher;
 
-	@Column(name = "quantityInStock", length = 20)
-	private BigDecimal quantityInStock;
+	@Column(name = "quantityInStock", length = 20 )
+	private Long quantityInStock;
 
-	@Column(name = "price", length = 20)
+	@Column(name = "price", length = 20 , scale = 2)
 	private BigDecimal price;
 
-	@OneToMany(mappedBy="fkBookId" , fetch = FetchType.LAZY )
+	@OneToMany(mappedBy="fkBookId" ,cascade=CascadeType.ALL, fetch = FetchType.LAZY )
 	private Set<Orders> orders;
 
 	public Long getId() {
@@ -128,14 +129,6 @@ public class Book extends PriEntity implements Serializable {
 		this.publisher = publisher;
 	}
 
-	public BigDecimal getQuantityInStock() {
-		return quantityInStock;
-	}
-
-	public void setQuantityInStock(BigDecimal quantityInStock) {
-		this.quantityInStock = quantityInStock;
-	}
-
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -150,6 +143,14 @@ public class Book extends PriEntity implements Serializable {
 
 	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
+	}
+
+	public Long getQuantityInStock() {
+		return quantityInStock;
+	}
+
+	public void setQuantityInStock(Long quantityInStock) {
+		this.quantityInStock = quantityInStock;
 	}
 
 }

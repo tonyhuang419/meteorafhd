@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -37,27 +40,29 @@ public class Orders extends PriEntity implements Serializable {
 	@Column(name = "customerName", length = 100)
 	private String customerName;
 
-	@Column(name = "bookDealPrice", length = 20)
+	@Column(name = "bookDealPrice", length = 20 , scale = 2)
 	private BigDecimal bookDealPrice;
 
-	@Column(name = "orderDate", length = 20)
+	@Temporal(TemporalType.TIMESTAMP)  
+	@Column(name = "orderDate")
 	private Date orderDate;
 
-	@Column(name = "sendDate", length = 20)
+	@Temporal(TemporalType.TIME)  
+	@Column(name = "sendDate")
 	private Date sendDate;
 
 	@Column(name = "sendAddress", length = 100)
 	private String sendAddress;
 
-	@ManyToOne ( fetch = FetchType.LAZY )
+	@ManyToOne ( cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
 	@JoinColumn(name="fkBookId")
 	private Book fkBookId;
 
-	@ManyToOne ( fetch = FetchType.LAZY ) 
+	@ManyToOne ( cascade=CascadeType.ALL,  fetch = FetchType.LAZY ) 
 	@JoinColumn(name="fkCustomerId")
 	private Customer fkCustomerId;
 	
-	@ManyToOne ( fetch = FetchType.LAZY ) 
+	@ManyToOne ( cascade=CascadeType.ALL,  fetch = FetchType.LAZY ) 
 	@JoinColumn(name="fkEmployeeId")
 	private Employee fkEmployeeId;
 

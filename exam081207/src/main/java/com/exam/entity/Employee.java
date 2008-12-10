@@ -3,6 +3,7 @@ package com.exam.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,7 @@ import org.hibernate.annotations.Proxy;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true, dynamicInsert = true, dynamicUpdate = true)
 @Proxy(lazy = false)
-public class Employee implements Serializable {
+public class Employee  extends PriEntity implements Serializable {
 	private static final long serialVersionUID = 1828194845641757871L;
 
 	@Id
@@ -41,7 +42,7 @@ public class Employee implements Serializable {
 	@Column(name = "role", length = 2)
 	private Long  role;
 
-	@OneToMany(mappedBy="fkEmployeeId" , fetch = FetchType.LAZY )
+	@OneToMany(mappedBy="fkEmployeeId" ,cascade=CascadeType.ALL,   fetch = FetchType.LAZY )
 	private Set<Orders> orders;
 
 	public Long getId() {

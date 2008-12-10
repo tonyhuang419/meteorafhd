@@ -4,23 +4,27 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @MappedSuperclass
 public class PriEntity {
-	 @Column(updatable=false, nullable=true, length=20)
-	  private Long created;
 
-	  @Column(updatable=false, nullable=true, length=20)
-	  private Date createdby;
+	@Column(updatable=false, length=20)
+	private Long created;
 
-	  @Column(length=20)
-	  private Long updated;
+	@Temporal(TemporalType.TIMESTAMP)  
+	@Column(updatable=false)
+	private Date createdby;
 
-	  @Column(length=20)
-	  private Date updatedby;
+	@Column(length=20)
+	private Long updated;
 
-	  @Column(nullable=true, length=2)
-	  private String isActive;
+	@Temporal(TemporalType.TIMESTAMP)  
+	private Date updatedby;
+
+	@Column(nullable=true, length=2)
+	private String isActive;
 
 	public Long getCreated() {
 		return created;
@@ -61,5 +65,5 @@ public class PriEntity {
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
-	  
+
 }

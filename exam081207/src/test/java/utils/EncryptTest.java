@@ -1,4 +1,4 @@
-package com.exam;
+package utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
