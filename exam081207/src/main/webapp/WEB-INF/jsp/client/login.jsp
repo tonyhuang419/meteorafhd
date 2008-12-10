@@ -14,7 +14,7 @@
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
 <s:div id="login" cssClass="loginForm">
-<s:form  method="post" id="loginForm" action="login" >
+<s:form  method="post" id="loginForm" action="login"  >
 <s:hidden id="formMethod" name="method" />
 <s:iterator id="erMessage" value="rs.errorMessages">
 <font color="red"><strong><s:property value="#erMessage"/></strong></font><br/>

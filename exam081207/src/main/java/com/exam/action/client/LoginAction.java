@@ -11,6 +11,7 @@ import com.exam.vo.ProcessResult;
 
 
 @Results( {
+	@Result(name = "input", value = "/WEB-INF/jsp/client/login.jsp"),
 	@Result(name = "login", value = "/WEB-INF/jsp/client/login.jsp"),
 	@Result(name = "welcome", value = "/WEB-INF/jsp/client/welcome.jsp"),
 	@Result(name = "register", value = "/WEB-INF/jsp/client/register.jsp")
