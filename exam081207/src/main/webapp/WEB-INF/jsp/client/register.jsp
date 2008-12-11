@@ -10,20 +10,35 @@
 <s:iterator id="vm" value="validateMap" > 
 	<s:property value="value"/><br/>
 </s:iterator>
-<div align="center">
+<div align="center" >
 <s:form  method="post" theme="simple" id="registerForm" action="register" >
 <s:hidden id="formMethod" name="method" />
-<font color="red">* </font>用户名：
-<s:textfield name="customer.username" id="username" onblur="validateUsername(this);"></s:textfield><div id="vCustomer"></div><br/><br/>
-<font color="red">* </font>密  码：
-<s:password name="customer.password" id="password"></s:password><br/><br/>
-<font color="red">* </font>确认密码：
-<s:password name="againPawword" id="againPawword"></s:password><br/><br/>
-<a href="#" onclick="displayMore();" >More</a><br/><br/>
+<div class="tdx">用户名 * 
+<s:textfield name="customer.username" id="username" onblur="validateUsername(this);"/>&nsbp;<span id="vCustomer"></span>
+</div>
+<div class="tdx">
+密  码 *
+<s:password name="customer.password" id="password"></s:password>
+</div>
+<div class="tdx">
+确认密码 *
+<s:password name="againPawword" id="againPawword"></s:password>
+</div>
+<div class="tdx">
+<a href="#" onclick="displayMore();" >More</a></div>
 <div style="display: none" id="moreINFO">
-电子邮件：<s:password name="customer.email" id="email"></s:password><br/><br/>
-电       话：<s:password name="customer.phone" id="email"></s:password><br/><br/>
-地      址：<s:password name="customer.street" id="email"></s:password><br/><br/>
+<div class="tdx">
+电子邮件
+<s:password name="customer.email" id="email"></s:password>
+</div>
+<div class="tdx">
+电       话
+<s:password name="customer.phone" id="email"></s:password>
+</div>
+<div class="tdx">
+地      址
+<s:password name="customer.street" id="email"></s:password>
+</div>
 </div>
 <input type="button" value="注册" onclick="doRegister();" id="regButton"/>
 <input type="button" value="返回" onclick=""/>
