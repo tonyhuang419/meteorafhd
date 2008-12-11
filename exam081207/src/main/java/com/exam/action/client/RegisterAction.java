@@ -49,7 +49,11 @@ public class RegisterAction extends BaseAction{
 		if(  !againPawword.equals(customer.getPassword())){
 			validateMap.put("passwordDisagree", "密码不一致");
 		}
+		if( ! registerService.uniqueClientName(customer.getUsername())){
+			validateMap.put("uniqueClientName", "用户名已存在");
+		}
 	}
+	
 
 	public Customer getCustomer() {
 		return customer;

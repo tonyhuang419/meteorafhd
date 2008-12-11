@@ -14,7 +14,7 @@
 <s:form  method="post" theme="simple" id="registerForm" action="register" >
 <s:hidden id="formMethod" name="method" />
 <font color="red">* </font>用户名：
-<s:textfield name="customer.username" id="username"></s:textfield><br/><br/>
+<s:textfield name="customer.username" id="username" onblur="validateUsername(this);"></s:textfield><div id="vCustomer"></div><br/><br/>
 <font color="red">* </font>密  码：
 <s:password name="customer.password" id="password"></s:password><br/><br/>
 <font color="red">* </font>确认密码：
@@ -25,7 +25,7 @@
 电       话：<s:password name="customer.phone" id="email"></s:password><br/><br/>
 地      址：<s:password name="customer.street" id="email"></s:password><br/><br/>
 </div>
-<input type="button" value="注册" onclick="doRegister();"/>
+<input type="button" value="注册" onclick="doRegister();" id="regButton"/>
 <input type="button" value="返回" onclick=""/>
 </s:form>
 </div>
@@ -62,6 +62,17 @@ function validate(){
 	     return true;
 	 }
 	 return false;
+}
+function validateUsername(obj){
+	var jsonRequest = new Request.JSON({async:false,url:'/exam081207/jsonData.action?method=uniqueUser&username='+obj.value, onComplete: function(jsonObj){
+		if(jsonObj){
+			$("vCustomer").innerHTML="验证通过"
+			$("regButton").removeAttribute('disabled');
+		}else{
+			$("vCustomer").innerHTML="用户名已存在"
+			$("regButton").disabled = "disabled";
+		}
+	}}).get({randerNum:Math.random()});	
 }
 
 </script>

@@ -24,4 +24,13 @@ public class  RegisterService implements IRegisterService{
 		return true;
 	}
 	
+	public boolean uniqueClientName(String username){
+		Long x = (Long)commonService.uniqueResult(" select c.id from Customer c where c.username = ? ", username);
+		if(x!=null){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
 }

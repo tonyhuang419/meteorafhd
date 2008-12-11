@@ -6,4 +6,6 @@ public interface  IRegisterService {
 	
 	public boolean saveNewUser(Customer customer) ;
 	
+	public boolean uniqueClientName(String username);
+	
 }
