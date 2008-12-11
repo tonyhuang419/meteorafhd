@@ -36,6 +36,18 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>Maven Plugin Repository</id>
+			<url>http://struts2plugin-maven-repo.googlecode.com/svn/trunk/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -130,16 +142,14 @@
 			<version>2.0.14</version>
 		</dependency>
 		<dependency>
-			  <groupId>oracle</groupId>
-			  <artifactId>ojdbc14</artifactId>
-			  <version>10.2.0.2</version>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.2</version>
 		</dependency>
-		 <dependency>
-			  <groupId>jsonplugin</groupId>
-			  <artifactId>jsonplugin</artifactId>
-			  <version>0.31</version>
-			 <scope>system</scope>
-			  <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jsonplugin-0.31.jar</systemPath>
+		<dependency>
+			<groupId>com.googlecode</groupId>
+			<artifactId>jsonplugin</artifactId>
+			<version>0.31</version>
 		</dependency>
 	</dependencies>
 </project>
