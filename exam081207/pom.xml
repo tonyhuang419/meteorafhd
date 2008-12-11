@@ -134,5 +134,12 @@
 			  <artifactId>ojdbc14</artifactId>
 			  <version>10.2.0.2</version>
 		</dependency>
+		 <dependency>
+			  <groupId>jsonplugin</groupId>
+			  <artifactId>jsonplugin</artifactId>
+			  <version>0.31</version>
+			 <scope>system</scope>
+			  <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jsonplugin-0.31.jar</systemPath>
+		</dependency>
 	</dependencies>
 </project>
