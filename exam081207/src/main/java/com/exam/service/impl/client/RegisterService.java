@@ -1,4 +1,4 @@
-package com.exam.service.impl;
+package com.exam.service.impl.client;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.entity.Customer;
 import com.exam.service.ICommonService;
-import com.exam.service.IRegisterService;
+import com.exam.service.client.IRegisterService;
 
 @Service("registerService")
 @Transactional

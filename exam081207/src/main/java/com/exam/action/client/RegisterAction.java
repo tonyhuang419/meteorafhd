@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.exam.action.BaseAction;
 import com.exam.entity.Customer;
-import com.exam.service.IRegisterService;
+import com.exam.service.client.IRegisterService;
 
 
 @Results( {

@@ -1,4 +1,4 @@
-package com.exam.service;
+package com.exam.service.client;
 
 public interface  ILoginService {
 	
