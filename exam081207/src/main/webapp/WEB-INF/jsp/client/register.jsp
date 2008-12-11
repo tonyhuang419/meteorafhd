@@ -7,11 +7,13 @@
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
 <iframe name="errorsFrame" frameborder="0" framespacing="0" height="0" width="100%" scrolling="no"></iframe>
+<s:iterator id="vm" value="validateMap" > 
+	<s:property value="value"/><br/>
+</s:iterator>
 <s:form  method="post" theme="simple" id="registerForm" action="register" >
 <s:hidden id="formMethod" name="method" />
 <table align="center">
-
-<tr  align=""left"">
+<tr  align="left">
 <td><font color="red">* </font>用户名：</td>
 <td><s:textfield name="customer.username" id="username"></s:textfield></td></tr>
 <tr  align="left">
@@ -19,7 +21,7 @@
 <td><s:password name="customer.password" id="password"></s:password></td></tr>
 <tr  align="left">
 <td><font color="red">* </font>确认密码：</td>
-<td><s:password name="password" id="password"></s:password></td></tr>
+<td><s:password name="againPawword" id="againPawword"></s:password></td></tr>
 
 <tr align="center" >
 	<td colspan="2">
@@ -47,6 +49,7 @@ function validate(){
 	with(registerForm){
       	ev.test("notblank","用户名不能为空",$("username").value);
       	ev.test("notblank","密码不能为空",$("password").value);
+      	ev.test("equals","两次输入密码不同",$("password").value,$("againPawword").value );
 	 }  
 	 if (ev.size() > 0) {
 	     ev.writeErrors(errorsFrame, "errorsFrame");
@@ -54,5 +57,6 @@ function validate(){
 	 }
 	 return false;
 }
+
 </script>
 </html>

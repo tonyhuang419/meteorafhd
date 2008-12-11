@@ -172,10 +172,8 @@ function Validator() {
 		doc.clear();
 		doc.writeln("<HTML>");
 		doc.writeln("<HEAD>");
-		doc.writeln("  <title>errors</title>");
-		doc.writeln("  <Meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
-		doc.writeln("  <link rel='stylesheet' type='text/css' href='./../../css/main.css'>");
-		doc.writeln("  <link rel='stylesheet' type='text/css' href='./../../css/blue.css'>");
+		doc.writeln("<title>errors</title>");
+		doc.writeln("<Meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
 		doc.writeln("</HEAD>");
 		doc.writeln("<BODY topmargin='5' bottommargin='0' leftmargin='0' rightmargin='0'>");
 		doc.writeln("<font color='#FF0000'><strong>");
@@ -189,7 +187,7 @@ function Validator() {
 		}else{
 			document.all[name].style.display="";
 			document.all[name].style.width = "100%";
-			document.all[name].style.height = this.errors.size() * 19 + 13;
+			document.all[name].style.height = this.errors.size() * 10 + 10;
 		}
 	}
 }

@@ -1,5 +1,7 @@
 package com.exam.action;
 
+import java.util.Map;
+
 import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -13,6 +15,7 @@ public class BaseAction extends ActionSupport{
 	protected Log logger = LogFactory.getLog(this.getClass());
 
 	private String	method;
+	protected Map<Object,Object> validateMap;
 
 	final public String execute() throws Exception {
 		if (StringUtils.isEmpty(method)) {
@@ -29,6 +32,14 @@ public class BaseAction extends ActionSupport{
 
 	public void setMethod(String method) {
 		this.method = method;
+	}
+
+	public Map<Object, Object> getValidateMap() {
+		return validateMap;
+	}
+
+	public void setValidateMap(Map<Object, Object> validateMap) {
+		this.validateMap = validateMap;
 	}
 
 }

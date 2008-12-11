@@ -14,17 +14,22 @@
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
 <s:div id="login" cssClass="loginForm">
-<s:form  method="post" id="loginForm" action="login"  >
+<s:form  method="post" id="loginForm" action="login" theme="simple" >
 <s:hidden id="formMethod" name="method" />
 <s:iterator id="erMessage" value="rs.errorMessages">
 <font color="red"><strong><s:property value="#erMessage"/></strong></font><br/>
 </s:iterator>
 <table align="center">
-<s:textfield name="username" id="username" key="username" size="20"></s:textfield>
-<s:password name="password" id="password" key="password" size="20"></s:password>
-</table>
+<tr><td>用户名：</td>
+<td>
+<s:textfield name="username" id="username" size="20"></s:textfield></td></tr>
+<tr><td>密 码：</td>
+<td>
+<s:password name="password" id="password"  size="20"></s:password></td></tr>
+<tr align="center"><td colspan="2">
 <input type="button" value="登陆" onclick="doLogin();"/>
-<input type="button" value="注册" onclick="doRegister();"/>
+<input type="button" value="注册" onclick="doRegister();"/></td>
+</table>
 </s:form>
 </s:div>
 </body>

@@ -3,6 +3,10 @@
 	 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
+		<!--
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
@@ -13,7 +17,21 @@
 		<property name="connection.characterEncoding">UTF8</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
-
+		-->
+		
+		<property name="dialect">
+			org.hibernate.dialect.Oracle9iDialect
+		</property>
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>		
+	
+		<property name="connection.url">
+			jdbc:oracle:thin:@10.25.74.49:1521:baoz
+		</property>
+		<property name="connection.username">test</property>
+		<property name="connection.password">test</property>
+		
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.min_size">1</property>
@@ -22,15 +40,15 @@
 		<property name="hibernate.c3p0.idle_test_period">180</property>
 		<property name="hibernate.c3p0.acquire_increment">2</property>
 		<property name="hibernate.c3p0.validate">true</property>
-
-		<property name="dialect">
-			org.hibernate.dialect.MySQLDialect
-		</property>
-		<property name="hbm2ddl.auto">update</property>
-		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider </property>
-		<property name="cache.use_query_cache">true</property>
+		
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="cache.provider_class">
+			org.hibernate.cache.EhCacheProvider
+		</property>
+		<property name="cache.use_query_cache">true</property>
+		
 		
 		<mapping class="com.exam.entity.Book" />
 		<mapping class="com.exam.entity.Customer" />
