@@ -10,32 +10,38 @@
 <s:iterator id="vm" value="validateMap" > 
 	<s:property value="value"/><br/>
 </s:iterator>
+<div align="center">
 <s:form  method="post" theme="simple" id="registerForm" action="register" >
 <s:hidden id="formMethod" name="method" />
-<table align="center">
-<tr  align="left">
-<td><font color="red">* </font>用户名：</td>
-<td><s:textfield name="customer.username" id="username"></s:textfield></td></tr>
-<tr  align="left">
-<td><font color="red">* </font>密  码：</td>
-<td><s:password name="customer.password" id="password"></s:password></td></tr>
-<tr  align="left">
-<td><font color="red">* </font>确认密码：</td>
-<td><s:password name="againPawword" id="againPawword"></s:password></td></tr>
-
-<tr align="center" >
-	<td colspan="2">
-	<input type="button" value="注册" onclick="doRegister();"/>
-	<input type="button" value="返回" onclick=""/>
-	</td>
-</tr>
-
-
-</table>
+<font color="red">* </font>用户名：
+<s:textfield name="customer.username" id="username"></s:textfield><br/><br/>
+<font color="red">* </font>密  码：
+<s:password name="customer.password" id="password"></s:password><br/><br/>
+<font color="red">* </font>确认密码：
+<s:password name="againPawword" id="againPawword"></s:password><br/><br/>
+<a href="#" onclick="displayMore();" >More</a><br/><br/>
+<div style="display: none" id="moreINFO">
+电子邮件：<s:password name="customer.email" id="email"></s:password><br/><br/>
+电       话：<s:password name="customer.phone" id="email"></s:password><br/><br/>
+地      址：<s:password name="customer.street" id="email"></s:password><br/><br/>
+</div>
+<input type="button" value="注册" onclick="doRegister();"/>
+<input type="button" value="返回" onclick=""/>
 </s:form>
+</div>
 </body>
 
 <script type="text/javascript">
+function displayMore(){
+	var moreinfo = $("moreINFO");
+	if(moreinfo.style.display=="block"){
+		moreinfo.style.display="none";
+	}
+	else{
+		moreinfo.style.display="block";
+	}
+}
+
 function doRegister(){
 	if(!validate()){
 		var formX = $("registerForm");
