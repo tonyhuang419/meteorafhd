@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.exam.entity.Customer;
 import com.exam.service.ICommonService;
 import com.exam.service.client.IRegisterService;
+import com.exam.utils.CustomerUtils;
 
 @Service("registerService")
 @Transactional
@@ -21,6 +22,7 @@ public class  RegisterService implements IRegisterService{
 	public boolean saveNewUser(Customer customer) {
 		customer.setPassword( DigestUtils.md5Hex(customer.getPassword()));
 		commonService.save(customer);
+		CustomerUtils.saveCustomerToSession(customer);
 		return true;
 	}
 	
