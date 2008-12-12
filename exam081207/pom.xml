@@ -151,5 +151,10 @@
 			<artifactId>jsonplugin</artifactId>
 			<version>0.31</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-sitemesh-plugin</artifactId>
+			<version>2.0.14</version>
+		</dependency>
 	</dependencies>
 </project>

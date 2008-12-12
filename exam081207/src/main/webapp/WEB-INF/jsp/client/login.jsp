@@ -4,9 +4,7 @@
 <head>
 <style type="text/css">
 <!--  
-.loginForm   {  
-  text-align:   center;  
-}  
+
   -->   
 </style>
 <title>LoginCustomer</title>
@@ -27,10 +25,10 @@
 <s:password name="password" id="password"  size="20"></s:password></td></tr>
 <tr align="center"><td colspan="2">
 <input type="button" value="登陆" onclick="doLogin();"/>
-<input type="button" value="注册" onclick="doRegister();"/></td>
+<input type="button" value="注册" onclick="doRegister();"/></td></tr>
 </table>
 </s:form>
-</body>
+
 <script type="text/javascript">
 function doLogin(){
 	var formX = $("loginForm");
@@ -43,4 +41,6 @@ function doRegister(){
 	formX.submit();
 }
 </script>
+
+</body>
 </html>

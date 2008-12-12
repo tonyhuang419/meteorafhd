@@ -5,7 +5,7 @@
 <title>Login</title>
 </head>
 <body>
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 <iframe name="errorsFrame" frameborder="0" framespacing="0" height="0" width="100%" scrolling="no"></iframe>
 <s:iterator id="vm" value="validateMap" > 
 	<s:property value="value"/><br/>
@@ -48,7 +48,8 @@
 </table>
 </s:form>
 </div>
-</body>
+
+
 
 <script type="text/javascript">
 function goBack(){
@@ -98,4 +99,7 @@ function validateUsername(obj){
 }
 
 </script>
+
+</body>
+
 </html>
