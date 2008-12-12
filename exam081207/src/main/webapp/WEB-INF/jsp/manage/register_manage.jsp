@@ -11,48 +11,33 @@
 	<s:property value="value"/><br/>
 </s:iterator>
 <div align="center" >
-<s:form  method="post" theme="simple" id="registerForm" action="register" >
+<s:form  method="post" theme="simple" id="registerForm" action="registerM" >
 <s:hidden id="formMethod" name="method" />
 <table>
 <tr>
-	<td>用户名 * </td>
-	<td><s:textfield name="customer.username" id="username" onblur="validateUsername(this);"/>&nbsp;<span id="vCustomer"></span></td>
+<td>工     号 *</td>
+<td><s:textfield name="emp.jobNum" id="jobNum" onblur="validateUsername(this);"/>&nbsp;<span id="vJobNum"></span></td>
+<tr>
+<td>密    码 *</td>
+<td><s:password name="emp.password" id="password"></s:password></td>
 </tr>
 <tr>
-	<td>密    码 *</td>
-	<td><s:password name="customer.password" id="password"></s:password></td>
+<td>确认密码 *</td>
+<td><s:password name="againPawword" id="againPawword"></s:password></td>
+</tr>
 <tr>
-	<td>确认密码 *</td>
-	<td><s:password name="againPawword" id="againPawword"></s:password></td>
-<tr>
-	<td colspan="2"><a href="#" onclick="displayMore();" >More</a></td></tr>
-<tr><td colspan="2">
-<div style="display: none" id="moreINFO">
-<table>
-<tr>
-	<td>电子邮件&nbsp;&nbsp;</td>
-	<td><s:password name="customer.email" id="email"></s:password></td></tr>
-<tr>
-	<td>电    话   </td>
-	<td><s:password name="customer.phone" id="phone"></s:password></td></tr>
-<tr>
-	<td>地    址   </td>
-	<td><s:password name="customer.street" id="street"></s:password></td></tr>
-<tr>
-</table>
-</div>
-</td></tr>
 <td colspan="2" align="center">
 <input type="button" value="注册" onclick="doRegister();" id="regButton"/>
-<input type="button" value="返回" onclick="goBack();"/></td></tr>
-</table>
+<input type="button" value="返回" onclick="goBack();"/>
+</td>
+</tr>
 </s:form>
 </div>
 </body>
 
 <script type="text/javascript">
 function goBack(){
-	location.href="../client/login.action?method=login";
+	location.href="../manage/loginM.action?method=login";
 }
 function displayMore(){
 	var moreinfo = $("moreINFO");
@@ -67,7 +52,7 @@ function displayMore(){
 function doRegister(){
 	if(!validate()){
 		var formX = $("registerForm");
-		$("formMethod").value = "registerCustomer";
+		$("formMethod").value = "registerEmployee";
 		formX.submit();
 	}
 }
@@ -75,7 +60,7 @@ function doRegister(){
 function validate(){
 	var ev = new Validator();
 	with(registerForm){
-      	ev.test("notblank","用户名不能为空",$("username").value);
+      	ev.test("notblank","工号不能为空",$("jobNum").value);
       	ev.test("notblank","密码不能为空",$("password").value);
       	ev.test("equals","两次输入密码不同",$("password").value,$("againPawword").value );
 	 }  
@@ -86,12 +71,12 @@ function validate(){
 	 return false;
 }
 function validateUsername(obj){
-	var jsonRequest = new Request.JSON({async:false,url:'/exam081207/jsonData.action?method=uniqueEmployee&eid='+obj.value, onComplete: function(jsonObj){
+	var jsonRequest = new Request.JSON({async:false,url:'/exam081207/jsonData.action?method=uniqueEmployee&jobNum='+obj.value, onComplete: function(jsonObj){
 		if(jsonObj){
-			$("vCustomer").innerHTML="验证通过"
+			$("vJobNum").innerHTML="验证通过"
 			$("regButton").removeAttribute('disabled');
 		}else{
-			$("vCustomer").innerHTML="该用户名已存在"
+			$("vJobNum").innerHTML="该工号已存在"
 			$("regButton").disabled = "disabled";
 		}
 	}}).get({randerNum:Math.random()});	

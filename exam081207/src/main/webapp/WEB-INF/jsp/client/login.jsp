@@ -9,11 +9,10 @@
 }  
   -->   
 </style>
-<title>Login</title>
+<title>LoginCustomer</title>
 </head>
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
-<s:div id="login" cssClass="loginForm">
 <s:form  method="post" id="loginForm" action="login" theme="simple" >
 <s:hidden id="formMethod" name="method" />
 <s:iterator id="erMessage" value="rs.errorMessages">
@@ -31,7 +30,6 @@
 <input type="button" value="注册" onclick="doRegister();"/></td>
 </table>
 </s:form>
-</s:div>
 </body>
 <script type="text/javascript">
 function doLogin(){

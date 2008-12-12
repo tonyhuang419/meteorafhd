@@ -9,12 +9,11 @@
 }  
   -->   
 </style>
-<title>Login</title>
+<title>LoginEmployee</title>
 </head>
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
-<s:div id="login" cssClass="loginForm">
-<s:form  method="post" id="loginForm" action="login" theme="simple" >
+<s:form  method="post" id="loginForm" action="loginM" theme="simple" >
 <s:hidden id="formMethod" name="method" />
 <s:iterator id="erMessage" value="rs.errorMessages">
 <font color="red"><strong><s:property value="#erMessage"/></strong></font><br/>
@@ -28,14 +27,19 @@
 <s:password name="password" id="password"  size="20"></s:password></td></tr>
 <tr align="center"><td colspan="2">
 <input type="button" value="登陆" onclick="doLogin();"/>
+<input type="button" value="加入新员工" onclick="doRegister();"/></td>
 </table>
 </s:form>
-</s:div>
 </body>
 <script type="text/javascript">
 function doLogin(){
 	var formX = $("loginForm");
 	$("formMethod").value = "validateUser";
+	formX.submit();
+}
+function doRegister(){
+	var formX = $("loginForm");
+	$("formMethod").value = "register";
 	formX.submit();
 }
 </script>

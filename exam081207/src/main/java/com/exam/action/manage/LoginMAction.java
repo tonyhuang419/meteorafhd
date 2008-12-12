@@ -9,8 +9,9 @@ import com.exam.vo.ProcessResult;
 
 @Results( {
 	@Result(name = "login", value = "/WEB-INF/jsp/manage/login_manage.jsp"),
+	@Result(name = "register", value = "/WEB-INF/jsp/manage/register_manage.jsp")
 })
-public class LoginAction extends BaseAction{
+public class LoginMAction extends BaseAction{
 	private static final long serialVersionUID = -8140562167196929742L;
 
 	
@@ -20,6 +21,10 @@ public class LoginAction extends BaseAction{
 	
 	public String login(){
 		return "login";
+	}
+	
+	public String register(){
+		return "register";
 	}
 	
 	public String validateEmp(){
