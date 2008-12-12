@@ -9,7 +9,8 @@ import com.exam.vo.ProcessResult;
 
 @Results( {
 	@Result(name = "login", value = "/WEB-INF/jsp/manage/login_manage.jsp"),
-	@Result(name = "register", value = "/WEB-INF/jsp/manage/register_manage.jsp")
+	@Result(name = "register", value = "/WEB-INF/jsp/manage/register_manage.jsp"),
+	@Result(name = "welcome", value = "/WEB-INF/jsp/manage/manage_main.jsp")
 })
 public class LoginMAction extends BaseAction{
 	private static final long serialVersionUID = -8140562167196929742L;
@@ -36,7 +37,7 @@ public class LoginMAction extends BaseAction{
 //			rs = new ProcessResult();
 //			rs.addErrorMessage("用户名或密码错");
 //			logger.info("login fail");
-			return "login";
+			return "welcome";
 //		}
 	}
 

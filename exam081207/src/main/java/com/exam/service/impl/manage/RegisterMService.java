@@ -25,7 +25,7 @@ public class  RegisterMService implements IRegisterMService{
 	}
 	
 	public boolean uniqueEmployeeJobNum(String jobNum){
-		Long x = (Long)commonService.uniqueResult(" select e.jobNum from Employee e where e.jobNum = ? ", jobNum);
+		Long x = (Long)commonService.uniqueResult(" select e.id from Employee e where e.jobNum = ? ", jobNum);
 		if(x!=null){
 			return false;
 		}

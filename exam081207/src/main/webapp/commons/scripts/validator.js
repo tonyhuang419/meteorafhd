@@ -253,7 +253,7 @@ function isGreater() {
 
 function isEquals() {
 	this.test = function(_value1, _value2) {
-		return  _value1 * 1 == _value2 * 1 ;
+		return  _value1 == _value2 ;
 	}
 }
 

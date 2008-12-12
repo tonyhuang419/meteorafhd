@@ -28,7 +28,7 @@ public class Customer  extends PriEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(length = 20)
-	private int id;
+	private Long  id;
 
 	@Column(name = "phone", length = 100)
 	private String phone;
@@ -60,13 +60,6 @@ public class Customer  extends PriEntity implements Serializable {
 	@OneToMany(mappedBy="fkCustomerId" , cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
 	private Set<Orders> orders;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getPhone() {
 		return phone;
@@ -146,6 +139,14 @@ public class Customer  extends PriEntity implements Serializable {
 
 	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

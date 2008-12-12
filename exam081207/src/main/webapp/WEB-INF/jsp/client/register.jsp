@@ -23,7 +23,7 @@
 	<td><s:password name="customer.password" id="password"></s:password></td>
 <tr>
 	<td>确认密码 *</td>
-	<td><s:password name="againPawword" id="againPawword"></s:password></td>
+	<td><s:password name="againPassword" id="againPassword"></s:password></td>
 <tr>
 	<td colspan="2"><a href="#" onclick="displayMore();" >More</a></td></tr>
 <tr><td colspan="2">
@@ -77,7 +77,7 @@ function validate(){
 	with(registerForm){
       	ev.test("notblank","用户名不能为空",$("username").value);
       	ev.test("notblank","密码不能为空",$("password").value);
-      	ev.test("equals","两次输入密码不同",$("password").value,$("againPawword").value );
+      	ev.test("equals","两次输入密码不同",$("password").value,$("againPassword").value );
 	 }  
 	 if (ev.size() > 0) {
 	     ev.writeErrors(errorsFrame, "errorsFrame");
@@ -86,9 +86,9 @@ function validate(){
 	 return false;
 }
 function validateUsername(obj){
-	var jsonRequest = new Request.JSON({async:false,url:'/exam081207/jsonData.action?method=uniqueEmployee&eid='+obj.value, onComplete: function(jsonObj){
-		if(jsonObj){
-			$("vCustomer").innerHTML="验证通过"
+	var jsonRequest = new Request.JSON({async:false,url:'/exam081207/jsonData.action?method=uniqueUser&username='+obj.value, onComplete: function(jsonObj){
+		if(parseInt(jsonObj.jsonData)){
+			$("vCustomer").innerHTML="验证通过,该用户名可以被注册"
 			$("regButton").removeAttribute('disabled');
 		}else{
 			$("vCustomer").innerHTML="该用户名已存在"

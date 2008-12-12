@@ -14,7 +14,7 @@ import com.exam.service.client.IRegisterService;
 
 
 @Results( {
-	@Result(name = "welcome", value = "/WEB-INF/jsp/client/welcome.jsp"),
+	@Result(name = "welcome", value = "/WEB-INF/jsp/client/client_main.jsp"),
 	@Result(name = "register", value = "/WEB-INF/jsp/client/register.jsp")
 })
 public class RegisterAction extends BaseAction{
@@ -25,7 +25,7 @@ public class RegisterAction extends BaseAction{
 	private IRegisterService registerService;
 
 	private Customer customer;
-	private String againPawword;
+	private String againPassword;
 
 	public String registerCustomer(){
 		this.vaildateRegisterCustomer();
@@ -46,7 +46,7 @@ public class RegisterAction extends BaseAction{
 		if(StringUtils.isEmpty(customer.getPassword())){
 			validateMap.put("customerError", "密码不能为空");
 		}
-		if(  !againPawword.equals(customer.getPassword())){
+		if(  !againPassword.equals(customer.getPassword())){
 			validateMap.put("passwordDisagree", "密码不一致");
 		}
 		if( ! registerService.uniqueClientName(customer.getUsername())){
@@ -63,13 +63,12 @@ public class RegisterAction extends BaseAction{
 		this.customer = customer;
 	}
 
-	public String getAgainPawword() {
-		return againPawword;
+	public String getAgainPassword() {
+		return againPassword;
 	}
 
-	public void setAgainPawword(String againPawword) {
-		this.againPawword = againPawword;
+	public void setAgainPassword(String againPassword) {
+		this.againPassword = againPassword;
 	}
-
 
 }

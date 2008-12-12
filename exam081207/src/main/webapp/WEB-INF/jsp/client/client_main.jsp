@@ -2,14 +2,17 @@
 <%@ include file="/commons/jsp/base.jsp"%>
 <html>
 <head>
-<title>Login</title>
+<title>Welcome</title>
 </head>
-
 <body>
-<h1>welcome</h1>
+Welcome&nbsp;<s:property  value="#session.CUSTOMER_SESSION.username"/>
+<a href="">修改个人信息</a>
+
+
 </body>
 
 <script type="text/javascript">
 
 </script>
+
 </html>

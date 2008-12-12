@@ -2,7 +2,7 @@
 <%@ include file="/commons/jsp/base.jsp"%>
 <html>
 <head>
-<title>Login</title>
+<title>new employee</title>
 </head>
 <body>
 <br/><br/><br/><br/><br/><br/><br/><br/>
@@ -16,7 +16,7 @@
 <table>
 <tr>
 <td>工     号 *</td>
-<td><s:textfield name="emp.jobNum" id="jobNum" onblur="validateUsername(this);"/>&nbsp;<span id="vJobNum"></span></td>
+<td><s:textfield name="emp.jobNum" id="jobNum" onblur="validateJobNum(this);"/>&nbsp;<span id="vJobNum"></span></td>
 <tr>
 <td>密    码 *</td>
 <td><s:password name="emp.password" id="password"></s:password></td>
@@ -70,9 +70,9 @@ function validate(){
 	 }
 	 return false;
 }
-function validateUsername(obj){
+function validateJobNum(obj){
 	var jsonRequest = new Request.JSON({async:false,url:'/exam081207/jsonData.action?method=uniqueEmployee&jobNum='+obj.value, onComplete: function(jsonObj){
-		if(jsonObj){
+		if(parseInt(jsonObj.jsonData)){
 			$("vJobNum").innerHTML="验证通过"
 			$("regButton").removeAttribute('disabled');
 		}else{

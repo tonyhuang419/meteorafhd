@@ -34,7 +34,7 @@
 <script type="text/javascript">
 function doLogin(){
 	var formX = $("loginForm");
-	$("formMethod").value = "validateUser";
+	$("formMethod").value = "validateEmp";
 	formX.submit();
 }
 function doRegister(){
