@@ -19,32 +19,32 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 
-public class Login {
+public class Login extends BaseKaixin {
 
 	static String email = "meteorafhd@gmail.com";
 	static String  password = "happyamiga";
-	
+
 	protected Log logger = LogFactory.getLog(this.getClass());
-	
+
 	/**
 	 * login
 	 */
 	public HttpClient login(String urlStr, int port, String protocal ){
-		
+
 		String methodUrl = "/login/login.php";
 		HttpClient client = new HttpClient();
 		client.getHostConfiguration().setHost(urlStr, port, protocal );
-		
+
 		PostMethod post = new PostMethod(methodUrl);
-//		NameValuePair x = new NameValuePair("url","/");
+		//		NameValuePair x = new NameValuePair("url","/");
 		NameValuePair name = new NameValuePair("email",email);
 		NameValuePair passwordX = new NameValuePair("password",password);
 		post.setRequestBody(new NameValuePair[] { name,passwordX});
-		
-//		HttpMethod method = getPostMethod(methodUrl);
-		
+
+		//		HttpMethod method = getPostMethod(methodUrl);
+
 		HttpMethod method = post;
-		
+
 		try{
 			client.executeMethod(method);
 		}
@@ -73,21 +73,15 @@ public class Login {
 					InputStream in = redirect.getResponseBodyAsStream();
 					BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
 					while( (str = br.readLine()) !=null){
-						//逐行读取并验证
-						if ( str.indexOf("我的首页 - 开心网")!=-1 ){
-							logger.info("login success");
-//							System.out.println("1");
-							return client;
-						}
-						else{
-							sb.append(str);
-						}
+						sb.append(str);
 					}
 					in.close();
 					redirect.releaseConnection();
 					//防止信息存在换行
 					if( sb.indexOf("我的首页 - 开心网")!=-1 ){
 						logger.info("login success");
+						//获取uid
+						Tools.getUid(sb.toString());
 						return client;
 					}
 				}catch(IOException ioe){
@@ -100,14 +94,14 @@ public class Login {
 		}
 		return null;		
 	}
-	
+
 	/**
 	 * logout
 	 */
 	public void logout(HttpClient client,String urlStr,int port,String protocal){
 		String methodUrl = "/login/logout.php";
 		client.getHostConfiguration().setHost(urlStr, port, protocal );
-//		HttpMethod method = getGetMethod(methodUrl);
+		//		HttpMethod method = getGetMethod(methodUrl);
 		HttpMethod method = new GetMethod(methodUrl);
 		try{
 			client.executeMethod(method);
