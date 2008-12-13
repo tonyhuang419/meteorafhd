@@ -58,11 +58,25 @@ public class Tools {
 		return verify;
 	}
 
+	static public String getUid(String context){
+		String uid = "";
+		Pattern p = Pattern.compile("我的开心网ID:(\\d*)\">"); 
+		Matcher matcher = p.matcher(context); 
+		if(matcher.find()){  
+			uid = matcher.group(1);
+			logger.info(" uid: " + uid);
+		} 
+		return uid;
+	}
+	
+	
 
 	//通过HttpMethod，获得context
 	static public String printInfo(HttpMethod method)  throws IOException{
 		String str;
 		StringBuffer sb = new StringBuffer();
+//		Header[] h = method.getRequestHeaders();
+//		logger.info(method.getStatusCode());
 		InputStream in = method.getResponseBodyAsStream();
 		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"),1024);
 		while( (str = br.readLine()) !=null){

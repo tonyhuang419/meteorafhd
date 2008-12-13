@@ -44,8 +44,7 @@ public class Parker extends BaseKaixin{
 
 	private void showUserCar( HttpClient client ){
 		String verify = g_verify;
-		String puid = "3327550";
-		String methodUrl = "/parking/usercar.php?verify="+verify+"&puid="+puid;
+		String methodUrl = "/parking/usercar.php?verify="+verify+"&puid="+uid;
 		HttpMethod method = new GetMethod(methodUrl);
 		try{
 			client.executeMethod(method);

@@ -10,6 +10,7 @@ public abstract class BaseKaixin {
 	static int port = 80;
 	static String protocal = "http";
 	static String g_verify ="";       				//验证字符串
+	static String uid;
 	
 	protected Log logger = LogFactory.getLog(this.getClass());
 	
