@@ -11,7 +11,7 @@ import com.exam.service.manage.IRegisterMService;
 
 
 @Results( {
-	@Result(name = "welcome", value = "/WEB-INF/jsp/manage/manage_main.jsp"),
+	@Result(name = "welcome", value = "/WEB-INF/jsp/manage/manage_main.jsp")
 })
 public class RegisterMAction extends BaseAction{
 	private static final long serialVersionUID = 6635425184920848095L;
