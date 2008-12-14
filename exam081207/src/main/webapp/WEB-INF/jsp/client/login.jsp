@@ -10,7 +10,7 @@
 <title>LoginCustomer</title>
 </head>
 <body>
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/>
 <s:form  method="post" id="loginForm" action="login" theme="simple" >
 <s:hidden id="formMethod" name="method" />
 <s:iterator id="erMessage" value="rs.errorMessages">

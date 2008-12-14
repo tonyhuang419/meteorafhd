@@ -6,7 +6,6 @@
 </head>
 <body>
 Welcome&nbsp;<s:property  value="#session.CUSTOMER_SESSION.username"/>
-<a href="">修改个人信息</a>
 
 
 </body>
