@@ -40,8 +40,8 @@ public class VFriend extends BaseKaixin{
 			ioe.printStackTrace();
 		}
 
-		methodUrl = "/trueman/aj_status.php?verify="+g_verify+"&uid="+uid+"&action="+_action+"&r=0.8321581315249205";
-//		System.out.println(methodUrl);
+		methodUrl = "/trueman/aj_status.php?verify="+g_verify+"&uid="+uid+"&action="+_action+"&r=0.2864026427268982";
+		System.out.println(methodUrl);
 		method = new GetMethod(methodUrl);
 		try{
 			client.executeMethod(method);
