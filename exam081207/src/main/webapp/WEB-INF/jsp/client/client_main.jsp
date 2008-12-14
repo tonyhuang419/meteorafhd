@@ -7,7 +7,6 @@
 <body>
 Welcome&nbsp;<s:property  value="#session.CUSTOMER_SESSION.username"/>
 
-
 </body>
 
 <script type="text/javascript">

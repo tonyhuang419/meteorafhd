@@ -16,7 +16,14 @@
 <table>
 <tr>
 	<td>用户名 * </td>
-	<td><s:textfield name="customer.username" id="username" onblur="validateUsername(this);"/>&nbsp;<span id="vCustomer"></span></td>
+	<td>
+	<s:if test="cid==null">
+		<s:textfield name="customer.username" id="username" onblur="validateUsername(this);"/>&nbsp;<span id="vCustomer"></span>
+	</s:if>
+	<s:else>
+		<s:textfield name="customer.username" id="username" readonly="true"/>
+	</s:else>
+	</td>
 </tr>
 <tr>
 	<td>密    码 *</td>
@@ -43,8 +50,15 @@
 </div>
 </td></tr>
 <td colspan="2" align="center">
+<s:if test="cid==null">
 <input type="button" value="注册" onclick="doRegister();" id="regButton"/>
-<input type="button" value="返回" onclick="goBack();"/></td></tr>
+<input type="button" value="返回" onclick="goBack();"/>
+</s:if>
+<s:else>
+<input type="button" value="保存...未完成"/>
+<input type="button" value="返回...未完成"/>
+</s:else>
+</td></tr>
 </table>
 </s:form>
 </div>

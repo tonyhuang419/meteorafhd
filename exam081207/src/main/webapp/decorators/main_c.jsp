@@ -19,16 +19,17 @@
 #twoColLayout #primaryContent{
 	width:605px;
 	float:left;
-	margin:0 0 20px 195px;
+	margin:5 0 20px 195px;
 }
 #sideContent{
 	width:200px;
 	float:left;
-	margin:0 0 20px -800px;
+	margin:5 0 20px -800px;
 }
 li{
 	float:left;
-	padding:0 5px 0px 5px;
+	padding:5 5px 5px 5px;
+	list-style: none;
 }
   -->   
 </style>
@@ -36,6 +37,7 @@ li{
 	<decorator:head/>
 </head>
 <body id="twoColLayout">
+<s:if test="#session.CUSTOMER_SESSION.username!=null">
 <div id="title">
 <ul>
 <li><a href="#">one</a></li>
@@ -44,15 +46,28 @@ li{
 <li><a href="#">four</a></li>
 </ul>
 </div>
+</s:if>
+
 <div id="primaryContent">
 <hr/>
 	<decorator:body/>
 <hr/>
 </div>
+
 <s:if test="#session.CUSTOMER_SESSION.username!=null">
 <div id="sideContent">
-<a href="">修改个人信息</a><br/>
+<a href="#" onclick='modCus(<s:property value="#session.CUSTOMER_SESSION.id"/>);'>修改个人信息</a><br/>
 </div>
+
 </s:if>
+
 </body>
+<script type="text/javascript">
+
+function modCus(cid){
+	location.href="../client/customerInfo.action?method=modClientInfo&cid="+cid;
+}
+
+</script>
+
 </html>
