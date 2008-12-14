@@ -18,6 +18,10 @@ public class VFriend extends BaseKaixin{
 		HttpClient client = login.login(urlStr,port,protocal);
 		String action ;
 		if( client != null ){
+			action="feed";
+			this.play(client, action);
+			action="drink";
+			this.play(client, action);
 			action = "dance";
 			this.play(client, action);
 			action = "tita";
