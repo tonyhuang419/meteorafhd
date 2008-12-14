@@ -81,7 +81,7 @@ public class Login extends BaseKaixin {
 					if( sb.indexOf("我的首页 - 开心网")!=-1 ){
 						logger.info("login success");
 						//获取uid
-						Tools.getUid(sb.toString());
+						uid = Tools.getUid(sb.toString());
 						return client;
 					}
 				}catch(IOException ioe){

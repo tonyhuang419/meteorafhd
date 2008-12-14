@@ -59,14 +59,13 @@ public class Tools {
 	}
 
 	static public String getUid(String context){
-		String uid = "";
 		Pattern p = Pattern.compile("我的开心网ID:(\\d*)\">"); 
 		Matcher matcher = p.matcher(context); 
 		if(matcher.find()){  
-			uid = matcher.group(1);
-			logger.info(" uid: " + uid);
+			logger.info(" uid: " + matcher.group(1));
+			return matcher.group(1);
 		} 
-		return uid;
+		return "";
 	}
 	
 	
