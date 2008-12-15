@@ -1,11 +1,16 @@
 package com.exam.action.client;
 
+import java.util.List;
+
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.exam.action.BaseAction;
+import com.exam.entity.Book;
+import com.exam.entity.VBook;
+import com.exam.service.ICommonService;
 import com.exam.service.client.ILoginService;
 import com.exam.vo.ProcessResult;
 
@@ -23,11 +28,17 @@ public class LoginAction extends BaseAction{
 	@Qualifier("loginService")
 	private ILoginService loginService;
 	
+	@Autowired
+	@Qualifier("commonService")
+	private ICommonService 		commonService;
+	
 	private String username;
 	private String password;
 	private ProcessResult rs;
 	
 	public String login(){
+		List<VBook> eList = commonService.list(" from VBook ");
+		System.out.println(eList.size());
 		return "login";
 	}
 	
