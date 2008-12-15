@@ -1,12 +1,14 @@
 package com.exam;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.exam.entity.Book;
+import com.exam.entity.Orders;
+import com.exam.entity.VBook;
 import com.exam.service.ICommonService;
 
 
@@ -50,19 +52,19 @@ public class TestFramework extends ExamBaseTest {
 	//		}
 	//	}
 
-//		@SuppressWarnings("unchecked")
-//		@Test
-//		public void testGeneralThree() {
-//			List<Employee> eList = commonService.list("from Employee e where e.id = 1 ");
-//			System.out.print(  eList.size() );
-//			for( Employee e :  eList){
-//				Set<Orders> os  = e.getOrders();
-//				for(Orders o : os){
-//					System.out.println(o.getOrderNum());
-//					System.out.println(o.getFkEmployeeId().getId());
-//				}
-//			}
-//		}
+	//		@SuppressWarnings("unchecked")
+	//		@Test
+	//		public void testGeneralThree() {
+	//			List<Employee> eList = commonService.list("from Employee e where e.id = 1 ");
+	//			System.out.print(  eList.size() );
+	//			for( Employee e :  eList){
+	//				Set<Orders> os  = e.getOrders();
+	//				for(Orders o : os){
+	//					System.out.println(o.getOrderNum());
+	//					System.out.println(o.getFkEmployeeId().getId());
+	//				}
+	//			}
+	//		}
 
 	//	@Test
 	//	public void testGeneraFour() {
@@ -86,22 +88,36 @@ public class TestFramework extends ExamBaseTest {
 	//		e = (Employee)commonService.uniqueResult(" from Employee e where e.id = ? ", e.getId());
 	//	}
 
-	
+
+	/*
+	 * 视图调用
+	 * CREATE  VIEW `vbook` AS 
+	 *   select *  from   `book`;
+	 */
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testView() {
-		List<Book> eList = commonService.list("from vBook ");
-		System.out.print(  eList.size() );
-//		for( Employee e :  eList){
-//			Set<Orders> os  = e.getOrders();
-//			for(Orders o : os){
-//				System.out.println(o.getOrderNum());
-//				System.out.println(o.getFkEmployeeId().getId());
-//			}
-//		}
+		List<VBook> bList = commonService.list("from VBook ");
+		System.out.print(  bList.size() );
 	}
-	
-	
+
+
+	/*
+	 * 	存储过程调用
+	 * 	CREATE or replace PROCEDURE updateBook(IN bookTitle %BOOK.Title)
+	 *	begin
+	 *	update BOOK b set b.title = bookTitle;
+	 *	end;
+	 */
+	@Test
+	public void testProcedure(){
+		commonService.execModifyProcedure();
+	}
+
+	public void testQueryProcedure(){
+		commonService.execQueryProcedure();
+	}
+
 }
 
 

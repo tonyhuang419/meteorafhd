@@ -24,26 +24,11 @@ public class LoginAction extends BaseAction{
 	@Qualifier("loginService")
 	private ILoginService loginService;
 
-	@Autowired
-	@Qualifier("commonService")
-	private ICommonService 		commonService;
-
 	private String username;
 	private String password;
 	private ProcessResult rs;
 
 	public String login(){
-		//		视图调用
-		//		List<VBook> eList = commonService.list(" from VBook ");
-		//		System.out.println(eList.size());
-
-		//		procedre调用
-		//		CREATE or replace PROCEDURE updateBook(IN bookTitle %BOOK.Title)
-		//		begin
-		//		update BOOK b set b.title = bookTitle;
-		//		end;
-		//		commonService.testProcedure();
-
 		return "login";
 	}
 
