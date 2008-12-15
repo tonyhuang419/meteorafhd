@@ -37,4 +37,6 @@ public  interface ICommonService{
 	
 	public Number executeStat(String hql, Object[] args);
 	
+	public void testProcedure();
+	
 }
