@@ -2,13 +2,11 @@ package jFreeChart;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
-import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieToolTipGenerator;
