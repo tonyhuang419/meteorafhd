@@ -1,13 +1,10 @@
 package com.exam;
 
 import java.util.List;
-import java.util.Set;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.exam.entity.Orders;
 import com.exam.entity.VBook;
 import com.exam.service.ICommonService;
 
@@ -94,8 +91,6 @@ public class TestFramework extends ExamBaseTest {
 	 * CREATE  VIEW `vbook` AS 
 	 *   select *  from   `book`;
 	 */
-	@SuppressWarnings("unchecked")
-	@Test
 	public void testView() {
 		List<VBook> bList = commonService.list("from VBook ");
 		System.out.print(  bList.size() );
@@ -109,7 +104,6 @@ public class TestFramework extends ExamBaseTest {
 	 *	update BOOK b set b.title = bookTitle;
 	 *	end;
 	 */
-	@Test
 	public void testProcedure(){
 		commonService.execModifyProcedure();
 	}
