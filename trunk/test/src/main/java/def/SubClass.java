@@ -2,6 +2,10 @@ package def;
 
 public class SubClass extends BaseClass{
 	
+	public void hellWorld(){
+		System.out.println(" hello world ");
+	}
+	
 	public void fatherHello(){
 		super.hellWorld();
 	}
