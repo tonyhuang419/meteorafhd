@@ -3,9 +3,9 @@
 <taglib>  
     <tlib-version>2.2.3</tlib-version>  
     <jsp-version>1.2</jsp-version>  
-    <short-name>tangs</short-name>  
-    <uri>/tangs</uri>  
-    <display-name>"Tangs Tags"</display-name>  
+    <short-name>tags</short-name>  
+    <uri>/pags</uri>  
+    <display-name>pags</display-name>  
         <tag>  
             <name>pages</name>  
             <tag-class>com.exam.tag.PageTag</tag-class>   
@@ -21,23 +21,13 @@
                 <rtexprvalue>true</rtexprvalue>  
             </attribute> 
             <attribute>  
-                <name>permeterName</name>  
-                <required>false</required>  
-                <rtexprvalue>true</rtexprvalue>  
-            </attribute> 
-            <attribute>  
-                <name>includes</name>  
-                <required>false</required>  
-                <rtexprvalue>true</rtexprvalue>  
-            </attribute>
-            <attribute>  
                 <name>styleClass</name>  
                 <required>false</required>  
                 <rtexprvalue>true</rtexprvalue>  
 			</attribute>  
 			<attribute>  
-			    <name>theme</name>  
-                <required>false</required>  
+			    <name>baseAction</name>  
+                <required>true</required>  
                 <rtexprvalue>true</rtexprvalue>  
 			</attribute> 
         </tag>  
