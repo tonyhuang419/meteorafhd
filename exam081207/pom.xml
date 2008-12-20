@@ -51,7 +51,7 @@
                     <terse>true</terse>
                    <!-- <skip>${test.int.skip}</skip>-->
                     <domain>
-                        <name>exam081207</name>
+                        <name>eaxm081207</name>
                         <adminPort>4848</adminPort>
                         <httpPort>8080</httpPort>
                         <httpsPort>8443</httpsPort>
@@ -84,8 +84,8 @@
                             </realm>
                         </auth>
                         <!-- <resourceDescriptor>path/to/resources.xml</resourceDescriptor> -->
-                        <resources>
-                            <connectionFactory>
+                         <resources>
+                     <!--       <connectionFactory>
                                 <jndiName>jms/testQueueConnectionFactory</jndiName>
                                 <type>queueConnectionFactory</type>
                                 <properties>
@@ -103,7 +103,7 @@
                                     </property>
                                 </properties>
                             </connectionFactory>
-                            <jmsTopic>
+                           <jmsTopic>
                                 <jndiName>jms/testTopic</jndiName>
                                 <destinationName>TestTopic</destinationName>
                                 <connectionFactory>
@@ -155,13 +155,13 @@
                                         <value>SomeDB</value>
                                     </property>
                                 </properties>
-                            </jdbcDataSource>
+                            </jdbcDataSource> -->
                         </resources>
                     </domain>
                     <components>
                         <component>
-                            <name>${project.artifactId}</name>
-                            <artifact>${project.build.directory}/artifacts/exam081207.war</artifact>
+                            <name>exam081207</name>
+                            <artifact>H:/Dev/java/exam081207/src/main/webapp</artifact>
                         </component>
                     </components>
                 </configuration>
