@@ -12,12 +12,12 @@
             <body-content>empty</body-content>  
             <attribute>   
                 <name>pageNo</name>  
-                <required>true</required>  
+                <required>false</required>  
                 <rtexprvalue>true</rtexprvalue>  
             </attribute>  
             <attribute>  
                 <name>total</name>  
-                <required>true</required>  
+                <required>false</required>  
                 <rtexprvalue>true</rtexprvalue>  
             </attribute> 
             <attribute>  
@@ -27,7 +27,7 @@
 			</attribute>  
 			<attribute>  
 			    <name>baseAction</name>  
-                <required>true</required>  
+                <required>false</required>  
                 <rtexprvalue>true</rtexprvalue>  
 			</attribute> 
         </tag>  

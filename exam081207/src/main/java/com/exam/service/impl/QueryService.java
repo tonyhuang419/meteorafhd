@@ -2,12 +2,17 @@ package com.exam.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.service.ICommonService;
 import com.exam.service.IQueryService;
 import com.exam.utils.PageInfo;
 import com.exam.utils.SqlUtils;
 
+
+@Service("queryService")
+@Transactional
 public class QueryService implements IQueryService {
 
 	@Autowired
@@ -18,7 +23,7 @@ public class QueryService implements IQueryService {
 		return this.commonService.executeStat(SqlUtils.getCountSql(hql)  , args).longValue();
 	}
 
-	public PageInfo listQueryResult(String hql, PageInfo pi, Object[] args) {
+	public PageInfo listQueryResult(String hql, PageInfo pi, Object... args){
 		if (pi == null){
 			pi = new PageInfo();
 		}
