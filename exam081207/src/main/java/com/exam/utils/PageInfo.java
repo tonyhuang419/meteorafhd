@@ -5,88 +5,73 @@ import java.io.Serializable;
 public class PageInfo  implements Serializable
 {
 	private static final long serialVersionUID = 8868552783646096157L;
-	private int curPage;
-	private int totalCount;
+	private Long pageNo;
+	private Long total;
 	private int pageSize;
 	private Object data;
-	private static int ROWS_PER_PAGE = 20;
 	
 	public PageInfo()
 	{
-		curPage = 1;
-		totalCount = 0;
-		pageSize = ROWS_PER_PAGE;
+		pageNo = 1L;
+		total = 0L;
+		pageSize = 20;
 	}
 
-	public long getTotalCount()
+	public Long getTotalPageCount()
 	{
-		return (long)totalCount;
-	}
-
-	public void setTotalCount(int totalCount)
-	{
-		this.totalCount = totalCount;
-	}
-
-	public Object getResult()
-	{
-		return data;
-	}
-
-	public void setResult(Object data)
-	{
-		this.data = data;
-	}
-
-	public int getTotalPageCount()
-	{
-		if(totalCount % pageSize == 0)
-			return totalCount / pageSize;
+		if(total % pageSize == 0)
+			return total / pageSize;
 		else
-			return totalCount / pageSize + 1;
+			return total / pageSize + 1;
+	}
+	
+	public Long getPageNo() {
+		return pageNo;
 	}
 
-	public void setCurPage(int curPage)
-	{
-//		this.curPage = curPage;
-		setCurPage(Math.min(getCurPage(), getTotalPageCount()));
+	public void setPageNo(Long pageNo) {
+		this.pageNo = Math.min(getPageNo(), getTotalPageCount());
 	}
 
-	public int getCurPage()
-	{
-		return curPage;
+	public Long getTotal() {
+		return total;
 	}
 
-	public void setPageSize(int rows)
-	{
-		if(rows > 0)
-			pageSize = rows;
-		else
-			pageSize = ROWS_PER_PAGE;
+	public void setTotal(Long total) {
+		this.total = total;
 	}
 
-	public int getPageSize()
-	{
+	public int getPageSize() {
 		return pageSize;
 	}
 
-	public int getDefaultRowsPerPage()
-	{
-		return ROWS_PER_PAGE;
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
 	}
 
-	public int getStartOfPage()
-	{
-		return (curPage - 1) * pageSize;
+	public Object getData() {
+		return data;
 	}
 
-//	public static void main(String args[])
-//	{
-//		PageInfo pi = new PageInfo();
-//		pi.setTotalCount(21);
-//		pi.setCurPage(2);
-//		System.out.println(pi.getStartOfPage());
-//		System.out.println(pi.getPageSize());
-//	}
+	public void setData(Object data) {
+		this.data = data;
+	}
+
+	public Long getStartOfPage()
+	{
+		return (this.getPageNo() - 1) * pageSize;
+	}
+
+	
+
+	public static void main(String args[])
+	{
+		PageInfo pi = new PageInfo();
+		pi.setTotal(150L);
+		pi.setPageNo(3L);
+		System.out.println(pi.getStartOfPage());
+		System.out.println(pi.getPageSize());
+		System.out.println(pi.getPageNo());
+	}
 
 }

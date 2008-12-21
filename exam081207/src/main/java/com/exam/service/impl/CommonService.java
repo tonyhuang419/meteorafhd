@@ -1,11 +1,6 @@
 package com.exam.service.impl;
 
 import java.io.Serializable;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -114,25 +109,21 @@ public class CommonService implements ICommonService {
 		return ((Number)uniqueResult(hql, args));
 	}
 
-
-	
-	
-	@SuppressWarnings("deprecation")
 	public void execModifyProcedure() {
-		//		Transaction tx = this.getSession().beginTransaction();//开始事务
-		Connection con = this.getSession().connection(); //从Session 中得到Connection
-
-		String procedure = "{call updateBook(?) }";//存储过程名,?是参数的位置，如果有多个参数就加多个？
-		try{
-			CallableStatement cstmt = con.prepareCall(procedure);
-			cstmt.setString(1, "aaaaaaa"); //设置参数
-			cstmt.execute();
-		}catch( SQLException  se){
-			se.printStackTrace();
-		}
+		//		//		Transaction tx = this.getSession().beginTransaction();//开始事务
+		//		Connection con = this.getSession().connection(); //从Session 中得到Connection
+		//
+		//		String procedure = "{call updateBook(?) }";//存储过程名,?是参数的位置，如果有多个参数就加多个？
+		//		try{
+		//			CallableStatement cstmt = con.prepareCall(procedure);
+		//			cstmt.setString(1, "aaaaaaa"); //设置参数
+		//			cstmt.execute();
+		//		}catch( SQLException  se){
+		//			se.printStackTrace();
+		//		}
 		//		tx.commit();
 
-//下面的代码是测试“executeBatch”
+		//下面的代码是测试“executeBatch”
 		//		String procedure = "{call insertBook(?) }";//存储过程名,?是参数的位置，如果有多个参数就加多个？
 		//		long l1 = System.currentTimeMillis();
 		//		try{
@@ -152,20 +143,20 @@ public class CommonService implements ICommonService {
 	}
 
 	public void execQueryProcedure(){
-//		Session s = this.getSession(); 
-//		List lst = s.getNamedQuery("queryBook").list();
-//		System.out.println(lst.size());
+		//		Session s = this.getSession(); 
+		//		List lst = s.getNamedQuery("queryBook").list();
+		//		System.out.println(lst.size());
 
 		//		Connection con = this.getSession().connection(); //从Session 中得到Connection
-//		String procedure = "{call queryBook() }";//存储过程名,?是参数的位置，如果有多个参数就加多个？
-//		try{
-//			CallableStatement cstmt = con.prepareCall(procedure);
-//			ResultSet s = cstmt.executeQuery();
-//			ResultSetMetaData rd = s.getMetaData();
-//			System.out.println(rd.getColumnCount());
-//		}catch( SQLException  se){
-//			se.printStackTrace();
-//		}
+		//		String procedure = "{call queryBook() }";//存储过程名,?是参数的位置，如果有多个参数就加多个？
+		//		try{
+		//			CallableStatement cstmt = con.prepareCall(procedure);
+		//			ResultSet s = cstmt.executeQuery();
+		//			ResultSetMetaData rd = s.getMetaData();
+		//			System.out.println(rd.getColumnCount());
+		//		}catch( SQLException  se){
+		//			se.printStackTrace();
+		//		}
 	}
 
 }

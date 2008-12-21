@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.exam.action.BaseAction;
-import com.exam.service.ICommonService;
 import com.exam.service.client.ILoginService;
 import com.exam.vo.ProcessResult;
 
