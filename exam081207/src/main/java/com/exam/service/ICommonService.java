@@ -18,7 +18,7 @@ public  interface ICommonService{
 	public  List list(String hql, Object... args);
 
 	@SuppressWarnings("unchecked")
-	public  List list(String hql, Long paramInt1, int paramInt2, Object... args);
+	public  List list(String hql, int paramInt1, int paramInt2, Object... args);
 
 	@SuppressWarnings("unchecked")
 	public  Object load(Class c, Serializable id);
@@ -33,9 +33,9 @@ public  interface ICommonService{
 	public  List listSQL(String sql, Object... args);
 
 	@SuppressWarnings("unchecked")
-	public  List listSQL(String sql, Long start, int rowNum, Object... args);
+	public  List listSQL(String sql, int start, int rowNum, Object... args);
 	
-	public Number executeStat(String hql, Object[] args);
+	public Number executeStat(String hql, Object... args);
 	
 	public void execModifyProcedure();
 	

@@ -42,13 +42,13 @@ public class CommonService implements ICommonService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List list(String hql, Long start, int rowNum, Object... args){
+	public List list(String hql, int start, int rowNum, Object... args){
 		Query q = getSession().createQuery(hql);
 		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
 		}
 		if (start > 0){
-			q.setFirstResult(start.intValue());
+			q.setFirstResult(start);
 		}
 		if (rowNum > 0){
 			q.setMaxResults(rowNum);
@@ -92,20 +92,20 @@ public class CommonService implements ICommonService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List listSQL(String sql, Long start, int rowNum, Object... args){
+	public List listSQL(String sql, int start, int rowNum, Object... args){
 		Query q = getSession().createSQLQuery(sql);
 		for (int i = 0; i < args.length; i++) {
 			q.setParameter(i, args[i]);
 		}
 		if (start > 0)
-			q.setFirstResult(start.intValue());
+			q.setFirstResult(start);
 		if (rowNum > 0)
 			q.setMaxResults(rowNum);
 		return q.list();	
 	}
 
 
-	public Number executeStat(String hql, Object[] args){
+	public Number executeStat(String hql, Object... args){
 		return ((Number)uniqueResult(hql, args));
 	}
 

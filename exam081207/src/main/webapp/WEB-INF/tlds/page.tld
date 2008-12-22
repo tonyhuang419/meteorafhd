@@ -4,22 +4,17 @@
     <tlib-version>2.2.3</tlib-version>  
     <jsp-version>1.2</jsp-version>  
     <short-name>tags</short-name>  
-    <uri>/pags</uri>  
-    <display-name>pags</display-name>  
+    <uri>/pages</uri>  
+    <display-name>pages</display-name>  
         <tag>  
             <name>pages</name>  
             <tag-class>com.exam.tag.PageTag</tag-class>   
             <body-content>empty</body-content>  
             <attribute>   
-                <name>pageNo</name>  
+                <name>beanName</name>  
                 <required>true</required>  
                 <rtexprvalue>true</rtexprvalue>  
             </attribute>  
-            <attribute>  
-                <name>total</name>  
-                <required>true</required>  
-                <rtexprvalue>true</rtexprvalue>  
-            </attribute> 
             <attribute>  
                 <name>styleClass</name>  
                 <required>false</required>  

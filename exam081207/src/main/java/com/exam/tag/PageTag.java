@@ -11,10 +11,10 @@ import com.opensymphony.xwork2.util.ValueStack;
 public class PageTag extends ComponentTagSupport {
 	private static final long serialVersionUID = 8889766206086327774L;
 	
-	private String pageNo;
-	private String total;
+	private String beanName;
 	private String styleClass;
 	private String baseAction;
+	
 
 	@Override
 	public Component getBean(ValueStack arg0, HttpServletRequest arg1, HttpServletResponse arg2) {
@@ -24,27 +24,11 @@ public class PageTag extends ComponentTagSupport {
 	protected void populateParams() {
 		super.populateParams();
 		Pages pages = (Pages)component;
-		pages.setPageNo(pageNo);
-		pages.setTotal(total);
 		pages.setStyleClass(styleClass);
 		pages.setBaseAction(baseAction);
+		pages.setBeanName(beanName);
 	}
 
-	public String getPageNo() {
-		return pageNo;
-	}
-
-	public void setPageNo(String pageNo) {
-		this.pageNo = pageNo;
-	}
-
-	public String getTotal() {
-		return total;
-	}
-
-	public void setTotal(String total) {
-		this.total = total;
-	}
 
 	public String getStyleClass() {
 		return styleClass;
@@ -60,6 +44,14 @@ public class PageTag extends ComponentTagSupport {
 
 	public void setBaseAction(String baseAction) {
 		this.baseAction = baseAction;
+	}
+
+	public String getBeanName() {
+		return beanName;
+	}
+
+	public void setBeanName(String beanName) {
+		this.beanName = beanName;
 	}
 }
 

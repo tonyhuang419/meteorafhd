@@ -19,8 +19,8 @@ public class QueryService implements IQueryService {
 	@Qualifier("commonService")
 	private ICommonService commonService;
 
-	public Long getTotalNum(String hql, Object[] args){
-		return this.commonService.executeStat(SqlUtils.getCountSql(hql)  , args).longValue();
+	public int getTotalNum(String hql, Object... args){
+		return commonService.executeStat(SqlUtils.getCountSql(hql)  , args).intValue();
 	}
 
 	public PageInfo listQueryResult(String hql, PageInfo pi, Object... args){
@@ -37,7 +37,7 @@ public class QueryService implements IQueryService {
 		if (pi == null) {
 			pi = new PageInfo();
 		}
-		pi.setTotal((Long)commonService.listSQL(SqlUtils.getCountSql(sql), args).get(0));
+		pi.setTotal( Integer.valueOf(commonService.listSQL(SqlUtils.getCountSql(sql), args).get(0).toString()));
 		pi.setData(commonService.listSQL(sql, pi.getStartOfPage(), pi.getPageSize(), args));
 		return pi;
 	}
