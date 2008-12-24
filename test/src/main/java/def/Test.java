@@ -75,8 +75,12 @@ public class Test {
 //		System.out.println(d);
 //		System.out.println(d.floatValue());
 		
-		Object id = null;
-		System.out.println((Long)id);
+//		Object id = null;
+//		System.out.println((Long)id);
+		
+		if(   ! (1==1) ){
+			System.out.println("1");
+		}
 		
 	}
 
