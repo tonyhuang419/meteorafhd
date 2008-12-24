@@ -6,6 +6,6 @@
     <br> <%-- 
         共 <s:property value="total"/> 页 第 <s:property value="pageNo"/> 页<br><br>
         --%>
-    <pages:pages beanName="info"  styleClass="xx" baseAction="aTest.action?method=ff"/> 
+    <pages:pages beanName="info"  styleClass="xx" baseAction="test/aTest.action?method=ff"/> 
 </body> 
 </html> 

@@ -5,11 +5,14 @@ import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.StrutsStatics;
 import org.apache.struts2.components.Component;
 import org.apache.struts2.dispatcher.StrutsRequestWrapper;
-
 
 import com.exam.utils.PageInfo;
 import com.opensymphony.xwork2.util.ValueStack;
@@ -18,7 +21,7 @@ public class Pages extends Component {
 	private String styleClass;
 	private String baseAction;
 	private String beanName;
-
+	
 	public Pages(ValueStack arg0) {
 		super(arg0);
 	}
@@ -27,12 +30,21 @@ public class Pages extends Component {
 	public boolean start(Writer writer) {
 		boolean result = super.start(writer);
 		PageInfo pi = (PageInfo)getStack().findValue(beanName);
-		int pageNo = pi.getPageNo();
+		getStack().findValue("pageNo");
+		int pageNo = 1;
+
 		int total = pi.getTotalPageCount();
 		StringBuilder str = new StringBuilder();
 		StrutsRequestWrapper req=(StrutsRequestWrapper)this.getStack().getContext().get(StrutsStatics.HTTP_REQUEST);
 		String url=(String)req.getAttribute("javax.servlet.forward.context_path");
 		url = url + "/"+baseAction;
+		
+		String pageNoStr = req.getParameter("pageNo");
+		if(  pageNoStr != null){
+			pageNo = Integer.valueOf( pageNoStr );
+		}else{
+			pageNo = 1;
+		}
 
 		str.append("<span ");
 		if (StringUtils.isNotBlank(styleClass)) {
@@ -41,9 +53,9 @@ public class Pages extends Component {
 			str.append(">");
 		}
 
-		//数字样式 [1 2 3 4 5 6 7 8 9 10 > >>]
+		//数字样式 < <<1 2 3 4 5 6 7 8 9 10 > >>
 		//如果只有一页，则无需分页
-		str.append("[&nbsp;");
+		str.append("&nbsp;");
 		if (total == 1) {
 			str.append("<strong>1</strong>&nbsp;");
 		} else {                    
@@ -51,10 +63,10 @@ public class Pages extends Component {
 				//当前不是第一组，要显示“<< <”
 				//<<：返回前一组第一页
 				//<：返回前一页
-				str.append("<a href='"+url+"&pageNo=1"+"'>«</a>&nbsp;");
-				str.append("<a href='"+url+"&pageNo=" + (pageNo - 1) ).append("'>‹</a>&nbsp;" );
+				str.append("<a href='"+url+"&pageNo=1"+"'>&laquo;</a>&nbsp;");
+				str.append("<a href='"+url+"&pageNo=" + (pageNo - 1) ).append("'>&lsaquo;</a>&nbsp;" );
 			}else{                        	
-				str.append("«&nbsp;‹&nbsp;" );
+				str.append("&laquo;&nbsp;&lsaquo;&nbsp;" );
 			}
 
 			int v=(pageNo-4)>0?(pageNo-4):1;
@@ -76,13 +88,12 @@ public class Pages extends Component {
 			if (pageNo<total) {
 				//>>：返回下一组最后一页
 				//>：返回下一页
-				str.append("<a href='"+url+"&pageNo=" + (pageNo + 1)).append("'>-</a>&nbsp;" );
-				str.append("<a href='"+url+"&pageNo=" + total).append("'>»</a>&nbsp;" );
+				str.append("<a href='"+url+"&pageNo=" + (pageNo + 1)).append("'>&rsaquo;</a>&nbsp;" );
+				str.append("<a href='"+url+"&pageNo=" + total).append("'>&raquo;</a>&nbsp;" );
 			}else{
-				str.append("›&nbsp;»&nbsp;" );
+				str.append("&raquo;&nbsp;&nbsp;&nbsp;" );
 			}
 		}
-		str.append("]");
 		str.append("</span>");
 		try {
 			writer.write(str.toString());
@@ -116,6 +127,7 @@ public class Pages extends Component {
 	public void setBeanName(String beanName) {
 		this.beanName = beanName;
 	}
+
 }
 
 
