@@ -41,4 +41,7 @@
 			</props>
 		</property>
 	</bean>
+	
+	<import resource="spring-mail.xml"/>
+	
 </beans>
