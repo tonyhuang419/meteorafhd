@@ -45,8 +45,4 @@
 		<property name="session" ref="mailSession"/>
 	</bean>
 	
-	
-	<bean id="mailTool" class="com.exam.tools.mail.MailTool">
-		<constructor-arg ref="mailSender"/>
-	</bean>
 </beans>

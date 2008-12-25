@@ -1,22 +1,28 @@
 package com.exam.tools.mail;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
 
-
+@Service("mailTool")
 public class MailTool {
 
 	private MailSender mailSender;
 	
-	public MailTool(MailSender mailSender) {
+	@Autowired
+	public MailTool(@Qualifier("mailSender")MailSender mailSender) {
 		super();
 		this.mailSender = mailSender;
 	}
 	
 	public void sendMail(SimpleMailMessage smm) {
 		try {
-			this.mailSender.send(smm);
+			mailSender.send(smm);
 		} catch (MailException e) {
 			e.printStackTrace();
 		}

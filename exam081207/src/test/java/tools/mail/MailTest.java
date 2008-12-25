@@ -24,7 +24,7 @@ public class MailTest extends ExamBaseTest {
 
 	public void  testSendMail( ) {
 		SimpleMailMessage smm = new SimpleMailMessage();
-		smm.setTo("meteorafhd@yahoo.com.cn");
+		smm.setTo("meteorafhd@gmail.com");
 		smm.setSubject("subject");
 		smm.setText("sendText"); //"This is a test.\nGo Spring!\n"
 		mailTool.sendMail(smm);
