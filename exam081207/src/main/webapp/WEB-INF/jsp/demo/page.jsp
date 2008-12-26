@@ -11,7 +11,7 @@
      <%-- 
         共 <s:property value="total"/> 页 第 <s:property value="pageNo"/> 页<br><br>
         --%>
-    <pages:pages beanName="info"  styleClass="xx" baseAction="demo/demoPage.action?method=demoPage"/> 
+    <pages:pages beanName="info"  styleClass="xx" baseAction="demo/page.action?method=demoPage"/> 
     
     <s:debug></s:debug>
 </body> 

@@ -12,9 +12,9 @@ import com.exam.service.IQueryService;
 import com.exam.utils.PageInfo;
 
 @Results( {
-	@Result(name = "demoPage", value = "/WEB-INF/jsp/demo/demoPage.jsp")
+	@Result(name = "demoPage", value = "/WEB-INF/jsp/demo/page.jsp")
 })
-public class DemoPageAction extends BaseAction{
+public class PageAction extends BaseAction{
 	private static final long serialVersionUID = -6929869573044077058L;
 
 
@@ -30,7 +30,7 @@ public class DemoPageAction extends BaseAction{
 //		commonService.execModifyProcedure();
 		return "demoPage";
 	}
-
+	
 	public PageInfo getInfo() {
 		return info;
 	}

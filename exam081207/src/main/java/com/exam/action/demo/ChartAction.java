@@ -27,7 +27,7 @@ import com.exam.action.BaseAction;
 @Results( {
 	@Result(name = "demoChart", type=ChartResult.class , value = "",params={"width","800","height","600"})
 })
-public class DemoChartAction extends BaseAction{
+public class ChartAction extends BaseAction{
 	private static final long serialVersionUID = -9009128063312892982L;
 	private JFreeChart chart;
 
