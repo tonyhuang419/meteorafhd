@@ -2,6 +2,9 @@
 <%@ include file="/commons/jsp/base.jsp"%>
 <html> 
 <body>
+<br/>
+<br/>
+<br/>
 <s:form action="sendMail" >
 <s:hidden name="method" value="sendMail"></s:hidden>
 	<s:textfield label="收件人" name="smm.to"></s:textfield>
