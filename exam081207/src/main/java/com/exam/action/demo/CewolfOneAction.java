@@ -28,17 +28,7 @@ public class CewolfOneAction extends CewolfAdapter {
 	@Override
 	public Object produceDataset(Map params) throws DatasetProduceException {
 		logger.debug("producing data.");
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset(){
-			private static final long serialVersionUID = -402341052805737820L;
-
-			/**
-			 * @see java.lang.Object#finalize()
-			 */
-			protected void finalize() throws Throwable {
-				super.finalize();
-				logger.debug(this +" finalized.");
-			}
-		};
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		for (int series = 0; series < seriesNames.length; series ++) {
 			int lastY = (int)(Math.random() * 1000 + 1000);
 			for (int i = 0; i < categories.length; i++) {
