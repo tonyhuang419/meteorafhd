@@ -1,11 +1,15 @@
 package com.exam.action.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.struts2.config.ParentPackage;
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;
 
 import com.exam.action.BaseAction;
 import com.googlecode.jsonplugin.JSONResult;
+import com.opensymphony.xwork2.ActionContext;
 
 @ParentPackage(value = "json-default")
 @Results( {
@@ -15,22 +19,33 @@ import com.googlecode.jsonplugin.JSONResult;
 public class AjaxAction extends BaseAction{
 	private static final long serialVersionUID = 1445318978316461142L;
 
-	private String info; 
+	private Object  jsonData; 
 	
 	public String ajax(){
 		return "ajax";
 	}
 	
 	public String doAjax(){
+		String info = ((String[])ActionContext.getContext().getParameters().get("info"))[0];
+		jsonData = info;
+		return "success";
+	}
+	
+	public String doAjaxArray(){
+		String info = ((String[])ActionContext.getContext().getParameters().get("info"))[0];
+		jsonData = new String[]{info,info};
 		return "success";
 	}
 
-	public String getInfo() {
-		return info;
+	public Object getJsonData() {
+		return jsonData;
 	}
 
-	public void setInfo(String info) {
-		this.info = info;
+	public void setJsonData(Object jsonData) {
+		this.jsonData = jsonData;
 	}
+
+
+
 	
 }
