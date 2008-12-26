@@ -50,6 +50,14 @@ public class CewolfAction extends CewolfAdapter {
 		return dataset;
 	}
 	
+
+	/**
+	 * Returns a unique ID for this DatasetProducer
+	 */
+	public String getProducerId() {
+		return "PageViewCountData DatasetProducer";
+	}
+	
 	/**
 	 * Returns a link target for a special data item.
 	 */

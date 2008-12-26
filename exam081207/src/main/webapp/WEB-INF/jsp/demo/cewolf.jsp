@@ -1,4 +1,4 @@
-<%@page contentType="text/html"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@taglib uri='/WEB-INF/tlds/cewolf.tld' prefix='cewolf' %>
 <html>
 <body>
@@ -8,10 +8,10 @@
 <jsp:useBean id="pageViews" class="com.exam.action.demo.CewolfAction"/>
 <cewolf:chart 
     id="line" 
-    title="Page View Statistics" 
+    title="标题" 
     type="line" 
     xaxislabel="Page" 
-    yaxislabel="Views">
+    yaxislabel="Y坐标">
     <cewolf:data>
         <cewolf:producer id="pageViews"/>
     </cewolf:data>

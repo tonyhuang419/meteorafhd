@@ -45,7 +45,7 @@ public class ChartAction extends BaseAction{
 		// set my chart variable
 		chart =
 			new JFreeChart(
-					"Moderation Function",
+					"Moderation Function 标题",
 					JFreeChart.DEFAULT_TITLE_FONT,
 					new XYPlot(
 							xyDataset,

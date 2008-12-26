@@ -33,13 +33,6 @@ public abstract class CewolfAdapter extends BaseAction implements DatasetProduce
 		return (System.currentTimeMillis() - since.getTime())  > 5000;
 	}
 
-	/**
-	 * Returns a unique ID for this DatasetProducer
-	 */
-	public String getProducerId() {
-		return "PageViewCountData DatasetProducer";
-	}
-
 
 	/**
 	 * @see java.lang.Object#finalize()
