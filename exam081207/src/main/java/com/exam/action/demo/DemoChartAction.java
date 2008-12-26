@@ -1,4 +1,4 @@
-package com.exam.action.test;
+package com.exam.action.demo;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -25,13 +25,13 @@ import org.jfree.data.xy.XYSeriesCollection;
 import com.exam.action.BaseAction;
 
 @Results( {
-	@Result(name = "freechart", type=ChartResult.class , value = "",params={"width","800","height","600"})
+	@Result(name = "demoChart", type=ChartResult.class , value = "",params={"width","800","height","600"})
 })
-public class ChartTestAction extends BaseAction{
+public class DemoChartAction extends BaseAction{
 	private static final long serialVersionUID = -9009128063312892982L;
 	private JFreeChart chart;
 
-	public String test1()  {
+	public String demoChartOne()  {
 		// chart creation logic...
 		XYSeries dataSeries = new XYSeries(new Integer(1)); //pass a key for this serie
 		for (int i = 0; i <= 100; i++) {
@@ -55,11 +55,11 @@ public class ChartTestAction extends BaseAction{
 							false);
 		chart.setBackgroundPaint(java.awt.Color.white);
 
-		return "freechart";
+		return "demoChart";
 	}
 
 
-	public String test2(){
+	public String demoChartTwo(){
 
 		chart = ChartFactory.createBarChart(
 				"Bar Chart Demo", //图形标题名称
@@ -97,7 +97,7 @@ public class ChartTestAction extends BaseAction{
 //		ChartFrame chartFrame = new ChartFrame("公司人员信息", chart);
 //		chartFrame.pack();
 //		chartFrame.setVisible(true); 
-		return "freechart";
+		return "demoChart";
 	}
 	
 	

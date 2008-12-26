@@ -1,4 +1,4 @@
-package com.exam.action.test;
+package com.exam.action.demo;
 
 
 import org.apache.struts2.ServletActionContext;
@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.exam.action.BaseAction;
-import com.exam.service.ICommonService;
 import com.exam.service.IQueryService;
 import com.exam.utils.PageInfo;
 
 @Results( {
-	@Result(name = "ff", value = "/WEB-INF/jsp/test/atest.jsp")
+	@Result(name = "demoPage", value = "/WEB-INF/jsp/demo/demoPage.jsp")
 })
-public class ATestAction extends BaseAction{
+public class DemoPageAction extends BaseAction{
 	private static final long serialVersionUID = -6929869573044077058L;
 
 
@@ -23,17 +22,13 @@ public class ATestAction extends BaseAction{
 	@Qualifier("queryService")
 	private IQueryService queryService;
 
-	@Autowired
-	@Qualifier("commonService")
-	private ICommonService commonService;
-	
 	private PageInfo info;
 
-	public String ff(){
+	public String demoPage(){
 		ServletActionContext.getRequest ().getParameter("pageNo");
 		info = queryService.listQueryResult(" from Book  ", info);
 //		commonService.execModifyProcedure();
-		return "ff";
+		return "demoPage";
 	}
 
 	public PageInfo getInfo() {
@@ -42,14 +37,6 @@ public class ATestAction extends BaseAction{
 
 	public void setInfo(PageInfo info) {
 		this.info = info;
-	}
-
-	public IQueryService getQueryService() {
-		return queryService;
-	}
-
-	public void setQueryService(IQueryService queryService) {
-		this.queryService = queryService;
 	}
 
 

@@ -1,4 +1,4 @@
-package com.exam.action.test;
+package com.exam.action.demo;
 
 import org.apache.commons.lang.math.RandomUtils;
 
