@@ -1,8 +1,5 @@
 package com.exam.action.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.struts2.config.ParentPackage;
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;

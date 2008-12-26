@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/commons/jsp/base.jsp"%>
 <html> 
+<head>
+<title>Ajax</title>
+</head>
 <body>
 <br/>
 <br/>
@@ -29,7 +32,7 @@ function doGetFeedBackArray(obj){
 		 if(jsonObj!=null && jsonObj.jsonData !=null ){
 			var infoArray=""; 
 			for(var i=0;i<jsonObj.jsonData.length;i++){
-				infoArray = infoArray + "   " +jsonObj.jsonData[i];
+				infoArray = infoArray +"   "+ i+":" +jsonObj.jsonData[i];
 			}
 		 }
 		 $("infoArray").innerHTML=infoArray;
@@ -40,7 +43,6 @@ function doGetFeedBackArray(obj){
 </script>
 
 
-<s:debug></s:debug>
 </body> 
 
 </html> 

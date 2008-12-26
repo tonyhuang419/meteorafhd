@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/commons/jsp/base.jsp"%>
 <html> 
 <body>
@@ -12,6 +12,5 @@
 	<s:textarea label="邮件内容" name="smm.text" cols="50"></s:textarea>
 	<s:submit label="发送"></s:submit>
 </s:form>
-    <s:debug></s:debug>
 </body> 
 </html> 

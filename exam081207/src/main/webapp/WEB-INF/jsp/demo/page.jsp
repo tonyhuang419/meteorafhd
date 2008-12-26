@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/commons/jsp/base.jsp"%>
 <html> 
 <body>
@@ -12,6 +12,5 @@
         --%>
     <pages:pages beanName="info"  styleClass="xx" baseAction="demo/page.action?method=demoPage"/> 
     
-    <s:debug></s:debug>
 </body> 
 </html> 

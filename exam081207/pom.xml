@@ -182,5 +182,32 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.8.0</version>
 		</dependency>
+	<dependency>
+		<groupId>cewolf</groupId>
+		<artifactId>cewolf</artifactId>
+		<version>1.0</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cewolf-1.0.jar</systemPath>
+    </dependency>
+		<dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-dom</artifactId>
+		<version>1.6-1</version>
+	</dependency>
+	<dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-awt-util</artifactId>
+		<version>1.6-1</version>
+	</dependency>
+		<dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-svg-dom</artifactId>
+		<version>1.6-1</version>
+	</dependency> 
+		<dependency>
+		<groupId>batik</groupId>
+		<artifactId>batik-svggen</artifactId>
+		<version>1.6-1</version>
+	</dependency>
 	</dependencies>
 </project>

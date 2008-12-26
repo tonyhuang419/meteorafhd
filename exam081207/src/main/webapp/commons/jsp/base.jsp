@@ -6,4 +6,4 @@
 <script src="/exam081207/commons/scripts/validator.js" type="text/javascript"></script>
 <link href="/exam081207/commons/styles/style.css" type="text/css" rel="stylesheet">
 <%@ taglib prefix="pages" uri="/WEB-INF/tlds/page.tld"%>
-<%@ taglib prefix="s" 	uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
