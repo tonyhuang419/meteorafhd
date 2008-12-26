@@ -5,7 +5,7 @@
 <h2>Hello cewolf</h2>
 
 <HR>
-<jsp:useBean id="pageViews" class="com.exam.action.demo.CewolfAction"/>
+<jsp:useBean id="pageViews" class="com.exam.action.demo.CewolfOneAction"/>
 <cewolf:chart 
     id="line" 
     title="标题" 

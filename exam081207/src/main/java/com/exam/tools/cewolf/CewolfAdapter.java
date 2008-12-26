@@ -29,8 +29,9 @@ public abstract class CewolfAdapter extends BaseAction implements DatasetProduce
 	 * producer can influence Cewolf's caching behaviour the way it wants to.
 	 */
 	public boolean hasExpired(Map params, Date since) {		
-		logger.debug(getClass().getName() + "hasExpired()");
-		return (System.currentTimeMillis() - since.getTime())  > 5000;
+//		logger.debug(getClass().getName() + "hasExpired()");
+//		return (System.currentTimeMillis() - since.getTime())  > 5000;
+		return false;
 	}
 
 

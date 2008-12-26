@@ -5,7 +5,9 @@ import java.util.Map;
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;
 import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.time.Month;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 
 import com.exam.tools.cewolf.CewolfAdapter;
 
@@ -13,12 +15,11 @@ import de.laures.cewolf.DatasetProduceException;
 
 
 @Results( {
-	@Result(name = "cewolfDemo", value = "/WEB-INF/jsp/demo/cewolf.jsp")
+	@Result(name = "cewolfDemo", value = "/WEB-INF/jsp/demo/cewolfTwo.jsp")
 })
-public class CewolfAction extends CewolfAdapter {
+public class CewolfTwoAction extends CewolfAdapter {
 	private static final long serialVersionUID = 3221028806051525125L;
-	
-	private final String[] categories =    {"mon", "tue", "wen", "thu", "fri", "sat", "sun"};
+
 	private final String[] seriesNames =    {"cewolfset.jsp", "tutorial.jsp", "testpage.jsp", "performancetest.jsp"};
 
 	public String cewolfDemo(){
@@ -27,44 +28,29 @@ public class CewolfAction extends CewolfAdapter {
 
 	@Override
 	public Object produceDataset(Map params) throws DatasetProduceException {
-		logger.debug("producing data.");
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset(){
-			private static final long serialVersionUID = -402341052805737820L;
-
-			/**
-			 * @see java.lang.Object#finalize()
-			 */
-			protected void finalize() throws Throwable {
-				super.finalize();
-				logger.debug(this +" finalized.");
-			}
-		};
-		for (int series = 0; series < seriesNames.length; series ++) {
-			int lastY = (int)(Math.random() * 1000 + 1000);
-			for (int i = 0; i < categories.length; i++) {
-				final int y = lastY + (int)(Math.random() * 200 - 100);
-				lastY = y;
-				dataset.addValue(y, seriesNames[series], categories[i]);
-			}
-		}
-		return dataset;
+		TimeSeries ts = new TimeSeries("Cewolf Release Schedule", Month.class);
+		ts.add(new Month(7, 2002), 0.1);
+		ts.add(new Month(8, 2002), 0.4);
+		ts.add(new Month(9, 2002), 0.9);
+		ts.add(new Month(10, 2002), 1.0);
+		return new TimeSeriesCollection(ts);
 	}
-	
+
 
 	/**
 	 * Returns a unique ID for this DatasetProducer
 	 */
 	public String getProducerId() {
-		return "PageViewCountData DatasetProducer";
+		return "chartTwo";
 	}
-	
+
 	/**
 	 * Returns a link target for a special data item.
 	 */
 	public String generateLink(Object data, int series, Object category) {
 		return seriesNames[series];
 	}
-	
+
 	/**
 	 * @see org.jfree.chart.tooltips.CategoryToolTipGenerator#generateToolTip(CategoryDataset, int, int)
 	 */
