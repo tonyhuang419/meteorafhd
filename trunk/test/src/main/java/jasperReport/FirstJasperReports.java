@@ -16,10 +16,13 @@ public class FirstJasperReports {
 	static String fileName="HelloWorld.jrxml";
 	public static void main(String[] args)throws Exception{
 		long startTime=System.currentTimeMillis();
+		
 		//将报表的定义文件HelloWorld.jrxml编译成HelloWorld.jasper文件
 		String jasperFile=JasperCompileManager.compileReportToFile(fileName);
+		
 		//向HelloWorld.jasper文件中填充数据，这一步将生产出HelloWorld .jrprint文件
 		String jrprintFile=JasperFillManager.fillReportToFile(jasperFile,null,new JREmptyDataSource());
+		
 		//将.jrprint文件转换成HTML格式
 		JasperExportManager.exportReportToHtmlFile(jrprintFile);
 		//将.jrprint文件转换成PDF格式
