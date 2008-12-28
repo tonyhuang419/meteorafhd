@@ -176,5 +176,12 @@
 		<artifactId>poi</artifactId>
 		<version>3.0.2-FINAL</version>
 	</dependency>
+	<dependency>
+		<groupId>itext</groupId>
+		<artifactId>itext</artifactId>
+		<version>1.0</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/iTextAsian.jar</systemPath>
+    </dependency>
 </dependencies>
 </project>
