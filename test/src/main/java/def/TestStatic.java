@@ -1,5 +1,7 @@
 package def;
 
+import org.springframework.core.SpringVersion;
+
 
 
 public class TestStatic {
@@ -17,9 +19,11 @@ public class TestStatic {
 	}
 
 	public static void main(String[] args) {
+		System.out.println(new TestStatic().getClass().getPackage().getName());
 		TestStatic n = new TestStatic();
 		System.out.println(n.getA());;
 		n.setA(11);
-		System.out.println(n.getA());;	
+		System.out.println(n.getA());
+		System.out.println(SpringVersion.getVersion());
 	}
 }
