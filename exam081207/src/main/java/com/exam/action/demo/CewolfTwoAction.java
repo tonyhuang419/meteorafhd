@@ -26,7 +26,6 @@ public class CewolfTwoAction extends CewolfAdapter {
 		return "cewolfDemo";
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Object produceDataset(Map params) throws DatasetProduceException {
 		TimeSeries ts = new TimeSeries("Cewolf Release Schedule", Month.class);

@@ -25,7 +25,6 @@ public class CewolfOneAction extends CewolfAdapter {
 		return "cewolfDemo";
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Object produceDataset(Map params) throws DatasetProduceException {
 		logger.debug("producing data.");
