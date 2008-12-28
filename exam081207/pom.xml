@@ -182,32 +182,54 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.8.0</version>
 		</dependency>
-	<dependency>
-		<groupId>cewolf</groupId>
-		<artifactId>cewolf</artifactId>
-		<version>1.0</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cewolf-1.0.jar</systemPath>
-    </dependency>
 		<dependency>
-		<groupId>batik</groupId>
-		<artifactId>batik-dom</artifactId>
-		<version>1.6-1</version>
-	</dependency>
-	<dependency>
-		<groupId>batik</groupId>
-		<artifactId>batik-awt-util</artifactId>
-		<version>1.6-1</version>
-	</dependency>
+			<groupId>cewolf</groupId>
+			<artifactId>cewolf</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cewolf-1.0.jar</systemPath>
+	    </dependency>
+			<dependency>
+			<groupId>batik</groupId>
+			<artifactId>batik-dom</artifactId>
+			<version>1.6-1</version>
+		</dependency>
 		<dependency>
-		<groupId>batik</groupId>
-		<artifactId>batik-svg-dom</artifactId>
-		<version>1.6-1</version>
-	</dependency> 
+			<groupId>batik</groupId>
+			<artifactId>batik-awt-util</artifactId>
+			<version>1.6-1</version>
+		</dependency>
+			<dependency>
+			<groupId>batik</groupId>
+			<artifactId>batik-svg-dom</artifactId>
+			<version>1.6-1</version>
+		</dependency> 
+			<dependency>
+			<groupId>batik</groupId>
+			<artifactId>batik-svggen</artifactId>
+			<version>1.6-1</version>
+		</dependency>
 		<dependency>
-		<groupId>batik</groupId>
-		<artifactId>batik-svggen</artifactId>
-		<version>1.6-1</version>
-	</dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-jasperreports-plugin</artifactId>
+			<version>2.0.14</version>
+		</dependency>
+			<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.0.2-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>itext</groupId>
+			<artifactId>itext</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/iTextAsian.jar</systemPath>
+	    </dependency>
 	</dependencies>
 </project>

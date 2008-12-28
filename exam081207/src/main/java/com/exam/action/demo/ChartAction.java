@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.apache.struts2.config.ParentPackage;
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;
 import org.apache.struts2.dispatcher.ChartResult;
@@ -24,6 +25,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import com.exam.action.BaseAction;
 
+@ParentPackage(value = "jfreechart-default")
 @Results( {
 	@Result(name = "demoChart", type=ChartResult.class , value = "",params={"width","800","height","600"})
 })
