@@ -11,7 +11,7 @@ import com.exam.action.BaseAction;
 @ParentPackage(value = "jasperreports-default")
 @Results( {
 	@Result(name = "success", type=JasperReportsResult.class , value = "",
-			params={"location","/WEB-INF/jasperReport/HelloWorld.jasper","dataSource","dataSource"})
+			params={"location","HelloWorld.jasper","dataSource","dataSource"})
 })
 public class JasperReportAction extends BaseAction{
 	private static final long serialVersionUID = 3629590860713480238L;

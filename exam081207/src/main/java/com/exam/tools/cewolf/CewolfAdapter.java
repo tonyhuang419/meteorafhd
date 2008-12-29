@@ -31,7 +31,7 @@ public abstract class CewolfAdapter extends BaseAction implements DatasetProduce
 	public boolean hasExpired(Map params, Date since) {		
 //		logger.debug(getClass().getName() + "hasExpired()");
 //		return (System.currentTimeMillis() - since.getTime())  > 5000;
-		return false;
+		return true;
 	}
 
 
