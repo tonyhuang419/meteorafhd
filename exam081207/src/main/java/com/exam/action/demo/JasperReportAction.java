@@ -10,7 +10,7 @@ import com.exam.action.BaseAction;
 
 @ParentPackage(value = "jasperreports-default")
 @Results( {
-	@Result(name = "success", type=JasperReportsResult.class , value = "",
+	@Result(name = "success", type=JasperReportsResult.class , value = "", 
 			params={"location","HelloWorld.jasper","dataSource","dataSource"})
 })
 public class JasperReportAction extends BaseAction{

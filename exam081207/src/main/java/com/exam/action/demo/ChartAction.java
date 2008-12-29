@@ -27,7 +27,8 @@ import com.exam.action.BaseAction;
 
 @ParentPackage(value = "jfreechart-default")
 @Results( {
-	@Result(name = "demoChart", type=ChartResult.class , value = "",params={"width","800","height","600"})
+	@Result(name = "demoChart", type=ChartResult.class , value = "",
+			params={"width","800","height","600"})
 })
 public class ChartAction extends BaseAction{
 	private static final long serialVersionUID = -9009128063312892982L;
