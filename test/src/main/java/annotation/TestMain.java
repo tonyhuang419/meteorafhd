@@ -22,10 +22,11 @@ public class TestMain {
 			MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);       
 			System.out.println(annotation.hello());       
 			System.out.println(annotation.world());       
+			System.out.println(annotation.fhd()); 
 		}       
 
 		Annotation[] annotations = method.getAnnotations();       
-		for(     Annotation    annotation   :    annotations   ){       
+		for( Annotation annotation : annotations   ){       
 			//打印出这样的结果：com.yahaitt.annotation.MyAnnotation       
 			System.out.println(annotation.annotationType().getName());       
 
