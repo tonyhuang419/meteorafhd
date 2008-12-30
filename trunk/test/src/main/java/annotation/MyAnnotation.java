@@ -8,4 +8,5 @@ public @interface MyAnnotation {
 
 	String hello() default "ttitfly";   
 	String world();   
+	String fhd() default "fhd";   
 }
