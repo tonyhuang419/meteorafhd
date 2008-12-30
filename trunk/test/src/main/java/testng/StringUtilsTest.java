@@ -1,9 +1,10 @@
-package testng;
+package testNG;
 
 import org.apache.commons.lang.StringUtils;
 import org.testng.annotations.Test;
 
 public class StringUtilsTest {
+	
 	@Test
 	public void isEmpty()
 	{
