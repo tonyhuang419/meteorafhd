@@ -5,41 +5,40 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.exam.utils.PageInfo;
 
-public  interface ICommonService{
+public interface ICommonService {
 
-	public  Session getSession() ;
+	public Session getSession();
 
-	public  void save(Object paramObject);
+	public Object uniqueResult(String hql, Object... args);
 
-	public  void saveOrUpdate(Object paramObject);
+	public Object load(Class c, Serializable id);
 
-	@SuppressWarnings("unchecked")
-	public  List list(String hql, Object... args);
+	public void save(Object paramObject);
 
-	@SuppressWarnings("unchecked")
-	public  List list(String hql, int paramInt1, int paramInt2, Object... args);
+	public void saveOrUpdate(Object paramObject);
 
-	@SuppressWarnings("unchecked")
-	public  Object load(Class c, Serializable id);
+	public void update(Object paramObject);
 
-	public  void delete(Object paramObject);
+	public void delete(Object paramObject);
 
-	public  void update(Object paramObject);
+	public List listHql(String quertHql, String orderHql, Object... args);
 
-	public  Object uniqueResult(String hql, Object... args);
+	public List listHql(String hql, int start, int rowNum, Object... args);
 
-	@SuppressWarnings("unchecked")
-	public  List listSQL(String sql, Object... args);
+	public List listSQL(String querySql, String orderSql, Object... args);
 
-	@SuppressWarnings("unchecked")
-	public  List listSQL(String sql, int start, int rowNum, Object... args);
-	
-	public Number executeStat(String hql, Object... args);
-	
+	public List listSQL(String sql, int start, int rowNum, Object... args);
+
+	public PageInfo listQueryResult(String quertHql, String orderHql , PageInfo pageinfo, Object... args);
+
+	public PageInfo listQueryResultBySql(String querySql, String orderSql ,  PageInfo pi, Object... args);
+
+	@Deprecated
 	public void execModifyProcedure();
-	
+
+	@Deprecated
 	public void execQueryProcedure();
-	
-	
+
 }

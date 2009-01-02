@@ -1,7 +1,10 @@
 package com.exam.utils;
 
+import java.text.MessageFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringUtils;
 
 public class SqlUtils {
 	/**
@@ -58,5 +61,41 @@ public class SqlUtils {
 			lastOrderIndex = lowerSelectSql.length();
 		}
 		return selectSql.substring(fromIndex,lastOrderIndex);
+	}
+
+	/**
+	 * 拼接querySql 和 orderSQL
+	 */
+	public static String combineSQL(String querySql , String orderSql){
+		Pattern p = Pattern.compile("order\\sby",Pattern.CASE_INSENSITIVE);
+		Matcher mQuerySql = p.matcher(querySql);
+		Matcher mOrderSql = p.matcher(orderSql);
+		boolean queryHasOrderBy = mQuerySql.find();
+		boolean orderHasOrderBy = mOrderSql.find();
+		
+		//orderSql为空 || orderSql不存在order by
+		if(StringUtils.isBlank(orderSql) ||  !orderHasOrderBy ){
+			return querySql;
+		}
+		else{
+			//query 不存在order by
+			if( !queryHasOrderBy){
+				return querySql + orderSql;
+			}
+			else{
+				//去除order语句的order by
+				mOrderSql = p.matcher(orderSql);
+				orderSql = mOrderSql.replaceAll("");
+				return querySql + "," + orderSql;
+			}
+		}
+	}
+
+	public static void main(String[] args){
+		System.out.println(SqlUtils.combineSQL("select * from a ", "   "));
+		System.out.println(SqlUtils.combineSQL("select * from a ", " aa"));
+		System.out.println(SqlUtils.combineSQL("select * from a order by aa ", ""));
+		System.out.println(SqlUtils.combineSQL("select * from a ", "order by aa"));
+		System.out.println(SqlUtils.combineSQL("select * from a order by aaa", "order by aa"));
 	}
 }

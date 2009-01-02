@@ -92,7 +92,7 @@ public class TestFramework extends ExamBaseTest {
 	 *   select *  from   `book`;
 	 */
 	public void testView() {
-		List<VBook> bList = commonService.list("from VBook ");
+		List<VBook> bList = commonService.listHql("from VBook " , "");
 		System.out.print(  bList.size() );
 	}
 

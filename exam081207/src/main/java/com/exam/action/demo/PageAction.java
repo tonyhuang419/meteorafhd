@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.exam.action.BaseAction;
-import com.exam.service.IQueryService;
+import com.exam.service.ICommonService;
 import com.exam.utils.PageInfo;
 
 @Results( {
@@ -19,14 +19,14 @@ public class PageAction extends BaseAction{
 
 
 	@Autowired
-	@Qualifier("queryService")
-	private IQueryService queryService;
+	@Qualifier("commonService")
+	private ICommonService commonService;
 
 	private PageInfo info;
 
 	public String demoPage(){
 		ServletActionContext.getRequest ().getParameter("pageNo");
-		info = queryService.listQueryResult(" from Book  ", info);
+		info = commonService.listQueryResult(" from Book  " ,"", info);
 //		commonService.execModifyProcedure();
 		return "demoPage";
 	}

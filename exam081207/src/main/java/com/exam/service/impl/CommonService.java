@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.service.ICommonService;
+import com.exam.utils.PageInfo;
+import com.exam.utils.SqlUtils;
 
 @Service("commonService")
 @Transactional
@@ -31,24 +33,48 @@ public class CommonService implements ICommonService {
 		return this.sessionFactory.getCurrentSession();
 	}
 
+	public Object load(Class c, Serializable id){
+		return getSession().load(c, id);
+	}
+
+	public void save(Object obj){
+		getSession().save(obj);
+	}
+
+	public void saveOrUpdate(Object obj){
+		getSession().saveOrUpdate(obj);
+	}
+	
+	
 	public void delete(Object obj){
 		if (obj != null){
 			getSession().delete(obj);
 		}
 	}
 
+	public void update(Object o){
+		getSession().update(o);
+	}
 
-	@SuppressWarnings("unchecked")
-	public List list(String hql, Object... args){
+	public Object uniqueResult(String hql, Object... args){
 		Query q = getSession().createQuery(hql);
+		for (int i = 0; i < args.length; ++i){
+			q.setParameter(i, args[i]);
+		}
+		q.setMaxResults(1);
+		return q.uniqueResult();
+	}
+
+	public List listHql(String queryHql,String orderHql , Object... args){
+		queryHql = SqlUtils.combineSQL(queryHql, orderHql);
+		Query q = getSession().createQuery(queryHql);
 		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
 		}
 		return q.list();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List list(String hql, int start, int rowNum, Object... args){
+	public List listHql(String hql, int start, int rowNum, Object... args){
 		Query q = getSession().createQuery(hql);
 		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
@@ -62,42 +88,16 @@ public class CommonService implements ICommonService {
 		return q.list();
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object load(Class c, Serializable id){
-		return getSession().load(c, id);
-	}
 
-	public void save(Object obj){
-		getSession().save(obj);
-	}
-
-	public void saveOrUpdate(Object obj){
-		getSession().saveOrUpdate(obj);
-	}
-
-	public Object uniqueResult(String hql, Object... args){
-		Query q = getSession().createQuery(hql);
-		for (int i = 0; i < args.length; ++i){
-			q.setParameter(i, args[i]);
-		}
-		q.setMaxResults(1);
-		return q.uniqueResult();
-	}
-
-	public void update(Object o){
-		getSession().update(o);
-	}
-
-	@SuppressWarnings("unchecked")
-	public List listSQL(String sql, Object... args){
-		Query q = getSession().createSQLQuery(sql);
+	public List listSQL(String querySql,String orderSql,  Object... args){
+		querySql = SqlUtils.combineSQL(querySql, orderSql);
+		Query q = getSession().createSQLQuery(querySql);
 		for (int i = 0; i < args.length; i++) {
 			q.setParameter(i, args[i]);
 		}
 		return q.list();
 	}
 
-	@SuppressWarnings("unchecked")
 	public List listSQL(String sql, int start, int rowNum, Object... args){
 		Query q = getSession().createSQLQuery(sql);
 		for (int i = 0; i < args.length; i++) {
@@ -110,10 +110,34 @@ public class CommonService implements ICommonService {
 		return q.list();	
 	}
 
-
-	public Number executeStat(String hql, Object... args){
-		return ((Number)uniqueResult(hql, args));
+	
+	
+	public PageInfo listQueryResult(String queryHql, String orderHql , PageInfo pi, Object... args){
+		queryHql = SqlUtils.combineSQL(queryHql, orderHql);
+		if (pi == null){
+			pi = new PageInfo();
+		}
+		pi.setTotal( Integer.valueOf(this.uniqueResult(SqlUtils.getCountSql(queryHql), args).toString()));
+		pi.setData(this.listHql(queryHql, pi.getStartOfPage(), pi.getPageSize(), args));
+		return pi;
 	}
+
+	
+	public PageInfo listQueryResultBySql(String querySql, String orderSql ,  PageInfo pi, Object... args){
+		querySql = SqlUtils.combineSQL(querySql, orderSql);
+		if (pi == null) {
+			pi = new PageInfo();
+		}
+		pi.setTotal( Integer.valueOf(this.uniqueResult(SqlUtils.getCountSql(querySql), args).toString()));
+		pi.setData(this.listSQL(querySql, pi.getStartOfPage(), pi.getPageSize(), args));
+		return pi;
+	}
+	
+	
+	
+	
+	
+	
 
 	@Deprecated
 	public void execModifyProcedure() {
