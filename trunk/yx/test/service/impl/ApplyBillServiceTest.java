@@ -49,7 +49,7 @@ public class ApplyBillServiceTest extends YingXiaoBaseTest {
 
 
 	public  void  testDelHasSuredInvoice(){
-		Long invoiceId = 4261L;  //2442 3572 3390 3384W 4292
+		Long invoiceId = 4059L;  //2442 3572 3390 3384W 4292
 		logger.info("======Before=======");
 		printInfo(invoiceId);
 		ProcessResult r = applyBillService.delHasSuredInvoice(invoiceId);
