@@ -237,5 +237,10 @@
 			<version>5.8</version>
 			<classifier>jdk15</classifier>
 		</dependency>
+		<dependency>
+			<groupId>org.acegisecurity</groupId>
+			<artifactId>acegi-security</artifactId>
+			<version>1.0.7</version>
+		</dependency>
 	</dependencies>
 </project>
