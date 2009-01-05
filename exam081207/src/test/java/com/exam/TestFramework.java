@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.exam.entity.VBook;
+import com.exam.entity.Book;
 import com.exam.service.ICommonService;
+import com.exam.service.ITestService;
 
 
 public class TestFramework extends ExamBaseTest {
@@ -15,12 +16,15 @@ public class TestFramework extends ExamBaseTest {
 	@Qualifier("commonService")
 	private ICommonService 		commonService;
 
+	@Autowired
+	@Qualifier("testService")
+	private ITestService 		testService;
 
 	@Override
 	protected void prepareTestInstance() throws Exception {
 		super.setAutowireMode(AUTOWIRE_BY_NAME);
 		super.prepareTestInstance();
-		super.setDefaultRollback(true);
+		super.setDefaultRollback(false);
 	}
 
 
@@ -91,10 +95,10 @@ public class TestFramework extends ExamBaseTest {
 	 * CREATE  VIEW `vbook` AS 
 	 *   select *  from   `book`;
 	 */
-	public void testView() {
-		List<VBook> bList = commonService.listHql("from VBook " , "");
-		System.out.print(  bList.size() );
-	}
+	//	public void testView() {
+	//		List<VBook> bList = commonService.listHql("from VBook " , "");
+	//		System.out.print(  bList.size() );
+	//	}
 
 
 	/*
@@ -104,12 +108,21 @@ public class TestFramework extends ExamBaseTest {
 	 *	update BOOK b set b.title = bookTitle;
 	 *	end;
 	 */
-	public void testProcedure(){
-		commonService.execModifyProcedure();
-	}
+	//	public void testProcedure(){
+	//		commonService.execModifyProcedure();
+	//	}
+	//
+	//	public void testQueryProcedure(){
+	//		commonService.execQueryProcedure();
+	//	}
 
-	public void testQueryProcedure(){
-		commonService.execQueryProcedure();
+	public void testDelete(){
+		try{
+			testService.testTranscation();
+		}
+		catch( Exception e ){
+			System.out.println("exception");
+		}
 	}
 
 }
