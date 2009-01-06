@@ -116,13 +116,17 @@ public class TestFramework extends ExamBaseTest {
 	//		commonService.execQueryProcedure();
 	//	}
 
-	public void testDelete(){
-		try{
-			testService.testTranscation();
-		}
-		catch( Exception e ){
-			System.out.println("exception");
-		}
+	//	public void testDelete(){
+	//		try{
+	//			testService.testTranscation();
+	//		}
+	//		catch( Exception e ){
+	//			System.out.println("exception");
+	//		}
+	//	}
+
+	public void testSave(){
+		testService.testSave();
 	}
 
 }

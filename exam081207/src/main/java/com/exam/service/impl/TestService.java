@@ -35,4 +35,14 @@ public class TestService implements ITestService {
 			commonService.delete(b);
 		}
 	}
+	
+	public void testSave(){
+		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
+		Book b = new Book();
+		b.setTitle("11111111");
+		commonService.save(b);
+		throw new RuntimeException();
+//		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
+	}
+	
 }
