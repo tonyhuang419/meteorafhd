@@ -9,7 +9,6 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
 	<context:component-scan base-package="*" />
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 
 	<!-- SessionFactory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -149,7 +148,7 @@
 		<!-- UserCache property will activate the cache, it is not 
 		mandatory but increases performance by cacheing the user 
 		details retrieved from user-base -->
-	<!-- 	<property name="userCache" ref="userCache"/>-->	
+		<property name="userCache" ref="userCache"/>
 	</bean>
 		
 	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
@@ -161,19 +160,16 @@
 		</property>
 	</bean>
 	
-	<!-- 	<bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
-		 <property name="cache">
-					<bean
-						class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-						<property name="cacheManager">
-							<bean
-								class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
-						</property>
-						<property name="cacheName" value="userCache" />
-					</bean>
-				</property> 
-				<property name="cache"><ref local="daoAuthenticationProvider"/></property>
-	</bean>-->	
+	<bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+	 	<property name="cache">
+				<bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+					<property name="cacheManager">
+						<bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+					</property>
+					<property name="cacheName" value="userCache" />
+				</bean>
+		</property> 
+	</bean>
 	
 	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->
 	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
