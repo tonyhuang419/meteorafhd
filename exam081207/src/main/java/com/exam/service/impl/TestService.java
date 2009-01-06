@@ -1,5 +1,6 @@
 package com.exam.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,15 @@ public class TestService implements ITestService {
 		commonService.save(b);
 		throw new RuntimeException();
 //		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
+	}
+	
+	public void testSaveList(){
+		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
+		List bList = new ArrayList<Book>();
+		bList.add(new Book());
+		bList.add(new Book());
+		commonService.save(bList);
+		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
 	}
 	
 }

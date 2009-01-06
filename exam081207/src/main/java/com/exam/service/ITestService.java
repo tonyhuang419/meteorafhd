@@ -6,5 +6,7 @@ public interface ITestService {
 	public void  testTranscation();
 	
 	public void testSave();
+	
+	public void testSaveList();
 
 }

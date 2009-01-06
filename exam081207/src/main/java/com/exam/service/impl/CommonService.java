@@ -37,24 +37,53 @@ public class CommonService implements ICommonService {
 		return getSession().load(c, id);
 	}
 
+	public Object get(Class c, Serializable id){
+		return getSession().get(c, id);
+	}
+	
 	public void save(Object obj){
 		getSession().save(obj);
+	}
+	
+	public void save(List<Object> list){
+		for(Object obj:list){
+			this.save(obj);
+		}
 	}
 
 	public void saveOrUpdate(Object obj){
 		getSession().saveOrUpdate(obj);
 	}
 	
+	public void saveOrUpdate(List<Object> list){
+		for(Object obj:list){
+			this.saveOrUpdate(obj);
+		}
+	}
+	
+	public void update(Object obj){
+		getSession().update(obj);
+	}
+	
+	public void update(List<Object> list){
+		for(Object obj:list){
+			this.update(obj);
+		}
+	}
 	
 	public void delete(Object obj){
 		if (obj != null){
 			getSession().delete(obj);
 		}
 	}
-
-	public void update(Object o){
-		getSession().update(o);
+	
+	public void delete(List<Object> list){
+		for(Object obj:list){
+			this.delete(obj);
+		}
 	}
+
+
 
 	public Object uniqueResult(String hql, Object... args){
 		Query q = getSession().createQuery(hql);

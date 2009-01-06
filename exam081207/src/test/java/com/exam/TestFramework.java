@@ -126,7 +126,8 @@ public class TestFramework extends ExamBaseTest {
 	//	}
 
 	public void testSave(){
-		testService.testSave();
+//		testService.testSave();
+		testService.testSaveList();
 	}
 
 }

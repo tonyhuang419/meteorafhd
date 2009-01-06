@@ -14,14 +14,24 @@ public interface ICommonService {
 	public Object uniqueResult(String hql, Object... args);
 
 	public Object load(Class c, Serializable id);
+	
+	public Object get(Class c, Serializable id);
 
-	public void save(Object paramObject);
+	public void save(Object obj);
+	
+	public void save(List<Object> list);
 
-	public void saveOrUpdate(Object paramObject);
+	public void saveOrUpdate(Object obj);
+	
+	public void saveOrUpdate(List<Object> list);
 
-	public void update(Object paramObject);
+	public void update(Object obj);
+	
+	public void update(List<Object> list);
 
-	public void delete(Object paramObject);
+	public void delete(Object obj);
+	
+	public void delete(List<Object> list);
 
 	public List listHql(String quertHql, String orderHql, Object... args);
 
