@@ -1,15 +1,17 @@
 package com.exam;
 
-import java.util.List;
-
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.exam.entity.Book;
 import com.exam.service.ICommonService;
 import com.exam.service.ITestService;
 
 
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@Transactional 
 public class TestFramework extends ExamBaseTest {
 
 	@Autowired
@@ -20,12 +22,6 @@ public class TestFramework extends ExamBaseTest {
 	@Qualifier("testService")
 	private ITestService 		testService;
 
-	@Override
-	protected void prepareTestInstance() throws Exception {
-		super.setAutowireMode(AUTOWIRE_BY_NAME);
-		super.prepareTestInstance();
-		super.setDefaultRollback(false);
-	}
 
 
 	//	@SuppressWarnings("unchecked")
@@ -125,7 +121,8 @@ public class TestFramework extends ExamBaseTest {
 	//		}
 	//	}
 
-	public void testSave(){
+	@Test
+	public void save(){
 //		testService.testSave();
 		testService.testSaveList();
 	}

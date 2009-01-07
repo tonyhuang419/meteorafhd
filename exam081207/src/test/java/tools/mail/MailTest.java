@@ -1,5 +1,6 @@
 package tools.mail;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
@@ -14,15 +15,9 @@ public class MailTest extends ExamBaseTest {
 	@Qualifier("mailTool")
 	private MailTool 		mailTool;
 	
-	@Override
-	protected void prepareTestInstance() throws Exception {
-		super.setAutowireMode(AUTOWIRE_BY_NAME);
-		super.prepareTestInstance();
-		super.setDefaultRollback(false);
-	}
-	
 
-	public void  testSendMail( ) {
+	@Test
+	public void  sendMail( ) {
 		SimpleMailMessage smm = new SimpleMailMessage();
 		smm.setTo("meteorafhd@gmail.com");
 		smm.setSubject("subject");

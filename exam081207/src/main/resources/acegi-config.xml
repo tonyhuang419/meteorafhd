@@ -93,40 +93,39 @@
 	</bean>
 		
 	<bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
-		<property name="userDetailsService" ref="authenticationDao" />
+		<property name="userDetailsService" ref="userDetailsService" />
 		<!-- UserCache property will activate the cache, it is not 
 		mandatory but increases performance by cacheing the user 
 		details retrieved from user-base -->
 		<property name="userCache" ref="userCache"/>
 	</bean>
 		
-	<!--<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
 		<property name="userProperties">
 			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 				   <property name="location" value="/WEB-INF/users.properties" /> 
 			</bean>
 		</property>
-	</bean>-->
-	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		  <property name="driverClassName"><value>oracle.jdbc.driver.OracleDriver</value></property>
-		  <property name="url"><value>jdbc:oracle:thin:@10.25.74.49:1521:baoz</value></property>
-		  <property name="username"><value>test</value></property>
-		  <property name="password"><value>test</value></property>
 	</bean>
-
 	
-	<bean id="authenticationDao" class="org.acegisecurity.acl.basic.jdbc.JdbcExtendedDaoImpl">
-		<property name="dataSource">
-	        <ref bean="dataSource"/>
-	    </property>
-		<property name="objectPropertiesQuery">
-            	<value>SELECT c.username, c.password ,c.isActive FROM Customer c WHERE c.username = ? </value>
-        </property>
+<!--	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--		  <property name="driverClassName"><value>oracle.jdbc.driver.OracleDriver</value></property>-->
+<!--		  <property name="url"><value>jdbc:oracle:thin:@10.25.74.49:1521:baoz</value></property>-->
+<!--		  <property name="username"><value>test</value></property>-->
+<!--		  <property name="password"><value>test</value></property>-->
+<!--	</bean>-->
+
+<!--	<bean id="authenticationDao" class="org.acegisecurity.acl.basic.jdbc.JdbcExtendedDaoImpl">-->
+<!--		<property name="dataSource">-->
+<!--	        <ref bean="dataSource"/>-->
+<!--	    </property>-->
+<!--		<property name="objectPropertiesQuery">-->
+<!--            	<value>SELECT c.username, c.password ,c.isActive FROM Customer c WHERE c.username = ? </value>-->
+<!--        </property>-->
 <!--        <property name="authoritiesByUsernameQuery">-->
 <!--            	<value>SELECT c.id , c.username, c.email , c.street FROM Customer c WHERE c.username = ? </value>-->
 <!--       	 </property>-->
-	</bean>
+<!--	</bean>-->
 	
 	<bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
 	 	<property name="cache">

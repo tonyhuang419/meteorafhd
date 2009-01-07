@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.ExamBaseTest;
 import com.exam.entity.Book;
@@ -14,6 +17,8 @@ import com.exam.entity.Employee;
 import com.exam.entity.Orders;
 import com.exam.service.ICommonService;
 
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@Transactional 
 public class CreateMockDate extends ExamBaseTest {
 
 	@Autowired
@@ -21,14 +26,8 @@ public class CreateMockDate extends ExamBaseTest {
 	private ICommonService 		commonService;
 
 
-	@Override
-	protected void prepareTestInstance() throws Exception {
-		super.setAutowireMode(AUTOWIRE_BY_NAME);
-		super.prepareTestInstance();
-		super.setDefaultRollback(false);
-	}
-	
-	public void testCreateData(){
+	@Test
+	public void createData(){
 		Customer c = this.doGetCustomer();
 		Book b = this.doGetBook();
 		Employee e = this.doGetEmployee();
