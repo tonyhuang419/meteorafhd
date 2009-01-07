@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	
+	<bean id="filterChainProxy"
+		class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+			</value>
+		</property>
+	</bean>
+
+	<bean id="httpSessionContextIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter" />
+
+	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
+		<constructor-arg value="/logoutSuccess.jsp" />
+		<constructor-arg>
+			<list>
+				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureUrl" value="/login.jsp?login_error=1" />
+		<property name="defaultTargetUrl" value="/protected/protected1.jsp" />
+		<property name="filterProcessesUrl" value="/j_acegi_security_check" />
+	</bean>
+
+	<bean id="securityContextHolderAwareRequestFilter" class="org.acegisecurity.wrapper.SecurityContextHolderAwareRequestFilter" />
+	
+	<bean id="anonymousProcessingFilter" class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key" value="changeThis" />
+		<property name="userAttribute" value="anonymousUser,ROLE_ANONYMOUS" />
+	</bean>
+
+	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint">
+			<bean class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+				<property name="loginFormUrl" value="/login.jsp" />
+			</bean>
+		</property>
+		<property name="accessDeniedHandler">
+			<bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/accessDenied.jsp" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="filterInvocationInterceptor" class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT 
+				/protected/**=ROLE_HEAD_OF_ENGINEERING
+				/**=IS_AUTHENTICATED_ANONYMOUSLY
+			</value>
+		</property>
+	</bean>
+		
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="daoAuthenticationProvider" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
+		<property name="allowIfAllAbstainDecisions"
+				value="false" />
+			<property name="decisionVoters">
+				<list>
+					<bean class="org.acegisecurity.vote.RoleVoter" />
+					<bean class="org.acegisecurity.vote.AuthenticatedVoter" />
+				</list>
+			</property>
+	</bean>
+		
+	<bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="authenticationDao" />
+		<!-- UserCache property will activate the cache, it is not 
+		mandatory but increases performance by cacheing the user 
+		details retrieved from user-base -->
+		<property name="userCache" ref="userCache"/>
+	</bean>
+		
+	<!--<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+		<property name="userProperties">
+			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+				   <property name="location" value="/WEB-INF/users.properties" /> 
+			</bean>
+		</property>
+	</bean>-->
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		  <property name="driverClassName"><value>oracle.jdbc.driver.OracleDriver</value></property>
+		  <property name="url"><value>jdbc:oracle:thin:@10.25.74.49:1521:baoz</value></property>
+		  <property name="username"><value>test</value></property>
+		  <property name="password"><value>test</value></property>
+	</bean>
+
+	
+	<bean id="authenticationDao" class="org.acegisecurity.acl.basic.jdbc.JdbcExtendedDaoImpl">
+		<property name="dataSource">
+	        <ref bean="dataSource"/>
+	    </property>
+		<property name="objectPropertiesQuery">
+            	<value>SELECT c.username, c.password ,c.isActive FROM Customer c WHERE c.username = ? </value>
+        </property>
+<!--        <property name="authoritiesByUsernameQuery">-->
+<!--            	<value>SELECT c.id , c.username, c.email , c.street FROM Customer c WHERE c.username = ? </value>-->
+<!--       	 </property>-->
+	</bean>
+	
+	<bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+	 	<property name="cache">
+				<bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+					<property name="cacheManager">
+						<bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+					</property>
+					<property name="cacheName" value="userCache" />
+				</bean>
+		</property> 
+	</bean>
+	
+	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->
+	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
+	
+	
+</beans>

@@ -1,6 +1,7 @@
 package com.exam.service;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,19 +20,19 @@ public interface ICommonService {
 
 	public void save(Object obj);
 	
-	public void save(List<Object> list);
+	public void save(Collection<Object> list);
 
 	public void saveOrUpdate(Object obj);
 	
-	public void saveOrUpdate(List<Object> list);
+	public void saveOrUpdate(Collection<Object> list);
 
 	public void update(Object obj);
 	
-	public void update(List<Object> list);
+	public void update(Collection<Object> list);
 
 	public void delete(Object obj);
 	
-	public void delete(List<Object> list);
+	public void delete(Collection<Object> list);
 
 	public List listHql(String quertHql, String orderHql, Object... args);
 
