@@ -8,5 +8,14 @@
 	
 	</package>
 	
+	<package name="jasperreports" extends="jasperreports-default">
+    <action name="demoJasperReport" class="com.exam.action.demo.JasperReportAction">  
+        <result name="success" type="jasper">  
+            <param name="location">/WEB-INF/jasperReport/HelloWorld.jasper</param>  
+          <param name="dataSource">dataSource</param>  
+           <param name="format">PDF</param>
+     </result>  
+   </action>  
+	</package>
 </struts>
 

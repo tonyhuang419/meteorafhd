@@ -8,6 +8,7 @@
 	<version>0.0.1</version>
 	<description>exam081207</description>
 	<properties>
+		 <temp_dir>D:/temp/tempDir</temp_dir>
 	</properties>
 	<build>
 		<resources>
