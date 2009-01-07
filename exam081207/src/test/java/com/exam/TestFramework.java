@@ -121,6 +121,7 @@ public class TestFramework extends ExamBaseTest {
 	//		}
 	//	}
 
+//	@Rollback(false)
 	@Test
 	public void save(){
 //		testService.testSave();

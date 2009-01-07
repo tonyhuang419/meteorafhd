@@ -8,9 +8,27 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
+@ContextConfiguration(locations = { "/applicationContext.xml" })
 public class ExamBaseTest {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 
 }
+
+//public class ExamBaseTest extends AbstractTransactionalSpringContextTests {
+//
+//	protected Log logger = LogFactory.getLog(this.getClass());
+//
+//	@Override
+//	protected String[] getConfigLocations() {
+//		return new String[]{"applicationContext.xml"};
+//	}
+//}
+
+
+//@Override
+//protected void prepareTestInstance() throws Exception {
+//	super.setAutowireMode(AUTOWIRE_BY_NAME);
+//	super.prepareTestInstance();
+//	super.setDefaultRollback(false);
+//}
