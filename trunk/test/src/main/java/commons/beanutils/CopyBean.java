@@ -1,6 +1,4 @@
 package commons.beanutils;
-import java.util.HashMap;
-
 import org.apache.commons.beanutils.BeanUtils;
 public class CopyBean {
 	public void copybean(){
@@ -8,10 +6,12 @@ public class CopyBean {
 		a1.setAddr("address");
 		a1.setCity("mars");
 		a1.setCountry("milky way");
-		a1.setZipCode("-----");
+		a1.setZipCode(null);
 		Address a2 =  new Address();
-		HashMap map = new HashMap();
 		try{
+			/**
+			 * BeanUtils的copyProperties，null也会一概copy噢^^
+			 */
 			BeanUtils.copyProperties(a2, a1);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -21,6 +21,7 @@ public class CopyBean {
 		System.out.println(a2.getCountry());
 		System.out.println(a2.getZipCode());
 	}
+
 	public static void main(String[] args) throws Exception {
 		new CopyBean().copybean();
 	}
