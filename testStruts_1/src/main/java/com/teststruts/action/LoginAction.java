@@ -17,11 +17,12 @@ import com.teststruts.form.Stu;
 
 public class LoginAction extends DispatchAction {
 
-	private List<Stu> list;
+	private int i;
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("re");
+		System.out.println(i);
+		i++;
 		LoginForm loginForm = (LoginForm) form;
 		
 		this.generateData(loginForm,request);
@@ -49,6 +50,7 @@ public class LoginAction extends DispatchAction {
 	}
 	
 	private void generateData(LoginForm loginForm,HttpServletRequest request){
+		List<Stu> list =  new ArrayList<Stu>();
 		Stu s1 = new Stu();
 		s1.setAge(12);
 		s1.setName("aname");
@@ -57,10 +59,12 @@ public class LoginAction extends DispatchAction {
 		s2.setAge(21);
 		s2.setName("bname");
 		s2.setObj(list);
+		System.out.println( ((List)s2.getObj()).size());
 		
-		list = new ArrayList<Stu>();
 		list.add(s1);
 		list.add(s2);
+		
+		System.out.println( ((List)s2.getObj()).size());
 		
 		request.setAttribute("str", "str");
 		request.setAttribute("s1", s1);
