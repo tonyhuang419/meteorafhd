@@ -30,8 +30,6 @@
      		°∞Œ“ « logic:greaterEqual°± <c:out value="${listx.age}"/>
      	</logic:greaterEqual>
     	index£∫<c:out value="${listIndex}"/>
-    	size:<bean:write name="listIndex"/>
-    	size:<bean:size id="ss" name="list" />
      	<br/>
      </logic:iterate>
      <hr/>
@@ -45,5 +43,12 @@
      	size:<c:out value="${fn:length(list)}"/>
      </c:forEach>
      <hr/>
+     <c:forEach var="obj" items="${s2.obj}" >
+     	<c:out value="${obj.name}"/>
+     </c:forEach>
+     <hr/>
+     <logic:iterate id="listobj" name="s2" property="obj" >
+     	<c:out value="${listobj.name}"/>
+     </logic:iterate>
   </body>
 </html>
