@@ -125,10 +125,12 @@
  		<property name="usersByUsernameQuery">
      		  <value>SELECT c.username, c.password ,c.isActive FROM Customer c WHERE c.username = ? </value>
     	 </property>
+		<property name="usersByUsernameMapping">
+			<bean class= "com.exam.authentication.UsersByUsernameMapping"/>
+		</property>
     	 <property name="authoritiesByUsernameQuery">
-       	<value>SELECT c.username, c.password  FROM Customer c WHERE c.username = ?  </value>
-     </property>
-
+       		<value>SELECT c.username, c.password  FROM Customer c WHERE c.username = ?  </value>
+     	</property>
 	</bean>
 	
 	<bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
