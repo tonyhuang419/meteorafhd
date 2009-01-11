@@ -1,0 +1,1 @@
+给STRUTSMOCK的测试目录
