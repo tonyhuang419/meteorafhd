@@ -1,7 +1,5 @@
 package com.exam.authentication;
 
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -16,10 +14,13 @@ import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
 public class UsersByUsernameMapping extends MappingSqlQuery
-
 {
-	protected UsersByUsernameMapping(DataSource dataSource){
-		super(dataSource, "usersByUsernameQuery");
+	protected UsersByUsernameMapping(){	}
+	
+	protected UsersByUsernameMapping(DataSource dataSource,String sql){
+		super(dataSource, sql);
+		System.out.println(dataSource);
+//		System.out.println(sql);
 		declareParameter(new SqlParameter(Types.VARCHAR));
 		compile();
 	}
