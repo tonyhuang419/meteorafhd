@@ -1,5 +1,7 @@
 package def;
 
+import java.math.BigDecimal;
+
 
 public class AssignedFromAndInstanceof {
 
@@ -27,16 +29,24 @@ public class AssignedFromAndInstanceof {
 	public  void  testInstanceOf2()      
 	{      
 		Object  o = new   Object();      
-		System.out.println(  o  instanceof  Object );      
+		System.out.println(  o  instanceof  Object );    
 	}     
+	
+	public void test(){
+		BigDecimal n =  new BigDecimal(3);
+		Object  o = new   Object();     
+		System.out.println( n  instanceof  Object );      
+		System.out.println( n instanceof Number );  
+	}
 
 
 	public static void main(String[] args){   
 		AssignedFromAndInstanceof test = new AssignedFromAndInstanceof();   
-		test.testIsAssignedFrom1();   
-		test.testIsAssignedFrom2();   
-		test.testIsAssignedFrom3();   
-		test.testInstanceOf1();   
-		test.testInstanceOf2();   
+//		test.testIsAssignedFrom1();   
+//		test.testIsAssignedFrom2();   
+//		test.testIsAssignedFrom3();   
+//		test.testInstanceOf1();   
+//		test.testInstanceOf2();   
+		test.test();
 	}    
 }
