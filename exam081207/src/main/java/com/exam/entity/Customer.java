@@ -56,6 +56,9 @@ public class Customer  extends PriEntity implements Serializable {
 
 	@Column(name = "creditcardinfo", length = 100)
 	private String creditcardinfo;
+	
+	@Column(name = "role", length = 50)
+	private String role;
 
 	@OneToMany(mappedBy="fkCustomerId" , cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
 	private Set<Orders> orders;
@@ -147,6 +150,14 @@ public class Customer  extends PriEntity implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

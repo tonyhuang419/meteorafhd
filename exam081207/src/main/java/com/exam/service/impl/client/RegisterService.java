@@ -21,6 +21,7 @@ public class  RegisterService implements IRegisterService{
 	
 	public boolean saveNewUser(Customer customer) {
 		customer.setPassword( DigestUtils.md5Hex(customer.getPassword()));
+		customer.setIsActive("1");
 		commonService.save(customer);
 		CustomerUtils.saveCustomerToSession(customer);
 		return true;

@@ -100,6 +100,9 @@
 		<property name="userCache" ref="userCache"/>
 <!--		<property name="saltSource"><ref bean="saltSource"/></property>-->
 <!--		<property name="passwordEncoder"><ref bean="passwordEncoder"/></property>-->
+	<property name="passwordEncoder">
+		<bean class= "com.exam.authentication.XMd5PasswordEncoder"/>
+	</property>
 	</bean>
 		
 	<!--<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
@@ -117,24 +120,16 @@
 		  <property name="password"><value>root</value></property>
 	</bean>
 	
-	<bean id="usersByUsernameMapping" class="com.exam.authentication.UsersByUsernameMapping">
-		<property name="dataSource">
-			<ref bean="dataSource" />
-		</property>
-		<property name="sql">
-			<value>SELECT c.username, c.password ,c.isActive FROM Customer c WHERE c.username = ? </value>
-		</property>
-	</bean>
 	
-	<bean id="authenticationDao" class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
+	<bean id="authenticationDao" class="com.exam.authentication.XextendsJdbcDaoImpl">
 		<property name="dataSource">
 	        <ref bean="dataSource"/>
 	    </property>
- 		<property name="usersByUsernameMapping">
-     		  <value>usersByUsernameMapping</value>
-    	 </property>
+    	 <property name="usersByUsernameQuery">
+       		<value>SELECT * FROM Customer c WHERE c.username = ? </value>
+     	</property>
     	 <property name="authoritiesByUsernameQuery">
-       		<value>SELECT c.username, c.password  FROM Customer c WHERE c.username = ?  </value>
+       		<value>SELECT c.username, c.role  FROM  Customer c WHERE c.username = ?  </value>
      	</property>
 	</bean>
 	
@@ -152,6 +147,5 @@
 	
 	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->
 	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
-	
 	
 </beans>
