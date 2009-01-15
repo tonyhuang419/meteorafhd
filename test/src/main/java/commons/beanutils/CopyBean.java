@@ -1,6 +1,5 @@
 package commons.beanutils;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.DynaBean;
 public class CopyBean {
 	public void copybean(){
 		Address a1 = new Address();
