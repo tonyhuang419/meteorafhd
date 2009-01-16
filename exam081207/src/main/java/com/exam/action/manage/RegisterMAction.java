@@ -1,5 +1,6 @@
 package com.exam.action.manage;
 
+import org.acegisecurity.annotation.Secured;
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;
 import org.springframework.beans.factory.annotation.Autowired;

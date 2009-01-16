@@ -67,7 +67,7 @@
 			<value>
 				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT 
-				/protected/**=ROLE_HEAD_OF_ENGINEERING
+				/protected/**=ROLE_HEAD_OF_ENGINEERING,ROLE_ADMIN
 				/**=IS_AUTHENTICATED_ANONYMOUSLY
 			</value>
 		</property>
@@ -86,7 +86,11 @@
 				value="false" />
 			<property name="decisionVoters">
 				<list>
-					<bean class="org.acegisecurity.vote.RoleVoter" />
+					<bean class="org.acegisecurity.vote.RoleVoter">
+						<property name="rolePrefix">
+							<value></value>
+						</property>
+					</bean>
 					<bean class="org.acegisecurity.vote.AuthenticatedVoter" />
 				</list>
 			</property>
@@ -145,7 +149,33 @@
 		</property> 
 	</bean>
 	
+	 <bean id="methodSecurityInterceptor" class="org.acegisecurity.intercept.method.aopalliance.MethodSecurityInterceptor">  
+	    <property name="validateConfigAttributes" value="false" />  
+	    <property name="authenticationManager" ref="authenticationManager" />  
+	    <property name="accessDecisionManager" ref="accessDecisionManager" /> 
+	    <property name="objectDefinitionSource">  
+	          <bean class="org.acegisecurity.intercept.method.MethodDefinitionAttributes">  
+	              <property name="attributes">  
+	                <bean class="org.acegisecurity.annotation.SecurityAnnotationAttributes" />  
+	              </property>  
+	            </bean>  
+	   </property>  
+	 </bean>
+	 
+	 <bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+		   <list>
+		    <value>methodSecurityInterceptor</value>
+		   </list>
+		</property>
+		<property name="beanNames">
+		   <list>
+		    <value>registerMService</value>
+		   </list>
+		</property>
+	</bean>
+	 
 	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->
 	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
-	
+		
 </beans>

@@ -1,5 +1,6 @@
 package com.exam.service.impl.manage;
 
+import org.acegisecurity.annotation.Secured;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +19,7 @@ public class  RegisterMService implements IRegisterMService{
 	@Qualifier("commonService")
 	private ICommonService commonService;
 	
+	@Secured ({"ROLE_ADMIN"})
 	public boolean saveNewEmployeer(Employee  emp) {
 		emp.setPassword( DigestUtils.md5Hex(emp.getPassword()));
 		commonService.save(emp);
