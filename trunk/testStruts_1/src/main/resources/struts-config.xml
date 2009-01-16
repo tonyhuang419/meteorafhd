@@ -8,6 +8,7 @@
   </form-beans>
 
   <action-mappings >
+   
     <action  path="/login"
   	  type="com.teststruts.action.LoginAction" 
       name="loginForm"
@@ -16,7 +17,14 @@
       parameter="method">
       <forward name="s" path="/WEB-INF/jsp/welcome.jsp" />
     </action>
-        
+
+    <action  path="/gologin"
+  	  type="com.teststruts.action.GoLoginAction" 
+      name="loginForm"
+      scope="request">
+      <forward name="gologin" path="/WEB-INF/jsp/login.jsp" />
+    </action>
+    
   </action-mappings>
 
 </struts-config>
