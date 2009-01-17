@@ -159,6 +159,7 @@
 	                <bean class="org.acegisecurity.annotation.SecurityAnnotationAttributes" />  
 	              </property>  
 	            </bean>  
+<!--<value>com.exam.service.impl.manage.RegisterMService.saveNewEmployeer=ROLE_ADMIN</value>-->
 	   </property>  
 	 </bean>
 	 
@@ -168,11 +169,11 @@
 		    <value>methodSecurityInterceptor</value>
 		   </list>
 		</property>
-<!--		<property name="beanNames">-->
-<!--		   <list>-->
-<!--		    <value>registerMService</value>-->
-<!--		   </list>-->
-<!--		</property>-->
+		<property name="beanNames">
+		   <list>
+		    <value>registerMService</value>
+		   </list>
+		</property>
 	</bean>
 	 
 	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->

@@ -21,7 +21,7 @@
 <table align="center">
 <tr><td>工号：</td>
 <td>
-<s:textfield name="username" id="username" size="20"></s:textfield></td></tr>
+<s:textfield name="workId" id="workId" size="20"></s:textfield></td></tr>
 <tr><td>密 码：</td>
 <td>
 <s:password name="password" id="password"  size="20"></s:password></td></tr>
