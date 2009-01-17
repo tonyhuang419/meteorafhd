@@ -32,12 +32,12 @@ public class LoginAction extends DispatchAction {
 			System.out.println("cancel");
 			return mapping.getInputForward();
 		}else{
-			if(loginForm.getUserName().equals("fhd")){
+			if(loginForm.getUsername().equals("fhd")){
 				return mapping.findForward("s");
 			}
 			else{
-				loginForm.setUserName("");
-				loginForm.setPassWord("");
+				loginForm.setUsername("");
+				loginForm.setPassword("");
 				return mapping.getInputForward();
 			}
 
