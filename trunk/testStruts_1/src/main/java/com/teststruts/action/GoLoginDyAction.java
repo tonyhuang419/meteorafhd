@@ -3,20 +3,22 @@ package com.teststruts.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
-
-import com.teststruts.form.LoginForm;
+import org.apache.struts.action.DynaActionForm;
 
 
-public class GoLoginAction extends DispatchAction  {
+public class GoLoginDyAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		LoginForm loginForm = (LoginForm) form;
-		loginForm.setUsername("username");
+		DynaActionForm df = (DynaActionForm)form; 
+		System.out.println(df.get("usernamedy"));
+		System.out.println(df.get("passworddy"));
+		df.set("usernamedy", "username");
+		form = df;
 		return mapping.findForward("gologin");
 
 	}

@@ -7,9 +7,9 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<html:form action="/login">
-			userName : <html:text property="username"/><html:errors property="username"/><br/>
-			passWord : <html:text property="password"/><html:errors property="password"/><br/>
+		<html:form action="/gologindy">
+			username : <html:text property="usernamedy"/><br/>
+			password : <html:text property="passworddy"/><br/>
 			<html:submit/><html:cancel/>
 		</html:form>
 	</body>

@@ -8,8 +8,8 @@
 	</head>
 	<body>
 		<html:form action="/login">
-			userName : <html:text property="userName"/><html:errors property="userName"/><br/>
-			passWord : <html:text property="passWord"/><html:errors property="passWord"/><br/>
+			username : <html:text property="username"/><html:errors property="username"/><br/>
+			password : <html:text property="password"/><html:errors property="password"/><br/>
 			<html:submit/><html:cancel/>
 		</html:form>
 	</body>

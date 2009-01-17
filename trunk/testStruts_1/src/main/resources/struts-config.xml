@@ -3,9 +3,15 @@
 
 <struts-config>
 
-  <form-beans >
+  <form-beans>
     <form-bean name="loginForm" type="com.teststruts.form.LoginForm" />
+    
+    <form-bean name="dyForm"  type="org.apache.struts.action.DynaActionForm">
+    	<form-property name="usernamedy" type="java.lang.String" initial="initusername"/>
+    	<form-property name="passworddy" type="java.lang.String" initial="initpassword"/>
+    </form-bean>
   </form-beans>
+  
 
   <action-mappings >
    
@@ -23,6 +29,13 @@
       name="loginForm"
       scope="request">
       <forward name="gologin" path="/WEB-INF/jsp/login.jsp" />
+    </action>
+    
+    <action  path="/gologindy"
+  	  type="com.teststruts.action.GoLoginDyAction" 
+      name="dyForm"
+      scope="request">
+      <forward name="gologin" path="/WEB-INF/jsp/logindy.jsp"  />
     </action>
     
   </action-mappings>
