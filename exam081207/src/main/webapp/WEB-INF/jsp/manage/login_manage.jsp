@@ -26,7 +26,7 @@
 <td>
 <s:password name="password" id="password"  size="20"></s:password></td></tr>
 <tr align="center"><td colspan="2">
-<input type="button" value="登陆..未完成" onclick="#"/>
+<input type="button" value="登陆..未完成" onclick=""/>
 <input type="button" value="加入新员工" onclick="doRegister();"/></td>
 </table>
 </s:form>

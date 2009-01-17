@@ -68,6 +68,7 @@
 				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT 
 				/protected/**=ROLE_HEAD_OF_ENGINEERING,ROLE_ADMIN
+				/demo/*=ROLE_ADMIN
 				/**=IS_AUTHENTICATED_ANONYMOUSLY
 			</value>
 		</property>
@@ -82,8 +83,7 @@
 	</bean>
 
 	<bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
-		<property name="allowIfAllAbstainDecisions"
-				value="false" />
+		<property name="allowIfAllAbstainDecisions" value="false" />
 			<property name="decisionVoters">
 				<list>
 					<bean class="org.acegisecurity.vote.RoleVoter">
@@ -168,11 +168,11 @@
 		    <value>methodSecurityInterceptor</value>
 		   </list>
 		</property>
-		<property name="beanNames">
-		   <list>
-		    <value>registerMService</value>
-		   </list>
-		</property>
+<!--		<property name="beanNames">-->
+<!--		   <list>-->
+<!--		    <value>registerMService</value>-->
+<!--		   </list>-->
+<!--		</property>-->
 	</bean>
 	 
 	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->
