@@ -18,7 +18,9 @@ public class GoLoginDyAction extends Action {
 		System.out.println(df.get("usernamedy"));
 		System.out.println(df.get("passworddy"));
 		df.set("usernamedy", "username");
-		form = df;
+//		form = df;
+		System.out.println(form.hashCode());
+		System.out.println(df.hashCode());
 		return mapping.findForward("gologin");
 
 	}
