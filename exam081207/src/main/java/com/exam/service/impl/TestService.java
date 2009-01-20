@@ -42,6 +42,7 @@ public class TestService implements ITestService {
 		Book b = new Book();
 		b.setTitle("11111111");
 		commonService.save(b);
+//		b.setTitle("2222222");
 //		throw new RuntimeException();
 		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
 	}
