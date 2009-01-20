@@ -10,7 +10,7 @@ import com.exam.service.ICommonService;
 import com.exam.service.ITestService;
 
 
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 @Transactional 
 public class TestFramework extends ExamBaseTest {
 
@@ -124,8 +124,8 @@ public class TestFramework extends ExamBaseTest {
 //	@Rollback(false)
 	@Test
 	public void save(){
-//		testService.testSave();
-		testService.testSaveList();
+		testService.testSave();
+//		testService.testSaveList();
 	}
 
 }
