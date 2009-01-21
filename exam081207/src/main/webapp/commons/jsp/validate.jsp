@@ -1,0 +1,10 @@
+<script src="/exam081207/commons/scripts/prototype.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/scriptaculous.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/jsvalidate.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/builder.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/controls.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/dragdrop.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/effects.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/jsvalidate_squish.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/slider.js" type="text/javascript"></script>
+<script src="/exam081207/commons/scripts/unittest.js" type="text/javascript"></script>
