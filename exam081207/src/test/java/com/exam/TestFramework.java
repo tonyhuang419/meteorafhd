@@ -10,7 +10,7 @@ import com.exam.service.ICommonService;
 import com.exam.service.ITestService;
 
 
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional 
 public class TestFramework extends ExamBaseTest {
 
