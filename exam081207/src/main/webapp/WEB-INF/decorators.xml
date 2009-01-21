@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<decorators defaultdir="/decorators">
-	<excludes>
-		 <url-pattern>/manage/*</url-pattern>  
-	</excludes>
-    <decorator name="main_c" page="main_c.jsp">  
-        <url-pattern>/client/*</url-pattern>  
- 	 </decorator>  
-</decorators>
