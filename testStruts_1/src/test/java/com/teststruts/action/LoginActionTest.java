@@ -20,11 +20,11 @@ public class LoginActionTest  extends MockStrutsTestCase {
 	public void testExecute(){ 
 		setConfigFile("struts-config.xml");
 		setRequestPathInfo("/login.do");
-		addRequestParameter("userName","fhd");
+		addRequestParameter("username","fhd");
 		addRequestParameter("password","amiga");
 		actionPerform();
 		verifyForward("s");
-		//		verifyInputForward();
+				verifyInputForward();
 	}
 
 }
