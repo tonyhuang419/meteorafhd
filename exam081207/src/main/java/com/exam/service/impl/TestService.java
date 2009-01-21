@@ -42,7 +42,8 @@ public class TestService implements ITestService {
 		Book b = new Book();
 		b.setTitle("11111111");
 		commonService.save(b);
-//		b.setTitle("2222222");
+		b.setTitle("2222222");
+		b.setCategory("33333");  //当下一次hibernate干活时，会对set值进行更新
 //		throw new RuntimeException();
 		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
 	}
