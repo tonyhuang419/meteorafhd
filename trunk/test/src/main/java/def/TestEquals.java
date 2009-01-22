@@ -54,12 +54,29 @@ public class TestEquals {
 		c1.x = "xxxx";
 		System.out.println(c1.toString());
 	}
+	
+	
+
+	public void testEquals2() {
+		Stu i = new Stu();
+		Stu ii = i;
+		System.out.println(i.hashCode());
+		System.out.println(ii.hashCode());
+		System.out.println(i.getI());
+		System.out.println(ii.getI());
+		i.setI(11);
+		System.out.println(i.hashCode());
+		System.out.println(ii.hashCode());
+		System.out.println(i.getI());
+		System.out.println(ii.getI());
+	}
+	
 
 	public  void test(){
 		this.testEquals();
 	}
 
 	public static void main(String[] args) {
-		new TestEquals().test();
+		new TestEquals().testEquals2();
 	}
 }
