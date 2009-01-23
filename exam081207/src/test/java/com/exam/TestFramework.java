@@ -3,9 +3,11 @@ package com.exam;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.exam.entity.Book;
 import com.exam.service.ICommonService;
 import com.exam.service.ITestService;
 
@@ -121,9 +123,12 @@ public class TestFramework extends ExamBaseTest {
 	//		}
 	//	}
 
-//	@Rollback(false)
+	@Rollback(false)
 	@Test
 	public void save(){
+		Book b1 = testService.testSave();
+		Book b2 = testService.testSave();
+		testService.delBook(b2);
 		testService.testSave();
 //		testService.testSaveList();
 	}
