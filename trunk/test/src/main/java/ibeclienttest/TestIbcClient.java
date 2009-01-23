@@ -2,24 +2,28 @@ package ibeclienttest;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.travelsky.ibe.client.AV;
 import com.travelsky.ibe.client.AvItem;
 import com.travelsky.ibe.client.AvResult;
 import com.travelsky.ibe.client.AvSegment;
+import com.travelsky.ibe.client.FD;
+import com.travelsky.ibe.client.FD;
 
 public class TestIbcClient {
-	
 
+//===========================查票===========================
 	/**
 	 * 获取AV
 	 */
 	public AV getAV(){
 		return new AV();
-//		AvResult avr = this.getAV().getAvailability("xx", "yy", new Date());
+		//		AvResult avr = this.getAV().getAvailability("xx", "yy", new Date());
 	}
-	
+
 	/**
 	 * 获取AvItem by AvResult
 	 */
@@ -31,7 +35,7 @@ public class TestIbcClient {
 		}
 		return avItemList;
 	}
-	
+
 	/**
 	 * 获取AvSegment by avItem
 	 */
@@ -46,7 +50,7 @@ public class TestIbcClient {
 		}
 		return avsList;
 	}
-	
+
 	/**
 	 * 获取AvSegment by AvResult
 	 */
@@ -54,18 +58,62 @@ public class TestIbcClient {
 		List<AvItem> avItemList = this.getListItemResults(avr);
 		return this.getListAvSegment(avItemList);
 	}
-	
+
 	/**
-	 * 舱位过滤
+	 * 舱位过滤include
+	 * Ｆ――头等舱。　Ｃ――公务舱　　Ｙ——经济舱
+	 * exp:获取头等舱  filterAvSegmentListInclude(avs , 'F')
 	 */
-	public List<AvSegment> filterAvSegmentList( List<AvSegment> avsList,List<String> include, List<String> exclude ){
-		for( AvSegment avs :  avsList ){
-//			if( includeChar(include , avs.ge) )
+	public Map<String,String> filterAvSegmentListInclude( AvSegment avs,List<String> include ){
+		Map<String,String> spaceMap = new HashMap<String,String>();
+		//		StringBuffer str = new StringBuffer();
+		int k = 0;
+		while (k < 26) {
+			char cangwei = avs.getCangweiCodeSort(k);
+			if (cangwei == '-'){
+				break;
+			}
+			if( include==null ){
+				spaceMap.put( cangwei+"", avs.getCangweiinfoOfSort(cangwei)+"" );
+				k++;
+			}
+			else if( this.includeChar(cangwei , include) ){
+				//				str.append(cangwei);
+				//				str.append(avs.getCangweiinfoOfSort(cangwei));
+				//				str.append(' ');
+				spaceMap.put( cangwei+"", avs.getCangweiinfoOfSort(cangwei)+"" );
+				k++;
+			}
 		}
-		return null;
+		return spaceMap;
 	}
-	
-	private boolean includeChar(List<String> listStr , char spaceCode){
+
+	/**
+	 * 舱位过滤exclude
+	 */
+	public Map<String,String> filterAvSegmentListExclude( AvSegment avs,List<String> exclude ){
+		Map<String,String> spaceMap = new HashMap<String,String>();
+		int k = 0;
+		while (k < 26) {
+			char cangwei = avs.getCangweiCodeSort(k);
+			if (cangwei == '-'){
+				break;
+			}
+			if( exclude == null ){
+				spaceMap.put( cangwei+"", avs.getCangweiinfoOfSort(cangwei)+"" );
+				k++;
+			}
+			else if( ! ( exclude!=null && this.excludeChar(cangwei , exclude)) ){
+				spaceMap.put( cangwei+"", avs.getCangweiinfoOfSort(cangwei)+"" );
+				k++;
+			}
+		}
+		return spaceMap;
+	}
+
+
+
+	private boolean includeChar( char spaceCode , List<String> listStr ){
 		for(String s: listStr ){
 			char c = s.charAt(0);
 			System.out.println(c);
@@ -75,43 +123,61 @@ public class TestIbcClient {
 		}
 		return false;
 	}
-	
-	private boolean excludeChar(List<String> listStr , char spaceCode){
+
+	private boolean excludeChar( char spaceCode , List<String> listStr ){
 		for(String s: listStr ){
-			char c = s.charAt(1);
-			if( c != spaceCode ){
-				continue;
-			}
-			else{
-				
+			char c = s.charAt(0);
+			if( c == spaceCode ){
+				return false;
 			}
 		}
 		return true;
 	}
 
 	
+	//===========================查询票价===========================
+	public FD getFD(){
+		return new FD();
+	}
+	
+	
+	
+	
+	
+	//===========================订票===========================
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args){
 		TestIbcClient t = new TestIbcClient();
 		List<String> strArr = new ArrayList<String>();
 		strArr.add("sy");
 		strArr.add("c");
-		System.out.println(t.includeChar(strArr, 'd'));
+		System.out.println(t.includeChar( 'd' , strArr));
+		System.out.println(t.excludeChar('d' , strArr ));
+
+		char a = 'a';
+		int i = a;
+		System.out.println(i);
+
 	}
 	
 	
-	/**
-	 * 订票
-	 */
-	
+
 	/**
 	 * 取消预定
 	 */
-	
-	
+
+
 	/**
 	 * 出票
 	 */
-	
-	
+
+
 }	
-	
+
