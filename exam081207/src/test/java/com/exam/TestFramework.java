@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.entity.Book;
 import com.exam.service.ICommonService;
@@ -13,7 +12,7 @@ import com.exam.service.ITestService;
 
 
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional 
+//@Transactional 
 public class TestFramework extends ExamBaseTest {
 
 	@Autowired
@@ -123,7 +122,7 @@ public class TestFramework extends ExamBaseTest {
 	//		}
 	//	}
 
-	@Rollback(false)
+	@Rollback(true)
 	@Test
 	public void save(){
 		Book b1 = testService.testSave();

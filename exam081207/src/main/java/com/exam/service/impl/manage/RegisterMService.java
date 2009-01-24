@@ -19,7 +19,6 @@ public class  RegisterMService implements IRegisterMService{
 	@Qualifier("commonService")
 	private ICommonService commonService;
 	
-	@Secured ({"ROLE_ADMIN"})
 	public boolean saveNewEmployeer(Employee  emp) {
 		emp.setPassword( DigestUtils.md5Hex(emp.getPassword()));
 		commonService.save(emp);
