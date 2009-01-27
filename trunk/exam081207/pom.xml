@@ -259,5 +259,10 @@
 			<artifactId>acegi-security-tiger</artifactId>
 			<version>1.0.7</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jmock</groupId>
+			<artifactId>jmock-legacy</artifactId>
+			<version>2.5.1</version>
+		</dependency>
 	</dependencies>
 </project>

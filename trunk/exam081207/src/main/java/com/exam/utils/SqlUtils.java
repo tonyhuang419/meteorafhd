@@ -67,6 +67,9 @@ public class SqlUtils {
 	 * 拼接querySql 和 orderSQL
 	 */
 	public static String combineSQL(String querySql , String orderSql){
+		if(StringUtils.isBlank(orderSql)){
+			return querySql;
+		}
 		Pattern p = Pattern.compile("order\\sby",Pattern.CASE_INSENSITIVE);
 		Matcher mQuerySql = p.matcher(querySql);
 		Matcher mOrderSql = p.matcher(orderSql);
@@ -74,7 +77,7 @@ public class SqlUtils {
 		boolean orderHasOrderBy = mOrderSql.find();
 		
 		//orderSql为空 || orderSql不存在order by
-		if(StringUtils.isBlank(orderSql) ||  !orderHasOrderBy ){
+		if( !orderHasOrderBy ){
 			return querySql;
 		}
 		else{

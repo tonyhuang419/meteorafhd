@@ -7,9 +7,11 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.service.ICommonService;
+import com.exam.tools.PadProperty;
 import com.exam.utils.PageInfo;
 import com.exam.utils.SqlUtils;
 
@@ -51,6 +54,16 @@ public class CommonService implements ICommonService {
 			this.save(obj);
 		}
 	}
+	
+	public void processSaveObj(Object obj ,String isActive , String sessionIdStr){
+		Date date = new Date();
+		Long userid = (Long)ServletActionContext.getRequest().getSession().getAttribute( sessionIdStr );
+		PadProperty.padBean(obj , "createdby", date );
+		PadProperty.padBean(obj , "updatedby", date );
+		PadProperty.padBean(obj , "updated", userid );
+		PadProperty.padBean(obj , "updated", userid );
+		PadProperty.padBean(obj , "isActive", isActive );
+	}
 
 	public void saveOrUpdate(Object obj){
 		getSession().saveOrUpdate(obj);
@@ -70,6 +83,13 @@ public class CommonService implements ICommonService {
 		for(Object obj:list){
 			this.update(obj);
 		}
+	}
+	
+	public void processUpdateObj(Object obj ,String isActive,String sessionIdStr){
+		Long userid = (Long)ServletActionContext.getRequest().getSession().getAttribute( sessionIdStr );
+		PadProperty.padBean(obj , "updated", userid );
+		PadProperty.padBean(obj , "updated", userid );
+		PadProperty.padBean(obj , "isActive", isActive );
 	}
 
 	public void delete(Object obj){
@@ -158,11 +178,6 @@ public class CommonService implements ICommonService {
 		pi.setData(this.listSQL(querySql, pi.getStartOfPage(), pi.getPageSize(), args));
 		return pi;
 	}
-
-
-
-
-
 
 
 	@Deprecated
