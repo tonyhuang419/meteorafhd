@@ -1,4 +1,4 @@
-package utils;
+package mock;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,7 +17,8 @@ import com.exam.entity.Employee;
 import com.exam.entity.Orders;
 import com.exam.service.ICommonService;
 
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@TransactionConfiguration(transactionManager = "transactionManager",
+		defaultRollback = false)
 @Transactional 
 public class CreateMockDate extends ExamBaseTest {
 
@@ -32,6 +33,11 @@ public class CreateMockDate extends ExamBaseTest {
 		Book b = this.doGetBook();
 		Employee e = this.doGetEmployee();
 		Orders o = this.doGetOrders(b, c, e);
+		
+		MockUser mu  = new MockUser();
+		mu.mockEmployee();
+		commonService.processSaveObj(e, "1", "session_employee_id");
+		
 		commonService.save(o);
 	}
 	

@@ -21,6 +21,8 @@ public interface ICommonService {
 	public void save(Object obj);
 	
 	public void save(Collection<Object> list);
+	
+	public void processSaveObj(Object obj ,String isActive , String sessionIdStr);
 
 	public void saveOrUpdate(Object obj);
 	
@@ -29,6 +31,8 @@ public interface ICommonService {
 	public void update(Object obj);
 	
 	public void update(Collection<Object> list);
+	
+	public void processUpdateObj(Object obj ,String isActive,String sessionIdStr);
 
 	public void delete(Object obj);
 	

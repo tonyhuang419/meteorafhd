@@ -1,5 +1,7 @@
 package com.exam;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,6 +9,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.exam.entity.Book;
+import com.exam.entity.Orders;
 import com.exam.service.ICommonService;
 import com.exam.service.ITestService;
 
@@ -37,32 +40,33 @@ public class TestFramework extends ExamBaseTest {
 	//		System.out.println("2........."+tList.size());
 	//	}
 
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testGeneralTwo() {
+		Book bs = (Book)commonService.load(Book.class , 40L);
+		List<Orders> oList = commonService.listHql("from Orders o " , null);
+		for( Orders o :  oList){
+			System.out.print(o.getOrderNum()+"...........");
+			System.out.println(o.getFkBookId());
+			if( o.getFkBookId() != null){
+				System.out.println( o.getFkBookId().getTitle());
+			}
+		}
+	}
+
 	//	@SuppressWarnings("unchecked")
 	//	@Test
-	//	public void testGeneralTwo() {
-	//		List<Orders> oList = commonService.list("from Orders o where o.orderNum = '1'");
-	//		for( Orders o :  oList){
-	//			System.out.print(o.getOrderNum()+"...........");
-	//			System.out.println(o.getFkBookId());
-	//			if( o.getFkBookId() != null){
-	//				System.out.println( o.getFkBookId().getTitle());
+	//	public void testGeneralThree() {
+	//		List<Employee> eList = commonService.listHql("from Employee e " , null);
+	//		System.out.print(  eList.size() );
+	//		for( Employee e :  eList){
+	//			Set<Orders> os  = e.getOrders();
+	//			for(Orders o : os){
+	//				System.out.println(o.getOrderNum());
+	//				System.out.println(o.getFkEmployeeId().getId());
 	//			}
 	//		}
 	//	}
-
-	//		@SuppressWarnings("unchecked")
-	//		@Test
-	//		public void testGeneralThree() {
-	//			List<Employee> eList = commonService.list("from Employee e where e.id = 1 ");
-	//			System.out.print(  eList.size() );
-	//			for( Employee e :  eList){
-	//				Set<Orders> os  = e.getOrders();
-	//				for(Orders o : os){
-	//					System.out.println(o.getOrderNum());
-	//					System.out.println(o.getFkEmployeeId().getId());
-	//				}
-	//			}
-	//		}
 
 	//	@Test
 	//	public void testGeneraFour() {
@@ -122,14 +126,14 @@ public class TestFramework extends ExamBaseTest {
 	//		}
 	//	}
 
-	@Rollback(true)
+	@Rollback(false)
 	@Test
 	public void save(){
-		Book b1 = testService.testSave();
-		Book b2 = testService.testSave();
-		testService.delBook(b2);
+		//		Book b1 = testService.testSave();
+		//		Book b2 = testService.testSave();
+		//		testService.delBook(b2);
 		testService.testSave();
-//		testService.testSaveList();
+		//		testService.testSaveList();
 	}
 
 }
