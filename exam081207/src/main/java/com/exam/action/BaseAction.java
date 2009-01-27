@@ -3,17 +3,20 @@ package com.exam.action;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BaseAction extends ActionSupport implements SessionAware, ServletRequestAware  {
+public class BaseAction extends ActionSupport implements SessionAware, ServletRequestAware, ServletResponseAware ,ApplicationAware {
 	private static final long serialVersionUID = 6222135106052344007L;
 
 	protected Log logger = LogFactory.getLog(this.getClass());
@@ -48,12 +51,22 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
 
 	private Map session;  
 	private HttpServletRequest request;
+	private HttpServletResponse response;
+	private Map application;
 
 	public void setSession(Map session) {   
 		this.session = session;   
 	}   
-	
+
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
+
+	public void setServletResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	 public void setApplication(Map application){
+	     this.application = application;
+	 }
 }
