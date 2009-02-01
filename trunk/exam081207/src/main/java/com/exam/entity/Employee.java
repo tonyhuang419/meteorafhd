@@ -42,7 +42,8 @@ public class Employee  extends PriEntity implements Serializable {
 	@Column(name = "role", length = 2)
 	private Long  role;
 
-	@OneToMany(mappedBy="fkEmployeeId" ,cascade=CascadeType.ALL,   fetch = FetchType.LAZY )
+	@OneToMany(mappedBy="fkEmployeeId" ,
+			cascade=CascadeType.ALL,   fetch = FetchType.LAZY )
 	private Set<Orders> orders;
 
 	public Long getId() {

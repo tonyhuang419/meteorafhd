@@ -60,7 +60,8 @@ public class Customer  extends PriEntity implements Serializable {
 	@Column(name = "role", length = 50)
 	private String role;
 
-	@OneToMany(mappedBy="fkCustomerId" , cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
+	@OneToMany(mappedBy="fkCustomerId" , 
+			cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
 	private Set<Orders> orders;
 
 

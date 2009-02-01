@@ -45,7 +45,7 @@
 		 
 		<property name="show_sql">true</property>
 		<property name="format_sql">false</property>
-	<!-- 	 <property name="hbm2ddl.auto">create</property> -->
+	<!--   <property name="hbm2ddl.auto">create</property> -->	
 		<property name="cache.provider_class">
 			org.hibernate.cache.EhCacheProvider
 		</property>
@@ -55,6 +55,7 @@
 		<mapping class="com.exam.entity.Customer" />
 		<mapping class="com.exam.entity.Employee" />
 		<mapping class="com.exam.entity.Orders" />
+		<mapping class="com.exam.entity.OrderInfo" />
  
 	<!--	<mapping class="com.exam.entity.VBook" />-->
 	</session-factory>

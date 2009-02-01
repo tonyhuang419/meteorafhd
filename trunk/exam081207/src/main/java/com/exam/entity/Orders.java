@@ -1,8 +1,8 @@
 package com.exam.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,9 +41,6 @@ public class Orders extends PriEntity implements Serializable {
 	@Column(name = "customerName", length = 100)
 	private String customerName;
 
-	@Column(name = "bookDealPrice", length = 20 , scale = 2)
-	private BigDecimal bookDealPrice;
-
 	@Temporal(TemporalType.TIMESTAMP)  
 	@Column(name = "orderDate")
 	private Date orderDate;
@@ -50,13 +48,10 @@ public class Orders extends PriEntity implements Serializable {
 	@Temporal(TemporalType.TIME)  
 	@Column(name = "sendDate")
 	private Date sendDate;
-
-	@Column(name = "sendAddress", length = 100)
-	private String sendAddress;
-
-	@ManyToOne ( cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
-	@JoinColumn(name="fkBookId")
-	private Book fkBookId;
+	
+	@OneToMany(mappedBy="fkOrderId" , 
+			cascade=CascadeType.ALL,  fetch = FetchType.LAZY )
+	private Set<OrderInfo> orderInfo;
 
 	@ManyToOne ( cascade=CascadeType.ALL,  fetch = FetchType.LAZY ) 
 	@JoinColumn(name="fkCustomerId")
@@ -82,14 +77,6 @@ public class Orders extends PriEntity implements Serializable {
 		this.orderNum = orderNum;
 	}
 
-	public BigDecimal getBookDealPrice() {
-		return bookDealPrice;
-	}
-
-	public void setBookDealPrice(BigDecimal bookDealPrice) {
-		this.bookDealPrice = bookDealPrice;
-	}
-
 	public Date getOrderDate() {
 		return orderDate;
 	}
@@ -104,22 +91,6 @@ public class Orders extends PriEntity implements Serializable {
 
 	public void setSendDate(Date sendDate) {
 		this.sendDate = sendDate;
-	}
-
-	public String getSendAddress() {
-		return sendAddress;
-	}
-
-	public void setSendAddress(String sendAddress) {
-		this.sendAddress = sendAddress;
-	}
-
-	public Book getFkBookId() {
-		return fkBookId;
-	}
-
-	public void setFkBookId(Book fkBookId) {
-		this.fkBookId = fkBookId;
 	}
 
 	public String getCustomerName() {
@@ -144,6 +115,14 @@ public class Orders extends PriEntity implements Serializable {
 
 	public void setFkEmployeeId(Employee fkEmployeeId) {
 		this.fkEmployeeId = fkEmployeeId;
+	}
+
+	public Set<OrderInfo> getOrderInfo() {
+		return orderInfo;
+	}
+
+	public void setOrderInfo(Set<OrderInfo> orderInfo) {
+		this.orderInfo = orderInfo;
 	}
 
 }
