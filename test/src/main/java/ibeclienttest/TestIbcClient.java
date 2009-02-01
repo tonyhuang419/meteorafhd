@@ -2,6 +2,7 @@ package ibeclienttest;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,11 +12,11 @@ import com.travelsky.ibe.client.AvItem;
 import com.travelsky.ibe.client.AvResult;
 import com.travelsky.ibe.client.AvSegment;
 import com.travelsky.ibe.client.FD;
-import com.travelsky.ibe.client.FD;
+import com.travelsky.ibe.client.FDResult;
 
 public class TestIbcClient {
 
-//===========================查票===========================
+	//===========================查票===========================
 	/**
 	 * 获取AV
 	 */
@@ -23,6 +24,18 @@ public class TestIbcClient {
 		return new AV();
 		//		AvResult avr = this.getAV().getAvailability("xx", "yy", new Date());
 	}
+
+	public AvResult doGetAvResult() {
+		AvResult avr = null;
+		try{
+			avr =  this.getAV().getAvailability("xx", "yy", new Date());
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return avr;
+	}
+
 
 	/**
 	 * 获取AvItem by AvResult
@@ -134,25 +147,37 @@ public class TestIbcClient {
 		return true;
 	}
 
-	
+
 	//===========================查询票价===========================
 	public FD getFD(){
 		return new FD();
 	}
+
+	public FDResult doGetFDResult(){
+		FDResult fdr = null;
+		try{
+			fdr =  this.getFD().findPrice("kmg","ljg","18sep08","all","","AD",true);
+//			System.out.println(fdres);
+//			System.out.println("机场费："+fdres.getAirportTax(0));
+//			System.out.println("燃油税："+fdres.getFuelTax(0));	
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return fdr;
+	}
+
 	
-	
-	
-	
-	
+
 	//===========================订票===========================
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	public static void main(String[] args){
 		TestIbcClient t = new TestIbcClient();
 		List<String> strArr = new ArrayList<String>();
@@ -166,8 +191,8 @@ public class TestIbcClient {
 		System.out.println(i);
 
 	}
-	
-	
+
+
 
 	/**
 	 * 取消预定
