@@ -62,8 +62,9 @@ public class Book extends PriEntity implements Serializable {
 	@Column(name = "price", length = 20 , scale = 2)
 	private BigDecimal price;
 
-	@OneToMany(mappedBy="fkBookId" ,cascade=CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Orders> orders;
+	@OneToMany(mappedBy="fkBookId" ,
+			cascade=CascadeType.ALL, fetch = FetchType.LAZY )
+	private Set<OrderInfo> orderInfo;
 
 	public Long getId() {
 		return id;
@@ -137,20 +138,20 @@ public class Book extends PriEntity implements Serializable {
 		this.price = price;
 	}
 
-	public Set<Orders> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Set<Orders> orders) {
-		this.orders = orders;
-	}
-
 	public Long getQuantityInStock() {
 		return quantityInStock;
 	}
 
 	public void setQuantityInStock(Long quantityInStock) {
 		this.quantityInStock = quantityInStock;
+	}
+
+	public Set<OrderInfo> getOrderInfo() {
+		return orderInfo;
+	}
+
+	public void setOrderInfo(Set<OrderInfo> orderInfo) {
+		this.orderInfo = orderInfo;
 	}
 
 }

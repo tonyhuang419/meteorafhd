@@ -14,6 +14,7 @@ import com.exam.ExamBaseTest;
 import com.exam.entity.Book;
 import com.exam.entity.Customer;
 import com.exam.entity.Employee;
+import com.exam.entity.OrderInfo;
 import com.exam.entity.Orders;
 import com.exam.service.ICommonService;
 
@@ -33,12 +34,18 @@ public class CreateMockDate extends ExamBaseTest {
 		Book b = this.doGetBook();
 		Employee e = this.doGetEmployee();
 		Orders o = this.doGetOrders(b, c, e);
+		OrderInfo oi = this.doGetOrderInfo(o, b);
 		
 		MockUser mu  = new MockUser();
 		mu.mockEmployee();
+		commonService.processSaveObj(b, "1", "session_employee_id");
+		commonService.processSaveObj(c, "1", "session_employee_id");
 		commonService.processSaveObj(e, "1", "session_employee_id");
+		commonService.processSaveObj(o, "1", "session_employee_id");
+		commonService.processSaveObj(oi, "1", "session_employee_id");
 		
 		commonService.save(o);
+		commonService.save(oi);
 	}
 	
 	
@@ -81,16 +88,23 @@ public class CreateMockDate extends ExamBaseTest {
 	
 	private Orders doGetOrders(Book b, Customer c,Employee e){
 		Orders o = new Orders();
-		o.setBookDealPrice(new BigDecimal("1234.12"));
 		o.setCustomerName("customerName");
 		o.setOrderDate(new Date());
 		o.setOrderNum("orderNum");
-		o.setSendAddress("sendAddress");
 		o.setSendDate(new Date());
-		o.setFkBookId(b);
 		o.setFkCustomerId(c);
 		o.setFkEmployeeId(e);
 		return o;
 	}
+	
+	private OrderInfo doGetOrderInfo(Orders orders,Book bk){
+		OrderInfo oi =  new OrderInfo();
+		oi.setBookDealPrice(new BigDecimal("1234.12"));
+		oi.setSendAddress("sendAddress");
+		oi.setFkOrderId(orders);
+		oi.setFkBookId(bk);
+		return oi;
+	}
+	
 	
 }

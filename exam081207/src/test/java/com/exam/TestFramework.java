@@ -1,21 +1,22 @@
 package com.exam;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.exam.entity.Book;
+import com.exam.entity.OrderInfo;
 import com.exam.entity.Orders;
 import com.exam.service.ICommonService;
 import com.exam.service.ITestService;
 
 
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-//@Transactional 
 public class TestFramework extends ExamBaseTest {
 
 	@Autowired
@@ -41,54 +42,18 @@ public class TestFramework extends ExamBaseTest {
 	//	}
 
 	@SuppressWarnings("unchecked")
+	@Transactional
 	@Test
-	public void testGeneralTwo() {
-		Book bs = (Book)commonService.load(Book.class , 40L);
+	public void testX() {
 		List<Orders> oList = commonService.listHql("from Orders o " , null);
 		for( Orders o :  oList){
 			System.out.print(o.getOrderNum()+"...........");
-			System.out.println(o.getFkBookId());
-			if( o.getFkBookId() != null){
-				System.out.println( o.getFkBookId().getTitle());
+			Set<OrderInfo> soi =  o.getOrderInfo();
+			for(OrderInfo oi : soi){
+				System.out.println(oi.getFkBookId().getTitle());
 			}
 		}
 	}
-
-	//	@SuppressWarnings("unchecked")
-	//	@Test
-	//	public void testGeneralThree() {
-	//		List<Employee> eList = commonService.listHql("from Employee e " , null);
-	//		System.out.print(  eList.size() );
-	//		for( Employee e :  eList){
-	//			Set<Orders> os  = e.getOrders();
-	//			for(Orders o : os){
-	//				System.out.println(o.getOrderNum());
-	//				System.out.println(o.getFkEmployeeId().getId());
-	//			}
-	//		}
-	//	}
-
-	//	@Test
-	//	public void testGeneraFour() {
-	//		Employee e = (Employee)commonService.uniqueResult("from Employee e where e.id = 1 ");
-	//		e.setJobNum("111");
-	//		commonService.saveOrUpdate(e);
-	//	}
-
-	//	@Test
-	//	public void testGeneraFive() {
-	//		Employee e = new Employee();
-	//		e.setJobNum("11111");
-	//		commonService.save(e);
-	//		logger.info(e.getId());
-	//		e = (Employee)commonService.load(Employee.class, e.getId());
-	//		logger.info(e.getJobNum());
-	//		e = (Employee)commonService.load(Employee.class, e.getId());
-	//		logger.info(e.getJobNum());
-
-	//		e = (Employee)commonService.uniqueResult(" from Employee e where e.id = ? ", e.getId());
-	//		e = (Employee)commonService.uniqueResult(" from Employee e where e.id = ? ", e.getId());
-	//	}
 
 
 	/*
@@ -127,7 +92,7 @@ public class TestFramework extends ExamBaseTest {
 	//	}
 
 	@Rollback(false)
-	@Test
+//	@Test
 	public void save(){
 		//		Book b1 = testService.testSave();
 		//		Book b2 = testService.testSave();
