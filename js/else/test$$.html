@@ -14,12 +14,22 @@
 </tr>
 </table>
 
+<input name="copy" type="button" value="copy" />
+<input name="copy" type="button" value="copy" />
+
+
 </body>
 <script>
 
 //alert('第一个数字是：'+ $$("td")[0].innerHTML );
 //alert('name是"method1"的按钮有'+ $$("input[name=method1]").length+'个' );
 //alert($('x').toQueryString())
+
+
+$("input[name=copy]").each(function(i){
+   i.disabled=true
+});
+
 
 </script>
 </html>
