@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import util.AutoArrayList;
+
 
 public class LoginForm extends ActionForm {
 	private static final long serialVersionUID = -2438269811866986786L;
@@ -14,7 +16,7 @@ public class LoginForm extends ActionForm {
 	private String username;
 	private String password;
 	private String listX[];
-	private List listStu;
+	private List listStu = new AutoArrayList(Stu.class);
 
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		username = null;
@@ -57,5 +59,6 @@ public class LoginForm extends ActionForm {
 	public void setListStu(List listStu) {
 		this.listStu = listStu;
 	}
+
 
 }

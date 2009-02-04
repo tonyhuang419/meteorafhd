@@ -51,8 +51,18 @@
      	<c:out value="${listobj.name}"/>
      </logic:iterate>
      <hr>
-	    <logic:iterate id="listx" name="listX"  >
-	     	<c:out value="${listx}"/>
-	   </logic:iterate>
+     username:<c:out value="${loginForm.username}"/><br/>
+     password:<c:out value="${loginForm.password}"/><br/>
+     
+     <hr>
+     <c:forEach var="result" items="${loginForm.listX}" >
+    	<c:out value="${result}"/><br/>
+	 </c:forEach> 
+	   
+	  <hr>
+     <c:forEach var="result" items="${loginForm.listStu}" >
+    	<c:out value="${result.name}"/><br/>
+	 </c:forEach> 
+  
   </body>
 </html>
