@@ -50,5 +50,9 @@
      <logic:iterate id="listobj" name="s2" property="obj" >
      	<c:out value="${listobj.name}"/>
      </logic:iterate>
+     <hr>
+	    <logic:iterate id="listx" name="listX"  >
+	     	<c:out value="${listx}"/>
+	   </logic:iterate>
   </body>
 </html>
