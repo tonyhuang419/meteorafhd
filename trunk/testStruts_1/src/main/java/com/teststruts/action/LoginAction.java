@@ -70,8 +70,9 @@ public class LoginAction extends DispatchAction {
 		request.setAttribute("s1", s1);
 		request.setAttribute("s2", s2);
 		request.setAttribute("list", list);
+		
+		
 	}
-
 
 }
 
