@@ -10,6 +10,8 @@
 		<html:form action="/login">
 			userName : <html:text property="username"/><html:errors property="username"/><br/>
 			passWord : <html:text property="password"/><html:errors property="password"/><br/>
+			<html:text property="listX"/><br/>
+			<html:text property="listX"/>
 			<html:submit/><html:cancel/>
 		</html:form>
 	</body>

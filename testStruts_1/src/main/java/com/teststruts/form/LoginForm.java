@@ -1,5 +1,7 @@
 package com.teststruts.form;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionForm;
@@ -11,6 +13,8 @@ public class LoginForm extends ActionForm {
 
 	private String username;
 	private String password;
+	private String listX[];
+	private List listStu;
 
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		username = null;
@@ -31,6 +35,27 @@ public class LoginForm extends ActionForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String[] getListX() {
+		return listX;
+	}
+
+	public void setListX(String[] listX) {
+		this.listX = listX;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public List getListStu() {
+		return listStu;
+	}
+
+	public void setListStu(List listStu) {
+		this.listStu = listStu;
 	}
 
 }
