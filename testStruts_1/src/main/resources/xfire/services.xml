@@ -2,7 +2,7 @@
 <beans xmlns="http://xfire.codehaus.org/config/1.0">
 	<service>
 		<name>HelloService</name>
-		<namespace>http://testStruts/HelloService</namespace>
+		<namespace>http://localhost:8080/testStruts/servlet/XFireServlet/HelloService</namespace>
 		<serviceClass>xfire.IHelloService</serviceClass>
 		<implementationClass>xfire.HelloServiceImpl</implementationClass>
 	</service>

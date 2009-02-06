@@ -18,11 +18,6 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
-	<servlet-mapping>
-		<servlet-name>action</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>HessianServlet</servlet-name>
 		<servlet-class> com.caucho.hessian.server.HessianServlet</servlet-class>
@@ -38,22 +33,33 @@
 		</init-param>
 	</servlet>
 	
-	<servlet-mapping>
-		<servlet-name>HessianServlet</servlet-name>
-		<url-pattern>/hessian/hello/*</url-pattern>
-	</servlet-mapping>
-	
 	<servlet>
          <servlet-name>XFireServlet</servlet-name>
          <servlet-class>
             org.codehaus.xfire.transport.http.XFireConfigurableServlet
         </servlet-class>
     </servlet>
+	
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>HessianServlet</servlet-name>
+		<url-pattern>/hessian/*</url-pattern>
+	</servlet-mapping>
+	
+ 	<servlet-mapping>
+	    <servlet-name>XFireServlet</servlet-name>
+	    <url-pattern>/servlet/XFireServlet/*</url-pattern>
+	  </servlet-mapping>
+	
+  	<servlet-mapping>
+	    <servlet-name>XFireServlet</servlet-name>
+	    <url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>XFireServlet</servlet-name>
-        <url-pattern>/xfire/*</url-pattern>
-    </servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

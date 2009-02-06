@@ -17,6 +17,7 @@ public class LoginForm extends ActionForm {
 	private String password;
 	private String listX[];
 	private List listStu = new AutoArrayList(Stu.class);
+	private Stu stu = new Stu();
 
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		username = null;
@@ -58,6 +59,14 @@ public class LoginForm extends ActionForm {
 
 	public void setListStu(List listStu) {
 		this.listStu = listStu;
+	}
+
+	public Stu getStu() {
+		return stu;
+	}
+
+	public void setStu(Stu stu) {
+		this.stu = stu;
 	}
 
 
