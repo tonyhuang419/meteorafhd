@@ -52,13 +52,9 @@
 	
  	<servlet-mapping>
 	    <servlet-name>XFireServlet</servlet-name>
-	    <url-pattern>/servlet/XFireServlet/*</url-pattern>
+	    <url-pattern>/xfire/*</url-pattern>
 	  </servlet-mapping>
-	
-  	<servlet-mapping>
-	    <servlet-name>XFireServlet</servlet-name>
-	    <url-pattern>/services/*</url-pattern>
-	</servlet-mapping>
+
 
 
 	<welcome-file-list>
