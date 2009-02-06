@@ -1,6 +1,6 @@
 package xfire;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface IHelloService {
 	
@@ -8,6 +8,6 @@ public interface IHelloService {
 
 	public Course choose( );
 	
-	public List test(List t);
+	public  Collection<Course> testCollection( Collection<Course> course );
 	
 } 
