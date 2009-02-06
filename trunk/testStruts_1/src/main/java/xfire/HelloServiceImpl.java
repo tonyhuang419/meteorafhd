@@ -1,6 +1,7 @@
 package xfire;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -16,11 +17,11 @@ public class HelloServiceImpl implements IHelloService {
 		return c; 
 	}
 
-	public List  test(List t){
-		for (int i = 0; i < t.size(); i++) {
-			System.out.println((String) t.get(i));
+	public  Collection<Course> testCollection( Collection<Course> course ){
+		for (Course c : course ) {
+			System.out.println(c.getName());
 		}
-		List  al = new ArrayList();
+		List<Course>  al = new ArrayList<Course>();
 		Course c = new Course();
 		c.setName("Eng");
 		al.add(c);

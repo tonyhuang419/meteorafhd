@@ -2,6 +2,7 @@ package xfire;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.codehaus.xfire.XFireFactory;
@@ -26,12 +27,14 @@ public class Client {
 			Course c = srvc.choose();
 			System.out.println(c.getName());
 
-			List  al = new ArrayList();
-			al.add("1212");
-			al.add("2222");
-			List t = srvc.test(al);
-			for (int i = 0; i < t.size(); i++) {
-				Course co=(Course)t.get(i);
+			Collection<Course>  al = new ArrayList<Course>();
+			Course course = new Course();
+			course.setName("chinese");
+			al.add(course);
+			course.setName("english");
+			al.add(course);
+			Collection<Course> t = srvc.testCollection(al);
+			for (Course co: t ) {
 				System.out.println(co.getName());
 			}
 
