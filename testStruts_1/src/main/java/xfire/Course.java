@@ -2,6 +2,7 @@ package xfire;
 
 
 public class Course  {
+	
 	private String name;
 
 	public String getName() {
