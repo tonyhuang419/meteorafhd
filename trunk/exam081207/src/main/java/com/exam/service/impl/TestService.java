@@ -66,4 +66,17 @@ public class TestService implements ITestService {
 		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
 	}
 	
+	public void testHibernateState(){
+		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
+		Book b = new Book();
+		b.setTitle("aaaaaaaaaaaaaaaaaaaaaa");
+		commonService.save(b);
+		commonService.getSession().evict(b);
+		b.setTitle("bbbbbbbbbbbbbbbbbb");
+		commonService.save(b);
+		Book c = new Book() ;
+		c = b;
+		commonService.save(c);
+	}
+	
 }

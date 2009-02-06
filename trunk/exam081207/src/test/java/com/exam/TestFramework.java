@@ -43,7 +43,7 @@ public class TestFramework extends ExamBaseTest {
 
 	@SuppressWarnings("unchecked")
 	@Transactional
-	@Test
+	//@Test
 	public void testX() {
 		List<Orders> oList = commonService.listHql("from Orders o " , null);
 		for( Orders o :  oList){
@@ -92,13 +92,14 @@ public class TestFramework extends ExamBaseTest {
 	//	}
 
 	@Rollback(false)
-//	@Test
+	@Test
 	public void save(){
 		//		Book b1 = testService.testSave();
 		//		Book b2 = testService.testSave();
 		//		testService.delBook(b2);
-		testService.testSave();
+		//		testService.testSave();
 		//		testService.testSaveList();
+		testService.testHibernateState();
 	}
 
 }

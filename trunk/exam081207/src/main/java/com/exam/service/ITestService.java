@@ -14,5 +14,7 @@ public interface ITestService {
 	public void del();
 	
 	public void delBook( Book book );
+	
+	public void testHibernateState();
 
 }
