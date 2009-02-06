@@ -190,5 +190,12 @@
 		<version>5.8</version>
 		<classifier>jdk15</classifier>
 	</dependency>
+	<dependency>
+			<groupId>ibeclient</groupId>
+			<artifactId>ibeclient</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ibeclient.jar</systemPath>
+	</dependency>
 </dependencies>
 </project>
