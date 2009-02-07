@@ -5,6 +5,7 @@ public class BasicService implements IBasic {
 
 	public String hello()      
 	{      
+		System.out.println("i will say hello to client");
 		return hello;      
 	}      
 
