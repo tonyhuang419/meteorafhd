@@ -83,6 +83,9 @@
   </tr>
   </tbody>
 </table>
+<div id="d1" name="11">
+	<div id="d2" name="22"></div>
+</div>
 <script>
 	var tablex = document.getElementById("testtable");
 	var atts = tablex.attributes;
@@ -90,8 +93,17 @@
 		//alert(atts[i].nodeName)
 		//alert(atts[i].nodeValue)
 	}
-	alert(atts["height"].nodeValue)
-	atts["height"].nodeValue = 1000;
+	//alert(atts["height"].nodeValue)
+	//atts["height"].nodeValue = 1000;
+
+//alert(  document.getElementById("d1").innerHTML);
+//alert(  document.getElementById("d2").innerHTML);
+document.getElementById("d2").name = "333";
+//alert(  document.getElementById("d1").innerHTML);
+//alert(  document.getElementById("d2").innerHTML);
+
+var str = document.getElementById("d1").innerHTML;
+alert(str.replace("id=d2","11"));
 </script>
 </body>
 </html>
