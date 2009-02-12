@@ -14,7 +14,7 @@ import com.travelsky.ibe.client.AvSegment;
 import com.travelsky.ibe.client.FD;
 import com.travelsky.ibe.client.FDResult;
 
-public class TestIbcClient {
+public class TestIbeClient {
 
 	//===========================查票===========================
 	/**
@@ -179,7 +179,7 @@ public class TestIbcClient {
 
 
 	public static void main(String[] args){
-		TestIbcClient t = new TestIbcClient();
+		TestIbeClient t = new TestIbeClient();
 		List<String> strArr = new ArrayList<String>();
 		strArr.add("sy");
 		strArr.add("c");
