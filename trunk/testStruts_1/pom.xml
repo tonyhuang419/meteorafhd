@@ -39,6 +39,13 @@
 				<configuration>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-aar-maven-plugin</artifactId>
+				<version>1.4.1</version>
+          		 <configuration>
+           		</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -83,7 +90,6 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>strutstestcase</groupId>
 			<artifactId>strutstestcase</artifactId>
