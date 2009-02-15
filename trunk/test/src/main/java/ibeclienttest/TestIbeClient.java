@@ -152,22 +152,35 @@ public class TestIbeClient {
 	public FD getFD(){
 		return new FD();
 	}
-
-	public FDResult doGetFDResult(){
+	
+	
+	
+	/**
+	 * 获取FDResult by AvSegment
+	 */
+	public FDResult doGetFDResultByAvSegment(AvSegment avs){
 		FDResult fdr = null;
 		try{
-			fdr =  this.getFD().findPrice("kmg","ljg","18sep08","all","","AD",true);
-//			System.out.println(fdres);
-//			System.out.println("机场费："+fdres.getAirportTax(0));
-//			System.out.println("燃油税："+fdres.getFuelTax(0));	
+			fdr =  this.getFD().findPrice(avs.getOrgcity(),avs.getDstcity(),
+					avs.getDeptime(),avs.getAirline(),avs.getPlanestyle(),"passType" ,true);
+			//passType - java.lang.String 旅客类型(""或null：成人；"IN"：婴儿；"CH"：儿童)
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 		return fdr;
 	}
-
 	
+	/**
+	 * 获取Map<AvSegment , FDResult> by AvSegment
+	 */
+	public Map<AvSegment , FDResult> doGetAvsAndfds(AvSegment avs){
+		Map<AvSegment , FDResult> m = new HashMap<AvSegment , FDResult>();
+		m.put(avs, this.doGetFDResultByAvSegment(avs));
+		return m;
+	}
+	
+
 
 	//===========================订票===========================
 
