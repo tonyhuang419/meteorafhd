@@ -6,7 +6,7 @@ import java.util.Set;
 public class People {
 	private long id;
 	private String name;
-	private Set addresses = new HashSet();
+	private Set<Address> addresses = new HashSet<Address>();
 	
 	public long getId() {
 		return id;
@@ -20,10 +20,10 @@ public class People {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Set getAddresses() {
+	public Set<Address> getAddresses() {
 		return addresses;
 	}
-	public void setAddresses(Set addresses) {
+	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
 	

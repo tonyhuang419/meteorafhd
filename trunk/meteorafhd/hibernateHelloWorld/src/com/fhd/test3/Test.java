@@ -30,7 +30,8 @@ public class Test {
 //		session.delete(address);
 //		session.getTransaction().commit();
 		session.beginTransaction();
-		session.delete(people);
+//		session.delete(address);
+//		session.delete(people);
 		session.getTransaction().commit();
 
 	}
