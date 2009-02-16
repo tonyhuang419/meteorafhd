@@ -26,17 +26,17 @@
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-		<!--<property name="hbm2ddl.auto">update</property>-->
+		<property name="hbm2ddl.auto">create</property>
 		<property name="show_sql">true</property>
-		<!--
-		<mapping resource="com/fhd/test/Message.hbm.xml" />
-		<mapping resource="com/fhd/test2/student.hbm.xml" />
-		<mapping resource="com/fhd/test2/teacher.hbm.xml" />
+		
+<!--		<mapping resource="com/fhd/test/Message.hbm.xml" />-->
+<!--		<mapping resource="com/fhd/test2/student.hbm.xml" />-->
+<!--		<mapping resource="com/fhd/test2/teacher.hbm.xml" />-->
 		<mapping resource="com/fhd/test3/People.hbm.xml" />
 		<mapping resource="com/fhd/test3/Address.hbm.xml" />
-		-->
-		<mapping resource="com/fhd/test4/tsrelation.hbm.xml" />
-		<mapping resource="com/fhd/test4/student.hbm.xml" />
-		<mapping resource="com/fhd/test4/teacher.hbm.xml" />
+		
+<!--		<mapping resource="com/fhd/test4/tsrelation.hbm.xml" />-->
+<!--		<mapping resource="com/fhd/test4/student.hbm.xml" />-->
+<!--		<mapping resource="com/fhd/test4/teacher.hbm.xml" />-->
 	</session-factory>
 </hibernate-configuration>
