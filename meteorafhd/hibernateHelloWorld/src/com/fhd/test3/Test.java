@@ -1,5 +1,6 @@
 package com.fhd.test3;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class Test {
@@ -33,6 +34,12 @@ public class Test {
 //		session.delete(address);
 //		session.delete(people);
 		session.getTransaction().commit();
+		
+		String hql = " from People p , Address a where p.id = a.people ";
+		session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery(hql);
+		System.out.println(query.list().size());
+		
 
 	}
 }
