@@ -3,12 +3,12 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-lazy="false">
 	<class name="com.fhd.test3.People" table="people">
-		<id name="id" column="peopleId" unsaved-value="0">
-			<generator class="increment">
-			</generator>
+		<id name="id" column="id">
+			<generator class="increment" />
 		</id>
 		<property name="name" column="name" ></property>
 		<set name="addresses" cascade="save-update" inverse="false">
+			<!-- 外键column name，也就是对方表的 -->
 			<key column="peopleId" not-null="true" />
 			<one-to-many class="com.fhd.test3.Address"/>
 		</set>
