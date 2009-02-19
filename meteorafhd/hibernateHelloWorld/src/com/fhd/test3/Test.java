@@ -45,7 +45,7 @@ public class Test {
 		address.setAddressName("xxxxx");
 		System.out.println(address.getPeople());
 		session.beginTransaction();
-		session.update(address);
+		session.saveOrUpdate(address);
 		session.getTransaction().commit();
 		session.close();
 		
