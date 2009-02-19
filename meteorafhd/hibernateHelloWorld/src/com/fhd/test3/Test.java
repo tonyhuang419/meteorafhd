@@ -1,5 +1,8 @@
 package com.fhd.test3;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -13,7 +16,10 @@ public class Test {
 		address.setAddressName("yunnan");
 		address.setCodeNumber("564123");
 		//address.setPeople(people);
-		people.getAddresses().add(address);
+//		people.getAddresses().add(address);
+		Set s = new HashSet();
+		s.add(address);
+		people.setAddresses(s);
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		session.save(people);

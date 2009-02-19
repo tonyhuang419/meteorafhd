@@ -3,12 +3,11 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="com.fhd.test3.Address" table="address">
-		<id name="id" column="addressId" unsaved-value="0">
-			<generator class="increment">
-			</generator>
+		<id name="id" column="id">
+			<generator class="increment" />
 		</id>
 		<property name="addressName" column="addressName"></property>
 		<property name="codeNumber" column="codeNumber"></property>
-		<many-to-one name="people" column="id" />
+		<many-to-one name="people" column="peopleId"  insert="false" update="false" />
 	</class>
 </hibernate-mapping>
