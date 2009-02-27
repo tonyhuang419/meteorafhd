@@ -1,0 +1,852 @@
+
+
+Processing SayController#hello (for 127.0.0.1 at 2009-02-26 22:24:44) [GET]
+  Session ID: 3090771e2c2f62e553396c24dc1baa4b
+  Parameters: {"action"=>"hello", "controller"=>"say"}
+DEPRECATION WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library will be REMOVED FROM RAILS 2.2. Please switch to the offical mysql gem: `gem install mysql`  See http://www.rubyonrails.org/deprecation for details. (called from mysql_connection at D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/mysql_adapter.rb:81)
+  [4;36;1mSQL (0.047000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.016000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+Rendering say/hello
+
+
+ActionView::MissingTemplate (Missing template say/hello.html.erb in view path H:/Dev/java/aptana/rortest2/app/views):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_view/template.rb:85:in `raise_missing_template_exception'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_view/template.rb:78:in `set_extension_and_file_name'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_view/template.rb:15:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_view/base.rb:248:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_view/base.rb:248:in `render_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:1112:in `render_for_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:845:in `render_with_no_layout'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/layout.rb:259:in `render_without_benchmark'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/benchmarking.rb:51:in `render'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/benchmarking.rb:51:in `render'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:1161:in `default_render'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:1167:in `perform_action_without_filters'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/filters.rb:579:in `call_filters'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/filters.rb:572:in `perform_action_without_benchmark'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    D:/Program Files/Ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/query_cache.rb:8:in `cache'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:529:in `send'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:529:in `process_without_filters'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/filters.rb:568:in `process_without_session_management_support'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/session_management.rb:130:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:389:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing SayController#hello (for 127.0.0.1 at 2009-02-26 22:25:02) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"hello", "controller"=>"say"}
+Rendering say/hello
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.01600 (50%) | DB: 0.00000 (0%) | 200 OK [http://localhost/say/hello]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-02-26 22:46:33) [GET]
+  Session ID: aeb76956e947608297067b956f116fa2
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/book/new" with {:method=>:get}):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:385:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-02-26 22:46:39) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/people/new" with {:method=>:get}):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:385:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-02-26 22:47:43) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/people/new" with {:method=>:get}):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:385:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-02-26 22:47:52) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/people/new" with {:method=>:get}):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:385:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-02-26 23:01:33) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/book/new" with {:method=>:get}):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:385:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-02-26 23:01:41) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"people"}
+
+
+NoMethodError (undefined method `scaffold' for PeopleController:Class):
+    /app/controllers/people_controller.rb:2
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_without_new_constant_marking'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:215:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:96:in `require_or_load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:261:in `load_missing_constant'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:468:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:480:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:285:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/string/inflections.rb:143:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:387:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-02-26 23:08:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"people"}
+
+
+NoMethodError (undefined method `scaffold' for PeopleController:Class):
+    /app/controllers/people_controller.rb:2
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_without_new_constant_marking'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:215:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:96:in `require_or_load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:261:in `load_missing_constant'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:468:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:480:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:285:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/string/inflections.rb:143:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:387:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-02-26 23:08:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"people"}
+
+
+NoMethodError (undefined method `scaffold' for PeopleController:Class):
+    /app/controllers/people_controller.rb:2
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_without_new_constant_marking'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:215:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:96:in `require_or_load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:261:in `load_missing_constant'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:468:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:480:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:285:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/string/inflections.rb:143:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:387:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-02-26 23:08:54) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"people"}
+
+
+NoMethodError (undefined method `scaffold' for PeopleController:Class):
+    /app/controllers/people_controller.rb:2
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_without_new_constant_marking'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:215:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:96:in `require_or_load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:261:in `load_missing_constant'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:468:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:480:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:285:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/string/inflections.rb:143:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:387:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:159:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:158:in `process_client'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:285:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `initialize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel.rb:268:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:282:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/configurator.rb:281:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:128:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/lib/mongrel/command.rb:212:in `run'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.2-x86-mswin32/bin/mongrel_rails:281
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:503:in `load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/mongrel.rb:64
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-02-26 23:17:12) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"people"}
+
+
+NoMethodError (undefined method `scaffold' for PeopleController:Class):
+    /app/controllers/people_controller.rb:2
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_without_new_constant_marking'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:215:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:96:in `require_or_load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:261:in `load_missing_constant'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:468:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:480:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:285:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/string/inflections.rb:143:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:387:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:112:in `handle_dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:78:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:62:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/webrick.rb:66
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing PeoplesController#new (for 127.0.0.1 at 2009-02-26 23:17:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"peoples"}
+DEPRECATION WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library will be REMOVED FROM RAILS 2.2. Please switch to the offical mysql gem: `gem install mysql`  See http://www.rubyonrails.org/deprecation for details. (called from mysql_connection at D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/mysql_adapter.rb:81)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPeople Columns (0.000000)[0m   [0;1mMysql::Error: #42S02Table 'test.peoples' doesn't exist: SHOW FIELDS FROM `peoples`[0m
+
+
+ActiveRecord::StatementInvalid (Mysql::Error: #42S02Table 'test.peoples' doesn't exist: SHOW FIELDS FROM `peoples`):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/abstract_adapter.rb:147:in `log'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/mysql_adapter.rb:302:in `execute'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/mysql_adapter.rb:433:in `columns'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/base.rb:1149:in `columns'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/base.rb:2616:in `attributes_from_column_definition_without_lock'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/locking/optimistic.rb:55:in `attributes_from_column_definition'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/base.rb:2137:in `initialize'
+    /app/controllers/peoples_controller.rb:27:in `new'
+    /app/controllers/peoples_controller.rb:27:in `new'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:1166:in `send'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:1166:in `perform_action_without_filters'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/filters.rb:579:in `call_filters'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/filters.rb:572:in `perform_action_without_benchmark'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    D:/Program Files/Ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.2/lib/active_record/query_cache.rb:8:in `cache'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:529:in `send'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:529:in `process_without_filters'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/filters.rb:568:in `process_without_session_management_support'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/session_management.rb:130:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/base.rb:389:in `process'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:112:in `handle_dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:78:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:62:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/webrick.rb:66
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-02-26 23:33:06) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/peoples/new" with {:method=>:get}):
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:385:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:112:in `handle_dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:78:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:62:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/webrick.rb:66
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-02-26 23:33:14) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--d1fc9d2b4e7686f0e30db4ea0e967aa17895b687
+  Parameters: {"action"=>"new", "controller"=>"people"}
+
+
+NoMethodError (undefined method `scaffold' for PeopleController:Class):
+    /app/controllers/people_controller.rb:2
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_without_new_constant_marking'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:216:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:215:in `load_file'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:96:in `require_or_load'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:261:in `load_missing_constant'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:468:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:480:in `const_missing'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:285:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `each'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/inflector.rb:284:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/core_ext/string/inflections.rb:143:in `constantize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/routing/route_set.rb:387:in `recognize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:112:in `handle_dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:78:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    D:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/webrick_server.rb:62:in `dispatch'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/servers/webrick.rb:66
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:355:in `new_constants_in'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.2/lib/active_support/dependencies.rb:510:in `require'
+    D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/rails-2.1.2/lib/commands/server.rb:39
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    D:/Program Files/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering D:/Program Files/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
