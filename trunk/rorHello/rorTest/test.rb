@@ -1,8 +1,8 @@
 def test()
-    print "foo" + "soo\n";
-    print "foo" * 2 +"\n";
-    
-    x= " abc"
+  print "foo" + "soo\n";
+  print "foo" * 2 +"\n";
+  
+  x= " abc"
   print "variable x is: #{x}";
   
   str = "abcde";
@@ -16,22 +16,22 @@ end
 
 
 def regExp(str)   
-    puts (str=~/^a.*z$/ ) != nil
+  puts (str=~/^a.*z$/ ) != nil
 end
 
 
 
 def guess()
-words = ['foobar', 'baz', 'quux']
-secret = words[rand(3)]
-print "guess? "
-while guess = STDIN.gets  
+  words = ['foobar', 'baz', 'quux']
+  secret = words[rand(3)]
+  print "guess? "
+  while guess = STDIN.gets  
     guess.chop!  
     if guess == secret
-       print "You win!\n"    
-       break  
+      print "You win!\n"    
+      break  
     else    
-       print "Sorry, you lose.\n"  
+      print "Sorry, you lose.\n"  
     end  
     print "guess? "
   end
@@ -43,7 +43,7 @@ def ary()
   ary = [1, 2, "3"];
   puts ary[0];
   print ary[0..2];
-
+  
   ary = ary + ["foo", "bar"]
   print ary[0..4];
   
@@ -57,18 +57,56 @@ def ary()
   print ary2[0..9];
   puts
   print ary2[0..9];
-   
- end
- 
- def tesMap()
+  
+end
+
+def tesMap()
   h = {1 => 2, "2" => "4"}
   puts h[1];
   puts h["2"];
   h.delete 1;
   puts h[1];  #will output "nil"
+  
+  puts "abcde".length;
 end
 
-tesMap();
+class Dog
+  def speak
+    print "Bow Wow\n"
+  end
+end
+
+=begin
+dog  = Dog.new;
+dog.speak;
+(Dog.new).speak ;
+=end
+
+def testIt
+  ary = [1,2,3,4,5]
+  ary.each do |i| 
+   # puts i*2 
+  end  # prints 2,3,4,8,10 for each line
+  
+  ary = %w(foo bar baz) 
+    ary.each do |i| 
+    puts i*2 
+  end  # prints foofoo barbar bazbaz
+end
+testIt;   # testIt(); can call use this spell too
+
+def testRescue
+  path = "aaa"
+  begin
+    f = open(path) 
+  rescue
+    puts "#{path} does not exist."
+    exit 1
+  end
+end
+testRescue
+
+#tesMap();
 #ary();
 #regExp(STDIN.gets);
 #test();
