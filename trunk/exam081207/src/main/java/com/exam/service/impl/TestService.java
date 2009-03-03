@@ -28,6 +28,7 @@ public class TestService implements ITestService {
 		throw new RuntimeException();
 	}
 
+	@SuppressWarnings("unchecked")
 	public void del(){
 		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
 		List<Book> lb = commonService.listHql(" from Book b where b.id<12000","" );
@@ -57,6 +58,7 @@ public class TestService implements ITestService {
 		return b;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void testSaveList(){
 		System.out.println( "1111111111    "+  commonService.uniqueResult("select count(*) from Book " ));
 		List bList = new ArrayList<Book>();
