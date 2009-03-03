@@ -88,6 +88,7 @@ public class ExcelTableExport implements TableExport {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void addRowToExl(ExcelRow er , WritableSheet sheet , int rowNum ) throws Exception {
 		int colNum = 0;
 		Object[] objArray = er.getRowData();

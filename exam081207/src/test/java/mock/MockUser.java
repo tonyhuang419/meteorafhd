@@ -10,8 +10,6 @@ import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.runner.RunWith;
 
-import com.exam.entity.Employee;
-
 @RunWith(JMock.class)
 public class MockUser   {
 

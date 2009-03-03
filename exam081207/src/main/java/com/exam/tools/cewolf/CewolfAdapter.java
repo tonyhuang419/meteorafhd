@@ -19,7 +19,6 @@ public abstract class CewolfAdapter extends BaseAction implements DatasetProduce
 	
 	protected Log logger = LogFactory.getLog(this.getClass());
 
-
 	 public Object produceDataset(Map params) throws DatasetProduceException {
 		return null;
 	}

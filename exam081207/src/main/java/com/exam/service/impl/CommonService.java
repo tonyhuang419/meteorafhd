@@ -227,6 +227,8 @@ public class CommonService implements ICommonService {
 			ResultSet s = cstmt.executeQuery();
 			ResultSetMetaData rd = s.getMetaData();
 			System.out.println(rd.getColumnCount());
+//			s.close();
+//			cstmt.close();
 		}catch( SQLException  se){
 			se.printStackTrace();
 		}

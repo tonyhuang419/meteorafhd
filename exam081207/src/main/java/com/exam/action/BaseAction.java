@@ -17,6 +17,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport implements SessionAware, ServletRequestAware, ServletResponseAware ,ApplicationAware {
+	
 	private static final long serialVersionUID = 6222135106052344007L;
 
 	protected Log logger = LogFactory.getLog(this.getClass());
@@ -69,4 +70,40 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
 	 public void setApplication(Map application){
 	     this.application = application;
 	 }
+
+	public Log getLogger() {
+		return logger;
+	}
+
+	public void setLogger(Log logger) {
+		this.logger = logger;
+	}
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+	public void setResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public Map getApplication() {
+		return application;
+	}
 }
