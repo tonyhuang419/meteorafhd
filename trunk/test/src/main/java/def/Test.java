@@ -93,10 +93,26 @@ public class Test {
 		}
 		System.out.println("aaaaa");
 	}
+	
+	
+	public void testMemory(){
+		String s[] = new String[5];
+		s[0]="1";
+		s[2]="2";
+		s[3]="3";
+		s[4]="4";
+		System.out.println(s[4]);
+		s = new String[4];
+//		System.out.println(s[4]);
+		                 
+	}
 
 	public static void main(String[] args) {
+		Test test = new Test();
 
-		new Test().testY();
+		//		test.testY();
+		
+		test.testMemory();
 
 		//		
 		//		String s=null;
