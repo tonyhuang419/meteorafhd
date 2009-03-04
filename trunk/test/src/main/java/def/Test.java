@@ -102,8 +102,8 @@ public class Test {
 		s[3]="3";
 		s[4]="4";
 		System.out.println(s[4]);
-		s = new String[4];
-//		System.out.println(s[4]);
+		s[4]= null;
+		System.out.println(s[4]);
 		                 
 	}
 
