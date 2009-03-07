@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 
 public class WaterService {
@@ -26,6 +27,12 @@ public class WaterService {
 		}
 	}
 
+	public void saveBoardList(List<Board> listBoard){
+		for(Board b:listBoard){
+			this.saveBoard(b);
+		}
+	}
+	
 
 	public Connection getConnection(){
 		if(Dao.con!=null){
@@ -35,6 +42,10 @@ public class WaterService {
 			Dao.setConnection();
 			return Dao.con;
 		}
+	}
+	
+	public void closeConnection(){
+		Dao.close();
 	}
 
 	public static void main(String args[]){

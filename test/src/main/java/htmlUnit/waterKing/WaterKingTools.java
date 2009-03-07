@@ -79,8 +79,13 @@ public class WaterKingTools {
 		HtmlPage page;
 		try{
 			page = webClient.getPage(waterUrl);
-			HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
-			return htmlTable.getBodies();
+			if(page.getBody().asText().indexOf("本帖要求阅读权限高于")!=-1){
+				return null;
+			}
+			else{
+				HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
+				return htmlTable.getBodies();
+			}
 		}catch(Exception e){
 			logger.info("get water area list fail");
 			e.printStackTrace();
@@ -95,13 +100,16 @@ public class WaterKingTools {
 	 * @return
 	 */
 	public  List<Board> doGetWaterList(List<HtmlTableBody> listBody){
+		if(listBody==null){
+			return null;
+		}
 		Board board;
 		List<Board> boardList = new ArrayList<Board>();
 		List<HtmlTableCell> listHTC;
 		for (HtmlTableBody body : listBody ) {
 			List<HtmlTableRow> rows = body.getRows();
 			board = new Board();
-			
+
 			/**
 			 * every TBODY has one row
 			 */
@@ -124,6 +132,13 @@ public class WaterKingTools {
 			}
 			board.setLastScanTime(new Date());
 			boardList.add(board);
+//			for(Board b:boardList){
+//				logger.info(b.getTopic());
+//				logger.info(b.getTopicUrl());
+//				logger.info(b.getStarter());
+//				logger.info(b.getReplyNum());
+//				logger.info(b.getIssueDate());
+//			}
 		}
 		return boardList;
 	}
@@ -135,7 +150,7 @@ public class WaterKingTools {
 		//		waterKingTools.login("非法用户xx", "happyamiga");
 		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , waterUrl);
 		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
-//		System.out.println(boardList.size());
+		//		System.out.println(boardList.size());
 		for(Board b:boardList){
 			System.out.print(b.getTopic()+"|");
 			System.out.print(b.getTopicUrl()+"|");
