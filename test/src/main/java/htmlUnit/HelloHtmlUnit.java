@@ -18,11 +18,12 @@ public class HelloHtmlUnit {
 			HtmlForm form = page.getFormByName("login");
 			HtmlTextInput username = form.getInputByName("username");
 			HtmlPasswordInput password = form.getInputByName("password");
-			username.setValueAttribute("非法用户");
+			username.setValueAttribute("非法_用户");
 			password.setValueAttribute("happyamiga");
 			HtmlButton button = form.getButtonByName("userlogin");
 			page = button.click();
 			System.out.println(page.getTitleText());
+			System.out.println(page.getBody().asText());
 		}catch( Exception e ){
 			e.printStackTrace();
 		}
