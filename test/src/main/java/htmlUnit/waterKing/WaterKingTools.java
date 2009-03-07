@@ -1,6 +1,7 @@
 package htmlUnit.waterKing;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -23,7 +24,6 @@ public class WaterKingTools {
 
 	static String tsUrl = "http://bbs.taisha.org/" ;
 	static String loginUrl = "http://bbs.taisha.org/index.php";
-	static String waterUrl = "http://bbs.taisha.org/forum-74-1.html";
 	static String tableId = "forum_74";
 
 
@@ -31,7 +31,7 @@ public class WaterKingTools {
 	 * login
 	 * @param loginName 用户名
 	 * @param password 密码
-	 * @return  webClient
+	 * @return 
 	 */
 	public  WebClient login(String loginName , String password){
 		WebClient webClient = new WebClient();
@@ -73,9 +73,9 @@ public class WaterKingTools {
 	/**
 	 * get water list
 	 * @param webClient
-	 * @return List<HtmlTableBody>
+	 * @return 
 	 */
-	public List<HtmlTableBody> doGetHtmlTable(WebClient webClient){
+	public List<HtmlTableBody> doGetHtmlTable(WebClient webClient , String waterUrl){
 		HtmlPage page;
 		try{
 			page = webClient.getPage(waterUrl);
@@ -89,6 +89,11 @@ public class WaterKingTools {
 	}
 
 
+	/**
+	 * 
+	 * @param listBody 帖子列表
+	 * @return
+	 */
 	public  List<Board> doGetWaterList(List<HtmlTableBody> listBody){
 		Board board;
 		List<Board> boardList = new ArrayList<Board>();
@@ -117,16 +122,18 @@ public class WaterKingTools {
 					break;
 				}
 			}
+			board.setLastScanTime(new Date());
 			boardList.add(board);
 		}
 		return boardList;
 	}
 
 	public static void main(String[] args){
+		String waterUrl = "http://bbs.taisha.org/forum-74-1.html";
 		WaterKingTools waterKingTools = new WaterKingTools();
 		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
 		//		waterKingTools.login("非法用户xx", "happyamiga");
-		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient);
+		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , waterUrl);
 		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
 //		System.out.println(boardList.size());
 		for(Board b:boardList){

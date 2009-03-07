@@ -14,6 +14,8 @@ public class Board {
 	
 	private Long replyNum;
 	
+	private Date lastScanTime;
+	
 	public String getTopic() {
 		return topic;
 	}
@@ -43,6 +45,12 @@ public class Board {
 	}
 	public void setTopicUrl(String topicUrl) {
 		this.topicUrl = topicUrl;
+	}
+	public Date getLastScanTime() {
+		return lastScanTime;
+	}
+	public void setLastScanTime(Date lastScanTime) {
+		this.lastScanTime = lastScanTime;
 	}
 	
 }
