@@ -77,18 +77,18 @@ public class WaterKingTools {
 	 */
 	public List<HtmlTableBody> doGetHtmlTable(WebClient webClient , String waterUrl){
 		HtmlPage page;
-		try{
-			page = webClient.getPage(waterUrl);
-			if(page.getBody().asText().indexOf("本帖要求阅读权限高于")!=-1){
-				return null;
-			}
-			else{
+		boolean sign = true;
+		while(sign){
+			try{
+				page = webClient.getPage(waterUrl);
 				HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
+				logger.info("get water area list success: "+ waterUrl );
+//				success = false;
 				return htmlTable.getBodies();
+			}catch(Exception e){
+				logger.info("get water area list fail,again");
+				e.printStackTrace();
 			}
-		}catch(Exception e){
-			logger.info("get water area list fail");
-			e.printStackTrace();
 		}
 		return null;
 	}
@@ -143,19 +143,19 @@ public class WaterKingTools {
 			}
 			board.setLastScanTime(new Date());
 			boardList.add(board);
-//			for(Board b:boardList){
-//				logger.info(b.getTopic());
-//				logger.info(b.getTopicUrl());
-//				logger.info(b.getStarter());
-//				logger.info(b.getReplyNum());
-//				logger.info(b.getIssueDate());
-//			}
+			//			for(Board b:boardList){
+			//				logger.info(b.getTopic());
+			//				logger.info(b.getTopicUrl());
+			//				logger.info(b.getStarter());
+			//				logger.info(b.getReplyNum());
+			//				logger.info(b.getIssueDate());
+			//			}
 		}
 		return boardList;
 	}
 
 	public static void main(String[] args){
-		
+
 		String waterUrl = "http://bbs.taisha.org/forum-74-991.html";
 		WaterKingTools waterKingTools = new WaterKingTools();
 		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
