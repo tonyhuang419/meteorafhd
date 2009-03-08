@@ -28,7 +28,7 @@ public class WhoIsKing {
 		WaterKingTools waterKingTools = new WaterKingTools(); 
 		WaterService waterService = new WaterService();
 		WebClient  webClient  = waterKingTools.login(loginName, password);
-		for(int i=1;i<=2;i++){
+		for(int i=1000;i>=1;i--){
 			url= waterUrlPrefix + i +  waterUrlSuffix;
 			logger.info(url);
 			listHtmlTableBody = waterKingTools.doGetHtmlTable(webClient, url);
@@ -38,7 +38,7 @@ public class WhoIsKing {
 		}
 		try {
 			waterService.closeConnection();
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

@@ -14,6 +14,8 @@ public class Board {
 	
 	private Long replyNum;
 	
+	private Long readNum;
+	
 	private Date lastScanTime;
 	
 	public String getTopic() {
@@ -51,6 +53,12 @@ public class Board {
 	}
 	public void setLastScanTime(Date lastScanTime) {
 		this.lastScanTime = lastScanTime;
+	}
+	public Long getReadNum() {
+		return readNum;
+	}
+	public void setReadNum(Long readNum) {
+		this.readNum = readNum;
 	}
 	
 }

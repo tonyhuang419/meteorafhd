@@ -126,7 +126,18 @@ public class WaterKingTools {
 					board.setIssueDate(Tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText()));
 					break;
 				case 4:
-					board.setReplyNum(new Long(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText()));
+					if(listHTC.get(j).getHtmlElementsByTagName("strong").get(0).asText().equals("-")){
+						board.setReplyNum(0L);
+					}
+					else{
+						board.setReplyNum(new Long(listHTC.get(j).getHtmlElementsByTagName("strong").get(0).asText()));
+					}
+					if(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText().equals("-")){
+						board.setReadNum(0L);
+					}
+					else{
+						board.setReadNum(new Long(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText()));
+					}
 					break;
 				}
 			}
@@ -144,7 +155,8 @@ public class WaterKingTools {
 	}
 
 	public static void main(String[] args){
-		String waterUrl = "http://bbs.taisha.org/forum-74-1.html";
+		
+		String waterUrl = "http://bbs.taisha.org/forum-74-991.html";
 		WaterKingTools waterKingTools = new WaterKingTools();
 		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
 		//		waterKingTools.login("非法用户xx", "happyamiga");
@@ -156,9 +168,10 @@ public class WaterKingTools {
 			System.out.print(b.getTopicUrl()+"|");
 			System.out.print(b.getStarter()+"|");
 			System.out.print(b.getReplyNum()+"|");
+			System.out.print(b.getReadNum()+"|");
 			System.out.println(b.getIssueDate());
 		}
-
+		new WaterService().saveBoardList(boardList);
 	}
 
 }
