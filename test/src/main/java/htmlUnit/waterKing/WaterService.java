@@ -6,23 +6,32 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 
 public class WaterService {
+	
+	protected  Log logger = LogFactory.getLog(this.getClass());
+	
+	private Dao dao = new Dao();
 
 	public void saveBoard(Board board) {
 		Connection con = this.getConnection();
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
-			" insert into water_king(topic,topicUrl,starter,issueDate,replyNum,lastScanTime) values (?,?,?,?,?,?)");
+			" insert into water_king(topic,topicUrl,starter,issueDate,replyNum, readNum,lastScanTime) values (?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
 			preparedStatement.setDate(4, new java.sql.Date(board.getIssueDate().getTime()));
 			preparedStatement.setLong(5, board.getReplyNum());
-			preparedStatement.setDate(6, new java.sql.Date(board.getLastScanTime().getTime()));
+			preparedStatement.setLong(6, board.getReadNum());
+			preparedStatement.setDate(7, new java.sql.Date(board.getLastScanTime().getTime()));
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");
+			logger.error("保存出错："+board.getTopic()+"|"+ board.getTopicUrl());
 			sqle.printStackTrace();
 		}
 	}
@@ -35,17 +44,17 @@ public class WaterService {
 	
 
 	public Connection getConnection(){
-		if(Dao.con!=null){
-			return Dao.con;
+		if(this.getDao().getCon()!=null){
+			return dao.getCon();
 		}
 		else{
-			Dao.setConnection();
-			return Dao.con;
+			this.getDao().setConnection();
+			return this.getDao().getCon();
 		}
 	}
 	
 	public void closeConnection(){
-		Dao.close();
+		this.getDao().close();
 	}
 
 	public static void main(String args[]){
@@ -57,6 +66,14 @@ public class WaterService {
 		board.setTopic("22222");
 		board.setTopicUrl("111111");
 		new WaterService().saveBoard(board);
+	}
+
+	public Dao getDao() {
+		return dao;
+	}
+
+	public void setDao(Dao dao) {
+		this.dao = dao;
 	}
 
 
