@@ -18,17 +18,17 @@ public class WaterService {
 	private Dao dao = new Dao();
 
 	public void saveBoard(Board board) {
-		Connection con = this.getConnection();
+		Connection con = dao.getCon();
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
-					" insert into water_king(topic,topicUrl,starter,issueDate,replyNum, readNum,lastScanTime) values (?,?,?,?,?,?,?)");
+			" insert into water_king(topic,topicUrl,starter,issueDate,replyNum, readNum,lastScanTime) values (?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
-			preparedStatement.setDate(4, new java.sql.Date(board.getIssueDate().getTime()));
+			preparedStatement.setTimestamp(4, new java.sql.Timestamp(board.getIssueDate().getTime()));
 			preparedStatement.setLong(5, board.getReplyNum());
 			preparedStatement.setLong(6, board.getReadNum());
-			preparedStatement.setDate(7, new java.sql.Date(board.getLastScanTime().getTime()));
+			preparedStatement.setTimestamp(7, new java.sql.Timestamp(board.getLastScanTime().getTime()));
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");
@@ -39,7 +39,6 @@ public class WaterService {
 	}
 
 	public ResultSet query(String sql){
-		Connection con = this.getConnection();
 		return this.getDao().query(sql);
 	}
 
@@ -47,16 +46,6 @@ public class WaterService {
 	public void saveBoardList(List<Board> listBoard){
 		for(Board b:listBoard){
 			this.saveBoard(b);
-		}
-	}
-
-	public Connection getConnection(){
-		if(this.getDao().getCon()!=null){
-			return dao.getCon();
-		}
-		else{
-			this.getDao().setConnection();
-			return this.getDao().getCon();
 		}
 	}
 
@@ -72,7 +61,7 @@ public class WaterService {
 		board.setReadNum(4444L);
 		board.setStarter("3333");
 		board.setTopic("22222");
-		board.setTopicUrl("111111");
+		board.setTopicUrl("888");
 		new WaterService().saveBoard(board);
 	}
 
