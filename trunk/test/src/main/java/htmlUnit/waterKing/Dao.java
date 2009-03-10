@@ -27,7 +27,7 @@ public class Dao {
 
 	public   void update(String sql) {  
 		try {  
-			Statement statement = con.createStatement();
+			Statement statement = this.getCon().createStatement();
 			statement.executeUpdate(sql);  
 		} catch (SQLException e) {  
 			System.out.println("update error");
@@ -37,7 +37,7 @@ public class Dao {
 
 	public  ResultSet query(String sql) {  
 		try{
-			Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			Statement statement = this.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = null;
 			rs = statement.executeQuery(sql); 
 			return rs; 
@@ -91,6 +91,9 @@ public class Dao {
 
 
 	public Connection getCon() {
+		if(con==null){
+			this.setConnection();
+		}
 		return con;
 	}
 
