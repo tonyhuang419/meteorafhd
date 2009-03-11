@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>ExtJS</title>
+<link rel="stylesheet" type="text/css" href="../ext-2.2.1/resources/css/ext-all.css" />
+<script type="text/javascript" src="../ext-2.2.1/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="../ext-2.2.1/ext-all.js"></script>
+<script>
+var store=new Ext.data.Store({
+	url:"hello.xml", reader:new Ext.data.XmlReader({record:"row"},["id","name","organization","homepage"])
+});
+Ext.onReady(function(){ 
+var grid = new Ext.grid.GridPanel({
+	renderTo:"hello",
+	title:"中国Java开源产品及团队",
+	height:150,
+	width:600, 
+	columns:[{header:"项目名称",dataIndex:"name",sortable:true},
+		{header:"开发团队",dataIndex:"organization",sortable:true},
+		{header:"网址",dataIndex:"homepage",sortable:true , renderer:showUrl}],
+	store:store,
+	autoExpandColumn:2
+	}); 
+	store.load(); 
+});
+
+function showUrl(value){
+	return "<a href='"+value+"'>"+value+"</a>";
+}
+
+</script>
+</head>
+<body>
+
+<div id="hello">&nbsp;</div>
+
+</body>
+</html>
