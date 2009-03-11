@@ -25,18 +25,35 @@
 //});
 
 
+//Ext.onReady(function(){ 
+//	new Ext.form.FormPanel({
+//	renderTo:"hello",
+//	title:"容器组件",
+//	width:300, 
+//	labelAlign:"right",
+//	height:120,
+//	defaultType: 'textfield',
+//	items:[
+//		{fieldLabel:"请输入姓名",name:"name"},
+//		{fieldLabel:"请输入地址",name:"address"},
+//		{fieldLabel:"请输入电话",name:"tel"}
+//	]});
+//});
+
+
 Ext.onReady(function(){ 
-	new Ext.form.FormPanel({
+	new Ext.Panel({
 	renderTo:"hello",
 	title:"容器组件",
-	width:300, 
-	labelAlign:"right",
-	height:120,
-	defaultType: 'textfield',
+	width:500,
+	height:200,
+	layout:"accordion",
+	layoutConfig: {
+	animate: true },
 	items:[
-		{fieldLabel:"请输入姓名",name:"name"},
-		{fieldLabel:"请输入地址",name:"address"},
-		{fieldLabel:"请输入电话",name:"tel"}
+		{title:"子元素1",html:"这是子元素1中的内容"},
+		{title:"子元素2",html:"这是子元素2中的内容"},
+		{title:"子元素3",html:"这是子元素3中的内容"}
 	]});
 });
 
