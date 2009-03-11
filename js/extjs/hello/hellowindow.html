@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>ExtJS</title>
+<link rel="stylesheet" type="text/css" href="../ext-2.2.1/resources/css/ext-all.css" />
+<script type="text/javascript" src="../ext-2.2.1/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="../ext-2.2.1/ext-all.js"></script>
+<script>
+
+//var i=0;
+//function newWin(){	
+//	var win=new Ext.Window({title:"窗口"+i++,width:400,height:300,maximizable:true}); 	
+//	win.show();
+//}
+
+//Ext.onReady(function(){
+//	Ext.get("btn").on("click",newWin);
+//});
+
+
+var i=0,mygroup;
+function newWin(){	
+ 	var win=new Ext.Window({title:"窗口"+i++,width:400,height:300,maximizable:true,manager:mygroup}); 	
+ 	win.show();
+}
+function toBack(){
+	mygroup.sendToBack(mygroup.getActive());
+}
+function hideAll(){	
+	mygroup.hideAll();
+}
+Ext.onReady(function(){
+	mygroup=new Ext.WindowGroup();
+	Ext.get("btn").on("click",newWin);
+	Ext.get("btnToBack").on("click",toBack);
+	Ext.get("btnHide").on("click",hideAll);
+});
+
+</script>
+</head>
+<body>
+
+<input type="button" id="btn" value="新窗口"/>
+<input id="btnToBack" type="button" name="add" value="放到后台" />
+<input id="btnHide" type="button" name="add" value="隐藏所有" />
+
+
+</body>
+</html>
