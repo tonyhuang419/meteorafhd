@@ -129,7 +129,7 @@ public class Test {
 		list.add("c23");
 		list.add("a23");
 		list.add("123");
-		Collections.sort(list);
+		Collections.sort(list , String.CASE_INSENSITIVE_ORDER);
 		System.out.println(list);
 		
 		String[] s = {"asd","saf","123"};
