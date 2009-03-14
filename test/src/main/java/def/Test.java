@@ -1,5 +1,4 @@
 package def;
-import java.sql.Date;
 import java.text.DecimalFormat;
 
 
@@ -71,17 +70,17 @@ public class Test {
 		//		ii = i;
 		//		System.out.println(ii);
 
-//		Double d = new Double("1.2222222222222222222");
-//		System.out.println(d);
-//		System.out.println(d.floatValue());
-		
-//		Object id = null;
-//		System.out.println((Long)id);
-		
+		//		Double d = new Double("1.2222222222222222222");
+		//		System.out.println(d);
+		//		System.out.println(d.floatValue());
+
+		//		Object id = null;
+		//		System.out.println((Long)id);
+
 		if(   ! (1==1) ){
 			System.out.println("1");
 		}
-		
+
 	}
 
 	public void testFor(){
@@ -93,8 +92,8 @@ public class Test {
 		}
 		System.out.println("aaaaa");
 	}
-	
-	
+
+
 	public void testMemory(){
 		String s[] = new String[5];
 		s[0]="1";
@@ -104,17 +103,31 @@ public class Test {
 		System.out.println(s[4]);
 		s[4]= null;
 		System.out.println(s[4]);
-		                 
+
 	}
+
+
+	public void testFor2(){
+		for(int i=0,n=this.getC();i<10;i++){
+			System.out.println("for"+n);
+		}
+	}
+
+	public int getC(){
+		System.out.println("get c");
+		return 10;
+	}
+
 
 	public static void main(String[] args) {
 		Test test = new Test();
 
-		//		test.testY();
-		
+		//		new Test().testY();
+
+		new Test().testFor2();
+
 		test.testMemory();
 
-		//		
 		//		String s=null;
 		//		s +="a";
 		//		System.out.println(s);
