@@ -5,18 +5,26 @@ import java.io.FileOutputStream;
 import java.io.FilterInputStream;
 import java.net.URL;
 
-public class DownloadUtil {
-	
-	synchronized static public void downloadFile(String _url,String filePath) {
+public class DownloadUtil extends Thread {
+
+	String urlStr;
+	String baseFilePath = "c:/pic/";
+
+	public DownloadUtil(String urlStr){
+		this.urlStr = urlStr;
+		this.start();
+	}
+
+	public void run() {
 		try {
 			URL url = null;
 			try {
-				url = new URL(_url);
+				url = new URL(urlStr);
 			} catch(Exception e) {
 				System.out.println("url error");
 			}
 			FilterInputStream in = (FilterInputStream) url.openStream();
-			File fileOut = new File(filePath);
+			File fileOut = new File(baseFilePath+System.currentTimeMillis());
 			FileOutputStream out = new FileOutputStream(fileOut);
 			byte[] bytes = new byte[1024];
 			int c;
@@ -29,9 +37,11 @@ public class DownloadUtil {
 			System.out.println("dowload error!");
 			e.printStackTrace();
 		}
-	} 
-	
+	}
+
 	public static void main(String args[]){
-		downloadFile("http://www.163.com/images/neteaselogo.gif", "c:/1");
+		for(int i=0;i<10;i++){
+			new DownloadUtil("http://www.163.com/images/neteaselogo.gif");
+		}
 	}
 }

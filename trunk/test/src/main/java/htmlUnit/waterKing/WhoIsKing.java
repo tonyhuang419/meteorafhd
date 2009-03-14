@@ -63,7 +63,8 @@ class UserThread implements Runnable{
 		t.start();
 	}
 
-	synchronized public void run() {
+	//synchronized 
+	public void run() {
 		WhoIsKing w = new WhoIsKing();
 		if(loginName.equals("非法_用户")){
 			for(int i=425;i>=1;i--){
