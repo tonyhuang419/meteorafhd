@@ -1,5 +1,9 @@
 package def;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Test {
@@ -106,7 +110,7 @@ public class Test {
 
 	}
 
-
+//=======================
 	public void testFor2(){
 		for(int i=0,n=this.getC();i<10;i++){
 			System.out.println("for"+n);
@@ -117,16 +121,30 @@ public class Test {
 		System.out.println("get c");
 		return 10;
 	}
-
+	//=======================
+	
+	
+	public void sort(){
+		List<String> list = new ArrayList<String>();
+		list.add("c23");
+		list.add("a23");
+		list.add("123");
+		Collections.sort(list);
+		System.out.println(list);
+		
+		String[] s = {"asd","saf","123"};
+		System.out.println(Arrays.asList(s));
+	}
+	
 
 	public static void main(String[] args) {
 		Test test = new Test();
 
+		test.sort();
+		
 		//		new Test().testY();
-
-		new Test().testFor2();
-
-		test.testMemory();
+//		test.testFor2();
+//		test.testMemory();
 
 		//		String s=null;
 		//		s +="a";
