@@ -140,7 +140,9 @@ public class Test {
 	public static void main(String[] args) {
 		Test test = new Test();
 
-		test.sort();
+		System.out.println(1.03 - 0.42);
+		
+//		test.sort();
 		
 		//		new Test().testY();
 //		test.testFor2();
