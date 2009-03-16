@@ -142,6 +142,7 @@ public class WaterKingTools {
 				}
 			}
 			board.setLastScanTime(new Date());
+			board.setLastScanFloor(0L);
 			boardList.add(board);
 			//			for(Board b:boardList){
 			//				logger.info(b.getTopic());
