@@ -8,10 +8,11 @@ import com.gargoylesoftware.htmlunit.WebClient;
 public class WhoIsKing {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
-	private ScanTools st = new ScanTools();
 
+	private ScanTools scanTools = new ScanTools();
+	
 	public void scan(WebClient webClient ,String baseUrl ){
-		st.scan(webClient, baseUrl);
+		scanTools.scan(webClient, baseUrl);
 	}
 
 
@@ -27,14 +28,16 @@ class UserThread implements Runnable{
 
 	private Thread t;
 	private WebClient  webClient;
-	private WaterKingTools waterKingTools = new WaterKingTools(); 
 	private String loginName;
+	
+	private WaterKingTools waterKingTools = new WaterKingTools(); 
+	
 
 	public UserThread(String loginName , String password){
 		this.loginName = loginName;
 		logger.info("login:"+loginName);
 		webClient  = waterKingTools.login(loginName, password);
-		t = new Thread(this);
+		t = new Thread(this , loginName);
 	}
 	
 	public Thread getT(){
@@ -48,14 +51,14 @@ class UserThread implements Runnable{
 			for(int i=425;i>=1;i--){
 				if(i%2==1){
 					logger.info(loginName+":"+i);
-					w.scan(webClient , i+"");
+					w.scan(webClient , i+"" );
 				}
 			}
 		}else{
 			for(int i=498;i>=1;i--){
 				if(i%2==0){
 					logger.info(loginName+":"+i);
-					w.scan(webClient , i+"");
+					w.scan(webClient , i+"" );
 				}
 			}
 		}

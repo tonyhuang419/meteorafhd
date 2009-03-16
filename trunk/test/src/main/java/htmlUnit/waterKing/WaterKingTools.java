@@ -22,9 +22,9 @@ public class WaterKingTools {
 
 	protected static Log logger = LogFactory.getLog(WaterKingTools.class);
 
-	static String tsUrl = "http://bbs.taisha.org/" ;
-	static String loginUrl = "http://bbs.taisha.org/index.php";
-	static String tableId = "forum_74";
+	String tsUrl = "http://bbs.taisha.org/" ;
+	String loginUrl = "http://bbs.taisha.org/index.php";
+	String tableId = "forum_74";
 
 
 	/**
