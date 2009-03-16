@@ -211,7 +211,7 @@
 		<version>2.6.3</version>
 	</dependency>
 </dependencies>
- 	<properties>
+<properties>
    	 <logs_dir>c:/logs</logs_dir>
-  	</properties>
+</properties>
 </project>

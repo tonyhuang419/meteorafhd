@@ -34,6 +34,7 @@ class UserThread implements Runnable{
 	
 
 	public UserThread(String loginName , String password){
+		logger.error("sss");
 		this.loginName = loginName;
 		logger.info("login:"+loginName);
 		webClient  = waterKingTools.login(loginName, password);
