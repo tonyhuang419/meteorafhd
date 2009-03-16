@@ -17,15 +17,13 @@ public class ScanTools {
 	 */
 	private String waterUrlPrefix = "http://bbs.taisha.org/forum-74-";
 	private String waterUrlSuffix = ".html";
-	
+	private WaterKingTools waterKingTools = new WaterKingTools(); 
+	private WaterService waterService = new WaterService();
 	
 	synchronized public void scan(WebClient webClient ,String baseUrl ){
 		String url;
 		List<HtmlTableBody> listHtmlTableBody;
 		List<Board> listBoard;
-		WaterKingTools waterKingTools = new WaterKingTools(); 
-		WaterService waterService = new WaterService();
-
 		url= waterUrlPrefix + baseUrl +  waterUrlSuffix;
 		listHtmlTableBody = waterKingTools.doGetHtmlTable(webClient, url);
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
