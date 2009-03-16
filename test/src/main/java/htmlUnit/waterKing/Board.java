@@ -18,6 +18,8 @@ public class Board {
 	
 	private Date lastScanTime;
 	
+	private Long lastScanFloor;
+	
 	public String getTopic() {
 		return topic;
 	}
@@ -59,6 +61,12 @@ public class Board {
 	}
 	public void setReadNum(Long readNum) {
 		this.readNum = readNum;
+	}
+	public Long getLastScanFloor() {
+		return lastScanFloor;
+	}
+	public void setLastScanFloor(Long lastScanFloor) {
+		this.lastScanFloor = lastScanFloor;
 	}
 	
 }

@@ -57,6 +57,7 @@ public class WaterService {
 		Board board = new Board();
 		board.setIssueDate(new Date());
 		board.setLastScanTime(new Date());
+		board.setLastScanFloor(0L);
 		board.setReplyNum(4444L);
 		board.setReadNum(4444L);
 		board.setStarter("3333");
