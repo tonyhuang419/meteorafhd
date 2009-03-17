@@ -11,7 +11,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlTableBody;
 public class ScanTools {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
-	
+
 	/**
 	 * need Addrress like this ： http://bbs.taisha.org/forum-74-1.html
 	 */
@@ -19,7 +19,7 @@ public class ScanTools {
 	private String waterUrlSuffix = ".html";
 	private WaterKingTools waterKingTools = new WaterKingTools(); 
 	private WaterService waterService = new WaterService();
-	
+
 	//synchronized 
 	public void scan(WebClient webClient ,String baseUrl ){
 		String url;
@@ -29,7 +29,7 @@ public class ScanTools {
 		listHtmlTableBody = waterKingTools.doGetHtmlTable(webClient, url);
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
 		logger.info("size:"+listBoard.size());
-		//	waterService.saveBoardList(listBoard); temp comment
+//		waterService.saveBoardList(listBoard); 
 		try {
 //			waterService.closeConnection();
 			Thread.sleep(100);
