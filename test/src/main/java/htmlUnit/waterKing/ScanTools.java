@@ -20,7 +20,8 @@ public class ScanTools {
 	private WaterKingTools waterKingTools = new WaterKingTools(); 
 	private WaterService waterService = new WaterService();
 	
-	synchronized public void scan(WebClient webClient ,String baseUrl ){
+	//synchronized 
+	public void scan(WebClient webClient ,String baseUrl ){
 		String url;
 		List<HtmlTableBody> listHtmlTableBody;
 		List<Board> listBoard;
@@ -30,7 +31,7 @@ public class ScanTools {
 		logger.info("size:"+listBoard.size());
 		//	waterService.saveBoardList(listBoard); temp comment
 		try {
-			waterService.closeConnection();
+//			waterService.closeConnection();
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

@@ -210,6 +210,11 @@
 		<artifactId>jxl</artifactId>
 		<version>2.6.3</version>
 	</dependency>
+	<dependency>
+		<groupId>javax.transaction</groupId>
+		<artifactId>jta</artifactId>
+		<version>1.1</version>
+	</dependency>
 </dependencies>
 <properties>
    	 <logs_dir>c:/logs</logs_dir>
