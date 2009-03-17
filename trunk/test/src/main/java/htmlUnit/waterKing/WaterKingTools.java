@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -77,15 +78,17 @@ public class WaterKingTools {
 	 */
 	public List<HtmlTableBody> doGetHtmlTable(WebClient webClient , String waterUrl){
 		HtmlPage page;
-		boolean sign = true;
-		while(sign){
+		int sign = 5;
+		while(sign>0){
 			try{
 				page = webClient.getPage(waterUrl);
 				HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
 				logger.info("get water area list success: "+ waterUrl );
-//				success = false;
+				//				success = false;
+				sign = 5;
 				return htmlTable.getBodies();
 			}catch(Exception e){
+				sign--;
 				logger.info("get water area list fail,again");
 				e.printStackTrace();
 			}
@@ -115,11 +118,56 @@ public class WaterKingTools {
 			 */
 			HtmlTableRow  htmlTableRow = rows.get(0);
 			listHTC = htmlTableRow.getCells();
+
+			int size;
+			String readLevel;
+			String pageStr;
+			String[] pages;
 			for (int j=0;j<listHTC.size();j++ ) {
 				switch (j){
 				case 2:
+
+					/**
+					 * set topic
+					 */
+					size = listHTC.get(j).getHtmlElementsByTagName("span").size();
 					board.setTopic(listHTC.get(j).getHtmlElementsByTagName("span").get(0).asText());
 					board.setTopicUrl(listHTC.get(j).getHtmlElementsByTagName("span").get(0).getHtmlElementsByTagName("a").get(0).getAttribute("href"));
+
+
+					/**
+					 * set  page,just page? i can't sure now (not exist read level)
+					 */
+					if(size==2){
+						board.setRaedLevel(0L);
+//						logger.info( "just page?"+ listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
+						pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
+						pages = pageStr.split(" ");
+						board.setEndPage(new Long(pages[pages.length-1]));
+					}
+
+					/**
+					 * set read level , page
+					 */
+					else if(size == 3){
+//						logger.info("read level："+listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
+						readLevel  = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText();
+						if(StringUtils.isBlank(readLevel)){
+							board.setRaedLevel(0L);
+						}
+						else{
+							board.setRaedLevel(new Long(readLevel));
+						}
+
+//						logger.info("page："+listHTC.get(j).getHtmlElementsByTagName("span").get(2).asText());
+						pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(2).asText().trim();
+						pages = pageStr.split(" ");
+						board.setEndPage(new Long(pages[pages.length-1]));
+					}
+					else{
+						board.setRaedLevel(0L);
+						board.setEndPage(1L);
+					}
 					break;
 				case  3:
 					board.setStarter(listHTC.get(j).getHtmlElementsByTagName("a").get(0).asText());
@@ -144,16 +192,17 @@ public class WaterKingTools {
 			board.setLastScanTime(new Date());
 			board.setLastScanFloor(0L);
 			boardList.add(board);
-			//			for(Board b:boardList){
-			//				logger.info(b.getTopic());
-			//				logger.info(b.getTopicUrl());
-			//				logger.info(b.getStarter());
-			//				logger.info(b.getReplyNum());
-			//				logger.info(b.getIssueDate());
-			//			}
+		}
+//		print info , can be comment
+		for(Board b:boardList){
+			logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
+					+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
+					+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
 		}
 		return boardList;
 	}
+
+
 
 	public static void main(String[] args){
 
@@ -164,14 +213,14 @@ public class WaterKingTools {
 		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , waterUrl);
 		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
 		//		System.out.println(boardList.size());
-		for(Board b:boardList){
-			System.out.print(b.getTopic()+"|");
-			System.out.print(b.getTopicUrl()+"|");
-			System.out.print(b.getStarter()+"|");
-			System.out.print(b.getReplyNum()+"|");
-			System.out.print(b.getReadNum()+"|");
-			System.out.println(b.getIssueDate());
-		}
+//		for(Board b:boardList){
+//		System.out.print(b.getTopic()+"|");
+//		System.out.print(b.getTopicUrl()+"|");
+//		System.out.print(b.getStarter()+"|");
+//		System.out.print(b.getReplyNum()+"|");
+//		System.out.print(b.getReadNum()+"|");
+//		System.out.println(b.getIssueDate());
+//		}
 		new WaterService().saveBoardList(boardList);
 	}
 

@@ -32,7 +32,7 @@ public class WaterService {
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");
-			logger.error("save error: "+board.getTopic()+"|"+ board.getTopicUrl());
+			logger.error("save error: "+ board.getTopic()+"|"+ board.getTopicUrl());
 			logger.error("exception: " + sqle.toString());
 			sqle.printStackTrace();
 		}

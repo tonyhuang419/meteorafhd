@@ -23,12 +23,6 @@ public class Board {
 	private Long raedLevel;
 	
 	/**
-	 * topic's start page,don't serialize it
-	 */
-	private Long startPage;
-	
-	
-	/**
 	 * topic's endPage page,don't serialize it
 	 */
 	private Long endPage;
@@ -81,12 +75,6 @@ public class Board {
 	}
 	public void setLastScanFloor(Long lastScanFloor) {
 		this.lastScanFloor = lastScanFloor;
-	}
-	public Long getStartPage() {
-		return startPage;
-	}
-	public void setStartPage(Long startPage) {
-		this.startPage = startPage;
 	}
 	public Long getEndPage() {
 		return endPage;
