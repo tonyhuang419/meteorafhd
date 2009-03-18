@@ -15,23 +15,46 @@ public class ScanTools {
 	/**
 	 * need Addrress like this ： http://bbs.taisha.org/forum-74-1.html
 	 */
-	private String waterUrlPrefix = "http://bbs.taisha.org/forum-74-";
-	private String waterUrlSuffix = ".html";
+
 	private WaterKingTools waterKingTools = new WaterKingTools(); 
 	private WaterService waterService = new WaterService();
 
 	//synchronized 
-	public void scan(WebClient webClient ,String baseUrl ){
+	public void scan(WebClient webClient ,String baseUrl , User user ){
 		String url;
 		List<HtmlTableBody> listHtmlTableBody;
 		List<Board> listBoard;
-		url= waterUrlPrefix + baseUrl +  waterUrlSuffix;
+		url= Units.WATER_URL_PREFIX + baseUrl +  Units.WATER_URL_SUFFIX;
 		listHtmlTableBody = waterKingTools.doGetHtmlTable(webClient, url);
+
+		// get a list board
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
+//		waterService.saveBoardList(listBoard);  temp comment
+
+		// analyze the board
 		logger.info("size:"+listBoard.size());
-//		waterService.saveBoardList(listBoard); 
+		List<BoardDetail> boardDetailList;
+
+		/**
+		 * page have js error , need avoid it
+		 */
+		webClient.setJavaScriptEnabled(false);
+		for(Board board : listBoard){
+			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
+			if(user.getReadLevel() >= board.getRaedLevel()){
+				for(int i=1 ; i < board.getEndPage() ; i++){
+					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) );
+					//save boardDetailList;
+				}
+			}
+		}
+		webClient.setJavaScriptEnabled(true);
+
 		try {
-//			waterService.closeConnection();
+			/**
+			 * close db , too waste?
+			 */
+			waterService.closeConnection();
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
