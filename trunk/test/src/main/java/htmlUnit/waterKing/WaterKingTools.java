@@ -197,9 +197,9 @@ public class WaterKingTools {
 		}
 //		print info , can be comment
 //		for(Board b:boardList){
-//			logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
-//					+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
-//					+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
+//		logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
+//		+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
+//		+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
 //		}
 		return boardList;
 	}
@@ -207,15 +207,95 @@ public class WaterKingTools {
 	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl){
 		logger.info(boardPageurl);
 		HtmlPage page;
+		HtmlTable htmlTable;
+		List<HtmlTableBody> htmlTableBody;
+		List<HtmlTableRow> rows;
+		List<HtmlTableCell> listHTC ;
 		try{
+//			HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
 			page = webClient.getPage(boardPageurl);
 //			System.out.println(page.asText());
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
 			logger.info("have " + listHTMLElement.size() +" floors");
-			logger.info("get page detail success: "+ boardPageurl );
+			logger.info("get page detail success: " + boardPageurl );
+			for(HtmlElement htmlElement : listHTMLElement){
+				htmlTable = (HtmlTable)htmlElement;
+//				logger.info(htmlTable.getBodies().get(0).getRows().get(0).getCells().get(1).asText());
+				/**
+				 *  floor
+				 */
+				logger.info(htmlTable.getAttribute("id"));
+				/**
+				 * postId
+				 */
+				HtmlTableCell htmlTableCellOne = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(0); 
+				logger.info(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
 
-//			return htmlTable.getBodies();
+				/**
+				 * postTime
+				 * postMessage
+				 */
+				HtmlTableCell  htmlTableCellTwo  = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(1);
+				List<HtmlElement> divHtmlElementList = htmlTableCellTwo.getHtmlElementsByTagName("div");
+				String postTime = divHtmlElementList.get(0).asText();
+				postTime = postTime.substring(postTime.indexOf("于 ")+2 , postTime.indexOf(" 只"));
+				/**
+				 * postTime
+				 */
+				logger.info(postTime);
+
+				for(HtmlElement htmlElementDiv:divHtmlElementList){
+					if(htmlElementDiv.getAttribute("id").indexOf("postmessage")!=-1){
+
+						/**
+						 * clean span
+						 */
+						List<HtmlElement>  spanHtmlElementList =   htmlElementDiv.getHtmlElementsByTagName("span");
+						logger.info(spanHtmlElementList.size());
+						for(int i=0; i<spanHtmlElementList.size(); i++){
+							if(spanHtmlElementList.get(i).getAttribute("style").indexOf("none")!=-1){
+								htmlElementDiv.removeChild("span", i);
+							}
+						}
+
+						/**
+						 * clean font
+						 */
+						List<HtmlElement>  fontHtmlElementList =   htmlElementDiv.getHtmlElementsByTagName("font");
+						logger.info(fontHtmlElementList.size());
+						for(int i=0; i<fontHtmlElementList.size(); i++){
+							if(fontHtmlElementList.get(i).getAttribute("style").indexOf("0px")!=-1){
+								htmlElementDiv.removeChild("font", i);
+							}
+						}
+
+						/**
+						 * postMessage
+						 */
+						logger.info(htmlElementDiv.asText());
+
+
+						/**
+						 * search face
+						 */
+						List<HtmlElement> faceHtmlElementList  = htmlElementDiv.getHtmlElementsByTagName("img");
+						logger.info("face num:" + faceHtmlElementList );
+						for(HtmlElement htmlElementFace: faceHtmlElementList){
+							logger.info(htmlElementFace.getAttribute("src"));
+						}
+						continue;
+					}
+				}
+
+
+//				for (HtmlTableBody body : htmlTableBody ) {
+//				rows = body.getRows();
+//				for(HtmlTableRow htmlTableRow : rows ){
+//				listHTC = htmlTableRow.getCells();
+//				}
+//				}
+			}
 		}catch(Exception e){
 			logger.info("get page detail list fail,again "  +  boardPageurl );
 			e.printStackTrace();
