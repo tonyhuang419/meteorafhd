@@ -19,6 +19,8 @@ public class BoardDetail {
 	
 	private Long faceNum;
 	
+	private String faceDetail;
+	
 	/**
 	 * redundancy field (postMessage length)
 	 */
@@ -78,6 +80,14 @@ public class BoardDetail {
 
 	public void setFaceNum(Long faceNum) {
 		this.faceNum = faceNum;
+	}
+
+	public String getFaceDetail() {
+		return faceDetail;
+	}
+
+	public void setFaceDetail(String faceDetail) {
+		this.faceDetail = faceDetail;
 	}
 	
 	

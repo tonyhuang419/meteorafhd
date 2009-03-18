@@ -8,10 +8,10 @@ import java.util.regex.Pattern;
 
 public class Tools {
 
-	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	synchronized  public static Date stringToDate(String str){
+
+	synchronized  public static Date stringToDate(String str , SimpleDateFormat  simpleDateFormat ){
 		try {
-			return dateFormat.parse(str);
+			return simpleDateFormat.parse(str);
 		} catch (ParseException pe) {
 			System.out.println("date convert error");
 			pe.printStackTrace();
@@ -28,10 +28,11 @@ public class Tools {
 		}
 		return null;
 	}
-
 	
+
 	public static void main(String[] args){
-		System.out.println(Tools.stringToDate("2009-3-3"));
+		System.out.println(Tools.stringToDate("2009-3-3" , Units.dateFormatDate ));
+		System.out.println(Tools.stringToDate("2009-3-3 21:59" , Units.dateFormatTime ));
 		
 		Board board = new Board();
 		board.setTopicUrl("thread-512263-1-768.html");

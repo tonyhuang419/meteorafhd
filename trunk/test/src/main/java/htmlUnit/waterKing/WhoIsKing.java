@@ -17,8 +17,8 @@ public class WhoIsKing {
 
 
 	public static void main(String[] args){
-		new UserThread(new User("非法_用户","happyamiga",80)).getT().start();
-//		new UserThread("MS佳菲猫","lzhouwen").getT().start();
+		new UserThread(new User("非法_用户","happyamiga",100)).getT().start();
+//		new UserThread(new User("MS佳菲猫","lzhouwen",80)).getT().start();
 	}
 
 }
