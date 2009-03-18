@@ -36,7 +36,7 @@ public class ScanTools {
 		List<BoardDetail> boardDetailList;
 
 		/**
-		 * page have js error , need avoid it
+		 * page has js error , need avoid it
 		 */
 		webClient.setJavaScriptEnabled(false);
 		for(Board board : listBoard){
