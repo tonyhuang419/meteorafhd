@@ -284,7 +284,7 @@ public class WaterKingTools {
 						+ "|message:"+bd.getPostMessage() 
 						+ "|postTime:" + bd.getPostTime()
 						+ "|faceNum:"+bd.getFaceNum()
-						+ "|faceDeatail" + bd.getFaceDetail()
+						+ "|faceDeatail:" + bd.getFaceDetail()
 						+ "|messageLength:" + bd.getPostMessageLength());
 			}
 
@@ -317,6 +317,16 @@ public class WaterKingTools {
 				htmlElementDiv.removeChild("font", 0);
 			}
 		}
+
+		/**
+		 * clean quote
+		 */
+		while(htmlElementDiv.getHtmlElementsByTagName("div").size()!=0){
+			if(htmlElementDiv.getHtmlElementsByTagName("div").get(0).getAttribute("class").indexOf("quote")!=-1){
+				htmlElementDiv.removeChild("quote", 0);
+			}
+		}
+
 		return htmlElementDiv.asText();
 	}
 
