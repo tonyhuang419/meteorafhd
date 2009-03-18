@@ -1,5 +1,7 @@
 package htmlUnit.waterKing;
 
+import java.text.SimpleDateFormat;
+
 public final class Units {
 
 	
@@ -10,5 +12,9 @@ public final class Units {
 	public static final String WATER_URL_SUFFIX = ".html";
 	
 	
+
+	public static final  SimpleDateFormat dateFormatDate = new SimpleDateFormat("yyyy-MM-dd");
+	
+	public static final  SimpleDateFormat dateFormatTime = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	
 }

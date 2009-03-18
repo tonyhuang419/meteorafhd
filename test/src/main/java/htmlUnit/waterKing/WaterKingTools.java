@@ -142,7 +142,7 @@ public class WaterKingTools {
 					 */
 					if(size==2){
 						board.setRaedLevel(0L);
-//						logger.info( "just page?"+ listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
+						//						logger.info( "just page?"+ listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
 						pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
 						pages = pageStr.split(" ");
 						board.setEndPage(new Long(pages[pages.length-1]));
@@ -152,7 +152,7 @@ public class WaterKingTools {
 					 * set read level , page
 					 */
 					else if(size == 3){
-//						logger.info("read level："+listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
+						//						logger.info("read level："+listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
 						readLevel  = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText();
 						if(StringUtils.isBlank(readLevel)){
 							board.setRaedLevel(0L);
@@ -161,7 +161,7 @@ public class WaterKingTools {
 							board.setRaedLevel(new Long(readLevel));
 						}
 
-//						logger.info("page："+listHTC.get(j).getHtmlElementsByTagName("span").get(2).asText());
+						//						logger.info("page："+listHTC.get(j).getHtmlElementsByTagName("span").get(2).asText());
 						pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(2).asText().trim();
 						pages = pageStr.split(" ");
 						board.setEndPage(new Long(pages[pages.length-1]));
@@ -173,7 +173,7 @@ public class WaterKingTools {
 					break;
 				case  3:
 					board.setStarter(listHTC.get(j).getHtmlElementsByTagName("a").get(0).asText());
-					board.setIssueDate(Tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText()));
+					board.setIssueDate(Tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText() , Units.dateFormatDate));
 					break;
 				case 4:
 					if(listHTC.get(j).getHtmlElementsByTagName("strong").get(0).asText().equals("-")){
@@ -195,12 +195,12 @@ public class WaterKingTools {
 			board.setLastScanFloor(0L);
 			boardList.add(board);
 		}
-//		print info , can be comment
-//		for(Board b:boardList){
-//		logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
-//		+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
-//		+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
-//		}
+		//		print info , can be comment
+		//		for(Board b:boardList){
+		//		logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
+		//		+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
+		//		+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
+		//		}
 		return boardList;
 	}
 
@@ -208,94 +208,87 @@ public class WaterKingTools {
 		logger.info(boardPageurl);
 		HtmlPage page;
 		HtmlTable htmlTable;
-		List<HtmlTableBody> htmlTableBody;
-		List<HtmlTableRow> rows;
-		List<HtmlTableCell> listHTC ;
+		List<BoardDetail> boardDetailList = new ArrayList<BoardDetail>();
+		BoardDetail boardDetail;
 		try{
-//			HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
 			page = webClient.getPage(boardPageurl);
-//			System.out.println(page.asText());
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
 			logger.info("have " + listHTMLElement.size() +" floors");
 			logger.info("get page detail success: " + boardPageurl );
 			for(HtmlElement htmlElement : listHTMLElement){
+				boardDetail = new BoardDetail();
 				htmlTable = (HtmlTable)htmlElement;
-//				logger.info(htmlTable.getBodies().get(0).getRows().get(0).getCells().get(1).asText());
+
 				/**
 				 *  floor
 				 */
-				logger.info(htmlTable.getAttribute("id"));
+				//				logger.info(htmlTable.getAttribute("id"));
+				boardDetail.setFloor(htmlTable.getAttribute("id"));
+
 				/**
 				 * postId
 				 */
 				HtmlTableCell htmlTableCellOne = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(0); 
-				logger.info(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+				//				logger.info(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+				boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
 
-				/**
-				 * postTime
-				 * postMessage
-				 */
+
 				HtmlTableCell  htmlTableCellTwo  = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(1);
 				List<HtmlElement> divHtmlElementList = htmlTableCellTwo.getHtmlElementsByTagName("div");
 				String postTime = divHtmlElementList.get(0).asText();
 				postTime = postTime.substring(postTime.indexOf("于 ")+2 , postTime.indexOf(" 只"));
+
 				/**
 				 * postTime
 				 */
-				logger.info(postTime);
+				//				logger.info(postTime);
+				boardDetail.setPostTime(Tools.stringToDate(postTime , Units.dateFormatTime));
 
 				for(HtmlElement htmlElementDiv:divHtmlElementList){
 					if(htmlElementDiv.getAttribute("id").indexOf("postmessage")!=-1){
 
 						/**
-						 * clean span
-						 */
-						List<HtmlElement>  spanHtmlElementList =   htmlElementDiv.getHtmlElementsByTagName("span");
-						logger.info(spanHtmlElementList.size());
-						for(int i=0; i<spanHtmlElementList.size(); i++){
-							if(spanHtmlElementList.get(i).getAttribute("style").indexOf("none")!=-1){
-								htmlElementDiv.removeChild("span", i);
-							}
-						}
-
-						/**
-						 * clean font
-						 */
-						List<HtmlElement>  fontHtmlElementList =   htmlElementDiv.getHtmlElementsByTagName("font");
-						logger.info(fontHtmlElementList.size());
-						for(int i=0; i<fontHtmlElementList.size(); i++){
-							if(fontHtmlElementList.get(i).getAttribute("style").indexOf("0px")!=-1){
-								htmlElementDiv.removeChild("font", i);
-							}
-						}
-
-						/**
 						 * postMessage
 						 */
-						logger.info(htmlElementDiv.asText());
-
+						//						logger.info(this.cleanMessage(htmlElementDiv));
+						String message = this.cleanMessage(htmlElementDiv);
+						boardDetail.setPostMessage(message);
+						boardDetail.setPostMessageLength(new Long(message.length()));
 
 						/**
 						 * search face
 						 */
 						List<HtmlElement> faceHtmlElementList  = htmlElementDiv.getHtmlElementsByTagName("img");
-						logger.info("face num:" + faceHtmlElementList );
+						//						logger.info("face num:" + faceHtmlElementList.size() );
+						boardDetail.setFaceNum(new Long(faceHtmlElementList.size()));
+
+						StringBuffer faceDetail = new StringBuffer();
+						String face;
 						for(HtmlElement htmlElementFace: faceHtmlElementList){
-							logger.info(htmlElementFace.getAttribute("src"));
+							face = htmlElementFace.getAttribute("src");
+							faceDetail.append(face.substring(face.indexOf("ault/")+5, face.length())).append("|");
 						}
+						//						logger.info(faceDetail);
+						boardDetail.setFaceDetail(faceDetail.toString());
+						boardDetailList.add(boardDetail);
 						continue;
 					}
 				}
-
-
-//				for (HtmlTableBody body : htmlTableBody ) {
-//				rows = body.getRows();
-//				for(HtmlTableRow htmlTableRow : rows ){
-//				listHTC = htmlTableRow.getCells();
-//				}
-//				}
 			}
+
+			for( BoardDetail bd:  boardDetailList){
+				logger.info( "floor:"+bd.getFloor()
+						+ "|topic:" + bd.getTopic() 
+						+ "|postid:"+bd.getPostId() 
+						+ "|message:"+bd.getPostMessage() 
+						+ "|postTime:" + bd.getPostTime()
+						+ "|faceNum:"+bd.getFaceNum()
+						+ "|faceDeatail" + bd.getFaceDetail()
+						+ "|messageLength:" + bd.getPostMessageLength());
+			}
+
+			return boardDetailList;
 		}catch(Exception e){
 			logger.info("get page detail list fail,again "  +  boardPageurl );
 			e.printStackTrace();
@@ -304,6 +297,28 @@ public class WaterKingTools {
 	}
 
 
+
+	private String cleanMessage(HtmlElement htmlElementDiv){
+
+		/**
+		 * clean span
+		 */
+		while(htmlElementDiv.getHtmlElementsByTagName("span").size()!=0){
+			if(htmlElementDiv.getHtmlElementsByTagName("span").get(0).getAttribute("style").indexOf("none")!=-1){
+				htmlElementDiv.removeChild("span", 0);
+			}
+		}
+
+		/**
+		 * clean font
+		 */
+		while(htmlElementDiv.getHtmlElementsByTagName("font").size()!=0){
+			if(htmlElementDiv.getHtmlElementsByTagName("font").get(0).getAttribute("style").indexOf("0px")!=-1){
+				htmlElementDiv.removeChild("font", 0);
+			}
+		}
+		return htmlElementDiv.asText();
+	}
 
 
 
@@ -318,15 +333,15 @@ public class WaterKingTools {
 		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , waterUrl);
 		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
 		//		System.out.println(boardList.size());
-//		for(Board b:boardList){
-//		System.out.print(b.getTopic()+"|");
-//		System.out.print(b.getTopicUrl()+"|");
-//		System.out.print(b.getStarter()+"|");
-//		System.out.print(b.getReplyNum()+"|");
-//		System.out.print(b.getReadNum()+"|");
-//		System.out.println(b.getIssueDate());
-//		}
-//		new WaterService().saveBoardList(boardList);
+		//		for(Board b:boardList){
+		//		System.out.print(b.getTopic()+"|");
+		//		System.out.print(b.getTopicUrl()+"|");
+		//		System.out.print(b.getStarter()+"|");
+		//		System.out.print(b.getReplyNum()+"|");
+		//		System.out.print(b.getReadNum()+"|");
+		//		System.out.println(b.getIssueDate());
+		//		}
+		//		new WaterService().saveBoardList(boardList);
 	}
 
 }
