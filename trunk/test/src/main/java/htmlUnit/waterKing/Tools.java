@@ -3,21 +3,38 @@ package htmlUnit.waterKing;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Tools {
 
-	static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-d");
-	public static Date stringToDate(String str){
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	synchronized  public static Date stringToDate(String str){
 		try {
 			return dateFormat.parse(str);
 		} catch (ParseException pe) {
-			System.out.println("日期格式转换出错");
+			System.out.println("date convert error");
 			pe.printStackTrace();
 		}
 		return null;
 	}
+	
+	private static Pattern p = Pattern.compile("^thread-\\d*-");  
+	synchronized public static String getBoardDetailUrl( Board board , int pageNum){
+		String baseUrl = board.getTopicUrl().trim();
+		Matcher m = p.matcher(baseUrl);  
+		while( m.find() ){ 
+			return Units.URL_PREFIX + m.group(0) + pageNum + "-1.html";
+		}
+		return null;
+	}
 
+	
 	public static void main(String[] args){
 		System.out.println(Tools.stringToDate("2009-3-3"));
+		
+		Board board = new Board();
+		board.setTopicUrl("thread-512263-1-768.html");
+		System.out.println(Tools.getBoardDetailUrl(board, 2));
 	}
 }

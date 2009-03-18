@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlButton;
+import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
@@ -77,6 +78,7 @@ public class WaterKingTools {
 	 * @return 
 	 */
 	public List<HtmlTableBody> doGetHtmlTable(WebClient webClient , String waterUrl){
+		logger.info(waterUrl);
 		HtmlPage page;
 		int sign = 5;
 		while(sign>0){
@@ -89,7 +91,7 @@ public class WaterKingTools {
 				return htmlTable.getBodies();
 			}catch(Exception e){
 				sign--;
-				logger.info("get water area list fail,again");
+				logger.info("get water area list fail,again" + waterUrl );
 				e.printStackTrace();
 			}
 		}
@@ -194,13 +196,36 @@ public class WaterKingTools {
 			boardList.add(board);
 		}
 //		print info , can be comment
-		for(Board b:boardList){
-			logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
-					+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
-					+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
-		}
+//		for(Board b:boardList){
+//			logger.info("topic:"+b.getTopic()+"|url:" + b.getTopicUrl() +"|starter:"  + b.getStarter()
+//					+ "|replyNum:" + b.getReplyNum()+ "|issueDate:"  + b.getIssueDate()
+//					+ "|raedLevel:" + b.getRaedLevel()+ "|endPage:" +  b.getEndPage());
+//		}
 		return boardList;
 	}
+
+	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl){
+		logger.info(boardPageurl);
+		HtmlPage page;
+		try{
+			page = webClient.getPage(boardPageurl);
+//			System.out.println(page.asText());
+			HtmlForm htmlForm = page.getFormByName("modactions");
+			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
+			logger.info("have " + listHTMLElement.size() +" floors");
+			logger.info("get page detail success: "+ boardPageurl );
+
+//			return htmlTable.getBodies();
+		}catch(Exception e){
+			logger.info("get page detail list fail,again "  +  boardPageurl );
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+
 
 
 
@@ -221,7 +246,7 @@ public class WaterKingTools {
 //		System.out.print(b.getReadNum()+"|");
 //		System.out.println(b.getIssueDate());
 //		}
-		new WaterService().saveBoardList(boardList);
+//		new WaterService().saveBoardList(boardList);
 	}
 
 }
