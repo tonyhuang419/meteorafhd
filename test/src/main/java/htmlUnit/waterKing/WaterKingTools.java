@@ -303,27 +303,30 @@ public class WaterKingTools {
 		/**
 		 * clean span
 		 */
-		while(htmlElementDiv.getHtmlElementsByTagName("span").size()!=0){
-			if(htmlElementDiv.getHtmlElementsByTagName("span").get(0).getAttribute("style").indexOf("none")!=-1){
-				htmlElementDiv.removeChild("span", 0);
+		int len = htmlElementDiv.getHtmlElementsByTagName("span").size();
+		for(int i=0;i<len;i++){
+			if(htmlElementDiv.getHtmlElementsByTagName("span").get(i).getAttribute("style").indexOf("none")!=-1){
+				htmlElementDiv.removeChild("span", i);
 			}
 		}
 
 		/**
 		 * clean font
 		 */
-		while(htmlElementDiv.getHtmlElementsByTagName("font").size()!=0){
-			if(htmlElementDiv.getHtmlElementsByTagName("font").get(0).getAttribute("style").indexOf("0px")!=-1){
-				htmlElementDiv.removeChild("font", 0);
+		len = htmlElementDiv.getHtmlElementsByTagName("font").size();
+		for(int i=0;i<len;i++){
+			if(htmlElementDiv.getHtmlElementsByTagName("font").get(i).getAttribute("style").indexOf("0px")!=-1){
+				htmlElementDiv.removeChild("font", i);
 			}
 		}
 
 		/**
 		 * clean quote
 		 */
-		while(htmlElementDiv.getHtmlElementsByTagName("div").size()!=0){
-			if(htmlElementDiv.getHtmlElementsByTagName("div").get(0).getAttribute("class").indexOf("quote")!=-1){
-				htmlElementDiv.removeChild("quote", 0);
+		len = htmlElementDiv.getHtmlElementsByTagName("div").size();
+		for(int i=0;i<len;i++){
+			if(htmlElementDiv.getHtmlElementsByTagName("div").get(i).getAttribute("class").indexOf("quote")!=-1){
+				htmlElementDiv.removeChild("quote", i);
 			}
 		}
 
