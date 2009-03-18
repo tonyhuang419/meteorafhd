@@ -214,7 +214,7 @@ public class WaterKingTools {
 			page = webClient.getPage(boardPageurl);
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
-			logger.info("have " + listHTMLElement.size() +" floors");
+			logger.info("has " + listHTMLElement.size() +" floors");
 			logger.info("get page detail success: " + boardPageurl );
 			for(HtmlElement htmlElement : listHTMLElement){
 				boardDetail = new BoardDetail();
