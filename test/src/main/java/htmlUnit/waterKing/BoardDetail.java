@@ -5,11 +5,8 @@ import java.util.Date;
 public class BoardDetail {
 	
 	private String floor;
-	
-	/**
-	 * reference Board's topic , foreigner key
-	 */
-	private String topic; 
+
+	private String topic;  //reference Board's topic , foreigner key
 	
 	private String postId;
 	
