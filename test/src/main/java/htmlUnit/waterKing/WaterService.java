@@ -21,7 +21,7 @@ public class WaterService {
 		Connection con = dao.getCon();
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
-			" insert into BOARD(topic,topicUrl,starter,issueDate,replyNum, readNum,lastScanTime , lastScanFloor , raedLevel) values (?,?,?,?,?,?,?,?,?)");
+			" insert into BOARD(topic,topicUrl,starter,issueDate,replyNum, readNum,lastScanTime ,  raedLevel) values (?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
@@ -29,8 +29,7 @@ public class WaterService {
 			preparedStatement.setLong(5, board.getReplyNum());
 			preparedStatement.setLong(6, board.getReadNum());
 			preparedStatement.setTimestamp(7, new java.sql.Timestamp(board.getLastScanTime().getTime()));
-			preparedStatement.setLong(8, board.getLastScanFloor());
-			preparedStatement.setLong(9, board.getRaedLevel());
+			preparedStatement.setLong(8, board.getRaedLevel());
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");
