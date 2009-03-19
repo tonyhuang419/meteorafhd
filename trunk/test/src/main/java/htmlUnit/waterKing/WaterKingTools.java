@@ -361,7 +361,6 @@ public class WaterKingTools {
 		 */
 		sign=0;
 		len = htmlElementDiv.getHtmlElementsByTagName("div").size();
-		System.out.println(htmlElementDiv.asText());
 		for(int i=0;i<len;i++){
 			if(htmlElementDiv.getHtmlElementsByTagName("div").get(sign).getAttribute("class").indexOf("quote")!=-1){
 				htmlElementDiv.removeChild("div", sign);
@@ -370,7 +369,6 @@ public class WaterKingTools {
 				sign++;
 			}
 		}
-		System.out.println(htmlElementDiv.asText());
 
 		//		/**
 		//		 * clean image
