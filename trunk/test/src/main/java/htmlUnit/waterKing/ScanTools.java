@@ -46,7 +46,7 @@ public class ScanTools {
 					if( i == 1  ){
 						scanFloor = 1;
 					}else{
-						scanFloor = board.getReplyNum().intValue()-i*10;
+						scanFloor = board.getReplyNum().intValue()-Units.PAGE_NUM;
 					}
 					waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
 							+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");
