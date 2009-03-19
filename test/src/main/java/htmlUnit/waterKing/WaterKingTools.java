@@ -64,7 +64,7 @@ public class WaterKingTools {
 			logger.info("login happen exception");
 			e.printStackTrace();
 		}
-		return null;
+		return webClient;
 	}
 
 
@@ -134,14 +134,20 @@ public class WaterKingTools {
 
 
 					/**
-					 * set  page,just page? i can't sure now (not exist read level)
+					 * set  page or read level
 					 */
 					if(size==2){
-						board.setRaedLevel(0L);
-						//						logger.info( "just page?"+ listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
-						pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
-						pages = pageStr.split(" ");
-						board.setEndPage(new Long(pages[pages.length-1]));
+						/**
+						 * if has only one page , no page display, so it is read level
+						 */
+						if( listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().indexOf(" ")!=-1 ){
+							pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
+							pages = pageStr.split(" ");
+							board.setEndPage(new Long(pages[pages.length-1]));
+						}
+						else{
+							board.setRaedLevel(new Long(listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim()));							
+						}
 					}
 
 					/**
@@ -323,7 +329,7 @@ public class WaterKingTools {
 			logger.info("get page detail list fail,again "  +  boardPageurl );
 			e.printStackTrace();
 		}
-		return null;
+		return boardDetailList;
 	}
 
 
@@ -393,12 +399,22 @@ public class WaterKingTools {
 		WaterKingTools waterKingTools = new WaterKingTools();
 		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
 
-		//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://bbs.taisha.org/forum-74-991.html");
-		//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
+		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
+		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
+		System.out.println(boardList.size());
+		for(Board b:boardList){
+			System.out.print(b.getTopic()+"|");
+			System.out.println(b.getRaedLevel()+"|");
+			//			System.out.print(b.getTopicUrl()+"|");
+			//			System.out.print(b.getStarter()+"|");
+			//			System.out.print(b.getReplyNum()+"|");
+			//			System.out.print(b.getReadNum()+"|");
+			//			System.out.println(b.getIssueDate());
+		}
 
-		Board board = new Board();
-		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187302-29-1.html" , board );
+		//		Board board = new Board();
+		//		board.setTopic("topic");
+		//		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187302-29-1.html" , board );
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
