@@ -238,6 +238,8 @@ public class WaterKingTools {
 				 */
 				if(htmlTableCellOne.getHtmlElementsByTagName("a").size()>0){
 					boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+				}else{
+					boardDetail.setPostId("用户已被删除");
 				}
 
 				HtmlTableCell  htmlTableCellTwo  = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(1);
