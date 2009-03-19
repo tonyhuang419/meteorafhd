@@ -46,16 +46,16 @@ public class ScanTools {
 				}
 			}
 		}
-
-		try {
-			/**
-			 * close db , too waste?
-			 */
-			waterService.closeConnection();
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		waterService.closeConnection();
+//		try {
+//			/**
+//			 * close db , too waste?
+//			 */
+//			waterService.closeConnection();
+//			Thread.sleep(100);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 
