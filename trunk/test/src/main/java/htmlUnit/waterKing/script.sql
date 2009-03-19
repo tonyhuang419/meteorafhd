@@ -19,7 +19,7 @@ CREATE TABLE BOARD_DETAIL(
 	topic VARCHAR(255),
 	postId VARCHAR(255),
 	postTime TIMESTAMP,
-	postMessage VARCHAR(4000),
+	postMessage VARCHAR(10000),
 	faceNum BIGINT,
 	faceDetail VARCHAR(4000),
 	pictureNum BIGINT,
@@ -36,3 +36,6 @@ select * from BOARD_DETAIL
 
 truncate table BOARD;
 truncate table BOARD_DETAIL;
+
+drop table BOARD;
+drop table BOARD_DETAIL;
