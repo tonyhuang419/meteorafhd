@@ -87,7 +87,7 @@ public class WaterKingTools {
 				return htmlTable.getBodies();
 			}catch(Exception e){
 				sign--;
-				logger.info("get water area list fail,again" + waterUrl );
+				logger.info("get water area list fail,again " + waterUrl );
 				e.printStackTrace();
 			}
 		}
