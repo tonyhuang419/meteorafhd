@@ -123,6 +123,20 @@ public class WaterKingTools {
 			String[] pages;
 			for (int j=0;j<listHTC.size();j++ ) {
 				switch (j){
+				case 1:
+					List<HtmlElement> htmlElementList = listHTC.get(j).getHtmlElementsByTagName("img");
+					if( htmlElementList.size()>0 ){
+						if(htmlElementList.get(0).getAttribute("alt").indexOf("投票")!=-1){
+							board.setIsVote(true);
+						}
+						else{
+							board.setIsVote(false);
+						}
+					}
+					else{
+						board.setIsVote(false);
+					}
+					break;
 				case 2:
 
 					/**
@@ -221,9 +235,9 @@ public class WaterKingTools {
 		BoardDetail boardDetail;
 		try{
 			page = webClient.getPage(boardPageurl);
-			if(page.asXml().indexOf(" 投票主题")!=-1){
-				return boardDetailList;
-			}
+//			if(page.asXml().indexOf("投票主题")!=-1){
+//				return boardDetailList;
+//			}
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
 			logger.info("has " + listHTMLElement.size() +" floors");

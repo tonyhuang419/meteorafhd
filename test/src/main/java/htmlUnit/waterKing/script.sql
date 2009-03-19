@@ -8,6 +8,8 @@ CREATE TABLE BOARD (
 	readNum BIGINT,
 	lastScanTime TIMESTAMP,
 	raedLevel BIGINT,
+	isVote	BIT,
+	lastScanFloor BIGINT,
 	PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8; 
 
