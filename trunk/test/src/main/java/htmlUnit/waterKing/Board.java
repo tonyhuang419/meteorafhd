@@ -25,6 +25,9 @@ public class Board {
 	 */
 	private Long endPage;
 	
+	private Boolean isVote;
+
+	private Long lastScanFloor;
 	
 	public String getTopic() {
 		return topic;
@@ -79,6 +82,18 @@ public class Board {
 	}
 	public void setRaedLevel(Long raedLevel) {
 		this.raedLevel = raedLevel;
+	}
+	public Boolean getIsVote() {
+		return isVote;
+	}
+	public void setIsVote(Boolean isVote) {
+		this.isVote = isVote;
+	}
+	public Long getLastScanFloor() {
+		return lastScanFloor;
+	}
+	public void setLastScanFloor(Long lastScanFloor) {
+		this.lastScanFloor = lastScanFloor;
 	}
 	
 }

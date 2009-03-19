@@ -35,26 +35,33 @@ public class ScanTools {
 		// analyze the board
 		logger.info("board size:"+listBoard.size());
 		List<BoardDetail> boardDetailList;
-
+		int scanFloor;
 		for(Board board : listBoard){
 			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
-			if(user.getReadLevel() >= board.getRaedLevel()){
-				for(int i=board.getEndPage().intValue() ; i >=1 ; i--){
+			if(user.getReadLevel() >= board.getRaedLevel() && board.getIsVote() == false){
+				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){
 					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board );
 					waterService.saveBoardDetailList(boardDetailList);
 					logger.info("save success BoardDetailList");
+					if( i == 1  ){
+						scanFloor = 1;
+					}else{
+						scanFloor = board.getReplyNum().intValue()-i*10;
+					}
+					waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
+							+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");
 				}
 			}
 		}
 		waterService.closeConnection();
-//		try {
-//			/**
-//			 * close db , too waste?
-//			 */
-//			waterService.closeConnection();
-//			Thread.sleep(100);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		//		try {
+		//			/**
+		//			 * close db , too waste?
+		//			 */
+		//			waterService.closeConnection();
+		//			Thread.sleep(100);
+		//		} catch (InterruptedException e) {
+		//			e.printStackTrace();
+		//		}
 	}
 }
