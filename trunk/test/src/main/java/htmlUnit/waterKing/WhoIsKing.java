@@ -51,7 +51,7 @@ class UserThread implements Runnable{
 
 	public void run() {
 		WhoIsKing w = new WhoIsKing();
-		if(user.getUsername().equals("非法_用户")){
+		if(user.getUsername().equals("3.1415926535897")){
 			for(int i=1000;i>=1;i--){
 				if(i%2==1){
 					logger.info(user.getUsername()+":"+i);
