@@ -30,9 +30,10 @@ public class ScanTools {
 		// get a list board
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
 		waterService.saveBoardList(listBoard);
+		logger.info("save success BoardList");
 
 		// analyze the board
-		logger.info("size:"+listBoard.size());
+		logger.info("board size:"+listBoard.size());
 		List<BoardDetail> boardDetailList;
 
 		for(Board board : listBoard){
@@ -41,6 +42,7 @@ public class ScanTools {
 				for(int i=board.getEndPage().intValue() ; i >=1 ; i--){
 					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board );
 					waterService.saveBoardDetailList(boardDetailList);
+					logger.info("save success BoardDetailList");
 				}
 			}
 		}
