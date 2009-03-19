@@ -361,14 +361,16 @@ public class WaterKingTools {
 		 */
 		sign=0;
 		len = htmlElementDiv.getHtmlElementsByTagName("div").size();
+		System.out.println(htmlElementDiv.asText());
 		for(int i=0;i<len;i++){
 			if(htmlElementDiv.getHtmlElementsByTagName("div").get(sign).getAttribute("class").indexOf("quote")!=-1){
-				htmlElementDiv.removeChild("quote", sign);
+				htmlElementDiv.removeChild("div", sign);
 			}
 			else{
 				sign++;
 			}
 		}
+		System.out.println(htmlElementDiv.asText());
 
 		//		/**
 		//		 * clean image
@@ -392,7 +394,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187171-1-1.html" , board );
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187302-29-1.html" , board );
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
