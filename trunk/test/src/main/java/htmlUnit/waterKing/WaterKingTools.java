@@ -199,13 +199,13 @@ public class WaterKingTools {
 		return boardList;
 	}
 
-	
+
 	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl , Board board){
 		/**
 		 * becaser page has js error , need avoid it
 		 */
 		webClient.setJavaScriptEnabled(false);
-		
+
 		logger.info(boardPageurl);
 		HtmlPage page;
 		HtmlTable htmlTable;
@@ -233,8 +233,12 @@ public class WaterKingTools {
 				 */
 				HtmlTableCell htmlTableCellOne = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(0); 
 				//				logger.info(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
-				boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
-
+				/**
+				 * have a "用户已被删除" , so no sign anchor 
+				 */
+				if(htmlTableCellOne.getHtmlElementsByTagName("a").size()>0){
+					boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+				}
 
 				HtmlTableCell  htmlTableCellTwo  = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(1);
 				List<HtmlElement> divHtmlElementList = htmlTableCellTwo.getHtmlElementsByTagName("div");
@@ -299,18 +303,18 @@ public class WaterKingTools {
 				}
 			}
 
-//			for( BoardDetail bd:  boardDetailList){
-//				logger.info( "floor:"+bd.getFloor()
-//						+ "|topic:" + bd.getTopic() 
-//						+ "|postid:"+bd.getPostId() 
-//						+ "|message:"+bd.getPostMessage() 
-//						+ "|postTime:" + bd.getPostTime()
-//						+ "|faceNum:"+bd.getFaceNum()
-//						+ "|faceDeatail:" + bd.getFaceDetail()
-//						+ "|messageLength:" + bd.getPostMessageLength()
-//						+ "|pictureNum:"+bd.getPictureNum()
-//						+ "|pictureDetail:"+bd.getPictureDetail());
-//			}
+			//			for( BoardDetail bd:  boardDetailList){
+			//				logger.info( "floor:"+bd.getFloor()
+			//						+ "|topic:" + bd.getTopic() 
+			//						+ "|postid:"+bd.getPostId() 
+			//						+ "|message:"+bd.getPostMessage() 
+			//						+ "|postTime:" + bd.getPostTime()
+			//						+ "|faceNum:"+bd.getFaceNum()
+			//						+ "|faceDeatail:" + bd.getFaceDetail()
+			//						+ "|messageLength:" + bd.getPostMessageLength()
+			//						+ "|pictureNum:"+bd.getPictureNum()
+			//						+ "|pictureDetail:"+bd.getPictureDetail());
+			//			}
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
@@ -381,7 +385,7 @@ public class WaterKingTools {
 		return htmlElementDiv;
 	}
 
-	
+
 	public static void main(String[] args){
 
 		WaterKingTools waterKingTools = new WaterKingTools();
