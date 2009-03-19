@@ -38,7 +38,6 @@ public class ScanTools {
 		/**
 		 * page has js error , need avoid it
 		 */
-		webClient.setJavaScriptEnabled(false);
 		for(Board board : listBoard){
 			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
 			if(user.getReadLevel() >= board.getRaedLevel()){
@@ -48,7 +47,6 @@ public class ScanTools {
 				}
 			}
 		}
-		webClient.setJavaScriptEnabled(true);
 
 		try {
 			/**

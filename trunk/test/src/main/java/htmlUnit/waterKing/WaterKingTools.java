@@ -24,11 +24,6 @@ public class WaterKingTools {
 
 	protected static Log logger = LogFactory.getLog(WaterKingTools.class);
 
-	String tsUrl = "http://bbs.taisha.org/" ;
-	String loginUrl = "http://bbs.taisha.org/index.php";
-	String tableId = "forum_74";
-
-
 	/**
 	 * login
 	 * @param loginName 用户名
@@ -39,8 +34,7 @@ public class WaterKingTools {
 		WebClient webClient = new WebClient();
 		HtmlPage page;
 		try{
-			page = webClient.getPage(tsUrl);
-
+			page = webClient.getPage(Units.TS_URL);
 			//get form
 			HtmlForm form = page.getFormByName("login");
 			//get login input
@@ -55,14 +49,16 @@ public class WaterKingTools {
 			HtmlButton button = form.getButtonByName("userlogin");
 
 			page = button.click();
-			System.out.println(page.getTitleText());
-			if( page.getBody().asText().indexOf("现在将转入登录前页面")!= -1 ){
+			logger.info(page.getTitleText());
+			if( (page.getBody().asText().indexOf("现在将转入登录前页面")!= -1) 
+					|| (page.getBody().asText().indexOf(loginName)!= -1)  ){
 				logger.info("login success");
-				page = webClient.getPage(loginUrl);
+				page = webClient.getPage(Units.LOGIN_URL);
 				return webClient;
 			}
 			else{
 				logger.info("login fail");
+				logger.info(page.getBody().asText());
 			}
 		}catch( Exception e ){
 			logger.info("login happen exception");
@@ -84,7 +80,7 @@ public class WaterKingTools {
 		while(sign>0){
 			try{
 				page = webClient.getPage(waterUrl);
-				HtmlTable htmlTable = (HtmlTable)page.getElementById(tableId);
+				HtmlTable htmlTable = (HtmlTable)page.getElementById(Units.TABLE_ID);
 				logger.info("get water area list success: "+ waterUrl );
 				//				success = false;
 				sign = 5;
@@ -205,6 +201,7 @@ public class WaterKingTools {
 	}
 
 	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl){
+		webClient.setJavaScriptEnabled(false);
 		logger.info(boardPageurl);
 		HtmlPage page;
 		HtmlTable htmlTable;
@@ -251,26 +248,46 @@ public class WaterKingTools {
 						/**
 						 * postMessage
 						 */
-						//						logger.info(this.cleanMessage(htmlElementDiv));
-						String message = this.cleanMessage(htmlElementDiv);
-						boardDetail.setPostMessage(message);
-						boardDetail.setPostMessageLength(new Long(message.length()));
+						//logger.info(this.cleanMessage(htmlElementDiv));
+						HtmlElement message = this.cleanMessage(htmlElementDiv);
+						boardDetail.setPostMessage(message.asText());
+						boardDetail.setPostMessageLength(new Long(message.asText().length()));
 
 						/**
-						 * search face
+						 * search face , picture
 						 */
-						List<HtmlElement> faceHtmlElementList  = htmlElementDiv.getHtmlElementsByTagName("img");
-						//						logger.info("face num:" + faceHtmlElementList.size() );
-						boardDetail.setFaceNum(new Long(faceHtmlElementList.size()));
 
+						//logger.info("face num:" + faceHtmlElementList.size() );
+
+						List<HtmlElement> faceHtmlElementList  = message.getHtmlElementsByTagName("img");
+						int faceNum=0;;
+						int picNum=0;;
 						StringBuffer faceDetail = new StringBuffer();
+						StringBuffer picDetail = new StringBuffer();
 						String face;
 						for(HtmlElement htmlElementFace: faceHtmlElementList){
 							face = htmlElementFace.getAttribute("src");
-							faceDetail.append(face.substring(face.indexOf("ault/")+5, face.length())).append("|");
+							//logger.info(face);
+							if( face.indexOf("smilies/default")!=-1 ){
+								faceNum++;
+								faceDetail.append(face.substring(face.indexOf("ault/")+5, face.length())).append("***");
+							}
+							else{
+								face = htmlElementFace.getAttribute("onclick");
+								if(face.indexOf("http:")!=-1){
+									picNum++;
+									picDetail.append(face.substring(face.indexOf("http:"), face.length()-2)).append("***");
+								}
+							}
 						}
-						//						logger.info(faceDetail);
+
+						boardDetail.setFaceNum(new Long(faceNum));
+						//logger.info(faceDetail);
 						boardDetail.setFaceDetail(faceDetail.toString());
+
+						boardDetail.setPictureNum(new Long(picNum));
+						boardDetail.setPictureDetail(picDetail.toString());
+
 						boardDetailList.add(boardDetail);
 						continue;
 					}
@@ -285,9 +302,11 @@ public class WaterKingTools {
 						+ "|postTime:" + bd.getPostTime()
 						+ "|faceNum:"+bd.getFaceNum()
 						+ "|faceDeatail:" + bd.getFaceDetail()
-						+ "|messageLength:" + bd.getPostMessageLength());
+						+ "|messageLength:" + bd.getPostMessageLength()
+						+ "|pictureNum:"+bd.getPictureNum()
+						+ "|pictureDetail:"+bd.getPictureDetail());
 			}
-
+			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
 			logger.info("get page detail list fail,again "  +  boardPageurl );
@@ -298,39 +317,63 @@ public class WaterKingTools {
 
 
 
-	private String cleanMessage(HtmlElement htmlElementDiv){
+	private HtmlElement cleanMessage(HtmlElement htmlElementDiv){
+
 
 		/**
 		 * clean span
+		 * every time clean ,will make  next become next-1
+		 * but don't clean ,next also next,
+		 * so use a sign,when clean it will not change,if don't clean need add one 
 		 */
+		int sign=0;
 		int len = htmlElementDiv.getHtmlElementsByTagName("span").size();
 		for(int i=0;i<len;i++){
-			if(htmlElementDiv.getHtmlElementsByTagName("span").get(i).getAttribute("style").indexOf("none")!=-1){
-				htmlElementDiv.removeChild("span", i);
+			if(htmlElementDiv.getHtmlElementsByTagName("span").get(sign).getAttribute("style").indexOf("none")!=-1){
+				htmlElementDiv.removeChild("span", sign);
+			}
+			else{
+				sign++;
 			}
 		}
 
 		/**
 		 * clean font
 		 */
+		sign=0;
 		len = htmlElementDiv.getHtmlElementsByTagName("font").size();
 		for(int i=0;i<len;i++){
-			if(htmlElementDiv.getHtmlElementsByTagName("font").get(i).getAttribute("style").indexOf("0px")!=-1){
-				htmlElementDiv.removeChild("font", i);
+			if(htmlElementDiv.getHtmlElementsByTagName("font").get(sign).getAttribute("style").indexOf("0px")!=-1){
+				htmlElementDiv.removeChild("font", sign);
+			}
+			else{
+				sign++;
 			}
 		}
 
 		/**
 		 * clean quote
 		 */
+		sign=0;
 		len = htmlElementDiv.getHtmlElementsByTagName("div").size();
 		for(int i=0;i<len;i++){
-			if(htmlElementDiv.getHtmlElementsByTagName("div").get(i).getAttribute("class").indexOf("quote")!=-1){
-				htmlElementDiv.removeChild("quote", i);
+			if(htmlElementDiv.getHtmlElementsByTagName("div").get(sign).getAttribute("class").indexOf("quote")!=-1){
+				htmlElementDiv.removeChild("quote", sign);
+			}
+			else{
+				sign++;
 			}
 		}
 
-		return htmlElementDiv.asText();
+		//		/**
+		//		 * clean image
+		//		 */
+		//		len = htmlElementDiv.getHtmlElementsByTagName("img").size();
+		//		for(int i=0;i<len;i++){
+		//			htmlElementDiv.removeChild("img", sign);
+		//		}
+
+		return htmlElementDiv;
 	}
 
 
@@ -339,22 +382,23 @@ public class WaterKingTools {
 
 	public static void main(String[] args){
 
-		String waterUrl = "http://bbs.taisha.org/forum-74-991.html";
 		WaterKingTools waterKingTools = new WaterKingTools();
 		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
-		//		waterKingTools.login("非法用户xx", "happyamiga");
-		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , waterUrl);
-		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
-		//		System.out.println(boardList.size());
-		//		for(Board b:boardList){
-		//		System.out.print(b.getTopic()+"|");
-		//		System.out.print(b.getTopicUrl()+"|");
-		//		System.out.print(b.getStarter()+"|");
-		//		System.out.print(b.getReplyNum()+"|");
-		//		System.out.print(b.getReadNum()+"|");
-		//		System.out.println(b.getIssueDate());
-		//		}
-		//		new WaterService().saveBoardList(boardList);
+
+		//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://bbs.taisha.org/forum-74-991.html");
+		//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
+
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187171-1-1.html");
+
+		//		String s= "a|b";
+		//		String[] a = s.split("\\|");
+		//		for(String ss:a) { 
+		//		     System.out.println(ss); 
+		//
+		//		} 
+
+		//		String str = "abcdefg";
+		//		System.out.println(str.substring(str.indexOf("ab"), str.length()));
 	}
 
 }

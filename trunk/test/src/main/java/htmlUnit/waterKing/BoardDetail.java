@@ -7,7 +7,7 @@ public class BoardDetail {
 	private String floor;
 	
 	/**
-	 * reference Board's topic
+	 * reference Board's topic , foreigner key
 	 */
 	private String topic; 
 	
@@ -20,6 +20,10 @@ public class BoardDetail {
 	private Long faceNum;
 	
 	private String faceDetail;
+	
+	private Long pictureNum;
+	
+	private String pictureDetail;
 	
 	/**
 	 * redundancy field (postMessage length)
@@ -88,6 +92,22 @@ public class BoardDetail {
 
 	public void setFaceDetail(String faceDetail) {
 		this.faceDetail = faceDetail;
+	}
+
+	public Long getPictureNum() {
+		return pictureNum;
+	}
+
+	public void setPictureNum(Long pictureNum) {
+		this.pictureNum = pictureNum;
+	}
+
+	public String getPictureDetail() {
+		return pictureDetail;
+	}
+
+	public void setPictureDetail(String pictureDetail) {
+		this.pictureDetail = pictureDetail;
 	}
 	
 	
