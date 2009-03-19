@@ -29,21 +29,18 @@ public class ScanTools {
 
 		// get a list board
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
-//		waterService.saveBoardList(listBoard);  temp comment
+		waterService.saveBoardList(listBoard);
 
 		// analyze the board
 		logger.info("size:"+listBoard.size());
 		List<BoardDetail> boardDetailList;
 
-		/**
-		 * page has js error , need avoid it
-		 */
 		for(Board board : listBoard){
 			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
 			if(user.getReadLevel() >= board.getRaedLevel()){
-				for(int i=1 ; i < board.getEndPage() ; i++){
-					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) );
-					//save boardDetailList;
+				for(int i=board.getEndPage().intValue() ; i >=1 ; i--){
+					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board );
+					waterService.saveBoardDetailList(boardDetailList);
 				}
 			}
 		}

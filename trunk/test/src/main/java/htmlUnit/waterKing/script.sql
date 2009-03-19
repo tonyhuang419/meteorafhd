@@ -7,14 +7,11 @@ CREATE TABLE BOARD (
 	replyNum BIGINT,
 	readNum BIGINT,
 	lastScanTime TIMESTAMP,
-	lastScanFloor BIGINT ,
 	raedLevel BIGINT,
 	PRIMARY KEY (id)
-);
+) DEFAULT CHARSET=utf8; 
 
 CREATE UNIQUE INDEX topicUrl ON BOARD (topicUrl ASC);
-
-
 
 CREATE TABLE BOARD_DETAIL(
 	id BIGINT NOT NULL AUTO_INCREMENT,
@@ -29,8 +26,9 @@ CREATE TABLE BOARD_DETAIL(
 	pictureDetail VARCHAR(4000),
 	postMessageLength BIGINT,
 	PRIMARY KEY (id)
-);
+) DEFAULT CHARSET=utf8; 
 
 CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
+
 
 

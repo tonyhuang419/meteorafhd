@@ -188,7 +188,6 @@ public class WaterKingTools {
 				}
 			}
 			board.setLastScanTime(new Date());
-			board.setLastScanFloor(0L);
 			boardList.add(board);
 		}
 		//		print info , can be comment
@@ -200,8 +199,13 @@ public class WaterKingTools {
 		return boardList;
 	}
 
-	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl){
+	
+	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl , Board board){
+		/**
+		 * becaser page has js error , need avoid it
+		 */
 		webClient.setJavaScriptEnabled(false);
+		
 		logger.info(boardPageurl);
 		HtmlPage page;
 		HtmlTable htmlTable;
@@ -215,6 +219,7 @@ public class WaterKingTools {
 			logger.info("get page detail success: " + boardPageurl );
 			for(HtmlElement htmlElement : listHTMLElement){
 				boardDetail = new BoardDetail();
+				boardDetail.setTopic( board.getTopic());
 				htmlTable = (HtmlTable)htmlElement;
 
 				/**
@@ -294,18 +299,18 @@ public class WaterKingTools {
 				}
 			}
 
-			for( BoardDetail bd:  boardDetailList){
-				logger.info( "floor:"+bd.getFloor()
-						+ "|topic:" + bd.getTopic() 
-						+ "|postid:"+bd.getPostId() 
-						+ "|message:"+bd.getPostMessage() 
-						+ "|postTime:" + bd.getPostTime()
-						+ "|faceNum:"+bd.getFaceNum()
-						+ "|faceDeatail:" + bd.getFaceDetail()
-						+ "|messageLength:" + bd.getPostMessageLength()
-						+ "|pictureNum:"+bd.getPictureNum()
-						+ "|pictureDetail:"+bd.getPictureDetail());
-			}
+//			for( BoardDetail bd:  boardDetailList){
+//				logger.info( "floor:"+bd.getFloor()
+//						+ "|topic:" + bd.getTopic() 
+//						+ "|postid:"+bd.getPostId() 
+//						+ "|message:"+bd.getPostMessage() 
+//						+ "|postTime:" + bd.getPostTime()
+//						+ "|faceNum:"+bd.getFaceNum()
+//						+ "|faceDeatail:" + bd.getFaceDetail()
+//						+ "|messageLength:" + bd.getPostMessageLength()
+//						+ "|pictureNum:"+bd.getPictureNum()
+//						+ "|pictureDetail:"+bd.getPictureDetail());
+//			}
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
@@ -376,6 +381,8 @@ public class WaterKingTools {
 		return htmlElementDiv;
 	}
 
+	
+	
 
 
 
@@ -388,7 +395,9 @@ public class WaterKingTools {
 		//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://bbs.taisha.org/forum-74-991.html");
 		//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
 
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187171-1-1.html");
+		Board board = new Board();
+		board.setTopic("topic");
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187171-1-1.html" , board );
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
