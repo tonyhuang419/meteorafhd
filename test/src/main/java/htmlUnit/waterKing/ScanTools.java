@@ -38,7 +38,7 @@ public class ScanTools {
 		int scanFloor;
 		for(Board board : listBoard){
 			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
-			if(user.getReadLevel() >= board.getRaedLevel() 
+			if(user.getReadLevel() >= board.getReadLevel() 
 					&& board.getIsVote() == false
 					&& !board.getLastScanFloor().equals(1L)){
 				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){

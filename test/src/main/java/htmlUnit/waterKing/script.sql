@@ -7,7 +7,7 @@ CREATE TABLE BOARD (
 	replyNum BIGINT,
 	readNum BIGINT,
 	lastScanTime TIMESTAMP,
-	raedLevel BIGINT,
+	readLevel BIGINT,
 	isVote	BIT,
 	lastScanFloor BIGINT,
 	PRIMARY KEY (id)
