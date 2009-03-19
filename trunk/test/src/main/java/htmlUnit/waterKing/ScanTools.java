@@ -38,7 +38,9 @@ public class ScanTools {
 		int scanFloor;
 		for(Board board : listBoard){
 			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
-			if(user.getReadLevel() >= board.getRaedLevel() && board.getIsVote() == false){
+			if(user.getReadLevel() >= board.getRaedLevel() 
+					&& board.getIsVote() == false
+					&& !board.getLastScanFloor().equals(1L)){
 				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){
 					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board );
 					waterService.saveBoardDetailList(boardDetailList);
