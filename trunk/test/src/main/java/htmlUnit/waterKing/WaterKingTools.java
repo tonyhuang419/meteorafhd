@@ -221,6 +221,9 @@ public class WaterKingTools {
 		BoardDetail boardDetail;
 		try{
 			page = webClient.getPage(boardPageurl);
+			if(page.asXml().indexOf(" 投票主题")!=-1){
+				return boardDetailList;
+			}
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
 			logger.info("has " + listHTMLElement.size() +" floors");
@@ -398,8 +401,8 @@ public class WaterKingTools {
 
 	public static void main(String[] args){
 
-//		WaterKingTools waterKingTools = new WaterKingTools();
-//		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
+		WaterKingTools waterKingTools = new WaterKingTools();
+		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
 //
 //		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
 //		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
@@ -414,9 +417,9 @@ public class WaterKingTools {
 			//			System.out.println(b.getIssueDate());
 //		}
 
-		//		Board board = new Board();
-		//		board.setTopic("topic");
-		//		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1187302-29-1.html" , board );
+				Board board = new Board();
+				board.setTopic("topic");
+				List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1157471-1-2.html" , board );
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
