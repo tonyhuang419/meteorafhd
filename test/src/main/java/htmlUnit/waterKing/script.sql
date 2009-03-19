@@ -19,7 +19,7 @@ CREATE TABLE BOARD_DETAIL(
 	topic VARCHAR(255),
 	postId VARCHAR(255),
 	postTime TIMESTAMP,
-	postMessage TEXT(60000),
+	postMessage LONGTEXT,
 	faceNum BIGINT,
 	faceDetail VARCHAR(4000),
 	pictureNum BIGINT,
