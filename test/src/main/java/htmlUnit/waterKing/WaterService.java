@@ -57,7 +57,6 @@ public class WaterService {
 			preparedStatement.setLong(8, boardDetail.getPictureNum());
 			preparedStatement.setString(9, boardDetail.getPictureDetail());
 			preparedStatement.setLong(10, boardDetail.getPostMessageLength());
-			
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");

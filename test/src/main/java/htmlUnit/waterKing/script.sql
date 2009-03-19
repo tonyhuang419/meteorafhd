@@ -31,4 +31,5 @@ CREATE TABLE BOARD_DETAIL(
 CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
 
-
+truncate table BOARD;
+truncate table BOARD_DETAIL;
