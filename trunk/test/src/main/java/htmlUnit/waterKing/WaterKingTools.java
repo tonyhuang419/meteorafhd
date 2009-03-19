@@ -158,11 +158,11 @@ public class WaterKingTools {
 							pageStr = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
 							pages = pageStr.split(" ");
 							board.setEndPage(new Long(pages[pages.length-1]));
-							board.setRaedLevel(0L);	
+							board.setReadLevel(0L);	
 						}
 						else{
 							readLevel = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
-							board.setRaedLevel(new Long(readLevel));								
+							board.setReadLevel(new Long(readLevel));								
 						}
 					}
 
@@ -173,10 +173,10 @@ public class WaterKingTools {
 						//						logger.info("read level："+listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText());
 						readLevel  = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText();
 						if(StringUtils.isBlank(readLevel)){
-							board.setRaedLevel(0L);
+							board.setReadLevel(0L);
 						}
 						else{
-							board.setRaedLevel(new Long(readLevel));
+							board.setReadLevel(new Long(readLevel));
 						}
 
 						//						logger.info("page："+listHTC.get(j).getHtmlElementsByTagName("span").get(2).asText());
@@ -185,7 +185,7 @@ public class WaterKingTools {
 						board.setEndPage(new Long(pages[pages.length-1]));
 					}
 					else{
-						board.setRaedLevel(0L);
+						board.setReadLevel(0L);
 						board.setEndPage(1L);
 					}
 					break;
@@ -210,6 +210,7 @@ public class WaterKingTools {
 				}
 			}
 			board.setLastScanTime(new Date());
+			board.setLastScanFloor(board.getReplyNum());
 			boardList.add(board);
 		}
 		//		print info , can be comment

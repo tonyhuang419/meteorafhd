@@ -22,7 +22,7 @@ public class WaterService {
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
 			" insert into BOARD(topic,topicUrl,starter,issueDate," +
-			" replyNum, readNum,lastScanTime , raedLevel , isVote , lastScanFloor ) values (?,?,?,?,?,?,?,?,?,?)");
+			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor ) values (?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
@@ -30,9 +30,9 @@ public class WaterService {
 			preparedStatement.setLong(5, board.getReplyNum());
 			preparedStatement.setLong(6, board.getReadNum());
 			preparedStatement.setTimestamp(7, new java.sql.Timestamp(board.getLastScanTime().getTime()));
-			preparedStatement.setLong(8, board.getRaedLevel());
+			preparedStatement.setLong(8, board.getReadLevel());
 			preparedStatement.setBoolean(9, board.getIsVote());
-			preparedStatement.setLong(10,board.getReplyNum());
+			preparedStatement.setLong(10,board.getLastScanFloor());
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");

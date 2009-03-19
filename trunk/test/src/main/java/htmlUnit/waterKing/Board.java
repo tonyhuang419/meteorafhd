@@ -18,7 +18,7 @@ public class Board {
 	
 	private Date lastScanTime;
 	
-	private Long raedLevel;
+	private Long readLevel;
 	
 	/**
 	 * topic's endPage page,don't serialize it
@@ -77,11 +77,11 @@ public class Board {
 	public void setEndPage(Long endPage) {
 		this.endPage = endPage;
 	}
-	public Long getRaedLevel() {
-		return raedLevel;
+	public Long getReadLevel() {
+		return readLevel;
 	}
-	public void setRaedLevel(Long raedLevel) {
-		this.raedLevel = raedLevel;
+	public void setReadLevel(Long readLevel) {
+		this.readLevel = readLevel;
 	}
 	public Boolean getIsVote() {
 		return isVote;
