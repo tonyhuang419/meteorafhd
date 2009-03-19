@@ -33,7 +33,7 @@ public class WaterService {
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");
-			logger.error("save error: "+ board.getTopic()+"|"+ board.getTopicUrl());
+			logger.error("save board error: "+ board.getTopic()+"|"+ board.getTopicUrl());
 			logger.error("exception: " + sqle.toString());
 			sqle.printStackTrace();
 		}
@@ -60,7 +60,7 @@ public class WaterService {
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			System.out.println("save error");
-			logger.error("save error: "+ boardDetail.getTopic()+"|"+ boardDetail.getFloor()+boardDetail.getPostMessage());
+			logger.error("save board detail error: "+ boardDetail.getTopic()+"|"+ boardDetail.getFloor()+boardDetail.getPostMessage());
 			logger.error("exception: " + sqle.toString());
 			sqle.printStackTrace();
 		}
