@@ -147,11 +147,11 @@ public class WaterKingTools {
 						}
 						else{
 							readLevel = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
-							if(StringUtils.isNotBlank(readLevel)){
-								board.setRaedLevel(new Long(readLevel));	
+							if(StringUtils.isBlank(readLevel)){
+								board.setRaedLevel(new Long(0L));	
 							}
 							else{
-								board.setRaedLevel(new Long(0L));	
+								board.setRaedLevel(new Long(readLevel));								
 							}
 						}
 					}
@@ -402,21 +402,21 @@ public class WaterKingTools {
 
 	public static void main(String[] args){
 
-//		WaterKingTools waterKingTools = new WaterKingTools();
-//		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
+		//		WaterKingTools waterKingTools = new WaterKingTools();
+		//		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
 
-//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
-//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
-//		System.out.println(boardList.size());
-//		for(Board b:boardList){
-//			System.out.print(b.getTopic()+"|");
-//			System.out.println(b.getRaedLevel()+"|");
-			//			System.out.print(b.getTopicUrl()+"|");
-			//			System.out.print(b.getStarter()+"|");
-			//			System.out.print(b.getReplyNum()+"|");
-			//			System.out.print(b.getReadNum()+"|");
-			//			System.out.println(b.getIssueDate());
-//		}
+		//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
+		//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
+		//		System.out.println(boardList.size());
+		//		for(Board b:boardList){
+		//			System.out.print(b.getTopic()+"|");
+		//			System.out.println(b.getRaedLevel()+"|");
+		//			System.out.print(b.getTopicUrl()+"|");
+		//			System.out.print(b.getStarter()+"|");
+		//			System.out.print(b.getReplyNum()+"|");
+		//			System.out.print(b.getReadNum()+"|");
+		//			System.out.println(b.getIssueDate());
+		//		}
 
 		//		Board board = new Board();
 		//		board.setTopic("topic");
