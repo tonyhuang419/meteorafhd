@@ -57,6 +57,4 @@ public class ScanTools {
 //			e.printStackTrace();
 //		}
 	}
-
-
 }
