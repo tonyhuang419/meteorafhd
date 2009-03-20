@@ -17,9 +17,9 @@ public class WhoIsKing {
 
 
 	public static void main(String[] args){
-//		new UserThread(new User("非法_用户","happyamiga",100)).getT().start();
-		new UserThread(new User("MS佳菲猫","lzhouwen",80)).getT().start();
-		new UserThread(new User("3.1415926535897","happyaaa",80)).getT().start();
+		new UserThread(new User("非法_用户","happyamiga",100 , 10)).getT().start();
+		new UserThread(new User("MS佳菲猫","lzhouwen",80,10 )).getT().start();
+		new UserThread(new User("3.1415926535897","happyaaa",80 ,10)).getT().start();
 	}
 
 }
@@ -36,7 +36,7 @@ class UserThread implements Runnable{
 
 	public UserThread(User user){
 		this.user = user;
-//		this.loginName = user.getUsername();
+		//		this.loginName = user.getUsername();
 		logger.info("login:"+user.getUsername());
 		webClient  = waterKingTools.login(user.getUsername(), user.getPassword());
 		if(webClient!=null){
@@ -51,21 +51,9 @@ class UserThread implements Runnable{
 
 	public void run() {
 		WhoIsKing w = new WhoIsKing();
-		if(user.getUsername().equals("3.1415926535897")){
-			for(int i=1000;i>=1;i--){
-				if(i%2==1){
-					logger.info(user.getUsername()+":"+i);
-					w.scan(webClient , i+"" , user );
-				}
-			}
-		}else{
-			for(int i=1000;i>=1;i--){
-				if(i%2==0){
-					logger.info(user.getUsername()+":"+i);
-					w.scan(webClient , i+"" , user );
-				}
-			}
-		}
+		int page = Tools.getScanPage();
+		logger.info(user.getUsername()+": sacn page "+page);
+		w.scan(webClient , page+"" , user );
 	}
 }
 

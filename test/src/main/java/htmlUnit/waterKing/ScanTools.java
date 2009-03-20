@@ -30,10 +30,9 @@ public class ScanTools {
 		// get a list board
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
 		waterService.saveBoardList(listBoard);
-		logger.info("save success BoardList");
-
+		logger.info(user.getUsername() + " save success BoardList success  " + baseUrl + " size: " +listBoard.size());
+		
 		// analyze the board
-		logger.info("board size:"+listBoard.size());
 		List<BoardDetail> boardDetailList;
 		int scanFloor;
 		for(Board board : listBoard){
@@ -42,13 +41,13 @@ public class ScanTools {
 					&& board.getIsVote() == false
 					&& !board.getLastScanFloor().equals(1L)){
 				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){
-					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board );
+					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board ,false);
 					waterService.saveBoardDetailList(boardDetailList);
-					logger.info("save success BoardDetailList");
+					logger.info(user.getUsername() + " save BoardDetailList success , size: " + boardDetailList.size() );
 					if( i == 1  ){
 						scanFloor = 1;
 					}else{
-						scanFloor = board.getReplyNum().intValue()-Units.PAGE_NUM;
+						scanFloor = board.getReplyNum().intValue() - user.getPageNum();
 					}
 					waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
 							+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");

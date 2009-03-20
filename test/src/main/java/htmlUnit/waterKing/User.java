@@ -8,14 +8,17 @@ public class User {
 	
 	private int readLevel;
 	
+	private int pageNum;
+	
 	public User(){
 		
 	}
 	
-	public User(String username ,String password ,int readLevel ){
+	public User(String username ,String password ,int readLevel,int pageNum ){
 		this.username = username;
 		this.password = password;
 		this.readLevel = readLevel;
+		this.pageNum = pageNum;
 	}
 
 	public String getUsername() {
@@ -40,6 +43,14 @@ public class User {
 
 	public void setReadLevel(int readLevel) {
 		this.readLevel = readLevel;
+	}
+
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
 	}
 	
 	
