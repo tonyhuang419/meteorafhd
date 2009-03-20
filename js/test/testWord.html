@@ -1,0 +1,22 @@
+<html>
+<head>
+<script>
+function wordTest(){
+	var myDocApp = new ActiveXObject("word.Application"); 
+	//myDocApp.activate(); 
+	
+	var myDoc = myDocApp.documents.open("D:/test/testWord.doc");
+	//myDoc.FormFields("cc").Range ="1111111111"; 
+	//alert(myDocApp.version)
+	
+
+        myDoc.Add(myDoc.Application.Selection.Range, 1, 18, 0, 0) ;
+	myDocApp.visible = true;
+}
+
+wordTest();
+</script>
+</head>
+<body>
+</body>
+</html>
