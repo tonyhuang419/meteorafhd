@@ -36,6 +36,7 @@ CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 select count(*) from BOARD;
 select count(*) from BOARD_DETAIL;
 select * from BOARD_DETAIL bd where bd.floor = 'pid2683228';
+select sum(b.replyNum) from BOARD b
 
 truncate table BOARD;
 truncate table BOARD_DETAIL;
