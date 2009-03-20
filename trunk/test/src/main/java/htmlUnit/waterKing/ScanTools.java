@@ -41,7 +41,7 @@ public class ScanTools {
 					&& board.getIsVote() == false
 					&& !board.getLastScanFloor().equals(1L)){
 				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){
-					boardDetailList = waterKingTools.doGetBoardDetailList( webClient ,  Tools.getBoardDetailUrl(board, i) , board ,false);
+					boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  Tools.getBoardDetailUrl(board, i) , board ,false);
 					waterService.saveBoardDetailList(boardDetailList);
 					logger.info(user.getUsername() + " save BoardDetailList success , size: " + boardDetailList.size() );
 					if( i == 1  ){
