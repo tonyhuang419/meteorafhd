@@ -223,13 +223,13 @@ public class WaterKingTools {
 	}
 
 
-	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl , Board board , boolean enableJS){
+	public List<BoardDetail> doGetBoardDetailList( String username, WebClient webClient , String boardPageurl , Board board , boolean enableJS){
 		/**
 		 * becaser page has js error , need avoid it
 		 */
 		webClient.setJavaScriptEnabled(enableJS);
 
-		logger.info(boardPageurl);
+		logger.info(username + ": " + boardPageurl);
 		HtmlPage page;
 		HtmlTable htmlTable;
 		List<BoardDetail> boardDetailList = new ArrayList<BoardDetail>();
@@ -241,7 +241,7 @@ public class WaterKingTools {
 			//			}
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
-			logger.info(boardPageurl + " has " + listHTMLElement.size() +" floors and get page detail success: " + boardPageurl );
+			logger.info(username + ":" + boardPageurl + "  get page detail success, has " + listHTMLElement.size()  );
 			for(HtmlElement htmlElement : listHTMLElement){
 				boardDetail = new BoardDetail();
 				boardDetail.setTopic( board.getTopic());
@@ -275,12 +275,24 @@ public class WaterKingTools {
 				/**
 				 * postTime
 				 */
-				//				logger.info(postTime);
+				//logger.info(postTime);
 				boardDetail.setPostTime(Tools.stringToDate(postTime , Units.dateFormatTime));
 
-				for(HtmlElement htmlElementDiv:divHtmlElementList){
-					if(htmlElementDiv.getAttribute("id").indexOf("postmessage")!=-1){
 
+
+				int faceNum=0;
+				int picNum=0;
+				String face;
+				String picture;
+				StringBuffer faceDetail = new StringBuffer();
+				StringBuffer picDetail = new StringBuffer();
+
+				for(HtmlElement htmlElementDiv:divHtmlElementList){
+
+					/**
+					 * message div
+					 */
+					if(htmlElementDiv.getAttribute("id").indexOf("postmessage")!=-1){
 						/**
 						 * postMessage
 						 */
@@ -290,20 +302,12 @@ public class WaterKingTools {
 						boardDetail.setPostMessageLength(new Long(message.asText().length()));
 
 						/**
-						 * search face , picture
+						 * search face
 						 */
-
 						//logger.info("face num:" + faceHtmlElementList.size() );
-
 						List<HtmlElement> faceHtmlElementList  = message.getHtmlElementsByTagName("img");
-						int faceNum=0;;
-						int picNum=0;;
-						StringBuffer faceDetail = new StringBuffer();
-						StringBuffer picDetail = new StringBuffer();
-						String face;
 						for(HtmlElement htmlElementFace: faceHtmlElementList){
 							face = htmlElementFace.getAttribute("src");
-							//logger.info(face);
 							if( face.indexOf("smilies/default")!=-1 ){
 								faceNum++;
 								faceDetail.append(face.substring(face.indexOf("ault/")+5, face.length())).append("***");
@@ -316,32 +320,55 @@ public class WaterKingTools {
 								}
 							}
 						}
-
-						boardDetail.setFaceNum(new Long(faceNum));
-						//logger.info(faceDetail);
-						boardDetail.setFaceDetail(faceDetail.toString());
-
-						boardDetail.setPictureNum(new Long(picNum));
-						boardDetail.setPictureDetail(picDetail.toString());
-
-						boardDetailList.add(boardDetail);
-						continue;
 					}
+					/**
+					 * enclosure div
+					 */
+					else if(htmlElementDiv.getAttribute("class").indexOf("postattachlist")!=-1){
+						/**
+						 * search picture
+						 */
+						List<HtmlElement> faceHtmlElementList  = htmlElementDiv.getHtmlElementsByTagName("img");
+						for(HtmlElement htmlElementFace: faceHtmlElementList){
+							picture = htmlElementFace.getAttribute("src");
+							picture = htmlElementFace.getAttribute("onclick");
+							if(picture.indexOf("http:")!=-1){
+								picNum++;
+								picDetail.append(picture.substring(picture.indexOf("http:"), picture.length()-2)).append("***");
+							}
+						}
+					}
+					continue;
 				}
+				boardDetail.setFaceNum(new Long(faceNum));
+				boardDetail.setFaceDetail(faceDetail.toString());
+
+				boardDetail.setPictureNum(new Long(picNum));
+				boardDetail.setPictureDetail(picDetail.toString());
+
+				boardDetailList.add(boardDetail);
+
+
+				faceNum=0;
+				picNum=0;
+				face = "";
+				picture = "";
+				faceDetail = new StringBuffer();
+				picDetail = new StringBuffer();
 			}
 
-//			for( BoardDetail bd:  boardDetailList){
-//				logger.info( "floor:"+bd.getFloor()
-//						+ "|topic:" + bd.getTopic() 
-//						+ "|postid:"+bd.getPostId() 
-//						+ "|message:"+bd.getPostMessage() 
-//						+ "|postTime:" + bd.getPostTime()
-//						+ "|faceNum:"+bd.getFaceNum()
-//						+ "|faceDeatail:" + bd.getFaceDetail()
-//						+ "|messageLength:" + bd.getPostMessageLength()
-//						+ "|pictureNum:"+bd.getPictureNum()
-//						+ "|pictureDetail:"+bd.getPictureDetail());
-//			}
+			for( BoardDetail bd:  boardDetailList){
+				logger.info( "floor:"+bd.getFloor()
+						+ "|topic:" + bd.getTopic() 
+						+ "|postid:"+bd.getPostId() 
+						+ "|message:"+bd.getPostMessage() 
+						+ "|postTime:" + bd.getPostTime()
+						+ "|faceNum:"+bd.getFaceNum()
+						+ "|faceDeatail:" + bd.getFaceDetail()
+						+ "|messageLength:" + bd.getPostMessageLength()
+						+ "|pictureNum:"+bd.getPictureNum()
+						+ "|pictureDetail:"+bd.getPictureDetail());
+			}
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
@@ -433,7 +460,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1164623-1-1.html" , board , false);
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-1187171-1-1.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");

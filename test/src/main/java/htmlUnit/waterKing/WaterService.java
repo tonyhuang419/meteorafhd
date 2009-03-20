@@ -68,6 +68,12 @@ public class WaterService {
 			sqle.printStackTrace();
 		}
 	}
+	
+	
+	public List<BoardDetail> doGetNotFinishBoardDetailList(){
+		
+		return null;
+	}
 
 	
 	public void saveBoardList(List<Board> listBoard){
