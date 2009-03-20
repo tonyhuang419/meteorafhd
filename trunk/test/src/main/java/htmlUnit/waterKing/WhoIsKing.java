@@ -52,8 +52,10 @@ class UserThread implements Runnable{
 	public void run() {
 		WhoIsKing w = new WhoIsKing();
 		int page = Tools.getScanPage();
-		logger.info(user.getUsername()+": sacn page "+page);
-		w.scan(webClient , page+"" , user );
+		while(page!=0){
+			logger.info(user.getUsername()+": sacn page "+page);
+			w.scan(webClient , page+"" , user );
+		}
 	}
 }
 

@@ -356,19 +356,18 @@ public class WaterKingTools {
 				faceDetail = new StringBuffer();
 				picDetail = new StringBuffer();
 			}
-
-			for( BoardDetail bd:  boardDetailList){
-				logger.info( "floor:"+bd.getFloor()
-						+ "|topic:" + bd.getTopic() 
-						+ "|postid:"+bd.getPostId() 
-						+ "|message:"+bd.getPostMessage() 
-						+ "|postTime:" + bd.getPostTime()
-						+ "|faceNum:"+bd.getFaceNum()
-						+ "|faceDeatail:" + bd.getFaceDetail()
-						+ "|messageLength:" + bd.getPostMessageLength()
-						+ "|pictureNum:"+bd.getPictureNum()
-						+ "|pictureDetail:"+bd.getPictureDetail());
-			}
+//			for( BoardDetail bd:  boardDetailList){
+//				logger.info( "floor:"+bd.getFloor()
+//						+ "|topic:" + bd.getTopic() 
+//						+ "|postid:"+bd.getPostId() 
+//						+ "|message:"+bd.getPostMessage() 
+//						+ "|postTime:" + bd.getPostTime()
+//						+ "|faceNum:"+bd.getFaceNum()
+//						+ "|faceDeatail:" + bd.getFaceDetail()
+//						+ "|messageLength:" + bd.getPostMessageLength()
+//						+ "|pictureNum:"+bd.getPictureNum()
+//						+ "|pictureDetail:"+bd.getPictureDetail());
+//			}
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
