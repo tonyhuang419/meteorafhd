@@ -12,9 +12,6 @@ public final class Units {
 	
 	public static final String  TABLE_ID = "forum_74";
 	
-	public static final int PAGE_NUM = 10;
-	
-	
 	public static final  SimpleDateFormat dateFormatDate = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public static final  SimpleDateFormat dateFormatTime = new SimpleDateFormat("yyyy-MM-dd hh:mm");

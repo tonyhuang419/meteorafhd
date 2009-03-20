@@ -52,16 +52,16 @@ public class WaterKingTools {
 			logger.info(page.getTitleText());
 			if( (page.getBody().asText().indexOf("现在将转入登录前页面")!= -1) 
 					|| (page.getBody().asText().indexOf(loginName)!= -1)  ){
-				logger.info("login success");
+				logger.info(loginName + " login success");
 				page = webClient.getPage(Units.LOGIN_URL);
 				return webClient;
 			}
 			else{
-				logger.info("login fail");
+				logger.info(loginName + " login fail");
 				logger.info(page.getBody().asText());
 			}
 		}catch( Exception e ){
-			logger.info("login happen exception");
+			logger.info(loginName + "login happen exception");
 			e.printStackTrace();
 		}
 		return webClient;
@@ -223,11 +223,11 @@ public class WaterKingTools {
 	}
 
 
-	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl , Board board){
+	public List<BoardDetail> doGetBoardDetailList( WebClient webClient , String boardPageurl , Board board , boolean enableJS){
 		/**
 		 * becaser page has js error , need avoid it
 		 */
-		webClient.setJavaScriptEnabled(false);
+		webClient.setJavaScriptEnabled(enableJS);
 
 		logger.info(boardPageurl);
 		HtmlPage page;
@@ -236,13 +236,12 @@ public class WaterKingTools {
 		BoardDetail boardDetail;
 		try{
 			page = webClient.getPage(boardPageurl);
-//			if(page.asXml().indexOf("投票主题")!=-1){
-//				return boardDetailList;
-//			}
+			//			if(page.asXml().indexOf("投票主题")!=-1){
+			//				return boardDetailList;
+			//			}
 			HtmlForm htmlForm = page.getFormByName("modactions");
 			List<HtmlElement> listHTMLElement = htmlForm.getHtmlElementsByTagName("table");
-			logger.info("has " + listHTMLElement.size() +" floors");
-			logger.info("get page detail success: " + boardPageurl );
+			logger.info(boardPageurl + " has " + listHTMLElement.size() +" floors and get page detail success: " + boardPageurl );
 			for(HtmlElement htmlElement : listHTMLElement){
 				boardDetail = new BoardDetail();
 				boardDetail.setTopic( board.getTopic());
@@ -331,18 +330,18 @@ public class WaterKingTools {
 				}
 			}
 
-			//			for( BoardDetail bd:  boardDetailList){
-			//				logger.info( "floor:"+bd.getFloor()
-			//						+ "|topic:" + bd.getTopic() 
-			//						+ "|postid:"+bd.getPostId() 
-			//						+ "|message:"+bd.getPostMessage() 
-			//						+ "|postTime:" + bd.getPostTime()
-			//						+ "|faceNum:"+bd.getFaceNum()
-			//						+ "|faceDeatail:" + bd.getFaceDetail()
-			//						+ "|messageLength:" + bd.getPostMessageLength()
-			//						+ "|pictureNum:"+bd.getPictureNum()
-			//						+ "|pictureDetail:"+bd.getPictureDetail());
-			//			}
+//			for( BoardDetail bd:  boardDetailList){
+//				logger.info( "floor:"+bd.getFloor()
+//						+ "|topic:" + bd.getTopic() 
+//						+ "|postid:"+bd.getPostId() 
+//						+ "|message:"+bd.getPostMessage() 
+//						+ "|postTime:" + bd.getPostTime()
+//						+ "|faceNum:"+bd.getFaceNum()
+//						+ "|faceDeatail:" + bd.getFaceDetail()
+//						+ "|messageLength:" + bd.getPostMessageLength()
+//						+ "|pictureNum:"+bd.getPictureNum()
+//						+ "|pictureDetail:"+bd.getPictureDetail());
+//			}
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
@@ -418,23 +417,23 @@ public class WaterKingTools {
 
 		WaterKingTools waterKingTools = new WaterKingTools();
 		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
-//
-//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
-//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
-//		System.out.println(boardList.size());
-//		for(Board b:boardList){
-//			System.out.print(b.getTopic()+"|");
-//			System.out.println(b.getRaedLevel()+"|");
-			//			System.out.print(b.getTopicUrl()+"|");
-			//			System.out.print(b.getStarter()+"|");
-			//			System.out.print(b.getReplyNum()+"|");
-			//			System.out.print(b.getReadNum()+"|");
-			//			System.out.println(b.getIssueDate());
-//		}
+		//
+		//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
+		//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);
+		//		System.out.println(boardList.size());
+		//		for(Board b:boardList){
+		//			System.out.print(b.getTopic()+"|");
+		//			System.out.println(b.getRaedLevel()+"|");
+		//			System.out.print(b.getTopicUrl()+"|");
+		//			System.out.print(b.getStarter()+"|");
+		//			System.out.print(b.getReplyNum()+"|");
+		//			System.out.print(b.getReadNum()+"|");
+		//			System.out.println(b.getIssueDate());
+		//		}
 
-				Board board = new Board();
-				board.setTopic("topic");
-				List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1157471-1-2.html" , board );
+		Board board = new Board();
+		board.setTopic("topic");
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList( webClient , "http://e.taisha.org/thread-1164623-1-1.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
