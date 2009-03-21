@@ -45,9 +45,10 @@ public class Tools {
 			String value = props.getProperty (propName);
 			Integer page = new Integer(value);
 			OutputStream fos = new FileOutputStream(filePath);
-			page--;
-			props.setProperty(propName, page.toString());
+			props.setProperty(propName, new Integer(page-1).toString());
 			props.store(fos, "Update "+propName+" value");
+			fos.close();
+			in.close();
 			return page;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,13 +58,17 @@ public class Tools {
 
 
 	public static void main(String[] args){
-//		System.out.println(Tools.stringToDate("2009-3-3" , Units.dateFormatDate ));
-//		System.out.println(Tools.stringToDate("2009-3-3 21:59" , Units.dateFormatTime ));
-//
-//		Board board = new Board();
-//		board.setTopicUrl("thread-512263-1-768.html");
-//		System.out.println(Tools.getBoardDetailUrl(board, 2));
-		Tools.getScanPage();
-		
+		//		System.out.println(Tools.stringToDate("2009-3-3" , Units.dateFormatDate ));
+		//		System.out.println(Tools.stringToDate("2009-3-3 21:59" , Units.dateFormatTime ));
+		//
+		//		Board board = new Board();
+		//		board.setTopicUrl("thread-512263-1-768.html");
+		//		System.out.println(Tools.getBoardDetailUrl(board, 2));
+		int i=100;
+		while(i>0){
+			System.out.println(Tools.getScanPage());
+			i--;
+		}
+
 	}
 }

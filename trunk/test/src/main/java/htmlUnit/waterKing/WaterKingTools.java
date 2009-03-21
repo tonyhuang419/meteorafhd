@@ -282,10 +282,10 @@ public class WaterKingTools {
 
 				int faceNum=0;
 				int picNum=0;
-				String face;
-				String picture;
-				StringBuffer faceDetail = new StringBuffer();
-				StringBuffer picDetail = new StringBuffer();
+				String face="";
+				String picture="";
+				StringBuffer faceDetail = new StringBuffer("");
+				StringBuffer picDetail = new StringBuffer("");
 
 				for(HtmlElement htmlElementDiv:divHtmlElementList){
 
@@ -340,6 +340,9 @@ public class WaterKingTools {
 					}
 					continue;
 				}
+				if(boardDetail.getPostMessageLength()==null){
+					boardDetail.setPostMessageLength(0L);
+				}
 				boardDetail.setFaceNum(new Long(faceNum));
 				boardDetail.setFaceDetail(faceDetail.toString());
 
@@ -356,6 +359,7 @@ public class WaterKingTools {
 				faceDetail = new StringBuffer();
 				picDetail = new StringBuffer();
 			}
+			
 //			for( BoardDetail bd:  boardDetailList){
 //				logger.info( "floor:"+bd.getFloor()
 //						+ "|topic:" + bd.getTopic() 
@@ -368,6 +372,7 @@ public class WaterKingTools {
 //						+ "|pictureNum:"+bd.getPictureNum()
 //						+ "|pictureDetail:"+bd.getPictureDetail());
 //			}
+			
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
@@ -459,7 +464,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-1187171-1-1.html" , board , false);
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-339591-1-1.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
