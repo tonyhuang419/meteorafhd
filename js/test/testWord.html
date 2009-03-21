@@ -5,12 +5,27 @@ function wordTest(){
 	var myDocApp = new ActiveXObject("word.Application"); 
 	//myDocApp.activate(); 
 	
-	var myDoc = myDocApp.documents.open("H:/Dev/java/Exp/js/test/testWord.doc");
-	myDoc.FormFields("cc").Range ="1111111111"; 
-	//alert(myDocApp.version)
+	var myDoc = myDocApp.documents.open("D:Exp/else/js/test/testWord.doc");
+	//myDoc.FormFields("cc").Range ="1111111111"; 
 	
 
-        //myDoc.Add(myDoc.Application.Selection.Range, 1, 18, 0, 0) ;
+	//var range = myDoc.Range;
+	//range = myDoc.FormFields("start").Range;
+
+	var selection = myDocApp.Selection;
+	
+	selection.EndKey();
+	selection.MoveDown();
+	selection.MoveDown();
+	selection.MoveDown();
+	selection.MoveDown();
+	
+	//selection = myDoc.FormFields("end").Range	
+//	selection.TypeText("aaa");
+	//alert(myDocApp.version)
+	//var selection = myDoc.Selection;
+
+        myDoc.Tables.Add(selection.Range, 1, 18 ) ;
 	myDocApp.visible = true;
 }
 
