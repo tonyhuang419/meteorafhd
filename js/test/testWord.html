@@ -5,7 +5,7 @@ function wordTest(){
 	var myDocApp = new ActiveXObject("word.Application"); 
 	//myDocApp.activate(); 
 	
-	var myDoc = myDocApp.documents.open("D:Exp/else/js/test/testWord.doc");
+	var myDoc = myDocApp.documents.open("H:/Dev/java/Exp/js/test/testWord.doc");
 	//myDoc.FormFields("cc").Range ="1111111111"; 
 	
 
@@ -14,14 +14,14 @@ function wordTest(){
 
 	var selection = myDocApp.Selection;
 	
-	selection.EndKey();
-	selection.MoveDown();
-	selection.MoveDown();
-	selection.MoveDown();
-	selection.MoveDown();
+	//selection.EndKey();
+	//selection.MoveDown();
+	//selection.MoveDown();
+	//selection.MoveDown();
+	//selection.MoveDown();
 	
-	//selection = myDoc.FormFields("end").Range	
-//	selection.TypeText("aaa");
+	//selection = myDoc.FormFields("row").Range	
+	//selection.TypeText("aaa");
 	//alert(myDocApp.version)
 	//var selection = myDoc.Selection;
 
@@ -29,9 +29,68 @@ function wordTest(){
 	myDocApp.visible = true;
 }
 
-wordTest();
+//wordTest();
+
+function fnCreateWord() {
+ var objWord = new ActiveXObject("Word.Application");
+ objWord.Caption = "Test";
+ 
+ objDoc = objWord.Documents.Add()
+ objWord.Application.Visible = true;
+ objSelection = objWord.Selection;
+ 
+ var tbl = objDoc.Tables.Add(objWord.Selection.Range,4,3);
+ 
+// The following is placed properly into the second cell and second column.  
+ var cCell = tbl.cell(2,2).range;
+ tbl.cell(2,2).Column.Width = 100;
+ cCell.Font.Bold = true;
+ cCell.Font.Size = "18";
+ cCell.text =  "ZZZZZZZZZZZZ";
+ 
+// The following ends up in first row and the first column of tbl. It needs to be after the table.
+ objSelection.Font.Name = "Arial";
+ objSelection.Font.Size = "18";
+ objSelection.TypeText("AAAAAAAAAAAAAA");
+ objSelection.TypeParagraph();
+ 
+ objSelection.Font.Size = "14";
+ objSelection.TypeText("" + Date() );
+ objSelection.TypeParagraph();
+ objSelection.TypeParagraph();
+// There needs to be another table inserted here with more text following.
+}
+
+//fnCreateWord();
+
+
+
+function exportword(tableid) {
+    var curTbl = document.getElementById(tableid);   
+    var   oWD   =   new   ActiveXObject("Word.Application");   
+    var   oDC   =   oWD.Documents.Add("",0,1);   
+    var   oRange   =oDC.Range(0,1);   
+    var   sel   =   document.body.createTextRange();   
+      sel.moveToElementText(curTbl);   
+      sel.select();   
+      sel.execCommand("Copy");   
+      oRange.Paste();   
+      oWD.Application.Visible   =   true;
+}
+
 </script>
 </head>
 <body>
+<table id="t" border="1">
+<tr><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>11</td><td>22</td><td>33</td></tr>
+<tr><td>111</td><td>222</td><td>333</td></tr>
+<tr>
+<td colspan="3">3333</td>
+</tr>
+</table>
 </body>
+<script>
+exportword("t");
+</script>
 </html>
