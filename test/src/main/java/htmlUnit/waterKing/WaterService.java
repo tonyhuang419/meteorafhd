@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -21,7 +21,7 @@ public class WaterService {
 		Connection con = dao.getCon();
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
-			" insert into BOARD(topic,topicUrl,starter,issueDate," +
+					" insert into BOARD(topic,topicUrl,starter,issueDate," +
 			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor ) values (?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
@@ -49,7 +49,7 @@ public class WaterService {
 			PreparedStatement preparedStatement = con.prepareStatement(
 					" insert into Board_Detail(floor,topic,postId,postTime,postMessage, faceNum,faceDetail , " +
 			"pictureNum , pictureDetail , postMessageLength) values (?,?,?,?,?,?,?,?,?,?)");
-			
+
 			preparedStatement.setString(1, boardDetail.getFloor());
 			preparedStatement.setString(2, boardDetail.getTopic());
 			preparedStatement.setString(3, boardDetail.getPostId());
@@ -68,21 +68,46 @@ public class WaterService {
 			sqle.printStackTrace();
 		}
 	}
-	
-	
-	public List<BoardDetail> doGetNotFinishBoardDetailList(){
-		
-		return null;
+
+
+	public List<Board> doGetNotFinishBoardDetailList(){
+		/**
+		 * not vote floor and lastScanFloor > 1
+		 */
+		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false ";
+		ResultSet rs =  this.query(sql);
+		List<Board> boardList = new ArrayList<Board>();
+		Board board;
+		try {
+			while (rs.next()){
+				board = new Board();
+				board.setId(rs.getLong(1));
+				board.setTopic(rs.getString(2));
+				board.setTopicUrl(rs.getString(3));
+				board.setStarter(rs.getString(4));
+				board.setIssueDate(rs.getDate(5));
+				board.setReplyNum(rs.getLong(6));
+				board.setReadNum(rs.getLong(7));
+				board.setLastScanTime(rs.getDate(8));
+				board.setReadLevel(rs.getLong(9));
+				board.setIsVote(rs.getBoolean(10));
+				board.setLastScanFloor(rs.getLong(11));
+				boardList.add(board);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return boardList;
 	}
 
-	
+
 	public void saveBoardList(List<Board> listBoard){
 		for(Board b:listBoard){
 			this.saveBoard(b);
 		}
 	}
-	
-	
+
+
 	public void saveBoardDetailList(List<BoardDetail> listBoardDetail){
 		for(BoardDetail b:listBoardDetail){
 			this.saveBoardDetail(b);
@@ -100,35 +125,38 @@ public class WaterService {
 
 	public static void main(String args[]){
 		WaterService ws = new WaterService();
-		
-//		Board board = new Board();
-//		board.setIssueDate(new Date());
-//		board.setLastScanTime(new Date());
-//		board.setLastScanFloor(0L);
-//		board.setReplyNum(4444L);
-//		board.setReadNum(4444L);
-//		board.setStarter("3333");
-//		board.setTopic("22222");
-//		board.setTopicUrl("888");
-//		board.setLastScanFloor(10L);
-//		board.setRaedLevel(10L);
-//		new WaterService().saveBoard(board);
-//		System.out.println("add Board success");
-		
-		
-		BoardDetail boardDetail = new BoardDetail();
-		boardDetail.setFaceDetail("FaceDetail");
-		boardDetail.setFaceNum(12L);
-		boardDetail.setFloor("floor");
-		boardDetail.setPictureDetail("pictureDetail");
-		boardDetail.setPictureNum(3L);
-		boardDetail.setPostId("postId");
-		boardDetail.setPostMessage("postMessage");
-		boardDetail.setPostMessageLength(100L);
-		boardDetail.setPostTime(new Date());
-		boardDetail.setTopic("topic");
-		ws.saveBoardDetail(boardDetail);
-		System.out.println("add boardDetail success");
+
+		//		Board board = new Board();
+		//		board.setIssueDate(new Date());
+		//		board.setLastScanTime(new Date());
+		//		board.setLastScanFloor(0L);
+		//		board.setReplyNum(4444L);
+		//		board.setReadNum(4444L);
+		//		board.setStarter("3333");
+		//		board.setTopic("22222");
+		//		board.setTopicUrl("888");
+		//		board.setLastScanFloor(10L);
+		//		board.setRaedLevel(10L);
+		//		new WaterService().saveBoard(board);
+		//		System.out.println("add Board success");
+
+
+		//		BoardDetail boardDetail = new BoardDetail();
+		//		boardDetail.setFaceDetail("FaceDetail");
+		//		boardDetail.setFaceNum(12L);
+		//		boardDetail.setFloor("floor");
+		//		boardDetail.setPictureDetail("pictureDetail");
+		//		boardDetail.setPictureNum(3L);
+		//		boardDetail.setPostId("postId");
+		//		boardDetail.setPostMessage("postMessage");
+		//		boardDetail.setPostMessageLength(100L);
+		//		boardDetail.setPostTime(new Date());
+		//		boardDetail.setTopic("topic");
+		//		ws.saveBoardDetail(boardDetail);
+		//		System.out.println("add boardDetail success");
+
+		System.out.println(ws.doGetNotFinishBoardDetailList().size());
+
 	}
 
 	public Dao getDao() {

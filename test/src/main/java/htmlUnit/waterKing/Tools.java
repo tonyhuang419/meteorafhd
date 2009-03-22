@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class Tools {
 
 
-	synchronized  public static Date stringToDate(String str , SimpleDateFormat  simpleDateFormat ){
+	public  Date stringToDate(String str , SimpleDateFormat  simpleDateFormat ){
 		try {
 			return simpleDateFormat.parse(str);
 		} catch (ParseException pe) {
@@ -25,8 +25,8 @@ public class Tools {
 		return null;
 	}
 
-	private static Pattern p = Pattern.compile("^thread-\\d*-");  
-	synchronized public static String getBoardDetailUrl( Board board , int pageNum){
+	private  Pattern p = Pattern.compile("^thread-\\d*-");  
+	public  String getBoardDetailUrl( Board board , int pageNum){
 		String baseUrl = board.getTopicUrl().trim();
 		Matcher m = p.matcher(baseUrl);  
 		while( m.find() ){ 
@@ -35,9 +35,9 @@ public class Tools {
 		return null;
 	}
 
-	private static String filePath = "src/main/java/htmlUnit/waterKing/page.properties";
-	private static String propName = "page";
-	synchronized public static int getScanPage(){
+	private  String filePath = "src/main/java/htmlUnit/waterKing/page.properties";
+	private  String propName = "page";
+	public  int getScanPage(){
 		Properties props = new Properties();
 		try {
 			InputStream in = new BufferedInputStream (new FileInputStream(filePath));
@@ -66,7 +66,7 @@ public class Tools {
 		//		System.out.println(Tools.getBoardDetailUrl(board, 2));
 		int i=100;
 		while(i>0){
-			System.out.println(Tools.getScanPage());
+			System.out.println(new Tools().getScanPage());
 			i--;
 		}
 

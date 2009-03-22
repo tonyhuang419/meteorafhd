@@ -16,11 +16,11 @@ public class ScanTools {
 	 * need Addrress like this ： http://bbs.taisha.org/forum-74-1.html
 	 */
 
-	private WaterKingTools waterKingTools = new WaterKingTools(); 
-	private WaterService waterService = new WaterService();
-
 	//synchronized 
 	public void scan(WebClient webClient ,String baseUrl , User user ){
+		WaterKingTools waterKingTools = new WaterKingTools(); 
+		WaterService waterService = new WaterService();
+		
 		String url;
 		List<HtmlTableBody> listHtmlTableBody;
 		List<Board> listBoard;
@@ -41,13 +41,13 @@ public class ScanTools {
 					&& board.getIsVote() == false
 					&& !board.getLastScanFloor().equals(1L)){
 				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){
-					boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  Tools.getBoardDetailUrl(board, i) , board ,false);
+					boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  new Tools().getBoardDetailUrl(board, i) , board ,false);
 					waterService.saveBoardDetailList(boardDetailList);
-					logger.info(user.getUsername() + " save BoardDetailList success , size: " + boardDetailList.size() );
+					logger.info(user.getUsername() + " save BoardDetailList success , size: " + board.getTopicUrl() +" size:"+ boardDetailList.size() );
 					if( i == 1  ){
 						scanFloor = 1;
 					}else{
-						scanFloor = board.getReplyNum().intValue() - user.getPageNum();
+						scanFloor = board.getReplyNum().intValue()+1 - user.getPageNum()*i;
 					}
 					waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
 							+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");

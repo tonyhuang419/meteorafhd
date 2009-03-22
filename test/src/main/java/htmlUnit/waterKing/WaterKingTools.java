@@ -24,6 +24,7 @@ public class WaterKingTools {
 
 	protected static Log logger = LogFactory.getLog(WaterKingTools.class);
 
+	private Tools tools = new Tools();
 	/**
 	 * login
 	 * @param loginName 用户名
@@ -162,7 +163,8 @@ public class WaterKingTools {
 						}
 						else{
 							readLevel = listHTC.get(j).getHtmlElementsByTagName("span").get(1).asText().trim();
-							board.setReadLevel(new Long(readLevel));								
+							board.setReadLevel(new Long(readLevel));	
+							board.setEndPage(1L);
 						}
 					}
 
@@ -191,7 +193,7 @@ public class WaterKingTools {
 					break;
 				case  3:
 					board.setStarter(listHTC.get(j).getHtmlElementsByTagName("a").get(0).asText());
-					board.setIssueDate(Tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText() , Units.dateFormatDate));
+					board.setIssueDate(tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText() , Units.dateFormatDate));
 					break;
 				case 4:
 					if(listHTC.get(j).getHtmlElementsByTagName("strong").get(0).asText().equals("-")){
@@ -276,7 +278,7 @@ public class WaterKingTools {
 				 * postTime
 				 */
 				//logger.info(postTime);
-				boardDetail.setPostTime(Tools.stringToDate(postTime , Units.dateFormatTime));
+				boardDetail.setPostTime(tools.stringToDate(postTime , Units.dateFormatTime));
 
 
 
@@ -464,7 +466,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-339591-1-1.html" , board , false);
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-343151-1-1.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
