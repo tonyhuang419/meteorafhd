@@ -11,7 +11,7 @@ public class WhoIsKing {
 
 
 	public void scan(WebClient webClient ,String baseUrl ,User user ){
-		new ScanTools().scan(webClient, baseUrl , user);
+		new ScanTools().scanBoard(webClient, baseUrl , user);
 	}
 
 
