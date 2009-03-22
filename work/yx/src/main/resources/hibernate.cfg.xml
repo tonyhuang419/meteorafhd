@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="dialect">
+			org.hibernate.dialect.Oracle9iDialect
+		</property>
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>		
+	
+    
+    	<property name="connection.url">
+			jdbc:oracle:thin:@10.25.74.49:1521:baoz
+		</property>
+		<property name="connection.username">clientbak</property>
+		<property name="connection.password">clientbak</property>
+		
+		   
+		    <!-- 
+		<property name="connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:XE
+		</property>
+		<property name="connection.username">yxgl</property>
+		<property name="connection.password">yxgl</property>
+		
+     
+   
+		<property name="connection.url">
+			jdbc:oracle:thin:@10.25.74.71:1521:bgyx
+		</property> 
+		<property name="connection.username">bgyxpj</property>
+		<property name="connection.password">bgyxpj</property>
+       -->
+       
+		<!-- c3p0 setting -->
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.max_size">5</property>
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.timeout">180</property>
+		<property name="hibernate.c3p0.max_statements">100</property>
+		<property name="hibernate.c3p0.idle_test_period">120</property>
+		<property name="hibernate.c3p0.acquire_increment">2</property>
+		
+		<!-- logged in log4j -->
+		<property name="show_sql">false</property>
+		<property name="format_sql">false</property>
+		
+		<!-- <property name="hbm2ddl.auto">update</property>  -->
+		<property name="cache.provider_class">
+			org.hibernate.cache.EhCacheProvider
+		</property>
+		<property name="cache.use_query_cache">true</property>
+
+		<mapping class="com.baoz.yx.entity.SysItem" />
+		<mapping class="com.baoz.yx.entity.Employee" />
+		<mapping class="com.baoz.yx.entity.YXDutyCode" />
+		<mapping class="com.baoz.yx.entity.YXGroupCode" />
+		<mapping class="com.baoz.yx.entity.YXClientNature" />
+		<mapping class="com.baoz.yx.entity.YXBusineesType" />
+		<mapping class="com.baoz.yx.entity.YXLinkManN" />
+		<mapping class="com.baoz.yx.entity.YXLinkMan" />
+		<mapping class="com.baoz.yx.entity.YXClientCode" />
+     
+		<mapping class="com.baoz.yx.entity.YXOEmployeeClient" />
+
+		<mapping class="com.baoz.yx.entity.YXTypeManage" />
+
+		<mapping class="com.baoz.yx.entity.ZoneCode"/>
+		<mapping class="com.baoz.yx.entity.Assistance"/>
+		<mapping class="com.baoz.yx.entity.CustomerProjectType"/>
+		<mapping class="com.baoz.yx.entity.ProjectStateFollow"/>
+		<mapping class="com.baoz.yx.entity.SelfProduction"/>
+		<mapping class="com.baoz.yx.entity.SuplierType"/>
+		<mapping class="com.baoz.yx.entity.TicketType"/>
+		<mapping class="com.baoz.yx.entity.ProjectState"/>
+
+		<mapping class="com.baoz.yx.entity.ApplyMessage"/>
+		<mapping class="com.baoz.yx.entity.AssistanceContract"/>
+		<mapping class="com.baoz.yx.entity.AssistanceTicket"/>
+		<mapping class="com.baoz.yx.entity.AssistancePayInfo"/>
+		<mapping class="com.baoz.yx.entity.SupplierInfo"/>
+		<mapping class="com.baoz.yx.entity.SupplierInfoHistory" />
+	    <mapping class="com.baoz.yx.entity.Gonggao"/>
+	    <mapping class="com.baoz.yx.entity.MaterialManager"/>
+		<mapping class="com.baoz.yx.entity.ContractMaterialSet"/>
+		<mapping class="com.baoz.yx.entity.AssistanceSection"/>
+		
+		<mapping class="com.baoz.yx.entity.PlanReceInfo"/>
+		
+		<!-- add by chengwei for user -->
+		<mapping class="com.baoz.yx.entity.Authority" />
+		<mapping class="com.baoz.yx.entity.Role" />
+		<mapping class="com.baoz.yx.entity.RoleAuthority" />
+		<mapping class="com.baoz.yx.entity.UserJobIntent" />
+		<!-- add by chengwei for user -->
+		
+		<!-- add by yepeng for user -->
+		<mapping class="com.baoz.yx.entity.ProjectEconomyCode"/>
+		<mapping class="com.baoz.yx.entity.SupplyTypeCode"/>
+		<mapping class="com.baoz.yx.entity.ProjectInfo"/>
+		<mapping class="com.baoz.yx.entity.ApplyTypeCode"/>
+		<mapping class="com.baoz.yx.entity.FileType"/>
+		<mapping class="com.baoz.yx.entity.ContractBeforeSell"/>
+		<mapping class="com.baoz.yx.entity.ReveInfo"/>
+		<mapping class="com.baoz.yx.entity.InvoiceInfo"/>
+		<mapping class="com.baoz.yx.entity.bill.RelationAmount"/>
+		<mapping class="com.baoz.yx.entity.bill.RelationBillAndReceipt"/>
+		
+		
+		<!-- add by yepeng for user -->
+		<mapping class="com.baoz.yx.entity.TicketType"/>
+		<mapping class="com.baoz.yx.entity.SelfProduction"/>
+		<mapping class="com.baoz.yx.entity.SuplierType"/>
+		<mapping class="com.baoz.yx.entity.CustomerProjectType"/>
+		<mapping class="com.baoz.yx.entity.ProjectStateFollow"/>
+		<mapping class="com.baoz.yx.entity.ProjectState"/>
+		<mapping class="com.baoz.yx.entity.Assistance"/>
+		<mapping class="com.baoz.yx.entity.bill.HongChongApplyBill"/>		
+		<mapping class="com.baoz.yx.entity.bill.HongChongInvoiceInfo"/>		
+		<mapping class="com.baoz.yx.entity.bill.HongChongRelationPlan"/>		
+		
+		<!-- add by yangyuan for ProgramEconomy  -->
+		<mapping class="com.baoz.yx.entity.programEconomy.YXOProgramEconomy"/>
+		<mapping class="com.baoz.yx.entity.programEconomy.YXOSectionInfo"/>
+		<mapping class="com.baoz.yx.entity.programEconomy.YXOSectionRecord"/>
+		<mapping class="com.baoz.yx.entity.programEconomy.YXOSectionRecordInfo"/>
+		<mapping class="com.baoz.yx.entity.programEconomy.YXOEquipList"/>
+		<mapping class="com.baoz.yx.entity.programEconomy.YXOBidInfo"/>
+		
+		<!-- add by lewei -->
+		<!-- contract -->
+		 
+		<mapping class="com.baoz.yx.entity.contract.ContractMainInfo"/> <!--pkColumnValue70-->
+		<mapping class="com.baoz.yx.entity.contract.ContractOwnProduce"/> <!--pkColumnValue71-->
+		<mapping class="com.baoz.yx.entity.contract.ContractOtherInfo"/> <!--pkColumnValue72-->
+		<mapping class="com.baoz.yx.entity.contract.ContractItemMaininfo"/> <!--pkColumnValue73-->
+		<mapping class="com.baoz.yx.entity.contract.ContractChangeInfo"/>	<!--pkColumnValue74-->
+		<mapping class="com.baoz.yx.entity.contract.ContractItemInfo"/>	  <!--pkColumnValue75-->
+		<mapping class="com.baoz.yx.entity.contract.ContractItemStage"/>	  <!--pkColumnValue76-->
+		<mapping class="com.baoz.yx.entity.contract.InitContractBillpro"/> <!--pkColumnValue77-->
+		<mapping class="com.baoz.yx.entity.contract.RealContractBillandRecePlan"/> <!--pkColumnValue79-->
+		<mapping class="com.baoz.yx.entity.contract.BillReceChangeHistory"/> <!--pkColumnValue81-->
+		<mapping class="com.baoz.yx.entity.contract.MonthlyBillpro"/> <!--pkColumnValue83-->
+		<mapping class="com.baoz.yx.entity.contract.MonthlyRecepro"/> <!--pkColumnValue84-->
+		<mapping class="com.baoz.yx.entity.contract.MonthlyBillpro"/> <!--pkColumnValue83-->
+		<mapping class="com.baoz.yx.entity.contract.MonthlyRecepro"/> <!--pkColumnValue84-->
+		<mapping class="com.baoz.yx.entity.contract.ItemCostingSure"/> <!--pkColumnValue87-->
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractMainInfo"/> 
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractOtherInfo"/> 
+		<mapping class="com.baoz.yx.entity.contract.ContractMaininfoPart"/> 
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractMaininfoPart"/>
+		<mapping class="com.baoz.yx.entity.contract.ContractChangeExplain"/> 
+		<mapping class="com.baoz.yx.entity.contract.ChangeRealContractBillandRecePlan"/>
+		<mapping class="com.baoz.yx.entity.NoContractRecevieAmount"/>
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractItemInfo"/>
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractItemMaininfo"/>
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractItemStage"/>
+		<mapping class="com.baoz.yx.entity.contract.ChangingContractItemStagePlan"/>
+		<mapping class="com.baoz.yx.entity.ContractBeforeSellHistory"/>
+		<mapping class="com.baoz.yx.entity.ImportantProject"/>
+		<mapping class="com.baoz.yx.entity.ImportantProjectHistroy"/>
+		<mapping class="com.baoz.yx.entity.ImpAndCbsRelation"/>
+		
+		<!-- contract -->
+		<!-- add by xurong -->
+		<mapping class="com.baoz.yx.entity.contract.ContractItemStagePlan"/> 
+		<!-- bill -->
+		<mapping class="com.baoz.yx.entity.bill.ApplyBill"/> <!--pkColumnValue85-->
+		<mapping class="com.baoz.yx.entity.bill.BillandProRelaion"/> <!--pkColumnValue86-->
+		<!-- bill -->
+		<!-- add by lewei -->
+		
+		<!-- add by libin for user -->
+		<mapping class="com.baoz.yx.entity.YXFileManage"/>
+		<mapping class="com.baoz.yx.entity.Notice"/>
+		<mapping class="com.baoz.yx.entity.YXChargeMan"/>
+		<mapping class="com.baoz.yx.entity.YXChargemanDepartment"/>
+		<mapping class="com.baoz.yx.entity.YXClientHistory"/>
+		<!-- add by shaoyx -->
+		
+		<mapping class="com.baoz.yx.entity.Authority"/>             <!-- pkColumnValue51 -->
+		<mapping class="com.baoz.yx.entity.AuthorityEmployee"/>     <!-- pkColumnValue52 -->
+		
+		<mapping class="com.baoz.yx.entity.OrganizationTree"/>      <!-- pkColumnValue53 -->
+		
+		<mapping class="com.baoz.yx.entity.Role"/>                  <!-- pkColumnValue54 -->
+		<mapping class="com.baoz.yx.entity.RoleAuthority"/>         <!-- pkColumnValue55 -->
+		<mapping class="com.baoz.yx.entity.RoleEmployee"/>          <!-- pkColumnValue56 -->
+		<!-- end -->
+		
+		<!-- add by xusheng -->
+		<mapping class="com.baoz.yx.entity.importfile.TempImportReveInfo"/><!-- pkColumnValue:tempImportReveInfo -->
+		<!-- end -->
+		
+		<!-- add by xusheng for contract changing -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakContractItemInfo"/><!-- pkColumnValue:BakContractItemInfo -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakContractItemMaininfo"/><!-- pkColumnValue:BakContractItemMaininfo -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakContractItemStage"/><!-- pkColumnValue:BakContractItemStage -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakContractItemStagePlan"/><!-- pkColumnValue:BakContractItemStagePlan -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakContractMainInfo"/><!-- pkColumnValue:BakContractMainInfo -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakContractMaininfoPart"/><!-- pkColumnValue:BakContractMaininfoPart -->
+		<mapping class="com.baoz.yx.entity.contract.bak.BakRealContractBillandRecePlan"/><!-- pkColumnValue:BakRealContractBillandRecePlan -->
+		<mapping class="com.baoz.yx.entity.SectionAndPayInfoRelation"/><!-- pkColumnValue:SectionAndPayInfoRelation -->
+		<mapping class="com.baoz.yx.entity.ImportDueFromCompare"/><!-- pkColumnValue:YX_IMPORT_DUE_FROM_COMPARE -->
+		
+		<!-- end -->
+	</session-factory>
+</hibernate-configuration>
+
+
+
+
+
+
+
+
+

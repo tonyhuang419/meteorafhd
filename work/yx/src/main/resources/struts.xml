@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- Add packages here -->
+	<package name="yx" extends="struts-default,jasperreports-default">
+		<global-results>
+			<result name="error">/commons/jsp/error.jsp</result>
+			<result name="Exception">exception.jspresult</result>
+			<result name="SQLException">exception.jspresult</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.sql.SQLException"
+				result="SQLException" />
+			<exception-mapping exception="java.lang.Exception"
+				result="Exception" />
+		</global-exception-mappings>
+		<action name="FileUpLoadAction"
+			class="com.baoz.yx.action.fileManager.FileUpLoadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/filemanage/fileUpfail.jsp
+			</result>
+		</action>
+		<action name="applyBillAttachment"
+			class="com.baoz.yx.action.billtoReceipt.ApplyBillAttachmentAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<action name="applyBillShowUpload"
+			class="com.baoz.yx.action.billtoReceipt.ApplyBillShowUploadFileAction">
+			<result name="success" type="stream">
+				<param name="contentType">
+					application/x-msdownload
+				</param>
+				<param name="contentDisposition">
+					attachment;filename=${fileName}
+				</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<action name="downloadFile"
+			class="com.baoz.yx.action.fileManager.FileDownClickAction">
+			<result name="success" type="stream">
+				<param name="contentType">
+					application/x-msdownload
+				</param>
+				<param name="contentDisposition">
+					attachment;filename=${fileName}
+				</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<!-- 历史合同数据 -->
+		<action name="uploadHistoryContract" method="importData"
+			class="com.baoz.yx.action.system.hisdata.ImoprtHistoryContractAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/system/hisdata/imoprtHistoryContract.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/jsp/system/hisdata/imoprtHistoryContractResult.jsp
+			</result>
+		</action>
+		<!-- 导入原始开票收款计划 -->
+		<action name="impportHistoryContractInitPlan" method="importData"
+			class="com.baoz.yx.action.system.hisdata.ImpportHistoryContractInitPlanAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">
+				/WEB-INF/jsp/system/hisdata/importHistoryInitBillAndpro.jsp
+			</result>
+		</action>
+		<!-- 合同确认以后导入开票 -->
+		<action name="importRealAndProPlan" method="importData"
+			class="com.baoz.yx.action.system.hisdata.ImportRealAndProPlanAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">
+				/WEB-INF/jsp/system/hisdata/importHisDataRealAndPro.jsp
+			</result>
+		</action>
+		<!-- 导入收款 -->
+		<action name="importReveInfo" method="importData" class="com.baoz.yx.action.system.hisdata.ImportReveInfoAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="success">/WEB-INF/jsp/system/hisdata/importReveInfo.jsp</result>
+        </action>
+        
+        <action name="createBillInvoiceAndReveInfo" method="importData" class="com.baoz.yx.action.system.hisdata.CreateBillInvoiceAndReveInfoAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="success">/WEB-INF/jsp/system/hisdata/createBillInvoiceAndReveInfo.jsp</result>
+        </action>
+           <action name="updateBillAndReceDate" method="importData" class="com.baoz.yx.action.system.hisdata.UpdateBillAndReceDateAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="success">/WEB-INF/jsp/system/hisdata/updateBillAndReceDate.jsp</result>
+        </action>
+		<!-- 合同项目成本录入 -->
+		<action name="contractProjectUpload" method="importData"
+			class="com.baoz.yx.action.contract.contractProject.ContractProjectUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+				<param name ="allowedTypes">xls</param> 		
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/jsp/contract/contractProject/projectExcelLogger.jsp
+			</result>
+		</action>
+		<!-- 合同项目号导入 -->
+		<action name="contractProjectDepartmentUpload" method="importData"
+			class="com.baoz.yx.action.contract.contractProject.ContractProjectDepartmentUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+				<param name ="allowedTypes">xls</param> 		
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">
+				/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/jsp/contract/contractProject/projectExcelLogger.jsp
+			</result>
+		</action>
+		<!--  Add By xusheng-->
+		<!--  以下为开票申请报表打印-->
+		<!--  开票申请生成PDF-->
+		<action name="applyBillPDF"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/compiled_jasper_template.jasper
+				</param>
+				<param name="dataSource">myList</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>	
+        <!-- 历史合同项目成本录入 -->
+		<action name="contractProjectRemark" method="importData" class="com.baoz.yx.action.system.hisdata.ImportHistoryContractProjectRemarkAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="input">/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp</result>
+            <result name ="success">/WEB-INF/jsp/system/hisdata/importHistoryContractProjectRemark.jsp</result>
+        </action>
+        <!-- 历史合同项目录入 -->
+		<action name="contractProjectGathering" method="importData" class="com.baoz.yx.action.system.hisdata.ImportHistoryContractGatheringAction" > 
+            <interceptor-ref name ="fileUpload">
+            	<param name="maximumSize">5097152</param> 
+            </interceptor-ref>
+            <interceptor-ref name ="defaultStack" />  
+            <result name ="input">/WEB-INF/jsp/contract/contractProject/contractProjectInputFail.jsp</result>
+            <result name ="success">/WEB-INF/jsp/system/hisdata/importHistoryContractGathering.jsp</result>
+        </action>
+		<!--  以下为外协合同付款申请报表打印-->
+		<!--  外协合同付款申请生成PDF-->
+		<action name="assistancePayForPDF"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+			<result name="success" type="jasper">
+				<param name="location">
+					/jasper/AssistanceContract.jasper
+				</param>
+				<param name="dataSource">payForList</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+			<action name="billAndInvoicePDF"
+			class="com.baoz.yx.action.jasperReport.JasperAction">
+		</action>
+		<!-- 导入开票收款计划 -->
+		<action name="importTempFile" method="importData"
+			class="com.baoz.yx.action.importfile.ImportTempFileAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">
+				/WEB-INF/jsp/importfile/importFile.jsp
+			</result>
+		</action>
+		<!--  Add By xusheng-->
+	</package>
+</struts>
