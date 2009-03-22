@@ -4,9 +4,11 @@ import java.util.Date;
 
 public class Board {
 	
+	private Long id;
+	
 	private String topic;
 	
-	private String  topicUrl;
+	private String topicUrl;
 	
 	private String starter;
 	
@@ -94,6 +96,12 @@ public class Board {
 	}
 	public void setLastScanFloor(Long lastScanFloor) {
 		this.lastScanFloor = lastScanFloor;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }

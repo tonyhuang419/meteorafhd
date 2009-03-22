@@ -35,12 +35,18 @@ CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
 select count(*) from BOARD;
 select count(*) from BOARD_DETAIL;
-select * from BOARD_DETAIL bd where bd.floor = 'pid2683228';
+select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
-select sum(b.replyNum) from BOARD b
+select * from BOARD b where b.topic like '%刘德华小%';
+select count(*) from BOARD_DETAIL bd where bd.topic like '%刘德华小%';
+select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where b.replyNum <> b.lastScanFloor and b.lastScanFloor <> 1
 
-truncate table BOARD;
-truncate table BOARD_DETAIL;
+select sum(b.replyNum) from BOARD b;
+select sum(b.replyNum) from BOARD b where b.readLevel = 255
+select * from Board b where b.lastScanFloor > 1 and b.isVote = false;
+//update Board b set b.lastScanFloor = 1 where b.lastScanFloor < 1 and b.isVote = false;
+//truncate table BOARD;
+//truncate table BOARD_DETAIL;
 
-drop table BOARD;
-drop table BOARD_DETAIL;
+//drop table BOARD;
+//drop table BOARD_DETAIL;

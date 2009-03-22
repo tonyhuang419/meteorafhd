@@ -9,10 +9,9 @@ public class WhoIsKing {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 
-	private ScanTools scanTools = new ScanTools();
 
 	public void scan(WebClient webClient ,String baseUrl ,User user ){
-		scanTools.scan(webClient, baseUrl , user);
+		new ScanTools().scan(webClient, baseUrl , user);
 	}
 
 
@@ -20,8 +19,15 @@ public class WhoIsKing {
 		new UserThread(new User("非法_用户","happyamiga",100 , 10)).getT().start();
 		new UserThread(new User("MS佳菲猫","lzhouwen",80,10 )).getT().start();
 		new UserThread(new User("3.1415926535897","happyaaa",80 ,10)).getT().start();
+		new UserThread(new User("FHDone","happyamiga",90 ,10)).getT().start();
+		new UserThread(new User("六月溜冰鞋","lzhouwen",20 ,10)).getT().start();
+		new UserThread(new User("中恋","lzhouwen",30 ,10)).getT().start();
+	
+		new UserThread(new User("非法_用户","happyamiga",100 , 10)).getT().start();
+		new UserThread(new User("3.1415926535897","happyaaa",80 ,10)).getT().start();
+		new UserThread(new User("FHDone","happyamiga",90 ,10)).getT().start();
+	
 	}
-
 }
 
 class UserThread implements Runnable{
@@ -53,7 +59,7 @@ class UserThread implements Runnable{
 		WhoIsKing w = new WhoIsKing();
 		int page = 1000;
 		while(page > 0){
-			page = Tools.getScanPage();
+			page = new Tools().getScanPage();
 			logger.info(user.getUsername()+": sacn page "+page);
 			w.scan(webClient , page+"" , user );
 		}
