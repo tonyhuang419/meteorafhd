@@ -15,6 +15,7 @@ public class WhoIsKing {
 
 	public void scan(WebClient webClient ,String baseUrl ,User user ){
 		new ScanTools().scanBoard(webClient, baseUrl , user);
+		new Tools().getScanPage();
 	}
 
 
@@ -32,11 +33,11 @@ public class WhoIsKing {
 		
 		User user = new User("非法_用户","happyamiga",100 , 10);
 		WebClient webClient  = new WaterKingTools().login(user.getUsername(), user.getPassword());
-		int page = 1000;
-		ExecutorService exec = Executors.newFixedThreadPool(9);
+		int page = new Tools().getScanPage();
+		ExecutorService exec = Executors.newFixedThreadPool(7);
 		while(page > 0){
-			page = new Tools().getScanPage();
 			exec.execute(new UserThread(webClient,user , page));
+			page--;
 		}
 		exec.shutdown();
 	
