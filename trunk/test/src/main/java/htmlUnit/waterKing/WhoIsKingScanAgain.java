@@ -21,7 +21,7 @@ public class WhoIsKingScanAgain {
 		WaterService ws = new WaterService();
 
 		List<Board> boardList =  ws.doGetNotFinishBoardDetailList();
-		ExecutorService exec = Executors.newFixedThreadPool(9);
+		ExecutorService exec = Executors.newFixedThreadPool(2);
 		for(int j=boardList.size()-1;j>0; j--){
 			Board b = boardList.get(j);
 			if(user.getReadLevel() >= b.getReadLevel() 
