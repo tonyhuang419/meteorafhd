@@ -40,21 +40,21 @@ public class ScanTools {
 			if(user.getReadLevel() >= board.getReadLevel() 
 					&& board.getIsVote() == false
 					&& !board.getLastScanFloor().equals(1L)){
-				for(int i=board.getEndPage().intValue() ; i >=1 ; i-- ){
+				for(int i=board.getEndPage().intValue() , k=0; i >=1 ; i--,k++ ){
 					boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  new Tools().getBoardDetailUrl(board, i) , board ,false);
 					waterService.saveBoardDetailList(boardDetailList);
 					logger.info(user.getUsername() + " save BoardDetailList success , size: " + board.getTopicUrl() +" size:"+ boardDetailList.size() );
 					if( i == 1  ){
 						scanFloor = 1;
 					}else{
-						scanFloor = board.getReplyNum().intValue()+1 - user.getPageNum()*i;
+						scanFloor = board.getReplyNum().intValue()+1 - user.getPageNum()*(k-i);
 					}
 					waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
 							+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");
 				}
 			}
 		}
-		//waterService.closeConnection();
+		waterService.closeConnection();
 		//		try {
 		//			/**
 		//			 * close db , too waste?
