@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- scheduler -->
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="monthHarvestPlanJobTrigger"/>
+				<ref bean="suggestCloseContractJobTrigger"/>
+				<ref bean="accountAgeJobTrigger"/>
+				<ref bean="temporaryDirJobTrigger"/>
+			</list>
+		</property>
+	</bean>
+	<!-- ======================================= generate monthly bill plan =================================== -->
+	<bean id="monthBillPlanJob" class="org.springframework.scheduling.quartz.JobDetailBean" >
+		<property name="jobClass" value="com.baoz.yx.job.MonthBillPlanJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="showMoonBillQueryService" value-ref="ShowMoonBillQueryService"/>
+			</map>
+		</property>
+	</bean>
+	<!-- Fire at 1:00 on the first day of every month -->
+	<bean id="monthHarvestPlanJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="monthBillPlanJob" />
+		<property name="cronExpression" value="0 0 1 1 * ?"/>
+	</bean>
+	
+	<!-- ======================================= suggest to closed contract  =================================== -->
+	<bean id="suggestCloseContractJob" class="org.springframework.scheduling.quartz.JobDetailBean" >
+		<property name="jobClass" value="com.baoz.yx.job.SuggestContractCloseJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="foramlContractService" value-ref="ForamlContractService"/>
+			</map>
+		</property>
+	</bean>
+	<!-- Fire at 20:00 every day -->
+	<bean id="suggestCloseContractJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="suggestCloseContractJob" />
+		<property name="cronExpression" value="0 0 20 * * ?"/>
+	</bean>
+	
+	<!-- ======================================= account age  =================================== -->
+	<bean id="accountAgeJob" class="org.springframework.scheduling.quartz.JobDetailBean" >
+		<property name="jobClass" value="com.baoz.yx.job.AccountAgeJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="foramlContractService" value-ref="ForamlContractService"/>
+			</map>
+		</property>
+	</bean>
+	<!-- Fire at 0:00 every day -->
+	<bean id="accountAgeJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="accountAgeJob" />
+		<property name="cronExpression" value="0 0 0 * * ?"/>
+	</bean>
+	
+	<!-- ======================================= clean temporary dir  =================================== -->
+	<bean id="temporaryDirJob" class="org.springframework.scheduling.quartz.JobDetailBean" >
+		<property name="jobClass" value="com.baoz.yx.job.CleanTemporaryFileJob"/>
+	</bean>
+	<!-- Fire at 12:00 every day -->
+	<bean id="temporaryDirJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="temporaryDirJob" />
+		<property name="cronExpression" value="0 0 12 * * ?"/>
+	</bean>
+</beans>

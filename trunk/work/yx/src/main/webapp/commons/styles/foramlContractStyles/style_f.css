@@ -1,0 +1,187 @@
+﻿body {
+	font-family: "宋体"; font-size: 12px; color: #C8E1EB; margin-top: 0px; margin-right: 0px}
+
+td {
+	color: #000000; line-height: 150%; font-size: 12px	}
+
+/*输入控件定义 */
+.txtinput	{
+	font-size:12px;
+	color: #333333;
+	border:1px #B0B0B0 solid;
+	height:17px;
+	width: 120px;
+}
+.txtarea    {font-size: 12px; color: #333333;border:1px #B0B0B0 solid;}
+.txtselect	{font-size: 12px;}
+.button01 	{background-color: #A3D0E9; height: 23px; color: #000000; border: #B3E1F2 outset; border-width: 1px 2px 2px 1px; clip:   rect(   ); font-size: 12px; vertical-align: bottom;width:80px;text-decoration: none}
+.button02 	{background-color: #A3D0E9; height: 23px; color: #000000; border: #B3E1F2 outset; border-width: 1px 2px 2px 1px; clip:   rect(   ); font-size: 12px; vertical-align: bottom}
+
+/*文字颜色定义　*/
+.txt_title01 { 
+	color: #FF7D09; font-size: 14px; line-height: 150%; text-decoration: none ; font-weight: bold }		/*表格抬头文字颜色定义（红色）*/
+.txt_title02 {
+	color: #FF6600; font-size: 18px;  line-height: 150%; text-decoration: none ; font-weight: bold ; font-weight: bold}  /*表格抬头文字颜色定义，预留*/
+.txt_emphasis01 { 
+	color: #E74B01; font-size: 12px; line-height: 150%; text-decoration: none }		/*欲突出的文字颜色定义（红色），如查询记录的条数*/
+.txt_white { 
+	color: #FFFFFF; font-size: 12px;  line-height: 150%; text-decoration: none }　						/*深色背景上的文字颜色定义（白色），预留*/
+
+/*文字链接样式定义*/
+
+a			{
+	color: #0288C8; font-size: 12px; text-decoration: underline}
+a:hover		{
+	color: #FF7D09; font-size: 12px; text-decoration: none}
+
+a.h1		{
+	color: #0292D7; font-size: 12px; text-decoration: underline	}
+a.h1:hover	{
+	color: #FF7D09; font-size: 12px; text-decoration: none}
+
+a.h2		{
+	color: #236C91; font-size: 12px; text-decoration: underline }				/*导航栏链接文字定义*/
+a.h2:hover	{
+	color: #02A4D2; font-size: 12px; text-decoration: none	}
+
+a.h3		{
+	color: #026698; font-size: 12px; text-decoration: underline;line-height: 220%}
+a.h3:hover	{
+	color: #02A4D2; font-size: 12px; text-decoration: none;line-height: 220%}
+a.h4		{
+	color: #026698; font-size: 12px; text-decoration: underline;line-height: 160%}
+a.h4:hover	{
+	color: #02A4D2; font-size: 12px; text-decoration: none;line-height: 160%}
+
+
+/*表格背景颜色定义*/
+.bg_table01 {
+	background-color: #98D0EB; text-decoration: none; color: #000000}		/*列表抬头行背景色定义（深蓝色）*/
+.bg_table02 {
+	background-color: #E7F7FE; text-decoration: none ; border: #DFEAF7	}						/*表格背景色定义（浅蓝色）*/
+.bg_table03 {
+	background-color: #CBECFC; text-decoration: none ; border: #D0DDED	; height: 42px}			/*表格中按钮所在行背景色定义（浅蓝色）*/
+.bg_table04 {
+	background-color: #D3EFFA; text-decoration: none ; border: #D0DDED	}		/*列表中排放翻页内容所在行背景色定义（浅蓝色）*/
+/*标准头、尾背景颜色定义*/
+.bg_black  {
+	background-color: #000000; text-decoration: none	}
+.bg_white  {
+	background-color: #FFFFFF; text-decoration: none	}
+.bg_body  {																		/*页面背景色定义（蓝色）*/
+    background-color: #C8E1EB; text-decoration: none	}
+
+.bg_blue01 { background-color: #02528D; text-decoration: none; color: #FFFFFF; font-size: 12px; line-height: 150%}
+.bg_blue02 { background-color: #5DD1FA; text-decoration: none	}						/*登录页横线条背景色*/
+.bg_blue03 { background-color: #B9E2F9}
+.bg_blue04 { background-color: #719FC2}
+.bg_blue05 { background-color: #83C6FB}
+
+.bg_grey01 {
+	background-color: #72716F; text-decoration: none	}
+
+.a_title03 { color: #004160; font-size: 12px; line-height: 150%; text-decoration: none }
+.a_title04 { color: #006DA8; font-size: 12px; line-height: 150%; text-decoration: none }
+.a_title05 { color: #FF7A02; filter: dropshadow(color=#FFFFFF,offx=1,offy=1); font-size: 12px; line-height: 150%; font-weight: bold } 　  /*系统提示页面上方的抬头文字定义*/
+
+
+.bg_body02 {background-color: #E7F7FE}					 /*弹出页面背景色定义*/
+.bg_blue06 { background-color: #D0EEFD}
+.bg_blue07 { background-color: #BDEBFF}
+
+.scrollDiv1 {
+	height: 320px;
+	padding: 3px;
+	overflow:auto;
+	overflow-x:hidden;
+	padding-right:15px;
+}
+.scrollDiv2 {
+	height: 290px;
+	padding: 3px;
+	overflow:auto;
+	overflow-x:hidden;
+	padding-right:15px;
+}
+.scrolDiv1lTitle {
+	padding-right:15px;
+	background-color:#98D0EB;
+}
+
+.scrollListDiv1 {
+	height: 400px;
+	padding: 3px;
+	overflow:auto;
+	overflow-x:hidden;
+	padding-right:15px;
+}
+
+.listX{  /*未签合同清单*/
+	border:solid #CCCCCC;
+	position:relative;
+	top:-350px;
+	left:-25px;
+	background-color:#FFFFFF;
+	width:800px;
+}
+.listXown{ 
+	border:solid #CCCCCC;
+	position:relative;
+	top:-350px;
+	left:-25px;
+	background-color:#FFFFFF;
+	width:400px;
+	height: 420px;
+}
+
+.xlipadding {
+	padding-bottom:5px;
+	padding-top:5px;
+}
+
+.sketchConManSide {
+	background-color:#E7F7FE;
+	padding-top:5px;
+	overflow:auto;
+	 width:100%;
+	 height:100%;
+
+}
+.own_produce_list_width {
+	width: 100%;
+	float: left;
+	overflow: visible;
+}
+
+.con_no {
+	display:none;
+	color:#FF0000;
+	border:solid #CCCCCC;
+	position:relative;
+	top:-150px;
+	left:450px;
+	background-color:#FFFFFF;
+	width:350px;
+	height: 200px;
+}
+
+.div_border_top_color {
+	border-top:solid;
+	border-top-color:#98D0EB;
+	padding:3px;
+	margin-top:3px;
+}
+.txtwidth {
+	width: 200px;
+}
+.listwidth {
+	width:120px;
+}
+
+.tableborder{
+	border-left: 1px solid  #000000;
+	border-bottom: 1px solid  #000000;
+	border-right: 1px solid  #000000;
+}
+
+table td{padding:0px 5px 0px 5px;};}
