@@ -54,7 +54,7 @@ public class ScanTools {
 				}
 			}
 		}
-		waterService.closeConnection();
+		//waterService.closeConnection();
 		//		try {
 		//			/**
 		//			 * close db , too waste?
