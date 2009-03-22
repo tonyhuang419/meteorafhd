@@ -31,6 +31,7 @@ public class WhoIsKingScanAgain {
 				exec.execute(new FixedScan(webClient,user ,b ));
 			}
 		}
+		exec.shutdown();
 	}
 
 	public static void main(String[] args){
