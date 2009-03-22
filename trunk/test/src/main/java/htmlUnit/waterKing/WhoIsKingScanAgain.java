@@ -18,33 +18,22 @@ public class WhoIsKingScanAgain {
 	private WaterKingTools waterKingTools; 
 	private WebClient  webClient;
 	private WaterService ws ;
-	private List<BoardDetail> boardDetailList;
+	private ScanTools scanTools;
 
 	public void scanAgain( User user ){
 		waterKingTools = new WaterKingTools();
 		ws = new WaterService();
+		scanTools = new ScanTools();
 
 		webClient  = waterKingTools.login(user.getUsername(), user.getPassword());
 		List<Board> boardList =  ws.doGetNotFinishBoardDetailList();
-		int scanFloor;
 		for(int j=boardList.size()-1;j>0; j--){
 			Board b = boardList.get(j);
 			if(user.getReadLevel() >= b.getReadLevel() 
 					&& b.getIsVote() == false
 					&& b.getId() > 3716){
 				b.setEndPage( (long)Math.ceil(b.getLastScanFloor().doubleValue() / user.getPageNum()));
-				for(int i=b.getEndPage().intValue() ; i >=1 ; i-- ){
-					boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  new Tools().getBoardDetailUrl(b, i) , b ,false);
-					ws.saveBoardDetailList(boardDetailList);
-					logger.info(user.getUsername() + " save BoardDetailList success , size: " +  b.getTopicUrl()+"size:" + boardDetailList.size() );
-					if( i == 1  ){
-						scanFloor = 1;
-					}else{
-						scanFloor = b.getReplyNum().intValue()+1 - user.getPageNum()*i;
-					}
-					ws.getDao().update(" update BOARD b set b.lastScanFloor =  " 
-							+ scanFloor + " where b.topicUrl =  '"  + b.getTopicUrl()+"'");
-				}
+				scanTools.scanBoardDetail(webClient, b, user);
 			}
 		}
 	}

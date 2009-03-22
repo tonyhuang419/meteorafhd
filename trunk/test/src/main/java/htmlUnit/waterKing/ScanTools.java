@@ -12,14 +12,17 @@ public class ScanTools {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 
+	private WaterKingTools waterKingTools = new WaterKingTools(); 
+	private WaterService waterService = new WaterService();
+	private List<BoardDetail> boardDetailList;
+	private int scanFloor;
+	
 	/**
 	 * need Addrress like this ： http://bbs.taisha.org/forum-74-1.html
 	 */
-
 	//synchronized 
-	public void scan(WebClient webClient ,String baseUrl , User user ){
-		WaterKingTools waterKingTools = new WaterKingTools(); 
-		WaterService waterService = new WaterService();
+	public void scanBoard(WebClient webClient ,String baseUrl , User user ){
+		
 		
 		String url;
 		List<HtmlTableBody> listHtmlTableBody;
@@ -33,25 +36,12 @@ public class ScanTools {
 		logger.info(user.getUsername() + " save success BoardList success  " + baseUrl + " size: " +listBoard.size());
 		
 		// analyze the board
-		List<BoardDetail> boardDetailList;
-		int scanFloor;
 		for(Board board : listBoard){
 			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
 			if(user.getReadLevel() >= board.getReadLevel() 
 					&& board.getIsVote() == false
 					&& !board.getLastScanFloor().equals(1L)){
-				for(int i=board.getEndPage().intValue() , k=0; i >=1 ; i--,k++ ){
-					boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  new Tools().getBoardDetailUrl(board, i) , board ,false);
-					waterService.saveBoardDetailList(boardDetailList);
-					logger.info(user.getUsername() + " save BoardDetailList success , size: " + board.getTopicUrl() +" size:"+ boardDetailList.size() );
-					if( i == 1  ){
-						scanFloor = 1;
-					}else{
-						scanFloor = board.getReplyNum().intValue()+1 - user.getPageNum()*(k-i);
-					}
-					waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
-							+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");
-				}
+				this.scanBoardDetail(webClient,  board , user);
 			}
 		}
 		waterService.closeConnection();
@@ -65,4 +55,21 @@ public class ScanTools {
 		//			e.printStackTrace();
 		//		}
 	}
+	
+	public void scanBoardDetail(WebClient webClient , Board board , User user){
+		for(int i=board.getEndPage().intValue() , k=0; i >=1 ; i--,k++ ){
+			boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  new Tools().getBoardDetailUrl(board, i) , board ,false);
+			waterService.saveBoardDetailList(boardDetailList);
+			logger.info(user.getUsername() + " save BoardDetailList success , size: " + board.getTopicUrl() +" size:"+ boardDetailList.size() );
+			if( i == 1  ){
+				scanFloor = 1;
+			}else{
+				scanFloor = board.getReplyNum().intValue()+1 - user.getPageNum()*(k-i);
+			}
+			waterService.getDao().update(" update BOARD b set b.lastScanFloor =  " 
+					+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");
+		}
+	}
+	
+	
 }
