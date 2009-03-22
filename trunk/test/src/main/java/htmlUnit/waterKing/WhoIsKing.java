@@ -37,12 +37,10 @@ class UserThread implements Runnable{
 	private WebClient  webClient;
 	private User user;
 
-	private WaterKingTools waterKingTools = new WaterKingTools(); 
-
-
 	public UserThread(User user){
+		WaterKingTools waterKingTools = new WaterKingTools();
 		this.user = user;
-		//		this.loginName = user.getUsername();
+		//this.loginName = user.getUsername();
 		logger.info("login:"+user.getUsername());
 		webClient  = waterKingTools.login(user.getUsername(), user.getPassword());
 		if(webClient!=null){
