@@ -50,7 +50,7 @@ class FixedScan implements Runnable{
 
 	public void run(){
 		logger.info(board.getTopicUrl());
-//		scanTools.scanBoardDetail(webClient, board, user);
+		scanTools.scanBoardDetail(webClient, board, user);
 	}
 
 	public void setWebClient(WebClient webClient) {
