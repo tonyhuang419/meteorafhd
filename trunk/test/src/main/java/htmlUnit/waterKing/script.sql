@@ -16,6 +16,8 @@ CREATE TABLE BOARD (
 
 CREATE UNIQUE INDEX topicUrl ON BOARD (topicUrl ASC);
 
+--alter table BOARD add column lastUpateUser VARCHAR(255)
+
 CREATE TABLE BOARD_DETAIL(
 	id BIGINT NOT NULL AUTO_INCREMENT,
 	floor VARCHAR(255),
@@ -35,6 +37,8 @@ CREATE TABLE BOARD_DETAIL(
 
 CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
+--alter table BOARD_DETAIL add column lastScanTime TIMESTAMP;
+--alter table BOARD_DETAIL add column lastUpateUser VARCHAR(255);
 
 select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.id > 500 and b.id < 1000 order by b.id asc
 select * from BOARD b  where b.id>20000;
@@ -51,10 +55,10 @@ select sum(b.replyNum) from BOARD b;
 select sum(b.replyNum) from BOARD b where b.readLevel = 255
 select * from Board b where b.lastScanFloor > 1 and b.isVote = false;
 
-//select count(*) from Board b where b.lastScanFloor <> b.replyNum
-//update Board b set b.lastScanFloor = b.replyNum 
-//truncate table BOARD;
-//truncate table BOARD_DETAIL;
+--select count(*) from Board b where b.lastScanFloor <> b.replyNum
+--update Board b set b.lastScanFloor = b.replyNum 
+--truncate table BOARD;
+--truncate table BOARD_DETAIL;
 
-//drop table BOARD;
-//drop table BOARD_DETAIL;
+--drop table BOARD;
+--drop table BOARD_DETAIL;
