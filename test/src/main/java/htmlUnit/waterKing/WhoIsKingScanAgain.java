@@ -1,6 +1,5 @@
 package htmlUnit.waterKing;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,18 +18,22 @@ public class WhoIsKingScanAgain {
 	protected Log logger = LogFactory.getLog(this.getClass());
 
 	public static void main(String[] args){
-
+		int len = 500;
+		int min = 0;
+		
 		WaterService ws = new WaterService();
-		List<Board> boardList =  ws.doGetNotFinishBoardDetailList();
+		while(min<=29993){
+			List<Board> boardList =  ws.doGetNotFinishBoardDetailList(min , min+len);
+			User user = new User("非法_用户","happyamiga",100 , 20);
+			ExecutorService	exec = Executors.newFixedThreadPool(Units.threadSize);
 
-		User user = new User("非法_用户","happyamiga",100 , 20);
-		ExecutorService	exec = Executors.newFixedThreadPool(Units.threadSize);
-
-		for(int j=0;j<boardList.size();j++){  
-			boardList.get(j).setEndPage((long)Math.ceil( boardList.get(j).getLastScanFloor().doubleValue() / user.getPageNum()));
-			exec.execute(new FixedScan( new WaterKingTools().login(user.getUsername(), user.getPassword()) ,user ,  boardList.get(j) ));
+			for(int j=0;j<boardList.size();j++){  
+				boardList.get(j).setEndPage((long)Math.ceil( boardList.get(j).getLastScanFloor().doubleValue() / user.getPageNum()));
+				exec.execute(new FixedScan( new WaterKingTools().login(user.getUsername(), user.getPassword()) ,user ,  boardList.get(j) ));
+			}
+			exec.shutdown();
+			min = min+500;
 		}
-		exec.shutdown();
 	}
 }
 

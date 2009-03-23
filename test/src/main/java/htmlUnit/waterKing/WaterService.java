@@ -73,11 +73,12 @@ public class WaterService {
 	}
 
 
-	public List<Board> doGetNotFinishBoardDetailList(){
+	public List<Board> doGetNotFinishBoardDetailList(int min , int max){
 		/**
 		 * not vote floor and lastScanFloor > 1
 		 */
-		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false and b.id>20000 order by b.id asc";
+		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false " +
+				" and b.id >" + min+" and b.id < "+ max + " order by b.id asc";
 		ResultSet rs =  this.query(sql);
 		List<Board> boardList = new ArrayList<Board>();
 		Board board;
