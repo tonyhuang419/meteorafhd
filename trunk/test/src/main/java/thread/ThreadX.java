@@ -31,7 +31,7 @@ class TestX implements Runnable{
 
 	public void run(){
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 			System.out.println("'"+Thread.activeCount());
 			System.out.println(i);
 			if(i==2){

@@ -29,7 +29,7 @@ public class WhoIsKingScanAgain {
 
 			for(int j=0;j<boardList.size();j++){  
 				boardList.get(j).setEndPage((long)Math.ceil( boardList.get(j).getLastScanFloor().doubleValue() / user.getPageNum()));
-				exec.execute(new FixedScan( user ,  boardList.get(j) ));
+				exec.execute(new FixedScan( new WaterKingTools().login(user.getUsername(), user.getPassword()) ,user ,  boardList.get(j) ));
 			}
 			exec.shutdown();
 			min = min+500;
@@ -40,19 +40,25 @@ public class WhoIsKingScanAgain {
 
 class FixedScan implements Runnable{
 	protected Log logger = LogFactory.getLog(this.getClass());
+	private WebClient  webClient;
 	private Board board;
 	private User user;
 	private ScanTools scanTools = new ScanTools();
 
-	public FixedScan(User user , Board board ){
+	public FixedScan(WebClient webClient ,User user , Board board ){
 		this.user = user;
+		this.webClient = webClient;
 		this.board = board;
 	}
 
 	public void run(){
-		scanTools.scanBoardDetail(new WaterKingTools().login(user.getUsername(), user.getPassword()), board, user);
+		logger.info(board.getTopicUrl());
+		scanTools.scanBoardDetail(webClient, board, user);
 	}
 
+	public void setWebClient(WebClient webClient) {
+		this.webClient = webClient;
+	}
 
 	public void setBoard(Board board) {
 		this.board = board;
