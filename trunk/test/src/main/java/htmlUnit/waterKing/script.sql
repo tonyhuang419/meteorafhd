@@ -36,12 +36,12 @@ CREATE TABLE BOARD_DETAIL(
 CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
 select * from BOARD b  where b.id>20000;
-select * from BOARD_DETAIL;
+select * from BOARD_DETAIL bd where bd.pictureNum > 0;
 select count(*) from BOARD;
 select count(*) from BOARD_DETAIL;
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
-select * from BOARD b where b.topic like '%你为什么老是这样%';
+select * from BOARD b where b.topic like '%麦田圈%';
 select count(*) from BOARD_DETAIL bd where bd.topic like '%刘德华小%';
 select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where b.replyNum <> b.lastScanFloor and b.lastScanFloor <> 1
 

@@ -465,7 +465,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-343151-1-1.html" , board , false);
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-861996-1-314.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");

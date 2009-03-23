@@ -21,7 +21,7 @@ public class Board {
 	private Long readLevel;
 	
 	/**
-	 * topic's endPage page,don't serialize it
+	 * topic's endPage page,hasn't serialize it
 	 */
 	private Long endPage;
 	

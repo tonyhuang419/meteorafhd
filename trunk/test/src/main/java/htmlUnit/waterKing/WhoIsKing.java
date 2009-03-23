@@ -16,7 +16,7 @@ public class WhoIsKing {
 
 
 	public static void main(String[] args){
-		User user = new User("非法_用户","happyamiga",100 , 10);
+		User user = new User("非法_用户","happyamiga",100 , 20);
 		List<WebClient> webClientList = new ArrayList<WebClient>();
 		List<ExecutorService> execList = new ArrayList<ExecutorService>();
 		for(int i=0;i<Units.threadSize;i++){
