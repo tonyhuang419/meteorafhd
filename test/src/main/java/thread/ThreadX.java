@@ -13,7 +13,6 @@ public class ThreadX {
 		 * 线程会一次分配完，然后执行啊执行
 		 */
 		while(i>0){
-			i--;
 			System.out.println(i);
 			exec.execute(new TestX(i--));
 		}

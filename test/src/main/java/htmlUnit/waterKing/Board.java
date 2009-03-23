@@ -18,8 +18,6 @@ public class Board {
 	
 	private Long readNum;
 	
-	private Date lastScanTime;
-	
 	private Long readLevel;
 	
 	/**
@@ -30,6 +28,10 @@ public class Board {
 	private Boolean isVote;
 
 	private Long lastScanFloor;
+	
+	private Date lastScanTime;
+	
+	private String lastUpateUser;
 	
 	public String getTopic() {
 		return topic;
@@ -102,6 +104,12 @@ public class Board {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getLastUpateUser() {
+		return lastUpateUser;
+	}
+	public void setLastUpateUser(String lastUpateUser) {
+		this.lastUpateUser = lastUpateUser;
 	}
 	
 }

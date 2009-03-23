@@ -16,14 +16,14 @@ public class ScanTools {
 	private WaterService waterService = new WaterService();
 	private List<BoardDetail> boardDetailList;
 	private int scanFloor;
-	
+
 	/**
 	 * need Addrress like this ： http://bbs.taisha.org/forum-74-1.html
 	 */
 	//synchronized 
 	public void scanBoard(WebClient webClient ,String baseUrl , User user ){
-		
-		
+
+
 		String url;
 		List<HtmlTableBody> listHtmlTableBody;
 		List<Board> listBoard;
@@ -32,19 +32,19 @@ public class ScanTools {
 
 		// get a list board
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
-		waterService.saveBoardList(listBoard);
+		waterService.saveBoardList(listBoard , user);
 		logger.info(user.getUsername() + " save success BoardList success  " + baseUrl + " size: " +listBoard.size());
-		
+
 		// analyze the board
-		for(Board board : listBoard){
-			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
-			if(user.getReadLevel() >= board.getReadLevel() 
-					&& board.getIsVote() == false
-					&& !board.getLastScanFloor().equals(1L)){
-				this.scanBoardDetail(webClient,  board , user);
-			}
-		}
-		waterService.closeConnection();
+		//		for(Board board : listBoard){
+		//			logger.info(board.getTopicUrl() + " hava page " + board.getEndPage() );
+		//			if(user.getReadLevel() >= board.getReadLevel() 
+		//					&& board.getIsVote() == false
+		//					&& !board.getLastScanFloor().equals(1L)){
+		//				this.scanBoardDetail(webClient,  board , user);
+		//			}
+		//		}
+		//		waterService.closeConnection();
 		//		try {
 		//			/**
 		//			 * close db , too waste?
@@ -55,11 +55,11 @@ public class ScanTools {
 		//			e.printStackTrace();
 		//		}
 	}
-	
+
 	public void scanBoardDetail(WebClient webClient , Board board , User user){
 		for(int i=board.getEndPage().intValue() , k=0; i >=1 ; i--,k++ ){
-			boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  new Tools().getBoardDetailUrl(board, i) , board ,false);
-			waterService.saveBoardDetailList(boardDetailList);
+			boardDetailList = waterKingTools.doGetBoardDetailList(user.getUsername(), webClient ,  Tools.getBoardDetailUrl(board, i) , board ,false);
+			waterService.saveBoardDetailList(boardDetailList , user);
 			logger.info(user.getUsername() + " save BoardDetailList success , size: " + board.getTopicUrl() +" size:"+ boardDetailList.size() );
 			if( i == 1  ){
 				scanFloor = 1;
@@ -70,6 +70,6 @@ public class ScanTools {
 					+ scanFloor + " where b.topicUrl =  '"  + board.getTopicUrl()+"'");
 		}
 	}
-	
-	
+
+
 }

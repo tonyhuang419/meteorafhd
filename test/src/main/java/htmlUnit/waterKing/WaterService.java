@@ -17,12 +17,12 @@ public class WaterService {
 
 	private Dao dao = new Dao();
 
-	public void saveBoard(Board board) {
+	public void saveBoard(Board board , User user) {
 		Connection con = dao.getCon();
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
 					" insert into BOARD(topic,topicUrl,starter,issueDate," +
-			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor ) values (?,?,?,?,?,?,?,?,?,?)");
+			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor , lastUpateUser ) values (?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
@@ -33,9 +33,10 @@ public class WaterService {
 			preparedStatement.setLong(8, board.getReadLevel());
 			preparedStatement.setBoolean(9, board.getIsVote());
 			preparedStatement.setLong(10,board.getLastScanFloor());
+			preparedStatement.setString(11,user.getUsername());
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
-			System.out.println("save error");
+			logger.error("save error");
 			logger.error("save board error: "+ board.getTopic()+"|"+ board.getTopicUrl());
 			logger.error("exception: " + sqle.toString());
 			sqle.printStackTrace();
@@ -43,12 +44,12 @@ public class WaterService {
 	}
 
 
-	public void saveBoardDetail(BoardDetail boardDetail) {
+	public void saveBoardDetail(BoardDetail boardDetail , User user) {
 		Connection con = dao.getCon();
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
 					" insert into Board_Detail(floor,topic,postId,postTime,postMessage, faceNum,faceDetail , " +
-			"pictureNum , pictureDetail , postMessageLength) values (?,?,?,?,?,?,?,?,?,?)");
+			"pictureNum , pictureDetail , postMessageLength ,lastScanTime ,lastUpateUser ) values (?,?,?,?,?,?,?,?,?,?,?,?)");
 
 			preparedStatement.setString(1, boardDetail.getFloor());
 			preparedStatement.setString(2, boardDetail.getTopic());
@@ -60,9 +61,11 @@ public class WaterService {
 			preparedStatement.setLong(8, boardDetail.getPictureNum());
 			preparedStatement.setString(9, boardDetail.getPictureDetail());
 			preparedStatement.setLong(10, boardDetail.getPostMessageLength());
+			preparedStatement.setTimestamp(11, new java.sql.Timestamp(System.currentTimeMillis()));
+			preparedStatement.setString(12, user.getUsername());
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
-			System.out.println("save error");
+			logger.error("save error");
 			logger.error("save board detail error: "+ boardDetail.getTopic()+"|"+ boardDetail.getFloor()+boardDetail.getPostMessage());
 			logger.error("exception: " + sqle.toString());
 			sqle.printStackTrace();
@@ -74,7 +77,7 @@ public class WaterService {
 		/**
 		 * not vote floor and lastScanFloor > 1
 		 */
-		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false ";
+		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false and b.id>20000 order by b.id asc";
 		ResultSet rs =  this.query(sql);
 		List<Board> boardList = new ArrayList<Board>();
 		Board board;
@@ -92,6 +95,7 @@ public class WaterService {
 				board.setReadLevel(rs.getLong(9));
 				board.setIsVote(rs.getBoolean(10));
 				board.setLastScanFloor(rs.getLong(11));
+				board.setLastUpateUser(rs.getString(12));
 				boardList.add(board);
 			}
 		}catch(Exception e){
@@ -101,16 +105,16 @@ public class WaterService {
 	}
 
 
-	public void saveBoardList(List<Board> listBoard){
+	public void saveBoardList(List<Board> listBoard , User user){
 		for(Board b:listBoard){
-			this.saveBoard(b);
+			this.saveBoard(b , user);
 		}
 	}
 
 
-	public void saveBoardDetailList(List<BoardDetail> listBoardDetail){
+	public void saveBoardDetailList(List<BoardDetail> listBoardDetail ,User user){
 		for(BoardDetail b:listBoardDetail){
-			this.saveBoardDetail(b);
+			this.saveBoardDetail(b , user );
 		}
 	}
 
