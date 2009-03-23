@@ -104,6 +104,28 @@ public class WaterService {
 		return boardList;
 	}
 
+	
+	public List<BoardDetail> doGetBoardDetail(){
+		/**
+		 * not vote floor and lastScanFloor > 1
+		 */
+		String sql =" select * from board_detail bd where bd.id = 151";
+		ResultSet rs =  this.query(sql);
+		List<BoardDetail> boardDetailList = new ArrayList<BoardDetail>();
+		BoardDetail boardDetail;
+		try {
+			while (rs.next()){
+				boardDetail = new BoardDetail();
+//				board.setId(rs.getLong(1));
+				System.out.println(rs.getString(6));
+				boardDetailList.add(boardDetail);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return boardDetailList;
+	}
+	
 
 	public void saveBoardList(List<Board> listBoard , User user){
 		for(Board b:listBoard){
@@ -159,7 +181,9 @@ public class WaterService {
 		//		ws.saveBoardDetail(boardDetail);
 		//		System.out.println("add boardDetail success");
 
-		System.out.println(ws.doGetNotFinishBoardDetailList().size());
+//		System.out.println(ws.doGetNotFinishBoardDetailList().size());
+		
+		ws.doGetBoardDetail();
 
 	}
 

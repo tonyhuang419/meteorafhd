@@ -20,39 +20,48 @@ public class WhoIsKingScanAgain {
 
 	public static void main(String[] args){
 
-		int threadSzie = 5;
 		List<WebClient>  webClientList = new ArrayList<WebClient>();
+		List<ExecutorService> execList = new ArrayList<ExecutorService>();
 		List<Board>  boardListTemp = new ArrayList<Board>();
 
 		WaterService ws = new WaterService();
 		List<Board> boardList =  ws.doGetNotFinishBoardDetailList();
 
-		User user1 = new User("非法_用户","happyamiga",100 , 10);
-		for(int i=0;i<threadSzie;i++){
-			webClientList.add(  new WaterKingTools().login(user1.getUsername(), user1.getPassword()) );
+		User user = new User("非法_用户","happyamiga",100 , 20);
+		for(int i=0;i<Units.threadSize;i++){
+			webClientList.add(  new WaterKingTools().login(user.getUsername(), user.getPassword()) );
+			execList.add(Executors.newSingleThreadExecutor());
 		}
 
-		ExecutorService exec = Executors.newSingleThreadExecutor();
-		//		for(int j=boardList.size()-1;j>0; j--){
-		for(int j=0;j<boardList.size();){
-			for(int i=0;i<threadSzie;i++){
-				boardListTemp.add( boardList.get(j++) );
-			}
-			for(int i=0;i<threadSzie;i++){
-				if(user1.getReadLevel() >= boardListTemp.get(i).getReadLevel() && boardListTemp.get(i).getIsVote() == false ){
-					boardListTemp.get(i).setEndPage((long)Math.ceil( boardListTemp.get(i).getLastScanFloor().doubleValue() / user1.getPageNum()));
-					exec.execute(new FixedScan(webClientList.get(i),user1 ,  boardListTemp.get(i) ));
+		//	for(int j=boardList.size()-1;j>0; j--){
+		for(int j=-1;j<boardList.size()-2;){  //循环内部++，需要减1，下表为size-1，故再减1
+			for(int k=0; k<Units.threadSize; k++){
+				j++;
+				if(user.getReadLevel() >= boardList.get(j).getReadLevel() && boardList.get(j).getIsVote() == false ){
+					boardListTemp.add( boardList.get(j) );
+				}
+				else{
+					k--;
 				}
 			}
+			int s=-1;
+			for(ExecutorService exec : execList){
+				s++;
+				boardListTemp.get(s).setEndPage((long)Math.ceil( boardListTemp.get(s).getLastScanFloor().doubleValue() / user.getPageNum()));
+				exec.execute(new FixedScan(webClientList.get(s),user ,  boardListTemp.get(s) ));
+			}
 			boardListTemp.clear();
+
 		}
-		exec.shutdown();
+		for(ExecutorService exec : execList){
+			exec.shutdown();
+		}
 	}
 }
 
 
 class FixedScan implements Runnable{
-
+	protected Log logger = LogFactory.getLog(this.getClass());
 	private WebClient  webClient;
 	private Board board;
 	private User user;
@@ -65,7 +74,7 @@ class FixedScan implements Runnable{
 	}
 
 	public void run(){
-		//		System.out.println(board.getTopicUrl());
+		logger.info(board.getTopicUrl());
 		scanTools.scanBoardDetail(webClient, board, user);
 	}
 
