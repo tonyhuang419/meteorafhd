@@ -22,18 +22,17 @@ public class WhoIsKingScanAgain {
 		int min = 0;
 		
 		WaterService ws = new WaterService();
+		ExecutorService	exec = Executors.newFixedThreadPool(Units.threadSize);
 		while(min<=29993){
 			List<Board> boardList =  ws.doGetNotFinishBoardDetailList(min , min+len);
 			User user = new User("非法_用户","happyamiga",100 , 20);
-			ExecutorService	exec = Executors.newFixedThreadPool(Units.threadSize);
-
 			for(int j=0;j<boardList.size();j++){  
 				boardList.get(j).setEndPage((long)Math.ceil( boardList.get(j).getLastScanFloor().doubleValue() / user.getPageNum()));
 				exec.execute(new FixedScan( new WaterKingTools().login(user.getUsername(), user.getPassword()) ,user ,  boardList.get(j) ));
 			}
-			exec.shutdown();
 			min = min+500;
 		}
+		exec.shutdown();
 	}
 }
 
