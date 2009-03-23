@@ -50,7 +50,9 @@ select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where b.replyNum <>
 select sum(b.replyNum) from BOARD b;
 select sum(b.replyNum) from BOARD b where b.readLevel = 255
 select * from Board b where b.lastScanFloor > 1 and b.isVote = false;
-//update Board b set b.lastScanFloor = 1 where b.lastScanFloor < 1 and b.isVote = false;
+
+//select count(*) from Board b where b.lastScanFloor <> b.replyNum
+//update Board b set b.lastScanFloor = b.replyNum 
 //truncate table BOARD;
 //truncate table BOARD_DETAIL;
 
