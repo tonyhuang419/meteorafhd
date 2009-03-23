@@ -24,7 +24,6 @@ public class WaterKingTools {
 
 	protected static Log logger = LogFactory.getLog(WaterKingTools.class);
 
-	private Tools tools = new Tools();
 	/**
 	 * login
 	 * @param loginName 用户名
@@ -193,7 +192,7 @@ public class WaterKingTools {
 					break;
 				case  3:
 					board.setStarter(listHTC.get(j).getHtmlElementsByTagName("a").get(0).asText());
-					board.setIssueDate(tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText() , Units.dateFormatDate));
+					board.setIssueDate(Tools.stringToDate(listHTC.get(j).getHtmlElementsByTagName("em").get(0).asText() , Units.dateFormatDate));
 					break;
 				case 4:
 					if(listHTC.get(j).getHtmlElementsByTagName("strong").get(0).asText().equals("-")){
@@ -278,7 +277,7 @@ public class WaterKingTools {
 				 * postTime
 				 */
 				//logger.info(postTime);
-				boardDetail.setPostTime(tools.stringToDate(postTime , Units.dateFormatTime));
+				boardDetail.setPostTime(Tools.stringToDate(postTime , Units.dateFormatTime));
 
 
 

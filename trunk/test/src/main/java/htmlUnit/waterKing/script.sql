@@ -10,6 +10,7 @@ CREATE TABLE BOARD (
 	readLevel BIGINT,
 	isVote	BIT,
 	lastScanFloor BIGINT,
+	lastUpateUser VARCHAR(255),
 	PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8; 
 
@@ -27,17 +28,20 @@ CREATE TABLE BOARD_DETAIL(
 	pictureNum BIGINT,
 	pictureDetail VARCHAR(4000),
 	postMessageLength BIGINT,
+	lastScanTime TIMESTAMP,
+	lastUpateUser VARCHAR(255),
 	PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8; 
 
 CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
-
+select * from BOARD b  where b.id>20000;
+select * from BOARD_DETAIL;
 select count(*) from BOARD;
 select count(*) from BOARD_DETAIL;
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
-select * from BOARD b where b.topic like '%谁能找到林志炫那版的夏虫%';
+select * from BOARD b where b.topic like '%你为什么老是这样%';
 select count(*) from BOARD_DETAIL bd where bd.topic like '%刘德华小%';
 select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where b.replyNum <> b.lastScanFloor and b.lastScanFloor <> 1
 

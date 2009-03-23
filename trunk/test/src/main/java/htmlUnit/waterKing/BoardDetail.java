@@ -25,7 +25,11 @@ public class BoardDetail {
 	/**
 	 * redundancy field (postMessage length)
 	 */
-	private Long postMessageLength;  
+	private Long postMessageLength; 
+	
+	private Date lastScanTime;
+	
+	private String lastUpateUser;
 
 	public String getFloor() {
 		return floor;
@@ -105,6 +109,22 @@ public class BoardDetail {
 
 	public void setPictureDetail(String pictureDetail) {
 		this.pictureDetail = pictureDetail;
+	}
+
+	public Date getLastScanTime() {
+		return lastScanTime;
+	}
+
+	public void setLastScanTime(Date lastScanTime) {
+		this.lastScanTime = lastScanTime;
+	}
+
+	public String getLastUpateUser() {
+		return lastUpateUser;
+	}
+
+	public void setLastUpateUser(String lastUpateUser) {
+		this.lastUpateUser = lastUpateUser;
 	}
 	
 	
