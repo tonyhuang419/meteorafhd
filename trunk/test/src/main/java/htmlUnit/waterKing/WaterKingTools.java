@@ -31,6 +31,7 @@ public class WaterKingTools {
 	 * @return 
 	 */
 	public  WebClient login(String loginName , String password){
+		logger.info("login:"+ loginName);
 		WebClient webClient = new WebClient();
 		HtmlPage page;
 		try{
