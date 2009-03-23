@@ -35,8 +35,10 @@ CREATE TABLE BOARD_DETAIL(
 
 CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
+
+select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.id > 500 and b.id < 1000 order by b.id asc
 select * from BOARD b  where b.id>20000;
-select * from BOARD_DETAIL bd where bd.pictureNum > 0;
+select * from BOARD_DETAIL bd order by bd.id desc
 select count(*) from BOARD;
 select count(*) from BOARD_DETAIL;
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
