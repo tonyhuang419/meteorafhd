@@ -16,6 +16,6 @@ public final class Units {
 	
 	public static final  SimpleDateFormat dateFormatTime = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	
-	public static int threadSize = 2;
+	public static int threadSize = 3;
 	
 }
