@@ -21,7 +21,7 @@ public class WhoIsKingScanAgain {
 		
 		WaterService ws = new WaterService();
 		ExecutorService	exec = Executors.newFixedThreadPool(Units.threadSize);
-		while(min<=29993){
+		while(min<=30367){
 			List<Board> boardList =  ws.doGetNotFinishBoardDetailList(min , min+len);
 			User user = new User("非法_用户","happyamiga",100 , 20);
 			for(int j=0;j<boardList.size();j++){  
