@@ -7,8 +7,6 @@ import java.util.concurrent.Executors;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.gargoylesoftware.htmlunit.WebClient;
-
 
 /**
  * check oardDetail，finish not finsh
