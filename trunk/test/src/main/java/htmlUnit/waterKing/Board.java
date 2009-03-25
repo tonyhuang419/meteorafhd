@@ -33,6 +33,8 @@ public class Board {
 	
 	private String lastUpateUser;
 	
+	private Boolean skip;
+	
 	public String getTopic() {
 		return topic;
 	}
@@ -110,6 +112,12 @@ public class Board {
 	}
 	public void setLastUpateUser(String lastUpateUser) {
 		this.lastUpateUser = lastUpateUser;
+	}
+	public Boolean getSkip() {
+		return skip;
+	}
+	public void setSkip(Boolean skip) {
+		this.skip = skip;
 	}
 	
 }
