@@ -22,7 +22,7 @@ public class WaterService {
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
 					" insert into BOARD(topic,topicUrl,starter,issueDate," +
-			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor , lastUpateUser ) values (?,?,?,?,?,?,?,?,?,?,?)");
+			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor , lastUpateUser ) values (?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
@@ -34,9 +34,10 @@ public class WaterService {
 			preparedStatement.setBoolean(9, board.getIsVote());
 			preparedStatement.setLong(10,board.getLastScanFloor());
 			preparedStatement.setString(11,user.getUsername());
+			preparedStatement.setBoolean(12, board.getSkip());
 			preparedStatement.executeUpdate();
+			logger.info(user.getUsername() + " save success Board success  " + board.getTopic() + " size: " );
 		}catch(SQLException sqle){
-			logger.error("save error");
 			logger.error("save board error: "+ board.getTopic()+"|"+ board.getTopicUrl());
 			logger.error("exception: " + sqle.toString());
 			sqle.printStackTrace();
@@ -77,7 +78,7 @@ public class WaterService {
 		/**
 		 * not vote floor and lastScanFloor > 1
 		 */
-		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false " +
+		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.skip = false" +
 				" and b.id >" + min+" and b.id < "+ max + " order by b.id asc";
 		ResultSet rs =  this.query(sql);
 		List<Board> boardList = new ArrayList<Board>();

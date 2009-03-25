@@ -213,6 +213,7 @@ public class WaterKingTools {
 			}
 			board.setLastScanTime(new Date());
 			board.setLastScanFloor(board.getReplyNum());
+			board.setSkip(false);
 			boardList.add(board);
 		}
 		//		print info , can be comment
