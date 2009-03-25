@@ -22,7 +22,8 @@ public class WaterService {
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
 					" insert into BOARD(topic,topicUrl,starter,issueDate," +
-			" replyNum, readNum,lastScanTime , readLevel , isVote , lastScanFloor , lastUpateUser ) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+					" replyNum, readNum,lastScanTime , readLevel , " +
+			" isVote , lastScanFloor , lastUpateUser , skip ) values (?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, board.getTopic());
 			preparedStatement.setString(2, board.getTopicUrl());
 			preparedStatement.setString(3, board.getStarter());
@@ -79,7 +80,7 @@ public class WaterService {
 		 * not vote floor and lastScanFloor > 1
 		 */
 		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.skip = false" +
-				" and b.id >" + min+" and b.id < "+ max + " order by b.id asc";
+		" and b.id >" + min+" and b.id < "+ max + " order by b.id asc";
 		ResultSet rs =  this.query(sql);
 		List<Board> boardList = new ArrayList<Board>();
 		Board board;
@@ -106,7 +107,7 @@ public class WaterService {
 		return boardList;
 	}
 
-	
+
 	public List<BoardDetail> doGetBoardDetail(){
 		/**
 		 * not vote floor and lastScanFloor > 1
@@ -118,7 +119,7 @@ public class WaterService {
 		try {
 			while (rs.next()){
 				boardDetail = new BoardDetail();
-//				board.setId(rs.getLong(1));
+				//				board.setId(rs.getLong(1));
 				System.out.println(rs.getString(6));
 				boardDetailList.add(boardDetail);
 			}
@@ -127,13 +128,41 @@ public class WaterService {
 		}
 		return boardDetailList;
 	}
-	
+
 
 	public void saveBoardList(List<Board> listBoard , User user){
 		for(Board b:listBoard){
 			this.saveBoard(b , user);
 		}
 	}
+
+	public void fixIssueDate(Board board , User user) {
+		Connection con = dao.getCon();
+		try{
+			PreparedStatement preparedStatement = 
+				con.prepareStatement ("update Board b set b.issueDate = ? , b.lastUpateUser  = ? where b.topicUrl = ? ");
+			preparedStatement.setTimestamp(1, new java.sql.Timestamp(board.getIssueDate().getTime()));
+			preparedStatement.setString(2, user.getUsername());
+			preparedStatement.setString(3, board.getTopicUrl());
+			preparedStatement.executeUpdate();
+			logger.info(board.getTopicUrl().trim());
+			logger.info("issue date update succee " + board.getIssueDate() );
+			logger.info( new java.sql.Timestamp(board.getIssueDate().getTime()) );
+		}catch(SQLException sqle){
+			logger.info("issue date update fail ");
+			sqle.printStackTrace();
+		}
+	}
+
+	public void fixIssueDateList(List<Board> listBoard , User user){
+		for(Board b:listBoard){
+			this.fixIssueDate(b,user);
+			logger.info("update issueDate success");
+		}
+	}
+
+
+
 
 
 	public void saveBoardDetailList(List<BoardDetail> listBoardDetail ,User user){
@@ -183,8 +212,8 @@ public class WaterService {
 		//		ws.saveBoardDetail(boardDetail);
 		//		System.out.println("add boardDetail success");
 
-//		System.out.println(ws.doGetNotFinishBoardDetailList().size());
-		
+		//		System.out.println(ws.doGetNotFinishBoardDetailList().size());
+
 		ws.doGetBoardDetail();
 
 	}

@@ -45,14 +45,16 @@
 --alter table BOARD_DETAIL add column lastUpateUser VARCHAR(255);
 --update Board b set b.lastScanFloor = 33 where b.id = 2961;
 
+
+
 select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.id > 500 and b.id < 1000 order by b.id asc
-select * from BOARD b  where b.id>20000;
+select * from BOARD b  order by b.issueDate asc
 select * from BOARD_DETAIL bd order by bd.id desc
-select count(*) from BOARD;
+select count(*) from BOARD b where b.issueDate>date_format('2009-3-21','%Y-%m-%d');
 select count(*) from BOARD_DETAIL;
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
-select * from BOARD b where b.topic like '%简直不敢相信这些是蛋糕%';
+select * from BOARD b where b.topic like '%毕业答辩%';
 select count(*) from BOARD_DETAIL bd where bd.topic like '圣诞快乐！！！';
 select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where  b.lastScanFloor < 0 
 
