@@ -119,8 +119,8 @@ public class WaterService {
 		try {
 			while (rs.next()){
 				boardDetail = new BoardDetail();
-				//				board.setId(rs.getLong(1));
-				System.out.println(rs.getString(6));
+				//board.setId(rs.getLong(1));
+				//System.out.println(rs.getString(6));
 				boardDetailList.add(boardDetail);
 			}
 		}catch(Exception e){
@@ -145,9 +145,9 @@ public class WaterService {
 			preparedStatement.setString(2, user.getUsername());
 			preparedStatement.setString(3, board.getTopicUrl());
 			preparedStatement.executeUpdate();
-			logger.info(board.getTopicUrl().trim());
-			logger.info("issue date update succee " + board.getIssueDate() );
-			logger.info( new java.sql.Timestamp(board.getIssueDate().getTime()) );
+			//			logger.info(board.getTopicUrl().trim());
+			//			logger.info("issue date update succee " + board.getIssueDate() );
+			//			logger.info( new java.sql.Timestamp(board.getIssueDate().getTime()) );
 		}catch(SQLException sqle){
 			logger.info("issue date update fail ");
 			sqle.printStackTrace();
