@@ -3,7 +3,7 @@
 --	topic VARCHAR(255),
 --	topicUrl VARCHAR(255),
 --	starter VARCHAR(255),
---	issueDate TIMESTAMP,
+--	issueDate TIMESTAMP DEFAULT  0,
 --	replyNum BIGINT,
 --	readNum BIGINT,
 --	lastScanTime TIMESTAMP,
