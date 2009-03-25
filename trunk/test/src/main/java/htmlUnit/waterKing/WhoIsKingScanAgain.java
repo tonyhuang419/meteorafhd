@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * check oardDetail，finish not finsh
+ * check oardDetail，finish not finish
  */
 public class WhoIsKingScanAgain {
 
