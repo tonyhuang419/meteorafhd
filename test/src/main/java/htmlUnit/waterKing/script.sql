@@ -14,7 +14,7 @@
 --	skip BIT,
 --	PRIMARY KEY (id)
 --) DEFAULT CHARSET=utf8; 
-
+--
 --CREATE UNIQUE INDEX topicUrl ON BOARD (topicUrl ASC);
 
 --alter table BOARD add column lastUpateUser VARCHAR(255)
@@ -41,6 +41,8 @@
 
 --CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
+
+--ALTER TABLE `BOARD_DETAIL` CHANGE `postTime` `postTime` TIMESTAMP NOT NULL DEFAULT 0  
 --alter table BOARD_DETAIL add column lastScanTime TIMESTAMP;
 --alter table BOARD_DETAIL add column lastUpateUser VARCHAR(255);
 --update Board b set b.lastScanFloor = 33 where b.id = 2961;
