@@ -253,14 +253,14 @@ public class WaterKingTools {
 				/**
 				 *  floor
 				 */
-				//				logger.info(htmlTable.getAttribute("id"));
+				//logger.info(htmlTable.getAttribute("id"));
 				boardDetail.setFloor(htmlTable.getAttribute("id"));
 
 				/**
 				 * postId
 				 */
 				HtmlTableCell htmlTableCellOne = htmlTable.getBodies().get(0).getRows().get(0).getCells().get(0); 
-				//				logger.info(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+				//logger.info(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
 				/**
 				 * have a "用户已被删除" , so no sign anchor 
 				 */
@@ -289,13 +289,18 @@ public class WaterKingTools {
 				String picture="";
 				StringBuffer faceDetail = new StringBuffer("");
 				StringBuffer picDetail = new StringBuffer("");
-
+				HtmlElement  floorNum;
 				for(HtmlElement htmlElementDiv:divHtmlElementList){
-
+					
+					if(htmlElementDiv.getAttribute("class").indexOf("postinfo")!=-1){
+						floorNum = htmlElementDiv.getHtmlElementsByTagName("strong").get(0);
+						floorNum.removeChild("sup", 0);
+						boardDetail.setFloorNum(new Long(floorNum.asText()));
+					}
 					/**
 					 * message div
 					 */
-					if(htmlElementDiv.getAttribute("id").indexOf("postmessage")!=-1){
+					else if(htmlElementDiv.getAttribute("id").indexOf("postmessage")!=-1){
 						/**
 						 * postMessage
 						 */
@@ -362,20 +367,20 @@ public class WaterKingTools {
 				faceDetail = new StringBuffer();
 				picDetail = new StringBuffer();
 			}
-			
-//			for( BoardDetail bd:  boardDetailList){
-//				logger.info( "floor:"+bd.getFloor()
-//						+ "|topic:" + bd.getTopic() 
-//						+ "|postid:"+bd.getPostId() 
-//						+ "|message:"+bd.getPostMessage() 
-//						+ "|postTime:" + bd.getPostTime()
-//						+ "|faceNum:"+bd.getFaceNum()
-//						+ "|faceDeatail:" + bd.getFaceDetail()
-//						+ "|messageLength:" + bd.getPostMessageLength()
-//						+ "|pictureNum:"+bd.getPictureNum()
-//						+ "|pictureDetail:"+bd.getPictureDetail());
-//			}
-			
+
+			//			for( BoardDetail bd:  boardDetailList){
+			//				logger.info( "floor:"+bd.getFloor()
+			//						+ "|topic:" + bd.getTopic() 
+			//						+ "|postid:"+bd.getPostId() 
+			//						+ "|message:"+bd.getPostMessage() 
+			//						+ "|postTime:" + bd.getPostTime()
+			//						+ "|faceNum:"+bd.getFaceNum()
+			//						+ "|faceDeatail:" + bd.getFaceDetail()
+			//						+ "|messageLength:" + bd.getPostMessageLength()
+			//						+ "|pictureNum:"+bd.getPictureNum()
+			//						+ "|pictureDetail:"+bd.getPictureDetail());
+			//			}
+
 			webClient.setJavaScriptEnabled(true);
 			return boardDetailList;
 		}catch(Exception e){
@@ -467,7 +472,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("feifa", webClient , "http://e.taisha.org/thread-861996-1-314.html" , board , false);
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("test", webClient , "http://e.taisha.org/thread-861996-1-314.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");

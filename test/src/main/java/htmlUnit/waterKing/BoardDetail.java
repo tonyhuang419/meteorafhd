@@ -30,6 +30,8 @@ public class BoardDetail {
 	private Date lastScanTime;
 	
 	private String lastUpateUser;
+	
+	private Long floorNum;
 
 	public String getFloor() {
 		return floor;
@@ -125,6 +127,14 @@ public class BoardDetail {
 
 	public void setLastUpateUser(String lastUpateUser) {
 		this.lastUpateUser = lastUpateUser;
+	}
+
+	public Long getFloorNum() {
+		return floorNum;
+	}
+
+	public void setFloorNum(Long floorNum) {
+		this.floorNum = floorNum;
 	}
 	
 	

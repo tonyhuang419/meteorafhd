@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class WhoIsKing {
+public class ScanBoardMain {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 
