@@ -232,7 +232,30 @@ function getTblData(inTbl, inWindow) {
 
  }
 
+function addRow(){
+	var myDocApp = new ActiveXObject("word.Application"); 
+	var myDoc = myDocApp.documents.open("E:/fhd/js/test/testWord.doc");
+	var tableX = myDoc.Tables.Item(1)
+	var rowsX = tableX.Rows;
 
+	
+
+	
+	tableX.Rows.Add(rowsX.Item(3));
+	
+
+	tableX.Cell(1,3).merge(tableX.Cell(2,9));
+	tableX.Cell(1,4).merge(tableX.Cell(2,10));
+	tableX.Cell(1,5).merge(tableX.Cell(2,11));
+	tableX.Cell(1,6).merge(tableX.Cell(2,12));
+	tableX.Cell(1,7).merge(tableX.Cell(2,13));
+	tableX.Cell(1,8).merge(tableX.Cell(2,14));
+	tableX.Cell(1,10).merge(tableX.Cell(2,17));
+	tableX.Cell(1,11).merge(tableX.Cell(2,18));
+
+	myDocApp.visible = true;
+
+}
 
 </script>
 </head>
@@ -251,5 +274,6 @@ function getTblData(inTbl, inWindow) {
 //method1("t");
 //method2("t");
 //getXlsFromTbl("t",null);
+addRow();
 </script>
 </html>
