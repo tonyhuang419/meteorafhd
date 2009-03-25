@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * check oardDetail，finish not finish
  */
-public class WhoIsKingScanAgain {
+public class ScanBoardDetailMain {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 

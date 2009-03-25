@@ -51,7 +51,7 @@ public class WaterService {
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(
 					" insert into Board_Detail(floor,topic,postId,postTime,postMessage, faceNum,faceDetail , " +
-			"pictureNum , pictureDetail , postMessageLength ,lastScanTime ,lastUpateUser ) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+			"pictureNum , pictureDetail , postMessageLength ,lastScanTime ,lastUpateUser,floorNum ) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 			preparedStatement.setString(1, boardDetail.getFloor());
 			preparedStatement.setString(2, boardDetail.getTopic());
@@ -65,6 +65,7 @@ public class WaterService {
 			preparedStatement.setLong(10, boardDetail.getPostMessageLength());
 			preparedStatement.setTimestamp(11, new java.sql.Timestamp(System.currentTimeMillis()));
 			preparedStatement.setString(12, user.getUsername());
+			preparedStatement.setLong(13, boardDetail.getFloorNum());
 			preparedStatement.executeUpdate();
 		}catch(SQLException sqle){
 			logger.error("save error");
@@ -145,9 +146,9 @@ public class WaterService {
 			preparedStatement.setString(2, user.getUsername());
 			preparedStatement.setString(3, board.getTopicUrl());
 			preparedStatement.executeUpdate();
-			//			logger.info(board.getTopicUrl().trim());
-			//			logger.info("issue date update succee " + board.getIssueDate() );
-			//			logger.info( new java.sql.Timestamp(board.getIssueDate().getTime()) );
+			//logger.info(board.getTopicUrl().trim());
+			//logger.info("issue date update succee " + board.getIssueDate() );
+			//logger.info( new java.sql.Timestamp(board.getIssueDate().getTime()) );
 		}catch(SQLException sqle){
 			logger.info("issue date update fail ");
 			sqle.printStackTrace();
