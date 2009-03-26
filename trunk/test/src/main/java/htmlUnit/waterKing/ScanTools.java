@@ -32,8 +32,8 @@ public class ScanTools {
 
 		// get a list board
 		listBoard = waterKingTools.doGetWaterList(listHtmlTableBody);
-//		waterService.saveBoardList(listBoard , user);
-		waterService.fixIssueDateList(listBoard, user);
+		waterService.saveBoardList(listBoard , user);
+//		waterService.fixIssueDateList(listBoard, user);
 
 		// analyze the board
 		//		for(Board board : listBoard){
