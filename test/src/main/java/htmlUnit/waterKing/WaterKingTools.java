@@ -264,8 +264,15 @@ public class WaterKingTools {
 				/**
 				 * have a "用户已被删除" , so no sign anchor 
 				 */
-				if(htmlTableCellOne.getHtmlElementsByTagName("a").size()>0){
-					boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+				int anchorSize;
+				anchorSize = htmlTableCellOne.getHtmlElementsByTagName("a").size();
+				if(anchorSize>0){
+					if(anchorSize==4){
+						boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(0).asText());
+					}
+					else if(anchorSize==5){
+						boardDetail.setPostId(htmlTableCellOne.getHtmlElementsByTagName("a").get(1).asText());
+					}
 				}else{
 					boardDetail.setPostId("用户已被删除");
 				}
@@ -291,7 +298,7 @@ public class WaterKingTools {
 				StringBuffer picDetail = new StringBuffer("");
 				HtmlElement  floorNum;
 				for(HtmlElement htmlElementDiv:divHtmlElementList){
-					
+
 					if(htmlElementDiv.getAttribute("class").indexOf("postinfo")!=-1){
 						floorNum = htmlElementDiv.getHtmlElementsByTagName("strong").get(0);
 						floorNum.removeChild("sup", 0);
@@ -472,7 +479,7 @@ public class WaterKingTools {
 
 		Board board = new Board();
 		board.setTopic("topic");
-		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("test", webClient , "http://e.taisha.org/thread-861996-1-314.html" , board , false);
+		List<BoardDetail> boardDetailList =  waterKingTools.doGetBoardDetailList("test", webClient , "http://e.taisha.org/thread-1194548-1-1.html" , board , false);
 
 		//		String s= "a|b";
 		//		String[] a = s.split("\\|");
