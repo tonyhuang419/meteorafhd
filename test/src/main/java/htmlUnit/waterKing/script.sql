@@ -3,17 +3,17 @@
 --	topic VARCHAR(255),
 --	topicUrl VARCHAR(255),
 --	starter VARCHAR(255),
---	issueDate TIMESTAMP DEFAULT  0,
+--	issueDate TIMESTAMP DEFAULT 0,
 --	replyNum BIGINT,
 --	readNum BIGINT,
---	lastScanTime TIMESTAMP,
+--	lastScanTime TIMESTAMP DEFAULT 0,
 --	readLevel BIGINT,
 --	isVote	BIT,
 --	lastScanFloor BIGINT,
 --	lastUpateUser VARCHAR(255),
 --	skip BIT,
 --	PRIMARY KEY (id)
---) DEFAULT CHARSET=utf8; 
+--) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
 --
 --CREATE UNIQUE INDEX topicUrl ON BOARD (topicUrl ASC);
 
@@ -27,19 +27,19 @@
 --	floor VARCHAR(255),
 --	topic VARCHAR(255),
 --	postId VARCHAR(255),
---	postTime TIMESTAMP,
+--	postTime TIMESTAMP DEFAULT 0,
 --	postMessage LONGTEXT,
 --	faceNum BIGINT,
 --	faceDetail VARCHAR(4000),
 --	pictureNum BIGINT,
 --	pictureDetail VARCHAR(4000),
 --	postMessageLength BIGINT,
---	lastScanTime TIMESTAMP,
+--	lastScanTime TIMESTAMP DEFAULT 0,
 --	lastUpateUser VARCHAR(255),
 --  floorNum BIGINT,
 --	PRIMARY KEY (id)
---) DEFAULT CHARSET=utf8; 
-
+--) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
+--
 --CREATE UNIQUE INDEX floor ON BOARD_DETAIL (floor ASC);
 
 
