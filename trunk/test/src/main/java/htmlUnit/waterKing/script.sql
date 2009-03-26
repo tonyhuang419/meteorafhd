@@ -55,11 +55,11 @@ select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.id >
 select * from BOARD b  order by b.issueDate asc
 select * from BOARD_DETAIL bd order by bd.id desc
 select count(*) from BOARD b where b.issueDate>date_format('2009-3-21','%Y-%m-%d');
-select count(*) from BOARD_DETAIL;
+select count(*) from BOARD_DETAIL bd where bd.pictureNum > 1;
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
 select * from BOARD b where b.topic like '%毕业答辩%';
-select count(*) from BOARD_DETAIL bd where bd.topic like '圣诞快乐！！！';
+select * from BOARD_DETAIL bd where bd.postId = ‘% %’;
 select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where  b.lastScanFloor < 0 
 
 select sum(b.replyNum) from BOARD b;
