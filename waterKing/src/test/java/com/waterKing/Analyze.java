@@ -43,11 +43,10 @@ public class Analyze extends ExamBaseTest {
 	@Test
 	public void testSearchMessage(){
 		Session session = commonService.getSession();
-		session.beginTransaction();
 		FullTextSession fullTextSession = Search.getFullTextSession(session);
 		
-		QueryParser parser = new QueryParser("content", new ChineseAnalyzer());   
-		Transaction tx = fullTextSession.beginTransaction();   
+		QueryParser parser = new QueryParser("postMessage", new ChineseAnalyzer());   
+//		Transaction tx = fullTextSession.beginTransaction();   
 		try {
 			Query query = fullTextSession.createFullTextQuery(parser.parse("蛙泳"),   BoardDetail.class);
 			List result = query.list();  
@@ -60,8 +59,8 @@ public class Analyze extends ExamBaseTest {
 			e.printStackTrace();
 		}    
 		
-		tx.commit();   
-		fullTextSession.close(); 
+//		tx.commit();   
+//		fullTextSession.close(); 
 	}
 }
 
