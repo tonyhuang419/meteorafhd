@@ -23,7 +23,11 @@ public class Analyze extends ExamBaseTest {
 		System.out.println(count);
 	}
 
-
+	@Test
+	public void testBoardDetail() {
+		Long count = (Long)commonService.uniqueResult("select count(*) from BoardDetail b " );
+		System.out.println(count);
+	}
 }
 
 

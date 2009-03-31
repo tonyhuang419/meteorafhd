@@ -41,7 +41,4 @@
 		</property>
 	</bean>
 	
-<!--	<import resource="acegi-config.xml"/>-->
-<!--	<import resource="spring-mail.xml"/>-->
-	
 </beans>
