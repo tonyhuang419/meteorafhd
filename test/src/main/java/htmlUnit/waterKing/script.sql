@@ -55,22 +55,22 @@ select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.id >
 select * from BOARD b  order by b.issueDate asc
 select * from BOARD_DETAIL bd order by bd.id desc
 select count(*) from BOARD b where b.issueDate>date_format('2009-3-21','%Y-%m-%d');
-select count(*) from BOARD_DETAIL bd  --1029528
+select count(*) from BOARD_DETAIL bd  --1031617
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
 select * from BOARD b where b.topic like '%毕业答辩%';
 select * from BOARD_DETAIL bd where bd.postId = ‘% %’;
 select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where  b.lastScanFloor < 0 
 
-select sum(bd.faceNum) from BOARD_DETAIL bd; --589940
-select sum(bd.pictureNum) from BOARD_DETAIL bd; --37228
-select sum(bd.postMessageLength) from BOARD_DETAIL bd; --60571256
+select sum(bd.faceNum) from BOARD_DETAIL bd; --591098
+select sum(bd.pictureNum) from BOARD_DETAIL bd; --37303
+select sum(bd.postMessageLength) from BOARD_DETAIL bd; --60676163
 
 --sum 1200699
 select sum(b.replyNum) from BOARD b;
 --can be scan 1119123
 select sum(b.replyNum) from BOARD b where b.readLevel <=100 and b.isVote = false
---remain scan
+--remain scan 0
 select count(*) from Board b where b.lastScanFloor > 1 and b.isVote = false and b.readLevel <=100 ;
 
 --select count(*) from Board b where b.lastScanFloor <> b.replyNum
