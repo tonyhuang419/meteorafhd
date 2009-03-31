@@ -13,9 +13,18 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.lucene.analysis.cn.ChineseAnalyzer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Proxy;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+
+
 
 
 @Entity
@@ -23,6 +32,7 @@ import org.hibernate.annotations.Proxy;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true, dynamicInsert = true, dynamicUpdate = true)
 @Proxy(lazy = false)
+@Indexed
 public class BoardDetail implements Serializable {
 	
 	private static final long serialVersionUID = -1317011598005210392L;
@@ -30,6 +40,7 @@ public class BoardDetail implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(length = 20)
+	@DocumentId
 	private Long id;
 	
 	@Column(name = "floor", length = 255)
@@ -47,6 +58,7 @@ public class BoardDetail implements Serializable {
 	
 	@Lob
 	@Column(name = "postMessage")
+	@Field(name = "content", store = Store.NO, index = Index.TOKENIZED, analyzer = @Analyzer(impl = ChineseAnalyzer.class)) 
 	private String postMessage;
 	
 	@Column(name = "faceNum", length = 20)
