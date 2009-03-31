@@ -62,9 +62,13 @@ select * from BOARD b where b.topic like '%毕业答辩%';
 select * from BOARD_DETAIL bd where bd.postId = ‘% %’;
 select b.replyNum , b.lastScanFloor,b.readLevel from BOARD b where  b.lastScanFloor < 0 
 
+select sum(bd.postMessageLength) from BOARD_DETAIL bd;
+--sum
 select sum(b.replyNum) from BOARD b;
-select sum(b.replyNum) from BOARD b where b.readLevel = 255
-select * from Board b where b.lastScanFloor > 1 and b.isVote = false order by b.id asc;
+--can be scan
+select sum(b.replyNum) from BOARD b where b.readLevel <=100 and b.isVote = false
+--remain scan
+select sum(b.replyNum) from Board b where b.lastScanFloor > 1 and b.isVote = false order by b.id asc;
 
 --select count(*) from Board b where b.lastScanFloor <> b.replyNum
 --update Board b set b.lastScanFloor = b.replyNum 
