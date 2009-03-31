@@ -43,7 +43,9 @@ public class Analyze extends ExamBaseTest {
 	@Test
 	public void testSearchMessage(){
 		Session session = commonService.getSession();
-		FullTextSession fullTextSession = Search.createFullTextSession(session);
+		session.beginTransaction();
+		FullTextSession fullTextSession = Search.getFullTextSession(session);
+		
 		QueryParser parser = new QueryParser("content", new ChineseAnalyzer());   
 		Transaction tx = fullTextSession.beginTransaction();   
 		try {
@@ -57,6 +59,7 @@ public class Analyze extends ExamBaseTest {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}    
+		
 		tx.commit();   
 		fullTextSession.close(); 
 	}
