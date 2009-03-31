@@ -80,8 +80,8 @@ public class WaterService {
 		/**
 		 * not vote floor and lastScanFloor > 1
 		 */
-		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.skip = false" +
-		" and b.id >" + min+" and b.id < "+ max + " order by b.id asc";
+		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false  " + //and b.skip = false
+		" and b.id >" + min+" and b.id <= "+ max + " order by b.id asc";
 		ResultSet rs =  this.query(sql);
 		List<Board> boardList = new ArrayList<Board>();
 		Board board;
