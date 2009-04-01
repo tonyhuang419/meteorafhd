@@ -8,6 +8,7 @@
 	<version>0.0.1</version>
 	<description>waterKing</description>
 	<properties>
+		 <index_dir>D:/temp/tempDir</index_dir>
 		 <temp_dir>D:/temp/tempDir</temp_dir>
 		 <ehcache_dir>d:/temp/ehcache</ehcache_dir>
 	</properties>
