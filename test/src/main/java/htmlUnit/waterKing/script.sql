@@ -54,7 +54,7 @@
 select * from Board b where b.lastScanFloor > 1 and b.isVote = false  and b.id > 500 and b.id < 1000 order by b.id asc
 select * from BOARD b  order by b.issueDate asc
 select * from BOARD_DETAIL bd order by bd.id desc
-select count(*) from BOARD b where b.issueDate>date_format('2009-3-21','%Y-%m-%d');
+select count(*) from BOARD b --29994  where b.issueDate>date_format('2009-3-21','%Y-%m-%d');
 select count(*) from BOARD_DETAIL bd  --1031617
 select * from BOARD_DETAIL bd where bd.floor = 'pid3856554';
 select * from BOARD_DETAIL bd where bd.postId = '用户';
@@ -71,6 +71,12 @@ select sum(b.replyNum) from BOARD b;
 
 --can be scan 1119123
 select sum(b.replyNum) from BOARD b where b.readLevel <=100 and b.isVote = false
+
+--real should scan 28769
+select count(*) from BOARD b where b.readLevel <=100 and b.isVote = false
+
+--real scan 24681
+select count(*) from (select distinct bd.topic  from BOARD_DETAIL bd) a
 
 --remain scan 0
 select count(*) from Board b where b.lastScanFloor > 1 and b.isVote = false and b.readLevel <=100 ;
