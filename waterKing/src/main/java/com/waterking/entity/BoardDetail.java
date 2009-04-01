@@ -58,7 +58,7 @@ public class BoardDetail implements Serializable {
 	
 	@Lob
 	@Column(name = "postMessage")
-	@Field(name = "content", store = Store.NO, index = Index.TOKENIZED, analyzer = @Analyzer(impl = ChineseAnalyzer.class)) 
+	@Field( store = Store.YES, index = Index.TOKENIZED, analyzer = @Analyzer(impl = ChineseAnalyzer.class)) 
 	private String postMessage;
 	
 	@Column(name = "faceNum", length = 20)
