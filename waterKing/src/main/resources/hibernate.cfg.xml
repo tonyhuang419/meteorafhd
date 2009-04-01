@@ -37,7 +37,7 @@
 		<property name="cache.use_query_cache">true</property>
 		 
 		<property name="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider   </property>  
-		<property name="hibernate.search.default.indexBase">  ${temp_dir}  </property>  
+		<property name="hibernate.search.default.indexBase">D:\temp\index</property>  
 		
 		<mapping class="com.waterking.entity.Board" />
 		<mapping class="com.waterking.entity.BoardDetail" />
