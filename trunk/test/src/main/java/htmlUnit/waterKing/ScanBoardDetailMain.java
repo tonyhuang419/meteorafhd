@@ -28,7 +28,7 @@ public class ScanBoardDetailMain {
 				boardList.get(j).setEndPage((long)Math.ceil( boardList.get(j).getLastScanFloor().doubleValue() / user.getPageNum()));
 				exec.execute(new FixedScan( user ,  boardList.get(j) ));
 			}
-			min = min+500;
+			min = min+len;
 		}
 		exec.shutdown();
 	}
