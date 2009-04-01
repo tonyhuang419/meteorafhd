@@ -28,7 +28,7 @@ public class GetPictures extends ExamBaseTest {
 		long len = 1000;
 		long min = 0;
 		ExecutorService	exec = Executors.newFixedThreadPool(10);
-		while(min<1040000){
+		while(min<10000){
 			List<String> list = commonService.listHql("select b.pictureDetail " +
 					"from BoardDetail b where b.pictureNum>0 and b.id > "+min+" and b.id<= "+ (min+len) ,null);
 			for(String strArray:list){
@@ -39,6 +39,11 @@ public class GetPictures extends ExamBaseTest {
 				}
 			}
 			min+=len;
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		exec.shutdown();
 	}
