@@ -78,6 +78,12 @@ select count(*) from Board b where b.lastScanFloor > 1 and b.isVote = false and 
 --sum post id 16329
 select count(*) from (  select count(*) from BOARD_DETAIL bd group by bd.postId) a;
 
+--sum face 591098
+select sum(b.faceNum) from BOARD_DETAIL b;
+
+--sum pic 37303
+select sum(b.pictureNum) from BOARD_DETAIL b;
+
 --postid top 100
 select bd.postId , count(*) from BOARD_DETAIL bd group by bd.postId order by count(*) desc limit 0,100 ;
 
