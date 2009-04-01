@@ -19,11 +19,10 @@ public class AnalyzeTwo  {
 
 	@Test
 	public void testSearchMessageIndex(){
-
 		Session session = HibernateUtil.getSession();
 		FullTextSession fullTextSession = Search.getFullTextSession(session);
 		long len = 50;
-		long min = 0;
+		long min = 59150;
 		List<BoardDetail> boardDetailList;
 		while(min<1040000){
 			Transaction tx = fullTextSession.beginTransaction();

@@ -38,6 +38,7 @@
 		 
 		<property name="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider   </property>  
 		<property name="hibernate.search.default.indexBase">D:\temp\index</property>  
+		<property name="org.hibernate.search.store.FSSlaveDirectoryProvider">100M</property>
 		
 		<mapping class="com.waterking.entity.Board" />
 		<mapping class="com.waterking.entity.BoardDetail" />

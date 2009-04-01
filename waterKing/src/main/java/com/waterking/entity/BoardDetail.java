@@ -64,7 +64,6 @@ public class BoardDetail implements Serializable {
 	@Column(name = "faceNum", length = 20)
 	private Long faceNum;
 
-
 	@Column(name = "faceDetail", length = 4000)
 	@Field( store = Store.YES, index = Index.TOKENIZED)
 	private String faceDetail;
