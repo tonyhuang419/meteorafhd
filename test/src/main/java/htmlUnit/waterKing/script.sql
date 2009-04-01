@@ -68,10 +68,29 @@ select sum(bd.postMessageLength) from BOARD_DETAIL bd; --60676163
 
 --sum 1200699
 select sum(b.replyNum) from BOARD b;
+
 --can be scan 1119123
 select sum(b.replyNum) from BOARD b where b.readLevel <=100 and b.isVote = false
+
 --remain scan 0
 select count(*) from Board b where b.lastScanFloor > 1 and b.isVote = false and b.readLevel <=100 ;
+
+--sum post id 16329
+select count(*) from (  select count(*) from BOARD_DETAIL bd group by bd.postId) a;
+
+--postid top 100
+select bd.postId , count(*) from BOARD_DETAIL bd group by bd.postId order by count(*) desc limit 0,100 ;
+
+--face top 100
+select bd.postId , sum(bd.faceNum) from BOARD_DETAIL bd group by bd.postId order by sum(bd.faceNum) desc limit 0,100 ;
+
+--pic top 100
+select bd.postId , sum(bd.pictureNum) from BOARD_DETAIL bd group by bd.postId order by sum(bd.pictureNum) desc limit 0,100 ;
+
+--cc's pig
+select bd.postTime,bd.topic,bd.floor,bd.postMessage from BOARD_DETAIL bd
+ where bd.postId='kouhoutei' and  bd.faceDetail like '%93.gif%' order by bd.postTime desc;
+
 
 --select count(*) from Board b where b.lastScanFloor <> b.replyNum
 --update Board b set b.lastScanFloor = b.replyNum 
