@@ -22,8 +22,8 @@ public class AnalyzeTwo  {
 
 		Session session = HibernateUtil.getSession();
 		FullTextSession fullTextSession = Search.getFullTextSession(session);
-		int len = 50;
-		int min = 0;
+		long len = 50;
+		long min = 0;
 		List<BoardDetail> boardDetailList;
 		while(min<1040000){
 			Transaction tx = fullTextSession.beginTransaction();
@@ -32,6 +32,7 @@ public class AnalyzeTwo  {
 			for (BoardDetail bd : boardDetailList) {
 				fullTextSession.index(bd);
 			}
+			System.out.println(min);
 			min+=len;
 			tx.commit(); //index is written at commit time   
 		}
@@ -47,7 +48,7 @@ public class AnalyzeTwo  {
 		QueryParser parser = new QueryParser("postMessage", new ChineseAnalyzer());   
 		Transaction tx = fullTextSession.beginTransaction();   
 		try {
-			Query query = fullTextSession.createFullTextQuery(parser.parse("心里"),   BoardDetail.class);
+			Query query = fullTextSession.createFullTextQuery(parser.parse("蛙泳"),   BoardDetail.class);
 			List result = query.list();  
 			System.out.println(result.size());
 			for (int i = 0; result != null && i < result.size(); i++)   {   
