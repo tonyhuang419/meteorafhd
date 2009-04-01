@@ -34,7 +34,7 @@ import org.hibernate.search.annotations.Store;
 @Proxy(lazy = false)
 @Indexed
 public class BoardDetail implements Serializable {
-	
+
 	private static final long serialVersionUID = -1317011598005210392L;
 
 	@Id
@@ -42,50 +42,53 @@ public class BoardDetail implements Serializable {
 	@Column(length = 20)
 	@DocumentId
 	private Long id;
-	
+
 	@Column(name = "floor", length = 255)
 	private String floor;
 
 	@Column(name = "topic", length = 255)
 	private String topic;  //reference Board's topic , foreigner key
-	
+
 	@Column(name = "postId", length = 255)
 	private String postId;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "postTime" )
 	private Date postTime;
-	
+
 	@Lob
 	@Column(name = "postMessage")
 	@Field( store = Store.YES, index = Index.TOKENIZED, analyzer = @Analyzer(impl = ChineseAnalyzer.class)) 
 	private String postMessage;
-	
+
 	@Column(name = "faceNum", length = 20)
 	private Long faceNum;
-	
+
+
 	@Column(name = "faceDetail", length = 4000)
+	@Field( store = Store.YES, index = Index.TOKENIZED)
 	private String faceDetail;
-	
+
 	@Column(name = "pictureNum", length = 20)
 	private Long pictureNum;
-	
+
 	@Column(name = "pictureDetail", length = 4000)
+	@Field( store = Store.YES, index = Index.TOKENIZED)
 	private String pictureDetail;
-	
+
 	/**
 	 * redundancy field (postMessage length)
 	 */
 	@Column(name = "postMessageLength", length = 20)
 	private Long postMessageLength; 
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "lastScanTime" )
 	private Date lastScanTime;
-	
+
 	@Column(name = "lastUpateUser", length = 255)
 	private String lastUpateUser;
-	
+
 	@Column(name = "floorNum", length = 20)
 	private Long floorNum;
 
@@ -200,7 +203,7 @@ public class BoardDetail implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
-	
+
+
+
 }
