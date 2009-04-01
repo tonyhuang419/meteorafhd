@@ -22,7 +22,7 @@ public class AnalyzeTwo  {
 
 		Session session = HibernateUtil.getSession();
 		FullTextSession fullTextSession = Search.getFullTextSession(session);
-		int len = 500;
+		int len = 50;
 		int min = 0;
 		List<BoardDetail> boardDetailList;
 		while(min<1040000){
