@@ -21,11 +21,12 @@ public class AnalyzeTwo  {
 	public void testSearchMessageIndex(){
 		Session session = HibernateUtil.getSession();
 		FullTextSession fullTextSession = Search.getFullTextSession(session);
-		long len = 50;
-		long min = 59150;
+		Transaction tx;
+		long len = 1000;
+		long min = 116500;
 		List<BoardDetail> boardDetailList;
 		while(min<1040000){
-			Transaction tx = fullTextSession.beginTransaction();
+			tx = fullTextSession.beginTransaction();
 			boardDetailList = session.createQuery("from BoardDetail bd where " +
 					" bd.id >"+min+" and bd.id <=" +(min+len)).list();
 			for (BoardDetail bd : boardDetailList) {
