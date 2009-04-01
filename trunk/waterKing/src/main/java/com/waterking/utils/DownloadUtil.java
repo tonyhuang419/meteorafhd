@@ -23,8 +23,9 @@ public class DownloadUtil extends Thread {
 			} catch(Exception e) {
 				System.out.println("url error");
 			}
+			String s[] = urlStr.split("/");
 			FilterInputStream in = (FilterInputStream) url.openStream();
-			File fileOut = new File(baseFilePath+System.currentTimeMillis());
+			File fileOut = new File(s[s.length-1]);
 			FileOutputStream out = new FileOutputStream(fileOut);
 			byte[] bytes = new byte[1024];
 			int c;
