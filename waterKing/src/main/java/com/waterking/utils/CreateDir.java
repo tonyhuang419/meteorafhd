@@ -12,7 +12,7 @@ public class CreateDir {
 			boolean bFile   = dirFile.exists();
 			if( bFile == true ){
 				System.out.println("The folder exists.");
-				return null;
+				return "success";
 			}
 			else{
 				System.out.println("The folder do not exist,now trying to create a one...");
@@ -21,7 +21,7 @@ public class CreateDir {
 				if( bFile == true ){
 					System.out.println("Create successfully!");
 					System.out.println("创建文件夹");
-					return null;
+					return "success";
 				}
 				else{
 //					System.out.println(mkdirName);
@@ -37,7 +37,7 @@ public class CreateDir {
 			System.err.println("ELS - Chart : 文件夹创建发生异常 "+mkdirName);
 			err.printStackTrace();
 		}
-		return null;
+		return "success";
 	}
 
 	public static void main(String args[]){
