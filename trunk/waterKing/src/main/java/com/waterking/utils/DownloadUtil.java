@@ -5,15 +5,14 @@ import java.io.FileOutputStream;
 import java.io.FilterInputStream;
 import java.net.URL;
 
-import com.waterking.entity.BoardDetail;
-
 public class DownloadUtil {
 
 	String baseFilePath = "c:/pic/";
 
-	public void downFile(String urlStr , BoardDetail bd){
-		CreateDir.mkdir(baseFilePath+bd.getPostId()+"-"+bd.getTopic());
-		baseFilePath = baseFilePath+bd.getPostId()+"-"+bd.getTopic()+"/";
+	public void downFile(String urlStr , String postId ,String topic ){
+		topic = topic.replaceAll("\\|/|:|\\*|\\?|\"|<|>|\\|", "");
+		CreateDir.mkdir(baseFilePath+postId+"-"+topic);
+		baseFilePath = baseFilePath+postId+"-"+topic+"/";
 		try {
 			URL url = null;
 			try {
