@@ -22,7 +22,7 @@ public class DownloadUtil extends Thread{
 			baseFilePath = baseFilePath+postId+"-"+topic+"/";
 		}
 		try {
-			getMethod = new GetMethod(urlStr);
+//			getMethod = new GetMethod(urlStr);
 			client.executeMethod(getMethod);
 			byte[] responseBody = getMethod.getResponseBody();
 

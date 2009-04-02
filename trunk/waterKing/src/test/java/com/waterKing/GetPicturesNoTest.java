@@ -4,31 +4,28 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.exam.ExamBaseTest;
 import com.waterking.service.ICommonService;
 import com.waterking.utils.DownloadUtil;
 import com.waterking.utils.Tools;
 
 
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-public class GetPictures extends ExamBaseTest {
+public class GetPicturesNoTest {
 
-	@Autowired
-	@Qualifier("commonService")
+
+	private ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 	private ICommonService 		commonService;
 
-
-	@Test
 	public void testBoardDetail() {
+		ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		commonService = (ICommonService)ctx.getBean("commonService");
 		String urlArray[];
 		String downUrl;
 		long len = 1000;
 		long min = Tools.getScanDetailNum();
+		ExecutorService	exec = Executors.newFixedThreadPool(3);
 		while(min<1040000){
 			List<Object[]> boardDetailList = commonService.listHql(" select b.topic , b.postId  ,b.pictureDetail ,b.id" +
 					" from BoardDetail b where b.pictureNum>0 and b.id > "+min+" and b.id<= "+ (min+len) ,null);
@@ -45,8 +42,15 @@ public class GetPictures extends ExamBaseTest {
 					}
 				}
 			}
+
 		}
+		exec.shutdown();
 	}
+
+	public static void main(String args[]) throws Exception{
+		new GetPicturesNoTest().testBoardDetail();
+	}
+
 }
 
 
