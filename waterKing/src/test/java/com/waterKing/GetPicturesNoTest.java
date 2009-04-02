@@ -42,7 +42,7 @@ public class GetPicturesNoTest {
 					}
 				}
 			}
-
+			min = Tools.getScanDetailNum();
 		}
 		exec.shutdown();
 	}
