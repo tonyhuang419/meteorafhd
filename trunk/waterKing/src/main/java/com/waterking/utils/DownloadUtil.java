@@ -5,13 +5,15 @@ import java.io.FileOutputStream;
 import java.io.FilterInputStream;
 import java.net.URL;
 
+import com.waterking.entity.BoardDetail;
+
 public class DownloadUtil {
 
 	String baseFilePath = "c:/pic/";
 
-	public void downFile(String urlStr , String topic){
-		CreateDir.mkdir(baseFilePath+topic);
-		baseFilePath = baseFilePath+topic+"/";
+	public void downFile(String urlStr , BoardDetail bd){
+		CreateDir.mkdir(baseFilePath+bd.getPostId()+"-"+bd.getTopic());
+		baseFilePath = baseFilePath+bd.getPostId()+"-"+bd.getTopic()+"/";
 		try {
 			URL url = null;
 			try {
@@ -86,6 +88,6 @@ public class DownloadUtil {
 		//		for(int i=0;i<10;i++){
 		//			new DownloadUtil("http://www.163.com/images/neteaselogo.gif");
 		//		}
-		new DownloadUtil().downFile("http://e.taisha.org/attachments/1_1nSJi7Rg159I.jpg","cc");
+//		new DownloadUtil().downFile("http://e.taisha.org/attachments/1_1nSJi7Rg159I.jpg","cc");
 	}
 }
