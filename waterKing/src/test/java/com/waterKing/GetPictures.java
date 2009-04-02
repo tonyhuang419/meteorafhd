@@ -27,7 +27,7 @@ public class GetPictures extends ExamBaseTest {
 		String downUrl;
 		long len = 1000;
 		long min = 0;
-		while(min<1000){
+		while(min<1040000){
 			List<BoardDetail> boardDetailList = commonService.listHql(" from BoardDetail b where b.pictureNum>0 and b.id > "+min+" and b.id<= "+ (min+len) ,null);
 			for(BoardDetail bd:boardDetailList){
 				urlArray = bd.getPictureDetail().split("\\*\\*\\*");
@@ -35,7 +35,8 @@ public class GetPictures extends ExamBaseTest {
 					downUrl = urlArray[i];
 					if(downUrl.indexOf("taisha")!=-1){
 						System.out.println("now download : "+downUrl);
-						new DownloadUtil().downFile(downUrl , bd.getTopic());
+						System.out.println("board detail id :" + bd.getId());
+						new DownloadUtil().downFile(downUrl , bd);
 					}
 				}
 			}
