@@ -33,13 +33,23 @@ public class Tools {
 	}
 	
 	synchronized static String encodeUrl(String url){
-		url = url.replace("http://", "");
+		String s[] = url.split("/");
+		String temp = "";
 		try {
-			url = URLEncoder.encode(url,"GBK");
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-		} 
-		return "http://"+url;
+			temp = URLEncoder.encode(s[s.length-1],"GBK");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		StringBuffer sb = new StringBuffer("");
+		for(int i=0;i<s.length-1;i++){
+			sb.append(s[i]).append("/");
+		}
+		sb.append(temp);
+		return sb.toString();
 	}
 
+	
+	public static void main(String args[]) throws Exception{
+		System.out.println(Tools.encodeUrl("http://e.taisha.org/attachments/Img222981634[1]_k1V9GQsUA05L.jpg"));
+	}
 }
