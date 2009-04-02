@@ -3,8 +3,6 @@ package com.waterking.utils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -14,11 +12,7 @@ public class DownloadUtil extends Thread{
 	private String baseFilePath = "c:/pic/";
 
 	public void downFile(String urlStr , String postId ,String topic){
-		try {
-			urlStr = URLEncoder.encode(urlStr,"GBK");
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-		} 
+		urlStr = Tools.encodeUrl(urlStr);
 		System.out.println(urlStr);
 		HttpClient client = new HttpClient();
 		client.setTimeout(15000);
