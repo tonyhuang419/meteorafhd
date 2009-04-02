@@ -9,18 +9,8 @@ import org.apache.commons.httpclient.methods.GetMethod;
 public class DownloadUtil extends Thread{
 
 	private String baseFilePath = "c:/pic/";
-	private String urlStr;
-	private String postId;
-	private String topic;	
 
-	public DownloadUtil(String urlStr , String postId ,String topic){
-		this.urlStr = urlStr;
-		this.postId = postId;
-		this.topic = topic;
-		this.start();
-	}
-
-	public void run(){
+	public void downFile(String urlStr , String postId ,String topic){
 		HttpClient client = new HttpClient();
 		client.setTimeout(15000);
 		GetMethod getMethod = new GetMethod(urlStr);
