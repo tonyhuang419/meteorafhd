@@ -27,7 +27,7 @@ public class GetPictures extends ExamBaseTest {
 		String urlArray[];
 		String downUrl;
 		long len = 1000;
-		long min = 0;
+		long min = 1000;
 		while(min<1040000){
 			List<Object[]> boardDetailList = commonService.listHql(" select b.topic , b.postId  ,b.pictureDetail ,b.id" +
 					" from BoardDetail b where b.pictureNum>0 and b.id > "+min+" and b.id<= "+ (min+len) ,null);
@@ -44,7 +44,9 @@ public class GetPictures extends ExamBaseTest {
 					}
 				}
 			}
+			System.out.println(min);
 		}
+		min+=len;
 	}
 }
 
