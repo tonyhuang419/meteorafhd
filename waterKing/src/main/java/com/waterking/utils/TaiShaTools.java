@@ -31,9 +31,9 @@ public class TaiShaTools {
 		NameValuePair name = new NameValuePair("username",username);
 		NameValuePair passwordX = new NameValuePair("password",password);
 		post.setRequestBody(new NameValuePair[] { name,passwordX});
-
+		client.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
 		try{
-			int status = client.executeMethod(post);
+			client.executeMethod(post); //int status =
 		}
 		catch(IOException ioe){
 			ioe.printStackTrace();
@@ -62,7 +62,7 @@ public class TaiShaTools {
 	 */
 	public void showCookie(HttpClient client){
 		CookieSpec cookiespec = CookiePolicy.getDefaultSpec();
-		Cookie[] cookies = cookiespec.match("e.taisha.org", 80, "/", false, client.getState().getCookies());
+		Cookie[] cookies = cookiespec.match("taisha.org", 80, "/", false, client.getState().getCookies());
 		if (cookies.length == 0) {
 			logger.info("none");    
 		} else {
@@ -75,7 +75,7 @@ public class TaiShaTools {
 	public static void main(String args[]){
 		TaiShaTools tool = new TaiShaTools();
 		HttpClient client = tool.login("e.taisha.org",80,"http");
-		//		tool.showCookie( client);
+		tool.showCookie( client);
 	}
 
 }
