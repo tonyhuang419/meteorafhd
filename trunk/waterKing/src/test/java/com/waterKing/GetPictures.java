@@ -25,17 +25,22 @@ public class GetPictures extends ExamBaseTest {
 	@Test
 	public void testBoardDetail() {
 		String urlArray[];
+		String downUrl;
 		long len = 1000;
 		long min = 0;
-		ExecutorService	exec = Executors.newFixedThreadPool(10);
-		while(min<10000){
+		ExecutorService	exec = Executors.newFixedThreadPool(1);
+		while(min<1040000){
 			List<String> list = commonService.listHql("select b.pictureDetail " +
 					"from BoardDetail b where b.pictureNum>0 and b.id > "+min+" and b.id<= "+ (min+len) ,null);
 			for(String strArray:list){
 				urlArray = strArray.split("\\*\\*\\*");
 				for(int i=0;i<urlArray.length;i++){
 //					System.out.println(urlArray[i]);
-					exec.execute(new DownloadUtil(urlArray[i]));
+					downUrl = urlArray[i];
+					if(downUrl.indexOf("taisha")!=-1){
+						System.out.println("now download : "+downUrl);
+						exec.execute(new DownloadUtil(downUrl));
+					}
 				}
 			}
 			min+=len;
