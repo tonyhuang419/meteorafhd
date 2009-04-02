@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Properties;
 
 public class Tools {
@@ -28,6 +30,16 @@ public class Tools {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+	
+	synchronized static String encodeUrl(String url){
+		url = url.replace("http://", "");
+		try {
+			url = URLEncoder.encode(url,"GBK");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} 
+		return "http://"+url;
 	}
 
 }
