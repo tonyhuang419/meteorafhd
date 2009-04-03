@@ -35,7 +35,8 @@ public class GetPicturesNoTest {
 					downUrl = urlArray[i];
 					if(downUrl.indexOf("taisha")!=-1 
 							&& downUrl.indexOf(".bmp")==-1
-							&& obj[1].toString().indexOf("贴图专")==-1){
+							&& downUrl.indexOf(".gif")==-1
+							&& obj[1].toString().indexOf("贴图专帖")==-1){
 						System.out.println("now download : "+downUrl);
 						System.out.println("board detail id :" + obj[3]);
 						new DownloadUtil().downFile(downUrl , obj[1].toString() , obj[0].toString());
