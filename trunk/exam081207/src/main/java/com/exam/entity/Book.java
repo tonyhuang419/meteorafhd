@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Proxy;
+import org.hibernate.validator.Min;
 
 @Entity
 @Table(name = "book")
@@ -60,6 +61,8 @@ public class Book extends PriEntity implements Serializable {
 	private Long quantityInStock;
 
 	@Column(name = "price", length = 20 , scale = 2)
+	@Min(value = 0 ,message="must large than 0")    
+	//如果不设定message ， 默认为必须大于等于 0  reference resorces: org.hibernate.validator.resorces
 	private BigDecimal price;
 
 	@OneToMany(mappedBy="fkBookId" ,
