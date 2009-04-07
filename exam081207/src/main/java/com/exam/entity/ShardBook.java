@@ -21,11 +21,11 @@ import org.hibernate.validator.Min;
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true, dynamicInsert = true, dynamicUpdate = true)
 @Proxy(lazy = false)
 public class ShardBook extends PriEntity implements Serializable {
-	private static final long serialVersionUID = 3303303263841824748L;
+
+	private static final long serialVersionUID = 222203029629458824L;
 
 	@Id
     @GenericGenerator(name="ShardBook", strategy="org.hibernate.shards.id.ShardedUUIDGenerator")
-	@Column(length = 20)
 	private BigInteger  id;
 
 	@Column(name = "title", length = 100)
