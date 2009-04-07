@@ -1,6 +1,7 @@
 package hibernate.shard;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,7 @@ public class ShardSessionFactory {
 
 	public static void main(String[] args) {
 		ShardBook sb = new ShardBook();
+		sb.setId(new BigInteger("1"));
 		sb.setAuthorName("作者名称");
 		sb.setCategory("category");
 		sb.setEditior("editior");
@@ -43,15 +45,26 @@ public class ShardSessionFactory {
 		sb.setTitle("title");
 		sb.setYear(new Date());
 
+		ShardBook sb2 = new ShardBook();
+		sb2.setId(new BigInteger("2"));
+		sb2.setAuthorName("作者名称");
+		sb2.setCategory("category");
+		sb2.setEditior("editior");
+		sb2.setIsbn("isbn");
+		sb2.setPrice(new BigDecimal("1")); 
+		sb2.setPublisher("publisher");
+		sb2.setQuantityInStock(100L);
+		sb2.setTitle("title");
+		sb2.setYear(new Date());
+
 
 		ShardSessionFactory ssf = new ShardSessionFactory();
 		SessionFactory sf = ssf.createSessionFactory();
 		Session session = sf.openSession();
-		//		Session session = sf.getCurrentSession();
 
 		session.beginTransaction();
 		session.save(sb);
-		//		session.save(sb);
+		session.save(sb2);
 		session.getTransaction().commit();
 
 		session.close();
@@ -75,7 +88,7 @@ public class ShardSessionFactory {
 		prototypeConfig.addAnnotatedClass(ShardBook.class);
 		List<ShardConfiguration> shardConfigs = new ArrayList<ShardConfiguration>();
 		shardConfigs.add(buildShardConfig("shard0.hibernate.cfg.xml"));
-		//		shardConfigs.add(buildShardConfig("shard1.hibernate.cfg.xml"));
+		shardConfigs.add(buildShardConfig("shard1.hibernate.cfg.xml"));
 		//		        shardConfigs.add(buildShardConfig("shard2.hibernate.cfg.xml"));
 		ShardStrategyFactory shardStrategyFactory = buildShardStrategyFactory();
 		ShardedConfiguration shardedConfig = new ShardedConfiguration(
