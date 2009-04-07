@@ -34,7 +34,6 @@ public class ShardSessionFactory {
 
 	public static void main(String[] args) {
 		ShardBook sb = new ShardBook();
-		sb.setId(new BigInteger("1"));
 		sb.setAuthorName("作者名称");
 		sb.setCategory("category");
 		sb.setEditior("editior");
@@ -46,7 +45,6 @@ public class ShardSessionFactory {
 		sb.setYear(new Date());
 
 		ShardBook sb2 = new ShardBook();
-		sb2.setId(new BigInteger("2"));
 		sb2.setAuthorName("作者名称");
 		sb2.setCategory("category");
 		sb2.setEditior("editior");
