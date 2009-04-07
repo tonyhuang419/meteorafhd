@@ -270,5 +270,12 @@
 	    <artifactId>hibernate-validator</artifactId>
 	    <version>3.0.0.ga</version>
 	</dependency> 
+	<dependency>
+		<groupId>hibernate-shards</groupId>
+		<artifactId>hibernate-shards</artifactId>
+		<version>3.0.0.Beta2</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/hibernate-shards.jar</systemPath>
+	 </dependency>
 	</dependencies>
 </project>
