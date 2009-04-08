@@ -31,10 +31,10 @@ public final class IbeClientTools {
 	 * 获取AV
 	 */
 
-	public AvResult doGetAvResult() {
+	public AvResult doGetAvResult(String takeOff,String land) {
 		AvResult avr = null;
 		try{
-			avr = getAV().getAvailability("xx", "yy", new Date());
+			avr = getAV().getAvailability(takeOff, land, new Date());
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -210,7 +210,7 @@ public final class IbeClientTools {
 //		int i = a;
 //		System.out.println(i);
 		
-		t.doGetAvResult();
+		t.doGetAvResult("PEK","CAN");
 
 	}
 
