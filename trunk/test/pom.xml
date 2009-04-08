@@ -215,6 +215,13 @@
 		<artifactId>jta</artifactId>
 		<version>1.1</version>
 	</dependency>
+	<dependency>
+		<groupId>itext</groupId>
+		<artifactId>itext</artifactId>
+		<version>1.0</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ibeclient.jar</systemPath>
+    </dependency>
 </dependencies>
 <properties>
    	 <logs_dir>c:/logs</logs_dir>
