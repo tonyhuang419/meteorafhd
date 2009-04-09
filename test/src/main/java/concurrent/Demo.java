@@ -42,7 +42,7 @@ public class Demo  implements Callable<Demo>{   //Runnable{ //{
 			i++;   
 			
 			try {
-	            signal.await();  //如果signal没到0，就会竟如阻塞状态
+	            signal.await();  //如果signal没到0，进入阻塞状态，直到为0
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }
