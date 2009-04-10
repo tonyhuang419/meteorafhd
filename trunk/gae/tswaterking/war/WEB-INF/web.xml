@@ -16,9 +16,19 @@
     <servlet-class>tswaterking.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
+   <servlet>
+    <servlet-name>sign</servlet-name>
+    <servlet-class>tswaterking.server.action.SignGuestbookServlet</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/tswaterking/greet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>sign</servlet-name>
+    <url-pattern>/tswaterking/sign</url-pattern>
   </servlet-mapping>
 
 </web-app>
