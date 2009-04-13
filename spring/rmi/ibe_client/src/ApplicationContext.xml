@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"   
+    "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>  
+	<bean id="serviceClient"  
+         class="org.springframework.remoting.rmi.RmiProxyFactoryBean">  
+             
+          <property name="serviceInterface">  
+               <value>service.IDemoService</value>  
+           </property>  
+        <!-- serviceUrl以rmi开头,定义服务器地址与端口和服务名 -->  
+          <property name="serviceUrl">  
+              <value>rmi://localhost:8888/demo</value>  
+           </property>  
+       </bean>  
+       
+       	<bean id="serviceClientTwo"  
+         class="org.springframework.remoting.rmi.RmiProxyFactoryBean">  
+             
+          <property name="serviceInterface">  
+               <value>service.IDemoTwoService</value>  
+           </property>  
+        <!-- serviceUrl以rmi开头,定义服务器地址与端口和服务名 -->  
+          <property name="serviceUrl">  
+              <value>rmi://localhost:8888/demoTwo</value>  
+           </property>  
+       </bean> 
+</beans>  
