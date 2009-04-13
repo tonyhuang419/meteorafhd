@@ -6,6 +6,6 @@
 <body>
 Welcome to Google App Engine for Java!
 <br>
-<a href="guestbook.jsp">demo/guestbook/guestbook.jsp</a>
+<a href="demo/guestbook/sign.do">guestbook.jsp</a>
 </body>
 </html>
