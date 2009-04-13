@@ -5,5 +5,7 @@
 </head>
 <body>
 Welcome to Google App Engine for Java!
+<br>
+<a href="guestbook.jsp">demo/guestbook/guestbook.jsp</a>
 </body>
 </html>

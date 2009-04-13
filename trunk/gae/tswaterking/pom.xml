@@ -87,6 +87,11 @@
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring</artifactId>
+        	<version>2.5.6</version>
+        </dependency>
     </dependencies>
     <properties>
         <project_charset>UTF-8</project_charset>
