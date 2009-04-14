@@ -2,6 +2,7 @@ package demo.guestbook;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class SignGuestbookServlet extends HttpServlet {
 	private static final long serialVersionUID = 4554837471683184923L;
 
-	//private static final Logger log = Logger.getLogger(SignGuestbookServlet.class.getName());
+	private static final Logger log = Logger.getLogger(SignGuestbookServlet.class.getName());
 
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,6 +32,7 @@ public class SignGuestbookServlet extends HttpServlet {
 		User user = userService.getCurrentUser();
 
 		String content = req.getParameter("content");
+		log.info(com.google.storage.onestore.v3.OnestoreEntity.User.knickname+":"+content);
 		Date date = new Date();
 		Greeting greeting = new Greeting(user, content, date);
 
