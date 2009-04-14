@@ -1,20 +1,17 @@
-package tswaterking.server.action;
+package demo.guestbook;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tswaterking.server.entity.Greeting;
-import tswaterking.server.service.PMF;
-
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+
 
 public class SignGuestbookServlet extends HttpServlet {
 	private static final long serialVersionUID = 4554837471683184923L;
@@ -44,7 +41,7 @@ public class SignGuestbookServlet extends HttpServlet {
 			pm.close();
 		}
 
-		resp.sendRedirect("/guestbook.jsp");
+		resp.sendRedirect("/demo/guestbook.jsp");
 	}
 
 }

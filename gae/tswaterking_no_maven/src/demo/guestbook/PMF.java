@@ -1,4 +1,4 @@
-package tswaterking.server.service;
+package demo.guestbook;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

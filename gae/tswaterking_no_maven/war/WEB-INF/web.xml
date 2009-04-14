@@ -5,31 +5,20 @@
 
 <web-app>
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>tswaterking.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-   <servlet>
-    <servlet-name>sign</servlet-name>
-    <servlet-class>tswaterking.server.action.SignGuestbookServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/tswaterking/greet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-    <servlet-name>sign</servlet-name>
-    <url-pattern>/tswaterking/sign</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>sign</servlet-name>
+		<servlet-class>demo.guestbook.SignGuestbookServlet</servlet-class>
+	</servlet>
 
-  <!-- Default page to serve -->
-  <welcome-file-list>
-<!--    <welcome-file>Tswaterking.html</welcome-file>-->
-  	<welcome-file>guestbook.jsp</welcome-file>
-  </welcome-file-list>
+	<servlet-mapping>
+		<servlet-name>sign</servlet-name>
+		<url-pattern>/demo/guestbook/sign.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<!--    <welcome-file>Tswaterking.html</welcome-file>-->
+		<welcome-file>demo/guestbook.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>

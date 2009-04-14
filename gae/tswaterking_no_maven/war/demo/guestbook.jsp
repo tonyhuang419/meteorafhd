@@ -4,8 +4,8 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="tswaterking.server.entity.Greeting" %>
-<%@ page import="tswaterking.server.service.PMF" %>
+<%@ page import="demo.guestbook.Greeting" %>
+<%@ page import="demo.guestbook.PMF" %>
 
 <html>
   <body>
@@ -54,7 +54,7 @@ to include your name with greetings you post.</p>
     pm.close();
 %>
 
-    <form action="/tswaterking/sign" method="post">
+    <form action="/demo/guestbook/sign.do" method="post">
       <div><textarea name="content" rows="3" cols="60"></textarea></div>
       <div><input type="submit" value="Post Greeting" /></div>
     </form>

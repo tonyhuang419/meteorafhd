@@ -1,4 +1,4 @@
-package tswaterking.server.entity;
+package demo.guestbook;
 
 import java.util.Date;
 
