@@ -20,6 +20,7 @@ public class RMIClient {
 
 		System.out.println(hello.getStu("tom").getName());
 
+		System.out.println("===============================================");
 
 		IDemoTwoService helloTwo = (IDemoTwoService)content.getBean("serviceClientTwo");
 		System.out.println(helloTwo.helloTwo("callan"));
