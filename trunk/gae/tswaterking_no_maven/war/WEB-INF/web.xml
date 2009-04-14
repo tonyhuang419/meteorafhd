@@ -8,22 +8,12 @@
 	<!-- Servlets -->
 	<servlet>
 		<servlet-name>greetServlet</servlet-name>
-		<servlet-class>entry.GreetingServiceImpl</servlet-class>
-	</servlet>
-
-	<servlet>
-		<servlet-name>sign</servlet-name>
-		<servlet-class>demo.guestbook.SignGuestbookServlet</servlet-class>
+		<servlet-class>tswaterking.server.GreetingServiceImpl</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>greetServlet</servlet-name>
-		<url-pattern>/greet.do</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>sign</servlet-name>
-		<url-pattern>/demo/guestbook/sign.do</url-pattern>
+		<url-pattern>/greet</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->

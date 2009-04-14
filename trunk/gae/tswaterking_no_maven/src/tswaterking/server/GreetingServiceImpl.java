@@ -1,4 +1,8 @@
-package entry;
+package tswaterking.server;
+
+
+
+import tswaterking.client.GreetingService;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
