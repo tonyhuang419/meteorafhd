@@ -1,7 +1,6 @@
 package entity;
 
-public class Stu implements java.io.Serializable{
-	private static final long serialVersionUID = -1991489323147938252L;
+public class Stu extends Serial {
 	
 	private String name;
 
