@@ -5,7 +5,11 @@
 
 <web-app>
 
-	<!-- Servlets -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>greetServlet</servlet-name>
 		<servlet-class>tswaterking.server.GreetingServiceImpl</servlet-class>
@@ -16,6 +20,14 @@
 		<servlet-class>tswaterking.demo.guestbook.SignGuestbookServlet</servlet-class>
 	</servlet>
 
+	<!-- water king -->
+	<servlet>
+		<servlet-name>waterking</servlet-name>
+		<servlet-class>tswaterking.waterking.action.BoardAction</servlet-class>
+	</servlet>
+	<!-- water king -->
+
+
 	<servlet-mapping>
 		<servlet-name>greetServlet</servlet-name>
 		<url-pattern>/tswaterking/greet</url-pattern>
@@ -25,6 +37,18 @@
 		<servlet-name>sign</servlet-name>
 		<url-pattern>/demo/guestbook/sign.do</url-pattern>
 	</servlet-mapping>
+
+	<!-- water king -->
+	<servlet-mapping>
+		<servlet-name>waterking</servlet-name>
+		<url-pattern>/waterking/waterking.do</url-pattern>
+	</servlet-mapping>
+	<!-- water king -->
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 
 	<!-- Default page to serve -->
 	<welcome-file-list>
