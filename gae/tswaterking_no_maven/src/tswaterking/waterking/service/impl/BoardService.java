@@ -1,13 +1,12 @@
 package tswaterking.waterking.service.impl;
 
 import org.springframework.orm.jdo.support.JdoDaoSupport;
-import org.springframework.stereotype.Service;
 
 import tswaterking.waterking.entity.Board;
 import tswaterking.waterking.service.IBoardService;
 
 
-@Service("boardService")
+//@Service("boardService")
 public class BoardService extends JdoDaoSupport implements IBoardService{
 
 	@Override

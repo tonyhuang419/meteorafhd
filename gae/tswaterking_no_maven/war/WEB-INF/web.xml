@@ -5,10 +5,13 @@
 
 <web-app>
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>
+	<!--spring MVC  -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
 
 	<servlet>
 		<servlet-name>greetServlet</servlet-name>
@@ -20,13 +23,11 @@
 		<servlet-class>tswaterking.demo.guestbook.SignGuestbookServlet</servlet-class>
 	</servlet>
 
-	<!-- water king -->
-	<servlet>
-		<servlet-name>waterking</servlet-name>
-		<servlet-class>tswaterking.waterking.action.BoardAction</servlet-class>
-	</servlet>
-	<!-- water king -->
-
+	<!--spring MVC  -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>greetServlet</servlet-name>
@@ -38,12 +39,6 @@
 		<url-pattern>/demo/guestbook/sign.do</url-pattern>
 	</servlet-mapping>
 
-	<!-- water king -->
-	<servlet-mapping>
-		<servlet-name>waterking</servlet-name>
-		<url-pattern>/waterking/waterking.do</url-pattern>
-	</servlet-mapping>
-	<!-- water king -->
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
