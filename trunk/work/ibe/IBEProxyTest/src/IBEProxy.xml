@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"   
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- DEFINE IBE PROXY CLASS -->
+	<bean id="avProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IAVProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/avProxyService</value>
+		</property>
+	</bean>
+
+	<bean id="avwProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IAVWProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/avwProxyService</value>
+		</property>
+	</bean>
+
+	<bean id="dsgProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IDSGProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/dsgProxyService</value>
+		</property>
+	</bean>
+
+
+	<bean id="fdProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IFDProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/fdProxyService</value>
+		</property>
+	</bean>
+
+
+	<bean id="ffProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IFFProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/ffProxyService</value>
+		</property>
+	</bean>
+
+
+	<bean id="skProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.ISKProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/skProxyService</value>
+		</property>
+	</bean>
+
+	<bean id="queueProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IQUEUEProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/queueProxyService</value>
+		</property>
+	</bean>
+
+	<bean id="pnrManageProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.pnr.IPnrManageProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/pnrManageProxyService</value>
+		</property>
+	</bean>
+
+
+	<bean id="rtProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.pnr.IRTProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/rtProxyService</value>
+		</property>
+	</bean>
+
+
+	<bean id="sellSeatProxyService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.pnr.ISellSeatProxyService
+			</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/sellSeatProxyService</value>
+		</property>
+	</bean>
+
+
+
+	<!-- IOC IBE Decorate CLASS -->
+	<bean id="avDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.AVDecorate">
+		<property name="avProxyService" ref="avProxyService" />
+	</bean>	
+	
+	<bean id="avwDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.AVWDecorate">
+		<property name="avwProxyService" ref="avwProxyService" />
+	</bean>	
+	
+	<bean id="dsgDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.DSGDecorate">
+		<property name="dsgProxyService" ref="dsgProxyService" />
+	</bean>	
+	
+	<bean id="fdDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.FDDecorate">
+		<property name="fdProxyService" ref="fdProxyService" />
+	</bean>	
+	
+	<bean id="ffDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.FFDecorate">
+		<property name="ffProxyService" ref="ffProxyService" />
+	</bean>	
+	
+	<bean id="queueDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.QUEUEDecorate">
+		<property name="queueProxyService" ref="queueProxyService" />
+	</bean>	
+	
+	<bean id="skDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.SKDecorate">
+		<property name="skProxyService" ref="skProxyService" />
+	</bean>	
+	
+	<bean id="pnrManageDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.pnr.impl.PnrManageDecorate">
+		<property name="pnrManageProxyService" ref="pnrManageProxyService" />
+	</bean>	
+	
+	<bean id="rtDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.pnr.impl.RTDecorate">
+		<property name="rtProxyService" ref="rtProxyService" />
+	</bean>	
+	
+	<bean id="sellSeatDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.pnr.impl.SellSeatDecorate">
+		<property name="sellSeatProxyService" ref="sellSeatProxyService" />
+	</bean>
+	
+</beans>
