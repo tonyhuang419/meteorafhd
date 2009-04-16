@@ -49,6 +49,7 @@ public class Test {
 		
 		LookupMethodBean lookx = (LookupMethodBean)content.getBean("testBean");
 		System.out.println(lookx.test());
+		System.out.println(lookx.test("xx"));
 		
 	}
 }

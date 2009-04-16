@@ -1,17 +1,13 @@
 package com.baosight.baosteel.tourism.common.ibe.decorate.client.impl;
 
-import java.lang.reflect.Method;
 import java.util.Date;
-
-import org.springframework.beans.factory.support.MethodReplacer;
 
 import com.baosight.baosteel.tourism.common.ibe.decorate.client.IAVDecorate;
 import com.baosight.baosteel.tourism.common.ibe.proxy.client.IAVProxyService;
-import com.travelsky.ibe.client.AV;
 import com.travelsky.ibe.client.AvResult;
 
 
-public class AVDecorate extends AV implements IAVDecorate {
+public class AVDecorate implements IAVDecorate {
 
 	private IAVProxyService avProxyService;
 
