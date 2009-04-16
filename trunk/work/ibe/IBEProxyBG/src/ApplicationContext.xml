@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"   
+    "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+	
+	<bean id="ibeClientService" class="com.ibeproxy.client.impl.IBEClientService"/>
+	
+	<bean id="ibeClientServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="service">
+			<ref bean="ibeClientService" />
+		</property>
+		<property name="serviceName">
+			<value>ibeClientService</value>
+		</property>
+		<property name="serviceInterface">
+			<value>com.ibeproxy.client.IIBEClientService</value>
+		</property>
+		<property name="registryPort">
+			<value>8888</value>
+		</property>
+	</bean>
+	
+	
+	
+	
+</beans>  
