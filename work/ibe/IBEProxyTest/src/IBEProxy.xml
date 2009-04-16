@@ -131,8 +131,6 @@
 		</property>
 	</bean>
 
-
-
 	<!-- IOC IBE Decorate CLASS -->
 	<bean id="avDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.AVDecorate">
 		<property name="avProxyService" ref="avProxyService" />
@@ -172,6 +170,17 @@
 	
 	<bean id="sellSeatDecorate" class="com.baosight.baosteel.tourism.common.ibe.decorate.pnr.impl.SellSeatDecorate">
 		<property name="sellSeatProxyService" ref="sellSeatProxyService" />
+	</bean>
+	
+	
+	
+	<bean name="replacer"
+		class="com.baosight.baosteel.tourism.common.ibe.test.MethodReplace">
+	</bean>
+	<bean name="testBean"
+		class="com.baosight.baosteel.tourism.common.ibe.test.LookupMethodBean">
+		<replaced-method name="test" replacer="replacer">
+		</replaced-method>
 	</bean>
 	
 </beans>
