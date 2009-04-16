@@ -185,15 +185,24 @@
 		</property>
 	</bean>
 		
-	
-	<bean name="replacer"
-		class="com.baosight.baosteel.tourism.common.ibe.test.MethodReplace">
+	<bean name="ibeClientDecorate"
+		class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.IBEClientDecorate">
+		<property name="ibeClientService" ref="ibeClientService" />
 	</bean>
-	<bean name="testBean"
-		class="com.baosight.baosteel.tourism.common.ibe.test.LookupMethodBean">
-		<replaced-method name="test" replacer="replacer">
-		<arg-type>String</arg-type>
+	<bean name="avBG"
+		class="com.travelsky.ibe.client.AV">
+		<replaced-method name="query" replacer="ibeClientDecorate">
 		</replaced-method>
 	</bean>
+	
+<!--	<bean name="replacer"-->
+<!--		class="com.baosight.baosteel.tourism.common.ibe.test.MethodReplace">-->
+<!--	</bean>-->
+<!--	<bean name="testBean"-->
+<!--		class="com.baosight.baosteel.tourism.common.ibe.test.LookupMethodBean">-->
+<!--		<replaced-method name="test" replacer="replacer">-->
+<!--		<arg-type>String</arg-type>-->
+<!--		</replaced-method>-->
+<!--	</bean>-->
 	
 </beans>
