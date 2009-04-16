@@ -47,9 +47,12 @@ public class Test {
 //		}
 //		new AV().getAvailability("PEK", "CAN", new Date());
 		
-		LookupMethodBean lookx = (LookupMethodBean)content.getBean("testBean");
-		System.out.println(lookx.test());
-		System.out.println(lookx.test("xx"));
+//		LookupMethodBean lookx = (LookupMethodBean)content.getBean("testBean");
+//		System.out.println(lookx.test());
+//		System.out.println(lookx.test("xx"));
+		
+		AV av = (AV)content.getBean("avBG");
+		av.getAvailability("SHA","BJK", new Date());
 		
 	}
 }
