@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"   
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="ibeClientService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>
+				com.baosight.baosteel.tourism.common.ibe.proxy.client.IIBEClientService
+				</value>
+		</property>
+		<property name="serviceUrl">
+			<value>rmi://127.0.0.1:8888/ibeClientService</value>
+		</property>
+	</bean>
+		
+	<bean name="ibeClientDecorate"
+		class="com.baosight.baosteel.tourism.common.ibe.decorate.client.impl.IBEClientDecorate">
+		<property name="ibeClientService" ref="ibeClientService" />
+	</bean>
+	
+	<bean name="avBG"
+		class="com.travelsky.ibe.client.AV">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	<bean name="avwBG"
+		class="com.travelsky.ibe.client.AVW">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	<bean name="dsgBG"
+		class="com.travelsky.ibe.client.DSG">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	
+	<bean name="fdBG"
+		class="com.travelsky.ibe.client.FD">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	<bean name="ffBG"
+		class="com.travelsky.ibe.client.FF">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	
+	<bean name="queueBG"
+		class="com.travelsky.ibe.client.QUEUE">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	
+	<bean name="skBG"
+		class="com.travelsky.ibe.client.SK">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	
+	<bean name="pnrManageBG"
+		class="com.travelsky.ibe.client.pnr.PnrManage">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	
+	<bean name="rtManageBG"
+		class="com.travelsky.ibe.client.pnr.RT">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+	<bean name="sellSeatBG"
+		class="com.travelsky.ibe.client.pnr.SellSeat">
+		<replaced-method name="query" replacer="ibeClientDecorate">
+		</replaced-method>
+	</bean>
+	
+</beans>
