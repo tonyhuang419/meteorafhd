@@ -7,11 +7,13 @@ import com.travelsky.ibe.client.AvResult;
 
 public interface IAVDecorate {
 
-	public AvResult getAvailability(String org, String dst, Date date) throws Exception;
+	//implements method
+	public AvResult getAvailability(String airline, Date date) 
+	throws Exception;
 
-	public AvResult getAvailability(String airline, Date date) throws Exception;
-
+	//implements method
 	public AvResult getAvailability(String org, String dst, Date date, 
-			String airline, boolean direct, boolean e_ticket) throws Exception;
+			String airline, boolean direct, boolean e_ticket) 
+	throws Exception;
 
 }

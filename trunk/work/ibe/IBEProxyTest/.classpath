@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="ibeclient.jar"/>
 	<classpathentry kind="lib" path="spring.jar"/>
 	<classpathentry kind="lib" path="commons-logging.jar"/>
+	<classpathentry kind="lib" path="src/cglib-2.1_3.jar"/>
+	<classpathentry kind="lib" path="src/asm-1.5.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
