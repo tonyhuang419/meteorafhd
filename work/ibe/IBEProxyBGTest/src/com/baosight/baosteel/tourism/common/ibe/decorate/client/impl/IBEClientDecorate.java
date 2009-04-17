@@ -13,6 +13,7 @@ public class IBEClientDecorate implements MethodReplacer {
 	public Object reimplement(Object obj, Method method, Object[] args)
 	throws Throwable {
 		/////////print info///////////////
+		System.out.println("has called the replacement method");
 		String s[] = (String[])args[0];
 		for(int i=0;i<s.length;i++){
 			System.out.println(s[i]);
