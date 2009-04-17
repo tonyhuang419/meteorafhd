@@ -22,44 +22,54 @@ public class Test {
 		for(int k=0;k<100;k++){
 			System.out.println("av.............................................");
 			AV av = (AV)content.getBean("avBG");
-			AvResult avr  =  av.getAvailability("SHA","PEK", new Date());
+			//NYC
+			AvResult avr  =  av.getAvailability("SHA","NYC", new Date());
 			System.out.println(avr.getItemamount());
 			for (int j = 0; j < avr.getItemamount(); j++) {
 				AvItem item = avr.getItem(j);
 				for (int i = 0; i < item.getSegmentnumber(); i++) {
 					AvSegment seg = item.getSegment(i);
-					System.out.print("Airline:" + seg.getAirline() + "|");
-					System.out.print("Arridate:" + seg.getArridate() + "|");
-					System.out.print("Arridate:" + seg.getArridate() + "|");
-					System.out.print("Depdate:" + seg.getDepdate() + "|");
-					System.out.print("Deptime:" + seg.getDeptime() + "|");
+					System.out.println("............");
+					if (seg.getOrgcity().equals("SHA")
+							&& seg.getDstcity().equals("NYC")) {
+						System.out.print("Airline:" + seg.getAirline() + "|");
+						System.out.print("Arridate:" + seg.getArridate() + "|");
+						System.out.print("Arridate:" + seg.getArridate() + "|");
+						System.out.print("Depdate:" + seg.getDepdate() + "|");
+						System.out.print("Deptime:" + seg.getDeptime() + "|");
 
-					System.out.print("Dstcity:" + seg.getDstcity() + "|");
-					System.out.print("Orgcity:" + seg.getOrgcity() + "|");
-					System.out.print("Planestyle:" + seg.getPlanestyle() + "|");
-					System.out.print("Selectedclass:" + seg.getSelectedclass() + "|");
-					System.out.print("Stopnumber:" + seg.getStopnumber() + "|");
-					System.out.print("CangweiinfoOfSort:" + seg.getCangweiinfoOfSort('A')
-							+ "|");
-					System.out.print("CangweiinfoOf" + seg.getCangweiinfoOf('F')
-							+ "|");
-					System.out.println("CangweiCodeSort"
-							+ seg.getCangweiCodeSort(1));
+						System.out.print("Dstcity:" + seg.getDstcity() + "|");
+						System.out.print("Orgcity:" + seg.getOrgcity() + "|");
+						System.out.print("Planestyle:" + seg.getPlanestyle() + "|");
+						System.out.print("Selectedclass:" + seg.getSelectedclass() + "|");
+						System.out.print("Stopnumber:" + seg.getStopnumber() + "|");
+						System.out.print("CangweiinfoOfSort:" + seg.getCangweiinfoOfSort('A')
+								+ "|");
+						System.out.print("CangweiinfoOf" + seg.getCangweiinfoOf('F')
+								+ "|");
+						System.out.println("CangweiCodeSort"
+								+ seg.getCangweiCodeSort(1));
+					}
+					else{
+						System.out.print(seg.getOrgcity()+"|");
+						System.out.println(seg.getDstcity());
+					}
 				}
 			}
 
 
 			System.out.println("sk.............................................");
 			SK sk = (SK)content.getBean("skBG");
-			SkResult skr = sk.getSchedule("PEK", "CAN", new Date());
+			SkResult skr = sk.getSchedule("SHA", "NYC", new Date());
+			System.out.println(skr.getItemamount());
 			System.out.print(skr.getDayf());
 			System.out.print(skr.getDayt());
 			for (int j = 0; j < skr.getItemamount(); j++) {
 				SkItem item = skr.getItem(j);
 				for (int i = 0; i < item.getSegmentnumber(); i++) {
 					SkSegment seg = item.getSegment(i);
-					if (seg.getOrgcity().equals("PEK")
-							&& seg.getDstcity().equals("CAN")) {
+					if (seg.getOrgcity().equals("SHA")
+							&& seg.getDstcity().equals("NYC")) {
 						System.out.print(seg.getOrgcity() + "|");
 						System.out.print(seg.getDstcity() + "|");
 						System.out.print(seg.getAirline() + "|");
