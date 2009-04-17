@@ -2,9 +2,9 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"   
     "http://www.springframework.org/dtd/spring-beans.dtd"> 
 <beans>
+	 
 	 <bean id="ibeService" class="com.ibeproxy.client.impl.IBEClientService"/>  
             
-	 <!-- 远程服务 -->  
 	 <bean name="/ibeClientService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
 	     <property name="service" ref="ibeService"/>  
 	     <property name="serviceInterface">  
