@@ -7,22 +7,37 @@
 	<servlet>
 		<servlet-name>HessianServlet</servlet-name>
 		<servlet-class> com.caucho.hessian.server.HessianServlet</servlet-class>
-		
 		<init-param>
 			<param-name>home-class</param-name>
 			<param-value>hessian.BasicService</param-value>
 		</init-param>
-		
 		<init-param>
 			<param-name>home-api</param-name>
 			<param-value>hessian.IBasic</param-value>
 		</init-param>
-		
+	</servlet>
+	
+	<servlet>
+		<servlet-name>IBEClientServlet</servlet-name>
+		<servlet-class> com.caucho.hessian.server.HessianServlet</servlet-class>
+		<init-param>
+			<param-name>home-class</param-name>
+			<param-value>com.ibeproxy.client.impl.IBEClientService</param-value>
+		</init-param>
+		<init-param>
+			<param-name>home-api</param-name>
+			<param-value>com.ibeproxy.client.IIBEClientService</param-value>
+		</init-param>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>HessianServlet</servlet-name>
 		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>IBEClientServlet</servlet-name>
+		<url-pattern>/ibeClientService</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
