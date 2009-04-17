@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Fri Apr 17 09:31:18 CST 2009
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=IBEProxyBG_fat.jar
+manifest.mergeall=true
+manifest.mainclass=com.ibeproxy.StartIBEProxy
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
