@@ -52,9 +52,11 @@
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>com.caucho</groupId>
+			<groupId>hessian</groupId>
 			<artifactId>hessian</artifactId>
-			<version>3.1.5</version>
+			<version>3.2.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/hessian-3.2.1.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
