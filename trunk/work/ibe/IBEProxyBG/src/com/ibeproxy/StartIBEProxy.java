@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class StartProxy {
+public class StartIBEProxy {
 
 
 	protected Log logger = LogFactory.getLog(this.getClass());
@@ -17,7 +17,7 @@ public class StartProxy {
 	}
 
 	public static void main(String[] args) {
-		new StartProxy().startServer();
+		new StartIBEProxy().startServer();
 	}
 
 }

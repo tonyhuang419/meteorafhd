@@ -11,7 +11,7 @@ public class IBEClientService extends IBEClient implements IIBEClientService {
 	protected Log logger = LogFactory.getLog(this.getClass());
 	
 	public String query(String[] args) throws Exception{
-		logger.info("query has be called");
+		logger.info("query has be called,the args is:");
 		for(int i=0;i<args.length;i++){
 			logger.info(args[i]);
 		}
