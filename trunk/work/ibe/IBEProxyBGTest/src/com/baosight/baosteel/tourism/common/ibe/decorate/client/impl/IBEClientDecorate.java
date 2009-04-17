@@ -17,9 +17,9 @@ public class IBEClientDecorate implements MethodReplacer {
 		String s[] = (String[])args[0];
 		StringBuffer sb = new StringBuffer("");
 		for(int i=0;i<s.length;i++){
-			sb.append(s[i]);
+			sb.append(s[i]+",");
 		}
-		System.out.println(sb+",");
+		System.out.println(sb);
 		return ibeClientService.query(s);
 	}
 
