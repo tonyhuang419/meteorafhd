@@ -6,7 +6,7 @@
 	<bean id="ibeClientService"
 		class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl">
-			<value>http://127.0.0.1:8080/ibeclientService/ibeClientService</value>
+			<value>http://127.0.0.1:8080/ibeclientService/ibeService/ibeClientService</value>
 		</property>
 		<property name="serviceInterface">
 			<value>com.baosight.baosteel.tourism.common.ibe.proxy.client.IIBEClientService</value>
