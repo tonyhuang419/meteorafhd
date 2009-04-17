@@ -5,7 +5,7 @@
 	 
 	 <bean id="ibeService" class="com.ibeproxy.client.impl.IBEClientService"/>  
             
-	 <bean name="/ibeClientService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
+	 <bean id="ibeClientService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
 	     <property name="service" ref="ibeService"/>  
 	     <property name="serviceInterface">  
 	         <value>  
@@ -13,4 +13,12 @@
 	         </value>  
 	     </property>  
 	 </bean>  
+	 
+	 <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">  
+         <property name="mappings">  
+             <props>  
+                 <prop key="/ibeClientService">ibeClientService</prop>  
+             </props>  
+         </property>  
+     </bean>  
 </beans>  

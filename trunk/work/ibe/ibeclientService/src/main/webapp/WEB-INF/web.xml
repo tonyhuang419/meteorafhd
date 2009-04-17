@@ -37,7 +37,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>IBEClientServlet</servlet-name>
-		<url-pattern>/ibeClientService</url-pattern>
+		<url-pattern>/ibeService/ibeClientService</url-pattern>
 	</servlet-mapping>
 
 </web-app>
