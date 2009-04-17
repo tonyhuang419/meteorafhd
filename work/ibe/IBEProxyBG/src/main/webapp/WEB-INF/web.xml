@@ -3,41 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	
-<!--	<context-param>-->
-<!--		<param-name>contextConfigLocation</param-name>-->
-<!--		<param-value>-->
-<!--			applicationContext.xml,-->
-<!--			/WEB-INF/ibeService-servlet.xml</param-value>-->
-<!--	</context-param>-->
-<!---->
-<!--	<servlet>-->
-<!--		<servlet-name>ibeService</servlet-name>-->
-<!--		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-<!--		<load-on-startup>1</load-on-startup>  -->
-<!--	</servlet>-->
-<!---->
-<!--	<servlet-mapping>-->
-<!--		<servlet-name>ibeService</servlet-name>-->
-<!--		<url-pattern>/ibeService/*</url-pattern>-->
-<!--	</servlet-mapping>-->
 
-	<servlet>
-		<servlet-name>IBEClientServlet</servlet-name>
-		<servlet-class> com.caucho.hessian.server.HessianServlet</servlet-class>
-		<init-param>
-			<param-name>home-class</param-name>
-			<param-value>com.ibeproxy.client.impl.IBEClientService</param-value>
-		</init-param>
-		<init-param>
-			<param-name>home-api</param-name>
-			<param-value>com.ibeproxy.client.IIBEClientService</param-value>
-		</init-param>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>IBEClientServlet</servlet-name>
-		<url-pattern>/ibeClientService</url-pattern>
-	</servlet-mapping>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:ApplicationContext.xml
+		</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 </web-app>
