@@ -15,10 +15,11 @@ public class IBEClientDecorate implements MethodReplacer {
 		/////////print info///////////////
 		System.out.println("has called the replacement method");
 		String s[] = (String[])args[0];
+		StringBuffer sb = new StringBuffer("");
 		for(int i=0;i<s.length;i++){
-			System.out.println(s[i]);
+			sb.append(s[i]);
 		}
-
+		System.out.println(sb+",");
 		return ibeClientService.query(s);
 	}
 

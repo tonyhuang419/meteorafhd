@@ -12,9 +12,11 @@ public class IBEClientService extends IBEClient implements IIBEClientService {
 	
 	public String query(String[] args) throws Exception{
 		logger.info("query has be called,the args is:");
+		StringBuffer sb = new StringBuffer("");
 		for(int i=0;i<args.length;i++){
-			logger.info(args[i]);
+			sb.append(args[i]+",");
 		}
+		logger.info(sb);
 		return super.query(args);
 	}
 
