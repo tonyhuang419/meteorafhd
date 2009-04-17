@@ -11,7 +11,8 @@
 				</value>
 		</property>
 		<property name="serviceUrl">
-			<value>rmi://10.60.12.192:2222/ibeClientService</value>
+<!--		10.60.12.192:2222-->
+			<value>rmi://127.0.0.1:8888/ibeClientService</value>
 		</property>
 	</bean>
 		
