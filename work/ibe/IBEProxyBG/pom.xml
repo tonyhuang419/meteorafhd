@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com</groupId>
-	<artifactId>ibeclientService</artifactId>
+	<artifactId>IBEProxyBG</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ibeclientService</name>
+	<name>IBEProxyBG</name>
 	<url>http://maven.apache.org</url>
 	<build>
 		<plugins>
