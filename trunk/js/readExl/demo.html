@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+function demo(){
+	var filePath= "C:/demo/demo.xls";
+	var oXL = new ActiveXObject("Excel.application"); 
+	var oWB = oXL.Workbooks.open(filePath);
+	oWB.worksheets(1).select(); 
+	var oSheet = oWB.ActiveSheet;
+	
+	var str="";
+	for(var i=1;i<4;i++){
+		for(var j=1;j<5;j++){
+			if( oSheet.Cells(i,j).value != undefined){
+				str = str + oSheet.Cells(i,j).value + ","
+				//alert(oSheet.Cells(i,j).value);
+			}
+		}
+		alert(str);
+		str="";
+	}
+	oXL.Quit();
+}
+</script>
+</head>
+<body>
+<input type="button" onclick="demo()" value="É§ÈÅÎÒ">
+</body>
+</html>
