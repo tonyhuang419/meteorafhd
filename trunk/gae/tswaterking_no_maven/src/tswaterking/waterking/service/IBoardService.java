@@ -9,6 +9,6 @@ public interface IBoardService {
 	public Long saveOrUpdate(Board board);
 
 	public void delete(Long boardID);
-
+	
 
 }
