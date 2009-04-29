@@ -8,43 +8,45 @@
 	<context:component-scan base-package="tswaterking.waterking" />
 
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
-
-	<bean id="pmf"
-		class="org.springframework.orm.jdo.LocalPersistenceManagerFactoryBean">
-		<property name="jdoProperties">
-			<props>
-				<prop key="javax.jdo.PersistenceManagerFactoryClass">
-					org.datanucleus.store.appengine.jdo.DatastoreJDOPersistenceManagerFactory
-        </prop>
-				<prop key="javax.jdo.option.ConnectionURL">
-					appengine
-        </prop>
-				<prop key="javax.jdo.option.NontransactionalRead">
-					true
-        </prop>
-				<prop key="javax.jdo.option.NontransactionalWrite">
-					true
-        </prop>
-				<prop key="javax.jdo.option.RetainValues">
-					true
-        </prop>
-				<prop key="datanucleus.appengine.autoCreateDatastoreTxns">
-					true
-        </prop>
-			</props>
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/">
+		</property>
+		<property name="suffix" value=".jsp">
 		</property>
 	</bean>
 
-	<bean id="datastoreService"
-		class="com.google.appengine.api.datastore.DatastoreServiceFactory"
-		factory-method="getDatastoreService" />
+<!--	<bean id="pmf"-->
+<!--		class="org.springframework.orm.jdo.LocalPersistenceManagerFactoryBean">-->
+<!--		<property name="jdoProperties">-->
+<!--			<props>-->
+<!--				<prop key="javax.jdo.PersistenceManagerFactoryClass">-->
+<!--					org.datanucleus.store.appengine.jdo.DatastoreJDOPersistenceManagerFactory-->
+<!--				</prop>-->
+<!--				<prop key="javax.jdo.option.ConnectionURL">-->
+<!--					appengine-->
+<!--        </prop>-->
+<!--				<prop key="javax.jdo.option.NontransactionalRead">-->
+<!--					true-->
+<!--        </prop>-->
+<!--				<prop key="javax.jdo.option.NontransactionalWrite">-->
+<!--					true-->
+<!--        </prop>-->
+<!--				<prop key="javax.jdo.option.RetainValues">-->
+<!--					true-->
+<!--        </prop>-->
+<!--				<prop key="datanucleus.appengine.autoCreateDatastoreTxns">-->
+<!--					true-->
+<!--        </prop>-->
+<!--			</props>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!---->
+<!--	<bean id="datastoreService"-->
+<!--		class="com.google.appengine.api.datastore.DatastoreServiceFactory"-->
+<!--		factory-method="getDatastoreService" />-->
+<!---->
+<!---->
+	<bean id="boardService" class="tswaterking.waterking.service.impl.BoardService">
+	</bean>
 
-
-  <bean id="boardService"
-        class="tswaterking.waterking.service.impl.BoardService">
-    <property name="persistenceManagerFactory" ref="pmf"/>
-  </bean>
-  
 </beans>
