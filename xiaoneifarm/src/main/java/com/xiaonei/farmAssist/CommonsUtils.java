@@ -11,6 +11,9 @@ public class CommonsUtils {
 
 	public static String getFarmKey(){
 		CommonsUtils commonsUtils = new CommonsUtils();
+		System.out.println(commonsUtils.serverTime());
+		System.out.println(commonsUtils.encodeKey());
+		//15l3h4kh
 		return  commonsUtils.hash(commonsUtils.serverTime() + commonsUtils.encodeKey());
 	}
 
@@ -202,11 +205,10 @@ public class CommonsUtils {
 	        int g = (rgb & 0xFF00) >> 8;
 	        int b = (rgb & 0xFF); 
 	        String rgbStr = r+""+g+b;
-	        System.out.println(rgbStr);
-	        Integer i = new Integer(rgbStr);
-//	        System.out.println(i);
-	        System.out.println(i.toString(i,23));
-	        return i.toString(i,23);
+	        Long num = Long.parseLong(rgbStr,16);
+//	        System.out.println(num);
+//	        System.out.println(Long.toString(num, 23));
+	        return Long.toString(num, 23);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
