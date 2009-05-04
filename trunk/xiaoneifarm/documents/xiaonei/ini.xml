@@ -1,0 +1,137 @@
+<main>
+<postUrl url="http://xn.hf.fminutes.com/api.php?"/>
+<!-- http请求地址 -->
+<loading url="http://xnimg.cn/xcube/app/23163/xn36/module/loading.swf?v=2"/>
+<folder url="http://xnimg.cn/xcube/app/23163/xn36/module/ui/"/>
+<version value="xiaonei" loginurl="http://apps.xiaonei.com/happyfarm"/>
+<openControl>
+<!-- 功能开放控制 -->
+<item name="tool" open="true"/>
+<!-- 道具 -->
+<item name="pack" open="true"/>
+<!-- 好友背包 -->
+</openControl>
+<security host="222.73.180.73" port="3333"/>
+<moduleList>
+<!-- 模块列表 -->
+<module name="main" url="http://xnimg.cn/xcube/app/23163/xn36/module/Main.swf?v=6" statusText="加载主文件..." size="176128">
+<material url="http://xnimg.cn/xcube/app/23163/xn36/module/ui/main/farmui1.swf?v=6" statusText="加载UI素材..." size="122880"/>
+<material url="http://xnimg.cn/xcube/app/23163/xn36/module/ui/main/crops.swf?v=0" statusText="加载作物素材..." size="888832"/>
+<material url="http://xnimg.cn/xcube/app/23163/xn36/module/ui/main/task.swf?v=6" statusText="加载UI素材..." size="90112"/>
+<material url="http://xnimg.cn/xcube/app/23163/xn36/module/ui/main/pepsico.swf?v=2" statusText="加载UI素材..." size="90112"/>
+</module>
+<module name="farm" url="http://xnimg.cn/xcube/app/23163/xn36/module/Farm.swf?v=6" size="77824"> </module>
+</moduleList>
+<crops sort="2,3,4,5,6,7,8,9,10,11,1,14,15,18,19,13,23,26,27,29">
+<crop id="1" className="Strawberry" offsetX="35" offsetY="-60" seed="StrawberrySeed" harvestNum="3">
+<insect position="0,0,0,0,0,0|75,-5,74,-35,109,-31|75,-10,72,-50,110,-45|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="36000,75600,115200,158400,205205,90000000"/>
+</crop>
+<crop id="2" className="Radish" offsetX="35" offsetY="-63" seed="RadishSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|74,8,92,2,109,33|74,8,92,2,109,33|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,成熟,成熟,已成熟"/>
+<cropGrow value="7200,14400,25200,36000,36005,90000000"/>
+</crop>
+<crop id="3" className="Carrot" offsetX="35" offsetY="-63" seed="CarrotSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|74,8,92,2,109,33|74,8,92,2,109,33|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,成熟,成熟,已成熟"/>
+<cropGrow value="10800,25200,39600,54000,54005,90000000"/>
+</crop>
+<crop id="4" className="Maize" offsetX="0" offsetY="0" seed="MaizeSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|67,-3,70,-19,112,-3|64,-12,62,-36,117,2|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="14400,28800,43200,57600,72005,90000000"/>
+</crop>
+<crop id="5" className="Potato" offsetX="0" offsetY="0" seed="PotatoSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|45,0,99,-10,129,-24|45,-5,99,-15,129,-29|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="18000,36000,54000,72000,90005,90000000"/>
+</crop>
+<crop id="6" className="Melongena" offsetX="0" offsetY="0" seed="MelongenaSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|64,-4,45,-19,103,-17|64,-3,48,-17.5,128,-6|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="18000,36000,57600,82800,108005,90000000"/>
+</crop>
+<crop id="7" className="Tomato" offsetX="0" offsetY="0" seed="TomatoSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|100,-50,78,-19,125,-30|100,-50,80,-24,125,-30|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="18000,36000,54000,72000,90005,90000000"/>
+</crop>
+<crop id="8" className="Pea" offsetX="0" offsetY="0" seed="PeaSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|65,13,92,-11,120,-15|65,13,92,-11,120,-15|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="14400,28800,46800,68400,93605,90000000"/>
+</crop>
+<crop id="9" className="Chili" offsetX="0" offsetY="0" seed="ChiliSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|65,13,92,-11,120,-15|65,13,92,-11,120,-15|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="28800,57600,86400,115200,144005,90000000"/>
+</crop>
+<crop id="10" className="Pumpkin" offsetX="0" offsetY="0" seed="PumpkinSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|65,13,92,-11,120,-15|65,13,92,-11,120,-15|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="32400,64800,97200,129600,162005,90000000"/>
+</crop>
+<crop id="11" className="Apple" offsetX="0" offsetY="0" seed="AppleSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|65,13,92,-11,120,-15|65,13,92,-11,120,-15|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="28800,57600,86400,115200,144005,90000000"/>
+</crop>
+<crop id="13" className="Grape" offsetX="0" offsetY="0" seed="GrapeSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|65,-13,92,-26,120,-30|65,-13,92,-26,120,-30|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="39600,79200,126000,176400,226805,90000000"/>
+</crop>
+<crop id="14" className="Watermelon" offsetX="0" offsetY="0" seed="WatermelonSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|105,44,70,13,119,13|105,44,70,13,119,13|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="36000,79200,122400,165600,216005,90000000"/>
+</crop>
+<crop id="15" className="Banana" offsetX="0" offsetY="0" seed="BananaSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|63,-6,80,-30,111,-13|63,-6,80,-30,111,-13|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="43200,90000,136800,183600,230405,90000000"/>
+</crop>
+<crop id="18" className="Peach" offsetX="0" offsetY="0" seed="PeachSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|71,-24,69,-63,116,-53|71,-24,69,-63,116,-53|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="43200,90000,140400,190800,241205,90000000"/>
+</crop>
+<crop id="19" className="Orange" offsetX="0" offsetY="0" seed="OrangeSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|60,-7,80,-26,105,-10|60,-7,80,-26,105,-10|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="50400,104400,158400,212400,266405,90000000"/>
+</crop>
+<crop id="23" className="Pomegranate" offsetX="0" offsetY="0" seed="PomegranateSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|55,-30,92,-11,120,-15|55,-30,92,-11,120,-15|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="36000,79200,126000,176400,230405,90000000"/>
+</crop>
+<crop id="26" className="Pomelo" offsetX="0" offsetY="0" seed="PomeloSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|54,-5,87,-27,130,-21|54,-5,87,-27,130,-21|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="43200,90000,140400,190800,244805,90000000"/>
+</crop>
+<crop id="27" className="Pineapple" offsetX="0" offsetY="0" seed="PineappleSeed" harvestNum="4">
+<insect position="0,0,0,0,0,0|68,23,95,25,126,8|68,23,95,25,126,8|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="43200,93600,147600,201600,255605,90000000"/>
+</crop>
+<crop id="29" className="Coconut" offsetX="0" offsetY="0" seed="CoconutSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|61,-52,96,-30,120,-12|61,-52,96,-30,120,-12|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="39600,86400,136800,190800,252005,90000000"/>
+</crop>
+<crop id="37" className="PepsicoPotato" offsetX="0" offsetY="0" seed="PepsicoPotatoSeed" harvestNum="2">
+<insect position="0,0,0,0,0,0|45,0,99,-10,129,-24|45,-5,99,-15,129,-29|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="28800,57600,86400,118800,151205,90000000"/>
+</crop>
+<crop id="1002" className="lays" offsetX="0" offsetY="0" seed="LaysChips" harvestNum="2">
+<insect position="0,0,0,0,0,0|45,0,99,-10,129,-24|45,-5,99,-15,129,-29|0,0,0,0,0,0"/>
+<nextText value="种子,发芽,小叶子,大叶子,开花,成熟,已成熟"/>
+<cropGrow value="18000,36000,54000,72000,90005,90000000"/>
+</crop>
+</crops>
+</main>
