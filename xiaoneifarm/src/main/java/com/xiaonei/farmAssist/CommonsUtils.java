@@ -205,7 +205,9 @@ public class CommonsUtils {
 	        int g = (rgb & 0xFF00) >> 8;
 	        int b = (rgb & 0xFF); 
 	        String rgbStr = r+""+g+b;
+	        System.out.println(rgbStr);
 	        Long num = Long.parseLong(rgbStr,16);
+	        System.out.println(num);
 //	        System.out.println(num);
 //	        System.out.println(Long.toString(num, 23));
 	        return Long.toString(num, 23);
