@@ -21,7 +21,9 @@
 </libraryPath>
 <sourceAttachmentPath/>
 </compiler>
-<applications/>
+<applications>
+<application path="ttttt.as"/>
+</applications>
 <modules/>
 <buildCSSFiles/>
 </actionScriptProperties>
