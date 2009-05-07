@@ -11,8 +11,8 @@ public class CommonsUtils {
 
 	public static String getFarmKey(){
 		CommonsUtils commonsUtils = new CommonsUtils();
-		System.out.println(commonsUtils.serverTime());
-		System.out.println(commonsUtils.encodeKey());
+		//		System.out.println(commonsUtils.serverTime());
+		//		System.out.println(commonsUtils.encodeKey());
 		//15l3h4kh
 		return  commonsUtils.hash(commonsUtils.serverTime() + commonsUtils.encodeKey());
 	}
@@ -200,28 +200,32 @@ public class CommonsUtils {
 		BufferedImage src;
 		try {
 			src = ImageIO.read(new File("src\\main\\resources\\image1.jpg"));
-	        Integer rgb = src.getRGB(3, 5);
-	        int r = (rgb & 0xFF0000) >> 16;
-	        int g = (rgb & 0xFF00) >> 8;
-	        int b = (rgb & 0xFF); 
-	        String rgbStr = r+""+g+b;
-	        System.out.println(rgbStr);
-	        Long num = Long.parseLong(rgbStr,16);
-	        System.out.println(num);
-//	        System.out.println(num);
-//	        System.out.println(Long.toString(num, 23));
-	        return Long.toString(num, 23);
+			Integer rgb = src.getRGB(3, 5);
+			int r = (rgb & 0xFF0000) >> 16;
+			int g = (rgb & 0xFF00) >> 8;
+			int b = (rgb & 0xFF); 
+			System.out.println(Integer.toHexString(r));
+			System.out.println(Integer.toHexString(g));
+			System.out.println(Integer.toHexString(b));
+		//	        System.out.println(rgbStr);
+		//	        Long num = Long.parseLong(rgbStr,16);
+		Integer i  =  0xFF2e301a;
+		String str=i.parseInt(i,23);
+		System.out.println(str);
+		return str;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return "";
 	}
-	
+
 
 	public static void main(String[] args){
-//		int i=0;
-//		System.out.println(~i);
+		//		int i=0;
+		//		System.out.println(~i);
 		String key = new CommonsUtils().getFarmKey();
 		System.out.println(key);
+
+
 	}
 }
