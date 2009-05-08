@@ -14,7 +14,8 @@ package {
 			var _timeValue:* = MData.getInstance().mainData.serverTime;
             var farmKey:* = MD5.hash(_timeValue + SecurityKey.encodeKey);
 			var text:TextField = new TextField();
-			text.text = SecurityKey.encodeKey;
+			trace(SecurityKey.encodeKey+"....."+farmKey);
+			text.text = farmKey;
 			this.addChild(text);
 		}
 	}
