@@ -4,6 +4,14 @@ http://xn.hf.fminutes.com/api.php?mod=friend&farmKey=2a67efcad7d1e7817a8d0e25317
 通过获取菜地情况
 http://xn.hf.fminutes.com/api.php?mod=user&act=run&flag=1&farmKey=8eae0084bc735ef5736d000c24ac73c2&farmTime=1238846698
 
+访问好友的方法在
+类：MainCommand
+方法：getCropStatus
+会提交一个POST	请求
+post内容为：
+Parameter:ownerId 
+value:好友ID
+
 
 
 好友请求生成：
