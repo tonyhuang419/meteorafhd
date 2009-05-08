@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>增加Table行</title>
+</head>
+<script type="text/javascript">
+    Ker={}
+    /*cookie方法*/
+Ker.setCookie=function(name,value){
+    var Days = 30; 
+    var exp  = new Date();    
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+/*cookie方法*/
+Ker.getCookie=function(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+
+}
+/*cookie方法*/
+Ker.removeCookie=function(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=Ker.getCookie(name);
+    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+}
+
+var count=0;
+function addCount(){
+  Ker.setCookie('num',++count);
+}
+
+function page_onload(){
+	var count = Ker.getCookie('num');
+	alert(count)
+	if(count){
+		for(var i=0;i<count;i++){
+			var newTr = testTbl.insertRow(-1);
+			var newTd0 = newTr.insertCell(-1);
+			var newTd1 = newTr.insertCell(-1);
+			newTd0.innerHTML = '<input type=checkbox id="box4">';
+			newTd1.innerHTML= '<input type="text">';
+		}
+ 	 }
+	Ker.removeCookie(num);
+}
+
+
+
+
+function addRow(obj){
+//添加一行
+var newTr = testTbl.insertRow(-1);
+//添加两列
+var newTd0 = newTr.insertCell(-1);
+var newTd1 = newTr.insertCell(-1);
+//设置列内容和属性
+newTd0.innerHTML = '<input type=checkbox id="box4">';
+//newTd1.innerText= '<input type="text">';
+newTd1.innerHTML= '<input type="text">';
+addCount();
+}
+</script>
+
+<body  onload="javascript:page_onload()">
+<table id="testTbl" border=1>
+<tr id="tr1">
+<td ><input type=checkbox id="box1"></td>
+<td id="b">第一行</td>
+</tr>
+<tr id="tr2">
+<td ><input type=checkbox id="box2"></td>
+<td id="b">第二行</td>
+</tr>
+<tr id="tr3">
+<td ><input type=checkbox id="box3"></td>
+<td>第三行</td>
+</tr>
+</table>
+<br />
+<input type="submit" name="Submit" value="AddRow" onclick="addRow();">
+</body>
+</html>
