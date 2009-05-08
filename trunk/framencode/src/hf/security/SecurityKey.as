@@ -27,7 +27,7 @@
                 return _encodeKey;
             }
 //           _loc_1 = new KEYJPG();
-			var pix:uint = new uint(0xFF464826);
+			var pix:uint = new uint(0xFF2e301a);
             _loc_2 = pix.toString(23);
 
 //			_loader1.load(new URLRequest("c:\image.jpg"));

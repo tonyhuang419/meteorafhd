@@ -14,7 +14,7 @@
         {
             var _loc_4:int;
             var _loc_5:int;
-            var _loc_3:String;
+            var _loc_3:String="";
             if (param2)
             {
                 _loc_4 = 0;
