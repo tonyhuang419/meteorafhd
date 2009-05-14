@@ -1,11 +1,6 @@
 package com.xiaonei.farmAssist;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Date;
-
-import javax.imageio.ImageIO;
 
 public class CommonsUtils {
 
@@ -197,10 +192,7 @@ public class CommonsUtils {
 		return this.toHex(_loc_2) + this.toHex(_loc_3) + this.toHex(_loc_4) + this.toHex(_loc_5);
 	}
 
-
 	public static void main(String[] args){
-		//		int i=0;
-		//		System.out.println(~i);
 		String key = new CommonsUtils().getFarmKey();
 		System.out.println(key);
 
