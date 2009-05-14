@@ -1,18 +1,18 @@
-package com.xiaonei.farmAssist;
+package com.xiaonei.farmAssist.Utils;
 
 import java.util.Date;
 
-public class CommonsUtils {
-
-	public static String getFarmKey(){
+public class FramKeyUtil {
+	
+	public String getFarmKey(){
 		CommonsUtils commonsUtils = new CommonsUtils();
 		//15l3h4kh
-		System.out.println(commonsUtils.serverTime());
-		return  commonsUtils.hash(commonsUtils.serverTime() + "15l3h4kh");
+//		System.out.println(this.serverTime());
+		return  this.hash(this.serverTime() + "15l3h4kh");
 	}
 
 
-	public long serverTime() {
+	private long serverTime() {
 		return new Date().getTime() / 1000; 
 	}
 
@@ -85,7 +85,7 @@ public class CommonsUtils {
 		return transform(this.i(param2, param3, param4), param1, param2, param3, param4, param5, param6, param7);
 	}
 
-	private static int[] createBlocks(String str){
+	private int[] createBlocks(String str){
 		int[] _loc_2 = new int[16];
 		int _loc_3 = str.length() * 8;
 		int _loc_4=0;
@@ -190,12 +190,5 @@ public class CommonsUtils {
              _loc_12 = _loc_12 + 16;
 		}
 		return this.toHex(_loc_2) + this.toHex(_loc_3) + this.toHex(_loc_4) + this.toHex(_loc_5);
-	}
-
-	public static void main(String[] args){
-		String key = new CommonsUtils().getFarmKey();
-		System.out.println(key);
-
-
 	}
 }
