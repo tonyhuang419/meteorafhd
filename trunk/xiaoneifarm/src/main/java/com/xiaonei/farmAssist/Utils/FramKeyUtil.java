@@ -5,14 +5,14 @@ import java.util.Date;
 public class FramKeyUtil {
 	
 	public String getFarmKey(){
-		CommonsUtils commonsUtils = new CommonsUtils();
+//		CommonsUtils commonsUtils = new CommonsUtils();
 		//15l3h4kh
 //		System.out.println(this.serverTime());
 		return  this.hash(this.serverTime() + "15l3h4kh");
 	}
 
 
-	private long serverTime() {
+	public long serverTime() {
 		return new Date().getTime() / 1000; 
 	}
 

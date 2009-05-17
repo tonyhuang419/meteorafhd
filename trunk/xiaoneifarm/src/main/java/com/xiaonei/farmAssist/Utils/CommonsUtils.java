@@ -3,6 +3,7 @@ package com.xiaonei.farmAssist.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.gargoylesoftware.htmlunit.TextPage;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -14,7 +15,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 public class CommonsUtils {
 
 	protected static Log logger = LogFactory.getLog(CommonsUtils.class);
-	
 	
 	public  WebClient login(String loginName , String password){
 		logger.info("login:"+ loginName);
@@ -53,15 +53,61 @@ public class CommonsUtils {
 		}
 		return webClient;
 	}
+	
+	public WebClient loginFram(WebClient webClient){
+		try{
+			/**
+			 * 只有登陆农场之后才能获得FarmlandStatus
+			 * 所以这里就需要setTimeout一下
+			 */
+			webClient.setTimeout(500);
+			HtmlPage page = webClient.getPage(Utils.framUrl);
+			System.out.println(page.asText());
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
+		return webClient;
+	}
+	
+	public String getFarmlandStatus(WebClient webClient){
+		try{
+			HtmlPage htmlPage;
+			String url = this.getFarmlandStatusUrl();
+			System.out.println(url);
+			htmlPage = webClient.getPage(url);
+			System.out.println("asText"+htmlPage.asText());
+			return htmlPage.asText();
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
+		return "";
+	}
         
+	public Long getfarmTime(){
+		FramKeyUtil fu = new FramKeyUtil();
+		return fu.serverTime();
+	}
 	public String getFramKey(){
 		FramKeyUtil fu = new FramKeyUtil();
 		return fu.getFarmKey();
 	}
+	
+	public String getFarmlandStatusUrl(){
+		StringBuffer sb = new StringBuffer(Utils.farmlandStatusUrl);
+		sb.append("&farmKey=").append(this.getFramKey()).
+			append("&farmTime=").append(this.getfarmTime()).
+			append("&ownerId=240179669").append("&inuId=");
+		return sb.toString();
+	}
+	
 
 	public static void main(String[] args){
 		CommonsUtils cu = new CommonsUtils();
 //		System.out.println(cu.getFramKey());
-		cu.login(Utils.username, Utils.password);
+//		System.out.println(cu.getFramKey());
+//		System.out.println(cu.getFarmlandStatusUrl());
+		WebClient webClient = cu.login(Utils.username, Utils.password);
+		webClient = cu.loginFram(webClient);
+		System.out.println(cu.getFarmlandStatus(webClient));
 	}
 }
