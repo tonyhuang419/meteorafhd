@@ -3,7 +3,6 @@ package com.xiaonei.farmAssist.Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.gargoylesoftware.htmlunit.TextPage;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -54,25 +53,25 @@ public class CommonsUtils {
 		return webClient;
 	}
 	
-	public WebClient loginFram(WebClient webClient){
+	public String getFarmlandStatus(WebClient webClient){
 		try{
-			/**
-			 * 只有登陆农场之后才能获得FarmlandStatus
-			 * 所以这里就需要setTimeout一下
-			 */
-			webClient.setTimeout(500);
-			HtmlPage page = webClient.getPage(Utils.framUrl);
-			System.out.println(page.asText());
+			logger.info("get farmlandStatus"); 
+			HtmlPage htmlPage;
+			String url = this.getFarmlandStatusUrl();
+			System.out.println(url);
+			htmlPage = webClient.getPage(url);
+			return htmlPage.asText();
 		}catch( Exception e ){
 			e.printStackTrace();
 		}
-		return webClient;
+		return "";
 	}
 	
-	public String getFarmlandStatus(WebClient webClient){
+	public String getFramFriendList(WebClient webClient){
 		try{
+			logger.info("get fram friend list");
 			HtmlPage htmlPage;
-			String url = this.getFarmlandStatusUrl();
+			String url = this.getFramFriendListUrl();
 			System.out.println(url);
 			htmlPage = webClient.getPage(url);
 			System.out.println("asText"+htmlPage.asText());
@@ -83,20 +82,45 @@ public class CommonsUtils {
 		return "";
 	}
         
-	public Long getfarmTime(){
+	
+	private WebClient loginFram(WebClient webClient){
+		try{
+			/**
+			 * 只有登陆农场之后才能获得FarmlandStatus
+			 * 所以这里就需要setTimeout一下
+			 */
+			logger.info("login fram");
+			webClient.setTimeout(500);
+			HtmlPage page = webClient.getPage(Utils.framUrl);
+//			System.out.println(page.asText());
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
+		return webClient;
+	}
+	
+	private Long getfarmTime(){
 		FramKeyUtil fu = new FramKeyUtil();
 		return fu.serverTime();
 	}
-	public String getFramKey(){
+	private String getFramKey(){
 		FramKeyUtil fu = new FramKeyUtil();
 		return fu.getFarmKey();
 	}
 	
-	public String getFarmlandStatusUrl(){
+	private String getFarmlandStatusUrl(){
 		StringBuffer sb = new StringBuffer(Utils.farmlandStatusUrl);
 		sb.append("&farmKey=").append(this.getFramKey()).
 			append("&farmTime=").append(this.getfarmTime()).
 			append("&ownerId=240179669").append("&inuId=");
+		return sb.toString();
+	}
+	
+	private String getFramFriendListUrl(){
+		StringBuffer sb = new StringBuffer(Utils.framFriendListUrl);
+		sb.append("&farmKey=").append(this.getFramKey()).
+			append("&farmTime=").append(this.getfarmTime()).
+			append("&refresh=true").append("&inuId=");
 		return sb.toString();
 	}
 	
@@ -108,6 +132,7 @@ public class CommonsUtils {
 //		System.out.println(cu.getFarmlandStatusUrl());
 		WebClient webClient = cu.login(Utils.username, Utils.password);
 		webClient = cu.loginFram(webClient);
-		System.out.println(cu.getFarmlandStatus(webClient));
+		System.out.println(cu.getFramFriendList(webClient));
+//		System.out.println(cu.getFarmlandStatus(webClient));
 	}
 }
