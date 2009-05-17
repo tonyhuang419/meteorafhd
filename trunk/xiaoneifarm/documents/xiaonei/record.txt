@@ -1,5 +1,5 @@
 登录后用url获取好友
-http://xn.hf.fminutes.com/api.php?mod=friend&farmKey=2a67efcad7d1e7817a8d0e2531750865&farmTime=1238846444
+http://xn.hf.fminutes.com/api.php?mod=friend&farmKey=718add4a110e668d5baa49a597f0be96&farmTime=1242542357&inuId=
 
 通过获取菜地情况
 http://xn.hf.fminutes.com/api.php?mod=user&act=run&flag=1&farmKey=8eae0084bc735ef5736d000c24ac73c2&farmTime=1238846698
