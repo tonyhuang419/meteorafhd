@@ -14,7 +14,8 @@ Ker.setCookie=function(name,value){
 }
 /*cookie·½·¨*/
 Ker.getCookie=function(name){
-    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     alert("document.cookie:"+document.cookie);
+     var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
      if(arr != null) return unescape(arr[2]); return null;
 
 }
@@ -33,7 +34,7 @@ function addCount(){
 
 function page_onload(){
 	var count = Ker.getCookie('num');
-	alert(count)
+	alert("count:"+count)
 	if(count){
 		for(var i=0;i<count;i++){
 			var newTr = testTbl.insertRow(-1);
@@ -43,7 +44,7 @@ function page_onload(){
 			newTd1.innerHTML= '<input type="text">';
 		}
  	 }
-	Ker.removeCookie(num);
+	Ker.removeCookie("num");
 }
 
 
