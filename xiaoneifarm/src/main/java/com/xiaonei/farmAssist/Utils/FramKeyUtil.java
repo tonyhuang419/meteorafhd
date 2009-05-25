@@ -7,13 +7,19 @@ public class FramKeyUtil {
 	public static void main(String[] args){
 		FramKeyUtil framKeyUtil = new FramKeyUtil();
 		System.out.println(framKeyUtil.getFarmKey());
-		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(framKeyUtil.getFarmKey());
 	}
 	
 	public String getFarmKey(){
 //		CommonsUtils commonsUtils = new CommonsUtils();
 		//15l3h4kh
-//		System.out.println(this.serverTime());
+		System.out.println(this.serverTime());
 		return  this.hash(this.serverTime() + "15l3h4kh");
 	}
 
