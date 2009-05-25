@@ -90,7 +90,7 @@ public class CommonsUtils {
 			 * 所以这里就需要setTimeout一下
 			 */
 			logger.info("login fram");
-			webClient.setTimeout(500);
+			webClient.setTimeout(300);
 			HtmlPage page = webClient.getPage(Utils.framUrl);
 //			System.out.println(page.asText());
 		}catch( Exception e ){
@@ -132,7 +132,7 @@ public class CommonsUtils {
 //		System.out.println(cu.getFarmlandStatusUrl());
 		WebClient webClient = cu.login(Utils.username, Utils.password);
 		webClient = cu.loginFram(webClient);
-//		System.out.println(cu.getFramFriendList(webClient));
-		System.out.println(cu.getFarmlandStatus(webClient));
+		System.out.println(cu.getFramFriendList(webClient));
+//		System.out.println(cu.getFarmlandStatus(webClient));
 	}
 }

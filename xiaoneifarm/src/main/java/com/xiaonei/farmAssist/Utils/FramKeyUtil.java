@@ -4,6 +4,12 @@ import java.util.Date;
 
 public class FramKeyUtil {
 	
+	public static void main(String[] args){
+		FramKeyUtil framKeyUtil = new FramKeyUtil();
+		System.out.println(framKeyUtil.getFarmKey());
+		
+	}
+	
 	public String getFarmKey(){
 //		CommonsUtils commonsUtils = new CommonsUtils();
 		//15l3h4kh
