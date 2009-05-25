@@ -132,7 +132,7 @@ public class CommonsUtils {
 //		System.out.println(cu.getFarmlandStatusUrl());
 		WebClient webClient = cu.login(Utils.username, Utils.password);
 		webClient = cu.loginFram(webClient);
+		System.out.println(cu.getFarmlandStatus(webClient));
 		System.out.println(cu.getFramFriendList(webClient));
-//		System.out.println(cu.getFarmlandStatus(webClient));
 	}
 }
