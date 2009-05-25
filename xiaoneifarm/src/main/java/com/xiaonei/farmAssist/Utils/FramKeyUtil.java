@@ -33,6 +33,7 @@ public class FramKeyUtil {
 	}
 
 	public String toHex(int param1){
+		System.out.println("param1:"+param1);
 		String  hexChars = "0123456789abcdef";
 		Boolean param2 = false;
 		int _loc_4;
@@ -114,6 +115,7 @@ public class FramKeyUtil {
     }// end function
 
 	private String hash(String str){
+		System.out.println("str:"+str);
 		int _loc_6=0;
 		int _loc_7=0;
 		int _loc_8=0;
