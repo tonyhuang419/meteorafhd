@@ -33,9 +33,23 @@
     
     <action  path="/gologindy"
   	  type="com.teststruts.action.GoLoginDyAction" 
-      name="dyForm"
+      name="loginForm"
       scope="request">
       <forward name="gologin" path="/WEB-INF/jsp/logindy.jsp"  />
+    </action>
+    
+    <action  path="/jump"
+  	  type="com.teststruts.action.JumpAction" 
+      name="loginForm"
+      scope="request">
+      <forward name="jump" path="/jumpTwo.do"  />
+    </action>
+    
+    <action  path="/jumpTwo"
+  	  type="com.teststruts.action.JumpTwoAction" 
+      name="loginForm"
+      scope="request">
+      <forward name="gologin" path="/WEB-INF/jsp/login.jsp"  />
     </action>
     
   </action-mappings>
