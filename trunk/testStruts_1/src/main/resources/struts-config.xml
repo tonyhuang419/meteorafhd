@@ -43,6 +43,7 @@
       name="loginForm"
       scope="request">
       <forward name="jump" path="/jumpTwo.do"  />
+      <forward name="gologin" path="/WEB-INF/jsp/login.jsp"  />
     </action>
     
     <action  path="/jumpTwo"
