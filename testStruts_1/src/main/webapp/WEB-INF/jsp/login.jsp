@@ -12,6 +12,7 @@
 			password : <html:text property="password"/><html:errors property="password"/><br/>
 			<html:submit/><html:cancel/>
 		</html:form>
+		<a href="http://www.baidu.com">a</a>
 	</body>
 </html>
 

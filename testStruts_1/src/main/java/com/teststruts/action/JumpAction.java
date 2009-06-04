@@ -18,7 +18,7 @@ public class JumpAction extends DispatchAction  {
 		System.out.println("jump");
 		LoginForm loginForm = (LoginForm) form;
 		loginForm.setUsername("");
-		return mapping.findForward("jump");
+		return mapping.findForward("gologin");
 
 	}
 }
