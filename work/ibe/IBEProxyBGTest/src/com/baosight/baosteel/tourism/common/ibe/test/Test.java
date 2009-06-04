@@ -18,6 +18,7 @@ public class Test {
 		ExecutorService exec = Executors.newFixedThreadPool(2);
 		while(--x>0){
 			exec.execute(new UserThread( content ));
+			Thread.sleep(1000);
 		}
 		exec.shutdown();
 		
