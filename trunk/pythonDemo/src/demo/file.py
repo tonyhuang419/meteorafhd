@@ -24,5 +24,7 @@ try:
 except:
     print ('\nSome error/exception occurred.')
     # here, we are not exiting the program
+finally:
+     print ('finally')
 
 print ('Done') 
