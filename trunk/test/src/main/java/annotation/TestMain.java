@@ -3,7 +3,9 @@ package annotation;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-
+/**
+ * http://ttitfly.javaeye.com/blog/132019
+ */
 public class TestMain {
 	//可以通过AnnotatedElement来获得到Annotation类的信息。Method,Field等都是AnnotatedElement的实现类       
 	public static void main(String[] args) throws Exception {       
