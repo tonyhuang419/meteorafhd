@@ -1,5 +1,7 @@
 package guiceDemo.helloworld;
 
+import java.lang.reflect.Method;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -17,7 +19,7 @@ import com.google.inject.Injector;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		System.out.println("-----------普通方式----------");
 		MyModule myModule = new MyModule();
@@ -25,6 +27,9 @@ public class Test {
 		Client client= new Client();
 		in.injectMembers(client);
 		client.go();
+		
+		Method method = client.getClass().getMethod("injectService", null);
+		method.invoke(client, null);
 
 		System.out.println("--------Annotation方式-------");
 		

@@ -6,6 +6,9 @@ import com.google.inject.Scopes;
 
 public class MyModule implements Module {
 	public void configure(Binder binder) {
-		binder.bind(DemoService.class).to(DemoServiceImpl.class).in(Scopes.SINGLETON);
+		binder.bind(DemoService.class).
+		annotatedWith(Blue.class).
+		to(DemoServiceImpl.class).
+		in(Scopes.SINGLETON);
 	}
 }
