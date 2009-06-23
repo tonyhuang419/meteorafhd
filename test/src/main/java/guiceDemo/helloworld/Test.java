@@ -1,7 +1,5 @@
 package guiceDemo.helloworld;
 
-import java.lang.reflect.Method;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
