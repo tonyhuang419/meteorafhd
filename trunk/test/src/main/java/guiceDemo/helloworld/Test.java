@@ -28,8 +28,8 @@ public class Test {
 		in.injectMembers(client);
 		client.go();
 		
-		Method method = client.getClass().getMethod("injectService", null);
-		method.invoke(client, null);
+//		Method method = client.getClass().getMethod("injectService", null);
+//		method.invoke(client, null);
 
 		System.out.println("--------Annotation方式-------");
 		
