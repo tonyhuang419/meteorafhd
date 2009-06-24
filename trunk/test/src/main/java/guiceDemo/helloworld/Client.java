@@ -42,16 +42,22 @@ public class Client {
 	 */
 	@Inject
 	@Named("username")
-	private int username;
+	private String username;
 
 	@Inject
 	@Named("password")
 	private String password;
 	
+	@Inject
+	@Named("url")
+	private String url;
+	
+	
 	
 	public void demo2(){
 		System.out.println(username);
 		System.out.println(password);
+		System.out.println(url);
 	}
 	
 	
