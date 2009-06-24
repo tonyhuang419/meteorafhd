@@ -37,5 +37,8 @@ public class Test {
 		
 		System.out.println("--------从绑定模块获取配置信息-------");
 		client.demo2();
+		
+		System.out.println("--------provider-------");
+		client.providerDemo();
 	}
 }

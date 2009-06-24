@@ -1,6 +1,7 @@
 package guiceDemo.helloworld;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.name.Named;
 
 public class Client {
@@ -35,8 +36,8 @@ public class Client {
 	public void go() {
 		demoService.go();
 	}
-	
-	
+
+
 	/**
 	 * http://www.blogjava.net/aoxj/archive/2008/08/22/223811.html
 	 */
@@ -47,18 +48,26 @@ public class Client {
 	@Inject
 	@Named("password")
 	private String password;
-	
+
 	@Inject
 	@Named("url")
 	private String url;
-	
-	
-	
+
+
+
 	public void demo2(){
 		System.out.println(username);
 		System.out.println(password);
 		System.out.println(url);
 	}
+
+
+	//provider
+	@Inject
+	public  Provider<String> stringProvider;
 	
+	public void providerDemo(){
+		System.out.println(stringProvider.get());
+	}
 	
 }
