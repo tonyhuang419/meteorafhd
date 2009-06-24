@@ -42,7 +42,7 @@ public class Client {
 	/**
 	 * http://www.blogjava.net/aoxj/archive/2008/08/22/223811.html
 	 */
-	@Inject
+	@Inject(optional=true)
 	@Named("username")
 	private String username;
 
