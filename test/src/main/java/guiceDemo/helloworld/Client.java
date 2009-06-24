@@ -2,6 +2,7 @@ package guiceDemo.helloworld;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.internal.Nullable;
 import com.google.inject.name.Named;
 
 public class Client {
@@ -44,6 +45,7 @@ public class Client {
 	 */
 	@Inject(optional=true)
 	@Named("username")
+	@Nullable
 	private String username;
 
 	@Inject
@@ -57,6 +59,9 @@ public class Client {
 
 
 	public void demo2(){
+		//如果字段有null会报异常
+//		System.out.println(Preconditions.checkNotNull(username,"username"));
+//		System.out.println(Preconditions.checkNotNull(password,"password"));
 		System.out.println(username);
 		System.out.println(password);
 		System.out.println(url);
