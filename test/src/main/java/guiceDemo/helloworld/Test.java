@@ -26,15 +26,21 @@ public class Test {
 		in.injectMembers(client);
 		client.go();
 		
+		client.go();
+		
+		
 //		Method method = client.getClass().getMethod("injectService", null);
 //		method.invoke(client, null);
 
 		System.out.println("--------linked binding-------");
 		Injector injector = Guice.createInjector();
 		DemoService demoService = injector.getInstance(DemoService.class);
+		System.out.println("demoService hashcode:"+demoService.hashCode());
+		demoService = injector.getInstance(DemoService.class);
+		System.out.println("demoService hashcode:"+demoService.hashCode());
 		demoService.go();
 		
-		System.out.println("--------从绑定模块获取配置信息-------");
+		System.out.println("--------get config info from config class-------");
 		client.demo2();
 		
 		System.out.println("--------provider-------");
