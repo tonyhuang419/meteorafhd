@@ -4,6 +4,7 @@ import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.google.inject.Scopes;
+import com.google.inject.matcher.Matchers;
 import com.google.inject.name.Names;
 
 public class MyModule implements Module {
@@ -22,6 +23,10 @@ public class MyModule implements Module {
 		
 //		binder.bind(String.class).toProvider(ProviderServiceImpl.class);
 
+		binder.bindInterceptor(Matchers.any(),
+				Matchers.annotatedWith(Names.named("go")),
+				new InterceptorService());
+		
 	}
 
 	@Provides
