@@ -1,9 +1,29 @@
 package guiceDemo.helloworld;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class Client {
 
+
+
+	/**
+	 * 构造输入
+	 * 	private DemoService demoService;
+	 * 	 @Inject
+	 *	public Client(DemoService demoService){
+	 *	 this.demoService = demoService;
+	 *	}
+	 */
+
+	/**
+	 * 字段注入
+	 * @Inject private DemoService demoService;
+	 */
+
+	/**
+	 * 方法注入
+	 */
 	private DemoService demoService;
 
 	@Inject
@@ -11,7 +31,28 @@ public class Client {
 		this.demoService = demoService;
 	}
 
+
 	public void go() {
 		demoService.go();
 	}
+	
+	
+	/**
+	 * http://www.blogjava.net/aoxj/archive/2008/08/22/223811.html
+	 */
+	@Inject
+	@Named("username")
+	private int username;
+
+	@Inject
+	@Named("password")
+	private String password;
+	
+	
+	public void demo2(){
+		System.out.println(username);
+		System.out.println(password);
+	}
+	
+	
 }
