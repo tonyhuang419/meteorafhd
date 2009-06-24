@@ -34,6 +34,7 @@ public class Client {
 
 
 	public void go() {
+		System.out.println("demoService hashcode:"+demoService.hashCode());
 		demoService.go();
 	}
 
