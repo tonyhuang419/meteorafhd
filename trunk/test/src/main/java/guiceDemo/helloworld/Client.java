@@ -63,9 +63,13 @@ public class Client {
 
 
 	//provider
-	@Inject
 	public  Provider<String> stringProvider;
 	
+	@Inject
+	public void getProviderString(Provider<String> stringProvider){
+		this.stringProvider = stringProvider;
+	}
+
 	public void providerDemo(){
 		System.out.println(stringProvider.get());
 	}
