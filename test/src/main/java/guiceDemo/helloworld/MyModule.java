@@ -20,7 +20,7 @@ public class MyModule implements Module {
 		binder.bind(String.class).
 		annotatedWith(Names.named("url")).toInstance("www.fhdone.com");
 		
-//		binder.bind(String.class).toProvider(ServiceProvider.class);
+//		binder.bind(ServiceProvider.class).toProvider(ServiceProviderImpl.class);
 
 	}
 
@@ -28,5 +28,5 @@ public class MyModule implements Module {
 	public String provideString() {
 		return "provide string";
 	}
-
+	
 }

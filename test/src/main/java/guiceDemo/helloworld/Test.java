@@ -19,7 +19,7 @@ public class Test {
 
 	public static void main(String[] args) throws Exception {
 		
-		System.out.println("-----------普通方式----------");
+		System.out.println("-----------config binding----------");
 		MyModule myModule = new MyModule();
 		Injector in = Guice.createInjector(myModule);
 		Client client= new Client();
@@ -29,8 +29,7 @@ public class Test {
 //		Method method = client.getClass().getMethod("injectService", null);
 //		method.invoke(client, null);
 
-		System.out.println("--------Annotation方式-------");
-		
+		System.out.println("--------linked binding-------");
 		Injector injector = Guice.createInjector();
 		DemoService demoService = injector.getInstance(DemoService.class);
 		demoService.go();

@@ -1,12 +1,10 @@
 package guiceDemo.helloworld;
 
-import com.google.inject.Provider;
+import com.google.inject.ProvidedBy;
 
-public class ServiceProvider implements Provider<String>{
 
-	@Override
-	public String get() {
-		return "ServiceProvider class provider string";
-	}
+@ProvidedBy(ServiceProviderImpl.class)
+interface ServiceProvider {
 
+	
 }
