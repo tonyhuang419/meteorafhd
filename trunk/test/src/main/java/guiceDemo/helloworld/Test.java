@@ -34,5 +34,8 @@ public class Test {
 		Injector injector = Guice.createInjector();
 		DemoService demoService = injector.getInstance(DemoService.class);
 		demoService.go();
+		
+		System.out.println("--------从绑定模块获取配置信息-------");
+		client.demo2();
 	}
 }
