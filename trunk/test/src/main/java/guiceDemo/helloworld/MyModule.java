@@ -9,6 +9,7 @@ import com.google.inject.name.Names;
 
 public class MyModule implements Module {
 
+	@Override
 	public void configure(Binder binder) {
 		binder.bind(DemoService.class).
 		annotatedWith(Blue.class).
