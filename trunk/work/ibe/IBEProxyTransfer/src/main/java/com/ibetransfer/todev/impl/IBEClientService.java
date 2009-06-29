@@ -17,7 +17,7 @@ public class IBEClientService  implements IIBEClientService {
 		for(int i=0;i<args.length;i++){
 			sb.append(args[i]+",");
 		}
-		logger.info("i'm transfer,i call dest query");
+		logger.info(sb.toString());
 		return iis.query(args);
 	}
 
