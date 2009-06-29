@@ -16,7 +16,7 @@
 			<value>com.ibeproxy.client.IIBEClientService</value>
 		</property>
 		<property name="registryPort">
-			<value>8888</value>
+			<value>2222</value>
 		</property>
 	</bean>
 	
