@@ -11,8 +11,7 @@
 			</value>
 		</property>
 		<property name="serviceUrl">
-			<!--10.60.12.192:2222-->
-			<value>rmi://127.0.0.1:8888/ibeClientService</value>
+			<value>rmi://10.60.12.192:2222/ibeClientService</value>
 		</property>
 	</bean>
 
@@ -35,7 +34,7 @@
 			<value>com.ibetransfer.todev.IIBEClientService</value>
 		</property>
 		<property name="registryPort">
-			<value>2222</value>
+			<value>9999</value>
 		</property>
 	</bean>
 	
