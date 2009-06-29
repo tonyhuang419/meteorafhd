@@ -45,7 +45,7 @@ public class IBEClientService extends IBEClient implements IIBEClientService {
 	 */
 	private Object remove( LinkedList queue ){
 		synchronized(queue) {
-			return  queue.remove();	
+			return  queue.removeFirst();	
 		}
 	}
 
