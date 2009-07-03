@@ -36,6 +36,8 @@
 		<junit.version>4.5</junit.version>
 		<javax.servlet>2.5</javax.servlet>
 		<javax.servlet.jsp>2.1</javax.servlet.jsp>
+		<temp_dir>D:/temp/tempDir</temp_dir>
+		<ehcache_dir>d:/temp/ehcache</ehcache_dir>
 	</properties>
   <dependencies>
  	 <dependency>
@@ -69,6 +71,17 @@
 			<artifactId>hibernate</artifactId>
 			<version>3.2.6.ga</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>3.3.1.GA</version>
+		</dependency>
+        <dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>1.5.0</version>
+			<optional>true</optional>
+		</dependency>
   		<dependency>
 			<groupId>org.jbpm.jbpm4</groupId>
 			<artifactId>jbpm-jpdl</artifactId>
@@ -80,5 +93,10 @@
 	      <version>${junit.version}</version>
 	      <scope>test</scope>
 	    </dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
   </dependencies>
 </project>
