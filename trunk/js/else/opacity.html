@@ -21,6 +21,16 @@ opacity:0.7;}
 </head>
 
 <body>
-<div class="mydiv" style="background:#FF0000">IE下不透明度为50%,FF下不透明度为10%</div>
+<div class="mydiv" style="background:#FF0000" onclick="alert(1)" id="x" >IE下不透明度为50%,FF下不透明度为10%</div>
 </body>
+
+<script>
+	var obj = document.getElementById("x");   
+	obj.attachEvent("onclick",method1);
+
+function method1(){
+	alert("method1");
+}
+</script>
+
 </html>
