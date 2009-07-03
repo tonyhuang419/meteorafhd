@@ -80,7 +80,6 @@
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
 			<version>1.5.0</version>
-			<optional>true</optional>
 		</dependency>
   		<dependency>
 			<groupId>org.jbpm.jbpm4</groupId>
