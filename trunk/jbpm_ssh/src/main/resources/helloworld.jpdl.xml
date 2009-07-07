@@ -5,7 +5,11 @@
    <transition to="printHelloWorld"/>
   </start>
  
-  <java class="demo.Helloworld" method="printHelloWorld" name="printHelloWorld" g="89,13,80,40">
+  <java class="demo.Helloworld" 
+	continue="async" 
+	method="printHelloWorld" 
+	name="printHelloWorld" 
+	g="89,13,80,40">
     <transition to="theEnd"/>
   </java>
  
