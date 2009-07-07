@@ -23,6 +23,7 @@ package demo;
 
 import java.util.List;
 
+import org.jbpm.api.Execution;
 import org.jbpm.api.ProcessInstance;
 import org.jbpm.api.job.Job;
 import org.jbpm.test.JbpmTestCase;
@@ -35,7 +36,7 @@ public class HelloworldTest extends JbpmTestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
+		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("helloworld.jpdl.xml").deploy();
 	}
 
 	protected void tearDown() throws Exception {
@@ -46,11 +47,12 @@ public class HelloworldTest extends JbpmTestCase {
 	public void testHelloworld() {
 		//		RepositoryService repositoryService = processEngine.getRepositoryService();
 		//		ExecutionService executionService = processEngine.getExecutionService();
-		//		repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
-		//		executionService.startProcessInstanceByKey("helloWorld");
-		
+		//		repositoryService.createDeployment().addResourceFromClasspath("helloworld.jpdl.xml").deploy();
+		//		executionService.startProcessInstanceByKey("HelloWorld");
+
 		ProcessInstance processInstance = executionService.startProcessInstanceByKey("HelloWorld");
 		String processInstanceId = processInstance.getId();
+		assertEquals(Execution.STATE_ASYNC, processInstance.getState());
 		List<Job> jobs = managementService.createJobQuery().processInstanceId(processInstanceId).list();
 		Job job = jobs.get(0);
 		managementService.executeJob(job.getDbid());
