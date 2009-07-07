@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<process name="helloWorld" xmlns="http://jbpm.org/4.0/jpdl">
+<process name="HelloWorld" xmlns="http://jbpm.org/4.0/jpdl">
   <start g="0,10,80,40">
    <transition to="printHelloWorld"/>
   </start>

@@ -21,32 +21,38 @@
  */
 package demo;
 
-import org.jbpm.api.ExecutionService;
-import org.jbpm.api.RepositoryService;
+import java.util.List;
+
+import org.jbpm.api.ProcessInstance;
+import org.jbpm.api.job.Job;
 import org.jbpm.test.JbpmTestCase;
 
 
 
 public class HelloworldTest extends JbpmTestCase {
 
-//	ProcessEngine processEngine;
+	long deploymentDbid;
 
 	protected void setUp() throws Exception {
 		super.setUp();
-
-//		processEngine = new Configuration().setResource("demo/helloworld.jpdl.xml").buildProcessEngine();
+		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
 	}
 
 	protected void tearDown() throws Exception {
+		repositoryService.deleteDeploymentCascade(deploymentDbid);
 		super.tearDown();
 	}
 
 	public void testHelloworld() {
-		RepositoryService repositoryService = processEngine.getRepositoryService();
-		ExecutionService executionService = processEngine.getExecutionService();
-		repositoryService.createDeployment()
-		.addResourceFromClasspath("demo/helloworld.jpdl.xml")
-		.deploy();
-		executionService.startProcessInstanceByKey("helloWorld");
+		//		RepositoryService repositoryService = processEngine.getRepositoryService();
+		//		ExecutionService executionService = processEngine.getExecutionService();
+		//		repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
+		//		executionService.startProcessInstanceByKey("helloWorld");
+		
+		ProcessInstance processInstance = executionService.startProcessInstanceByKey("HelloWorld");
+		String processInstanceId = processInstance.getId();
+		List<Job> jobs = managementService.createJobQuery().processInstanceId(processInstanceId).list();
+		Job job = jobs.get(0);
+		managementService.executeJob(job.getDbid());
 	}
 }
