@@ -19,21 +19,34 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jbpm.examples.async.activity;
+package demo;
+
+import org.jbpm.api.ExecutionService;
+import org.jbpm.api.RepositoryService;
+import org.jbpm.test.JbpmTestCase;
 
 
-/**
- * @author Tom Baeyens
- */
-public class Application {
 
-  public void generatePdf() {
-    // assume long automatic calculations here
-	  System.out.println("generatePdf");
-  }
+public class HelloworldTest extends JbpmTestCase {
 
-  public void calculatePrimes() {
-    // assume long automatic calculations here
-	  System.out.println("calculatePrimes");
-  }
+//	ProcessEngine processEngine;
+
+	protected void setUp() throws Exception {
+		super.setUp();
+
+//		processEngine = new Configuration().setResource("demo/helloworld.jpdl.xml").buildProcessEngine();
+	}
+
+	protected void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	public void testHelloworld() {
+		RepositoryService repositoryService = processEngine.getRepositoryService();
+		ExecutionService executionService = processEngine.getExecutionService();
+		repositoryService.createDeployment()
+		.addResourceFromClasspath("demo/helloworld.jpdl.xml")
+		.deploy();
+		executionService.startProcessInstanceByKey("helloWorld");
+	}
 }
