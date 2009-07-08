@@ -6,7 +6,7 @@
   </start>
  
   <java class="demo.Helloworld" 
-  	continue="end" 
+  	continue="async" 
   	g="105,42,80,40" 
   	method="printHelloWorld" 
   	name="printHelloWorld">
