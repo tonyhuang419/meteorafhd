@@ -36,7 +36,7 @@ public class HelloworldTest extends JbpmTestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("helloworld.jpdl.xml").deploy();
+		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
 	}
 
 	protected void tearDown() throws Exception {
@@ -47,7 +47,7 @@ public class HelloworldTest extends JbpmTestCase {
 	public void testHelloworld() {
 		//		RepositoryService repositoryService = processEngine.getRepositoryService();
 		//		ExecutionService executionService = processEngine.getExecutionService();
-		//		repositoryService.createDeployment().addResourceFromClasspath("helloworld.jpdl.xml").deploy();
+		//		repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
 		//		executionService.startProcessInstanceByKey("HelloWorld");
 
 		ProcessInstance processInstance = executionService.startProcessInstanceByKey("HelloWorld");
