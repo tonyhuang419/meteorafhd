@@ -29,24 +29,24 @@ import org.jbpm.test.JbpmTestCase;
 
 public class HelloworldTest extends JbpmTestCase {
 
-	//	long deploymentDbid;
+//	long deploymentDbid;
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		//		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
+//		deploymentDbid = repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
 	}
 
 	protected void tearDown() throws Exception {
-		//		repositoryService.deleteDeploymentCascade(deploymentDbid);
+//		repositoryService.deleteDeploymentCascade(deploymentDbid);
 		super.tearDown();
 	}
 
 	public void testHelloworld() {
 		RepositoryService repositoryService = processEngine.getRepositoryService();
 		repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
-		
 		ExecutionService executionService = processEngine.getExecutionService();
 		executionService.startProcessInstanceByKey("HelloWorld");
+
 
 		//		ProcessInstance processInstance = executionService.startProcessInstanceByKey("HelloWorld");
 		//		String processInstanceId = processInstance.getId();
