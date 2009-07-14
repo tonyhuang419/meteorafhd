@@ -1,0 +1,10 @@
+<script src="/jbpm_ssh/commons/scripts/prototype.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/scriptaculous.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/jsvalidate.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/builder.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/controls.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/dragdrop.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/effects.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/jsvalidate_squish.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/slider.js" type="text/javascript"></script>
+<script src="/jbpm_ssh/commons/scripts/unittest.js" type="text/javascript"></script>
