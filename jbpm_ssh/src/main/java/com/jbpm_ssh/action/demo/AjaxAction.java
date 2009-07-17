@@ -3,9 +3,12 @@ package com.jbpm_ssh.action.demo;
 import org.apache.struts2.config.ParentPackage;
 import org.apache.struts2.config.Result;
 import org.apache.struts2.config.Results;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.googlecode.jsonplugin.JSONResult;
 import com.jbpm_ssh.action.BaseAction;
+import com.jbpm_ssh.service.ICommonService;
 import com.opensymphony.xwork2.ActionContext;
 
 @ParentPackage(value = "json-default")
@@ -14,15 +17,21 @@ import com.opensymphony.xwork2.ActionContext;
 	@Result(name = "success", type=JSONResult.class , value = "")
 })
 public class AjaxAction extends BaseAction{
-	private static final long serialVersionUID = 1445318978316461142L;
+
+	private static final long serialVersionUID = 6221557218613573642L;
 
 	private Object  jsonData; 
+	
+	@Autowired
+	@Qualifier("commonService")
+	private ICommonService commonService;
 	
 	public String ajax(){
 		return "ajax";
 	}
 	
 	public String doAjax(){
+		commonService.jbpmTest();
 		String info = ((String[])ActionContext.getContext().getParameters().get("info"))[0];
 		jsonData = info;
 		return "success";
@@ -41,8 +50,5 @@ public class AjaxAction extends BaseAction{
 	public void setJsonData(Object jsonData) {
 		this.jsonData = jsonData;
 	}
-
-
-
 	
 }

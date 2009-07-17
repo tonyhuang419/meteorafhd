@@ -27,11 +27,19 @@ import com.jbpm_ssh.util.SqlUtils;
 
 @Service("commonService")
 @Transactional
-public class CommonService implements ICommonService {
+public class CommonService implements ICommonService  {
 
 	@Autowired
 	@Qualifier("sessionFactory")
 	protected SessionFactory sessionFactory;
+
+	public void jbpmTest(){
+//		ProcessEngine processEngine = new Configuration().buildProcessEngine();  
+//		RepositoryService repositoryService = processEngine.getRepositoryService();
+//		repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
+//		ExecutionService executionService = processEngine.getExecutionService();
+//		executionService.startProcessInstanceByKey("HelloWorld");
+	}
 
 	public Session getSession(){
 		return this.sessionFactory.getCurrentSession();
@@ -54,7 +62,7 @@ public class CommonService implements ICommonService {
 			this.save(obj);
 		}
 	}
-	
+
 	public void processSaveObj(Object obj ,String isActive , String sessionIdStr){
 		Date date = new Date();
 		Long userid = (Long)ServletActionContext.getRequest().getSession().getAttribute( sessionIdStr );
@@ -84,7 +92,7 @@ public class CommonService implements ICommonService {
 			this.update(obj);
 		}
 	}
-	
+
 	public void processUpdateObj(Object obj ,String isActive,String sessionIdStr){
 		Long userid = (Long)ServletActionContext.getRequest().getSession().getAttribute( sessionIdStr );
 		PadProperty.padBean(obj , "updated", userid );
@@ -227,8 +235,8 @@ public class CommonService implements ICommonService {
 			ResultSet s = cstmt.executeQuery();
 			ResultSetMetaData rd = s.getMetaData();
 			System.out.println(rd.getColumnCount());
-//			s.close();
-//			cstmt.close();
+			//			s.close();
+			//			cstmt.close();
 		}catch( SQLException  se){
 			se.printStackTrace();
 		}

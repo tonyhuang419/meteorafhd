@@ -11,6 +11,8 @@ import com.jbpm_ssh.util.PageInfo;
 
 public interface ICommonService {
 
+	public void jbpmTest();
+	
 	public Session getSession();
 
 	public Object uniqueResult(String hql, Object... args);
