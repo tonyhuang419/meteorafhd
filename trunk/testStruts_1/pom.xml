@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 	<groupId>testStruts</groupId>
 	<artifactId>testStruts</artifactId>
 	<packaging>war</packaging>
@@ -37,6 +38,12 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.14</version>
 				<configuration>
+				 <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8081</port>
+                        </connector>
+                    </connectors>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -115,5 +122,12 @@
 			<artifactId>xfire-all</artifactId>
 			<version>1.2.6</version>
 		</dependency>
+		<dependency>
+			<groupId>activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.0.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/activation.jar</systemPath>
+	 	</dependency>
 	</dependencies>
 </project>

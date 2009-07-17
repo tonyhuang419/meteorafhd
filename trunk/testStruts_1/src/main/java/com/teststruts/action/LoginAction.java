@@ -61,10 +61,17 @@ public class LoginAction extends DispatchAction {
 		s2.setObj(list);
 		System.out.println( ((List)s2.getObj()).size());
 		
+		
+		Stu s3 = new Stu();
+		s3.setAge(21);
+		s3.setName("bname");
+		
+		
+		
 		list.add(s1);
 		list.add(s2);
+		list.add(s3);
 		
-		System.out.println( ((List)s2.getObj()).size());
 		
 		request.setAttribute("str", "str");
 		request.setAttribute("s1", s1);
