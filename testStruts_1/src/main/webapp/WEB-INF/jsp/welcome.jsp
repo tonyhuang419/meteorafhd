@@ -51,6 +51,13 @@
      	<c:out value="${listobj.name}"/>
      </logic:iterate>
      <hr>
+     <logic:iterate id="listobj" name="s2" property="obj"  >
+   	 	 <c:if test="${listobj.name eq 'bname' }">
+     		<c:out value="${listobj.name}"/>|
+     		<l
+     	</c:if>
+     </logic:iterate>
+     <hr>
      username:<c:out value="${loginForm.username}"/><br/>
      password:<c:out value="${loginForm.password}"/><br/>
      
