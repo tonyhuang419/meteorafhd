@@ -22,7 +22,7 @@ public class HelloworldTest extends JbpmTestCase {
 
 	public void testHelloworld() {
 		RepositoryService repositoryService = processEngine.getRepositoryService();
-		repositoryService.createDeployment().addResourceFromClasspath("demo/helloworld.jpdl.xml").deploy();
+		repositoryService.createDeployment().addResourceFromClasspath("helloworld.jpdl.xml").deploy();
 		ExecutionService executionService = processEngine.getExecutionService();
 		executionService.startProcessInstanceByKey("HelloWorld");
 
