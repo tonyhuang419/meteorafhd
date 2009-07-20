@@ -7,7 +7,7 @@
   <name>jbpm_ssh</name>
   <description>jbpm_ssh</description>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <build>
 		<resources>
      	 	<resource>
@@ -44,9 +44,6 @@
                             <port>8081</port>
                         </connector>
                     </connectors>
-                    <webAppConfig>
-                        <contextPath>/jbpm_ssh</contextPath>
-                    </webAppConfig>
 				</configuration>
 			</plugin>
 		</plugins>

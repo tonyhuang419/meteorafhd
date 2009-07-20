@@ -30,14 +30,14 @@
 		</property>
 		<property name="cache.use_query_cache">true</property>
      
-     	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-		<property name="hibernate.c3p0.max_size">20</property>
-		<property name="hibernate.c3p0.min_size">1</property>
-		<property name="hibernate.c3p0.timeout">300</property>
-		<property name="hibernate.c3p0.max_statements">100</property>
-		<property name="hibernate.c3p0.idle_test_period">180</property>
-		<property name="hibernate.c3p0.acquire_increment">2</property>
-		<property name="hibernate.c3p0.validate">true</property>
+<!--     	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>-->
+<!--		<property name="hibernate.c3p0.max_size">20</property>-->
+<!--		<property name="hibernate.c3p0.min_size">1</property>-->
+<!--		<property name="hibernate.c3p0.timeout">300</property>-->
+<!--		<property name="hibernate.c3p0.max_statements">100</property>-->
+<!--		<property name="hibernate.c3p0.idle_test_period">180</property>-->
+<!--		<property name="hibernate.c3p0.acquire_increment">2</property>-->
+<!--		<property name="hibernate.c3p0.validate">true</property>-->
      
 <!--	     <mapping resource="jbpm.repository.hbm.xml" />-->
 <!--	     <mapping resource="jbpm.execution.hbm.xml" />-->
