@@ -2,13 +2,11 @@ package models;
 
 import java.util.Date;
 
-import javax.jdo.annotations.Transactional;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
 import play.db.jpa.JPASupport;
 
@@ -28,15 +26,13 @@ public class Article extends JPASupport {
 	public Date lastReadTime;
 	public Date lastModifyTime;
 	public Date createdTime;
-	@Transient
-	public String contentX;
 
 	
 	public Article(){ }
 	
-	public Article (String title , String contentX ){
+	public Article (String title , Text content ){
 		this.title = title;
-		this.content = new Text(contentX);
+		this.content = content;
 		this.readCount = 0L;
 		this.createdTime = new Date();
 		this.lastModifyTime = new Date();
