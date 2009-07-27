@@ -2,9 +2,9 @@
 #{set title:'Welcome FHDone Blog' /}
 
 <ul>
-#{list items:articles, as:'article'}
+#{list items:articleVos, as:'articleVo'}
 	<li>
-		${article.title} - ${article.content} 
+		${articleVo.title} - ${articleVo.content} 
 	</li>
 #{/list}
 </ul>

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import play.db.jpa.JPASupport;
 
 @Entity
-public class Comments extends JPASupport {
+public class Comment extends JPASupport {
 	private static final long serialVersionUID = -9149586379548031631L;
 	
 	@Id
