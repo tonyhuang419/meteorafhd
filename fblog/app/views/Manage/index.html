@@ -1,0 +1,18 @@
+#{extends 'main.html' /}
+#{set title:'My Blog' /}
+
+<h1>${articles.size()} article${articles.size().pluralize()} </h1>
+
+<ul>
+#{list items:articles, as:'article'}
+	<li>
+		${article.title} - ${article.content} 
+	</li>
+#{/list}
+</ul>
+
+#{form @addArticle()}
+	<input type="text" name="title" size="10" /><br/>
+	<textarea name="content"></textarea><br/>
+	<input type="submit" value="Add this task" />
+#{/form}

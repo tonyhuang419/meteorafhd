@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Welcome FHDone Blog' /}
+
+<ul>
+#{list items:articles, as:'article'}
+	<li>
+		${article.title} - ${article.content} 
+	</li>
+#{/list}
+</ul>
