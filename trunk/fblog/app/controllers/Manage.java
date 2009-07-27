@@ -8,6 +8,8 @@ import play.mvc.Controller;
 import UtilTools.ArticleVo;
 import UtilTools.UtilTools;
 
+import com.google.appengine.api.datastore.Text;
+
 public class Manage extends Controller {
 
 	public static void index() {
@@ -17,8 +19,8 @@ public class Manage extends Controller {
 	}
 
 	public static void addArticle(@Required String title , 
-			@Required String contentX ) {
-		new Article(title, contentX );
+			@Required String content ) {
+		new Article(title, new Text(content) );
 		index();
 	}
 
