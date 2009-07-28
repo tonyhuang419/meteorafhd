@@ -22,15 +22,15 @@ public class Comment extends JPASupport {
 	public Date createdTime;
 	public Long articleId;
 
-	public Comment (String author , String content ){
+	public Comment (String author , String content , Long articleId){
 		this.author = author;
 		this.content = content;
+		this.articleId = articleId;
 		this.createdTime = new Date();
 		this.save();
 	}
 	
 	public static List<Comment> getCommentsByArticleId(Long id) {
-		System.out.println(id);
 		return Comment.findBy("articleId = " + id +" order by id" );
 	}
     
