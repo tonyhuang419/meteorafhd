@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,14 +16,23 @@ public class Comment extends JPASupport {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Long id;
-	private String author;
-	private String title;
-	private String content;
-	private Date createdTime;
-	
-	
+	public Long id;
+	public String author;
+	public String content;
+	public Date createdTime;
+	public Long articleId;
 
+	public Comment (String author , String content ){
+		this.author = author;
+		this.content = content;
+		this.createdTime = new Date();
+		this.save();
+	}
+	
+	public static List<Comment> getCommentsByArticleId(Long id) {
+		System.out.println(id);
+		return Comment.findBy("articleId = " + id +" order by id" );
+	}
     
 }
 

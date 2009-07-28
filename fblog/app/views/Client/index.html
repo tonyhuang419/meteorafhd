@@ -4,7 +4,8 @@
 <ul>
 #{list items:articleVos, as:'articleVo'}
 	<li>
-		${articleVo.title} - ${articleVo.content} 
+		<a href="/detail/${articleVo.id}">${articleVo.title}</a><br/>
+		${articleVo.content} 
 	</li>
 #{/list}
 </ul>

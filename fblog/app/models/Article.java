@@ -26,10 +26,9 @@ public class Article extends JPASupport {
 	public Date lastReadTime;
 	public Date lastModifyTime;
 	public Date createdTime;
-
 	
 	public Article(){ }
-	
+		
 	public Article (String title , Text content ){
 		this.title = title;
 		this.content = content;
