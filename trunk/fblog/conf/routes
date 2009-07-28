@@ -4,6 +4,7 @@
 
 GET			/					Client.index
 GET			/manage				Manage.index
+GET			/detail/{id}		Client.detail
 
 # Import the default CRUD routes
 *			/admin				module:crud
