@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Article;
 import models.Comment;
+import play.data.validation.Required;
 import play.mvc.Controller;
 import UtilTools.ArticleVo;
 import UtilTools.UtilTools;
@@ -21,6 +22,17 @@ public class Client extends Controller {
 		ArticleVo articleVo = UtilTools.articleToArticlesVo(article);
 		List<Comment> comments = Comment.getCommentsByArticleId(id);
 		render(articleVo , comments);
+	}
+	
+	public static void addComment(@Required String author , 
+			@Required String content , @Required Long articleId ) {
+		
+		System.out.println(author);
+		System.out.println(content);
+		System.out.println(articleId);
+		
+		new Comment(author, content , articleId );
+		index();
 	}
 
 }
