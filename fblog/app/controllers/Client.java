@@ -26,13 +26,8 @@ public class Client extends Controller {
 	
 	public static void addComment(@Required String author , 
 			@Required String content , @Required Long articleId ) {
-		
-		System.out.println(author);
-		System.out.println(content);
-		System.out.println(articleId);
-		
 		new Comment(author, content , articleId );
-		index();
+		detail(articleId);
 	}
 
 }
