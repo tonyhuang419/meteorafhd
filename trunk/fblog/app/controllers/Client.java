@@ -12,7 +12,7 @@ import UtilTools.UtilTools;
 public class Client extends Controller {
 
 	public static void index() {
-		List<Article> articles = Article.findAll();
+		List<Article> articles = Article.getActiveArticle();
 		List<ArticleVo> articleVos = UtilTools.articleToArticlesVo(articles);
 		render(articleVos);
 	}

@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -38,8 +39,12 @@ public class Article extends JPASupport {
 		this.readCount = 0L;
 		this.createdTime = new Date();
 		this.lastModifyTime = new Date();
-		this.isActive = false;
+		this.isActive = true;
 		this.save();
+	}
+	
+	public static List<Article> getActiveArticle(){
+		return Article.findBy(" isActive = true " );
 	}
 	
 	public static void modActicle(Long id , String title , String content){
