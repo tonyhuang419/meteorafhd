@@ -24,7 +24,6 @@ public class Article extends JPASupport {
 	@Enumerated
 	public Text content;
 	public Long readCount;
-	public Date lastReadTime;
 	public Date lastModifyTime;
 	public Date createdTime;
 	public Boolean isActive;
@@ -68,6 +67,12 @@ public class Article extends JPASupport {
 	public static void deleteArticle(Long id){
 		Article article = Article.findById(id);
 		Article.em().remove(article);
+	}
+	
+	public static void addReadCount(Long id){
+		Article article = Article.findById(id);
+		article.readCount = article.readCount +1;
+		Article.em().persist(article);
 	}
 	
 	
