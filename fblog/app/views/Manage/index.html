@@ -1,12 +1,28 @@
 #{extends 'main.html' /}
 #{set title:'My Blog' /}
+<script language="javascript">
+function deleteArticle(articleId){
+	if( window.confirm("sure delete?")){
+		var url = "@{Manage.del}";
+		location.href=url+"?articleId="+articleId;
+	}
+}
+</script>
  
 <h1>${articleVos.size()} Article${articleVos.size().pluralize()} </h1>
 
 <ul>
 #{list items:articleVos, as:'articleVo'}
 	<li>
-		${articleVo.title} - ${articleVo.content} <a href="@{Manage.edit(articleVo.id)}">edit</a>
+		${articleVo.title} - ${articleVo.content}
+		<a href="@{Manage.edit(articleVo.id)}">edit</a>
+		#{if ( articleVo.isActive == true ) }
+			<a href="@{Manage.disable(articleVo.id)}">make disable</a>
+		#{/if}
+		#{else}
+			<a href="@{Manage.enable(articleVo.id)}">make enable</a>
+		#{/else}
+		<a href="#" onclick="deleteArticle('${articleVo.id}')">delete</a>
 	</li>
 #{/list}
 </ul>

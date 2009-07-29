@@ -52,10 +52,26 @@ public class Article extends JPASupport {
 		article.title = title;
 		article.content = new Text(content);
 		article.lastModifyTime = new Date();
-		EntityManager em = JPA.getEntityManager();
-		em.persist(article);
+		Article.em().persist(article);
 	}
 
-
+	public static void disable(Long id ){
+		Article article = Article.findById(id);
+		article.isActive = false;
+		Article.em().persist(article);
+	}
+	
+	public static void enable(Long id){
+		Article article = Article.findById(id);
+		article.isActive = true;
+		Article.em().persist(article);
+	}
+	
+	public static void deleteArticle(Long id){
+		Article article = Article.findById(id);
+		Article.em().remove(article);
+	}
+	
+	
 }
 
