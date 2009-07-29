@@ -15,7 +15,7 @@ Add article：<br/><br/>
 <form action="/manage/addarticle" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
 #{/else}
 	<input type="hidden" name="articleId" value="${articleVo.id}">
-	<input type="text" name="title" size="10" value="${articleVo.title}"/><br/>
-	<textarea name="content" >${articleVo.content}</textarea><br/>
+	Title:<input type="text" name="title" size="10" value="${articleVo.title}"/><br/>
+	Content:<textarea name="content" >${articleVo.content}</textarea><br/>
 	<input type="submit" value="edit" />
 </form>
