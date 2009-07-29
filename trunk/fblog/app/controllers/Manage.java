@@ -23,5 +23,17 @@ public class Manage extends Controller {
 		new Article(title, new Text(content) );
 		index();
 	}
+	
+	public static void edit(@Required Long id ) {
+		Article article = Article.findById(id);
+		ArticleVo articleVo = UtilTools.articleToArticlesVo(article);
+		render(articleVo);
+	}
+	
+	public static void saveEdit(@Required Long articleId  , @Required String title  , @Required String content ){
+		Article.modActicle(articleId, title, content);
+		index();
+	}
+	
 
 }
