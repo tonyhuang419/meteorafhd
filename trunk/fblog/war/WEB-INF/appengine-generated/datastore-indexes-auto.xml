@@ -1,11 +1,4 @@
-<!-- Indices written at 09-7-28 ÏÂÎç4:28 -->
-
-<datastore-indexes>
-
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Comment" ancestor="false" source="auto">
-        <property name="articleId" direction="asc"/>
-        <property name="__key__" direction="asc"/>
-    </datastore-index>
-
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
 </datastore-indexes>
+
