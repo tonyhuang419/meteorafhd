@@ -3,11 +3,13 @@ package models;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import play.db.jpa.JPA;
 import play.db.jpa.JPASupport;
 
 import com.google.appengine.api.datastore.Text;
@@ -26,6 +28,7 @@ public class Article extends JPASupport {
 	public Date lastReadTime;
 	public Date lastModifyTime;
 	public Date createdTime;
+	public Boolean isActive;
 	
 	public Article(){ }
 		
@@ -35,7 +38,17 @@ public class Article extends JPASupport {
 		this.readCount = 0L;
 		this.createdTime = new Date();
 		this.lastModifyTime = new Date();
+		this.isActive = false;
 		this.save();
+	}
+	
+	public static void modActicle(Long id , String title , String content){
+		Article article = Article.findById(id);
+		article.title = title;
+		article.content = new Text(content);
+		article.lastModifyTime = new Date();
+		EntityManager em = JPA.getEntityManager();
+		em.persist(article);
 	}
 
 

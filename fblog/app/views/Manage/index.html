@@ -1,12 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'My Blog' /}
-
-<h1>${articleVos.size()} article${articleVos.size().pluralize()} </h1>
+ 
+<h1>${articleVos.size()} Article${articleVos.size().pluralize()} </h1>
 
 <ul>
 #{list items:articleVos, as:'articleVo'}
 	<li>
-		${articleVo.title} - ${articleVo.content} 
+		${articleVo.title} - ${articleVo.content} <a href="@{Manage.edit(articleVo.id)}">edit</a>
 	</li>
 #{/list}
 </ul>

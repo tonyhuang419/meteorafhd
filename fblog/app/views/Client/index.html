@@ -4,7 +4,7 @@
 <ul>
 #{list items:articleVos, as:'articleVo'}
 	<li>
-		<a href="/detail/${articleVo.id}">${articleVo.title}</a><br/>
+		<a href="@{Client.detail(articleVo.id)}">${articleVo.title}</a><br/>
 		${articleVo.content} 
 	</li>
 #{/list}

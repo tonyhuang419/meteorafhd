@@ -12,6 +12,7 @@ public class ArticleVo {
 	public Date lastReadTime;
 	public Date lastModifyTime;
 	public Date createdTime;
+	public Boolean isActive;
 	
 	public ArticleVo(){}
 	
