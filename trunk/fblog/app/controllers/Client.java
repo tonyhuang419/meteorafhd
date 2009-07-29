@@ -19,6 +19,7 @@ public class Client extends Controller {
 	
 	public static void detail(Long id){
 		Article article = Article.findById(id);
+		Article.addReadCount(id);
 		ArticleVo articleVo = UtilTools.articleToArticlesVo(article);
 		List<Comment> comments = Comment.getCommentsByArticleId(id);
 		render(articleVo , comments);
