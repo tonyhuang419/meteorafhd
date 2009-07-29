@@ -1,4 +1,11 @@
-<!-- Indices written at 09-7-29 ÉÏÎç11:51 -->
+<!-- Indices written at 09-7-29 ÏÂÎç1:59 -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="Comment" ancestor="false" source="auto">
+        <property name="articleId" direction="asc"/>
+        <property name="__key__" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
