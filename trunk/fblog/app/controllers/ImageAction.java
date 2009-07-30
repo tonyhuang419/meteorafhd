@@ -32,8 +32,6 @@ public class ImageAction  extends Controller {
 		FileItemIterator iterator;
 		try {
 			request.contentType = "text/plain";
-			System.out.println("...........");
-			System.out.println(request.originalResquest.toString());
 			iterator = upload.getItemIterator(request.originalResquest);
 			while (iterator.hasNext()) {
 				FileItemStream item = iterator.next();
