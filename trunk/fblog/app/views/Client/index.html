@@ -12,6 +12,8 @@
 #{list items:blogVos, as:'blogVo'}
 	<li>
 		<a href="@{Client.detail(blogVo.id)}">${blogVo.title}</a><br/>
+		<strong>Post Time: </strong>${blogVo.createdTime}<br/>
+		<strong>Read count: </strong>${blogVo.readCount} <br/>
 		${blogVo.content} 
 	</li>
 #{/list}
