@@ -43,14 +43,14 @@ public class ImageAction  extends Controller {
 				FileItemStream item = iterator.next();
 				InputStream stream = item.openStream();
 				if (!item.isFormField()) {
-//					if (item.getName().endsWith("gif")) {
-//						contentType = "image/GIF";
-//					} else if (item.getName().endsWith("jpg")) {
-//						contentType = "image/JPEG";
-//					} else {
+					if (item.getName().toLowerCase().endsWith("gif")) {
+						contentType = "image/GIF";
+					} else if (item.getName().toLowerCase().endsWith("jpg") || item.getName().toLowerCase().endsWith("jpeg") ) {
+						contentType = "image/JPEG";
+					} else {
 //						info = "Not support this file format.";
-//						index();
-//					}
+						index();
+					}
 					int len;
 					byte[] buffer = new byte[8192];
 					while ((len = stream.read(buffer, 0, buffer.length)) != -1) {
