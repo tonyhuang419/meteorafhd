@@ -45,15 +45,6 @@ SyntaxHighlighter.all();
 #{/list}
 </ul>
 
-<pre class="brush:java;">
-<br/>public HttpServletRequest originalResquest; 
-<br/></pre>
-<br/>然后，在ServletWrapper.java的parseRequest方法里面简单地把HttpServletRequest赋给originalResquest，
-<br/><pre class="brush:java;">
-<br/>request.originalResquest = httpServletRequest;  
-<br/></pre>
-<br/>就这么简单，对Play! Framework的修改完成了（但不完美，后面再说）。重新编译Play!，得到新的play.jar，替换原来的。
-
 <br/>
 <br/>
 <br/>
