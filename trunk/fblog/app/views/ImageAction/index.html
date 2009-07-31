@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Welcome FHDone Blog' /}
+
+
+<ul>
+#{list items:images, as:'image'}
+	<li>
+		${image.imageStamp}
+<!--		<img src="http://127.0.0.1:9000/imageaction/show?imageStamp=${image.imageStamp}"/>-->
+			<img src="http://meteorafhd.appspot.com/imageaction/show?imageStamp=${image.imageStamp}"/>
+	</li>
+#{/list}
+</ul>

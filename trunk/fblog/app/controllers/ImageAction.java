@@ -20,12 +20,18 @@ import com.google.appengine.api.datastore.Blob;
 
 public class ImageAction  extends Controller {
 
+	public static void index(){
+		System.out.println("index");
+		List<Image> images = Image.findAll();
+		render(images);
+	}
+	
 	public static void newImage(){
 		render();
 	}
 	
 	public static void save() {
-		String info = "";
+		//String info = "";
 		String contentType = null;
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ServletFileUpload upload = new ServletFileUpload();
@@ -42,8 +48,8 @@ public class ImageAction  extends Controller {
 					} else if (item.getName().endsWith("jpg")) {
 						contentType = "image/JPEG";
 					} else {
-						info = "Not support this file format.";
-						render(info);
+						//info = "Not support this file format.";
+						index();
 					}
 					int len;
 					byte[] buffer = new byte[8192];
@@ -51,14 +57,14 @@ public class ImageAction  extends Controller {
 						out.write(buffer, 0, len);
 					}
 					if (out.size() > 990000) {
-						info = "File is too big!";
-						render(info);
+						//info = "File is too big!";
+						index();
 					}
 					Long imageStamp = new Date().getTime();
 					Image image = new Image(imageStamp, contentType, new Blob(out.toByteArray()));
 					image.save();
-					info = "<img src=\"http://meteorafhd.appspot.com/show/%22%20+%20imageStamp%20+%20%22\">";
-					render(info);
+					//info = "<img src=\"http://meteorafhd.appspot.com/show/%22%20+%20imageStamp%20+%20%22\">";
+					index();
 				}
 			}
 		} catch (FileUploadException e) {
@@ -70,6 +76,8 @@ public class ImageAction  extends Controller {
 
 
 	public static void show(Long imageStamp) {
+		System.out.println("======imageStamp==========");
+		System.out.println(imageStamp);
 		List<Image> imageList = Image.findBy("imageStamp", imageStamp);
 		if (null == imageList || 0 == imageList.size()) {
 			Logger.error("No image found by imageStamp: " + imageStamp);
@@ -85,5 +93,5 @@ public class ImageAction  extends Controller {
 			}
 		}
 	}
-
+	
 }
