@@ -13,6 +13,7 @@ public class ArticleVo {
 	public Date lastModifyTime;
 	public Date createdTime;
 	public Boolean isActive;
+	public Long type;  //1：blog  2：twitter
 	
 	public ArticleVo(){}
 	

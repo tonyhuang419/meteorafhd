@@ -27,21 +27,31 @@ public class Article extends JPASupport {
 	public Date lastModifyTime;
 	public Date createdTime;
 	public Boolean isActive;
+	public Long type;  //1：blog  2：twitter
 	
 	public Article(){ }
 		
-	public Article (String title , Text content ){
+	public Article (String title , Text content , Long type ){
 		this.title = title;
 		this.content = content;
 		this.readCount = 0L;
 		this.createdTime = new Date();
 		this.lastModifyTime = new Date();
 		this.isActive = true;
+		this.type = type;
 		this.save();
 	}
 	
 	public static List<Article> getActiveArticle(){
 		return Article.findBy(" isActive = true " );
+	}
+	
+	public static List<Article> getActiveBlog(){
+		return Article.findBy(" isActive = true and type=1 " );
+	}
+	
+	public static List<Article> getActiveTwitter(){
+		return Article.findBy(" isActive = true and type=2 " );
 	}
 	
 	public static void modActicle(Long id , String title , String content){

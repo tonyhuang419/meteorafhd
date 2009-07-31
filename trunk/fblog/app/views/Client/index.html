@@ -2,10 +2,21 @@
 #{set title:'Welcome FHDone Blog' /}
 
 <ul>
-#{list items:articleVos, as:'articleVo'}
+#{list items:blogVos, as:'blogVo'}
 	<li>
-		<a href="@{Client.detail(articleVo.id)}">${articleVo.title}</a><br/>
-		${articleVo.content} 
+		<a href="@{Client.detail(blogVo.id)}">${blogVo.title}</a><br/>
+		${blogVo.content} 
+	</li>
+#{/list}
+</ul>
+
+
+============================================
+
+<ul>
+#{list items:twitterVos, as:'twitterVo'}
+	<li>
+		${twitterVo.content} 
 	</li>
 #{/list}
 </ul>

@@ -13,14 +13,16 @@ import com.google.appengine.api.datastore.Text;
 public class Manage extends Controller {
 
 	public static void index() {
-		List<Article> articles = Article.findAll();
-		List<ArticleVo> articleVos = UtilTools.articleToArticlesVo(articles);
-		render(articleVos);
+		List<Article> blogs = Article.getActiveBlog();
+		List<Article> twitters = Article.getActiveTwitter();
+		List<ArticleVo> blogVos = UtilTools.articleToArticlesVo(blogs);
+		List<ArticleVo> twitterVos = UtilTools.articleToArticlesVo(twitters);
+		render(blogVos,twitterVos);
 	}
 
-	public static void addArticle(@Required String title , 
-			@Required String content ) {
-		new Article(title, new Text(content) );
+	public static void addArticle(String title , 
+			@Required String content , @Required Long type ) {
+		new Article(title, new Text(content) , type );
 		index();
 	}
 
