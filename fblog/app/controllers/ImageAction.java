@@ -31,7 +31,7 @@ public class ImageAction  extends Controller {
 	}
 	
 	public static void save() {
-		//String info = "";
+//		String info = "";
 		String contentType = null;
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ServletFileUpload upload = new ServletFileUpload();
@@ -43,27 +43,27 @@ public class ImageAction  extends Controller {
 				FileItemStream item = iterator.next();
 				InputStream stream = item.openStream();
 				if (!item.isFormField()) {
-					if (item.getName().endsWith("gif")) {
-						contentType = "image/GIF";
-					} else if (item.getName().endsWith("jpg")) {
-						contentType = "image/JPEG";
-					} else {
-						//info = "Not support this file format.";
-						index();
-					}
+//					if (item.getName().endsWith("gif")) {
+//						contentType = "image/GIF";
+//					} else if (item.getName().endsWith("jpg")) {
+//						contentType = "image/JPEG";
+//					} else {
+//						info = "Not support this file format.";
+//						index();
+//					}
 					int len;
 					byte[] buffer = new byte[8192];
 					while ((len = stream.read(buffer, 0, buffer.length)) != -1) {
 						out.write(buffer, 0, len);
 					}
 					if (out.size() > 990000) {
-						//info = "File is too big!";
+//						info = "File is too big!";
 						index();
 					}
 					Long imageStamp = new Date().getTime();
 					Image image = new Image(imageStamp, contentType, new Blob(out.toByteArray()));
 					image.save();
-					//info = "<img src=\"http://meteorafhd.appspot.com/show/%22%20+%20imageStamp%20+%20%22\">";
+//					info = "<img src=\"http://meteorafhd.appspot.com/show/%22%20+%20imageStamp%20+%20%22\">";
 					index();
 				}
 			}
