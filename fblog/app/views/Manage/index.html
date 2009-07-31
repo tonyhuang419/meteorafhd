@@ -10,21 +10,37 @@ function deleteArticle(articleId){
 SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
 SyntaxHighlighter.all();
 </script>
- 
-<h1>${articleVos.size()} Article${articleVos.size().pluralize()} </h1>
 
+==============Blog=====================
 <ul>
-#{list items:articleVos, as:'articleVo'}
+#{list items:blogVos, as:'blogVo'}
 	<li>
-		${articleVo.title} - ${articleVo.content}
-		<a href="@{Manage.edit(articleVo.id)}">edit</a>
-		#{if ( articleVo.isActive == true ) }
-			<a href="@{Manage.disable(articleVo.id)}">make disable</a>
+		${blogVo.title} - ${blogVo.content}
+		<a href="@{Manage.edit(blogVo.id)}">edit</a>
+		#{if ( blogVo.isActive == true ) }
+			<a href="@{Manage.disable(blogVo.id)}">make disable</a>
 		#{/if}
 		#{else}
-			<a href="@{Manage.enable(articleVo.id)}">make enable</a>
+			<a href="@{Manage.enable(blogVo.id)}">make enable</a>
 		#{/else}
-		<a href="#" onclick="deleteArticle('${articleVo.id}')">delete</a>
+		<a href="#" onclick="deleteArticle('${blogVo.id}')">delete</a>
+	</li>
+#{/list}
+</ul>
+
+==============Twitter=====================
+<ul>
+#{list items:twitterVos, as:'twitterVo'}
+	<li>
+		 ${twitterVo.content}
+		<a href="@{Manage.edit(twitterVo.id)}">edit</a>
+		#{if ( twitterVo.isActive == true ) }
+			<a href="@{Manage.disable(twitterVo.id)}">make disable</a>
+		#{/if}
+		#{else}
+			<a href="@{Manage.enable(twitterVo.id)}">make enable</a>
+		#{/else}
+		<a href="#" onclick="deleteArticle('${twitterVo.id}')">delete</a>
 	</li>
 #{/list}
 </ul>
@@ -38,8 +54,27 @@ SyntaxHighlighter.all();
 <br/></pre>
 <br/>就这么简单，对Play! Framework的修改完成了（但不完美，后面再说）。重新编译Play!，得到新的play.jar，替换原来的。
 
+<br/>
+<br/>
+<br/>
+========Blog=======
 #{form @addArticle()}
-	Title:<input type="text" name="title" size="10" /><br/>
-	Content:<textarea name="content"></textarea><br/>
+	Title: <input type="text" name="title" size="10" /><br/>
+	Content: <textarea name="content" cols="50" rows="10"></textarea><br/>
+	<input type="hidden" name="type" value="1"/>
 	<input type="submit" value="add" />
 #{/form}
+
+=======Twitter==========
+#{form @addArticle()}
+	Content: <textarea name="content" cols="50" rows="3"></textarea><br/>
+	<input type="hidden" name="type" value="2"/>
+	<input type="submit" value="add" />
+#{/form}
+
+
+
+
+
+
+
