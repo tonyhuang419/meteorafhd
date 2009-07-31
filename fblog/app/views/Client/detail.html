@@ -1,6 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'Welcome FHDone BTlog' /}
-
+<script language="javascript">
+SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
+SyntaxHighlighter.all();
+</script>
 <ul>
 	<li>
 		${articleVo.title}<br/>
