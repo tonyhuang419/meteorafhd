@@ -39,8 +39,6 @@ public class Article extends JPASupport {
 		this.lastModifyTime = new Date();
 		this.isActive = true;
 		this.type = type;
-		System.out.println("================");
-		System.out.println(type);
 		this.save();
 	}
 	

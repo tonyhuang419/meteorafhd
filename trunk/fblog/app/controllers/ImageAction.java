@@ -21,7 +21,6 @@ import com.google.appengine.api.datastore.Blob;
 public class ImageAction  extends Controller {
 
 	public static void index(){
-		System.out.println("index");
 		List<Image> images = Image.findAll();
 		render(images);
 	}
@@ -76,8 +75,6 @@ public class ImageAction  extends Controller {
 
 
 	public static void show(Long imageStamp) {
-		System.out.println("======imageStamp==========");
-		System.out.println(imageStamp);
 		List<Image> imageList = Image.findBy("imageStamp", imageStamp);
 		if (null == imageList || 0 == imageList.size()) {
 			Logger.error("No image found by imageStamp: " + imageStamp);
