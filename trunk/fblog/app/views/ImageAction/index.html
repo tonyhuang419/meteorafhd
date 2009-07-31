@@ -1,13 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Welcome FHDone Blog' /}
 
+<a class="new" href="@{ImageAction.newImage}">New photo</a>
 
-<ul>
+<h1>${images.size() ?: 'No'} photo(s) found</h1>
+
 #{list items:images, as:'image'}
-	<li>
-		${image.imageStamp}
-<!--		<img src="http://127.0.0.1:9000/imageaction/show?imageStamp=${image.imageStamp}"/>-->
-			<img src="http://meteorafhd.appspot.com/imageaction/show?imageStamp=${image.imageStamp}"/>
-	</li>
+<div class="photo">
+    <img src="@{ImageAction.show(image.imageStamp)}" height="100" />
+     <div>
+        <span class="name">${image.imageStamp}</span>
+    </div>
+</div>
 #{/list}
-</ul>

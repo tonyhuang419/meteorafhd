@@ -1,0 +1,32 @@
+.photo {
+    border: 1px solid #aaa;
+    padding: 4px;
+    float: left;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    margin: 0 10px 10px 0;
+}
+ 
+.photo img {
+    margin-bottom: 5px;
+}
+ 
+.photo .name {
+    display: block;
+    white-space: nowrap;
+    width: 142px;
+    overflow: hidden;
+}
+ 
+.photo .size {
+    font-weight: bold;
+    white-space: nowrap;
+    display: block;
+}
+ 
+.new {
+    clear: both;
+    margin-top: 1em;
+    display: block;
+}
