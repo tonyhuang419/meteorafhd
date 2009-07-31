@@ -16,7 +16,7 @@ SyntaxHighlighter.all();
 #{list items:blogVos, as:'blogVo'}
 	<li>
 		${blogVo.title} - ${blogVo.content}
-		<a href="@{Manage.edit(blogVo.id)}">edit</a>
+		<a href="@{Manage.editBlog(blogVo.id)}">edit</a>
 		#{if ( blogVo.isActive == true ) }
 			<a href="@{Manage.disable(blogVo.id)}">make disable</a>
 		#{/if}
@@ -33,7 +33,7 @@ SyntaxHighlighter.all();
 #{list items:twitterVos, as:'twitterVo'}
 	<li>
 		 ${twitterVo.content}
-		<a href="@{Manage.edit(twitterVo.id)}">edit</a>
+		<a href="@{Manage.editTwitter(twitterVo.id)}">edit</a>
 		#{if ( twitterVo.isActive == true ) }
 			<a href="@{Manage.disable(twitterVo.id)}">make disable</a>
 		#{/if}

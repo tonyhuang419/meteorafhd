@@ -12,8 +12,8 @@ import UtilTools.UtilTools;
 public class Client extends Controller {
 
 	public static void index() {
-		List<Article> blogs = Article.getActiveBlog();
-		List<Article> twitters = Article.getActiveTwitter();
+		List<Article> blogs = Article.getActiveBlog("true");
+		List<Article> twitters = Article.getActiveTwitter("true");
 		List<ArticleVo> blogVos = UtilTools.articleToArticlesVo(blogs);
 		List<ArticleVo> twitterVos = UtilTools.articleToArticlesVo(twitters);
 		render(blogVos,twitterVos);
