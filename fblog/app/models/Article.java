@@ -39,6 +39,8 @@ public class Article extends JPASupport {
 		this.lastModifyTime = new Date();
 		this.isActive = true;
 		this.type = type;
+		System.out.println("================");
+		System.out.println(type);
 		this.save();
 	}
 	
@@ -46,17 +48,34 @@ public class Article extends JPASupport {
 		return Article.findBy(" isActive = true " );
 	}
 	
-	public static List<Article> getActiveBlog(){
-		return Article.findBy(" isActive = true and type=1 " );
+	public static List<Article> getActiveBlog(String active){
+		if("ALL".equals(active)){
+			return Article.findBy(" type=1 " );
+		}
+		else{
+			return Article.findBy(" isActive = true and type=1 " );
+		}
 	}
 	
-	public static List<Article> getActiveTwitter(){
-		return Article.findBy(" isActive = true and type=2 " );
+	public static List<Article> getActiveTwitter(String active){
+		if("ALL".equals(active)){
+			return Article.findBy(" type=2 " );
+		}
+		else{
+			return Article.findBy(" isActive = true and type=2 " );
+		}
 	}
 	
-	public static void modActicle(Long id , String title , String content){
+	public static void modBlogActicle(Long id , String title , String content){
 		Article article = Article.findById(id);
 		article.title = title;
+		article.content = new Text(content);
+		article.lastModifyTime = new Date();
+		Article.em().persist(article);
+	}
+	
+	public static void modTwitterActicle(Long id , String content){
+		Article article = Article.findById(id);
 		article.content = new Text(content);
 		article.lastModifyTime = new Date();
 		Article.em().persist(article);
