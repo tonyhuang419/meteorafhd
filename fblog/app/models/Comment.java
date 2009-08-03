@@ -32,8 +32,12 @@ public class Comment extends JPASupport {
 		this.save();
 	}
 	
-	public static List<Comment> getCommentsByArticleId(Long id) {
-		return Comment.findBy("articleId = " + id +" order by id" );
+	public static List<Comment> getCommentsByArticleId(Long articleId ) {
+		return Comment.findBy("articleId = " + articleId +" order by id" );
+	}
+	
+	public static void removeByArticleId(Long articleId){
+		Comment.em().createQuery( "delete from models.Comment c where c.articleId = " + articleId);
 	}
     
 }

@@ -94,6 +94,7 @@ public class Article extends JPASupport {
 	public static void deleteArticle(Long id){
 		Article article = Article.findById(id);
 		Article.em().remove(article);
+		Comment.removeByArticleId(id);
 	}
 	
 	public static void addReadCount(Long id){
