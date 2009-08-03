@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import play.db.jpa.JPASupport;
+import UtilTools.PageInfo;
+import UtilTools.UtilTools;
 
 import com.google.appengine.api.datastore.Text;
 
@@ -43,24 +45,33 @@ public class Article extends JPASupport {
 	}
 	
 	public static List<Article> getActiveArticle(){
-		return Article.findBy(" isActive = true " );
+		return Article.find(" isActive = true " ).all();
 	}
 	
 	public static List<Article> getActiveBlog(String active){
 		if("ALL".equals(active)){
-			return Article.findBy(" type=1 " );
+			return Article.find(" type=1 " ).all();
 		}
 		else{
-			return Article.findBy(" isActive = true and type=1 " );
+			return Article.find(" isActive = true and type=1 " ).all();
 		}
 	}
 	
 	public static List<Article> getActiveTwitter(String active){
 		if("ALL".equals(active)){
-			return Article.findBy(" type=2 " );
+			return Article.find(" type=2 " ).all();
 		}
 		else{
-			return Article.findBy(" isActive = true and type=2 " );
+			return Article.find(" isActive = true and type=2 " ).all();
+		}
+	}
+	
+	public static PageInfo getActiveBlogByPage(String active , int page){
+		if("ALL".equals(active)){
+			return UtilTools.getPageInfo(new Article(), " type=1 ", page);
+		}
+		else{
+			return UtilTools.getPageInfo(new Article(), " isActive = true and type=1 ", page);
 		}
 	}
 	
@@ -99,7 +110,7 @@ public class Article extends JPASupport {
 	
 	public static void addReadCount(Long id){
 		Article article = Article.findById(id);
-		article.readCount = article.readCount +1;
+		article.readCount = article.readCount + 1;
 		Article.em().persist(article);
 	}
 	
