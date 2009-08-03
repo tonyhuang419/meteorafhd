@@ -12,12 +12,12 @@ SyntaxHighlighter.all();
 
 ================Blog==================
 <ul>
-#{list items:blogVos, as:'blogVo'}
+#{list items:blogs, as:'blog'}
 	<li>
-		<a href="@{Client.detail(blogVo.id)}">${blogVo.title}</a><br/>
-		<strong>Post Time: </strong>${blogVo.createdTime}<br/>
-		<strong>Read count: </strong>${blogVo.readCount} <br/>
-		${blogVo.content} 
+		<a href="@{Client.detail(blog.id)}">${blog.title}</a><br/>
+		<strong>Post Time: </strong>${blog.createdTime}<br/>
+		<strong>Read count: </strong>${blog.readCount} <br/>
+		${blog.content.getValue()}
 	</li>
 <hr/>
 #{/list}
@@ -27,9 +27,18 @@ SyntaxHighlighter.all();
 ===============Twitter=================
 
 <ul>
-#{list items:twitterVos, as:'twitterVo'}
+#{list items:twitters, as:'twitter'}
 	<li>
-		${twitterVo.content} 
+		${twitter.content.getValue()}
+	</li>
+#{/list}
+</ul>
+
+================Page===================
+<ul>
+#{list items:pi.data, as:'p'}
+	<li>
+		${p.content.getValue()} 
 	</li>
 #{/list}
 </ul>

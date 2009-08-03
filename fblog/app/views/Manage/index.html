@@ -13,34 +13,34 @@ SyntaxHighlighter.all();
 
 ==============Blog=====================
 <ul>
-#{list items:blogVos, as:'blogVo'}
+#{list items:blogs, as:'blog'}
 	<li>
-		${blogVo.title} - ${blogVo.content}
-		<a href="@{Manage.editBlog(blogVo.id)}">edit</a>
-		#{if ( blogVo.isActive == true ) }
-			<a href="@{Manage.disable(blogVo.id)}">make disable</a>
+		${blog.title} - ${blog.content.getValue()}
+		<a href="@{Manage.editBlog(blog.id)}">edit</a>
+		#{if ( blog.isActive == true ) }
+			<a href="@{Manage.disable(blog.id)}">make disable</a>
 		#{/if}
 		#{else}
-			<a href="@{Manage.enable(blogVo.id)}">make enable</a>
+			<a href="@{Manage.enable(blog.id)}">make enable</a>
 		#{/else}
-		<a href="#" onclick="deleteArticle('${blogVo.id}')">delete</a>
+		<a href="#" onclick="deleteArticle('${blog.id}')">delete</a>
 	</li>
 #{/list}
 </ul>
 
 ==============Twitter=====================
 <ul>
-#{list items:twitterVos, as:'twitterVo'}
+#{list items:twitters, as:'twitter'}
 	<li>
-		 ${twitterVo.content}
-		<a href="@{Manage.editTwitter(twitterVo.id)}">edit</a>
-		#{if ( twitterVo.isActive == true ) }
-			<a href="@{Manage.disable(twitterVo.id)}">make disable</a>
+		 ${twitter.content.getValue()}
+		<a href="@{Manage.editTwitter(twitter.id)}">edit</a>
+		#{if ( twitter.isActive == true ) }
+			<a href="@{Manage.disable(twitter.id)}">make disable</a>
 		#{/if}
 		#{else}
-			<a href="@{Manage.enable(twitterVo.id)}">make enable</a>
+			<a href="@{Manage.enable(twitter.id)}">make enable</a>
 		#{/else}
-		<a href="#" onclick="deleteArticle('${twitterVo.id}')">delete</a>
+		<a href="#" onclick="deleteArticle('${twitter.id}')">delete</a>
 	</li>
 #{/list}
 </ul>
