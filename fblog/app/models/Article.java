@@ -68,10 +68,10 @@ public class Article extends JPASupport {
 	
 	public static PageInfo getActiveBlogByPage(String active , int page){
 		if("ALL".equals(active)){
-			return UtilTools.getPageInfo(new Article(), " type=1 ", page);
+			return UtilTools.getPageInfo( Article.em(), "select a from models.Article a where type=1 ", page);
 		}
 		else{
-			return UtilTools.getPageInfo(new Article(), " isActive = true and type=1 ", page);
+			return UtilTools.getPageInfo(Article.em(), "select a from models.Article a where isActive = true and type=1 ", page);
 		}
 	}
 	
