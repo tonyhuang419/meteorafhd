@@ -68,7 +68,8 @@ public class Pages extends Component {
 			int v=(pageNo-4)>0?(pageNo-4):1;
 			int v1=(pageNo+4)<total?(pageNo+4):total;
 			if(v1==total){
-				v=total-10;
+//				v=total-10;
+				v=total-10>1?v:1;
 			}else if(v==1&&v1<total){
 				v1=total>10?10:total;
 			}
