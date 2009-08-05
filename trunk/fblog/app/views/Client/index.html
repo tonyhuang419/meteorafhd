@@ -10,35 +10,15 @@ SyntaxHighlighter.all();
 <br/>
 <br/>
 
-================Blog==================
-<ul>
-#{list items:blogs, as:'blog'}
-	<li>
-		<a href="@{Client.detail(blog.id)}">${blog.title}</a><br/>
-		<strong>Post Time: </strong>${blog.createdTime}<br/>
-		<strong>Read count: </strong>${blog.readCount} <br/>
-		${blog.content.getValue()}
-	</li>
-<hr/>
-#{/list}
-</ul>
-
-
-===============Twitter=================
-
-<ul>
-#{list items:twitters, as:'twitter'}
-	<li>
-		${twitter.content.getValue()}
-	</li>
-#{/list}
-</ul>
-
-================Page===================
+<a href="@{Client.blog}">Blog</a>
+<a href="@{Client.twitter}">Twitter</a>
 <ul>
 #{list items:pi.data, as:'p'}
 	<li>
-		${p.content.getValue()} 
+		<a href="@{Client.detail(p.id)}">${p.title}</a><br/>
+		<strong>Post Time: </strong>${p.createdTime}<br/>
+		<strong>Read count: </strong>${p.readCount} <br/>
+		${p.content.getValue()}
 	</li>
 #{/list}
 </ul>

@@ -11,7 +11,7 @@ public class PageInfo
 	public PageInfo(){
 		pageNo = 1;
 		total = 0;
-		pageSize = 2;
+		pageSize = 10;
 	}
 
 	public int getTotalPageCount(){
@@ -23,12 +23,7 @@ public class PageInfo
 	
 
 	public int getStartOfPage(){
-		if(pageNo==1){
-			return 1;
-		}
-		else{
-			return (pageNo - 1) * pageSize;
-		}
+		return (pageNo - 1) * pageSize;
 	}
 
 
