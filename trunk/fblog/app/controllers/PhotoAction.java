@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
-import models.Image;
+import models.Photo;
 
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
@@ -18,14 +18,14 @@ import play.mvc.Controller;
 
 import com.google.appengine.api.datastore.Blob;
 
-public class ImageAction  extends Controller {
+public class PhotoAction  extends Controller {
 
 	public static void index(){
-		List<Image> images = Image.findAll();
-		render(images);
+		List<Photo> photos = Photo.findAll();
+		render(photos);
 	}
 	
-	public static void newImage(){
+	public static void newPhoto(){
 		render();
 	}
 	
@@ -59,34 +59,34 @@ public class ImageAction  extends Controller {
 //						info = "File is too big!";
 						index();
 					}
-					Long imageStamp = new Date().getTime();
-					Image image = new Image(imageStamp, contentType, new Blob(out.toByteArray()));
-					image.save();
-//					info = "<img src=\"http://meteorafhd.appspot.com/show/%22%20+%20imageStamp%20+%20%22\">";
+					Long photoStamp = new Date().getTime();
+					Photo photo = new Photo(photoStamp, contentType, new Blob(out.toByteArray()));
+					photo.save();
+//					info = "<img src=\"http://meteorafhd.appspot.com/show/%22%20+%20photoStamp%20+%20%22\">";
 					index();
 				}
 			}
 		} catch (FileUploadException e) {
-			Logger.error(e, "Cannot open the image file!");
+			Logger.error(e, "Cannot open the photo file!");
 		} catch (IOException e) {
 			Logger.error(e, "IO error when save a photo!");
 		}
 	} 
 
 
-	public static void show(Long imageStamp) {
-		List<Image> imageList = Image.findBy("imageStamp", imageStamp);
-		if (null == imageList || 0 == imageList.size()) {
-			Logger.error("No image found by imageStamp: " + imageStamp);
+	public static void show(Long photoStamp) {
+		List<Photo> photoList = Photo.findBy("photoStamp", photoStamp);
+		if (null == photoList || 0 == photoList.size()) {
+			Logger.error("No photo found by photoStamp: " + photoStamp);
 			return;
 		}
-		Image image = imageList.get(0);
-		if (image != null) {
-			response.contentType = image.contentType;
+		Photo photo = photoList.get(0);
+		if (photo != null) {
+			response.contentType = photo.contentType;
 			try {
-				response.out.write(image.image.getBytes());
+				response.out.write(photo.photo.getBytes());
 			} catch (IOException e) {
-				Logger.error(e, "IO error when show a photo: " + imageStamp);
+				Logger.error(e, "IO error when show a photo: " + photoStamp);
 			}
 		}
 	}
