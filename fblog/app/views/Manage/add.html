@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Add FHD BTlog' /}
+<script language="javascript">
+</script>
+
+
+========Blog=======
+#{form @addArticle()}
+	Title: <input type="text" name="title" size="10" /><br/>
+	Content: <textarea name="content" cols="100" rows="10"></textarea><br/>
+	<input type="hidden" name="type" value="1"/>
+	<input type="submit" value="add" />
+#{/form}
+
+<hr>
+
+=======Twitter==========
+#{form @addArticle()}
+	Content: <textarea name="content" cols="50" rows="3"></textarea><br/>
+	<input type="hidden" name="type" value="2"/>
+	<input type="submit" value="add" />
+#{/form}
+
+
+
+
+
+
+

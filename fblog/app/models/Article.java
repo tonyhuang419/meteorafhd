@@ -66,13 +66,23 @@ public class Article extends JPASupport {
 		}
 	}
 	
-	public static PageInfo getActiveBlogByPage(String active , int page){
+	/**
+	 * 
+	 * @param active
+	 * @param page
+	 * @param type 1:blog 2:twitter
+	 * @return
+	 */
+	public static PageInfo getActiveArticles(String active , int page , String type){
+		StringBuffer jsql = new StringBuffer(" select a from models.Article a where  ");
 		if("ALL".equals(active)){
-			return UtilTools.getPageInfo( Article.em(), "select a from models.Article a where type=1 ", page);
+			jsql.append("type=").append(type);
 		}
 		else{
-			return UtilTools.getPageInfo(Article.em(), "select a from models.Article a where isActive = true and type=1 ", page);
+			jsql.append(" isActive = true and type= ").append(type);
 		}
+		jsql.append(" order by a.createdTime desc ");
+		return UtilTools.getPageInfo(Article.em(), jsql.toString() , page);
 	}
 	
 	public static void modBlogActicle(Long id , String title , String content){

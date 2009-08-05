@@ -16,12 +16,16 @@ public class Manage extends Controller {
 		render(blogs,twitters);
 	}
 
+	public static void add(){
+		render();
+	}
+	
 	public static void addArticle(String title , 
 			@Required String content , @Required Long type ) {
 		new Article(title, new Text(content) , type );
 		index();
 	}
-
+	
 	public static void editBlog(@Required Long articleId ) {
 		Article article = Article.findById(articleId);
 		render(article);

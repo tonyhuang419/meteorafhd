@@ -11,14 +11,37 @@ import utilTools.UtilTools;
 
 public class Client extends Controller {
 
+	/**
+	 * main page first page
+	 */
 	public static void index() {
-		List<Article> blogs = Article.getActiveBlog("true");
-		List<Article> twitters = Article.getActiveTwitter("true");
-		PageInfo pi = Article.getActiveBlogByPage("true", 1);
-		String pageTag = UtilTools.getPageTag(pi,"client");
-		render(blogs,twitters,pi,pageTag);
+		PageInfo pi = Article.getActiveArticles("true", 1 , "1");
+		String pageTag = UtilTools.getPageTag(pi, "Client/blog");
+		render(pi,pageTag);
 	}
 
+	/**
+	 * blog with page
+	 */
+	public static void blog(int page) {
+		PageInfo pi = Article.getActiveArticles("true", page , "1");
+		String pageTag = UtilTools.getPageTag(pi,"/Client/blog");
+		render("Client/index.html", pi, pageTag);
+	}
+	
+	/**
+	 * twitter with page
+	 */
+	public static void twitter(int page) {
+		PageInfo pi = Article.getActiveArticles("true", page , "2");
+		String pageTag = UtilTools.getPageTag(pi,"/Client/twitter");
+		render(pi,pageTag);
+	}
+	
+	
+	/**
+	 * blog Detail
+	 */
 	public static void detail(Long id){
 		Article article = Article.findById(id);
 		Article.addReadCount(id);
@@ -26,16 +49,14 @@ public class Client extends Controller {
 		render(article , comments);
 	}
 
+	
+	/**
+	 * add comment for blog
+	 */
 	public static void addComment(@Required String author , 
 			@Required String content , @Required Long articleId ) {
 		new Comment(author, content , articleId );
 		detail(articleId);
-	}
-
-	public static void page(@Required int page ) {
-		PageInfo pi = Article.getActiveBlogByPage("true", page);
-		String pageTag = UtilTools.getPageTag(pi,"client");
-		 render("Client/index.html", pi, pageTag); 
 	}
 
 }
