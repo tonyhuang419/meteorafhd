@@ -23,8 +23,10 @@ SyntaxHighlighter.all();
 
 
 #{form @addComment()}
-	u name: <input type="text" name="author" size="10" /><br/>
-	u comment: <textarea name="content"></textarea><br/>
+	ur name: <input type="text" name="author" size="10" /><br/>
+	ur comment: <textarea name="content"></textarea><br/>
 	<input type="hidden" name="articleId" value="${article.id}">
 	<input type="submit" value="add" />
 #{/form}
+
+<a class="new" href="@{Client.index}">Back main</a>

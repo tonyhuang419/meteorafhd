@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+#{set title:'photo index' /}
+
+<a class="new" href="@{PhotoAction.newPhoto}">New photo</a>
+
+<h1>${photos.size() ?: 'No'} photo(s) found</h1>
+
+#{list items:photos, as:'photo'}
+<div class="photo">
+    <img src="@{PhotoAction.show(photo.photoStamp)}" height="100" />
+     <div>
+        <span class="name">${photo.photoStamp}</span>
+    </div>
+</div>
+#{/list}
