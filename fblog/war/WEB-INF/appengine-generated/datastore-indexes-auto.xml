@@ -1,4 +1,4 @@
-<!-- Indices written at 09-8-5 ÏÂÎç4:36 -->
+<!-- Indices written at 09-8-5 ÏÂÎç5:42 -->
 
 <datastore-indexes>
 
@@ -7,6 +7,12 @@
         <property name="isActive" direction="asc"/>
         <property name="type" direction="asc"/>
         <property name="createdTime" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Comment" ancestor="false" source="auto">
+        <property name="articleId" direction="asc"/>
+        <property name="__key__" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>
