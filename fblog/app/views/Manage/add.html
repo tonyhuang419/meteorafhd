@@ -3,26 +3,37 @@
 <script language="javascript">
 </script>
 
-
-========Blog=======
+<div id="blog">
+<h1>add blog</h1>
 #{form @addArticle()}
 	Title: <input type="text" name="title" size="10" /><br/>
 	Content: <textarea name="content" cols="100" rows="10"></textarea><br/>
 	<input type="hidden" name="type" value="1"/>
 	<input type="submit" value="add" />
 #{/form}
+</div>
 
-<hr>
+<br/><br/><br/>
+<hr/>
+<br/><br/>
 
-=======Twitter==========
+<div id="twitter">
+<h1>add twitter</h1>
 #{form @addArticle()}
 	Content: <textarea name="content" cols="50" rows="3"></textarea><br/>
 	<input type="hidden" name="type" value="2"/>
 	<input type="submit" value="add" />
 #{/form}
+</div>
 
-========Photo========
-<a class="new" href="@{Photo.newPhoto}">New photo</a>
+<br/><br/><br/>
+<hr/>
+<br/><br/>
+
+<div id="photo">
+<h1>add photo</h1>
+<a class="new" href="@{PhotoAction.newPhoto}">New photo</a>
+</div>
 
 
 
