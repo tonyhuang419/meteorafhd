@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import play.db.jpa.JPASupport;
-import UtilTools.PageInfo;
-import UtilTools.UtilTools;
+import utilTools.PageInfo;
+import utilTools.UtilTools;
 
 import com.google.appengine.api.datastore.Text;
 

@@ -6,8 +6,8 @@ import models.Article;
 import models.Comment;
 import play.data.validation.Required;
 import play.mvc.Controller;
-import UtilTools.PageInfo;
-import UtilTools.UtilTools;
+import utilTools.PageInfo;
+import utilTools.UtilTools;
 
 public class Client extends Controller {
 
