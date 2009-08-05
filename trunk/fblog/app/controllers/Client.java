@@ -35,7 +35,7 @@ public class Client extends Controller {
 	public static void page(@Required int page ) {
 		PageInfo pi = Article.getActiveBlogByPage("true", page);
 		String pageTag = UtilTools.getPageTag(pi,"client");
-		 render("client/index.html", pi, pageTag); 
+		 render("Client/index.html", pi, pageTag); 
 	}
 
 }
