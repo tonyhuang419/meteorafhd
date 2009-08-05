@@ -4,7 +4,7 @@
 
 GET			/					Client.index
 GET			/manage				Manage.index
-GET			/imageAction		ImageAction.index
+GET			/photo				PhotoAction.index
 
 # Import the default CRUD routes
 *			/admin				module:crud
