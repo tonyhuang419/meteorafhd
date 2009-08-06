@@ -1,4 +1,4 @@
-#{extends 'main.html' /}
+#{extends 'client_main.html' /}
 #{set title:'Welcome FHDone BTlog' /}
 <script language="javascript">
 SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
@@ -10,8 +10,17 @@ SyntaxHighlighter.all();
 <br/>
 <br/>
 
-<a href="@{Client.blog}">Blog</a>
-<a href="@{Client.twitter}">Twitter</a>
+<div id="menux">
+<ul>
+#{list items:recentBlog, as:'r'}
+	<li>
+		<a href=@{Client.detail(r.id)}>${r.title}</a><br/>
+	</li>
+#{/list}
+</ul>
+</div>
+
+<div id="blog">
 <ul>
 #{list items:pi.data, as:'p'}
 	<li>
@@ -23,3 +32,4 @@ SyntaxHighlighter.all();
 #{/list}
 </ul>
 ${pageTag}
+</div>
