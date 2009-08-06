@@ -2,21 +2,15 @@
 #{set title:'Welcome FHDone BTlog' /}
 <script language="javascript">
 </script>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
-<a href="@{Client.blog}">Blog</a>
-<a href="@{Client.twitter}">Twitter</a>
-
-<ul>
-#{list items:pi.data, as:'p'}
-	<li>
-		${p.content.getValue()}<br/>
-		<strong>Post Time: </strong>${p.createdTime}
-	</li>
-#{/list}
-</ul>
-${pageTag}
+<div id="page">
+	<div id="content">
+		<div id="latest-post" class="post">
+			#{list items:pi.data, as:'p'}
+			<p class="meta"><small>${p.createdTime}<br /></small></p>
+			<div class="entry">${p.content.getValue()}</div>
+			#{/list}
+			${pageTag}
+		</div>
+	</div>
+</div>

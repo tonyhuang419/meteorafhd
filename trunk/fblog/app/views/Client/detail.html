@@ -4,29 +4,32 @@
 SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
 SyntaxHighlighter.all();
 </script>
-<ul>
-	<li>
-		${article.title}<br/>
-		${article.content.getValue()} 
-	</li>
-</ul>
 
-=====Comment======
-<ul>
-#{list items:comments, as:'comment'}
-	<li>
-		${comment.author} - ${comment.content} 
-	</li>
-#{/list}
-</ul>
+<div id="page">
+	<div id="content">
+		<div id="latest-post" class="post">
+			<h1 class="title">${article.title}</h1>
+			<p class="meta"><small>${article.createdTime}<br /></small></p>
+			<div class="entry">
+				${article.content.getValue()} 
+			</div>
+		</div>
+		<div id="latest-post" class="post">
+		<h2>Comments</h2>
+			<ul>
+			#{list items:comments, as:'comment'}
+				<li>By ${comment.author}/${comment.createdTime}</li>
+					<br/>${comment.content} 
+			#{/list}
+			</ul>
+			#{form @addComment()}
+				ur name: <input type="text" name="author" size="20" /><br/>
+				ur comment:<br/>
+				<textarea name="content" rows="5" cols="100"></textarea><br/>
+				<input type="hidden" name="articleId" value="${article.id}">
+				<input type="submit" value="post ur comment" />
+			#{/form}
+		</div>
+	</div>
+</div>
 
-
-
-#{form @addComment()}
-	ur name: <input type="text" name="author" size="10" /><br/>
-	ur comment: <textarea name="content"></textarea><br/>
-	<input type="hidden" name="articleId" value="${article.id}">
-	<input type="submit" value="add" />
-#{/form}
-
-<a class="new" href="@{Client.index}">Back main</a>
