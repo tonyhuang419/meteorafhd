@@ -1,35 +1,36 @@
 #{extends 'client_main.html' /}
 #{set title:'Welcome FHDone BTlog' /}
 <script language="javascript">
-SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
-SyntaxHighlighter.all();
+//SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
+//SyntaxHighlighter.all();
 </script>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
-<div id="menux">
-<ul>
-#{list items:recentBlog, as:'r'}
-	<li>
-		<a href=@{Client.detail(r.id)}>${r.title}</a><br/>
-	</li>
-#{/list}
-</ul>
+<div id="page">
+	<div id="content">
+		<div id="latest-post" class="post">
+			#{list items:pi.data, as:'p'}
+			<h1 class="title"><a href="@{Client.detail(p.id)}">${p.title}</a></h1>
+			<p class="meta"><small>${p.createdTime}<br /></small></p>
+			<div class="entry">
+				${p.content.getValue()}
+			</div>
+			#{/list}
+			${pageTag}
+		</div>
+
+		<div id="recent-posts">
+		<ul>
+		#{list items:recentBlog, as:'r'}
+			<div class="post">
+				<li><h2 class="title"><a href=@{Client.detail(r.id)}>${r.title}</a></h2></li>
+			</div>
+		#{/list}
+		</ul>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p id="legal">&copy;2007 Puzzled. All Rights Reserved.  Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
 </div>
 
-<div id="blog">
-<ul>
-#{list items:pi.data, as:'p'}
-	<li>
-		<a href="@{Client.detail(p.id)}">${p.title}</a><br/>
-		<strong>Post Time: </strong>${p.createdTime}<br/>
-		<strong>Read count: </strong>${p.readCount} <br/>
-		${p.content.getValue()}
-	</li>
-#{/list}
-</ul>
-${pageTag}
-</div>
+

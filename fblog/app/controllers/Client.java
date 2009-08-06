@@ -40,7 +40,6 @@ public class Client extends Controller {
 		render(pi,pageTag);
 	}
 	
-	
 	/**
 	 * blog Detail
 	 */
