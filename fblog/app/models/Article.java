@@ -96,7 +96,6 @@ public class Article extends JPASupport {
 			jsql.append(" and isActive = true ");
 		}
 		jsql.append(" order by createdTime desc ");
-		System.out.println(jsql);
 		Query query = Article.em().createQuery(jsql.toString());
 		query.setMaxResults(10);
 		return query.getResultList();
