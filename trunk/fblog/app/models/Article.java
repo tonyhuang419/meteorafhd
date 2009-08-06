@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 import play.db.jpa.JPASupport;
 import utilTools.PageInfo;
@@ -81,8 +82,24 @@ public class Article extends JPASupport {
 		else{
 			jsql.append(" isActive = true and type= ").append(type);
 		}
-		jsql.append(" order by a.createdTime desc ");
+		jsql.append(" order by createdTime desc ");
 		return UtilTools.getPageInfo(Article.em(), jsql.toString() , page);
+	}
+	
+	/**
+	 * get  menu
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<Article> getNumBlog(String active , int num ){
+		StringBuffer jsql = new StringBuffer(" select a from models.Article a where type = 1");
+		if( !"ALL".equals(active)){
+			jsql.append(" and isActive = true ");
+		}
+		jsql.append(" order by createdTime desc ");
+		System.out.println(jsql);
+		Query query = Article.em().createQuery(jsql.toString());
+		query.setMaxResults(10);
+		return query.getResultList();
 	}
 	
 	public static void modBlogActicle(Long id , String title , String content){

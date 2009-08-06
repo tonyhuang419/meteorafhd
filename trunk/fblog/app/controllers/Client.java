@@ -16,8 +16,9 @@ public class Client extends Controller {
 	 */
 	public static void index() {
 		PageInfo pi = Article.getActiveArticles("true", 1 , "1");
+		List<Article> recentBlog = Article.getNumBlog("true",  10);
 		String pageTag = UtilTools.getPageTag(pi, "Client/blog");
-		render(pi,pageTag);
+		render(pi, pageTag , recentBlog);
 	}
 
 	/**
@@ -25,8 +26,9 @@ public class Client extends Controller {
 	 */
 	public static void blog(int page) {
 		PageInfo pi = Article.getActiveArticles("true", page , "1");
+		List<Article> recentBlog = Article.getNumBlog("true",  10);
 		String pageTag = UtilTools.getPageTag(pi,"/Client/blog");
-		render("Client/index.html", pi, pageTag);
+		render("Client/index.html", pi, pageTag, recentBlog);
 	}
 	
 	/**
