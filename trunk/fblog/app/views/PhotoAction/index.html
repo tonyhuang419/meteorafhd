@@ -9,7 +9,7 @@ setCurrentPageItem("menu_photo");
 	<div id="content">
 		<h1>${photos.size() ?: 'No'} photo(s) found</h1>
 		#{list items:photos, as:'photo'}
-		<div class="photo" onclick="location.href(@{PhotoAction.show(photo.id)})">
+		<div class="photo">
 		    <img src="@{PhotoAction.show(photo.id)}" height="100" />
 		</div>
 		#{/list}

@@ -19,8 +19,9 @@ SyntaxHighlighter.all();
 		<h2>Comments</h2>
 			<ul>
 			#{list items:comments, as:'comment'}
-				<li>By ${comment.author}/${comment.createdTime}</li>
-					<br/>${comment.content} 
+				<li>${comment.content}<br/>
+					 &nbsp;&nbsp;&nbsp; By ${comment.author} - ${comment.createdTime} 
+				</li>
 			#{/list}
 			</ul>
 			#{form @addComment()}
