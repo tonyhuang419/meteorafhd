@@ -2,13 +2,33 @@ package controllers;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import models.Article;
 import play.data.validation.Required;
+import play.mvc.Before;
 import play.mvc.Controller;
 
 import com.google.appengine.api.datastore.Text;
 
 public class Manage extends Controller {
+
+    @Before(unless={"login"})
+    static void checkAuthentification() {
+        if(session.get("user") == null){
+        	login("");
+        }
+    }
+    
+    public static void login(String password){
+    	if(StringUtils.isNotEmpty(password) 
+    			&& password.equals("adminx")){
+    		session.put("user", "fhdone");
+    		index();
+    	}
+    	render();
+    }
+    
 
 	public static void index() {
 		List<Article> blogs = Article.getActiveBlog("ALL");

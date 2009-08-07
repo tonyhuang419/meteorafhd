@@ -3,7 +3,7 @@
 # ~~~~
 
 GET			/					Client.index
-GET			/manage				Manage.index
+GET			/manage				Manage.login
 GET			/photo				PhotoAction.index
 
 # Import the default CRUD routes
