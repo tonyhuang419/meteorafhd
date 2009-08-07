@@ -74,10 +74,10 @@ public class PhotoAction  extends Controller {
 	} 
 
 
-	public static void show(Long photoStamp) {
-		List<Photo> photoList = Photo.findBy("photoStamp", photoStamp);
+	public static void show(Long id) {
+		List<Photo> photoList = Photo.findBy("id", id);
 		if (null == photoList || 0 == photoList.size()) {
-			Logger.error("No photo found by photoStamp: " + photoStamp);
+			Logger.error("No photo found by photoStamp: " + id);
 			return;
 		}
 		Photo photo = photoList.get(0);
@@ -86,7 +86,7 @@ public class PhotoAction  extends Controller {
 			try {
 				response.out.write(photo.photo.getBytes());
 			} catch (IOException e) {
-				Logger.error(e, "IO error when show a photo: " + photoStamp);
+				Logger.error(e, "IO error when show a photo: " + id);
 			}
 		}
 	}

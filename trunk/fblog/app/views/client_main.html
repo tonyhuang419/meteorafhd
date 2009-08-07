@@ -18,15 +18,19 @@
 		<div id="header">
 			<div id="menu">
 				<ul>
+					<li><a href="@{Client.twitter}">Twitter</a></li>
 					<li class="current_page_item"><a href="@{Client.blog}">Blog</a></li>
-		            <li><a href="@{Client.twitter}">Twitter</a></li>
 					<li><a href="@{PhotoAction.index}">Photos</a></li>
-					<li><a href="#">About</a></li>
+					<li><a href="@{Client.about}">About</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="headerbg"><p class="text1">Welcome To FTblog</p></div>
+		<div id="headerbg"><p class="text1">Welcome To TBlog</p></div>
 		<!-- end header -->
         #{doLayout /} 
+        <div style="clear: both;">&nbsp;</div>
+        <div id="footer">
+			&nbsp;
+		</div>
     </body>
 </html>

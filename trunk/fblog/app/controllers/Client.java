@@ -15,10 +15,11 @@ public class Client extends Controller {
 	 * main page first page
 	 */
 	public static void index() {
-		PageInfo pi = Article.getActiveArticles("true", 1 , "1");
-		List<Article> recentBlog = Article.getNumBlog("true",  10);
-		String pageTag = UtilTools.getPageTag(pi, "Client/blog");
-		render(pi, pageTag , recentBlog);
+//		PageInfo pi = Article.getActiveArticles("true", 1 , "1");
+//		List<Article> recentBlog = Article.getNumBlog("true",  10);
+//		String pageTag = UtilTools.getPageTag(pi, "Client/blog");
+//		render(pi, pageTag , recentBlog);
+		twitter(1);
 	}
 
 	/**
@@ -59,5 +60,10 @@ public class Client extends Controller {
 		new Comment(author, content , articleId );
 		detail(articleId);
 	}
+	
+	public static void about(){
+		render();
+	}
+	
 
 }

@@ -1,5 +1,9 @@
 package utilTools;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -12,14 +16,14 @@ public class UtilTools {
 		}
 		PageInfo p = new PageInfo();
 		p.pageNo = pageNo;
-        Query query = em.createQuery(jsql);
-        p.total = query.getResultList().size();
+		Query query = em.createQuery(jsql);
+		p.total = query.getResultList().size();
 		query.setFirstResult(p.getStartOfPage());
-        query.setMaxResults(p.pageSize);
-        p.data = query.getResultList();
+		query.setMaxResults(p.pageSize);
+		p.data = query.getResultList();
 		return p;
 	}
-	
+
 	public static String getPageTag(PageInfo pi , String baseUrl){
 		StringBuffer sb = new StringBuffer();
 		int total = pi.getTotalPageCount();
@@ -66,6 +70,19 @@ public class UtilTools {
 		}
 		sb.append("</span>");
 		return sb.toString();
+	}
+
+	public static void  getTime(){
+		Locale lc = Locale.CHINA; 
+		Date date = new Date();  
+		System.out.println(date);
+		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.FULL,  DateFormat.FULL, lc);  
+		System.out.println(df.format(date));
+		System.out.println(date.toGMTString());
+	}
+	
+	public static void main(String[] args){
+		UtilTools.getTime();
 	}
 
 }

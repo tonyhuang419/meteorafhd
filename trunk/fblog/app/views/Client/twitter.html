@@ -7,8 +7,9 @@
 	<div id="content">
 		<div id="latest-post" class="post">
 			#{list items:pi.data, as:'p'}
+			<div class="entry">${p.content.getValue()}
 			<p class="meta"><small>${p.createdTime}<br /></small></p>
-			<div class="entry">${p.content.getValue()}</div>
+			</div>
 			#{/list}
 			${pageTag}
 		</div>
