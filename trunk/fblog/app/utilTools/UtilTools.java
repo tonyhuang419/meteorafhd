@@ -27,11 +27,11 @@ public class UtilTools {
 	public static String getPageTag(PageInfo pi , String baseUrl){
 		StringBuffer sb = new StringBuffer();
 		int total = pi.getTotalPageCount();
-		//数字样式 < <<1 2 3 4 5 6 7 8 9 10 > >>
+		//数字样式 < <<1 2 3 4 5 6 7 8 9 10>> > 
 		//如果只有一页，则无需分页
 		sb.append("&nbsp;");
 		if (total == 1) {
-			sb.append("<strong>1</strong>&nbsp;");
+			sb.append("&laquo;&nbsp;&lsaquo;&nbsp;<strong>1</strong>&nbsp;&rsaquo;&nbsp;&raquo;");
 		} else {      
 			if (pi.pageNo > 1) {
 				//当前不是第一组，要显示“<< <”

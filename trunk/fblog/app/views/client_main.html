@@ -11,6 +11,7 @@
 <!--        <script type="text/javascript" src="@{'/public/javascripts/jquery-1.2.6.min.js'}"></script>-->
 		<script type="text/javascript" src="@{'/public/javascripts/shCore.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/shBrushJava.js'}"></script>
+         <script type="text/javascript" src="@{'/public/javascripts/commons.js'}"></script>
 <!--        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />-->
     </head>
     <body>
@@ -18,10 +19,10 @@
 		<div id="header">
 			<div id="menu">
 				<ul>
-					<li><a href="@{Client.twitter}">Twitter</a></li>
-					<li class="current_page_item"><a href="@{Client.blog}">Blog</a></li>
-					<li><a href="@{PhotoAction.index}">Photos</a></li>
-					<li><a href="@{Client.about}">About</a></li>
+					<li id="menu_twitter"><a href="@{Client.twitter}">Twitter</a></li>
+					<li id="menu_blog"><a href="@{Client.blog}">Blog</a></li>
+					<li id="menu_photo"><a href="@{PhotoAction.index}">Photos</a></li>
+					<li id="menu_about"><a href="@{Client.about}">About</a></li>
 				</ul>
 			</div>
 		</div>
