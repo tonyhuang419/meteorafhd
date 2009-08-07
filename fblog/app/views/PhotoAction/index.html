@@ -1,17 +1,13 @@
-#{extends 'main.html' /}
+#{extends 'client_main.html' /}
 #{set title:'photo index' /}
 
 <div id="page">
-	<a class="new" href="@{PhotoAction.newPhoto}">New photo</a>
 	<div id="content">
-<h1>${photos.size() ?: 'No'} photo(s) found</h1>
-#{list items:photos, as:'photo'}
-<div class="photo">
-    <img src="@{PhotoAction.show(photo.photoStamp)}" height="100" />
-     <div>
-        <span class="name">${photo.photoStamp}</span>
-    </div>
-</div>
-#{/list}
+		<h1>${photos.size() ?: 'No'} photo(s) found</h1>
+		#{list items:photos, as:'photo'}
+		<div class="photo" onclick="location.href(@{PhotoAction.show(photo.id)})">
+		    <img src="@{PhotoAction.show(photo.id)}" height="100" />
+		</div>
+		#{/list}
 	</div>
 </div>

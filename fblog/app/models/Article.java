@@ -45,25 +45,21 @@ public class Article extends JPASupport {
 		this.save();
 	}
 	
-	public static List<Article> getActiveArticle(){
-		return Article.find(" isActive = true " ).all();
-	}
-	
 	public static List<Article> getActiveBlog(String active){
 		if("ALL".equals(active)){
-			return Article.find(" type=1 " ).all();
+			return Article.find(" type=1 order by createdTime desc" ).all();
 		}
 		else{
-			return Article.find(" isActive = true and type=1 " ).all();
+			return Article.find(" isActive = true and type=1 order by createdTime desc " ).all();
 		}
 	}
 	
 	public static List<Article> getActiveTwitter(String active){
 		if("ALL".equals(active)){
-			return Article.find(" type=2 " ).all();
+			return Article.find(" type=2 order by createdTime desc " ).all();
 		}
 		else{
-			return Article.find(" isActive = true and type=2 " ).all();
+			return Article.find(" isActive = true and type=2 order by createdTime desc " ).all();
 		}
 	}
 	
@@ -97,7 +93,7 @@ public class Article extends JPASupport {
 		}
 		jsql.append(" order by createdTime desc ");
 		Query query = Article.em().createQuery(jsql.toString());
-		query.setMaxResults(5);
+		query.setMaxResults(num);
 		return query.getResultList();
 	}
 	

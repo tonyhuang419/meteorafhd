@@ -221,10 +221,10 @@ img.right {
 
 #recent-posts {
 	float: right;
-	width: 150px;
+	width: 250px;
 	padding: 0px 20px 20px 20px;
 	line-height: 25px;
-	font-size: 12px;
+	font-size: 10px;
 }
 
 #recent-posts .entry {

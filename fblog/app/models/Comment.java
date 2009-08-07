@@ -33,7 +33,7 @@ public class Comment extends JPASupport {
 	}
 	
 	public static List<Comment> getCommentsByArticleId(Long articleId ) {
-		return Comment.find("articleId = " + articleId +" order by id" ).all();
+		return Comment.find("articleId = " + articleId +" order by id desc" ).all();
 	}
 	
 	public static void removeByArticleId(Long articleId){
