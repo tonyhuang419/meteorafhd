@@ -1,21 +1,15 @@
-<!-- Indices written at 09-8-10 ÉÏÎç11:44 -->
+<!-- Indices written at 09-8-10 ÏÂÎç1:39 -->
 
 <datastore-indexes>
 
-    <!-- Used 25 times in query history -->
+    <!-- Used 4 times in query history -->
     <datastore-index kind="Article" ancestor="false" source="auto">
         <property name="isActive" direction="asc"/>
         <property name="type" direction="asc"/>
         <property name="createdTime" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 2 times in query history -->
-    <datastore-index kind="Comment" ancestor="false" source="auto">
-        <property name="articleId" direction="asc"/>
-        <property name="__key__" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 2 times in query history -->
+    <!-- Used 10 times in query history -->
     <datastore-index kind="Article" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="createdTime" direction="desc"/>

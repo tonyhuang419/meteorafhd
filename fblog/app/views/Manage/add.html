@@ -1,8 +1,8 @@
-#{extends 'main.html' /}
+#{extends 'manage_main.html' /}
 #{set title:'Add TBlog' /}
 <script language="javascript">
-</script>
 
+</script>
 
 <br/>
 <br/>
@@ -11,8 +11,10 @@
 <h1>add blog</h1>
 #{form @addArticle()}
 	Title: <input type="text" name="title" size="10" /><br/>
-	Content: <textarea name="content" cols="100" rows="10"></textarea><br/>
+	Content: <br/>
+	<textarea name="content" cols="100" rows="10" ></textarea>  
 	<input type="hidden" name="type" value="1"/>
+	<input type="hidden" name="content" />
 	<input type="submit" value="post it" />
 #{/form}
 </div>
@@ -38,6 +40,14 @@
 <h1>add photo</h1>
 <a class="new" href="@{PhotoAction.newPhoto}">New photo</a>
 </div>
+
+<script language="javascript">
+	var oFCKeditor = new FCKeditor( 'content' ) ;  
+	oFCKeditor.BasePath = '@{'/public/fckeditor/'}/' ;  
+	//oFCKeditor.Config['ToolbarStartExpanded'] = false ;  
+	//oFCKeditor.ToolbarSet   = 'Basic' ;  
+	oFCKeditor.ReplaceTextarea() ;  
+</script>
 
 
 
