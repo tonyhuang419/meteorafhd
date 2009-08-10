@@ -10,7 +10,7 @@ setCurrentPageItem("menu_blog");
 	<div id="content">
 		<div id="latest-post" class="post">
 			#{list items:pi.data, as:'p'}
-			<h1 class="title"><a href="@{Client.detail(p.id)}">${p.title}</a></h1>
+			<h1 class="title"><a href="@{Client.detail(p.id)}">${p.title}</a></h1>&nbsp;(comment:${p.commentNum})
 			<p class="meta"><small>${p.createdTime}<br /></small></p>
 			<div class="entry">
 				${p.content.getValue()}
