@@ -1,4 +1,4 @@
-#{extends 'main.html' /}
+#{extends 'manage_main.html' /}
 #{set title:'Edit Blog' /}
 
 
@@ -13,3 +13,11 @@
 	Content: <textarea name="content" cols="100" rows="10">${article.content.getValue()}</textarea><br/>
 	<input type="submit" value="save edit" />
 </form>
+
+<script language="javascript">
+	var oFCKeditor = new FCKeditor( 'content' ) ;  
+	oFCKeditor.BasePath = '@{'/public/fckeditor/'}/' ;  
+	//oFCKeditor.Config['ToolbarStartExpanded'] = false ;  
+	//oFCKeditor.ToolbarSet   = 'Basic' ;  
+	oFCKeditor.ReplaceTextarea() ;  
+</script>
