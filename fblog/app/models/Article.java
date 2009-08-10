@@ -31,6 +31,7 @@ public class Article extends JPASupport {
 	public Date createdTime;
 	public Boolean isActive;
 	public Long type;  //1：blog  2：twitter
+	public Long commentNum;
 	
 	public Article(){ }
 		
@@ -42,6 +43,7 @@ public class Article extends JPASupport {
 		this.lastModifyTime = new Date();
 		this.isActive = true;
 		this.type = type;
+		commentNum = 0L;
 		this.save();
 	}
 	
@@ -136,6 +138,16 @@ public class Article extends JPASupport {
 		Article.em().persist(article);
 	}
 	
+	public static void addCommentNum(Long id){
+		Article article = Article.findById(id);
+		if(article.commentNum==null){
+			article.commentNum = 1L;
+		}
+		else{
+			article.commentNum = article.commentNum + 1;
+		}
+		Article.em().persist(article);
+	}
 	
 }
 
