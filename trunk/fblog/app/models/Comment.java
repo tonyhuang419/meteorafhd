@@ -22,13 +22,16 @@ public class Comment extends JPASupport {
 	public Date createdTime;
 	public Long articleId;
 	public Boolean isActive;
+	public String commentIP;
 
-	public Comment (String author , String content , Long articleId){
+	public Comment (String author , String content , Long articleId , String commentIP){
 		this.author = author;
 		this.content = content;
 		this.articleId = articleId;
 		this.createdTime = new Date();
 		this.isActive = true;
+		this.commentIP = commentIP;
+		Article.addCommentNum(articleId);
 		this.save();
 	}
 	

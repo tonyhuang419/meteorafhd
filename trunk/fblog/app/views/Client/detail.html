@@ -25,13 +25,23 @@ SyntaxHighlighter.all();
 			#{/list}
 			</ul>
 			#{form @addComment()}
-				ur name: <input type="text" name="author" size="20" /><br/>
+				ur name: <input type="text" name="author" size="20" id="author"/><br/>
 				ur comment:<br/>
-				<textarea name="content" rows="5" cols="100"></textarea><br/>
+				<textarea name="content" rows="5" cols="80" id="comment"></textarea><br/>
 				<input type="hidden" name="articleId" value="${article.id}">
 				<input type="submit" value="post ur comment" />
 			#{/form}
 		</div>
 	</div>
 </div>
+
+<script language="javascript">
+var author = new LiveValidation( "author", { validMessage: " ", wait: 500 } );
+author.add( Validate.Presence, 
+        { failureMessage: "Name Required!" } );
+
+var comment = new LiveValidation( "comment", { validMessage: " ", wait: 500 } );
+comment.add( Validate.Presence, 
+        { failureMessage: "Comment Required!" } );
+</script>
 
