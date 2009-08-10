@@ -6,32 +6,30 @@ SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
 SyntaxHighlighter.all();
 </script>
 
-<div id="page">
-	<div id="content">
-		<div id="latest-post" class="post">
-			<h1 class="title">${article.title}</h1>
-			<p class="meta"><small>${article.createdTime}<br /></small></p>
-			<div class="entry">
-				${article.content.getValue()} 
-			</div>
+<div id="content">
+	<div id="latest-post" class="post">
+		<h1 class="title">${article.title}</h1>
+		<p class="meta"><small>${article.createdTime}<br /></small></p>
+		<div class="entry">
+			${article.content.getValue()} 
 		</div>
-		<div id="latest-post" class="post">
-		<h2>Comments</h2>
-			<ul>
-			#{list items:comments, as:'comment'}
-				<li>${comment.content}<br/>
-					 &nbsp;&nbsp;&nbsp; By ${comment.author} - ${comment.createdTime} 
-				</li>
-			#{/list}
-			</ul>
-			#{form @addComment()}
-				ur name: <input type="text" name="author" size="20" id="author"/><br/>
-				ur comment:<br/>
-				<textarea name="content" rows="5" cols="80" id="comment"></textarea><br/>
-				<input type="hidden" name="articleId" value="${article.id}">
-				<input type="submit" value="post ur comment" />
-			#{/form}
-		</div>
+	</div>
+	<div id="latest-post" class="post">
+	<h2>Comments</h2>
+		<ul>
+		#{list items:comments, as:'comment'}
+			<li>${comment.content}<br/>
+				 &nbsp;&nbsp;&nbsp; By ${comment.author} - ${comment.createdTime} 
+			</li>
+		#{/list}
+		</ul>
+		#{form @addComment()}
+			ur name: <input type="text" name="author" size="20" id="author"/><br/>
+			ur comment:<br/>
+			<textarea name="content" rows="5" cols="80" id="comment"></textarea><br/>
+			<input type="hidden" name="articleId" value="${article.id}">
+			<input type="submit" value="post ur comment" />
+		#{/form}
 	</div>
 </div>
 
