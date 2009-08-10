@@ -4,15 +4,13 @@
 setCurrentPageItem("menu_twitter");
 </script>
 
-<div id="page">
-	<div id="content">
-		<div id="latest-post" class="post">
-			#{list items:pi.data, as:'p'}
-			<div class="entry">${p.content.getValue()}
-			<p class="meta"><small>${p.createdTime}<br /></small></p>
-			</div>
-			#{/list}
-			${pageTag}
+<div id="content">
+	<div id="latest-post" class="post">
+		#{list items:pi.data, as:'p'}
+		<div class="entry">${p.content.getValue()}
+		<p class="meta"><small>${p.createdTime}<br /></small></p>
 		</div>
+		#{/list}
+		${pageTag}
 	</div>
 </div>

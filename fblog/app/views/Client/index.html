@@ -6,20 +6,19 @@
 setCurrentPageItem("menu_blog");
 </script>
 
-<div id="page">
-	<div id="content">
-		<div id="latest-post" class="post">
-			#{list items:pi.data, as:'p'}
-			<h1 class="title"><a href="@{Client.detail(p.id)}">${p.title}</a></h1>&nbsp;(comment:${p.commentNum})
-			<p class="meta"><small>${p.createdTime}<br /></small></p>
-			<div class="entry">
-				${p.content.getValue()}
-			</div>
-			#{/list}
-			${pageTag}
+<div id="content">
+	<div id="latest-post" class="post">
+		#{list items:pi.data, as:'p'}
+		<h1 class="title"><a href="@{Client.detail(p.id)}">${p.title}</a></h1>&nbsp;(comment:${p.commentNum})
+		<p class="meta"><small>${p.createdTime}<br /></small></p>
+		<div class="entry">
+			${p.content.getValue()}
 		</div>
+		#{/list}
+		${pageTag}
+	</div>
 
-		<div id="recent-posts">
+	<div id="recent-posts">
 		<ul>
 		#{list items:recentBlog, as:'r'}
 			<div class="post">
@@ -27,7 +26,6 @@ setCurrentPageItem("menu_blog");
 			</div>
 		#{/list}
 		</ul>
-		</div>
 	</div>
 </div>
 

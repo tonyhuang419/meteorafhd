@@ -5,15 +5,13 @@
 setCurrentPageItem("menu_photo");
 </script>
 
-<div id="page">
-	<div id="content">
-		<h1>${photos.size() ?: 'No'} photo(s) found</h1>
-		#{list items:photos, as:'photo'}
-		<div class="photo">
-		    <img src="@{PhotoAction.show(photo.id)}" height="100" 
-		    	onclick="location.href='@{PhotoAction.show(photo.id)}'"
-		    	style="cursor: pointer">
-		</div>
-		#{/list}
+<div id="content">
+	<h1>${photos.size() ?: 'No'} photo(s) found</h1>
+	#{list items:photos, as:'photo'}
+	<div class="photo">
+		   <img src="@{PhotoAction.show(photo.id)}" height="100" 
+		    onclick="location.href='@{PhotoAction.show(photo.id)}'"
+		   	style="cursor: pointer">
 	</div>
+	#{/list}
 </div>
