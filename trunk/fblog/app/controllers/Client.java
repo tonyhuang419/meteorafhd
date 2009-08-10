@@ -57,7 +57,7 @@ public class Client extends Controller {
 	 */
 	public static void addComment(@Required String author , 
 			@Required String content , @Required Long articleId ) {
-		new Comment(author, content , articleId , request.host);
+		new Comment(author, content , articleId , request.remoteAddress);
 		detail(articleId);
 	}
 	
