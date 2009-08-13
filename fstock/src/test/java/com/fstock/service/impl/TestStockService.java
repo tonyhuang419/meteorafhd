@@ -22,7 +22,8 @@ public class TestStockService extends BaseTest {
 	@Rollback(false)
 	@Test
 	public void run(){
-		stockService.getAllStockAndPersist();
+//		stockService.getAllStockAndPersist();
+		stockService.updateAllAverageLevel();
 	}
 	
 }

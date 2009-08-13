@@ -21,7 +21,7 @@ public interface IStockService {
 	 * @param stockCode
 	 * @return
 	 */
-	public int getStockLevel(String stockCode);
+	public int getStockAverageLevel(String stockCode);
 	
 	/**
 	 * is or not exist repeat
@@ -30,6 +30,7 @@ public interface IStockService {
 	 */
 	public boolean existRepeat(Stock stock);
 	
-
+	
+	public void updateAllAverageLevel();
 	
 }

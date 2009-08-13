@@ -52,7 +52,7 @@ public class StockService implements IStockService {
 	
 	
 	public void saveAverageLevel(String stockCode){
-		int level = this.getStockLevel(stockCode);
+		int level = this.getStockAverageLevel(stockCode);
 		Stock stock = (Stock)commonService.uniqueResult(" from Stock s where s.code = ? ", stockCode);
 		if(stock!=null){
 			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
@@ -61,7 +61,7 @@ public class StockService implements IStockService {
 		commonService.update(stock);
 	}
 
-	public int getStockLevel(String stockCode){
+	public int getStockAverageLevel(String stockCode){
 		WebClient webClient = new WebClient();
 		webClient.setJavaScriptEnabled(false);
 		HtmlPage page=null;
@@ -95,4 +95,20 @@ public class StockService implements IStockService {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public void updateAllAverageLevel(){
+		int pageSize = 30;
+		Long count = (Long)commonService.uniqueResult("select count(*) from Stock ");
+		int tmpCount = 0;
+		for(int i=0; i<count; i = i+pageSize-1){
+			List<Stock> list = commonService.listHql(" from Stock ", tmpCount , pageSize );
+			tmpCount = tmpCount+pageSize;
+			for(int j=0;j<list.size();j++){
+				Stock s = (Stock)list.get(j);
+				logger.info("start : " + s.getCode());
+				this.saveAverageLevel(s.getCode());
+			}
+		}
+	}
+	
 }
