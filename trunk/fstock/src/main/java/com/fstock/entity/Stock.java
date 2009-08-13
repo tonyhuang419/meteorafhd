@@ -1,3 +1,4 @@
+package com.fstock.entity;
 
 public class Stock {
 
