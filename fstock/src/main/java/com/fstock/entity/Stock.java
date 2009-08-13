@@ -43,7 +43,7 @@ public class Stock implements Serializable {
 	/**
 	 * yyyyMMdd/yyyyMMdd
 	 */
-	@Column(name = "average_level", length = 4000)
+	@Column(name = "average_level_date", length = 4000)
 	private String averageLevelDate;
 	
 	public Stock(String code,String name){

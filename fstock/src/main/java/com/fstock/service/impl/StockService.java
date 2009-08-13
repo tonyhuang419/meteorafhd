@@ -34,7 +34,7 @@ public class StockService implements IStockService {
 		WebClient webClient = new WebClient();
 		HtmlPage page;
 		try{
-			for(int i=1;i<=1;i++){
+			for(int i=1;i<=ConstantValue.maxPage;i++){
 				page = webClient.getPage(ConstantValue.allStockUrlPreFix+i+ConstantValue.allStockUrlSuffix);
 				String stockInfo = page.getBody().asText();
 				List<Stock> stocklist = UtilTools.getStockList(stockInfo);
