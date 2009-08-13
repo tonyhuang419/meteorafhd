@@ -46,6 +46,8 @@ public class Stock implements Serializable {
 	@Column(name = "average_level_date", length = 4000)
 	private String averageLevelDate;
 	
+	public Stock(){ }
+	
 	public Stock(String code,String name){
 		this.code = code;
 		this.name = name;
