@@ -9,6 +9,13 @@ public interface IStockService {
 	 */
 	public void getAllStockAndPersist();
 	
+	
+	/**
+	 * save stock average level
+	 */
+	public void saveAverageLevel(String stockCode);
+	
+	
 	/**
 	 * parse page and return its level
 	 * @param stockCode
@@ -23,5 +30,6 @@ public interface IStockService {
 	 */
 	public boolean existRepeat(Stock stock);
 	
+
 	
 }
