@@ -7,6 +7,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>fstock</name>
   <url>http://maven.apache.org</url>
+  <properties>
+		 <temp_dir>D:/temp/tempDir</temp_dir>
+		 <ehcache_dir>d:/temp/ehcache</ehcache_dir>
+  </properties>
   <build>
 	<plugins>
 		<plugin>
@@ -55,6 +59,11 @@
 		<groupId>org.springframework</groupId>
 		<artifactId>spring</artifactId>
 		<version>2.5.6.SEC01</version>
+	</dependency>
+	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5.6</version>
 	</dependency>
 	<dependency>
 		<groupId>org.hibernate</groupId>
