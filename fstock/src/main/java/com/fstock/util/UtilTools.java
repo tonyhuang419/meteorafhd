@@ -1,7 +1,13 @@
+package com.fstock.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.fstock.entity.Stock;
+
 
 
 public class UtilTools {
@@ -29,6 +35,15 @@ public class UtilTools {
 			sArr.add( new Stock(stockCode.substring(2 , stockCode.length()-1) , stockName.substring(1,stockName.length()-1) ));
 		}
 		return sArr;
+	}
+	
+	
+	public static int getLevel(String levelInfo){
+		int count = StringUtils.countMatches(levelInfo,"<td>");
+		if(count!=0){
+			return count + 1;
+		}
+		return -1;
 	}
 	
 	public static void main(String[] args){
