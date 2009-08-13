@@ -15,6 +15,6 @@ public class ConstantValue {
 	 * first run use max page num like 31 
 	 * and them u should use like 1、2 add new stock
 	 */
-	public static int maxPage = 31;
+	public static int maxPage = 1;
 	
 }

@@ -8,7 +8,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.fstock.entity.Stock;
 import com.fstock.service.ICommonService;
@@ -20,7 +19,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 
 @Service("stockService")
-@Transactional
+//@Transactional
 public class StockService implements IStockService {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
@@ -79,18 +78,18 @@ public class StockService implements IStockService {
 	}
 
 	public boolean existRepeat(Stock stock){
-		if( StringUtils.isNotBlank(stock.getCode()) &&  StringUtils.isNotBlank(stock.getName()) ){
+		if( StringUtils.isBlank(stock.getCode()) ||  StringUtils.isBlank(stock.getName()) ){
 			logger.info("stock has not enough info , code and name is required");
-			return false;
+			return true;
 		}
 		else{
-			Stock stockOrg = (Stock)commonService.uniqueResult(" from Stock s where s.code = ?", "", stock.getCode());
+			Stock stockOrg = (Stock)commonService.uniqueResult(" from Stock s where s.code = ? ", stock.getCode());
 			if(stockOrg==null){
-				return true;
+				return false;
 			}
 			else{
-				logger.info(" stock code " + stock.getCode() +":" + stock.getName() + " exist repeat : " + stockOrg.getCode()+":"+stockOrg.getName() );
-				return false;
+				logger.info(" stock code " + stock.getCode() +":" + stock.getName() + "  exist repeat : " + stockOrg.getCode()+":"+stockOrg.getName() );
+				return true;
 			}
 		}
 	}
@@ -100,7 +99,7 @@ public class StockService implements IStockService {
 		int pageSize = 30;
 		Long count = (Long)commonService.uniqueResult("select count(*) from Stock ");
 		int tmpCount = 0;
-		for(int i=0; i<count; i = i+pageSize-1){
+		for(int i=9; i<count; i = i+pageSize-1){
 			List<Stock> list = commonService.listHql(" from Stock ", tmpCount , pageSize );
 			tmpCount = tmpCount+pageSize;
 			for(int j=0;j<list.size();j++){
