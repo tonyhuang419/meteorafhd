@@ -49,6 +49,17 @@ public class StockService implements IStockService {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void saveAverageLevel(String stockCode){
+		int level = this.getStockLevel(stockCode);
+		Stock stock = (Stock)commonService.uniqueResult(" from Stock s where s.code = ? ", stockCode);
+		if(stock!=null){
+			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
+			stock.setAverageLevelDate(UtilTools.addStockLevelDate(stock.getAverageLevelDate()));
+		}
+		commonService.update(stock);
+	}
 
 	public int getStockLevel(String stockCode){
 		WebClient webClient = new WebClient();
@@ -73,7 +84,7 @@ public class StockService implements IStockService {
 			return false;
 		}
 		else{
-			Stock stockOrg = (Stock)commonService.listHql(" from Stock s where s.code = ?", "", stock.getCode());
+			Stock stockOrg = (Stock)commonService.uniqueResult(" from Stock s where s.code = ?", "", stock.getCode());
 			if(stockOrg==null){
 				return true;
 			}
