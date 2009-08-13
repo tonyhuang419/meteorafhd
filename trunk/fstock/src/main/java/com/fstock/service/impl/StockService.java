@@ -99,7 +99,7 @@ public class StockService implements IStockService {
 		int pageSize = 30;
 		Long count = (Long)commonService.uniqueResult("select count(*) from Stock ");
 		int tmpCount = 0;
-		for(int i=9; i<count; i = i+pageSize-1){
+		for(int i=0; i<count; i = i+pageSize-1){
 			List<Stock> list = commonService.listHql(" from Stock ", tmpCount , pageSize );
 			tmpCount = tmpCount+pageSize;
 			for(int j=0;j<list.size();j++){
