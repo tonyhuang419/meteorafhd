@@ -80,14 +80,24 @@ public class UtilTools {
 	}
 
 	public static Stock  addStockLevelInfo(Stock stock){
-
-		int level = UtilTools.getStockAverageLevelJgpj(stock.getCode());
+		WebClient webClient = new WebClient();
+		webClient.setJavaScriptEnabled(false);
+		HtmlPage page=null;
+		try{
+			page = webClient.getPage(ConstantValue.stockJgpjBaseUrl+stock.getCode()+".shtml");
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
+		
+		
+		int level = UtilTools.getStockAverageLevelJgpj(page);
 		logger.info(stock.getId() + " " + stock.getName() + " level:" + level);
 		stock.setAverageLevel(UtilTools.parseStockLevel(stock.getAverageLevel() , level+""));
 
 		return stock;
 	}
 
+	@Deprecated
 	static public int getStockAverageLevel(String stockCode){
 		WebClient webClient = new WebClient();
 		webClient.setJavaScriptEnabled(false);
@@ -105,15 +115,7 @@ public class UtilTools {
 		return -1;
 	}
 
-	static public int getStockAverageLevelJgpj(String stockCode){
-		WebClient webClient = new WebClient();
-		webClient.setJavaScriptEnabled(false);
-		HtmlPage page=null;
-		try{
-			page = webClient.getPage(ConstantValue.stockJgpjBaseUrl+stockCode+".shtml");
-		}catch( Exception e ){
-			e.printStackTrace();
-		}
+	static public int getStockAverageLevelJgpj(HtmlPage page){
 		if( page!=null){
 			String pageStr = page.asXml();
 			String levelStr = pageStr.substring(pageStr.indexOf("height=\"30\""),pageStr.indexOf("/2008/img/img60.gif"));
