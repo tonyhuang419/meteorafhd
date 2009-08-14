@@ -1,8 +1,14 @@
 package com.fstock.util;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,7 +85,29 @@ public class UtilTools {
 		}
 	}
 
-
+	static public  int getScanPage(){
+		String filePath = "src/main/resources/stock.properties";
+		String propName = "maxpage";
+		Properties props = new Properties();
+		try {
+			InputStream in = new BufferedInputStream (new FileInputStream(filePath));
+			props.load(in);
+			String value = props.getProperty (propName);
+			Integer page = new Integer(value);
+			OutputStream fos = new FileOutputStream(filePath);
+			props.setProperty(propName, Integer.valueOf(page-1).toString());
+			props.store(fos, "Update "+propName+" value");
+			fos.close();
+			in.close();
+			return page;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	
+	
 	public static String getDateFormat(Date adate, String format) {
 		SimpleDateFormat formatDate = new SimpleDateFormat(format);
 		return formatDate.format(adate);

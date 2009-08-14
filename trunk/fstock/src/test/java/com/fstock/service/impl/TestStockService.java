@@ -17,7 +17,7 @@ public class TestStockService extends BaseTest {
 	@Qualifier("stockService")
 	private IStockService 	stockService;
 	
-	//@Rollback(false)
+//	@Rollback(false)
 	@Test
 	public void run(){
 //		stockService.getAllStockAndPersist();
