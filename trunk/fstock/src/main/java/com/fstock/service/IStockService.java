@@ -16,16 +16,6 @@ public interface IStockService {
 	public void saveAverageLevel(Stock stock);
 	
 	/**
-	 * parse page and return its level
-	 */
-	public int getStockAverageLevel(String stockCode);
-	
-	/**
-	 * parse page and return its level
-	 */
-	public int getStockAverageLevelJgpj(String stockCode);
-	
-	/**
 	 * is or not exist repeat
 	 */
 	public boolean existRepeatStock(Stock stock);
