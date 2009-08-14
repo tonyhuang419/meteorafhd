@@ -53,6 +53,7 @@ public class StockService implements IStockService {
 
 	public void saveAverageLevel(Stock stock){
 		int level = this.getStockAverageLevel(stock.getCode());
+		logger.info(stock.getId() + " " + stock.getName() + " level:" + level);
 		if(stock!=null){
 			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
 			stock.setAverageLevelDate(UtilTools.addStockLevelDate(stock.getAverageLevelDate()));
