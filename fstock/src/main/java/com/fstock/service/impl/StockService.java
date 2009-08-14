@@ -33,8 +33,9 @@ public class StockService implements IStockService {
 		WebClient webClient = new WebClient();
 		HtmlPage page;
 		try{
-			for(int i=1;i<=ConstantValue.maxPage;i++){
-				page = webClient.getPage(ConstantValue.allStockUrlPreFix+i+ConstantValue.allStockUrlSuffix);
+			int pageNum = UtilTools.getScanPage();
+			while(pageNum>0){
+				page = webClient.getPage(ConstantValue.allStockUrlPreFix+pageNum+ConstantValue.allStockUrlSuffix);
 				String stockInfo = page.getBody().asText();
 				List<Stock> stocklist = UtilTools.getStockList(stockInfo);
 				for(Stock stock:stocklist){
@@ -43,21 +44,26 @@ public class StockService implements IStockService {
 						commonService.save(stock);
 					}
 				}
+				pageNum = UtilTools.getScanPage();
 			}
 		}catch( Exception e ){
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public void saveAverageLevel(String stockCode){
 		int level = this.getStockAverageLevel(stockCode);
 		Stock stock = (Stock)commonService.uniqueResult(" from Stock s where s.code = ? ", stockCode);
 		if(stock!=null){
-			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
-			stock.setAverageLevelDate(UtilTools.addStockLevelDate(stock.getAverageLevelDate()));
+			String averageLevelDate = UtilTools.addStockLevelDate(stock.getAverageLevelDate());
+			//though date check , prevent repeat save 
+			if( !stock.getAverageLevelDate().equals(averageLevelDate)){
+				stock.setAverageLevelDate(averageLevelDate);
+				stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
+				commonService.update(stock);
+			}
 		}
-		commonService.update(stock);
 	}
 
 	public int getStockAverageLevel(String stockCode){
@@ -109,5 +115,5 @@ public class StockService implements IStockService {
 			}
 		}
 	}
-	
+
 }
