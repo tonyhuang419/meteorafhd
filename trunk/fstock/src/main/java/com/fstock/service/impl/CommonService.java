@@ -191,7 +191,7 @@ public class CommonService implements ICommonService {
 		}catch( SQLException  se){
 			se.printStackTrace();
 		}
-		System.out.println(System.currentTimeMillis()-l1);
+//		System.out.println(System.currentTimeMillis()-l1);
 	}
 
 	@Deprecated
@@ -206,7 +206,7 @@ public class CommonService implements ICommonService {
 			CallableStatement cstmt = con.prepareCall(procedure);
 			ResultSet s = cstmt.executeQuery();
 			ResultSetMetaData rd = s.getMetaData();
-			System.out.println(rd.getColumnCount());
+//			System.out.println(rd.getColumnCount());
 //			s.close();
 //			cstmt.close();
 		}catch( SQLException  se){
