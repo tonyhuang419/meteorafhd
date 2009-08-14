@@ -28,7 +28,7 @@ public interface IStockService {
 	 * @param stock
 	 * @return
 	 */
-	public boolean existRepeat(Stock stock);
+	public boolean existRepeatStock(Stock stock);
 	
 	
 	public void updateAllAverageLevel();

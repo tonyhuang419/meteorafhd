@@ -2,6 +2,8 @@ package com.fstock.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -23,12 +25,11 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 //@Transactional
 public class StockService implements IStockService {
 
-	protected Log logger = LogFactory.getLog(this.getClass());
-
 	@Autowired
 	@Qualifier("commonService")
 	private ICommonService commonService;
 
+	protected Log logger = LogFactory.getLog(this.getClass());
 
 	public void getAllStockAndPersist() {
 		WebClient webClient = new WebClient();
@@ -41,7 +42,7 @@ public class StockService implements IStockService {
 				List<Stock> stocklist = UtilTools.getStockList(stockInfo);
 				for(Stock stock:stocklist){
 					//System.out.println(stock.getCode() + ":" + stock.getName());
-					if(this.existRepeat(stock)== false){
+					if(this.existRepeatStock(stock)== false){
 						commonService.save(stock);
 					}
 				}
@@ -53,7 +54,8 @@ public class StockService implements IStockService {
 	}
 
 	public void saveAverageLevel(Stock stock){
-//		int level = this.getStockAverageLevel(stock.getCode());
+		//int level = this.getStockAverageLevel(stock.getCode());
+		System.out.println(stock.getCode());
 		int level = 4;
 		if(stock!=null){
 			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
@@ -79,7 +81,7 @@ public class StockService implements IStockService {
 		return -1;
 	}
 
-	public boolean existRepeat(Stock stock){
+	public boolean existRepeatStock(Stock stock){
 		if( StringUtils.isBlank(stock.getCode()) ||  StringUtils.isBlank(stock.getName()) ){
 			logger.info("stock has not enough info , code and name is required");
 			return true;
@@ -114,9 +116,11 @@ public class StockService implements IStockService {
 				else{
 					logger.info( stock.getCode() + " today has got level");	
 				}
-				
 			}
 		}
 	}
 
 }
+
+
+
