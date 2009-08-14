@@ -59,7 +59,6 @@ public class UtilTools {
 		if ( StringUtils.isNotBlank(stockLevel)){
 			String temp = stockLevel+newLevel;
 			if( stockLevel.length() >= ConstantValue.averageLevelLen ){
-				System.out.println(temp.length());
 				return temp.substring(temp.length()-ConstantValue.averageLevelLen,temp.length());
 			}
 			else{
