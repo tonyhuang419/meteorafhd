@@ -2,8 +2,6 @@ package com.fstock.service.impl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -104,7 +102,7 @@ public class StockService implements IStockService {
 		Long count = (Long)commonService.uniqueResult("select count(*) from Stock ");
 		int tmpCount = 0;
 		for(int i=0; i<count; i = i+pageSize-1){
-			List<Stock> list = commonService.listHql(" from Stock s order by s.id asc", tmpCount , pageSize );
+			List<Stock> list = commonService.listHql(" from Stock s ", " order by s.id asc " , tmpCount , pageSize );
 			tmpCount = tmpCount+pageSize;
 			for(int j=0;j<list.size();j++){
 				Stock stock = (Stock)list.get(j);
