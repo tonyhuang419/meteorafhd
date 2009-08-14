@@ -30,7 +30,7 @@ public interface IStockService {
 	 */
 	public boolean existRepeatStock(Stock stock);
 	
-	
+
 	public void updateAllAverageLevel();
 	
 }
