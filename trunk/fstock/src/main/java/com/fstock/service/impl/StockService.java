@@ -55,7 +55,7 @@ public class StockService implements IStockService {
 		if(stock==null){
 			return;
 		}
-		int level = this.getStockAverageLevel(stock.getCode());
+		int level = this.getStockAverageLevelJgpj(stock.getCode());
 		logger.info(stock.getId() + " " + stock.getName() + " level:" + level);
 		if(stock!=null){
 			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
@@ -70,6 +70,23 @@ public class StockService implements IStockService {
 		HtmlPage page=null;
 		try{
 			page = webClient.getPage(ConstantValue.stockBaseUrl+stockCode+".shtml");
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
+		if( page!=null){
+			String pageStr = page.asXml();
+			String levelStr = pageStr.substring(pageStr.indexOf("height=\"30\""),pageStr.indexOf("/2008/img/img60.gif"));
+			return UtilTools.getLevel(levelStr);
+		}
+		return -1;
+	}
+	
+	public int getStockAverageLevelJgpj(String stockCode){
+		WebClient webClient = new WebClient();
+		webClient.setJavaScriptEnabled(false);
+		HtmlPage page=null;
+		try{
+			page = webClient.getPage(ConstantValue.stockJgpjBaseUrl+stockCode+".shtml");
 		}catch( Exception e ){
 			e.printStackTrace();
 		}

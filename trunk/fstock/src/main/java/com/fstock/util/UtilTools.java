@@ -47,7 +47,10 @@ public class UtilTools {
 
 
 	public static int getLevel(String levelInfo){
-		int count = StringUtils.countMatches(levelInfo,"<td>");
+		int count = StringUtils.countMatches(levelInfo,"/>");
+		if(count==0){
+			count = StringUtils.countMatches(levelInfo,"<td>");
+		}
 		if(count!=0){
 			return count + 1;
 		}

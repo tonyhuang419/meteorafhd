@@ -11,4 +11,6 @@ public class ConstantValue {
 
 	public static String stockBaseUrl = "http://stockdata.stock.hexun.com/";
 	
+	public static String stockJgpjBaseUrl = "http://stockdata.stock.hexun.com/2009_jgpj_";
+	
 }
