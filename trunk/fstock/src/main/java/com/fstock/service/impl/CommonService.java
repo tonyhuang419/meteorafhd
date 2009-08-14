@@ -177,7 +177,7 @@ public class CommonService implements ICommonService {
 
 		//下面的代码是测试“executeBatch”
 		String procedure = "{call insertBook(?,?) }";//存储过程名,?是参数的位置，如果有多个参数就加多个？
-		long l1 = System.currentTimeMillis();
+//		long l1 = System.currentTimeMillis();
 		Integer  x = 10000;
 		try{
 			CallableStatement cstmt = con.prepareCall(procedure);
@@ -206,7 +206,7 @@ public class CommonService implements ICommonService {
 			CallableStatement cstmt = con.prepareCall(procedure);
 			ResultSet s = cstmt.executeQuery();
 			ResultSetMetaData rd = s.getMetaData();
-//			System.out.println(rd.getColumnCount());
+			System.out.println(rd.getColumnCount());
 //			s.close();
 //			cstmt.close();
 		}catch( SQLException  se){
