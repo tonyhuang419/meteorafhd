@@ -91,7 +91,7 @@ public class CommonService implements ICommonService {
 		return q.uniqueResult();
 	}
 
-	public List listHql(String queryHql,String orderHql , Object... args){
+	public List listHql(String queryHql, String orderHql , Object... args){
 		queryHql = SqlUtils.combineSQL(queryHql, orderHql);
 		Query q = getSession().createQuery(queryHql);
 		for (int i = 0; i < args.length; ++i){
@@ -100,8 +100,9 @@ public class CommonService implements ICommonService {
 		return q.list();
 	}
 
-	public List listHql(String hql, int start, int rowNum, Object... args){
-		Query q = getSession().createQuery(hql);
+	public List listHql(String queryHql, String orderHql , int start, int rowNum, Object... args){
+		queryHql = SqlUtils.combineSQL(queryHql, orderHql);
+		Query q = getSession().createQuery(queryHql);
 		for (int i = 0; i < args.length; ++i){
 			q.setParameter(i, args[i]);
 		}
@@ -124,8 +125,9 @@ public class CommonService implements ICommonService {
 		return q.list();
 	}
 
-	public List listSQL(String sql, int start, int rowNum, Object... args){
-		Query q = getSession().createSQLQuery(sql);
+	public List listSQL(String querySql, String orderSql, int start, int rowNum, Object... args){
+		querySql = SqlUtils.combineSQL(querySql, orderSql);
+		Query q = getSession().createSQLQuery(querySql);
 		for (int i = 0; i < args.length; i++) {
 			q.setParameter(i, args[i]);
 		}
@@ -138,24 +140,22 @@ public class CommonService implements ICommonService {
 
 
 
-	public PageInfo listQueryResult(String queryHql, String orderHql , PageInfo pi, Object... args){
-		queryHql = SqlUtils.combineSQL(queryHql, orderHql);
+	public PageInfo listQueryResultByHql(String queryHql, String orderHql , PageInfo pi, Object... args){
 		if (pi == null){
 			pi = new PageInfo();
 		}
 		pi.setTotal( Integer.valueOf(this.uniqueResult(SqlUtils.getCountSql(queryHql), args).toString()));
-		pi.setData(this.listHql(queryHql, pi.getStartOfPage(), pi.getPageSize(), args));
+		pi.setData(this.listHql(queryHql, orderHql , pi.getStartOfPage(), pi.getPageSize(), args));
 		return pi;
 	}
 
 
 	public PageInfo listQueryResultBySql(String querySql, String orderSql ,  PageInfo pi, Object... args){
-		querySql = SqlUtils.combineSQL(querySql, orderSql);
 		if (pi == null) {
 			pi = new PageInfo();
 		}
 		pi.setTotal( Integer.valueOf(this.uniqueResult(SqlUtils.getCountSql(querySql), args).toString()));
-		pi.setData(this.listSQL(querySql, pi.getStartOfPage(), pi.getPageSize(), args));
+		pi.setData(this.listSQL(querySql, orderSql , pi.getStartOfPage(), pi.getPageSize(), args));
 		return pi;
 	}
 

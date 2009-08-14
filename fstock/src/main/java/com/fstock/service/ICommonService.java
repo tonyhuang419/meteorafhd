@@ -36,13 +36,13 @@ public interface ICommonService {
 
 	public List listHql(String quertHql, String orderHql, Object... args);
 
-	public List listHql(String hql, int start, int rowNum, Object... args);
-
+	public List listHql(String queryHql, String orderHql , int start, int rowNum, Object... args);
+	
 	public List listSQL(String querySql, String orderSql, Object... args);
 
-	public List listSQL(String sql, int start, int rowNum, Object... args);
+	public List listSQL(String querySql, String orderSql, int start, int rowNum, Object... args);
 
-	public PageInfo listQueryResult(String quertHql, String orderHql , PageInfo pageinfo, Object... args);
+	public PageInfo listQueryResultByHql(String quertHql, String orderHql , PageInfo pageinfo, Object... args);
 
 	public PageInfo listQueryResultBySql(String querySql, String orderSql ,  PageInfo pi, Object... args);
 
