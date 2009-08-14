@@ -13,7 +13,7 @@ public interface IStockService {
 	/**
 	 * save stock average level
 	 */
-	public void saveAverageLevel(String stockCode);
+	public void saveAverageLevel(Stock stock);
 	
 	
 	/**

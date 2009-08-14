@@ -1,5 +1,6 @@
 package com.fstock.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -51,19 +52,14 @@ public class StockService implements IStockService {
 		}
 	}
 
-
-	public void saveAverageLevel(String stockCode){
-		int level = this.getStockAverageLevel(stockCode);
-		Stock stock = (Stock)commonService.uniqueResult(" from Stock s where s.code = ? ", stockCode);
+	public void saveAverageLevel(Stock stock){
+//		int level = this.getStockAverageLevel(stock.getCode());
+		int level = 4;
 		if(stock!=null){
-			String averageLevelDate = UtilTools.addStockLevelDate(stock.getAverageLevelDate());
-			//though date check , prevent repeat save 
-			if( !stock.getAverageLevelDate().equals(averageLevelDate)){
-				stock.setAverageLevelDate(averageLevelDate);
-				stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
-				commonService.update(stock);
-			}
+			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
+			stock.setAverageLevelDate(UtilTools.addStockLevelDate(stock.getAverageLevelDate()));
 		}
+		commonService.update(stock);
 	}
 
 	public int getStockAverageLevel(String stockCode){
@@ -106,12 +102,19 @@ public class StockService implements IStockService {
 		Long count = (Long)commonService.uniqueResult("select count(*) from Stock ");
 		int tmpCount = 0;
 		for(int i=0; i<count; i = i+pageSize-1){
-			List<Stock> list = commonService.listHql(" from Stock s order by s.id desc", tmpCount , pageSize );
+			List<Stock> list = commonService.listHql(" from Stock s order by s.id asc", tmpCount , pageSize );
 			tmpCount = tmpCount+pageSize;
 			for(int j=0;j<list.size();j++){
-				Stock s = (Stock)list.get(j);
-				logger.info("start : " + s.getCode());
-				this.saveAverageLevel(s.getCode());
+				Stock stock = (Stock)list.get(j);
+				logger.info("start : " + stock.getCode());
+				if( StringUtils.isBlank(stock.getAverageLevelDate())
+						|| stock.getAverageLevelDate().indexOf(UtilTools.getDateFormat(new Date() ,"yyyyMMdd")) == -1){
+					this.saveAverageLevel(stock);
+				}
+				else{
+					logger.info( stock.getCode() + " today has got level");	
+				}
+				
 			}
 		}
 	}
