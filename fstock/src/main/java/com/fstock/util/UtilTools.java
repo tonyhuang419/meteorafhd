@@ -88,8 +88,8 @@ public class UtilTools {
 		}catch( Exception e ){
 			e.printStackTrace();
 		}
-		
-		
+
+
 		int level = UtilTools.getStockAverageLevelJgpj(page);
 		logger.info(stock.getId() + " " + stock.getName() + " level:" + level);
 		stock.setAverageLevel(UtilTools.parseStockLevel(stock.getAverageLevel() , level+""));
@@ -118,8 +118,15 @@ public class UtilTools {
 	static public int getStockAverageLevelJgpj(HtmlPage page){
 		if( page!=null){
 			String pageStr = page.asXml();
-			String levelStr = pageStr.substring(pageStr.indexOf("height=\"30\""),pageStr.indexOf("/2008/img/img60.gif"));
-			return UtilTools.getLevel(levelStr);
+			int start = pageStr.indexOf("height=\"30\"");
+			int end = pageStr.indexOf("/2008/img/img60.gif");
+			if(start!=-1 && end!=-1){
+				String levelStr = pageStr.substring(start,end);
+				return UtilTools.getLevel(levelStr);
+			}
+			else{
+				return 0;
+			}
 		}
 		return -1;
 	}
