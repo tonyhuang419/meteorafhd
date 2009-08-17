@@ -24,8 +24,8 @@ public class StockRun {
 		IStockService 	stockService  = (IStockService)ctx.getBean("stockService");
 
 		StockRun sr = new StockRun();
-//		sr.getAllStockAndPersist(stockService);
-		sr.saveAverageLevel(commonService, stockService );
+		sr.getAllStockAndPersist(stockService);
+//		sr.saveAverageLevel(commonService, stockService );
 
 	}
 

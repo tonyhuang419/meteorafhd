@@ -43,14 +43,23 @@ public class Stock implements Serializable {
 	@Column(name = "AVERAGE_LEVEL_DATE", length = 4000)
 	private String averageLevelDate;
 	
-	@Column(name = "ORGANIZATION_LEVEL", length = 100)
-	private String organizationLevel;
 	
 	/**
 	 * yyyyMMdd/yyyyMMdd
 	 */
 	@Column(name = "ORGANIZATION_LEVEL_DATE", length = 4000)
 	private String organizationLevelDate;
+	
+	@Column(name = "ORGANIZATION_LEVEL_PEOPLE", length = 4000)
+	private String organizationLevelPeople;
+	
+	@Column(name = "ORGANIZATION_LEVEL_DESP", length = 4000)
+	private String organizationLevelDecp;
+	
+	@Column(name = "ORGANIZATION_LEVEL", length = 100)
+	private String organizationLevel;
+	
+
 	
 	public Stock(){ }
 	
@@ -117,6 +126,22 @@ public class Stock implements Serializable {
 
 	public void setOrganizationLevelDate(String organizationLevelDate) {
 		this.organizationLevelDate = organizationLevelDate;
+	}
+
+	public String getOrganizationLevelPeople() {
+		return organizationLevelPeople;
+	}
+
+	public void setOrganizationLevelPeople(String organizationLevelPeople) {
+		this.organizationLevelPeople = organizationLevelPeople;
+	}
+
+	public String getOrganizationLevelDecp() {
+		return organizationLevelDecp;
+	}
+
+	public void setOrganizationLevelDecp(String organizationLevelDecp) {
+		this.organizationLevelDecp = organizationLevelDecp;
 	}
 
 

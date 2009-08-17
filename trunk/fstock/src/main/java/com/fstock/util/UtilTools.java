@@ -18,7 +18,11 @@ import org.apache.commons.logging.LogFactory;
 
 import com.fstock.entity.Stock;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlTable;
+import com.gargoylesoftware.htmlunit.html.HtmlTableCell;
+import com.gargoylesoftware.htmlunit.html.HtmlTableRow;
 
 
 
@@ -26,7 +30,6 @@ public class UtilTools {
 	protected static Log logger = LogFactory.getLog(UtilTools.class);
 
 	private static Pattern stockAvrPattern = Pattern.compile("\\[ (.*)];Stock");
-	private static Pattern stockOrgPattern = Pattern.compile("<tr>(.*?)</tr>");
 
 	public static List<Stock> getStockList(String str){
 		List<Stock> stockList = new ArrayList<Stock>();
@@ -68,16 +71,7 @@ public class UtilTools {
 
 	public static String buildStockLevelDate( String stockLevelDate  ){
 		String now = UtilTools.getDateFormat(new Date() ,"yyyyMMdd");
-		if ( StringUtils.isNotBlank(stockLevelDate)){
-			String temp = stockLevelDate+"/"+now;
-			while(StringUtils.countMatches(temp, "/") >= ConstantValue.averageLevelLen ){
-				temp =  temp.substring( temp.indexOf("/")+1 , temp.length());
-			}
-			return temp;
-		}
-		else{
-			return now;
-		}
+		return UtilTools.buildStockString(stockLevelDate, now, "/");
 	}
 
 	static public int parseStockAverageLevelJgpj(HtmlPage page){
@@ -95,22 +89,43 @@ public class UtilTools {
 		}
 		return -1;
 	}
-	
-	static public String parseStockOrganizationLevelJgpj(HtmlPage page){
-		if( page!=null){
-			String pageStr = page.asXml();
-			int start = pageStr.indexOf("1");
-			int end = pageStr.indexOf("2");
-			pageStr = pageStr.substring(start,end);
-			System.out.println(pageStr);
-			Matcher m1 = stockOrgPattern.matcher(pageStr);  
-			while( m1.find() ){  
-				int gc = m1.groupCount();  
-				for(int i = 0; i <= gc; i++)  
-					System.out.println("group " + i + " :" + m1.group(i));  
+
+	static public Stock parseStockOrganizationLevelJgpj(HtmlPage page , Stock stock){
+		List<HtmlElement> htmlElementList =  page.getBody().getHtmlElementsByTagName("table");
+		if(htmlElementList.size()>1){
+			HtmlTable htmlTable = (HtmlTable)htmlElementList.get(1);
+			for ( int i=2;i<htmlTable.getRowCount()-1;i++ ) {
+				StringBuffer organizationLevelDate = new StringBuffer("");
+				StringBuffer organizationLevelPeople = new StringBuffer("");
+				StringBuffer organizationLevelDecp = new StringBuffer("");
+				StringBuffer organizationLevel = new StringBuffer("");
+				HtmlTableRow rows = htmlTable.getRow(i);
+				int rowCellNum = 0;
+				for (HtmlTableCell cell : rows.getCells()) {
+					switch (rowCellNum){
+					case 0:
+						organizationLevelDate = organizationLevelDate.append(cell.asText());
+						break;
+					case 1:
+						organizationLevelPeople = organizationLevelPeople.append(cell.asText());
+						break;
+					case 2:
+						organizationLevelDecp = organizationLevelDecp.append(cell.asText());
+						break;
+					case 3:
+						organizationLevel = organizationLevel.append(cell.asText());
+						break;
+					default:
+						rowCellNum = 0;
+					}
+				}
+				stock.setOrganizationLevelDate(organizationLevelDate.toString());
+				stock.setOrganizationLevelPeople(organizationLevelPeople.toString());
+				stock.setOrganizationLevelDecp(organizationLevelDecp.toString());
+				stock.setOrganizationLevel(organizationLevel.toString());
 			}
 		}
-		return "";
+		return stock;
 	}
 
 	public static Stock  addStockLevelInfo(Stock stock){
@@ -126,7 +141,7 @@ public class UtilTools {
 		int averageLevel = UtilTools.parseStockAverageLevelJgpj(page);
 		logger.info(stock.getId() + " " + stock.getName() + " averageLevel:" + averageLevel);
 		stock.setAverageLevel(UtilTools.buildStockAverageLevel(stock.getAverageLevel() , averageLevel+""));
-
+		stock = UtilTools.parseStockOrganizationLevelJgpj(page, stock);
 		return stock;
 	}
 
@@ -168,6 +183,20 @@ public class UtilTools {
 		return sArr;
 	}
 
+
+	public static String buildStockString( String orgStr , String joinStr , String  separateStr  ){
+		if ( StringUtils.isNotBlank(orgStr)){
+			String temp = orgStr + separateStr + joinStr;
+			while(StringUtils.countMatches(temp, separateStr) >= ConstantValue.averageLevelLen ){
+				temp =  temp.substring( temp.indexOf(separateStr)+1 , temp.length());
+			}
+			return temp;
+		}
+		else{
+			return joinStr;
+		}
+	}
+
 	@Deprecated
 	static public int getStockAverageLevel(String stockCode){
 		WebClient webClient = new WebClient();
@@ -187,22 +216,22 @@ public class UtilTools {
 	}
 
 	public static void main(String[] args){
-//		System.out.println(UtilTools.buildStockAverageLevel("0123456789abcd", "ef"));
-//		System.out.println(UtilTools.buildStockLevelDate("0/1/2/3/4/5/6/7/8/9/0"));
-		
-		
-		WebClient webClient = new WebClient();
-		webClient.setJavaScriptEnabled(false);
-		HtmlPage page=null;
-		try{
-			page = webClient.getPage(ConstantValue.stockJgpjBaseUrl+"000002"+".shtml");
-		}catch( Exception e ){
-			e.printStackTrace();
-		}
-		UtilTools.parseStockOrganizationLevelJgpj(page);
-		
-		
-	}
 
+		System.out.println(UtilTools.buildStockString("0/1/2/3/4/5/6/7/8/9/0","02", "/"));
+		//		System.out.println(UtilTools.buildStockAverageLevel("0123456789abcd", "ef"));
+		//		System.out.println(UtilTools.buildStockLevelDate("0/1/2/3/4/5/6/7/8/9/0"));
+
+
+		//		WebClient webClient = new WebClient();
+		//		webClient.setJavaScriptEnabled(false);
+		//		HtmlPage page=null;
+		//		try{
+		//			page = webClient.getPage(ConstantValue.stockJgpjBaseUrl+"600300"+".shtml");
+		//		}catch( Exception e ){
+		//			e.printStackTrace();
+		//		}
+		//		UtilTools.parseStockOrganizationLevelJgpj(page);
+
+	}
 
 }
