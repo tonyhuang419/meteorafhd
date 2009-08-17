@@ -60,7 +60,7 @@ class UserThread implements Runnable{
 	public void run() {
 		if( StringUtils.isBlank(stock.getAverageLevelDate())
 				|| stock.getAverageLevelDate().indexOf(UtilTools.getDateFormat(new Date() ,"yyyyMMdd")) == -1){
-			stockService.saveAverageLevel(stock);
+			stockService.saveStockLevel(stock);
 		}else{
 			logger.info( stock.getCode() + " today has got level");	
 		}

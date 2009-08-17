@@ -51,15 +51,14 @@ public class StockService implements IStockService {
 		}
 	}
 
-	public void saveAverageLevel(Stock stock){
+	public void saveStockLevel(Stock stock){
 		if(stock==null){
 			return;
 		}
 
 		if(stock!=null){
 			stock = UtilTools.addStockLevelInfo(stock);
-//			stock.setAverageLevel(UtilTools.addStockLevel(stock.getAverageLevel() , level+""));
-			stock.setAverageLevelDate(UtilTools.parseStockLevelDate(stock.getAverageLevelDate()));
+			stock.setAverageLevelDate(UtilTools.buildStockLevelDate(stock.getAverageLevelDate()));
 		}
 		commonService.update(stock);
 	}
@@ -95,7 +94,7 @@ public class StockService implements IStockService {
 				logger.info("start : " + stock.getCode());
 				if( StringUtils.isBlank(stock.getAverageLevelDate())
 						|| stock.getAverageLevelDate().indexOf(UtilTools.getDateFormat(new Date() ,"yyyyMMdd")) == -1){
-					this.saveAverageLevel(stock);
+					this.saveStockLevel(stock);
 				}
 				else{
 					logger.info( stock.getCode() + " today has got level");	
