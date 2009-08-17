@@ -13,7 +13,7 @@ public interface IStockService {
 	/**
 	 * save stock average level
 	 */
-	public void saveAverageLevel(Stock stock);
+	public void saveStockLevel(Stock stock);
 	
 	/**
 	 * is or not exist repeat
