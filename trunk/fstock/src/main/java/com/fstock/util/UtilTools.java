@@ -53,11 +53,6 @@ public class UtilTools {
 		return -1;
 	}
 
-
-	public static String buildStockAverageLevel(String stockLevel , String newLevel){
-		return UtilTools.buildStockString(stockLevel,newLevel);
-	}
-
 	public static String buildStockLevelDate( String stockLevelDate  ){
 		String now = UtilTools.getDateFormat(new Date() ,"yyyyMMdd");
 		return UtilTools.buildStockString(stockLevelDate, now, "/");
@@ -135,7 +130,7 @@ public class UtilTools {
 
 		int averageLevel = UtilTools.parseStockAverageLevelJgpj(page);
 		logger.info(stock.getId() + " " + stock.getName() + " averageLevel:" + averageLevel);
-		stock.setAverageLevel(UtilTools.buildStockAverageLevel(stock.getAverageLevel() , averageLevel+""));
+		stock.setAverageLevel(UtilTools.buildStockString(stock.getAverageLevel() , averageLevel+""));
 		stock = UtilTools.parseStockOrganizationLevelJgpj(page, stock);
 		return stock;
 	}
