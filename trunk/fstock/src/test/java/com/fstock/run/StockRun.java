@@ -14,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.fstock.entity.Stock;
 import com.fstock.service.ICommonService;
 import com.fstock.service.IStockService;
+import com.fstock.util.ConstantValue;
 import com.fstock.util.UtilTools;
 
 public class StockRun {
@@ -24,8 +25,8 @@ public class StockRun {
 		IStockService 	stockService  = (IStockService)ctx.getBean("stockService");
 
 		StockRun sr = new StockRun();
-		sr.getAllStockAndPersist(stockService);
-//		sr.saveAverageLevel(commonService, stockService );
+//		sr.getAllStockAndPersist(stockService);
+		sr.saveAverageLevel(commonService, stockService );
 
 	}
 
@@ -37,7 +38,7 @@ public class StockRun {
 	@SuppressWarnings("unchecked")
 	public void saveAverageLevel(ICommonService  commonService , IStockService 	stockService){
 		List<Stock> list = commonService.listHql(" from Stock s ", " order by s.id asc ");
-		ExecutorService exec = Executors.newFixedThreadPool(3);
+		ExecutorService exec = Executors.newFixedThreadPool(ConstantValue.threadSize);
 		for(Stock stock:list){
 			exec.execute(new UserThread( stock , stockService ));
 		}

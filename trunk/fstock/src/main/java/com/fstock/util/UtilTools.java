@@ -55,18 +55,7 @@ public class UtilTools {
 
 
 	public static String buildStockAverageLevel(String stockLevel , String newLevel){
-		if ( StringUtils.isNotBlank(stockLevel)){
-			String temp = stockLevel+newLevel;
-			if( stockLevel.length() >= ConstantValue.averageLevelLen ){
-				return temp.substring(temp.length()-ConstantValue.averageLevelLen,temp.length());
-			}
-			else{
-				return temp;
-			}
-		}
-		else{
-			return newLevel;
-		}
+		return UtilTools.buildStockString(stockLevel,newLevel);
 	}
 
 	public static String buildStockLevelDate( String stockLevelDate  ){
@@ -104,16 +93,21 @@ public class UtilTools {
 				for (HtmlTableCell cell : rows.getCells()) {
 					switch (rowCellNum){
 					case 0:
-						organizationLevelDate = organizationLevelDate.append(cell.asText());
+						organizationLevelDate = new StringBuffer(UtilTools.buildStockString(stock.getOrganizationLevelDate(), cell.asText(), "/"));
+						rowCellNum++;
 						break;
 					case 1:
-						organizationLevelPeople = organizationLevelPeople.append(cell.asText());
+						organizationLevelPeople = new StringBuffer(UtilTools.buildStockString(stock.getOrganizationLevelPeople(), cell.asText(), "/"));
+						rowCellNum++;
 						break;
 					case 2:
-						organizationLevelDecp = organizationLevelDecp.append(cell.asText());
+						organizationLevelDecp = new StringBuffer(UtilTools.buildStockString(stock.getOrganizationLevelDecp(), cell.asText(), "/"));
+						rowCellNum++;
 						break;
 					case 3:
-						organizationLevel = organizationLevel.append(cell.asText());
+						int count = StringUtils.countMatches(cell.asText(),"★");
+						organizationLevel = new StringBuffer(UtilTools.buildStockString(stock.getAverageLevel() , count+"" ));
+						rowCellNum++;
 						break;
 					default:
 						rowCellNum = 0;
@@ -123,6 +117,7 @@ public class UtilTools {
 				stock.setOrganizationLevelPeople(organizationLevelPeople.toString());
 				stock.setOrganizationLevelDecp(organizationLevelDecp.toString());
 				stock.setOrganizationLevel(organizationLevel.toString());
+
 			}
 		}
 		return stock;
@@ -197,6 +192,21 @@ public class UtilTools {
 		}
 	}
 
+	public static String buildStockString(String orgStr , String joinStr){
+		if ( StringUtils.isNotBlank(orgStr)){
+			String temp = orgStr + joinStr;
+			if( temp.length() >= ConstantValue.averageLevelLen ){
+				return temp.substring(temp.length()-ConstantValue.averageLevelLen,temp.length());
+			}
+			else{
+				return temp;
+			}
+		}
+		else{
+			return joinStr;
+		}
+	}
+
 	@Deprecated
 	static public int getStockAverageLevel(String stockCode){
 		WebClient webClient = new WebClient();
@@ -216,8 +226,8 @@ public class UtilTools {
 	}
 
 	public static void main(String[] args){
-
-		System.out.println(UtilTools.buildStockString("0/1/2/3/4/5/6/7/8/9/0","02", "/"));
+		//		System.out.println(UtilTools.buildStockString("0/1/2/3/4/5/6/7/8/9/0","02", "/"));
+		System.out.println(UtilTools.buildStockString("123456781","02"));
 		//		System.out.println(UtilTools.buildStockAverageLevel("0123456789abcd", "ef"));
 		//		System.out.println(UtilTools.buildStockLevelDate("0/1/2/3/4/5/6/7/8/9/0"));
 
