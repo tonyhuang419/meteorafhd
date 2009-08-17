@@ -19,7 +19,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 
-@Service("stockService")
+@Service("stockService") 
 //@Transactional
 public class StockService implements IStockService {
 
@@ -55,7 +55,6 @@ public class StockService implements IStockService {
 		if(stock==null){
 			return;
 		}
-
 		if(stock!=null){
 			stock = UtilTools.addStockLevelInfo(stock);
 			stock.setAverageLevelDate(UtilTools.buildStockLevelDate(stock.getAverageLevelDate()));
