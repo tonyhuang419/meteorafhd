@@ -1,5 +1,7 @@
 package com.fstock.service;
 
+import java.util.List;
+
 import com.fstock.entity.Stock;
 
 public interface IStockService {
@@ -22,6 +24,11 @@ public interface IStockService {
 	
 
 	public void updateAllAverageLevel();
+	
+	
+	public List<Object[]> scanNewestAveragerLevel(String level);
 
+	
+	public List<Stock> findDateOrganizationLevel( IStockService stockService , String date , String level);
 	
 }

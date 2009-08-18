@@ -101,7 +101,7 @@ public class UtilTools {
 						break;
 					case 3:
 						int count = StringUtils.countMatches(cell.asText(),"★");
-						organizationLevel = new StringBuffer(UtilTools.buildStockString(stock.getAverageLevel() , count+"" ));
+						organizationLevel = new StringBuffer(UtilTools.buildStockString(stock.getOrganizationLevel() , count+"" ));
 						rowCellNum++;
 						break;
 					default:
