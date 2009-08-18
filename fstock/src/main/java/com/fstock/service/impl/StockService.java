@@ -102,6 +102,40 @@ public class StockService implements IStockService {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Object[]> scanNewestAveragerLevel(String level){
+		List<Object[]> stoclList = commonService.listSQL("select right(s.AVERAGE_LEVEL_DATE,8) , s.CODE ,s.NAME  from stock s where right(s.AVERAGE_LEVEL , 1 ) = '" + level + "'"
+				 , " order by s.id asc ");
+		return stoclList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Stock> findDateOrganizationLevel( IStockService stockService , String date , String level){
+		List<Stock> stockList = commonService.listHql(" from Stock s where s.organizationLevelDate like ? ",  " order by s.id asc " , "%"+date+"%" );
+		if(StringUtils.isBlank(level)){
+			return stockList;
+		}
+		for(Stock stock:stockList){
+			int i = 0;
+			String[] dateArr = stock.getOrganizationLevelDate().split("/");
+			for(String str :dateArr ){
+				if(str.equals(date)){
+					if( level.equals(stock.getOrganizationLevel().charAt(i)+"")){
+						break;
+					}
+				}
+				else{
+					i++;
+					if(i==dateArr.length){
+						stockList.remove(stock);
+					}
+					continue;
+				}
+			}
+		}
+		return stockList;
+	}
+	
 }
 
 

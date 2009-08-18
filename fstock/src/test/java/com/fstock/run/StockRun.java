@@ -29,7 +29,8 @@ public class StockRun {
 		StockRun sr = new StockRun();
 //		sr.getAllStockAndPersist(stockService);
 //		sr.saveAverageLevel(commonService, stockService );
-		sr.scanAveragerLevelFive(commonService , "5");
+//		sr.scanNewestAveragerLevel(stockService , "4");
+		sr.findDateLevel(stockService, "20090426", "4");
 
 	}
 
@@ -48,17 +49,20 @@ public class StockRun {
 		exec.shutdown();
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void scanAveragerLevelFive( ICommonService commonService ,String level ){
-		List<Object[]> stoclList = commonService.listSQL("select s.CODE ,s.NAME  from stock s where right(s.AVERAGE_LEVEL , 1 ) = '" + level + "'", " order by s.id asc ");
-		logger.info("lastest average five star:");
+	public void scanNewestAveragerLevel( IStockService stockService ,String level ){
+		List<Object[]> stoclList = stockService.scanNewestAveragerLevel(level);
+		logger.info("lastest average "+ level + " star:");
 		for(Object obj[] : stoclList){
-			logger.info( obj[0] +":" + obj[1] );
+			logger.info( obj[0] +"-" + obj[1] +":" + obj[2] );
 		}
 	}
 	
-	public void findTodayLevelFive( ICommonService commonService ){
-		
+	public void findDateLevel( IStockService stockService , String date , String level){
+		List<Stock> stockList = stockService.findDateOrganizationLevel(stockService, date, level);
+		logger.info(date + " level " + level + " has :");
+		for(Stock stock:stockList){
+			logger.info(stock.getCode() +"-"+stock.getName()+"-"+stock.getOrganizationLevelDate()+"-"+stock.getOrganizationLevel());
+		}
 	}
 	
 
