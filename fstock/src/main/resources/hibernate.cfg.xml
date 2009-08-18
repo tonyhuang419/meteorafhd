@@ -4,7 +4,7 @@
 <hibernate-configuration>
 	<session-factory>
 		
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="dialect">com.fstock.util.CustomDialect</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/test</property>
 		<property name="connection.useUnicode">true</property>

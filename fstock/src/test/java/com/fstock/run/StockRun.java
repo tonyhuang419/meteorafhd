@@ -19,6 +19,8 @@ import com.fstock.util.UtilTools;
 
 public class StockRun {
 
+	protected Log logger = LogFactory.getLog(this.getClass());
+	
 	public static void main(String[] args){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ICommonService  commonService  = (ICommonService)ctx.getBean("commonService");
@@ -26,7 +28,8 @@ public class StockRun {
 
 		StockRun sr = new StockRun();
 //		sr.getAllStockAndPersist(stockService);
-		sr.saveAverageLevel(commonService, stockService );
+//		sr.saveAverageLevel(commonService, stockService );
+		sr.scanAveragerLevelFive(commonService , "5");
 
 	}
 
@@ -44,6 +47,20 @@ public class StockRun {
 		}
 		exec.shutdown();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public void scanAveragerLevelFive( ICommonService commonService ,String level ){
+		List<Object[]> stoclList = commonService.listSQL("select s.CODE ,s.NAME  from stock s where right(s.AVERAGE_LEVEL , 1 ) = '" + level + "'", " order by s.id asc ");
+		logger.info("lastest average five star:");
+		for(Object obj[] : stoclList){
+			logger.info( obj[0] +":" + obj[1] );
+		}
+	}
+	
+	public void findTodayLevelFive( ICommonService commonService ){
+		
+	}
+	
 
 }
 
