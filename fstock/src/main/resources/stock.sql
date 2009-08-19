@@ -1,3 +1,5 @@
+select * from stock s order by s.code
+
 select count(*) from stock
 
 select count(*) from (select distinct s.code from stock s) ss
