@@ -20,17 +20,17 @@ import com.fstock.util.UtilTools;
 public class StockRun {
 
 	protected Log logger = LogFactory.getLog(this.getClass());
-	
+
 	public static void main(String[] args){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ICommonService  commonService  = (ICommonService)ctx.getBean("commonService");
 		IStockService 	stockService  = (IStockService)ctx.getBean("stockService");
 
 		StockRun sr = new StockRun();
-//		sr.getAllStockAndPersist(stockService);
-//		sr.saveAverageLevel(commonService, stockService );
-//		sr.scanNewestAveragerLevel(stockService , "4");
-		sr.findDateLevel(stockService, "20090426", "4");
+		//sr.getAllStockAndPersist(stockService);
+		//sr.saveAverageLevel(commonService, stockService );
+//		sr.scanNewestAveragerLevel(stockService , "5");
+		sr.findDateLevel(stockService, "20090818", "5");
 
 	}
 
@@ -48,7 +48,7 @@ public class StockRun {
 		}
 		exec.shutdown();
 	}
-	
+
 	public void scanNewestAveragerLevel( IStockService stockService ,String level ){
 		List<Object[]> stoclList = stockService.scanNewestAveragerLevel(level);
 		logger.info("lastest average "+ level + " star:");
@@ -56,7 +56,7 @@ public class StockRun {
 			logger.info( obj[0] +"-" + obj[1] +":" + obj[2] );
 		}
 	}
-	
+
 	public void findDateLevel( IStockService stockService , String date , String level){
 		List<Stock> stockList = stockService.findDateOrganizationLevel(stockService, date, level);
 		logger.info(date + " level " + level + " has :");
@@ -64,7 +64,7 @@ public class StockRun {
 			logger.info(stock.getCode() +"-"+stock.getName()+"-"+stock.getOrganizationLevelDate()+"-"+stock.getOrganizationLevel());
 		}
 	}
-	
+
 
 }
 
@@ -80,11 +80,14 @@ class UserThread implements Runnable{
 	}
 
 	public void run() {
-		if( StringUtils.isBlank(stock.getAverageLevelDate())
-				|| stock.getAverageLevelDate().indexOf(UtilTools.getDateFormat(new Date() ,"yyyyMMdd")) == -1){
-			stockService.saveStockLevel(stock);
-		}else{
-			logger.info( stock.getCode() + " today has got level");	
+		synchronized (stock){
+			if( StringUtils.isBlank(stock.getAverageLevelDate())
+					|| stock.getAverageLevelDate().indexOf(UtilTools.getDateFormat(new Date() ,"yyyyMMdd")) == -1){
+
+				stockService.saveStockLevel(stock);
+			}else{
+				logger.info( stock.getCode() + " today has got level");	
+			}
 		}
 	}
 
