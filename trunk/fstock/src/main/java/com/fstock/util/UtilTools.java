@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -157,9 +159,26 @@ public class UtilTools {
 	}
 
 	public static String getDateFormat(Date adate, String format) {
-		SimpleDateFormat formatDate = new SimpleDateFormat(format);
+		DateFormat formatDate = new SimpleDateFormat(format);
 		return formatDate.format(adate);
 	}
+	
+	public static Date str2date(String strDate, String format) {
+		try {
+			DateFormat df = new SimpleDateFormat(format);
+			return df.parse(strDate);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static String addDate(String dateStr , int amount , String format ){
+		Date date = UtilTools.str2date(dateStr, format );
+		date = DateUtils.addDays(date, amount);
+		dateStr = UtilTools.getDateFormat(date , format);
+		return dateStr;
+	}
+	
 
 	private static List<Stock> splitStock(String pageStock){
 		List<Stock> sArr = new ArrayList<Stock>();
@@ -222,7 +241,7 @@ public class UtilTools {
 
 	public static void main(String[] args){
 		//		System.out.println(UtilTools.buildStockString("0/1/2/3/4/5/6/7/8/9/0","02", "/"));
-		System.out.println(UtilTools.buildStockString("123456781","02"));
+//		System.out.println(UtilTools.buildStockString("123456781","02"));
 		//		System.out.println(UtilTools.buildStockAverageLevel("0123456789abcd", "ef"));
 		//		System.out.println(UtilTools.buildStockLevelDate("0/1/2/3/4/5/6/7/8/9/0"));
 
@@ -236,6 +255,8 @@ public class UtilTools {
 		//			e.printStackTrace();
 		//		}
 		//		UtilTools.parseStockOrganizationLevelJgpj(page);
+		
+		System.out.println(UtilTools.addDate("20090131", 1, "yyyyMMdd"));
 
 	}
 

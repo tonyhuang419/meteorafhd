@@ -31,4 +31,6 @@ public interface IStockService {
 	
 	public List<Stock> findDateOrganizationLevel( IStockService stockService , String date , String level);
 	
+	public List<Stock> findDateOrganizationLevel( IStockService stockService , String startDate , String endDate ,  String level);
+		
 }

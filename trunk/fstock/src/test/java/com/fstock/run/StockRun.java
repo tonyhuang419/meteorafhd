@@ -27,10 +27,16 @@ public class StockRun {
 		IStockService 	stockService  = (IStockService)ctx.getBean("stockService");
 
 		StockRun sr = new StockRun();
+		
 		//sr.getAllStockAndPersist(stockService);
+		
 		//sr.saveAverageLevel(commonService, stockService );
+		
 //		sr.scanNewestAveragerLevel(stockService , "5");
-		sr.findDateLevel(stockService, "20090818", "5");
+		
+//		sr.findDateLevel(stockService, "20090309", "4");
+		
+		sr.findDateLevel(stockService, "20090109", "20090801", "4");
 
 	}
 
@@ -64,7 +70,14 @@ public class StockRun {
 			logger.info(stock.getCode() +"-"+stock.getName()+"-"+stock.getOrganizationLevelDate()+"-"+stock.getOrganizationLevel());
 		}
 	}
-
+	
+	public void findDateLevel( IStockService stockService , String startDate , String endDate , String level){
+		List<Stock> stockList = stockService.findDateOrganizationLevel(stockService, startDate , endDate , level);
+		logger.info(startDate +" to "+ endDate + " level " + level + " has :");
+		for(Stock stock:stockList){
+			logger.info(stock.getCode() +"-"+stock.getName()+"-"+stock.getOrganizationLevelDate()+"-"+stock.getOrganizationLevel());
+		}
+	}
 
 }
 

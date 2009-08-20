@@ -136,6 +136,24 @@ public class StockService implements IStockService {
 		return stockList;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Stock> findDateOrganizationLevel( IStockService stockService , String startDate , String endDate ,  String level){
+		if( startDate.compareTo(endDate)>0 ){
+			String temp = endDate;
+			endDate = startDate;
+			startDate = temp;
+		}
+		StringBuffer sb = new StringBuffer("s.organizationLevelDate like '%"+startDate+"%' ");
+		String tempDate = UtilTools.addDate(startDate, 1, "yyyyMMdd");
+		while(tempDate.compareTo(endDate)<1){
+			sb.append("or s.organizationLevelDate like '%"+tempDate+"%'");
+			tempDate = UtilTools.addDate(tempDate, 1, "yyyyMMdd");
+		}
+		List<Stock> stockList = commonService.listHql(" from Stock s where "+    sb.toString() ,  " order by s.id asc "  );
+		return stockList;
+	}
+	
+	
 }
 
 
