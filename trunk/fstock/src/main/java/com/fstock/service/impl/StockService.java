@@ -1,5 +1,6 @@
 package com.fstock.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -105,37 +106,22 @@ public class StockService implements IStockService {
 	@SuppressWarnings("unchecked")
 	public List<Object[]> scanNewestAveragerLevel(String level){
 		List<Object[]> stoclList = commonService.listSQL("select right(s.AVERAGE_LEVEL_DATE,8) , s.CODE ,s.NAME  from stock s where right(s.AVERAGE_LEVEL , 1 ) = '" + level + "'"
-				 , " order by s.id asc ");
+				, " order by s.id asc ");
 		return stoclList;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Stock> findDateOrganizationLevel( IStockService stockService , String date , String level){
 		List<Stock> stockList = commonService.listHql(" from Stock s where s.organizationLevelDate like ? ",  " order by s.id asc " , "%"+date+"%" );
 		if(StringUtils.isBlank(level)){
 			return stockList;
 		}
-		for(Stock stock:stockList){
-			int i = 0;
-			String[] dateArr = stock.getOrganizationLevelDate().split("/");
-			for(String str :dateArr ){
-				if(str.equals(date)){
-					if( level.equals(stock.getOrganizationLevel().charAt(i)+"")){
-						break;
-					}
-				}
-				else{
-					i++;
-					if(i==dateArr.length){
-						stockList.remove(stock);
-					}
-					continue;
-				}
-			}
-		}
+		List<String> dateList = new ArrayList<String>();
+		dateList.add(date);
+		stockList = this.processLevel(stockList, level, dateList);
 		return stockList;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Stock> findDateOrganizationLevel( IStockService stockService , String startDate , String endDate ,  String level){
 		if( startDate.compareTo(endDate)>0 ){
@@ -143,17 +129,44 @@ public class StockService implements IStockService {
 			endDate = startDate;
 			startDate = temp;
 		}
+		List<String> dateList = new ArrayList<String>();
 		StringBuffer sb = new StringBuffer("s.organizationLevelDate like '%"+startDate+"%' ");
 		String tempDate = UtilTools.addDate(startDate, 1, "yyyyMMdd");
 		while(tempDate.compareTo(endDate)<1){
+			dateList.add(tempDate);
 			sb.append("or s.organizationLevelDate like '%"+tempDate+"%'");
 			tempDate = UtilTools.addDate(tempDate, 1, "yyyyMMdd");
 		}
 		List<Stock> stockList = commonService.listHql(" from Stock s where "+    sb.toString() ,  " order by s.id asc "  );
+		stockList = this.processLevel(stockList, level, dateList);
 		return stockList;
 	}
-	
-	
+
+
+	private List<Stock> processLevel( List<Stock> stockList ,  String level , List<String> dateList) {
+		List<Stock> tempStockList = new ArrayList<Stock>();
+		for(Stock stock:stockList){
+			int i = 0;
+			String[] dateArr = stock.getOrganizationLevelDate().split("/");
+			for(String str :dateArr ){
+				if(dateList.contains(str)){
+					if( level.equals(stock.getOrganizationLevel().charAt(i)+"")){
+						tempStockList.add(stock);
+						break;
+					}
+				}
+				else{
+//					i++;
+//					if(i==dateArr.length){
+//						stockList.remove(stock);
+//					}
+					continue;
+				}
+			}
+		}
+		return tempStockList;
+	}
+
 }
 
 
