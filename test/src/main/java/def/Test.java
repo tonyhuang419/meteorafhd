@@ -136,11 +136,15 @@ public class Test {
 		System.out.println(Arrays.asList(s));
 	}
 	
+	public void xxxx(){
+		System.out.println("....");
+		return;
+	}
 
 	public static void main(String[] args) {
 		Test test = new Test();
 
-		System.out.println(1.03 - 0.42);
+		test.xxxx();
 		
 //		test.sort();
 		
