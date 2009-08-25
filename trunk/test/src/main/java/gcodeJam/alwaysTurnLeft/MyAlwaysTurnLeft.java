@@ -195,6 +195,7 @@ public class MyAlwaysTurnLeft {
 				for(int j=0;j<300;j++){
 					for(int k=0;k<300;k++){
 						if(maze[j][k]!=null){
+//							System.out.print(maze[j][k]+" ");
 							System.out.print(m.converCodeToChar(maze[j][k]));
 							sign = 1;
 						}
