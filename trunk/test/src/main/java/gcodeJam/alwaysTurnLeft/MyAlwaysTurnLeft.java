@@ -169,8 +169,11 @@ public class MyAlwaysTurnLeft {
 
 
 	public String[][] analyze(char[] entrance_to_exit , char[] exit_to_entrance){
-		String[][] mazeArr = new String[10000][10000];
-		Maze maze = new Maze(0,5000 , Maze.SOUTH);
+		String[][] mazeArr = new String[300][300];
+//		System.out.print("已占用内存:"); 
+//		System.out.println(
+//		Runtime.getRuntime().totalMemory()/1024/1024+"M");
+		Maze maze = new Maze(0,100 , Maze.SOUTH);
 		this.move(entrance_to_exit, mazeArr, maze,"1");
 		maze.direction = this.getContraryDirection(maze.direction);
 		this.move(exit_to_entrance, mazeArr, maze,"");
