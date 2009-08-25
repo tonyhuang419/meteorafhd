@@ -1,4 +1,4 @@
-package gcodeJam.util;
+package gcodeJam.alienNumbers;
 
 import java.io.BufferedReader;
 import java.io.File;
