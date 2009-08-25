@@ -1,4 +1,4 @@
-package gcodeJam;
+package gcodeJam.alienNumbers;
 
 public class CodeJam1 {
 	public static void convertSystem(char[] alienNum, char[] inputSystem, char[] outputSystem) {  
@@ -30,9 +30,9 @@ public class CodeJam1 {
 	}  
 
 	public static void main(String[] args) {  
-		char[] alienNum = "CODE".toCharArray();  
-		char[] inputSystem = "O!CDE?".toCharArray();  
-		char[] outputSystem = "A?JM!.".toCharArray();  
+		char[] alienNum = "0D".toCharArray();  
+		char[] inputSystem = "D>asC0".toCharArray();  
+		char[] outputSystem = "a,$X}(F3z9".toCharArray();  
 
 		//      char[] alienNum = "2".toCharArray();  
 		//      char[] inputSystem = "0123456789".toCharArray();  
