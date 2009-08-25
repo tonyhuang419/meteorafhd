@@ -169,8 +169,8 @@ public class MyAlwaysTurnLeft {
 
 
 	public String[][] analyze(char[] entrance_to_exit , char[] exit_to_entrance){
-		String[][] mazeArr = new String[300][300];
-		Maze maze = new Maze(0,150 , Maze.SOUTH);
+		String[][] mazeArr = new String[10000][10000];
+		Maze maze = new Maze(0,5000 , Maze.SOUTH);
 		this.move(entrance_to_exit, mazeArr, maze,"1");
 		maze.direction = this.getContraryDirection(maze.direction);
 		this.move(exit_to_entrance, mazeArr, maze,"");
@@ -181,7 +181,8 @@ public class MyAlwaysTurnLeft {
 		MyAlwaysTurnLeft m = new MyAlwaysTurnLeft();
 		//m.analyze("WW".toCharArray(), "WW".toCharArray());
 
-		List<String[]> ls = UtilTools.fileParse("src/main/java/gcodeJam/alwaysTurnLeft/B-small-practice.in",2);
+//		List<String[]> ls = UtilTools.fileParse("src/main/java/gcodeJam/alwaysTurnLeft/B-small-practice.in",2);
+		List<String[]> ls = UtilTools.fileParse("src/main/java/gcodeJam/alwaysTurnLeft/B-large-practice.in",2);
 		int i=0;
 		for(String[] strArr:ls){
 			if(StringUtils.isNotBlank(strArr[0]) 
