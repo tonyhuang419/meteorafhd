@@ -1,6 +1,8 @@
 package gcodeJam.alienNumbers;
 
 
+import gcodeJam.utilTools.UtilTools;
+
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -8,7 +10,7 @@ import org.apache.commons.lang.StringUtils;
 public class MyAlienNumber {
 
 	public void analyze() throws Exception{
-		List<String[]> ls = UtilTools.alienNumberReadFile("src/main/java/gcodeJam/alienNumbers/A-large-practice.in");
+		List<String[]> ls = UtilTools.fileParse("src/main/java/gcodeJam/alienNumbers/A-large-practice.in",3);
 		int i=0;
 		for(String[] strArr:ls){
 			if(StringUtils.isNotBlank(strArr[0]) 

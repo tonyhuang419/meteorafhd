@@ -1,4 +1,4 @@
-package gcodeJam.alienNumbers;
+package gcodeJam.utilTools;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,24 +25,24 @@ public class UtilTools {
 		return list;
 	}
 	
-	public static List<String[]> alienNumberReadFile(String filePath) throws Exception{
+	public static List<String[]> fileParse(String filePath , int spaceNum ) throws Exception{
 		List<String[]> listArr = new ArrayList<String[]>();
 		List<String> list = UtilTools.readFile(filePath);
 		for(String str : list ){
 			if( (str!=null && str.indexOf(" ")==-1) || str == null){
 				continue;
 			}
-			String[] strArr = new String[3];
+			String[] strArr = new String[spaceNum];
 			String temp = str;
 			int loaction;
-			for(int i=0; i<3; i++){
+			for(int i=0; i<spaceNum; i++){
 				loaction = temp.indexOf(" ");
 				if(loaction!=-1){
 					strArr[i] = temp.substring(0 , loaction );
 					temp = temp.substring(loaction+1 , temp.length());
 				}
 				else{
-					strArr[2] = temp;
+					strArr[spaceNum-1] = temp;
 				}
 			}
 			listArr.add(strArr);
@@ -53,7 +53,7 @@ public class UtilTools {
 	public static void main(String[] args){
 		try {
 //			UtilTools.readFile("src/main/java/gcodeJam/alienNumbers/A-large-practice.in");
-			List<String[]> ls = UtilTools.alienNumberReadFile("src/main/java/gcodeJam/alienNumbers/A-large-practice.in");
+			List<String[]> ls = UtilTools.fileParse("src/main/java/gcodeJam/alienNumbers/A-large-practice.in" , 2);
 			for(String[] strArr : ls){
 				for(String str : strArr ){
 					System.out.println(str);
