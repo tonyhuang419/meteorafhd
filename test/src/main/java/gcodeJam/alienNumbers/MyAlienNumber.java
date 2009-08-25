@@ -1,6 +1,5 @@
 package gcodeJam.alienNumbers;
 
-import gcodeJam.util.UtilTools;
 
 import java.util.List;
 
