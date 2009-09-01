@@ -3,54 +3,28 @@ Saving The Universe
 '''
 
 def analyze(searchList , targetList):
- if len(targetList)==0:
-  return 0;
- else:
-  searchSet = set(searchList);
- #print(len(searchSet))
-  targetSet = set(targetList);
- #print(len(targetSet))
- 
-  searchLen = len(searchSet);
- 
- #searchList.sort();  
- #for item in searchList:
-   # print(item)
- #print('--');
- #targetList.sort();
- 
-  count=1;
-  i=0;
-  tempSet = set();
-  for item in targetList:
-    i+=1;
-    #print(item)
-    tempSet.add(item);
-#    print(len(tempSet));
-    if len(tempSet) == searchLen  :
-#        print(item);
-        count += 1;
-        if i==len(targetList):
-           return count;
-#        print(count);
-        tempSet.clear();
-    elif i==len(targetList):
-         return count;
-#        for s in tempSet:
-#          searchSet.remove(s);
-#        for s in searchSet:
-#            print(s+'-');
-        
+    searchSet = set(searchList);
+    
+    count=0;
+    tempSet = set();
+    for i in range(len(targetList)):
+        tempSet.add(targetList[i]);
+        if len(tempSet) == len(searchSet) :
+            count += 1;
+            i -= 1;
+            tempSet.clear();
+    return count;
 
-#searchList = ['Yeehaw', 'NSM', 'Dont Ask', 'B9' , 'Googol'];
-#targetList = ['Yeehaw', 'Yeehaw', 'Googol', 'B9' ,'Googol' ,'NSM' ,'B9' ,'NSM','Dont Ask','Googol'];
-#analyze( searchList , targetList ) 
-#
-#print('---------------')
-#
-#searchList = ['Yeehaw', 'NSM', 'Dont Ask', 'B9' , 'Googol'];
-#targetList = ['Googol', 'Dont Ask', 'NSM', 'NSM' ,'Yeehaw' ,'Yeehaw' ,'Googol' ];
-#analyze( searchList , targetList ) 
+searchList = ['1', '2', '3', '4' , '5'];
+targetList = ['1', '2', '3', '4' ,'5' ,'1' ,'2' ,'3','4','5'];
+print(analyze( searchList , targetList )) 
+searchList = ['Yeehaw', 'NSM', 'Dont Ask', 'B9' , 'Googol'];
+targetList = ['Yeehaw', 'Yeehaw', 'Googol', 'B9' ,'Googol' ,'NSM' ,'B9','NSM','Dont Ask','Googol' ];
+print(analyze( searchList , targetList )) 
+searchList = ['Yeehaw', 'NSM', 'Dont Ask', 'B9' , 'Googol'];
+targetList = ['Googol', 'Dont Ask', 'NSM', 'NSM' ,'Yeehaw' ,'Yeehaw' ,'Googol' ];
+print(analyze( searchList , targetList )) 
+
 
 f = open('A-small-practice.in');
 #print(f);
