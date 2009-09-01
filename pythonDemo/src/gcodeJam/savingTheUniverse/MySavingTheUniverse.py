@@ -11,8 +11,8 @@ def analyze(searchList , targetList):
         tempSet.add(targetList[i]);
         if len(tempSet) == len(searchSet) :
             count += 1;
-            i -= 1;
             tempSet.clear();
+            tempSet.add(targetList[i])
     return count;
 
 searchList = ['1', '2', '3', '4' , '5'];
@@ -26,12 +26,12 @@ targetList = ['Googol', 'Dont Ask', 'NSM', 'NSM' ,'Yeehaw' ,'Yeehaw' ,'Googol' ]
 print(analyze( searchList , targetList )) 
 
 
-f = open('A-small-practice.in');
+f = open('A-large-practice.in');
 #print(f);
 sign=0;
 seq=0;
 expNum = f.readline();
-expNum = int(expNum);
+expNum = int(expNum)*2;
 for i in range(0, expNum):
     if sign==0:
      listX = list();
