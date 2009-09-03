@@ -1,7 +1,8 @@
 package gcodeJam.WelcomeToCodeJam;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class MyWelcomeToCodeJam {
 
@@ -9,18 +10,6 @@ public class MyWelcomeToCodeJam {
 	public static String to = "to";
 	public static String code = "code";
 	public static String jam = "jam";
-
-	public String toStringWithUniqueChar(String str){
-		Set<String> setStr = new HashSet<String>();
-		for(int i=0;i<str.length();i++){
-			setStr.add(str.charAt(i)+"");
-		}
-		StringBuffer sb = new StringBuffer();
-		for(String s : setStr){
-			sb.append(s);
-		}
-		return sb.toString();
-	}
 
 	public boolean isMatch(String str , String refer){
 		for(int i=0;i<str.length();i++){
@@ -50,47 +39,57 @@ public class MyWelcomeToCodeJam {
 	}
 
 
-	public void parse(String str){
+	public String parse(String str){
 		StringBuffer sb = new StringBuffer();
 		String[] sArr = str.split(" ");
 		for(String s: sArr){
 			if(this.isMatch(s, MyWelcomeToCodeJam.welcome )){
 				int count = this.getWordCount(s, MyWelcomeToCodeJam.welcome );
-				sb.append("s"+count);
+				while(count-- > 0){
+					sb.append("w");
+				}
 			}
 			else if(this.isMatch(s, MyWelcomeToCodeJam.to )){
 				int count = this.getWordCount(s, MyWelcomeToCodeJam.to );
-				sb.append("t"+count);
+				while(count-- > 0){
+					sb.append("t");
+				}
 			}
 			else if(this.isMatch(s, MyWelcomeToCodeJam.code )){
 				int count = this.getWordCount(s, MyWelcomeToCodeJam.code );
-				sb.append("c"+count);
+				while(count-- > 0){
+					sb.append("c");
+				}
 			}
 			else if(this.isMatch(s, MyWelcomeToCodeJam.jam)){
 				int count = this.getWordCount(s, MyWelcomeToCodeJam.jam );
-				sb.append("j"+count);
+				while(count-- > 0){
+					sb.append("j");
+				}
 			}
 			else{
-				if (sb.length()>0 && sb.charAt(sb.length()-2)== 'b'){
-					int bcount =  new Integer(sb.charAt(sb.length()-1)+"")+1;
-					sb.deleteCharAt(sb.length()-1).append(bcount);
-				}
-				else{
-					sb.append("b1");
-				}
+				sb.append("b");
 			}
 		}
-		System.out.println(sb);
+//		System.out.println(sb);
+		return sb.toString();
 	}
 
 	public static void main(String[] args) throws Exception{
 		MyWelcomeToCodeJam cj = new MyWelcomeToCodeJam();
-		boolean b = cj.isMatch("otoo", MyWelcomeToCodeJam.to);
-		System.out.println(b);
-		if(b==true){
-			System.out.println(cj.getWordCount("otoo", MyWelcomeToCodeJam.to));
+		String s = cj.parse("wwelcome xx xx to xx xx code jamm");
+		//wtcj
+		Pattern p = Pattern.compile(".*w.*t.*c.*j.*");  
+		Matcher m1 = p.matcher(s);  
+		int count=0;
+		while( m1.find() ){  
+			count++;
+			int gc = m1.groupCount();  
+			for(int i = 0; i <= gc; i++) {
+				System.out.println(m1.group()); 
+			}
 		}
-		cj.parse("welcome xx xx to xx xx");
+		System.out.println(count);
 	}
 
 }
