@@ -65,7 +65,6 @@ public class Test {
 		
 		while( m1.find() ){ 
 			int gc = m1.groupCount();  
-			
 			for(int i = 0; i <= gc; i++) {
 				System.out.print(m1.start()+"  ");
 				System.out.print(m1.end()+"  ");
