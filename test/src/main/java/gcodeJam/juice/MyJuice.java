@@ -53,17 +53,7 @@ public class MyJuice {
 		return tempList;
 	}
 
-	public int getPostion(List<Integer> list , int x){
-		int pos = list.size();
-		for(Integer i:list){
-			if(i<=x){
-				break;
-			}
-			pos++;
-		}
-		return pos;
-	}
-
+	
 	public List<List<Juice>> readFile( ) throws Exception{
 		List<List<Juice>> juiceList = new ArrayList<List<Juice>>();
 		List<Juice> jl = new ArrayList<Juice>();
@@ -79,15 +69,6 @@ public class MyJuice {
 		return juiceList;
 	}
 
-	public int getMaxPeople( List<Integer> apple ,List<Integer> banana , List<Integer> carrot ,
-			int appleCount , int bananaCount,int carrotCount , int maxPeople){
-		int tempMax =  ( apple.size() - this.getPostion(apple , appleCount) )
-		+ ( banana.size() - this.getPostion(banana , bananaCount) ) + ( this.getPostion(carrot , carrotCount) );
-		if( tempMax > maxPeople){
-			return tempMax;
-		}
-		return maxPeople;
-	}
 
 	public int analyze(List<Juice> listJuice){
 		List<Juice> orderApple = new ArrayList<Juice>();
@@ -108,31 +89,8 @@ public class MyJuice {
 		int appleCount = 0;
 		int bananaCount = 0;
 		int carrotCount = 0;
-		int maxPeople = this.getMaxPeople(apple, banana, carrot, appleCount, bananaCount, carrotCount , 0);
+		int maxPeople = 0;
 
-		while( (appleCount + bananaCount + carrotCount) < 10000 ){
-			appleCount++;
-			maxPeople = this.getMaxPeople(apple, banana, carrot, appleCount, bananaCount, carrotCount , maxPeople);
-			while( (appleCount + bananaCount + carrotCount) < 10000  ){
-				bananaCount++;
-				carrotCount = maxJuiceCount - appleCount - bananaCount - carrotCount;
-				maxPeople = this.getMaxPeople(apple, banana, carrot, appleCount, bananaCount, carrotCount , maxPeople);
-				//				System.out.println("==="+maxPeople);
-			}
-		}
-
-		appleCount = 0;
-		bananaCount = 0;
-		carrotCount = 0;
-		while( (appleCount + bananaCount + carrotCount) < 10000 ){
-			appleCount++;
-			maxPeople = this.getMaxPeople(apple, banana, carrot, appleCount, bananaCount, carrotCount , maxPeople);
-			while( (appleCount + bananaCount + carrotCount) < 10000  ){
-				carrotCount++;
-				bananaCount = maxJuiceCount - appleCount - bananaCount - carrotCount;
-				maxPeople = this.getMaxPeople(apple, banana, carrot, appleCount, bananaCount, carrotCount , maxPeople);
-			}
-		}
 
 		return maxPeople;
 	}
