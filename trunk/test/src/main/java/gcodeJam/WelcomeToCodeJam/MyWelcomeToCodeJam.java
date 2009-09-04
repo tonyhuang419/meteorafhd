@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
+import org.apache.commons.lang.StringUtils;
+
 
 public class MyWelcomeToCodeJam {
 
@@ -26,14 +28,16 @@ public class MyWelcomeToCodeJam {
 	public static void main(String[] args) throws Exception{
 		MyWelcomeToCodeJam cj = new MyWelcomeToCodeJam();
 
-		File  file  =  new  File("src/main/java/gcodeJam/WelcomeToCodeJam/test.in");
+		File  file  =  new  File("src/main/java/gcodeJam/WelcomeToCodeJam/C-small-practice.in");
 		FileReader  fr  =  new  FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
 		String line = br.readLine();
 		int count = new Integer(line);
 		for(int i=0;i<count;i++){
 			line = br.readLine();
-			System.out.println(cj.complute(line));
+			int result = cj.complute(line);
+			int x = i+1;
+			System.out.println("Case #"+x+": "+StringUtils.leftPad(result+"", 4, "0"));
 		}
 
 	}
