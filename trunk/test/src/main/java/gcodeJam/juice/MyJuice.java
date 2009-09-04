@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-/**
- * not complete
- */
 public class MyJuice {
 
 	public static final int MAXN = 5000;
@@ -39,7 +35,7 @@ public class MyJuice {
 
 	public static void main(String[] args) throws Exception{
 		MyJuice myJuice = new MyJuice();
-		File  file  =  new  File("src/main/java/gcodeJam/juice/A-small-practice.in");
+		File  file  =  new  File("src/main/java/gcodeJam/juice/A-large-practice.in");
 		FileReader  fr  =  new  FileReader(file);
 		Scanner scanner = new Scanner(fr);
 		int count = scanner.nextInt();
