@@ -9,14 +9,14 @@ import org.apache.commons.lang.StringUtils;
 
 public class MyWelcomeToCodeJam {
 
-	public static final String wel = "welcome to code jam";
+	public static final String WEL = "welcome to code jam";
 
 	public int complute(String str){
 		int[] count = new int[20];
 		count[0] = 1;
 		for(int i = 0; i < str.length(); i++){
-			for(int j = wel.length()-1; j >= 0; j--){
-				if(wel.charAt(j) == str.charAt(i)){
+			for(int j = WEL.length()-1; j >= 0; j--){
+				if(WEL.charAt(j) == str.charAt(i)){
 					count[j+1] = (count[j+1] + count[j])%10000;
 				}
 			}
