@@ -1,134 +1,63 @@
 package gcodeJam.juice;
 
-import gcodeJam.utilTools.UtilTools;
-
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
+
 
 /**
  * not complete
  */
 public class MyJuice {
 
-	class CompareReverseInteger implements Comparator<Integer>{
-		public int compare(Integer i , Integer j) {
-			if(i < j){
-				return 1;
-			}
-			else if( i ==  j ){
-				return 0;
-			}
-			return -1;
-		}
-	}
+	public static final int MAXN = 5000;
+	public static final int TOTAL = 10000;
 
-	public List<Integer> getOrderPrice( List<Juice> juiceList , int type ){
-		List<Integer> tempList = new ArrayList<Integer>();
-		if(type==Juice.APPLE_Code){
-			for(Juice juice:juiceList){
-				if(!tempList.contains(juice.apple)){
-					tempList.add(juice.apple);
+
+	public int compute(List<Juice> juiceList){
+		int ans = 0;
+		for (int a = 0; a <= TOTAL; a++) {
+			int[] changes = new int[TOTAL-a+2];
+			for (int i = 0; i < juiceList.size(); i++) {
+				if ( juiceList.get(i).a <= a 
+						&& juiceList.get(i).b + juiceList.get(i).c <= TOTAL - a) {
+					changes[juiceList.get(i).b]++;
+					changes[TOTAL - a - juiceList.get(i).c + 1]--;
 				}
 			}
-			Collections.sort(tempList , new CompareReverseInteger());
-		}
-		else if(type==Juice.BANANA_CODE){
-			for(Juice juice:juiceList){
-				if(!tempList.contains(juice.banana)){
-					tempList.add(juice.banana);
-				}
+			int cur = 0;
+			for (int b = 0; b <= TOTAL - a; b++) {
+				cur += changes[b];
+				ans = Math.max(ans, cur);
 			}
-			Collections.sort(tempList ,  new CompareReverseInteger() );
 		}
-		else if(type==Juice.CARROT_CODE){
-			for(Juice juice:juiceList){
-				if(!tempList.contains(juice.carrot)){
-					tempList.add(juice.carrot);
-				}
-			}
-			Collections.sort(tempList , new CompareReverseInteger());
-		}
-		return tempList;
+		return ans;
 	}
 
-	
-	public List<List<Juice>> readFile( ) throws Exception{
-		List<List<Juice>> juiceList = new ArrayList<List<Juice>>();
-		List<Juice> jl = new ArrayList<Juice>();
-		List<List<String[]>> ls = UtilTools.fileParse2("src/main/java/gcodeJam/juice/A-small-practice.in",3);
-		for( List<String[]> list : ls ){
-			jl = new ArrayList<Juice>();
-			for(String[] strArr : list){
-				//System.out.println(strArr[0] + " - "+ strArr[1] + " - " +  strArr[2] );
-				jl.add(new Juice(Integer.valueOf(strArr[0]) , Integer.valueOf(strArr[1]) , Integer.valueOf(strArr[2])));
-			}
-			juiceList.add(jl);
-		}
-		return juiceList;
-	}
-
-
-	public int analyze(List<Juice> listJuice){
-		List<Juice> orderApple = new ArrayList<Juice>();
-		List<Juice> orderBanana = new ArrayList<Juice>();
-		List<Juice> orderCarrot = new ArrayList<Juice>();
-		orderApple.addAll(listJuice);
-		orderBanana.addAll(listJuice);
-		orderCarrot.addAll(listJuice);
-		List<Integer> apple = this.getOrderPrice(orderApple, Juice.APPLE_Code);
-		List<Integer> banana = this.getOrderPrice(orderApple, Juice.BANANA_CODE);
-		List<Integer> carrot = this.getOrderPrice(orderApple, Juice.CARROT_CODE);
-		int maxPrice = apple.get(0) + banana.get(0) + carrot.get(0);
-		if( maxPrice <= 10000 ){
-			return listJuice.size();
-		}
-
-		int maxJuiceCount = 10000;
-		int appleCount = 0;
-		int bananaCount = 0;
-		int carrotCount = 0;
-		int maxPeople = 0;
-
-
-		return maxPeople;
-	}
 
 	public static void main(String[] args) throws Exception{
 		MyJuice myJuice = new MyJuice();
-		List<List<Juice>> listJuice = myJuice.readFile();
-		int i=0;
-		for(List<Juice> juiceList:listJuice){
-			int x = myJuice.analyze(juiceList);
-			System.out.println("Case #"+ ++i +": "+x);
+		File  file  =  new  File("src/main/java/gcodeJam/juice/A-small-practice.in");
+		FileReader  fr  =  new  FileReader(file);
+		Scanner scanner = new Scanner(fr);
+		int count = scanner.nextInt();
+		for(int i=0;i<count;i++){
+			int peopleNum = scanner.nextInt();
+			List<Juice> juiceList = new ArrayList<Juice>();
+			for(int j=0;j<peopleNum;j++){
+				int a = scanner.nextInt();
+				int b = scanner.nextInt();
+				int c = scanner.nextInt();
+				//System.out.println(a +"/"+b+"/"+c);
+				juiceList.add(new Juice(a,b,c));
+			}
+			int x = i+1;
+			System.out.println("Case #"+x+": "+myJuice.compute(juiceList));
 		}
 
-		List<Juice> listJucie = new ArrayList<Juice>();
 
-		listJucie.add(new Juice(10000,0,0));
-		listJucie.add(new Juice(0,10000,0));
-		listJucie.add(new Juice(0,0,10000));
-		int x = myJuice.analyze(listJucie);
-		System.out.println(x);
-
-
-		listJucie.clear();
-		listJucie.add(new Juice(5000,0,0));
-		listJucie.add(new Juice(0,2000,0));
-		listJucie.add(new Juice(0,0,4000));
-		x = myJuice.analyze(listJucie);
-		System.out.println(x);
-
-
-		listJucie.clear();
-		listJucie.add(new Juice(0,1250,0));
-		listJucie.add(new Juice(3000,0,3000));
-		listJucie.add(new Juice(1000,1000,1000));
-		listJucie.add(new Juice(2000,1000,2000));
-		listJucie.add(new Juice(1000,3000,2000));
-		x = myJuice.analyze(listJucie);
-		System.out.println(x);
 
 	}
 }
