@@ -47,6 +47,15 @@ public class Article extends JPASupport {
 		this.save();
 	}
 	
+	public static List<Article> getAllActive(String active){
+		if("ALL".equals(active)){
+			return Article.find(" order by createdTime desc" ).all();
+		}
+		else{
+			return Article.find(" isActive = true order by createdTime desc " ).all();
+		}
+	}
+	
 	public static List<Article> getActiveBlog(String active){
 		if("ALL".equals(active)){
 			return Article.find(" type=1 order by createdTime desc" ).all();
