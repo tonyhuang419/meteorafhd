@@ -9,9 +9,9 @@ public class MyWhatAreBirds {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		int minIsBirdH=1000000;
-		int maxIsBirdH=0;
+		int maxIsBirdH=-1;
 		int minIsBirdW=1000000;
-		int maxIsBirdW=0;
+		int maxIsBirdW=-1;
 		int[] hh = new int[1000000];
 		int[] ww = new int[1000000];
 
@@ -41,7 +41,7 @@ public class MyWhatAreBirds {
 				else{
 					hh[cur]=h;
 					ww[cur]=w;
-					++cur;
+					cur++;
 				}
 			}
 
