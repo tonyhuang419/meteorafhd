@@ -19,8 +19,8 @@ public class FtpUpdate {
 	public static void main(String[] args) throws IOException {  
 		FtpUpdate ftpUpdate = new FtpUpdate();
 		List<String> uploadFileList = new ArrayList<String>();
-		uploadFileList.add("WEB-INF/deploy.wsdd");
-		uploadFileList.add("testibeclientSK.jsp");
+		uploadFileList.add("cl/xxxxx.jsp");
+		uploadFileList.add("xxxxx.jsp");
 
 		ftpUpdate.ftpUpdate(UtilTools.baseCLUrl ,uploadFileList , 2);   
 	}
@@ -61,22 +61,24 @@ public class FtpUpdate {
 			}
 			
 			
-			logger.info(dir);
-			logger.info(fileName);
-			logger.info(uploadPath);
-			logger.info(filePath);
+//			logger.info(dir);
+//			logger.info(fileName);
+//			logger.info(uploadPath);
+//			logger.info(filePath);
 			
-//			this.upload(ftpClient, uploadPath, filePath, fileName);
+			this.upload(ftpClient, uploadPath, filePath, fileName);
 		}
 
 	}   
 
 
 	public boolean upload( FTPClient  ftpClient  , String uploadPath , String filePath , String fileName) throws IOException{
-		if( !perviousUploadPath.equals(uploadPath)){
+		if( !uploadPath.equals(perviousUploadPath)){
 			ftpClient.changeWorkingDirectory(uploadPath);
-			ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);  
+			perviousUploadPath = uploadPath;
 		}
+		logger.info("file: "+ filePath + fileName + " update to "+ perviousUploadPath  );
+		ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);  
 		File srcFile = new File(filePath+fileName);
 		FileInputStream fis = new FileInputStream(srcFile);   
 		ftpClient.storeFile(fileName, fis); 
