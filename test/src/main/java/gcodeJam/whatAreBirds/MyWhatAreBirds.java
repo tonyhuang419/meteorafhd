@@ -3,25 +3,30 @@ package gcodeJam.whatAreBirds;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class MyWhatAreBirds {
 
+
 	public static void main(String[] args) throws FileNotFoundException {
-		int minIsBirdH=1000000;
-		int maxIsBirdH=-1;
-		int minIsBirdW=1000000;
-		int maxIsBirdW=-1;
 		int[] hh = new int[1000000];
 		int[] ww = new int[1000000];
 
-		File  file  =  new  File("src/main/java/gcodeJam/whatAreBirds/test.in");
+		PrintStream output = System.out;
+//		output = new PrintStream("src/main/java/gcodeJam/whatAreBirds/A-small-practice.out");
+		File  file  =  new  File("src/main/java/gcodeJam/whatAreBirds/A-small-practice.in");
 		FileReader  fr  =  new  FileReader(file);
 		Scanner scanner = new Scanner(fr);
 		int caseNum = scanner.nextInt();
 		for(int i=0;i<caseNum;i++){
+			int minIsBirdH=1000000;
+			int maxIsBirdH=-1;
+			int minIsBirdW=1000000;
+			int maxIsBirdW=-1;
+
 			int count=i+1;
-			System.out.println("Case #"+count+":");
+			output.println("Case #"+count+":");
 			int num = scanner.nextInt();
 			int cur=0;
 			for(int j=0;j<num;j++){
@@ -51,11 +56,11 @@ public class MyWhatAreBirds {
 				int w = scanner.nextInt();
 				//System.out.println(h+"/"+w);
 				if( h>=minIsBirdH && h<=maxIsBirdH && w>=minIsBirdW && w<=maxIsBirdW ){
-					System.out.println("BIRD");
+					output.println("BIRD");
 				}
 				else {
 					int f = 1;
-					for (int k = 0; k < cur && f==1; k ++) {
+					for (int k = 0; k < cur && f==1; k++ ) {
 						int f2 = 1;
 						if (hh[k] < minIsBirdH && h > hh[k] )
 							f2 = 0;
@@ -69,9 +74,9 @@ public class MyWhatAreBirds {
 							f = 0;
 					}
 					if (f==1)
-						System.out.println("UNKNOWN");
+						output.println("UNKNOWN");
 					else
-						System.out.println("NOT BIRD");
+						output.println("NOT BIRD");
 				}
 
 			}
