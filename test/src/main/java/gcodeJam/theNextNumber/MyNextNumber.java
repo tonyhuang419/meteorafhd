@@ -1,78 +1,70 @@
 package gcodeJam.theNextNumber;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintStream;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.util.StringTokenizer;
 
 public class MyNextNumber {
-
-
-	public int compute(String num){
-		int len = num.length();
-
-		int minIndex = 0;
-		int min = 0;
-		for(int i=len-1;i>=0;i--){
-			if ( num.charAt(i)!='0'){
-				minIndex = i;
-				min = Integer.valueOf(num.charAt(i)+"");
-				break;
-			}
-		}
-		
-
-		for(int i=len-2;i>=0;i--){
-			int next = Integer.valueOf( num.charAt(i+1)+"" );
-			int pre = Integer.valueOf( num.charAt(i)+"" );
-			if(next>pre && pre<min){
-				String s = num.substring(0,i)
-				+min
-				+num.substring(i,minIndex)
-				+num.substring(minIndex+1,len);
-				return Integer.valueOf(s);
-			}
-			else if(min>pre ){
-				min = Integer.valueOf(next);
-				minIndex = i+1;
-			}
-		}
-		return Integer.valueOf(num);
-	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		MyNextNumber my = new MyNextNumber();
-		PrintStream output = System.out;
-		output = new PrintStream("src/main/java/gcodeJam/theNextNumber/out.in");
-		File  file  =  new  File("src/main/java/gcodeJam/theNextNumber/test.in");
-		FileReader  fr  =  new  FileReader(file);
-		Scanner scanner = new Scanner(fr);
-		int caseNum = scanner.nextInt();
-		for(int i=0;i<caseNum;i++){
-			String numStr = scanner.nextInt()+"";
-			//			output.println(numStr);
-			int x= i+1;
-			int r = my.compute(numStr);
-			int sign=0;
-			if(numStr.equals(r+"")){
-				for(int j=numStr.length()-2;j>=0;j--){
-					int next = Integer.valueOf( numStr.charAt(j+1)+"" );
-					int pre = Integer.valueOf( numStr.charAt(j)+"" );
-					if(next<pre){
-						numStr = numStr.substring(0,j)+"0"+numStr.substring(j,numStr.length());
-						output.println("Case #"+x+": "+numStr);
-						sign=1;
-						break;
+	static BufferedReader in;
+	static PrintWriter out;
+	static StringTokenizer tok;
+	
+	public static void main(String args[]) throws Exception {
+		in = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/gcodeJam/theNextNumber/B-large-practice.in")));
+		out = new PrintWriter(new OutputStreamWriter(new FileOutputStream("src/main/java/gcodeJam/theNextNumber/out.in")));
+		int T = nextInt();
+		for (int t = 0; t < T; t++) {
+			String n = "0" + next();
+			int cnts[] = new int[10];
+//			for (int i = 0; i < n.length(); i++) {
+//				cnts[n.charAt(i) - '0']++;
+//			}
+			String ans;
+			PLoop:
+			for (int p = n.length() - 1; ; p--) {
+				int c = n.charAt(p) - '0';
+				++cnts[c];
+				for (int nc = c + 1; nc < 10; ++nc) {
+					if (cnts[nc] > 0) {
+						StringBuilder sb = new StringBuilder();
+						sb.append(n.substring(0, p));
+						sb.append((char) ('0' + nc));
+						--cnts[nc];
+						for (int i = 0; i < 10; ++i) {
+							while (cnts[i] > 0) {
+								sb.append((char) ('0' + i));
+								--cnts[i];
+							}
+						}
+						ans = sb.toString();
+						break PLoop;
 					}
 				}
-				if(sign==0){
-					output.println("Case #"+x+": "+numStr+"0");
+				if (p == 0) {
+					throw new AssertionError();
 				}
 			}
-			else{
-				output.println("Case #"+x+": "+r);
-			}
+			out.println("Case #" + (t + 1) + ": " + new BigInteger(ans).toString());
 		}
+		in.close();
+		out.close();
 	}
+	
+	static String next() throws IOException {
+		while (tok == null || !tok.hasMoreTokens()) {
+			tok = new StringTokenizer(in.readLine());
+		}
+		return tok.nextToken();
+	}
+	
+	static int nextInt() throws IOException {
+		return Integer.parseInt(next());
+	}
+
 }
