@@ -1,5 +1,4 @@
 cl\xxxxx.jsp
 xxxx\
-yyyy\3.jsp
-zzzz\
+yyyy\
 xxxxx.jsp
