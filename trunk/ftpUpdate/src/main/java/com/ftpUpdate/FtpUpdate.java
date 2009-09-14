@@ -3,7 +3,6 @@ package com.ftpUpdate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -13,27 +12,30 @@ import org.apache.commons.net.ftp.FTPClient;
 
 public class FtpUpdate {
 
-	private Log logger = LogFactory.getLog(this.getClass());
+	private static Log logger = LogFactory.getLog("FtpUpdate");
 	private String perviousUploadPath;
 
-	public static void main(String[] args) throws IOException {  
+	public static void main(String[] args) throws Exception {  
+		UtilTools.init();
 		FtpUpdate ftpUpdate = new FtpUpdate();
-		List<String> uploadFileList = new ArrayList<String>();
-		uploadFileList.add("cl/xxxxx.jsp");
-		uploadFileList.add("xxxxx.jsp");
-
-		ftpUpdate.ftpUpdate(UtilTools.baseCLUrl ,uploadFileList , 2);   
+		List<String> uploadFileList = UtilTools.getUpateFile();
+		ftpUpdate.ftpUpdate(UtilTools.baseCLUrl ,uploadFileList , UtilTools.CL );
+		
+//		for(String s:uploadFileList){
+//			UtilTools.processPath(s);
+//			List<String> fileList = UtilTools.getAllFilePath();
+//		}
 	}
 
 	public void ftpUpdate(String baseUrl , List<String> pathList , int sign) throws IOException {
 		String baseUploadPath;
 		String baseDeployPath;
 		
-		if(sign==1){ //国旅
+		if(sign==UtilTools.GL){ //国旅
 			baseUploadPath = UtilTools.baseGLUrl;
 			baseDeployPath = UtilTools.deployGLBaseUrl;
 		}
-		else if(sign==2){ //差旅
+		else if(sign==UtilTools.CL){ //差旅
 			baseUploadPath = UtilTools.baseCLUrl;
 			baseDeployPath = UtilTools.deployCLBaseUrl;
 		}
@@ -48,27 +50,19 @@ public class FtpUpdate {
 		
 
 		for(String path : pathList ){
-			String dir="";
-			String fileName = path;
-			String uploadPath = baseUploadPath;
-			String filePath = baseDeployPath;
-			int index = path.lastIndexOf("/");
-			if(index!=-1){
-				dir = path.substring(0,index+1);
-				fileName = path.substring(index+1, path.length());
-				uploadPath  +=  dir;
-				filePath +=  dir;
+			UtilTools.processPath(baseDeployPath+path);
+			List<String> fileList = UtilTools.getAllFilePath();
+			for(String s:fileList){
+				int index = s.lastIndexOf("\\");
+				String filePath =  s.substring( 0 , index+1);
+				String fileName = s.substring( index+1, s.length());
+				logger.info(filePath);
+				logger.info(fileName);
+				logger.info(s.substring(baseDeployPath.length() , s.length()));
+				logger.info("------------------------");
+//				this.upload(ftpClient, uploadPath, filePath, fileName);
 			}
-			
-			
-//			logger.info(dir);
-//			logger.info(fileName);
-//			logger.info(uploadPath);
-//			logger.info(filePath);
-			
-			this.upload(ftpClient, uploadPath, filePath, fileName);
 		}
-
 	}   
 
 
