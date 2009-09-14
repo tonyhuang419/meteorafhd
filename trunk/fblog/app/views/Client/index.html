@@ -12,8 +12,8 @@ setCurrentPageItem("menu_blog");
 		<h1 class="title"><a href="@{Client.detail(p.id)}">${p.title}</a></h1>&nbsp;(comment:${p.commentNum})
 		<p class="meta"><small>${p.createdTime}<br /></small></p>
 		<div class="entry">
-			#{if ( p.content.getValue().length() > 200 ) }
-				${p.content.getValue().substring(0,200)}&nbsp;&nbsp;&nbsp;......
+			#{if ( p.content.getValue().length() > 300 ) }
+				${p.content.getValue().substring(0,300)}&nbsp;&nbsp;&nbsp;......
 			#{/if}
 			#{else}
 				${p.content.getValue()}

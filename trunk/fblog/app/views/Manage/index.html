@@ -21,8 +21,8 @@ SyntaxHighlighter.all();
 #{list items:blogs, as:'blog'}
 	<li>
 		${blog.title} - 
-		#{if ( blog.content.getValue().length() > 200 ) }
-			${blog.content.getValue().substring(0,200)}&nbsp;&nbsp;&nbsp;......
+		#{if ( blog.content.getValue().length() > 300 ) }
+			${blog.content.getValue().substring(0,300)}&nbsp;&nbsp;&nbsp;......
 		#{/if}
 		#{else}
 			${blog.content.getValue()}
