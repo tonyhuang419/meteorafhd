@@ -70,7 +70,7 @@ public class UtilTools {
 			processPath(parentF.getAbsolutePath() + "\\" + subFiles[i]);
 		}
 	}
-	
+
 	public static List<String> getAllFilePath(){
 		List<String> allFilePathX = new ArrayList<String>();
 		allFilePathX.addAll(allFilePath);
@@ -98,5 +98,27 @@ public class UtilTools {
 		}
 		return list;
 	}
+
+	public static boolean isDirExist(FTPClient ftpClient ,String dir){  
+		try {  
+			ftpClient.cwd(dir);
+		}catch(Exception e){  
+			return false;  
+		}  
+		return true;   
+	} 
+	
+	public static void changeWorkingDirectory( FTPClient  ftpClient , String uploadPath ) throws IOException{
+		String[] sArr = uploadPath.split("/");
+		String tempPath="/";
+		for(int i=1;i<sArr.length;i++){
+			tempPath = tempPath+"/"+sArr[i];
+			if(!ftpClient.changeWorkingDirectory(tempPath)){
+				ftpClient.makeDirectory(tempPath);
+			}
+		}
+		ftpClient.changeWorkingDirectory(tempPath);
+	}
+
 
 }

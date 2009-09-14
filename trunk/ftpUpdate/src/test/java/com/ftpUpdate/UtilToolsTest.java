@@ -2,6 +2,7 @@ package com.ftpUpdate;
 
 import java.util.List;
 
+import org.apache.commons.net.ftp.FTPClient;
 import org.junit.Test;
 
 public class UtilToolsTest {
@@ -32,12 +33,20 @@ public class UtilToolsTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void getUpateFile() throws Exception{
 		List<String> list = UtilTools.getUpateFile();
 		for(String s : list ){
 			System.out.println(s);
 		}
+	}
+	
+	@Test
+	public void getIsDirExist() throws Exception{
+		UtilTools.init();
+		FTPClient ftpClient = new FTPClient();   
+		ftpClient = UtilTools.login(ftpClient);
+		System.out.println(UtilTools.isDirExist(ftpClient,"xx"));
 	}
 	
 }
