@@ -100,7 +100,7 @@ public class UtilTools {
 			entry = new SyndEntryImpl();   
 			entry.setTitle(UtilTools.getTitle(article));   
 			entry.setLink(UtilTools.getArticleLink(article));   
-			entry.setPublishedDate(new Date());   
+			entry.setPublishedDate(article.lastModifyTime);   
 
 			description = new SyndContentImpl();   
 			description.setType("text/html");   
