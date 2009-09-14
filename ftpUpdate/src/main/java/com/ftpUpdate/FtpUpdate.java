@@ -56,17 +56,23 @@ public class FtpUpdate {
 				int index = s.lastIndexOf("\\");
 				String filePath =  s.substring( 0 , index+1);
 				String fileName = s.substring( index+1, s.length());
-				logger.info(filePath);
-				logger.info(fileName);
-				logger.info(s.substring(baseDeployPath.length() , s.length()));
-				logger.info("------------------------");
-//				this.upload(ftpClient, uploadPath, filePath, fileName);
+				String uploadPath = baseUploadPath+s.substring(baseDeployPath.length() , index+1);
+				
+//				logger.info(uploadPath);
+//				logger.info(filePath);
+//				logger.info(fileName);
+//				logger.info("------------------------");
+				
+				this.upload(ftpClient, uploadPath, filePath, fileName);
 			}
 		}
 	}   
 
 
 	public boolean upload( FTPClient  ftpClient  , String uploadPath , String filePath , String fileName) throws IOException{
+		uploadPath = uploadPath.replaceAll("\\\\", "/");
+		filePath = filePath.replaceAll("\\\\", "/");
+		
 		if( !uploadPath.equals(perviousUploadPath)){
 			ftpClient.changeWorkingDirectory(uploadPath);
 			perviousUploadPath = uploadPath;
