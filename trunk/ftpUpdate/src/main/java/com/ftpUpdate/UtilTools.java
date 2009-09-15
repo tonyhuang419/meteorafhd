@@ -57,6 +57,11 @@ public class UtilTools {
 
 	private static List<String> allFilePath = new ArrayList<String>();
 	public static void processPath(String path){
+		char wildcard = path.charAt(path.length()-1);
+		if(wildcard=='*'){
+			path = path.substring(0,path.length()-1);
+		}
+		
 		if(path.indexOf("svn")!=-1){
 			return;
 		}
@@ -67,7 +72,16 @@ public class UtilTools {
 		}
 		String[] subFiles = parentF.list();
 		for (int i = 0; i < subFiles.length; i++){
-			processPath(parentF.getAbsolutePath() + "\\" + subFiles[i]);
+			if(wildcard=='*'){
+				String tempPath = parentF.getAbsolutePath() + "\\" + subFiles[i];
+				File f = new File(tempPath);
+				if(f.isFile()){
+					allFilePath.add(tempPath);
+				}
+			}
+			else{
+				processPath(parentF.getAbsolutePath() + "\\" + subFiles[i]);
+			}
 		}
 	}
 
