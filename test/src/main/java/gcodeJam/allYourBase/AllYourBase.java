@@ -30,8 +30,7 @@ public class AllYourBase {
 		long ans = 0;
 		for (int i = 0; i < input.length; i++) {
 			long tmp = value[input[i]];
-			if (tmp == 1) {
-			} 
+			if (tmp == 1) { } 
 			else if (tmp == 2) {
 				tmp = 0;
 			}
