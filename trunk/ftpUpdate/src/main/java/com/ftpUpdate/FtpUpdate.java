@@ -12,14 +12,15 @@ import org.apache.commons.net.ftp.FTPClient;
 
 public class FtpUpdate {
 
+	private static final int UPDATESERVER  = UtilTools.GL;
 	private static Log logger = LogFactory.getLog("FtpUpdate");
 	private String perviousUploadPath;
-
+	
 	public static void main(String[] args) throws Exception {  
 		UtilTools.init();
 		FtpUpdate ftpUpdate = new FtpUpdate();
 		List<String> uploadFileList = UtilTools.getUpateFile();
-		ftpUpdate.ftpUpdate(UtilTools.baseCLUrl ,uploadFileList , UtilTools.CL );
+		ftpUpdate.ftpUpdate(UtilTools.baseCLUrl ,uploadFileList , UPDATESERVER );
 
 		//		for(String s:uploadFileList){
 		//			UtilTools.processPath(s);
