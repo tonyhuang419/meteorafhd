@@ -20,13 +20,7 @@ SyntaxHighlighter.all();
 <ul>
 #{list items:blogs, as:'blog'}
 	<li>
-		${blog.title} - 
-		#{if ( blog.content.getValue().length() > 300 ) }
-			${blog.content.getValue().substring(0,300)}&nbsp;&nbsp;&nbsp;......
-		#{/if}
-		#{else}
-			${blog.content.getValue()}
-		#{/else}
+		${blog.title} - ${blog.content.getValue()}
 		<a href="@{Manage.editBlog(blog.id)}">edit</a>
 		#{if ( blog.isActive == true ) }
 			<a href="@{Manage.disable(blog.id)}">make disable</a>
