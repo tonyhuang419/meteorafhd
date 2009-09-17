@@ -61,5 +61,7 @@
 	<classpathentry kind="lib" path="D:/ide/play-1.0-stable6/framework/lib/ZDB.jar"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/rome-1.0.jar"/>
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
