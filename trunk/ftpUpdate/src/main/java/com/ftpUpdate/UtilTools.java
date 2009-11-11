@@ -17,8 +17,9 @@ import org.apache.commons.net.ftp.FTPClient;
 
 public class UtilTools {
 
-	public static int GL = 1;
-	public static int CL = 2;
+	public final static int GL = 1;
+	public final static int CL = 2;
+	public final static int ALL = 3;
 	public static String ftpIp;
 	public static String ftpUsername;
 	public static String ftpPassword;
@@ -26,6 +27,9 @@ public class UtilTools {
 	public static String baseGLUrl;
 	public static String deployCLBaseUrl;
 	public static String deployGLBaseUrl;
+	
+	//allFilePath为全局变量，单线程使用
+	volatile private static List<String> allFilePath = new ArrayList<String>();
 
 	public static FTPClient login(FTPClient ftpClient) throws SocketException, IOException{
 		ftpClient.connect(UtilTools.ftpIp);   
@@ -44,34 +48,31 @@ public class UtilTools {
 		deployGLBaseUrl = props.getProperty("deployGLBaseUrl");
 	}
 
-
-	public static List<String> processPath(List<String> pathList){
-		List<String> allFilePath = new ArrayList<String>();
-		for(String path : pathList){
-			processPath(path);
-			allFilePath.addAll(allFilePath);
-		}
-		return allFilePath;
-	}
-
-
-	private static List<String> allFilePath = new ArrayList<String>();
-	public static void processPath(String path){
+	private static void processPath(String path){
 		char wildcard = path.charAt(path.length()-1);
+		
+		//如果有星号，截取
 		if(wildcard=='*'){
 			path = path.substring(0,path.length()-1);
 		}
 		
+		//跳过svn
 		if(path.indexOf("svn")!=-1){
 			return;
 		}
+		
 		File parentF = new File(path);
+		
+		//对路径检查，如果是文件，加入列表
 		if(parentF.isFile()){
 			allFilePath.add(path);
 			return;
 		}
+		
+		//如果是文件夹，获取所有
 		String[] subFiles = parentF.list();
 		for (int i = 0; i < subFiles.length; i++){
+			//如果通配符为星号，就在列表中放入所有文件
 			if(wildcard=='*'){
 				String tempPath = parentF.getAbsolutePath() + "\\" + subFiles[i];
 				File f = new File(tempPath);
@@ -79,13 +80,15 @@ public class UtilTools {
 					allFilePath.add(tempPath);
 				}
 			}
+			//否则进入递归
 			else{
 				processPath(parentF.getAbsolutePath() + "\\" + subFiles[i]);
 			}
 		}
 	}
 
-	public static List<String> getAllFilePath(){
+	public static List<String> getAllFilePath(String path){
+		UtilTools.processPath(path);
 		List<String> allFilePathX = new ArrayList<String>();
 		allFilePathX.addAll(allFilePath);
 		allFilePath = new ArrayList<String>();
@@ -93,7 +96,7 @@ public class UtilTools {
 	}
 
 
-	public static Properties readProp( String filePath ) throws Exception {
+	private static Properties readProp( String filePath ) throws Exception {
 		Properties props = new Properties();
 		InputStream in = new BufferedInputStream (new FileInputStream(filePath));
 		props.load(in);
@@ -113,14 +116,14 @@ public class UtilTools {
 		return list;
 	}
 
-	public static boolean isDirExist(FTPClient ftpClient ,String dir){  
-		try {  
-			ftpClient.cwd(dir);
-		}catch(Exception e){  
-			return false;  
-		}  
-		return true;   
-	} 
+//	public static boolean isDirExist(FTPClient ftpClient ,String dir){  
+//		try {  
+//			ftpClient.cwd(dir);
+//		}catch(Exception e){  
+//			return false;  
+//		}  
+//		return true;   
+//	} 
 	
 	public static void changeWorkingDirectory( FTPClient  ftpClient , String uploadPath ) throws IOException{
 		String[] sArr = uploadPath.split("/");
