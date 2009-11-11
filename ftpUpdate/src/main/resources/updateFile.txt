@@ -1,2 +1,8 @@
-xxxx\
-yyyy\
+WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\callcenter\action\CallCenterAction.class
+WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\callcenter\service\impl\CallCenterServiceImpl.class
+WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\callcenter\service\CallCenterService.class
+WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\prepareorder\action\HctypeAction.class
+WEB-INF\classes\com\baosight\baosteel\tourism\gl\hotelorder\action\HotelInforAction.class
+gl\airorder\prepareorder\jipiao_chaxun_hujiao.jsp
+gl\hotelorder\hbe\searchHotelHuJiao.jsp
+WEB-INF\classes\spring\ServiceBeans-glao.xml

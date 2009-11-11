@@ -25,10 +25,9 @@ public class UtilToolsTest {
 	}
 	
 	
-	//@Test
+	@Test
 	public void processPath(){
-		UtilTools.processPath("D:\\workspace\\fstock\\src\\main");
-		for(String s : UtilTools.getAllFilePath()){
+		for(String s : UtilTools.getAllFilePath("D:\\workspace\\fstock\\src\\main")){
 			System.out.println(s);
 		}
 	}
@@ -41,12 +40,12 @@ public class UtilToolsTest {
 		}
 	}
 	
-	@Test
-	public void getIsDirExist() throws Exception{
-		UtilTools.init();
-		FTPClient ftpClient = new FTPClient();   
-		ftpClient = UtilTools.login(ftpClient);
-		System.out.println(UtilTools.isDirExist(ftpClient,"xx"));
-	}
+	//@Test
+//	public void getIsDirExist() throws Exception{
+//		UtilTools.init();
+//		FTPClient ftpClient = new FTPClient();   
+//		ftpClient = UtilTools.login(ftpClient);
+//		System.out.println(UtilTools.isDirExist(ftpClient,"xx"));
+//	}
 	
 }
