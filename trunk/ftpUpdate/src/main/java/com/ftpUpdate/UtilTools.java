@@ -12,11 +12,14 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.commons.net.ftp.FTPClient;
 
 
 public class UtilTools {
 
+	private static Log logger = LogFactory.getLog("UtilTools");
 	public final static int GL = 1;
 	public final static int CL = 2;
 	public final static int ALL = 3;
@@ -62,6 +65,12 @@ public class UtilTools {
 		}
 		
 		File parentF = new File(path);
+		
+		//对路径检查，是否存在
+		if(!parentF.exists()){
+			logger.error("本地文件路径存在错误："+parentF.getAbsolutePath());
+			return;
+		}
 		
 		//对路径检查，如果是文件，加入列表
 		if(parentF.isFile()){
@@ -116,6 +125,7 @@ public class UtilTools {
 		return list;
 	}
 
+	//ChangeWorkingDirectory
 //	public static boolean isDirExist(FTPClient ftpClient ,String dir){  
 //		try {  
 //			ftpClient.cwd(dir);
