@@ -6,3 +6,4 @@ WEB-INF\classes\com\baosight\baosteel\tourism\gl\hotelorder\action\HotelInforAct
 gl\airorder\prepareorder\jipiao_chaxun_hujiao.jsp
 gl\hotelorder\hbe\searchHotelHuJiao.jsp
 WEB-INF\classes\spring\ServiceBeans-glao.xml
+xx\
