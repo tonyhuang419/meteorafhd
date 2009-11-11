@@ -137,15 +137,14 @@ public class UtilTools {
 	
 	public static void changeWorkingDirectory( FTPClient  ftpClient , String uploadPath ) throws IOException{
 		String[] sArr = uploadPath.split("/");
-		String tempPath="/";
+		StringBuffer tempPath= new StringBuffer("/");
 		for(int i=1;i<sArr.length;i++){
-			tempPath = tempPath+"/"+sArr[i];
-			if(!ftpClient.changeWorkingDirectory(tempPath)){
-				ftpClient.makeDirectory(tempPath);
+			tempPath.append("/").append(sArr[i]);
+			if(!ftpClient.changeWorkingDirectory(tempPath.toString())){
+				ftpClient.makeDirectory(tempPath.toString());
 			}
 		}
-		ftpClient.changeWorkingDirectory(tempPath);
+		ftpClient.changeWorkingDirectory(tempPath.toString());
 	}
-
 
 }
