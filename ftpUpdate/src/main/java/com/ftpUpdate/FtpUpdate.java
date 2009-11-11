@@ -86,7 +86,7 @@ public class FtpUpdate {
 			perviousUploadPath = uploadPath;
 		}
 		
-		logger.info("file: "+ filePath + fileName + " update to "+ perviousUploadPath  );
+		logger.info("file: "+ filePath + fileName + " \r\n update to "+ perviousUploadPath  );
 		ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);  
 		File srcFile = new File(filePath+fileName);
 		FileInputStream fis = new FileInputStream(srcFile);   
