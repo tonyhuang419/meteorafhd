@@ -30,7 +30,7 @@ public class BaseAction extends ActionSupport implements SessionAware, ServletRe
 			logger.info("defalut method has be called");
 			return "success";
 		}
-		logger.info("method:" + method);
+		logger.info("method " + method +" has be called ");
 		return (String) MethodUtils.invokeMethod(this, method, new Object[] {});
 	}
 
