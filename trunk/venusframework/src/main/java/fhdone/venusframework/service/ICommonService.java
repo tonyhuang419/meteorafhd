@@ -14,6 +14,13 @@ public interface ICommonService {
 
 	public Object uniqueResult(String hql, Object... args);
 
+	/**
+	 * get 和 load 的区别
+	 * http://hi.baidu.com/bailang3106/blog/item/93bc2ac7c89b78d5d0006047.html
+	 * @param c
+	 * @param id
+	 * @return
+	 */
 	public Object load(Class c, Serializable id);
 	
 	public Object get(Class c, Serializable id);
