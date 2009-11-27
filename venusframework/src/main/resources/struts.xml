@@ -6,6 +6,10 @@
 	
 	<constant name="struts.devMode" value="true"/> 
 	<constant name="struts.convention.classes.reload" value="true" />
+	<constant name="struts.convention.action.suffix" value="Action"/>
+	<constant name="struts.convention.action.mapAllMatches" value="true"/>
+	<constant name="struts.convention.default.parent.package" value="rest-default"/>
+	<constant name="struts.convention.package.locators" value="action"/>
 	
 </struts>
 
