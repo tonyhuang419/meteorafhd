@@ -1,8 +1,13 @@
 <html>
     <head>  
 <script type="text/javascript">
-	alert(window.parent.location.href);
-	alert(window.opener.window.location);
+	//alert(window.parent.location.href);
+	//alert(window.opener.window.location);
+	var parent = window.opener;
+	var s = parent.document.getElementById("s");
+	s.options.add(new Option("d","d")); 
+
+
 </script>
     </head>
 <body>
