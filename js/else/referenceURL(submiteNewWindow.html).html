@@ -5,5 +5,20 @@
 <body>
 
 <a href="#" onClick="window.open('son.html?aa=1')">aa</a>
+
+<select id="s">
+	<option value="a">a</option>
+	<option value="b">b</option>
+</select>
+
 </body>
+
+<script type="text/javascript">
+	var s = document.getElementById("s");
+	s.options.add(new Option("c","c")); 
+
+</script>
+
+
 </html> 
+
