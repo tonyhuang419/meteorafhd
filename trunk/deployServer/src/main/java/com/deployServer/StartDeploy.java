@@ -19,7 +19,7 @@ public class StartDeploy {
 		FtpUpload.uploadFiles();
 		
 		//解压打包文件
-		TelnetCommons.unzipFiles();
+		TelnetCommons.unzipUploadFiles();
 		
 	}
 	

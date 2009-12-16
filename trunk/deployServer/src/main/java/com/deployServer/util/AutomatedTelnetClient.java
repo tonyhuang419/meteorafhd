@@ -89,6 +89,9 @@ public class AutomatedTelnetClient {
 	public String sendCommand(String command) {
 		try {
 			write(command);
+			if(command.indexOf("unzip")!=-1){
+				write("A");
+			}
 			return readUntil(prompt + " ");
 		}
 		catch (Exception e) {
@@ -112,22 +115,7 @@ public class AutomatedTelnetClient {
 //			System.out.println(telnet.sendCommand("bash"));
 //			System.out.println(telnet.sendCommand("cd jboss-3.2/server/default/log/"));
 //			System.out.println(telnet.sendCommand("tail -f server.log"));
-//			System.out.println(telnet.sendCommand("ps -ef"));
-			
-			System.out.println(telnet.sendCommand("cd server/default/deploy/baosteel_travel.ear/baosteel_travel.war"));
-			System.out.println(telnet.sendCommand("unzip jsp.zip"));
-			System.out.println(telnet.sendCommand("cd WEB-INF/classes"));
-			System.out.println(telnet.sendCommand("unzip classes.zip"));
-
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd bgcl.ear/bgcl.war"));			
-			System.out.println(telnet.sendCommand("unzip bgcl.war.zip"));
-			System.out.println(telnet.sendCommand("cd WEB-INF/classes"));
-			System.out.println(telnet.sendCommand("unzip classes.zip"));
-			
+			System.out.println(telnet.sendCommand("ps -ef"));
 			telnet.disconnect();
 		}
 		catch (Exception e) {
