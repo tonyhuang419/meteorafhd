@@ -5,7 +5,7 @@ import java.io.File;
 import com.deployServer.util.AntZip;
 
 
-public class Commons {
+public class ZipCommons {
 
 	final static public String deployGLPath = "D:\\dev\\jboss\\3.2.2\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war";
 	final static public String deployCLPath = "D:\\dev\\jboss\\3.2.2\\server\\default\\deploy\\bgcl.ear\\bgcl.war";
