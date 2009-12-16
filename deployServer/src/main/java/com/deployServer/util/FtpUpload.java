@@ -9,7 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.net.ftp.FTPClient;
 
-import com.deployServer.commons.Commons;
+import com.deployServer.commons.ZipCommons;
 
 public class FtpUpload {
 
@@ -36,25 +36,25 @@ public class FtpUpload {
 		
 		String uploadPath = baseGLUrl;
 		uploadPath = FtpUpload.changeWorkingDirectory(ftpClient, uploadPath);
-		FileInputStream fis = new FileInputStream( Commons.deployPath+"\\gljsp.zip");   
+		FileInputStream fis = new FileInputStream( ZipCommons.deployPath+"\\gljsp.zip");   
 		ftpClient.storeFile("jsp.zip", fis); 
 		
 		
 		uploadPath = baseGLUrl+"/WEB-INF/classes";
 		uploadPath = FtpUpload.changeWorkingDirectory(ftpClient, uploadPath);
-		fis = new FileInputStream( Commons.deployPath+"\\glclass.zip");   
+		fis = new FileInputStream( ZipCommons.deployPath+"\\glclass.zip");   
 		ftpClient.storeFile("class.zip", fis); 
 		
 		uploadPath = baseCLUrl;
 		uploadPath = FtpUpload.changeWorkingDirectory(ftpClient, uploadPath);
-		fis = new FileInputStream( Commons.deployPath+"\\cljsp.zip");   
+		fis = new FileInputStream( ZipCommons.deployPath+"\\cljsp.zip");   
 		ftpClient.storeFile("jsp.zip", fis); 
 		
 		
 		uploadPath = baseCLUrl+"/WEB-INF/classes";
 		uploadPath = FtpUpload.changeWorkingDirectory(ftpClient, uploadPath);
 		ftpClient.changeWorkingDirectory(baseCLUrl+"\\WEB-INF\\classes");
-		fis = new FileInputStream( Commons.deployPath+"\\clclass.zip");   
+		fis = new FileInputStream( ZipCommons.deployPath+"\\clclass.zip");   
 		ftpClient.storeFile("class.zip", fis); 
 		
 		IOUtils.closeQuietly(fis);  
