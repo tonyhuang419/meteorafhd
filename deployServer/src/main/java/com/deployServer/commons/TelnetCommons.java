@@ -1,9 +1,14 @@
 package com.deployServer.commons;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.deployServer.util.AutomatedTelnetClient;
 
 public class TelnetCommons {
 
+	private static Log logger = LogFactory.getLog("TelnetCommons");
+	
 	public static void unzipUploadFiles (){
 		try {
 			AutomatedTelnetClient telnet = new AutomatedTelnetClient("10.60.2.92", "jboss", "jboss");
@@ -12,23 +17,23 @@ public class TelnetCommons {
 //			System.out.println(telnet.sendCommand("tail -f server.log"));
 //			System.out.println(telnet.sendCommand("ps -ef"));
 			
-			System.out.println(telnet.sendCommand("bash"));
-			System.out.println(telnet.sendCommand("cd jboss-3.2"));
+			logger.info(telnet.sendCommand("bash"));
+			logger.info(telnet.sendCommand("cd jboss-3.2"));
 			
-			System.out.println(telnet.sendCommand("cd server/default/deploy/baosteel_travel.ear/baosteel_travel.war"));
-			System.out.println(telnet.sendCommand("unzip jsp.zip"));
-			System.out.println(telnet.sendCommand("cd WEB-INF/classes"));
-			System.out.println(telnet.sendCommand("unzip classes.zip"));
+			logger.info(telnet.sendCommand("cd server/default/deploy/baosteel_travel.ear/baosteel_travel.war"));
+			logger.info(telnet.sendCommand("unzip jsp.zip"));
+			logger.info(telnet.sendCommand("cd WEB-INF/classes"));
+			logger.info(telnet.sendCommand("unzip class.zip"));
 
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd .."));
-			System.out.println(telnet.sendCommand("cd .."));
+			logger.info(telnet.sendCommand("cd .."));
+			logger.info(telnet.sendCommand("cd .."));
+			logger.info(telnet.sendCommand("cd .."));
+			logger.info(telnet.sendCommand("cd .."));
 			
-			System.out.println(telnet.sendCommand("cd bgcl.ear/bgcl.war"));			
-			System.out.println(telnet.sendCommand("unzip jsp.zip"));
-			System.out.println(telnet.sendCommand("cd WEB-INF/classes"));
-			System.out.println(telnet.sendCommand("unzip classes.zip"));
+			logger.info(telnet.sendCommand("cd bgcl.ear/bgcl.war"));			
+			logger.info(telnet.sendCommand("unzip jsp.zip"));
+			logger.info(telnet.sendCommand("cd WEB-INF/classes"));
+			logger.info(telnet.sendCommand("unzip class.zip"));
 			
 			telnet.disconnect();
 		}
