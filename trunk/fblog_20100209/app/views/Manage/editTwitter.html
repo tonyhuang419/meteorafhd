@@ -1,0 +1,14 @@
+#{extends 'manage_main.html' /}
+#{set title:'Edit Twitter' /}
+
+
+
+<br/>
+<br/>
+<br/>
+<h1>Edit Twitter</h1>
+<form action="/manage/saveTwitterEdit" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+	<input type="hidden" name="articleId" value="${article.id}">
+	Content: <textarea name="content" cols="50" rows="3">${article.content.getValue()}</textarea><br/>
+	<input type="submit" value="save edit" />
+</form>
