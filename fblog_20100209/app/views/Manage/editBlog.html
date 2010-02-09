@@ -1,0 +1,24 @@
+#{extends 'manage_main.html' /}
+#{set title:'Edit Blog' /}
+
+
+
+<br/>
+<br/>
+<br/>
+<h1>Edit Blog</h1>
+<form action="/manage/saveBlogEdit" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+	<input type="hidden" name="articleId" value="${article.id}">
+	Title: <input type="text" name="title" size="10" value="${article.title}"/><br/>
+	Content: <textarea name="content" cols="100" rows="10">${article.content.getValue()}</textarea><br/>
+	<input type="submit" value="save edit" />
+</form>
+
+<script language="javascript">
+	var oFCKeditor = new FCKeditor( 'content' ) ;  
+	oFCKeditor.Height = "400";
+	oFCKeditor.BasePath = '@{'/public/fckeditor/'}/' ;  
+	//oFCKeditor.Config['ToolbarStartExpanded'] = false ;  
+	//oFCKeditor.ToolbarSet   = 'Basic' ;  
+	oFCKeditor.ReplaceTextarea() ;  
+</script>

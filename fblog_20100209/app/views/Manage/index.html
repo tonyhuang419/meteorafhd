@@ -1,0 +1,54 @@
+#{extends 'manage_main.html' /}
+#{set title:'Manage TBlog' /}
+<script language="javascript">
+function deleteArticle(articleId){
+	if( window.confirm("sure delete?")){
+		var url = "@{Manage.del}";
+		location.href=url+"?articleId="+articleId;
+	}
+}
+SyntaxHighlighter.config.clipboardSwf = "@{'/public/swf/clipboard.swf'}";
+SyntaxHighlighter.all();
+</script>
+
+
+<br/>
+<br/>
+<br/>
+<a href="@{Manage.add}">Add</a><br/>
+==============Blog=====================
+<ul>
+#{list items:blogs, as:'blog'}
+	<li>
+		${blog.title} - ${blog.content.getValue()}
+		<a href="@{Manage.editBlog(blog.id)}">edit</a>
+		#{if ( blog.isActive == true ) }
+			<a href="@{Manage.disable(blog.id)}">make disable</a>
+		#{/if}
+		#{else}
+			<a href="@{Manage.enable(blog.id)}">make enable</a>
+		#{/else}
+		<a href="#" onclick="deleteArticle('${blog.id}')">delete</a>
+	</li>
+#{/list}
+</ul>
+
+==============Twitter=====================
+<ul>
+#{list items:twitters, as:'twitter'}
+	<li>
+		 ${twitter.content.getValue()}
+		<a href="@{Manage.editTwitter(twitter.id)}">edit</a>
+		#{if ( twitter.isActive == true ) }
+			<a href="@{Manage.disable(twitter.id)}">make disable</a>
+		#{/if}
+		#{else}
+			<a href="@{Manage.enable(twitter.id)}">make enable</a>
+		#{/else}
+		<a href="#" onclick="deleteArticle('${twitter.id}')">delete</a>
+	</li>
+#{/list}
+</ul>
+
+
+
