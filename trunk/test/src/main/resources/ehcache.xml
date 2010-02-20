@@ -1,11 +1,13 @@
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="ehcache.xsd"> 
-	<cacheManagerPeerProviderFactory
-	        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
-	        properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1, multicastGroupPort=4446"/>
-	<cacheManagerPeerListenerFactory
-	        class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"/>
-	<diskStore path="java.io.tmpdir" />
+ <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="ehcache.xsd">
+ <cacheManagerPeerProviderFactory
+ class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+ properties="peerDiscovery=manual,    
+ rmiUrls=//192.168.1.100:40000/HBE_CACHE" />
+
+ <cacheManagerPeerListenerFactory
+ class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+ properties="hostName=192.168.1.100,port=40000,socketTimeoutMillis=120000" /> 
 	<defaultCache maxElementsInMemory="10000" eternal="false"
 		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true"
 		memoryStoreEvictionPolicy="LRU">
