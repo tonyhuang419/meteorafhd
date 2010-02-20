@@ -1,0 +1,20 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="ehcache.xsd"> 
+	<cacheManagerPeerProviderFactory
+	        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+	        properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1, multicastGroupPort=4446"/>
+	<cacheManagerPeerListenerFactory
+	        class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"/>
+	<diskStore path="java.io.tmpdir" />
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true"
+		memoryStoreEvictionPolicy="LRU">
+		<cacheEventListenerFactory   
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/>  
+	</defaultCache>
+	<cache name="HBE_CACHE" maxElementsInMemory="10000" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="600" timeToLiveSeconds="600">
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/> 	
+	</cache>
+</ehcache>
