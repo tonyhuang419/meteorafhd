@@ -6,6 +6,9 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+/**
+ * http://blog.ccidnet.com/blog-htm-do-showone-uid-20630-itemid-2627212-type-blog.html
+ */
 public class CacheUtils {
 	
 	private static CacheManager cacheManager = null;
@@ -58,7 +61,7 @@ public class CacheUtils {
 	 */
 	public static void main(String[] args) {
 		try {
-			CacheUtils.put("HBE_CACHE", "o1", "11111");
+//			CacheUtils.put("HBE_CACHE", "o1", "11111");
 			System.out.println(CacheUtils.get("HBE_CACHE", "o1"));
 			Thread.sleep(10000);
 		} catch (Exception e) {
