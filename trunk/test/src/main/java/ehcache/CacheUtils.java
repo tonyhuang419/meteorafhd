@@ -60,6 +60,7 @@ public class CacheUtils {
 		try {
 			CacheUtils.put("HBE_CACHE", "o1", "11111");
 			System.out.println(CacheUtils.get("HBE_CACHE", "o1"));
+			Thread.sleep(10000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
