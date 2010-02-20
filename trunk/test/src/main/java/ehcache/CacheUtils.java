@@ -8,6 +8,8 @@ import net.sf.ehcache.Element;
 
 /**
  * http://blog.ccidnet.com/blog-htm-do-showone-uid-20630-itemid-2627212-type-blog.html
+ * or
+ * http://hi.baidu.com/tmsj008/blog/item/a45146af292f02c47dd92a07.html/cmtid/8db71d03a0a18ee008fa93c7
  */
 public class CacheUtils {
 	
