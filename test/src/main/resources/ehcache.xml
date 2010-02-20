@@ -1,22 +1,32 @@
- <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="ehcache.xsd">
- <cacheManagerPeerProviderFactory
- class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
- properties="peerDiscovery=manual,    
- rmiUrls=//192.168.1.100:40000/HBE_CACHE" />
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual,    
+ 		rmiUrls=//192.168.1.100:40000/HBE_CACHE" />
 
- <cacheManagerPeerListenerFactory
- class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
- properties="hostName=192.168.1.100,port=40000,socketTimeoutMillis=120000" /> 
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=192.168.1.16,port=40000,socketTimeoutMillis=120000" />
+	
+<!--	<cacheManagerPeerProviderFactory-->
+<!--		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"-->
+<!--		properties="peerDiscovery=manual,    -->
+<!-- 		rmiUrls=//192.168.1.16:40000/HBE_CACHE" />-->
+<!---->
+<!--	<cacheManagerPeerListenerFactory-->
+<!--		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"-->
+<!--		properties="hostName=192.168.1.100,port=40000,socketTimeoutMillis=120000" />-->
+	
 	<defaultCache maxElementsInMemory="10000" eternal="false"
 		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true"
 		memoryStoreEvictionPolicy="LRU">
-		<cacheEventListenerFactory   
-			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/>  
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
 	</defaultCache>
 	<cache name="HBE_CACHE" maxElementsInMemory="10000" eternal="false"
 		overflowToDisk="false" timeToIdleSeconds="600" timeToLiveSeconds="600">
 		<cacheEventListenerFactory
-			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/> 	
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
 	</cache>
 </ehcache>
