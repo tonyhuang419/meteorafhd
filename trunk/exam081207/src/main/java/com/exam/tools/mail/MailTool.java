@@ -7,6 +7,10 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * send mail configuration ¼û spring-mail.xml
+ */
 @Service("mailTool")
 public class MailTool {
 
