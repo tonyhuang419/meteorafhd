@@ -12,7 +12,7 @@
 	
 	<bean id="smtpAuthenticator" class="com.exam.tools.mail.SmtpAuthenticator">
 		<constructor-arg value="meteorafhd@gmail.com"/>
-		<constructor-arg value="happyamiga"/>
+		<constructor-arg value="xxxxx"/>  <!-- if want send email, modify to real password -->
 	</bean>
 	
 	<!-- now setup an authenticated session -->
