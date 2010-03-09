@@ -15,11 +15,11 @@ import com.deployServer.commons.ZipCommons;
 public class FtpUpload {
 
 	private static Log logger = LogFactory.getLog("FtpUpload");
-	public static String ftpIp = ConstantUtil.getIp();
+	public static String ftpIp = ConstantUtil.ip;
 	public static String ftpUsername = "jboss";
-	public static String ftpPassword = ConstantUtil.getPassword();
-	public static String baseGLUrl = ConstantUtil.getFtpBaseGLUrl();
-	public static String baseCLUrl = ConstantUtil.getFtpBaseCLUrl();
+	public static String ftpPassword = ConstantUtil.password;
+	public static String baseGLUrl = ConstantUtil.ftpBaseGLUrl;
+	public static String baseCLUrl = ConstantUtil.ftpBaseCLUrl;
 	
 
 	public static FTPClient login(FTPClient ftpClient) throws SocketException, IOException{
