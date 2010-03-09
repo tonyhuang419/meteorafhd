@@ -1,0 +1,7 @@
+ftpIp=10.60.2.243
+ftpUsername=jboss
+ftpPassword=jboss0819
+baseCLUrl=\\data\\jboss\\jboss-3.2e\\server\\default\\deploy\\bgcl.ear\\bgcl.war\\
+baseGLUrl=\\data\\jboss\\jboss-3.2e\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war\\
+deployCLBaseUrl=D:\\dev\\jboss\\3.2.2\\server\\default\\deploy\\bgcl.ear\\bgcl.war\\
+deployGLBaseUrl=D:\\dev\\jboss\\3.2.2\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war\\
