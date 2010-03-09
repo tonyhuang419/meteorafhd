@@ -11,7 +11,7 @@ public class ConstantUtil {
 
 
 	public static void setServerSign(String serverSign) {
-		if( !"test".equals(serverSign) ){
+		if( "formal".equals(serverSign) ){
 			ip = "10.60.2.243";
 			password = "jboss0819"; 
 			baseUrlCommand = "cd jboss-3.2e";
