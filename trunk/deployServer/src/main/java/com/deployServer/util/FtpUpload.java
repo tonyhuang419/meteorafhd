@@ -18,8 +18,8 @@ public class FtpUpload {
 	public static String ftpIp = ConstantUtil.getIp();
 	public static String ftpUsername = "jboss";
 	public static String ftpPassword = ConstantUtil.getPassword();
-	public static String baseGLUrl = ConstantUtil.getBaseGLUrl();
-	public static String baseCLUrl = ConstantUtil.getBaseCLUrl();
+	public static String baseGLUrl = ConstantUtil.getFtpBaseGLUrl();
+	public static String baseCLUrl = ConstantUtil.getFtpBaseCLUrl();
 	
 
 	public static FTPClient login(FTPClient ftpClient) throws SocketException, IOException{
