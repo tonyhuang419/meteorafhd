@@ -61,10 +61,10 @@ public class FtpUpdate {
 				String fileName = s.substring( index+1, s.length());
 				String uploadPath = baseUploadPath+s.substring(baseDeployPath.length() , index+1);
 				
-//				logger.info(uploadPath);
-//				logger.info(filePath);
-//				logger.info(fileName);
-//				logger.info("------------------------");
+				logger.info(uploadPath);
+				logger.info(filePath);
+				logger.info(fileName);
+				logger.info("------------------------");
 
 				//upload file , if u wanna check files path, comment it
 //				this.upload(ftpClient, uploadPath, filePath, fileName);
