@@ -9,16 +9,17 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.net.ftp.FTPClient;
 
+import com.deployServer.commons.ConstantUtil;
 import com.deployServer.commons.ZipCommons;
 
 public class FtpUpload {
 
 	private static Log logger = LogFactory.getLog("FtpUpload");
-	public static String ftpIp = "10.60.2.92";
+	public static String ftpIp = ConstantUtil.getIp();
 	public static String ftpUsername = "jboss";
-	public static String ftpPassword = "jboss";
-	public static String baseGLUrl = "\\usr\\jboss\\jboss-3.2\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war";
-	public static String baseCLUrl = "\\usr\\jboss\\jboss-3.2\\server\\default\\deploy\\bgcl.ear\\bgcl.war";
+	public static String ftpPassword = ConstantUtil.getPassword();
+	public static String baseGLUrl = ConstantUtil.getBaseGLUrl();
+	public static String baseCLUrl = ConstantUtil.getBaseCLUrl();
 	
 
 	public static FTPClient login(FTPClient ftpClient) throws SocketException, IOException{

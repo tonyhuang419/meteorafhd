@@ -3,7 +3,7 @@ package com.deployServer;
 import java.io.IOException;
 import java.net.SocketException;
 
-import com.deployServer.commons.TelnetCommons;
+import com.deployServer.commons.ConstantUtil;
 import com.deployServer.commons.ZipCommons;
 import com.deployServer.util.FtpUpload;
 
@@ -11,6 +11,7 @@ public class StartDeploy {
 
 	
 	public static void main(String[] args) throws SocketException, IOException{
+		ConstantUtil.setServerSign("test");
 		
 		//将上传文件打包
 		ZipCommons.zipUploadFiles();
@@ -19,7 +20,7 @@ public class StartDeploy {
 		FtpUpload.uploadFiles();
 		
 		//解压打包文件
-		TelnetCommons.unzipUploadFiles();
+//		TelnetCommons.unzipUploadFiles();
 		
 	}
 	
