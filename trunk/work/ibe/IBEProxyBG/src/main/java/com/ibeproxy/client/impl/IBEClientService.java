@@ -15,6 +15,7 @@ public class IBEClientService extends IBEClient implements IIBEClientService {
 	private LinkedList queue = new LinkedList();
 	private Object[] objArr;
 	private String tempArgs[];
+	private byte[] lock = new byte[0];
 
 	public String query(String[] args) throws Exception{
 
@@ -23,7 +24,7 @@ public class IBEClientService extends IBEClient implements IIBEClientService {
 		}
 
 		StringBuffer sb = new StringBuffer("");
-		synchronized(sb){
+		synchronized(lock){
 			logger.info("query has be called,the args is:");
 			if(queue.size()==0)
 				System.out.println("============0");
