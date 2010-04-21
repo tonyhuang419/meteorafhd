@@ -69,6 +69,29 @@ public class Book extends PriEntity implements Serializable {
 			cascade=CascadeType.ALL, fetch = FetchType.LAZY )
 	private Set<OrderInfo> orderInfo;
 
+	public Book(){	}
+	
+	
+	
+	public Book(Long created, Date createdby, Long updated, Date updatedby,
+			String isActive, Long id, String title, String isbn,
+			String authorName, String editior, Date year, String category,
+			String publisher, Long quantityInStock, BigDecimal price ) {
+		super(created, createdby, updated, updatedby, isActive);
+		this.id = id;
+		this.title = title;
+		this.isbn = isbn;
+		this.authorName = authorName;
+		this.editior = editior;
+		this.year = year;
+		this.category = category;
+		this.publisher = publisher;
+		this.quantityInStock = quantityInStock;
+		this.price = price;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

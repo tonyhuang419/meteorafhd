@@ -26,6 +26,18 @@ public class PriEntity {
 	@Column(nullable=true, length=2)
 	private String isActive;
 
+	public PriEntity() {}
+	
+	public PriEntity(Long created, Date createdby, Long updated,
+			Date updatedby, String isActive) {
+		super();
+		this.created = created;
+		this.createdby = createdby;
+		this.updated = updated;
+		this.updatedby = updatedby;
+		this.isActive = isActive;
+	}
+
 	public Long getCreated() {
 		return created;
 	}
