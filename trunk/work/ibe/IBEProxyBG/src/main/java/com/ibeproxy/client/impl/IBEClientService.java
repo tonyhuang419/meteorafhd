@@ -23,11 +23,12 @@ public class IBEClientService extends IBEClient implements IIBEClientService {
 			return "null";
 		}
 
-		StringBuffer sb = new StringBuffer("");
+		StringBuffer sb = new StringBuffer();
 		synchronized(lock){
 			logger.info("query has be called,the args is:");
-			if(queue.size()==0)
-				System.out.println("============0");
+			if(queue.size()==0){
+				System.out.println("请求数为0");
+			}
 			objArr = (Object[])this.remove(queue);
 			tempArgs = (String[])objArr;
 			for(int i=0;i<tempArgs.length;i++){
