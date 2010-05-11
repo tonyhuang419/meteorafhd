@@ -15,7 +15,7 @@ public class Test {
 	public static void main(String[] args) throws Exception {
 		ApplicationContext content = new ClassPathXmlApplicationContext("IBEProxy.xml");
 		int x = 100;
-		ExecutorService exec = Executors.newFixedThreadPool(2);
+		ExecutorService exec = Executors.newFixedThreadPool(1);
 		while(x-->0){
 			exec.execute(new UserThread( content , x ));
 		}
@@ -39,7 +39,7 @@ class UserThread implements Runnable{
 		AvResult avr;
 		try {
 			System.out.println("================"+i);
-			avr = av.getAvailability("SHA"+i,"PEK"+i, new Date());
+			avr = av.getAvailability("SHA","PEK", new Date());
 			System.out.println(avr.getItemamount());
 		} catch (Exception e) {
 			e.printStackTrace();
