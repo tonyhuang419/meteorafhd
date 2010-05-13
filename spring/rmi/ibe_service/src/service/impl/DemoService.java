@@ -21,7 +21,7 @@ public class DemoService implements IDemoService{
 			return "null";
 		}
 		synchronized(lock){
-			logger.info("hello method has be called");
+//			logger.info("hello method has be called");
 			String s = (String)this.remove(queue);
 			return "Hello:"+s;
 		}
@@ -51,7 +51,7 @@ public class DemoService implements IDemoService{
 				return true;
 			}
 			else{
-				System.out.println("同时请求数过大：2");
+//				System.out.println("同时请求数过大：2");
 				return false;
 			}
 		}
