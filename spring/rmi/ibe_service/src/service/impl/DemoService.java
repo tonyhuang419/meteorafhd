@@ -17,6 +17,7 @@ public class DemoService implements IDemoService{
 
 
 	public String hello(String str){
+//		System.out.println(this.hashCode());
 		if( !this.add(str)){
 			return "null";
 		}
