@@ -19,8 +19,8 @@ public class RMIClient {
 //		IDemoTwoService helloTwo = (IDemoTwoService)content.getBean("serviceClientTwo");
 		
 		int i=0;
-		ExecutorService exec = Executors.newFixedThreadPool(3);
-		while(++i<1000){
+		ExecutorService exec = Executors.newFixedThreadPool(10);
+		while(++i<10000){
 			exec.execute(new UserThread( "a" , helloService ));
 		}
 		exec.shutdown();
@@ -51,8 +51,8 @@ class UserThread implements Runnable{
 		try {
 //			System.out.println(helloService.hashCode());
 			String s = helloService.hello(str);
-			if( s.equals("b") || s.equals("null") ){
-				System.out.println( s );
+			if( s.equals("b")  ){
+				System.out.print( s );
 			}
 //			System.out.print(s);
 		} catch (Exception e) {
