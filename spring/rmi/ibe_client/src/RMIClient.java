@@ -49,7 +49,11 @@ class UserThread implements Runnable{
 
 	public void run() {
 		try {
-			System.out.println(helloService.hello(str));
+			String s = helloService.hello(str);
+			if(s.equals("b")){
+				System.out.println("=======");
+			}
+//			System.out.print(s);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
