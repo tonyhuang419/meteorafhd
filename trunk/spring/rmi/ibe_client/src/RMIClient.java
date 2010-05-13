@@ -50,8 +50,8 @@ class UserThread implements Runnable{
 	public void run() {
 		try {
 			String s = helloService.hello(str);
-			if(s.equals("b")){
-				System.out.println("=======");
+			if( s.equals("b") || s.equals("null") ){
+				System.out.println( s );
 			}
 //			System.out.print(s);
 		} catch (Exception e) {
