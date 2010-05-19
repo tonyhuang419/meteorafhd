@@ -16,7 +16,7 @@ class ThreadXX implements Runnable{
 	private void sysout(){
 		System.out.println(",,,,,");
 		synchronized(s){
-//			this.cc();  //取消我的注释后再运行
+//			this.cc();  //取消我的注释后再运行,观察“....”的输出
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
