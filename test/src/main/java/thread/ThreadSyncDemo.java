@@ -1,23 +1,22 @@
 package thread;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadSyncDemo {
 
-
 	public static void main(String[] args) {
 		int i=1000;
-		ExecutorService exec = Executors.newFixedThreadPool(20);
+		ExecutorService exec = Executors.newFixedThreadPool(5);
+		ExecutorService exec2 = Executors.newFixedThreadPool(5);
 
 		while(i-->0){
 			exec.execute(new ThreadSyncX(i));
+			exec2.execute(new ThreadSyncX(i));
 		}
 		exec.shutdown();
+		exec2.shutdown();
 	}
-
 }
 
 class ThreadSyncX implements Runnable{
@@ -43,39 +42,28 @@ class ThreadSyncX implements Runnable{
 
 
 class ThreadSyncCommon {
-	static List<Integer> queue = new LinkedList<Integer>(); 
 	static byte[] lock = new byte[0];
+	static int count = 0;
 
 	static public int getStr( int i ){
-		if(!add(i)){
+		if(++count>10){
+			System.out.println("========同时请求数过大：10========");
 			return -1;
 		}
 
 		synchronized (lock) {
-			int s = remove();
+			int s = i;
+			count--;
+
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			return s;
 		}
 	}
 
-	static int remove( ){
-		synchronized (queue) {
-			return  queue.remove(0)	;
-		}
-	}
-
-
-	static boolean add(int args){
-		synchronized (queue) {
-			if(queue.size()<10){
-				queue.add(args);
-				return true;
-			}
-			else{
-				System.out.println("========同时请求数过大：10========");
-				return false;
-			}
-		}
-	}
 
 }
 
