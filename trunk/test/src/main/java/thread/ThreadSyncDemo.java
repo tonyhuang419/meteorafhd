@@ -7,8 +7,8 @@ public class ThreadSyncDemo {
 
 	public static void main(String[] args) {
 		int i=1000;
-		ExecutorService exec = Executors.newFixedThreadPool(5);
-		ExecutorService exec2 = Executors.newFixedThreadPool(5);
+		ExecutorService exec = Executors.newFixedThreadPool(15);
+		ExecutorService exec2 = Executors.newFixedThreadPool(15);
 
 		while(i-->0){
 			exec.execute(new ThreadSyncX(i));
@@ -56,7 +56,7 @@ class ThreadSyncCommon {
 			count--;
 
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
