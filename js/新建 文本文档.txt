@@ -1,7 +1,0 @@
- ALTER TABLE `board` CHANGE `issueDate` `issueDate` TIMESTAMP NOT NULL  
-
-
-function fun(obj)   {   
-  pta=/[^0123456789.]{1,}/;   
-  if(pta.exec(obj)){obj.value=obj.substr(0,obj.length-1);}   
-}  
