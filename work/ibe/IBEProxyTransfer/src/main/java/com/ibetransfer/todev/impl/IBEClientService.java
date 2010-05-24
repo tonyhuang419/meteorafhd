@@ -1,5 +1,8 @@
 package com.ibetransfer.todev.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -11,29 +14,29 @@ public class IBEClientService  implements IIBEClientService {
 
 	private IIBEClientService iis;
 
-	String pekStr;
-	String canStr;
+	private Map resultMap = new HashMap();
+	private byte[] lock = new byte[0];
 
-	synchronized public String query(String[] args) throws Exception{
-		logger.info("i'm transfer,query has be called,the args is:");
-		StringBuffer sb = new StringBuffer("");
-		for(int i=0;i<args.length;i++){
-			sb.append(args[i]+",");
+	public String query(String[] args) throws Exception{
+		synchronized(lock){
+//			logger.info("i'm transfer,query has be called,the args is:");
+			StringBuffer sb = new StringBuffer("");
+			for(int i=0;i<args.length;i++){
+				sb.append(args[i]+",");
+			}
+			logger.info(sb.toString());
+
+			if(resultMap.get(sb.toString())!=null){
+				System.out.println("get info from cache");
+				return (String)resultMap.get(sb.toString());
+			}
+			else{
+				System.out.println("get info from remote interface");
+				String result = iis.query(args);
+				resultMap.put(sb.toString(), result);
+				return result;
+			}
 		}
-		logger.info(sb.toString());
-//		if( sb.indexOf("PEK")!=-1  ){
-//			if(pekStr==null){
-//				pekStr = iis.query(args);
-//			}
-//			return pekStr;
-//		}
-//		else {
-//			if(canStr==null){
-//				canStr = iis.query(args);
-//			}
-//			return canStr;
-//		}
-		return iis.query(args);
 	}
 
 	public IIBEClientService getIis() {
