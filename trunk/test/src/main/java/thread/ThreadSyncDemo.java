@@ -48,18 +48,18 @@ class ThreadSyncCommon {
 	static public int getStr( int i ){
 		if(++count>10){
 			System.out.println("========同时请求数过大：10========");
+			count--;
 			return -1;
 		}
 
 		synchronized (lock) {
 			int s = i;
-			count--;
-
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			count--;
 			return s;
 		}
 	}
