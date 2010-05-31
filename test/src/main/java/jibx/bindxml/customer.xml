@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<binding>
+	<mapping name="customer" class="jibx.Customer">
+		<structure name="person" field="person">
+			<value name="cust-num" field="customerNumber" />
+			<value name="first-name" field="firstName" />
+			<value style="text" name="last-name"  field="lastName" />
+		</structure>
+		<value name="street" field="street" />
+		<value name="city" field="city" />
+		<value name="state" field="state" />
+		<value name="zip" field="zip" />
+		<value name="phone" field="phone" />
+	</mapping>
+</binding>
