@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customer>
+	<person>
+		<cust-num>123456789</cust-num>
+		<first-name>John</first-name>
+		<last-name>Smith</last-name>
+	</person>
+	<street>12345 Happy Lane</street>
+	<city>Plunk</city>
+	<state>WA</state>
+	<zip>98059</zip>
+	<phone>888.555.1234</phone>
+<!--	<xxx>888.555.1234</xxx>-->
+</customer> 
