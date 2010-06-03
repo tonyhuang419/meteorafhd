@@ -47,7 +47,7 @@ class ThreadSyncCommon {
 
 	static public int getStr( int i ){
 		if(++count>10){
-			System.out.println("========同时请求数过大：10========");
+			System.out.println("========同时请求数过大========"+count);
 			count--;
 			return -1;
 		}
