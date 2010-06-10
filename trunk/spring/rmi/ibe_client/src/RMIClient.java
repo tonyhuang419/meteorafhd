@@ -51,7 +51,7 @@ class UserThread implements Runnable{
 		try {
 //			System.out.println(helloService.hashCode());
 			String s = helloService.hello(str);
-			if( s.equals("b")  ){
+			if( "b".equals(s)  ){
 				System.out.print( s );
 			}
 //			System.out.print(s);
