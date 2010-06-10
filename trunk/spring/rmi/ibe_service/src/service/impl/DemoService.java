@@ -15,7 +15,10 @@ public class DemoService implements IDemoService{
 
 
 	public String hello(String str){
-		
+		/**
+		 * 这里的i应该也有同步问题，但考虑到性能以及同步要求不严格，这里就不加同步了
+		 * 注JDK1.5可以用AtomicInteger
+		 */
 		if(++i>10){
 			i--;
 			System.out.println("同时请求数过大");
