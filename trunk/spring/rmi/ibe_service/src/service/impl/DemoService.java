@@ -1,7 +1,5 @@
 package service.impl;
 
-import java.util.LinkedList;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -12,19 +10,27 @@ public class DemoService implements IDemoService{
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 
-	private LinkedList queue = new LinkedList();
+	private int i = 0;
 	private byte[] lock = new byte[0];
 
 
 	public String hello(String str){
-//		System.out.println(this.hashCode());
-		if( !this.add(str)){
-			return "null";
+		
+		if(++i>10){
+			i--;
+			System.out.println("同时请求数过大");
+			return "同时请求数过大";
 		}
+		
 		synchronized(lock){
+			i--;
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 //			logger.info("hello method has be called");
-			String s = (String)this.remove(queue);
-			return "Hello:"+s;
+			return str;
 		}
 	}
 
@@ -37,25 +43,5 @@ public class DemoService implements IDemoService{
 	}
 
 
-
-	private Object remove( LinkedList queue ){
-		synchronized(queue) {
-			return  queue.removeFirst();	
-		}
-	}
-
-
-	private boolean add(String args){
-		synchronized(queue) {
-			if(queue.size()<2){
-				queue.add(args);
-				return true;
-			}
-			else{
-//				System.out.println("同时请求数过大：2");
-				return false;
-			}
-		}
-	}
 
 }
