@@ -8,21 +8,19 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import waterKingCovToNoSql.entity.Board;
+import waterKingCovToNoSql.service.IBoardService;
+import waterKingCovToNoSql.service.IWaterService;
 import waterKingCovToNoSql.tools.Dao;
 
 
-public class WaterService {
+public class WaterService implements IWaterService {
 
 	protected  Log logger = LogFactory.getLog(this.getClass());
 
 	private Dao dao = new Dao();
 
-	public List<Board> doGetNotFinishBoardDetailList(int min , int max){
-		/**
-		 * not vote floor and lastScanFloor > 1
-		 */
-		String sql ="select * from Board b where b.lastScanFloor > 1 and b.isVote = false  " + //and b.skip = false
-		" and b.id >" + min+" and b.id <= "+ max + " order by b.id asc";
+	public List<Board> doGeBoard(int min , int max){
+		String sql ="select * from Board b where b.id >" + min+" and b.id <= "+ max + " order by b.id asc";
 		ResultSet rs =  this.query(sql);
 		List<Board> boardList = new ArrayList<Board>();
 		Board board;
@@ -50,27 +48,30 @@ public class WaterService {
 	}
 
 
+	public void copyMySQLToCassandra( int min , int max ){
+		List<Board> bList = this.doGeBoard(min, max);
+//		System.out.println(bList.size());
+		IBoardService cs =  new BoardService();
+		for(  Board b : bList  ){
+			cs.insertBoard(b);
+		}
+		System.out.println("has inserted£º" + min + "-" + max);
+	}
 
-	public ResultSet query(String sql){
+	private ResultSet query(String sql){
 		return this.getDao().query(sql);
 	}
 
 
-	public void closeConnection(){
+	private void closeConnection(){
 		this.getDao().close();
 	}
 
-	public static void main(String args[]){
-		WaterService ws = new WaterService();
-
-
-	}
-
-	public Dao getDao() {
+	private Dao getDao() {
 		return dao;
 	}
 
-	public void setDao(Dao dao) {
+	private void setDao(Dao dao) {
 		this.dao = dao;
 	}
 
