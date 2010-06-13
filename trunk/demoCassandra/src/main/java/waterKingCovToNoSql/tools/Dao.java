@@ -17,7 +17,7 @@ public class Dao {
 		try {  
 			Class.forName("com.mysql.jdbc.Driver");// ¼ÓÔØÇý¶¯³ÌÐò  
 			con = DriverManager.getConnection(  
-					"jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=UTF8", "root", "root");  
+					"jdbc:mysql://10.58.12.176:3306/test?useUnicode=true&characterEncoding=UTF8", "root", ""); 
 		} catch (Exception e) {  
 			e.printStackTrace();  
 			con = null;  

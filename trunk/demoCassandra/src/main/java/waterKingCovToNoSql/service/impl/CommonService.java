@@ -17,10 +17,11 @@ import waterKingCovToNoSql.tools.UtilTools;
 public class CommonService implements ICommonService {
 
 	@Override
-	public void readRow(String rowName , String key){ 
+	public void readRow( Object obj  , String rowName , String key){ 
 		Client client = UtilTools.getCassandraClient();
 		ColumnParent cp = new ColumnParent(rowName, null);
-		SlicePredicate predicate = new SlicePredicate(null, new SliceRange(new byte[0], new byte[0], false, 10));
+		int size =  UtilTools.getColumnPath( obj , "board" ).size();
+		SlicePredicate predicate = new SlicePredicate(null, new SliceRange(new byte[0], new byte[0], false, size));
 		try{
 			List<ColumnOrSuperColumn> results = client.get_slice(UtilTools.getKeyspace(), key , cp, predicate, 1);
 			for (ColumnOrSuperColumn result : results){
@@ -51,9 +52,9 @@ public class CommonService implements ICommonService {
 		try{
 			for(ColumnPath _cp : map.keySet()){
 				String _value = map.get(_cp);
-				client.insert(UtilTools.getKeyspace(), key, _cp, _value.getBytes(), 1, 1);
-				return true;
+				client.insert(UtilTools.getKeyspace(), key, _cp, _value.getBytes("UTF-8"), 1, 1);
 			}
+			return true;
 		}catch (Exception e) {
 			e.printStackTrace();
 		} 

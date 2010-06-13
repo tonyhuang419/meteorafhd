@@ -7,7 +7,7 @@ import org.apache.cassandra.service.ColumnPath;
 
 public interface ICommonService {
 
-	public void readRow(String rowName , String key);
+	public void readRow( Object obj  , String rowName , String key);
 	
 	public int countRow(String rowName);
 	
