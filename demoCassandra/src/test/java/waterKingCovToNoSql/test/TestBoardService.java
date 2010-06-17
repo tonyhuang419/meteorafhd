@@ -13,7 +13,7 @@ public class TestBoardService {
 
 	public void testInsertBoard(){
 		IBoardService cs =  new BoardService();
-		Board b = getMockBoard(55000L);
+		Board b = getMockBoard(55001L);
 		cs.insertBoard(b);
 //		getMockBoard(10000L);
 //		cs.insertBoard(b);

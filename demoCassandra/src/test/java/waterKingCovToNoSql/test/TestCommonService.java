@@ -9,7 +9,7 @@ public class TestCommonService {
 
 	public void testReadRow(){
 		ICommonService cs =  new CommonService();
-		cs.readRow( new Board() , "board" , "24144");	
+		cs.readRow( new Board() , "board" , "12345");	
 	}
 	
 	private int testCountRow(){
@@ -17,11 +17,16 @@ public class TestCommonService {
 		return cs.countRow("board");
 	}
 	
+	private void testReadListRow(){
+		ICommonService cs =  new CommonService();
+		cs.readRowsByRange( new Board() , "board" , "10000" , "10100");	
+	}
 	
 	public static void main(String[] args) {
 		TestCommonService tc = new TestCommonService();
-		tc.testReadRow();
+//		tc.testReadRow();
 //		System.out.println(tc.testCountRow());
+		tc.testReadListRow();
 		
 	}
 	
