@@ -7,6 +7,7 @@ import org.apache.cassandra.service.Column;
 import org.apache.cassandra.service.ColumnOrSuperColumn;
 import org.apache.cassandra.service.ColumnParent;
 import org.apache.cassandra.service.ColumnPath;
+import org.apache.cassandra.service.KeySlice;
 import org.apache.cassandra.service.SlicePredicate;
 import org.apache.cassandra.service.SliceRange;
 import org.apache.cassandra.service.Cassandra.Client;
@@ -27,6 +28,27 @@ public class CommonService implements ICommonService {
 			for (ColumnOrSuperColumn result : results){
 				Column column = result.column;
 				System.out.println(new String(column.name, "UTF-8") + " -> " + new String(column.value, "UTF-8"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void readRowsByRange( Object obj  , String rowName , String startKey , String endKey){
+		Client client = UtilTools.getCassandraClient();
+		ColumnParent cp = new ColumnParent(rowName, null);
+		int size =  UtilTools.getColumnPath( obj , "board" ).size();
+		SlicePredicate predicate = new SlicePredicate(null, new SliceRange(new byte[0], new byte[0], false, size));
+		try{
+			List<KeySlice> results =   client.get_range_slice(UtilTools.getKeyspace() , cp , predicate , startKey , endKey , size ,  1 );
+			for (KeySlice result : results){
+				List<ColumnOrSuperColumn>  colunms = result.columns;
+				for (ColumnOrSuperColumn colunm  : colunms){
+					Column column = colunm.column;
+					System.out.println(new String(column.name, "UTF-8") + " -> " + new String(column.value, "UTF-8"));
+				}
+				System.out.println("============");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

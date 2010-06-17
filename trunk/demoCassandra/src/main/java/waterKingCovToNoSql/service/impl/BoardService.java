@@ -31,7 +31,8 @@ public class BoardService implements IBoardService {
 			String lastScanTime = StringUtils.getEmptyString(board.getLastScanTime());
 			String lastUpateUser = StringUtils.getEmptyString(board.getLastUpateUser());
 			String skip = StringUtils.getEmptyString(board.getSkip());
-			m.put(map.get("id"), id.toString());
+			
+			m.put( map.get("id") , id);
 			m.put(map.get("topic"), topic);
 			m.put(map.get("topicUrl"), topicUrl);
 			m.put(map.get("starter"), starter);
@@ -44,11 +45,12 @@ public class BoardService implements IBoardService {
 			m.put(map.get("lastScanTime"), lastScanTime);
 			m.put(map.get("lastUpateUser"), lastUpateUser);
 			m.put(map.get("skip"), skip);
+			
 			ICommonService cs = new CommonService();
 			cs.insert(UtilTools.getKeyspace(), id, 1, 1, m);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 	}
-
+	
 }
