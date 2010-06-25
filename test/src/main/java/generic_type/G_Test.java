@@ -1,7 +1,8 @@
 package generic_type;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.MethodUtils;
 
 /**
  * 关于泛型
@@ -12,10 +13,25 @@ public class G_Test {
 
 	/**
 	 * 这里对泛型的使用毫无意义，而且语法上让我觉得混乱，
-	 * 还不如使用下面的多态
+	 * 还不如使用多态
 	 */
 	public <T extends G_Base>  void sayHelloByGeneric ( T base){
 		base.sayHello();
+	}
+	
+	/**
+	 * 如果一定要用的话，因该是这样，不过性能上的就差很多了
+	 */
+	public <T>  void sayHelloByGenericX ( T base){
+		try {
+			MethodUtils.invokeMethod(base, "sayHello", new Object[] {});
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void sayHelloByExtends ( G_Base base){
@@ -32,7 +48,8 @@ public class G_Test {
 		test.sayHelloByExtends(new G_Lover());
 		test.sayHelloByExtends(new G_Parent());
 		
-		List l = new ArrayList<G_Base>();
+		test.sayHelloByGenericX(new G_Lover());
+		test.sayHelloByGenericX(new G_Parent());
 		
 	}
 
