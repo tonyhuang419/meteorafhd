@@ -49,6 +49,22 @@ str1 = "xx";
 str2 = "xx";
 print(str1==str2);
 
+arr = [1,2,3],[4,5,6],[7,8,9,10];
+newArr = [row[1]*2 for row in arr];
+print( newArr );
+newArr2 = [  str(row[1])*2 for row in arr];
+print( newArr2 );
+
+mmap = {'a':'1', 'b':'2', 'c':'3'};
+mkeys = mmap.keys();
+print( mkeys );
+mkeys.sort();
+print( mkeys );
+print( mmap.keys() );
+
+print( long(4));
+
+
 if (varx == 1) :
     print("11111");
 elif (varx==23):
