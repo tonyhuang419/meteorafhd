@@ -1,5 +1,6 @@
 # coding=UTF-8
 import random
+import sys
 from decimal import Decimal
 
 "i am comment"
@@ -84,5 +85,6 @@ elif (varx==23):
     print(len("xxxxxxxxx"))
     print(len("我"))
     
-    
+# check reference count
+sys.getrefcount(1) 
     
