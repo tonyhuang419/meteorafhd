@@ -141,10 +141,19 @@ public class Test {
 		return;
 	}
 
+	public void manyArgs( Object... args){
+		for (int i = 0; i < args.length; ++i){
+			System.out.print("for "+i+" : ");
+			System.out.println( args[i] );
+		}
+	}
+	
 	public static void main(String[] args) {
 		Test test = new Test();
 
-		test.xxxx();
+		test.manyArgs("1","2");
+		test.manyArgs(new Object[]{"1","2"});
+//		test.xxxx();
 		
 //		test.sort();
 		
