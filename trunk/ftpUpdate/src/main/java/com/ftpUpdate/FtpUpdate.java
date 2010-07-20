@@ -67,7 +67,7 @@ public class FtpUpdate {
 				logger.info("------------------------");
 
 				//upload file , if u wanna check files path, comment it
-//				this.upload(ftpClient, uploadPath, filePath, fileName);
+				this.upload(ftpClient, uploadPath, filePath, fileName);
 			}
 		}
 	}   
