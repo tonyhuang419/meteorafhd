@@ -151,8 +151,10 @@ public class Test {
 	public static void main(String[] args) {
 		Test test = new Test();
 
-		test.manyArgs("1","2");
-		test.manyArgs(new Object[]{"1","2"});
+		System.out.println(("\n\t").length());
+		
+//		test.manyArgs("1","2");
+//		test.manyArgs(new Object[]{"1","2"});
 //		test.xxxx();
 		
 //		test.sort();
