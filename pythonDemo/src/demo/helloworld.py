@@ -36,6 +36,11 @@ str2 = "xx";
 print(str1==str2);
 print ('xxx'+'yy');
 
+print("...%s...%s"  % ('123',111));
+str = '''%(x)s..%(y)s''';
+arg ={'x':'11','y':'22'}
+print( str  % arg );
+
 #number
 print ( random.random());
 print ( random.choice( [1,2,3,4]) );  #从1234中随机获取一个
