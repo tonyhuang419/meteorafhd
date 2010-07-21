@@ -38,13 +38,23 @@ print ('xxx'+'yy');
 
 print("...%s...%s"  % ('123',111));
 str = '''%(x)s..%(y)s''';
-arg ={'x':'11','y':'22'}
+arg ={'x':'11','y':'22'};
 print( str  % arg );
+
+x='33';
+y='44';
+vars()
+print( str  % vars() );
+
+s = '111222111222';
+s = s.replace('111', '333');
+print(s);
 
 #number
 print ( random.random());
 print ( random.choice( [1,2,3,4]) );  #从1234中随机获取一个
 print(True+3);
+print( '%x' % 15 );
 print(  round(2.225 , 2));
 print (3.1415*2);
 print (3+2);
@@ -53,7 +63,7 @@ print (3*2);
 print (3/2);
 print(3**3);
 print( long(4));
-num = 010
+num = '010'
 print( num );   #octal literals
 print( int(str(num) , 10));
 print( Decimal('0.10') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3') );
