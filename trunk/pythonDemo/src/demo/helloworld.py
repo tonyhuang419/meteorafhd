@@ -1,7 +1,8 @@
 # coding=UTF-8
+from decimal import Decimal
+import array
 import random
 import sys
-from decimal import Decimal
 
 "i am comment"
 
@@ -35,6 +36,8 @@ str1 = "xx";
 str2 = "xx";
 print(str1==str2);
 print ('xxx'+'yy');
+print ('123' in '12345')
+print ('456' in '12345')
 
 print("...%s...%s"  % ('123',111));
 str = '''%(x)s..%(y)s''';
@@ -90,6 +93,14 @@ print( mkeys );
 mkeys.sort();
 print( mkeys );
 print( mmap.keys() );
+
+s = '123'
+s = array.array( 'c' ,s )
+s.reverse()
+print(s.tostring())
+print( '123'[ :: -1] )
+s = '123'
+print(''.join([s[i] for i in range(len(s)-1,-1,-1)]))
 
 
 #condition
