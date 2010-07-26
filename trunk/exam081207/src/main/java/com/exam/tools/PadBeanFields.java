@@ -11,7 +11,7 @@ public class PadBeanFields {
 	/**
 	 * objSrc属性覆盖objPaded属性，如果属性为null，不覆盖 
 	 */
-	static synchronized public Object  padBean( Object objSrc , Object objPaded  ,String excludeField[]){
+	static public Object  padBean( Object objSrc , Object objPaded  ,String excludeField[]){
 
 		BeanWrapper padedBean = new BeanWrapperImpl(false);
 		BeanWrapper tarBean = new BeanWrapperImpl(false);
@@ -53,7 +53,7 @@ public class PadBeanFields {
 		return objPaded;
 	}
 	
-	synchronized static private String   makeFristLetterLower(String str){
+	static private String   makeFristLetterLower(String str){
 		if(str!=null){
 			String fristLetter = StringUtils.lowerCase(str.substring(0,1));
 			str = fristLetter + str.substring(1,str.length());
