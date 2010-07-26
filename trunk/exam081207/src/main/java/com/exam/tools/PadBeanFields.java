@@ -8,6 +8,9 @@ import org.springframework.beans.BeanWrapperImpl;
 
 public class PadBeanFields {
 
+	/**
+	 * objSrc属性覆盖objPaded属性，如果属性为null，不覆盖 
+	 */
 	static synchronized public Object  padBean( Object objSrc , Object objPaded  ,String excludeField[]){
 
 		BeanWrapper padedBean = new BeanWrapperImpl(false);
