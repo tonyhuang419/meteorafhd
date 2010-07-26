@@ -8,15 +8,15 @@ import org.springframework.beans.BeanWrapperImpl;
 
 public class PadBeanFields {
 
-	static synchronized public Object  padBean(Object objPaded ,  Object objTarget ,String excludeField[]){
+	static synchronized public Object  padBean( Object objSrc , Object objPaded  ,String excludeField[]){
 
 		BeanWrapper padedBean = new BeanWrapperImpl(false);
 		BeanWrapper tarBean = new BeanWrapperImpl(false);
 		padedBean.setWrappedInstance(objPaded);
-		tarBean.setWrappedInstance(objTarget);
+		tarBean.setWrappedInstance(objSrc);
 
 		Class paded = objPaded.getClass();
-		Class tar = objTarget.getClass();
+		Class tar = objSrc.getClass();
 
 		if( paded.equals(tar)){    //class类型匹配
 			Field tarFields[] = tar.getDeclaredFields();      
@@ -38,8 +38,9 @@ public class PadBeanFields {
 							continue;
 						}
 					}
-					if( tarFields[i].get(objTarget)!=null  ){
-						padedBean.setPropertyValue( PadBeanFields.makeFristLetterLower( tarFields[i].getName())  ,tarFields[i].get(objTarget))		;
+					if( tarFields[i].get(objSrc)!=null  ){
+						//避免属性第一个字母大写 调用方法makeFristLetterLower
+						padedBean.setPropertyValue( PadBeanFields.makeFristLetterLower( tarFields[i].getName())  ,tarFields[i].get(objSrc))		;
 					}
 				}catch(Exception e){
 					e.printStackTrace();
