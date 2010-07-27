@@ -2,6 +2,8 @@ package def;
 
 public class SubClass extends BaseClass{
 	
+	private String subString;
+	
 	public void hellWorld(){
 		System.out.println(" hello world ");
 	}
@@ -17,6 +19,14 @@ public class SubClass extends BaseClass{
 	
 	public static void main(String args[]){
 		new SubClass().test();
+	}
+
+	public String getSubString() {
+		return subString;
+	}
+
+	public void setSubString(String subString) {
+		this.subString = subString;
 	}
 	
 }
