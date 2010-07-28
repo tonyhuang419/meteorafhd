@@ -14,7 +14,7 @@ public class ConstantUtil {
 		if( "formal".equals(serverSign) ){
 			ip = "10.60.2.243";
 			password = "jboss0819"; 
-			baseUrlCommand = "cd jboss-3.2e";
+			baseUrlCommand = "cd ../../../data/jboss/jboss-3.2e";
 			ftpBaseGLUrl = "\\data\\jboss\\jboss-3.2e\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war";
 			ftpBaseCLUrl = "\\data\\jboss\\jboss-3.2e\\server\\default\\deploy\\bgcl.ear\\bgcl.war";
 		}
