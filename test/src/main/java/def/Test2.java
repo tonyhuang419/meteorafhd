@@ -10,6 +10,8 @@ public class Test2 {
 	 * apache和spring继承属性也会赋值
 	 * null值也会赋值
 	 * 他们似乎都依赖bean的getter setter
+	 * spring 需要对象类型相同,否则会报错
+	 * apache 则不需要
 	 */
 	public void copyBean(){
 		SubClass a = new SubClass();
@@ -19,6 +21,7 @@ public class Test2 {
 		SubClass b = new SubClass();
 		SubClass c = new SubClass();
 		SubClass d = new SubClass();
+		SubClass2 ex = new SubClass2();
 	
 		BeanUtils.copyProperties( a , b);
 		
@@ -30,7 +33,8 @@ public class Test2 {
 			e.printStackTrace();
 		}
 		
-		PadBeanFields.padBean(a, d, null);
+		PadBeanFields.padBean(a, ex, null);
+		System.out.println(ex.getSubString());
 		
 		System.out.println(b.getBaseString());
 		System.out.println(b.getSubString());
