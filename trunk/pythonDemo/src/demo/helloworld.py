@@ -97,8 +97,11 @@ print( mmap.keys() );
 s = '123'
 s = array.array( 'c' ,s )
 s.reverse()
+
 print(s.tostring())
 print( '123'[ :: -1] )
+print( '123'[ -1000:1000] )
+
 s = '123'
 print(''.join([s[i] for i in range(len(s)-1,-1,-1)]))
 
@@ -113,4 +116,10 @@ elif (varx==23):
     
 # check reference count
 sys.getrefcount(1) 
+
+
+L = ['abc'];
+L.append(L);
+print(L);
+
     
