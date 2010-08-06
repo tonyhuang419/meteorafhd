@@ -9,6 +9,8 @@ if you wanna make your work also fun:
 '''
 try:
     f = file('poem.txt', 'w') # open for 'w'riting
+    #print (  help(f) )
+    #The mode can be 'r', 'w' or 'a' for reading (default), writing or appending
     f.write(poem) # write text to file
     f.close() # close the file
     
