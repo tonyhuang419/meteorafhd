@@ -1,13 +1,36 @@
 # coding=UTF-8
+import sys
+
 x , y = "1","2"
 print( x )
 print( y )
 [x,y] = [1,2]
 print( x )
-print( y )    
+print( y )  
+
+print( 1 )  
+print( 2 ),   ##no new line
+print( 3)
 
 if 1<2<3:
     print("yes")
     
 if 1<2 and 2<3:
     print("yes")
+
+temp = sys.stdout
+print( temp )
+
+sys.stdout = open('c:\\1.txt','a')  
+sys.stdout.write("hello")
+sys.stdout.close()
+
+sys.stdout = temp
+sys.stdout.write("helloToScreen\n")
+
+file = open('c:\\1.txt','a')  
+print >> file , 1, 2, 3
+file.close()
+
+
+
