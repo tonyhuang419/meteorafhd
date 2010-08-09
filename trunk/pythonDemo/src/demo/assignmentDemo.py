@@ -32,5 +32,10 @@ file = open('c:\\1.txt','a')
 print >> file , 1, 2, 3
 file.close()
 
+print(  { 'a':'1','b':'2','c':'3' }['b'] )
+branch = { 'a':'1','b':'2','c':'3' }
+print( branch.get('b') )
+
+
 
 
