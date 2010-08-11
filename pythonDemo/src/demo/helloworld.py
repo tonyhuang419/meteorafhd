@@ -117,6 +117,9 @@ elif (varx==23):
 # check reference count
 sys.getrefcount(1) 
 
+print( 2 or 3 )
+print( [] or {} )
+
 
 L = ['abc'];
 L.append(L);
