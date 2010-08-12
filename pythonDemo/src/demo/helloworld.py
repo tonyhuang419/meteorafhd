@@ -125,4 +125,12 @@ L = ['abc'];
 L.append(L);
 print(L);
 
-    
+i = 0
+while  i<1 :
+    i += 1;
+    print("in while")
+    #break
+else:
+    print("while's else")
+
+print( sum ( [1,2,3,4] ))    
