@@ -80,8 +80,13 @@ public class UtilTools {
 		return sb.toString();
 	}
 	
+	// Rome中RSS的可选标准   
+	// rss_0.9, rss_0.91, rss_0.92, rss_0.93, rss_0.94, rss_1.0, rss_2.0, atom_0.3 , atom_1.0   
+	// http://fileit.in/p/4
+	private static final String RSS_TYPE = "rss_2.0";    
 	public static SyndFeed createFeed() {   
-		SyndFeed feed = new SyndFeedImpl();   
+		SyndFeed feed = new SyndFeedImpl(); 
+		feed.setFeedType(RSS_TYPE);  
 		feed.setTitle("TBlog");   
 		feed.setLink("http://meteorafhd.appspot.com/");   
 		feed.setDescription("TBlog");   
@@ -94,7 +99,8 @@ public class UtilTools {
 		SyndEntry entry;   
 		SyndContent description;   
 
-		List<Article> articles = Article.getAllActive("true");
+		PageInfo articlesP = Article.getAllActiveByPage("true" , 1 );
+		List<Article> articles = (List<Article>)articlesP.data;
 		for (Article article : articles) {   
 			entry = new SyndEntryImpl();   
 			entry.setTitle(UtilTools.getTitle(article));   
@@ -112,8 +118,6 @@ public class UtilTools {
 	} 
 	
 	
-	public static final String baseLink = "http://meteorafhd.appspot.com/";
-	
 	public static String getTitle(Article article){
 		if( article.type == 1l){
 			return article.title;
@@ -126,12 +130,16 @@ public class UtilTools {
 		}
 	}
 	
+	public static final String baseLink = "http://meteorafhd.appspot.com/";
 	public static String getArticleLink(Article article){
-		String link = "";
+		StringBuffer link = new StringBuffer(baseLink);
 		if( article.type == 1l){
-			link = baseLink + "client/detail?id=" + article.id;
+			link.append("client/detail?id=").append(article.id);
 		}
-		return link;
+		else{
+			link.append("client/twitter?id=").append(article.id);
+		}
+		return link.toString();
 	}
 
 }
