@@ -56,6 +56,17 @@ public class Article extends JPASupport {
 		}
 	}
 	
+	public static PageInfo getAllActiveByPage(String active , int page ){
+		StringBuffer jsql = new StringBuffer(" select a from models.Article a where  ");
+		if("ALL".equals(active)){
+			jsql.append("  order by createdTime desc ");
+		}
+		else{
+			jsql.append(" isActive = true order by createdTime desc ");
+		}
+		return UtilTools.getPageInfo(Article.em(), jsql.toString() , page);
+	}
+	
 	public static List<Article> getActiveBlog(String active){
 		if("ALL".equals(active)){
 			return Article.find(" type=1 order by createdTime desc" ).all();

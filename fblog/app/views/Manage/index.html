@@ -18,7 +18,7 @@ SyntaxHighlighter.all();
 <a href="@{Manage.add}">Add</a><br/>
 ==============Blog=====================
 <ul>
-#{list items:blogs, as:'blog'}
+#{list items:blogs.data, as:'blog'}
 	<li>
 		${blog.title} - ${blog.content.getValue()}
 		<a href="@{Manage.editBlog(blog.id)}">edit</a>
@@ -35,7 +35,7 @@ SyntaxHighlighter.all();
 
 ==============Twitter=====================
 <ul>
-#{list items:twitters, as:'twitter'}
+#{list items:twitters.data, as:'twitter'}
 	<li>
 		 ${twitter.content.getValue()}
 		<a href="@{Manage.editTwitter(twitter.id)}">edit</a>

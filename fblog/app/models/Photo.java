@@ -8,8 +8,6 @@ import javax.persistence.Id;
 
 import play.db.jpa.JPASupport;
 
-import com.google.appengine.api.datastore.Blob;
-
 @Entity
 public class Photo extends JPASupport {
 	private static final long serialVersionUID = -5257165062306305774L;
@@ -21,14 +19,14 @@ public class Photo extends JPASupport {
 	public Long photoStamp;
 
 	@Enumerated
-	public Blob photo;
+//	public Blob photo;
 
 	public String contentType;
 
-	public Photo(Long photoStamp, String contentType, Blob photo) {
+	public Photo(Long photoStamp, String contentType) {
 		this.photoStamp = photoStamp;
 		this.contentType = contentType;
-		this.photo = photo;
+//		this.photo = photo;
 
 	}
 }

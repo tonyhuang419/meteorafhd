@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.List;
-
 import models.Article;
 
 import org.apache.commons.lang.StringUtils;
@@ -9,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import play.data.validation.Required;
 import play.mvc.Before;
 import play.mvc.Controller;
+import utilTools.PageInfo;
 
 import com.google.appengine.api.datastore.Text;
 
@@ -25,7 +24,7 @@ public class Manage extends Controller {
 		if( (StringUtils.isNotEmpty(password) 
 				&& password.equals("adminx")) || validateCookie() ){
 			session.put("user", "fhdone");
-			index();
+			index(1L);
 		}
 		render();
 	}
@@ -38,9 +37,9 @@ public class Manage extends Controller {
 		return false;
 	}
 
-	public static void index() {
-		List<Article> blogs = Article.getActiveBlog("ALL");
-		List<Article> twitters = Article.getActiveTwitter("ALL");
+	public static void index(Long page) {
+		PageInfo blogs = Article.getActiveArticles("true", page.intValue() , "1");
+		PageInfo twitters = Article.getActiveArticles("true", page.intValue() , "2");
 		render(blogs,twitters);
 	}
 
@@ -51,7 +50,7 @@ public class Manage extends Controller {
 	public static void addArticle(String title , 
 			@Required String content , @Required Long type ) {
 		new Article(title, new Text(content) , type );
-		index();
+		index(1L);
 	}
 
 	public static void editBlog(@Required Long articleId ) {
@@ -66,27 +65,27 @@ public class Manage extends Controller {
 
 	public static void saveBlogEdit(@Required Long articleId  , @Required String title  , @Required String content ){
 		Article.modBlogActicle(articleId, title, content);
-		index();
+		index(1L);
 	}
 
 	public static void saveTwitterEdit(@Required Long articleId  ,@Required String content ){
 		Article.modTwitterActicle(articleId, content);
-		index();
+		index(1L);
 	}
 
 	public static void disable(@Required Long articleId ){
 		Article.disable(articleId);
-		index();
+		index(1L);
 	}
 
 	public static void enable(@Required Long articleId ){
 		Article.enable(articleId);
-		index();
+		index(1L);
 	}
 
 	public static void del(@Required Long articleId ){
 		Article.deleteArticle(articleId);
-		index();
+		index(1L);
 	}
 
 }
