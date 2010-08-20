@@ -1,6 +1,8 @@
 package utilTools;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -79,7 +81,7 @@ public class UtilTools {
 		sb.append("</span>");
 		return sb.toString();
 	}
-	
+
 	// Rome中RSS的可选标准   
 	// rss_0.9, rss_0.91, rss_0.92, rss_0.93, rss_0.94, rss_1.0, rss_2.0, atom_0.3 , atom_1.0   
 	// http://fileit.in/p/4
@@ -99,8 +101,7 @@ public class UtilTools {
 		SyndEntry entry;   
 		SyndContent description;   
 
-		PageInfo articlesP = Article.getAllActiveByPage("true" , 1 );
-		List<Article> articles = (List<Article>)articlesP.data;
+		List<Article> articles = Article.getRssArticles();
 		for (Article article : articles) {   
 			entry = new SyndEntryImpl();   
 			entry.setTitle(UtilTools.getTitle(article));   
@@ -116,8 +117,8 @@ public class UtilTools {
 		}   
 		return entries;   
 	} 
-	
-	
+
+
 	public static String getTitle(Article article){
 		if( article.type == 1l){
 			return article.title;
@@ -129,7 +130,7 @@ public class UtilTools {
 			return "";
 		}
 	}
-	
+
 	public static final String baseLink = "http://meteorafhd.appspot.com/";
 	public static String getArticleLink(Article article){
 		StringBuffer link = new StringBuffer(baseLink);
@@ -140,6 +141,13 @@ public class UtilTools {
 			link.append("client/twitter?id=").append(article.id);
 		}
 		return link.toString();
+	}
+
+	public static Date getDelayMonth( int delay ){
+		Calendar ca = Calendar.getInstance();
+		ca.setTime(new Date());
+		ca.add(Calendar.MONTH, delay ); 
+		return ca.getTime();
 	}
 
 }

@@ -28,7 +28,7 @@ SyntaxHighlighter.all();
 		#{else}
 			<a href="@{Manage.enable(blog.id)}">make enable</a>
 		#{/else}
-		<a href="#" onclick="deleteArticle('${blog.id}')">delete</a>
+		<a href="javascript:void(0)" onclick="deleteArticle('${blog.id}')">delete</a>
 	</li>
 #{/list}
 </ul>
@@ -45,7 +45,7 @@ SyntaxHighlighter.all();
 		#{else}
 			<a href="@{Manage.enable(twitter.id)}">make enable</a>
 		#{/else}
-		<a href="#" onclick="deleteArticle('${twitter.id}')">delete</a>
+		<a href="javascript:void(0)" onclick="deleteArticle('${twitter.id}')">delete</a>
 	</li>
 #{/list}
 </ul>

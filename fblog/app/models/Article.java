@@ -47,42 +47,9 @@ public class Article extends JPASupport {
 		this.save();
 	}
 	
-	public static List<Article> getAllActive(String active){
-		if("ALL".equals(active)){
-			return Article.find(" order by createdTime desc" ).all();
-		}
-		else{
-			return Article.find(" isActive = true order by createdTime desc " ).all();
-		}
-	}
-	
-	public static PageInfo getAllActiveByPage(String active , int page ){
-		StringBuffer jsql = new StringBuffer(" select a from models.Article a where  ");
-		if("ALL".equals(active)){
-			jsql.append("  order by createdTime desc ");
-		}
-		else{
-			jsql.append(" isActive = true order by createdTime desc ");
-		}
-		return UtilTools.getPageInfo(Article.em(), jsql.toString() , page);
-	}
-	
-	public static List<Article> getActiveBlog(String active){
-		if("ALL".equals(active)){
-			return Article.find(" type=1 order by createdTime desc" ).all();
-		}
-		else{
-			return Article.find(" isActive = true and type=1 order by createdTime desc " ).all();
-		}
-	}
-	
-	public static List<Article> getActiveTwitter(String active){
-		if("ALL".equals(active)){
-			return Article.find(" type=2 order by createdTime desc " ).all();
-		}
-		else{
-			return Article.find(" isActive = true and type=2 order by createdTime desc " ).all();
-		}
+	public static List<Article> getRssArticles( ){
+		return Article.find(" lastModifyTime>=?1 and lastModifyTime <= ?2" +
+				"  and isActive = true order by lastModifyTime desc " , UtilTools.getDelayMonth(-1) , new Date() ).all();
 	}
 	
 	/**
