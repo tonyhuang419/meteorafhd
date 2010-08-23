@@ -36,6 +36,19 @@ print(  { 'a':'1','b':'2','c':'3' }['b'] )
 branch = { 'a':'1','b':'2','c':'3' }
 print( branch.get('b') )
 
+print("------------")
+import rawinput
+print(rawinput.exit)
+rawinput.exit = False
+print(rawinput.exit)
 
+
+def f1():
+    x = 88
+    def f2():
+        print(x)
+    f2()
+    print("------------")
+f1()
 
 
