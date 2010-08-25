@@ -45,5 +45,30 @@ def intersect( seq1 , seq2 ):
 print( intersect( "1234" , "2345"  ) )
 print( intersect( [1,2,3] , (3,4,5) ) )
 
- 
+
+def marker(X):
+    def action(N):
+        return X ** N
+    return action;
+ff = marker(2);
+print( ff(3) )    
+
+
+def make_repeater(n):
+    return lambda s: s*n
+twice = make_repeater(2)
+print ( twice('word'))
+print ( twice(5) )
+
+def nameFunction( a=11 , b=22 , c=33):
+    print( a , b , c )
+    print( a + b + c)
+    print( str(a) + str(b) + str(c)  )
+nameFunction( a=1 , c=3 , b=2 )
+nameFunction( 1, c=3  )
+
+def varArgs( a ,b , *args , **args2 ):
+    print( str(a) + str(b) + str(args) + str(args2) )
+varArgs( 1,2,3,4,5,6,x=1,y=2 )
+varArgs(1, 2,3,4,5,6,x=1,y=2 )
 
