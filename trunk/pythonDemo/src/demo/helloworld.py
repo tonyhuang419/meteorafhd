@@ -88,6 +88,7 @@ newArr2 = [  str(row[1])*2 for row in arr];
 print( newArr2 );
 
 mmap = {'a':'1', 'b':'2', 'c':'3'};
+print( mmap['a'])
 mkeys = mmap.keys();
 print( mkeys );
 mkeys.sort();

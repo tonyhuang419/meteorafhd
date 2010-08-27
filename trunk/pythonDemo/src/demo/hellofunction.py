@@ -72,3 +72,15 @@ def varArgs( a ,b , *args , **args2 ):
 varArgs( 1,2,3,4,5,6,x=1,y=2 )
 varArgs(1, 2,3,4,5,6,x=1,y=2 )
 
+mapFunction = { 'x' : (  lambda x : x * x ) ,
+                'y' : (  lambda y : y ** y ) ,
+                'z' : (  lambda z : z ** z + 1 )  }
+print(mapFunction)
+myX = mapFunction['x'];
+myY = mapFunction['y'];
+myZ = mapFunction['z'];
+print(myX)
+print( myX(2) )
+print( myY(3) )
+print( myZ(3) )
+
