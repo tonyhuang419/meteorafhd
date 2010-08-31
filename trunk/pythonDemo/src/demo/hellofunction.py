@@ -67,10 +67,10 @@ def nameFunction( a=11 , b=22 , c=33):
 nameFunction( a=1 , c=3 , b=2 )
 nameFunction( 1, c=3  )
 
-def varArgs( a ,b , *args , **args2 ):
+def varArgs( a , b , *args , **args2 ):
     print( str(a) + str(b) + str(args) + str(args2) )
 varArgs( 1,2,3,4,5,6,x=1,y=2 )
-varArgs(1, 2,3,4,5,6,x=1,y=2 )
+varArgs( 1,2,3,4,5,6,x=1,y=2 )
 
 mapFunction = { 'x' : (  lambda x : x * x ) ,
                 'y' : (  lambda y : y ** y ) ,
@@ -83,4 +83,17 @@ print(myX)
 print( myX(2) )
 print( myY(3) )
 print( myZ(3) )
+
+
+def square(a):
+    return a ** 2 
+
+def funcMap( func , datas ):
+    res = []
+    for x in datas: res.append( func( x ) )
+    return res
+
+print( square(3) )
+print( funcMap( square , [1,2,3] ) )
+
 
