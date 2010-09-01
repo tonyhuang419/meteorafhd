@@ -97,3 +97,15 @@ print( square(3) )
 print( funcMap( square , [1,2,3] ) )
 
 
+def genFun( len ):
+    for i in range( len ):
+        yield i
+
+for i in genFun( 5 ):
+    print( i ) , 
+    
+print()
+print( sorted(  x**2 for x in range(5) ) )
+print( sorted( ( x**2 for x in range(5)) , reverse=True ) )
+
+
