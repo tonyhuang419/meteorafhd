@@ -4,17 +4,12 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping >
-  <class name="com.fhd.test2.Teacher" table="teachers" lazy="false">
+  <class name="com.fhd.test2.Course" table="course" lazy="false">
     <id name="id" type="long" column="id">
       <generator class="increment"/>
     </id>
-    <property name="teacherName" type="string" >
-        <column name="teachername" length="15" />
+    <property name="courseName" type="string" >
+        <column name="coursename" length="15" />
     </property>
-   	<many-to-one 
-        name='course'
-        column='course_id'
-		  cascade='save-update'
-       />
   </class>
 </hibernate-mapping>

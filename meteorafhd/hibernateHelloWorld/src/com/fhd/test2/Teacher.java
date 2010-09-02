@@ -4,25 +4,37 @@ public class Teacher {
 
 	private long id;
 	private String teacherName;
+	private Course course;
 
 	public Teacher(){}
 	
-	public long getid() {
+	public Teacher(String teacherName) {
+		this.teacherName = teacherName;
+	}
+
+	public long getId() {
 		return id;
 	}
-	public void setid(long id) {
+
+	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getTeacherName() {
 		return teacherName;
 	}
 
-	public void setTeacherName(String teachername) {
-
-		this.teacherName = teachername;
-
-	}
-	public Teacher(String teacherName) {
+	public void setTeacherName(String teacherName) {
 		this.teacherName = teacherName;
 	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
+	
 }
