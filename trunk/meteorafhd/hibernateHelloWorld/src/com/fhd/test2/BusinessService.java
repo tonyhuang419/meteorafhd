@@ -149,8 +149,8 @@ public class BusinessService {
 //		Student student=findStudent(1);
 //		List students = findTeacherByStudent(student);
 //		printStudents(students);
-		testHQL();
-//		testHQLOutjoin();
+//		testHQL();
+		testHQLOutjoin();
 //		testHQLSubInquiry();
 	}
 	
@@ -171,7 +171,7 @@ public class BusinessService {
 	
 	public void testHQLOutjoin() {
 		Session session = sessionFactory.openSession();
-		String hql ="from Student s left join s.teacher";
+		String hql ="from Student s left join s.teacher left join s.teacher.course ";
 		Query query = session.createQuery(hql);
 		List orders = query.list();
 		Iterator it = orders.iterator();
@@ -181,9 +181,9 @@ public class BusinessService {
 			Teacher t = (Teacher)o[1];
 			System.out.print(s.getid()+"   ");
 			System.out.print (s.getStudentName()+"   ");
-			System.out.print (s.getTeacher().getid()+"   ");
+			System.out.print (s.getTeacher().getId()+"   ");
 			System.out.print(t.getTeacherName()+"   ");
-			System.out.println(t.getid());
+			System.out.println(t.getId());
 		}
 	}
 	
@@ -201,7 +201,7 @@ public class BusinessService {
 			//Teacher t = (Teacher)o[1];
 			System.out.print(s.getid()+"   ");
 			System.out.print (s.getStudentName()+"   ");
-			System.out.println (s.getTeacher().getid()+"   ");
+			System.out.println (s.getTeacher().getId()+"   ");
 			//System.out.print(t.getTeacherName()+"   ");
 			//System.out.println(t.getid());
 		}

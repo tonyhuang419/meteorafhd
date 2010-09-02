@@ -30,8 +30,9 @@
 		<property name="show_sql">true</property>
 		
 <!--		<mapping resource="com/fhd/test/Message.hbm.xml" />-->
-<!--		<mapping resource="com/fhd/test2/student.hbm.xml" />-->
-<!--		<mapping resource="com/fhd/test2/teacher.hbm.xml" />-->
+		<mapping resource="com/fhd/test2/student.hbm.xml" />
+		<mapping resource="com/fhd/test2/teacher.hbm.xml" /> 
+		<mapping resource="com/fhd/test2/course.hbm.xml" /> 
 		<mapping resource="com/fhd/test3/People.hbm.xml" />
 		<mapping resource="com/fhd/test3/Address.hbm.xml" />
 		
