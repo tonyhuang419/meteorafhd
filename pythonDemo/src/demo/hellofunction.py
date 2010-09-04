@@ -108,4 +108,24 @@ print()
 print( sorted(  x**2 for x in range(5) ) )
 print( sorted( ( x**2 for x in range(5)) , reverse=True ) )
 
+def saver1( x=[] ):
+    x.append(1)
+    print(x)
+    
+saver1()
+saver1()
 
+def saver2( x=None ):
+    if( x==None):
+        print("new arr")
+        x = []
+    x.append(1)
+    print(x)
+saver2 (   )   
+saver2 ( [1]  )
+saver2 ( []  )
+
+
+
+
+    

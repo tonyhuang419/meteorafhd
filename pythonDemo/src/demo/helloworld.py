@@ -3,6 +3,7 @@ from decimal import Decimal
 import array
 import random
 import sys
+import time
 
 "i am comment"
 
@@ -135,3 +136,5 @@ else:
     print("while's else")
 
 print( sum ( [1,2,3,4] ))    
+
+print(time.time())
