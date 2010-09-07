@@ -1,6 +1,8 @@
 # coding=UTF-8
 import sys
 
+print(sys.path)
+
 x , y = "1","2"
 print( x )
 print( y )
@@ -8,9 +10,9 @@ print( y )
 print( x )
 print( y )  
 
-print( 1 )  
+print( 1 )
 print( 2 ),   ##no new line
-print( 3)
+print( 3 )
 
 if 1<2<3:
     print("yes")
