@@ -1,5 +1,10 @@
 import helloworld;
 
+print( '---------------------------------' )
+print( helloworld.__dict__ )
+print( helloworld.__dict__.keys() )
+print( '---------------------------------' )
+
 def sayHello():
     print ('Hello World!') # block belonging to the function
 
