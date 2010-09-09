@@ -5,6 +5,13 @@ print( helloworld.__dict__ )
 print( helloworld.__dict__.keys() )
 print( '---------------------------------' )
 
+print helloworld.s;
+helloworld.s = '*****'
+print helloworld.s;
+reload(helloworld)
+print helloworld.s;
+print( '---------------------------------' )
+
 def sayHello():
     print ('Hello World!') # block belonging to the function
 
