@@ -138,6 +138,15 @@ saver2 ( [1]  )
 saver2 ( []  )
 
 
+def getMult():
+    return 1,2
 
+x , y = getMult();
+z = getMult();
+print(x)
+print(y)
+print(z)
+print(type(x))
+print(type(z))
 
     
