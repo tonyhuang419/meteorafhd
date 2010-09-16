@@ -12,7 +12,6 @@ class Dj(Person):
 #    def sayHi(self):
 #        print(self.name)
     def sayHi(self):
-        print('...')
         Person.sayHi(self)
     def delegeateX(self):
         print('implements abstract method')
@@ -23,6 +22,17 @@ p.sayHi()
 
 d = Dj(p.name)
 d.sayHi()
+
+print('------------------')
+d.name = 'sub'
+p.sayHi()
+d.sayHi()
+print('------------------')
+p.name ='super'
+p.sayHi()
+d.sayHi()
+print('------------------')
+
 d.delegeateX()
 
 d.sex = 'male'
