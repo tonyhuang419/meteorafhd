@@ -9,6 +9,6 @@
 		<property name="addressName" column="addressName"></property>
 		<property name="codeNumber" column="codeNumber"></property>
 		<!-- 关联ID（多对一指向的那个ID） -->
-		<many-to-one name="people" column="peopleId"  insert="false" update="false" />
+<!--		<many-to-one name="people" column="peopleId"  insert="false" update="false" />-->
 	</class>
 </hibernate-mapping>
