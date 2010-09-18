@@ -7,7 +7,7 @@
 			<generator class="increment" />
 		</id>
 		<property name="name" column="name" ></property>
-		<set name="addresses" cascade="save-update" inverse="false">
+		<set name="addresses" cascade="all-delete-orphan" inverse="false" lazy="true">
 			<!-- 外键column name，也就是对方表的 -->
 			<key column="peopleId" not-null="true" />
 			<one-to-many class="com.fhd.test3.Address"/>
