@@ -1,5 +1,6 @@
-
-class A:
+# class A(object):  #新式类：宽度优先 order:D C B A  
+#class A():          #旧式类：深度优先  order:D B A C 
+class A():          
     attr = 'A'
 
 class B(A):
@@ -14,5 +15,5 @@ class D(B,C):
     pass
 
 x = D();
-# order:D B A C
+
 print ( x.attr ) 
