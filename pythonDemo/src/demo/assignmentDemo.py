@@ -53,4 +53,9 @@ def f1():
     print("------------")
 f1()
 
+arr = ( (1,'a'),(2,'b'))
+for x,y in arr:
+    print(x,y)
+    
+
 
