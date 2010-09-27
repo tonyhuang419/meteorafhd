@@ -1,5 +1,9 @@
 package thread;
 
+/**
+ * 不建议用String作为锁对象
+ * 因为一旦String被修改，锁就会失效
+ */
 public class ThreadDemo {
 
 
@@ -12,11 +16,13 @@ public class ThreadDemo {
 }
 
 class ThreadXX implements Runnable{
-	String s = new String();
+	//不建议用String作为锁对象
+	//String s = new String(); 
+	byte[] s = new byte[1];
 	private void sysout(){
 		System.out.println(",,,,,");
 		synchronized(s){
-//			this.cc();  //取消我的注释后再运行,观察“....”的输出
+			this.cc(); 
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
@@ -28,7 +34,9 @@ class ThreadXX implements Runnable{
 	
 	private void cc(){
 		synchronized(s){
-			s ="zzzzzzzz";
+		//  String被修改，导致所对象失效
+		//	s ="zzzzzzzz";
+			s[0] = 'a';
 		}
 	}
 
