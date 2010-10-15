@@ -10,6 +10,10 @@ urlpatterns = patterns('',
     (r'^login/$', 'djangoDemo.login.login'),
     (r'^logout/$', 'djangoDemo.login.logout'),
 
+    (r'^wiki/$', 'djangoDemo.wiki.views.index'),
+    (r'^wiki/(?P<pagename>\w+)/$', 'djangoDemo.wiki.views.index'),
+    (r'^wiki/(?P<pagename>\w+)/edit/$', 'djangoDemo.wiki.views.edit'),
+    (r'^wiki/(?P<pagename>\w+)/save/$', 'djangoDemo.wiki.views.save'),
 
 
     # Uncomment this for admin:
