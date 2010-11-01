@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     (r'^wiki/(?P<pagename>\w+)/$', 'djangoDemo.wiki.views.index'),
     (r'^wiki/(?P<pagename>\w+)/edit/$', 'djangoDemo.wiki.views.edit'),
     (r'^wiki/(?P<pagename>\w+)/save/$', 'djangoDemo.wiki.views.save'),
+    
+    (r'^address/', include('djangoDemo.address.urls')),
 
 
     # Uncomment this for admin:
