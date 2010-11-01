@@ -8,5 +8,7 @@ info_dict = {
     'queryset': Address.objects.all(),
 }
 urlpatterns = patterns('',
-    (r'^/?$', 'django.views.generic.list_detail.object_list', info_dict),
+    (r'^/?$', 'django.views.generic.list_detail.object_list',
+        dict(paginate_by=10, **info_dict)),
+    (r'^upload/$', 'address.views.upload'),
 )

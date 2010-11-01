@@ -9,10 +9,12 @@ class Address(models.Model):
     gender = models.CharField('性别', choices=(('M', '男'), ('F', '女')),  max_length=1 )
     telphone = models.CharField('电话', max_length=20)
     mobile = models.CharField('手机', max_length=11)
-    
+   
     def __unicode__(self):
         return self.name
-
+       
+    class Meta:
+        ordering = ['name']
 
 from django.contrib import admin
 
