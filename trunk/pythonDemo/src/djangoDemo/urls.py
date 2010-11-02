@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
+from django.conf import settings
+
 
 admin.autodiscover()
 
@@ -19,6 +21,8 @@ urlpatterns = patterns('',
     (r'^wiki/(?P<pagename>\w+)/save/$', 'djangoDemo.wiki.views.save'),
     
     (r'^address/', include('djangoDemo.address.urls')),
+    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.STATIC_PATH}),
 
 
     # Uncomment this for admin:
