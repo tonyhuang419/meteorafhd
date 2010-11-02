@@ -1,8 +1,11 @@
 #coding=utf-8
 # Create your views here.
 from djangoDemo.address.models import Address
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import loader, Context
+
+
 
 def upload(request):
     file_obj = request.FILES.get('file', None)
@@ -33,3 +36,19 @@ def upload(request):
     else:
         return render_to_response('address/error.html',
             {'message':'你需要上传一个文件！'})
+
+def output(request):
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=%s' % 'address.csv'
+    t = loader.get_template('csv.html')
+#    objs = Address.objects.get_list()
+    objs = Address.objects.all()
+    d = []
+    for o in objs:
+        d.append((o.name, o.gender, o.telphone, o.mobile))
+    c = Context({
+        'data': d,
+    })
+    response.write(t.render(c))
+    return response
+
