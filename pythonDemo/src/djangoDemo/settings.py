@@ -102,3 +102,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
 )
+
+STATIC_PATH = './media'
+
