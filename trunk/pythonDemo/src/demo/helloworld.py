@@ -4,6 +4,7 @@ import array
 import random
 import sys
 import time
+import re
 
 "i am comment"
 
@@ -81,12 +82,27 @@ for c in vary:
 
 
 #collection
+arr = ( 1,2,3,4 )
+# arr[0] = 0         TypeError: 'tuple' object does not support item assignment
+print( arr[0] )
+print( arr ) 
+
+
 arr = [1,2,3],[4,5,6],[7,8,9,10];
 newArr = [row[1]*2 for row in arr];
 print( newArr );
 
 newArr2 = [  str(row[1])*2 for row in arr];
 print( newArr2 );
+
+str3 = 'x'
+arr3 = [str3]*10
+arr32 = [[str3]*10]*3  #can't define two-dimension list like this
+str3 = 'y'
+arr32[0][0] = 'xxx'    
+print( arr3 )
+print( arr32 )
+print('----------------')
 
 mmap = {'a':'1', 'b':'2', 'c':'3'};
 print( mmap['a'])
@@ -138,3 +154,8 @@ else:
 print( sum ( [1,2,3,4] ))    
 
 print(time.time())
+
+match = re.match('Hello[ \t]*(.*)world','Hello Python world')
+print( match.group(1) )
+
+
