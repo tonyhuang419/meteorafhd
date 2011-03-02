@@ -158,4 +158,12 @@ print(time.time())
 match = re.match('Hello[ \t]*(.*)world','Hello Python world')
 print( match.group(1) )
 
+x = (1)   #an integer
+print(x)
+x = (1,)  #a tuple containing an integer
+print(x)
+
+T = (4,5,6)
+T = (1,) + T[1:]
+print(T)
 
