@@ -73,7 +73,8 @@ print( num );   #octal literals
 print( int(str(num) , 10));
 print( Decimal('0.10') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3') );
 
-
+print(type(vary))
+print('----------------------------------'+vary)
 #loop
 for c in vary:
     print(c);
@@ -125,7 +126,8 @@ print(''.join([s[i] for i in range(len(s)-1,-1,-1)]))
 
 
 #condition
-if (varx == 1) :
+if (varx == 1     \
+    and 1) :    #the backslashes allow continuations
     print("11111");
 elif (varx==23):
     print("2222");
@@ -135,8 +137,15 @@ elif (varx==23):
 # check reference count
 sys.getrefcount(1) 
 
-print( 2 or 3 )
-print( [] or {} )
+print( 2 or 3 )   #return left oper and if true  
+print( [] or {} ) #else return right oper and(true or false)
+print( [] or 3 )
+print( 3 or {} )
+
+print( 2 and 3 ) #return left oper and if true                   
+print( [] and {} ) #else return right oper and(true or false)
+print( [] and 3 )
+print( 3 and {} )
 
 
 L = ['abc'];
@@ -166,4 +175,49 @@ print(x)
 T = (4,5,6)
 T = (1,) + T[1:]
 print(T)
+
+
+L = [1,2];
+X = L;
+L = L + [3,4]   #make a new object
+print(X)
+print(L)
+
+X = L
+L += [3,4]  #extend object
+# print ( X, L )
+print X, L 
+
+L.extend([7,8,9])
+L[len(L):] = [11,12,13]
+print(L)
+
+T1,T2,T3 = (1,2,3),(4,5,6),(7,8,9)
+print(zip(T1,T2,T3))
+T1,T2,T3 = [1,2,3],[4,5,6],[7,8,9]
+print(zip(T1,T2,T3))
+
+x = [1,2,3,4,5]
+x = [x+10 for x in x]
+print(x)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

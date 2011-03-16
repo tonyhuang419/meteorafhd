@@ -29,6 +29,23 @@ def factorial(num , defvalue = 1):
 
 print(factorial(5));
 
+def feb(num):
+    numList = ['1']
+    lastNum = 0
+    lastNum2 = 1
+    sum = 1
+    for i in range(num):
+        temp = lastNum2
+        lastNum2 =  lastNum + lastNum2
+        lastNum = temp
+        numList.extend(str(lastNum2))
+        sum = sum + lastNum2
+    print(numList)
+    return sum
+
+print feb(4)
+
+
 
 def printMax(x, y):
     '''Prints the maximum of two numbers.
