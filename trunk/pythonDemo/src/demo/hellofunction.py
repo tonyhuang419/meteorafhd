@@ -96,9 +96,10 @@ def nameFunction( a=11 , b=22 , c=33):
 nameFunction( a=1 , c=3 , b=2 )
 nameFunction( 1, c=3  )
 
+
+print('------------------------')
 def varArgs( a , b , *args , **args2 ):
     print( str(a) + str(b) + str(args) + str(args2) )
-varArgs( 1,2,3,4,5,6,x=1,y=2 )
 varArgs( 1,2,3,4,5,6,x=1,y=2 )
 
 mapFunction = { 'x' : (  lambda x : x * x ) ,
@@ -156,7 +157,11 @@ saver2 ( []  )
 
 
 def getMult():
+    '''i am getmult'''
     return 1,2
+
+print('---------------')
+print(getMult.__doc__)
 
 x , y = getMult();
 z = getMult();
@@ -166,4 +171,29 @@ print(z)
 print(type(x))
 print(type(z))
 
+
+def func(data):  
+    count = [data]  
+    def wrap():  
+        count[0] += 1  
+        return count[0]  
+    return wrap    
+a = func(1)  
+print(a())
+print(a())  
+
+
+g  = 0;
+def xg():
+    g = 1;
+print(g)  #it's global g, not fun xg's g
+    
+def func2(a , b=0):
+    print( "%s ... %s" % (a,b) )
+func2(a=2)
+
+print('--------------')
+x = (1,2)
+y = (3,4)
+map(func2 , x , y )
     
