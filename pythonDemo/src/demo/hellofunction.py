@@ -196,4 +196,13 @@ print('--------------')
 x = (1,2)
 y = (3,4)
 map(func2 , x , y )
+
+print('--------------')
+args = [ (func2,1,2),(func2,3,4)  ]
+for(func,arg1,arg2) in args:
+    func(arg1,arg2)
+    
+  
+
+
     

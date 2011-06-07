@@ -79,4 +79,56 @@ d.sex = 'male'
 print(d.sex)
 d.playFootball.play()
 
+class X:
+    def x(self,name):
+        self.x = name;
+
+d = X();
+d.x('aa')
+print(d.x)
+
+print('-----------------')
+class Father1:
+    def __init__(self):
+        print('father1')
+        
+class Father2:
+    def __init__(self):
+        print('father2')
+        
+class sub(Father1,Father2):
+    def __init__(self):
+        print('init sub')
+        #super.__init__(self)
+
+f1 = Father1()
+f2 = Father2()
+subX = sub()
+
+
+
+class staticClass:
+    str = "I'm a static method."
+    #def bar():
+    def bar(cls):
+        #print staticClass.str
+        print cls.str
+    #bar = staticmethod(bar)
+    bar = classmethod(bar)
+    
+    @staticmethod
+    def sta():
+        print('i am static')
+    
+    
+#staticClass.bar()
+staticClass.bar()
+staticClass.sta()
+    
+
+
+
+
+
+
 
