@@ -29,5 +29,17 @@ for i in range(2):
     t = ThreadPrint();
     t.start(); 
     
-    
+print('----------') 
+class str2(str):
+    def __str__(self):
+        return "foo"
+
+x = str2("bar")
+print str(x)
+
+class unicode2(unicode):
+    def __unicode__(self):
+        return u"foo"
+x = unicode2(u"bar")
+print unicode(x)
     

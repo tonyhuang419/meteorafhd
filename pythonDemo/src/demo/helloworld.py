@@ -102,6 +102,11 @@ arr32 = [[str3]*10]*3  #can't define two-dimension list like this
 str3 = 'y'
 arr32[0][0] = 'xxx'    
 print( arr3 )
+arr3.remove('x')
+del arr3[3]
+
+print('zzzzzzzzzzzzzzzzzzzzzzz')
+
 print( arr32 )
 print('----------------')
 
@@ -123,6 +128,14 @@ print( '123'[ -1000:1000] )
 
 s = '123'
 print(''.join([s[i] for i in range(len(s)-1,-1,-1)]))
+
+
+setC = set(['a','b','c'])
+setC.add('d')
+print( len(setC))
+setC.clear()
+print( len(setC))
+
 
 
 #condition
@@ -201,6 +214,12 @@ x = [1,2,3,4,5]
 x = [x+10 for x in x]
 print(x)
 
+
+print( random.randint(1,9))
+print( random.randint(1,9))
+print( random.randint(1,9))
+print( random.randint(1,9))
+print( random.randint(1,9))
 
 
 
