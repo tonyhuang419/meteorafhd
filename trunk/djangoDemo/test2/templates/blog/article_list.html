@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+</head>
+<body>
+
+{% if object_list %}
+  {% for article in object_list %}
+    <div class="article">
+      <div class="title"><a href="/blog/{{ article.id }}">{{ article.title }}</a></div>
+    </div>
+  {% endfor %}
+{% else %} 
+  <p>對不起沒有文章喔！</p>
+{% endif %}
+
+</body>
+</html>
