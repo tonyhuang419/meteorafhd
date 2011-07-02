@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+</head>
+<body>
+
+<div class="article">
+  <div class="title">標題: {{ object.title }}</div>
+  <div class="pub_date">{{ object.published_at }}</div>
+  <div class="content">{{ object.content }}</div>
+  <div class="category">發表於: {{ object.category.name }}</div>
+</div>
+<p><a href="/admin/blog/article/{{ object.id }}">修改</a></p>
+<p><a href="/blog">BACK</a></p>
+
+</body>
+</html>
