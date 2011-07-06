@@ -124,7 +124,6 @@ class staticClass:
 #staticClass.bar()
 staticClass.bar()
 staticClass.sta()
-    
 
 
 
