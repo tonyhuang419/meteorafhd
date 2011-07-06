@@ -1,4 +1,4 @@
-# coding=UTF-8
+﻿# coding=UTF-8
 '''
 Created on 2011-6-30
 
@@ -19,6 +19,16 @@ class Article(models.Model):
     content       = models.TextField()
     category      = models.ForeignKey(Category)
     def __unicode__(self):
+    #print(self.title)
         return self.title
+    class Admin:
+        pass
+    class Meta:
+        ordering = ['title','-published_at']
+
+class Author(models.Model):
+    name      = models.TextField()
+    def __unicode__(self):
+        return self.name
     class Admin:
         pass
