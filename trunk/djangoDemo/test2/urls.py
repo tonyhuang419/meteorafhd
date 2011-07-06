@@ -1,8 +1,9 @@
 # coding=UTF-8
 from django.conf.urls.defaults import patterns, include, url
+from django.contrib import admin
+import settings
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -23,7 +24,12 @@ urlpatterns = patterns('',
 	(r'^ctu/$', 'test2.test.ctu_list'),
     (r'^csv/(?P<filename>\w+)/$', 'test2.test.download'),
     
+	(r'^upload/$', 'test2.test.upload'),
     (r'^login/$', 'test2.test.login'),
     (r'^logout/$', 'test2.test.logout'),
+    
+    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.STATIC_PATH}),
+    (r'^ajax/article_list/$', 'blog.views.input'),                  
 )
 

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=utf-8>
+	<meta charset=utf-8>
+	<script type="text/javascript" src="/site_media/script/jquery-1.6.2.js"></script>
 </head>
 <body>
 
+<form method="GET" action="/blog/search/">
+ 搜索：
+<input name="search" type="text" value="{{ searchvalue }}"/>
+<input type="submit" value="提交"/>
+</form>
+    
+    
 {% if object_list %}
   {% for article in object_list %}
     <div class="article">
@@ -14,6 +22,34 @@
 {% else %} 
   <p>對不起沒有文章喔！</p>
 {% endif %}
+<br/>
+{% if has_previous %}
+    <a href="/blog?page={{ previous }}">上一页</a>
+    {% endif %} {% if has_next %}
+    <a href="/blog?page={{ next }}">下一页</a>
+{% endif %}
+<br/><br/>
+<img src="/site_media/1.jpg"/>
+
+<br/>
+<input type="text" id="info" >
+
+<script type="text/javascript">
+	//$("#info").blur( function(){
+	//	alert(  $("#info").val() );  
+	//});
+	$("#info").blur( function(){
+			 var info = $("#info").val();
+			 var verpath = "/ajax/article_list/?input="+info;
+			 $.ajax({
+				   type: "GET",
+				   url: verpath,  
+				   success: function(s) {
+				     alert("ver result:"+s);
+				   }
+			});
+		 } )
+</script>
 
 </body>
 </html>

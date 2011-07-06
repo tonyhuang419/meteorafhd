@@ -1,15 +1,16 @@
-#Sat Jul 02 02:33:16 CST 2011
+#Wed Jul 06 01:35:45 CST 2011
 eclipse.preferences.version=1
 encoding//test2/__init__.py=UTF-8
 encoding//test2/blog/__init__.py=UTF-8
 encoding//test2/blog/admin.py=UTF-8
 encoding//test2/blog/models.py=UTF-8
 encoding//test2/blog/urls.py=UTF-8
+encoding//test2/customerTag/templatetags/my_tag.py=UTF-8
 encoding//test2/manage.py=UTF-8
 encoding//test2/settings.py=UTF-8
 encoding//test2/templates/blog/article_detail.html=UTF-8
 encoding//test2/templates/blog/article_list.html=UTF-8
-encoding//test2/templatetags/__init__.py=UTF-8
-encoding//test2/templatetags/my_tag.py=UTF-8
+encoding//test2/templates/ctu_name_list.html=UTF-8
 encoding//test2/test.py=UTF-8
 encoding//test2/urls.py=UTF-8
+encoding/<project>=UTF-8

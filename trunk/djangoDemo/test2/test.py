@@ -1,4 +1,5 @@
 # coding=UTF-8
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import loader, Context
@@ -22,8 +23,28 @@ ctu_info_t = [
 def index(request):
     return HttpResponse("Hello, Django.")
 
+@staff_member_required
 def ctu_list(request):
     return render_to_response('ctu_name_list.html',{'list':ctu_info,'list2':ctu_info_t})
+
+
+def upload(request):
+    file_obj = request.FILES.get('file',None)
+    if file_obj:
+        import csv,StringIO
+        try:
+            #for chunk in file_obj.chunks():
+            #    reader = csv.reader(chunk)
+            #    for row in reader:
+            #        print( " %s, %s, %s " % ( row[0] ,row[1] ,row[2] ) )
+            buf = StringIO.StringIO(file_obj.read())
+            reader = csv.reader(buf)
+            for row in reader:
+                print( " %s, %s, %s " % ( row[0] ,row[1] ,row[2] ) )
+        except Exception,data:
+            print Exception,":",data
+            return render_to_response('__error.html')
+        return render_to_response('ctu_name_list.html',{'list':ctu_info,'list2':ctu_info_t})
 
 def download(request, filename):
     response = HttpResponse(mimetype='text/csv')
@@ -48,7 +69,7 @@ def login(request):
             print('login %s' % username)
             return render_to_response('login.html', {'username':username})
         return render_to_response('login.html')
-    except KeyError:
+    except:
         return render_to_response('login.html')
 
 
