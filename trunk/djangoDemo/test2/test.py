@@ -7,6 +7,7 @@ from django.template import loader, Context
 # import django
 # print django.get_version()
 
+
 ctu_info = []
 ctu_info.append( { 'name':'jack','address':'LA'  } )
 ctu_info.append( { 'name':'tony','address':'CA' } )
@@ -58,6 +59,7 @@ def download(request, filename):
     return response
 
 def login(request):
+    my_custom_sql();
     username = ''
     try:
         if request.method == 'POST':
@@ -82,3 +84,15 @@ def logout(request):
         pass
     return HttpResponseRedirect("/login/")
 
+def my_custom_sql(): 
+    from django.db import connection 
+    cursor = connection.cursor() 
+    print('excute sql...')
+    cursor.execute("SELECT * FROM blog_article ")
+    print('sql....')
+    print connection.queries[-1]
+    row = cursor.fetchone()
+    while(row):
+        print(row)
+        row = cursor.fetchone()
+    return row 
