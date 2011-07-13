@@ -123,6 +123,7 @@ INSTALLED_APPS = (
 	'test2.customerTag',  #自定义过滤器
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+	'debug_toolbar',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -152,4 +153,11 @@ LOGGING = {
 
 
 STATIC_PATH = './media'
+
+import logging
+logging.basicConfig(
+    level = logging.DEBUG,
+    format = '%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s',
+    filename = 'logs/development.log', )
+logger = logging.getLogger(__name__)
 
