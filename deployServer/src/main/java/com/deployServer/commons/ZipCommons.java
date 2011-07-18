@@ -11,8 +11,8 @@ import com.deployServer.util.AntZip;
 public class ZipCommons {
 
 	private static Log logger = LogFactory.getLog("ZipCommons");
-	final static public String deployGLPath = "D:\\ide\\jboss\\3.2.2\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war";
-	final static public String deployCLPath = "D:\\ide\\jboss\\3.2.2\\server\\default\\deploy\\bgcl.ear\\bgcl.war";
+	final static public String deployGLPath = "D:\\dev\\jboss\\3.2.2\\server\\default\\deploy\\baosteel_travel.ear\\baosteel_travel.war";
+	final static public String deployCLPath = "D:\\dev\\jboss\\3.2.2\\server\\default\\deploy\\bgcl.ear\\bgcl.war";
 	final static public String deployPathSuffixJspGL = "\\gl";
 	final static public String deployPathSuffixJspCL = "\\cl";
 	final static public String deployPathSuffixClass = "\\WEB-INF\\classes\\com";

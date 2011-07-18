@@ -19,7 +19,7 @@ public class Dao {
         try {   
             Class.forName("com.mysql.jdbc.Driver");// 加载驱动程序   
             conn = DriverManager.getConnection(   
-                    "jdbc:mysql://localhost/test", "root", "lzhouwen");   
+                    "jdbc:mysql://localhost/test", "root", "***");   
             statement = conn.createStatement();   
         } catch (Exception e) {   
             e.printStackTrace();   
@@ -31,7 +31,7 @@ public class Dao {
         try {   
             Class.forName("com.mysql.jdbc.Driver");// 加载驱动程序   
             String url = "jdbc:mysql://localhost/" + dbname;   
-            conn = DriverManager.getConnection(url, "root", "lzhouwen");   
+            conn = DriverManager.getConnection(url, "root", "***");   
             statement = conn.createStatement();   
         } catch (Exception e) {   
             e.printStackTrace();   

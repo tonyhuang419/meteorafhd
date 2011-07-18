@@ -97,7 +97,7 @@ public class Demo extends HttpServlet {
 		String dname;
 		try{
 			Class.forName("org.gjt.mm.mysql.Driver");
-			con =  DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "fhdone", "lzhouwen");
+			con =  DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "fhdone", "***");
 			stmt = con.createStatement();
 			rs = stmt.executeQuery("select * from demo1");
 			out.println(" <table width='500' border='1'>  ");

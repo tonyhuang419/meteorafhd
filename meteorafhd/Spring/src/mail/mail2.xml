@@ -8,7 +8,7 @@
 	<bean id="smtpAuthenticator"
 		class="mail.SmtpAuthenticator">
 		<constructor-arg value="meteorafhd@gmail.com" />
-		<constructor-arg value="lzhouwen" />
+		<constructor-arg value="***" />
 	</bean>
 
         <!-- now setup an authenticated session -->
