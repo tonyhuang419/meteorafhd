@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con =  DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:fhdone","scott","lzhouwen");
+			con =  DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:fhdone","scott","***");
 			stmt = con.createStatement();
 			
 			String sqlString = "select loc from dept where dname = '" +name + "'";		

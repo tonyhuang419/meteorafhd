@@ -1,11 +1,18 @@
-<!-- Indices written at 10-8-14 ÏÂÎç9:59 -->
+<!-- Indices written at 10-8-16 ÏÂÎç2:23 -->
 
 <datastore-indexes>
 
     <!-- Used 2 times in query history -->
     <datastore-index kind="Article" ancestor="false" source="auto">
         <property name="isActive" direction="asc"/>
+        <property name="type" direction="asc"/>
         <property name="createdTime" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Article" ancestor="false" source="auto">
+        <property name="isActive" direction="asc"/>
+        <property name="lastModifyTime" direction="desc"/>
     </datastore-index>
 
 </datastore-indexes>

@@ -14,7 +14,7 @@
 			<value>meteorafhd</value>
 		</property>
 		<property name="password">
-			<value>lzhouwen</value>
+			<value>***</value>
 		</property>
 	</bean>
 	<!-- 简单的message -->

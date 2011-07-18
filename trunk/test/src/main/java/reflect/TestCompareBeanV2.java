@@ -5,8 +5,8 @@ import java.util.List;
 public class TestCompareBeanV2 {
 
 	public void testCompare(){
-		Test t1 = new Test(1L,"amiga",1);
-		Test t2 = new Test(2L,"fhdone",2);
+		Test t1 = new Test(1L,"fhdone1",1);
+		Test t2 = new Test(2L,"fhdone2",2);
 		CompareBeanV2 cv2 = new CompareBeanV2();
 		
 		

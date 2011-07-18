@@ -17,7 +17,7 @@ public class AttachedFileDemo {
 
 		//SMTP验证时，需要用户名和密码
 		senderImpl.setUsername("meteorafhd");
-		senderImpl.setPassword("lzhouwen");
+		senderImpl.setPassword("***");
 		//不设这个是不能用用户名密码通过验证发的
 		Properties prop = new Properties();
 		prop.setProperty("mail.smtp.auth", "true");       

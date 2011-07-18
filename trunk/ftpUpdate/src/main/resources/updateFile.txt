@@ -1,6 +1,3 @@
-WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\invoicemanager\form\InvoiceForm.class
-WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\invoicemanager\service\impl\InvoiceServiceImpl.class
-WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\ordermanager\service\impl\OrdersServiceImpl.class
-WEB-INF\classes\com\baosight\baosteel\tourism\gl\airorder\prepareorder\service\impl\AirTicketServiceImpl.class
-WEB-INF\classes\spring\ServiceBeans-glao.xml
-gl\airorder\invoicemanager\cpzop.jsp
+WEB-INF\classes\com\baosight\baosteel\tourism\cl\userlogin\action\ClChgPasswordAction.class
+gl\airorder\prepareorder\jipiao_chaxun_hujiao.jsp
+

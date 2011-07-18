@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"   
+    "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+	<bean id="demoService" class="service.impl.DemoService"/>  
+	<bean id="demoTwoService" class="service.impl.DemoTwoService"/>  
+	
+	<bean id="demoServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">  
+	        <property name="service">  
+	            <ref bean="demoService"/>  
+	        </property>  
+	        <!-- 定义服务名 -->  
+	        <property name="serviceName">  
+	            <value>demo</value>  
+	        </property>  
+	        <property name="serviceInterface">  
+	            <value>service.IDemoService</value>  
+	        </property>  
+	        <property name="registryPort">  
+	            <value>8888</value>  
+	        </property>  
+	    </bean>  
+	    
+	    
+	  <bean id="demoTwoServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">  
+	        <property name="service">  
+	            <ref bean="demoTwoService"/>  
+	        </property>  
+	        <!-- 定义服务名 -->  
+	        <property name="serviceName">  
+	            <value>demoTwo</value>  
+	        </property>  
+	        <property name="serviceInterface">  
+	            <value>service.IDemoTwoService</value>  
+	        </property>  
+	        <property name="registryPort">  
+	            <value>8888</value>  
+	        </property>  
+	    </bean> 
+</beans>  
