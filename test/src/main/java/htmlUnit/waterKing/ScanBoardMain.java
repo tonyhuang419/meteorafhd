@@ -12,7 +12,7 @@ public class ScanBoardMain {
 
 
 	public static void main(String[] args){
-		User user = new User("非法_用户","happyamiga",100 , 20);
+		User user = new User("非法_用户","***",100 , 20);
 
 		ExecutorService exec = Executors.newFixedThreadPool(Units.threadSize);
 

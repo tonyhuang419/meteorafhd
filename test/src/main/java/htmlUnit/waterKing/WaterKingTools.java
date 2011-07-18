@@ -462,7 +462,7 @@ public class WaterKingTools {
 	public static void main(String[] args){
 
 		WaterKingTools waterKingTools = new WaterKingTools();
-		WebClient webClient = waterKingTools.login("非法_用户", "happyamiga");
+		WebClient webClient = waterKingTools.login("非法_用户", "***");
 		//
 		//		List<HtmlTableBody> waterList = waterKingTools.doGetHtmlTable(webClient , "http://e.taisha.org/forum-74-1000.html");
 		//		List<Board> boardList  = waterKingTools.doGetWaterList(waterList);

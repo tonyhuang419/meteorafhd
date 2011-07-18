@@ -19,7 +19,7 @@ public class HelloHtmlUnit {
 			HtmlTextInput username = form.getInputByName("username");
 			HtmlPasswordInput password = form.getInputByName("password");
 			username.setValueAttribute("非法_用户");
-			password.setValueAttribute("happyamiga");
+			password.setValueAttribute("***");
 			HtmlButton button = form.getButtonByName("userlogin");
 			page = button.click();
 			System.out.println(page.getTitleText());
