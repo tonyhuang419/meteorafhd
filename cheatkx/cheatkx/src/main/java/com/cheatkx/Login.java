@@ -22,7 +22,7 @@ import org.apache.commons.logging.LogFactory;
 public class Login extends BaseKaixin {
 
 	static String email = "meteorafhd@gmail.com";
-	static String  password = "happyamiga";
+	static String  password = "***";
 
 	protected Log logger = LogFactory.getLog(this.getClass());
 
@@ -77,10 +77,10 @@ public class Login extends BaseKaixin {
 					}
 					in.close();
 					redirect.releaseConnection();
-					//防止信息存在换行
-					if( sb.indexOf("我的首页 - 开心网")!=-1 ){
+					//闃叉淇℃伅瀛樺湪鎹㈣
+					if( sb.indexOf("鎴戠殑棣栭〉 - 寮�績缃�)!=-1 ){
 						logger.info("login success");
-						//获取uid
+						//鑾峰彇uid
 						uid = Tools.getUid(sb.toString());
 						return client;
 					}
