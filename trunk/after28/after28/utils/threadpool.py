@@ -1,4 +1,6 @@
 # -*- coding: UTF-8 -*-
+#!/usr/bin python
+
 """Easy to use object-oriented thread pool framework.
 
 A thread pool is an object that maintains a pool of worker threads to perform

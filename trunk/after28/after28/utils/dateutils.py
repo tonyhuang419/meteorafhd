@@ -1,4 +1,6 @@
 # coding=UTF-8
+#!/usr/bin python
+
 '''
 Created on 2011-7-15
 

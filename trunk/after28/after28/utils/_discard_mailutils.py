@@ -1,4 +1,5 @@
 # coding=UTF-8
+#!/usr/bin python
 # discard
 
 #导入smtplib和MIMEText

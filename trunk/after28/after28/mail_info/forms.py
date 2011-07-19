@@ -1,3 +1,6 @@
+# coding=UTF-8
+#!/usr/bin python
+
 '''
 Created on 2011-7-13
 
@@ -11,6 +14,6 @@ class MailInfoForm(ModelForm):
     class Meta:
         model = MailInfo
         #fields = ('name', 'title')
-        exclude = ('validateStr','validateStrUpdate','hasSent',
+        exclude = ('hasBeSured','validateStr','validateStrUpdate','hasSent',
                    'createDate','modifyDate')
         
