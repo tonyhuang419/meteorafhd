@@ -11,11 +11,11 @@ import datetime
 
 
 failResopnse = '''
-    %s 确认失败，请重新确认或到我们的主页重新提交确认。如果还是失败，联系我！
+    %s 确认失败。请重新确认或到首页重新提交确认。如果还是失败，联系我！
     '''
 
 successResponse = '''
-    %s 确认成功，请耐心等候您的闺蜜来访
+    %s 确认成功。请耐心等候您的闺蜜来访 ^-^
 '''
 
 def sure_info_create(request):
