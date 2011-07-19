@@ -1,4 +1,5 @@
 ﻿# coding=UTF-8
+#!/usr/bin python
 '''
 Created on 2011-6-30
 
@@ -10,6 +11,9 @@ class MailInfo(models.Model):
     
     #email address
     email = models.CharField(max_length=50)
+   
+    #mail has sured ,0:not sured 1:has be sured
+    hasBeSured = models.CharField(max_length=1,null=False)
    
     #last period time
     lastDate = models.DateField(null=True)

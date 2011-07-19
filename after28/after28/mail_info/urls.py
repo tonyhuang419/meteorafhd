@@ -1,4 +1,5 @@
 # coding=UTF-8
+#!/usr/bin python
 
 from django.conf.urls.defaults import patterns, include, url
 
@@ -20,5 +21,8 @@ urlpatterns = patterns('',
     #(r'^$', 'mail_info.firstPage.index'),
     
     (r'^sureInfo/$', 'after28.mail_info.firstPage.mailInfoSave'),
+    
+    (r'^sure_info_create/$', 'after28.mail_info.sureInfo.sure_info_create'),
+    (r'^sure_info_update/$', 'after28.mail_info.sureInfo.sure_info_update'),
     
 )
