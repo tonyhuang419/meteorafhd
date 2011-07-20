@@ -12,7 +12,7 @@ class MailInfo(models.Model):
     #email address
     email = models.CharField(max_length=50)
    
-    #mail has sured ,0:not sured 1:has be sured
+    #mail has sured ,0:not sured 1:has be sured 2 has be canceled
     hasBeSured = models.CharField(max_length=1,null=False)
    
     #last period time
@@ -25,6 +25,7 @@ class MailInfo(models.Model):
     cycle = models.IntegerField(null=True)
    
     #validate string info,use for make sure email address
+    # and cancel send mail
     validateStr = models.CharField(max_length=200,null=True)
 
     #(update use)validate string info,use for make sure email address
