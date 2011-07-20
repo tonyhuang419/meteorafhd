@@ -24,5 +24,6 @@ urlpatterns = patterns('',
     
     (r'^sure_info_create/$', 'after28.mail_info.sureInfo.sure_info_create'),
     (r'^sure_info_update/$', 'after28.mail_info.sureInfo.sure_info_update'),
+    (r'^sure_info_cancel/$', 'after28.mail_info.sureInfo.sure_info_cancel'),
     
 )
