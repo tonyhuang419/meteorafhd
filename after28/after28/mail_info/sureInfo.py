@@ -10,7 +10,7 @@ import datetime
 
 
 successResponse = '''
-    %s 确认成功。请耐心等候您的闺蜜来访 ^-^
+    %s 确认成功。请耐心等候您最亲密的朋友 ^-^
 '''
 
 failResopnse = '''
@@ -122,6 +122,7 @@ def  sureMailInfoUpdate(request):
         m.cycle = cycle
         m.predays = predays
         m.hasBeSured = '1'
+        m.modifyDate = datetime.datetime.now()
         #m.validateStrUpdate = '-'
         m.save()
         logger.info('%s has be update' % m.email)
