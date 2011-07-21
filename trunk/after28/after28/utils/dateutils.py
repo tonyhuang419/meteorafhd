@@ -16,6 +16,17 @@ def getMD5Time():
     now = time.time()
     return hashlib.md5(str(now)).hexdigest()
     
+def getNextDayReaminSeconds():
+    tm = datetime.date.today() + datetime.timedelta( days = 1 )
+    arr = tm.strftime( '%Y,%m,%d'   ).split(',')
+    tmT = datetime.datetime( int(arr[0]), int(arr[1]), int(arr[2]))
+    return (tmT - datetime.datetime.now()).seconds + 300 
+    
 
-print(getMD5Time())
-print(datetime.datetime.now())
+
+#print(getMD5Time())
+#print(datetime.datetime.now())
+
+#today = datetime.date.today()
+#date = today.strftime('%Y')+'-'+today.strftime('%m')+'-'+today.strftime('%d')
+#print(date)

@@ -27,6 +27,7 @@ class EmailThread(threading.Thread):
         logger.info('send mail to %s----%s' %  ( self.recipient_list, self.body ) )
         msg.send(self.fail_silently)
         
+        
 def send_mail(subject, body, recipient_list, fail_silently=False, *args, **kwargs):
         EmailThread(subject, body, recipient_list, fail_silently ).start()
 
@@ -54,6 +55,9 @@ def sendCreateSureMail(mi):
     send_mail(  "After28邮件确认", sendinfo ,   [email] )
 
 
+
+
+
 update_mail_template = '''   
 <html>
   <head></head>
@@ -78,6 +82,10 @@ def sendUpdateSureMail(request , mi):
     send_mail(  "After28邮件确认", sendinfo ,   [email] )
 
 
+
+
+
+
 cancel_mail_template = '''   
     取消邮件发送（永久有效）
   <a href="http://192.168.1.1/mail_info/sure_info_cancel?email=%s&key=%s">http://192.168.1.1/mail_info/sure_info_cancel?email=%s&key=%s</a>
@@ -86,6 +94,24 @@ def cancelMailHref(mi):
     email = str(mi.email)
     key = str(mi.validateStr)
     return cancel_mail_template % ( email, key , email , key )
+
+
+
+
+send_mail_notify_template = '''   
+<html>
+  <head></head>
+  <body>  
+    您好，%s！ 您最亲密的朋友最要来了，记得准备好您的闺蜜哦  ^-^
+     <br/><br/>%s
+   </body>
+</html>
+'''
+def sendMailNotify(mi):
+    email =  str(mi.email)
+    sendinfo = send_mail_notify_template % ( email , cancelMailHref(mi) )
+    send_mail(  "After28提醒邮件", sendinfo ,   [email] )
+    
 
 
 def test_mail():

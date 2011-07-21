@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'debug_toolbar',
     'after28.mail_info',
+    #'after28.django_cron',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -173,7 +174,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 EMAIL_HOST = 'smtp.gmail.com'                   #邮件smtp服务器
 EMAIL_PORT = '25'                                        #端口
 EMAIL_HOST_USER = 'meteorafhd@gmail.com'  #邮件账户
-EMAIL_HOST_PASSWORD = '***'      #密码
+EMAIL_HOST_PASSWORD = '*'      #密码
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 

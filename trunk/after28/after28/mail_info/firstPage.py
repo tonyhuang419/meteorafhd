@@ -32,7 +32,7 @@ def mailInfoSave(request):
             logger.info('has exist send info,update it')
             for mUpdate in emailList:
                 mUpdate.validateStrUpdate = dateutils.getMD5Time()
-                mUpdate.modifyDate = datetime.datetime.now()
+                #mUpdate.modifyDate = datetime.datetime.now()
                 #logger.info(request.POST['sendDate'])
                 #logger.info(request.POST['lastDate'])
                 #logger.info(request.POST['cycle'])

@@ -1,10 +1,15 @@
 # coding=UTF-8
 #!/usr/bin python
 
+from after28.scheduler.sendMailJob import mailJobToday
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 import settings
 
+#import django_cron
+#django_cron.autodiscover()
+mailJobToday()
+    
 # Uncomment the next two lines to enable the admin:
 admin.autodiscover()
 
