@@ -25,7 +25,7 @@ def mailInfoSave(request):
             mCreate.hasBeSured = '0'
             mCreate.save()
             emailmutil.sendCreateSureMail(mCreate)
-            responseInfo = '%s 提交成功，请查收邮件并确认' % str(email)
+            responseInfo = '%s 提交成功，请查收邮件并确认。' % str(email)
             return render_to_response('firstPage.html',{'show': responseInfo })
         else:
             #该邮件地址存在发送信息，给客户邮件确认修改
@@ -39,10 +39,10 @@ def mailInfoSave(request):
                 #logger.info(request.POST['predays'])
                 mUpdate.save()
                 emailmutil.sendUpdateSureMail(request,mUpdate)
-                responseInfo = '%s 曾今提交过哦，如果有修改，请查收邮件并重新确认  ' % str(email)
+                responseInfo = '%s 曾今提交过哦，如果有修改，请查收邮件并重新确认。  ' % str(email)
             return render_to_response('firstPage.html',{'show': responseInfo })
     else:
-        return render_to_response('firstPage.html',{'show':'对不起，我们暂时不支持GET方式提交'})
+        return render_to_response('firstPage.html',{'show':'对不起，我们暂时不支持GET方式提交。'})
         
 def hasExist(email):
     list = MailInfo.objects.filter(email=email,hasSent='0')

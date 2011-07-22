@@ -27,7 +27,7 @@ failCancelMail = '''
 
 def sure_info_create(request):
     if not request.method == 'GET':
-        return render_to_response('sureInfo.html',{'show': '对不起，不支持POST方式确认' })
+        return render_to_response('sureInfo.html',{'show': '对不起，不支持POST方式确认。' })
     else:
         email = request.GET['email']
         if sureMailInfoCreate(request):
@@ -40,7 +40,7 @@ def sure_info_create(request):
     
 def sure_info_update(request):
     if not request.method == 'GET':
-        return render_to_response('sureInfo.html',{'show': '对不起，不支持POST方式确认' })
+        return render_to_response('sureInfo.html',{'show': '对不起，不支持POST方式确认。' })
     else:
         email = request.GET['email']
         if sureMailInfoUpdate(request):
@@ -52,7 +52,7 @@ def sure_info_update(request):
 
 def sure_info_cancel(request):
     if not request.method == 'GET':
-        return render_to_response('sureInfo.html',{'show': '对不起，不支持POST方式确认' })
+        return render_to_response('sureInfo.html',{'show': '对不起，不支持POST方式确认。' })
     else:
         email = request.GET['email']
         if sureMailInfoCancel(request):
