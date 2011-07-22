@@ -7,8 +7,7 @@
 		<div class="info">上一次你家亲爱在:&nbsp;
 			<input type="date" id="lastDate" name="lastDate" onchange="calcNextTime();"
 				onclick="displayCalendar(document.forms[0].lastDate,'yyyy-mm-dd',this)">
-				来访，&nbsp;
-			周期是:&nbsp;
+				来访，周期是:&nbsp;
 				<select name="cycle" id="cycle" onchange="calcNextTime();">  
         		<option value="20">20</option>
         		<option value="21">21</option> 
@@ -48,8 +47,8 @@
         		<option value="2">2</option>
         		<option value="3">3</option>
         	</select>	
-			天发送邮件到：&nbsp;
-			<input type="text" name="email" id="email" onblur="lightOnSendBtn();" onkeyup="lightOnSendBtn();">
+			天发送邮件到：
+			<input type="text" size="30" name="email" id="email" onblur="lightOnSendBtn();" onkeyup="lightOnSendBtn();">
 		</div>
 		<div align="center">
 			<input type="submit" id="send_info" value="   确     认    " disabled="disabled" >
