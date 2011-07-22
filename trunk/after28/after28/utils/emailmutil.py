@@ -40,7 +40,7 @@ create_mail_template = '''
 <html>
   <head></head>
   <body>  
-       欢迎使用After128，点击下面的链接确认邮件地址
+        感谢您使用After128！<br/><br/>点击下面的链接确认邮件地址
      <br/><br/>
      <a href="http://192.168.1.1/mail_info/sure_info_create?email=%s&key=%s">http://192.168.1.1/mail_info/sure_info_create?email=%s&key=%s</a>
      <br/><br/>%s
@@ -62,7 +62,7 @@ update_mail_template = '''
 <html>
   <head></head>
   <body>  
-       欢迎使用After128，点击下面的链接提醒日期修改为   %s
+       感谢您使用After128！<br/>点击下面的链接提醒日期修改为   %s
      <br/><br/>
      <a href="http://192.168.1.1/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
          http://192.168.1.1/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s</a>
