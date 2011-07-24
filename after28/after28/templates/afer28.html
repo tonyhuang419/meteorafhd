@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
-<form method="post" action="/mail_info/sureInfo/"> 
+{% load static %}
+<form method="post" action="{% get_static_prefix %}/mail_info/sureInfo/"> 
 	{% csrf_token %} 
 	<input type="hidden" name="sendDate" id="sendDate" />
 		<div class="info">上一次你家亲爱在:&nbsp;

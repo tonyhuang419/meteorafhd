@@ -9,6 +9,7 @@ Created on 2011-7-18
 
 from django.core.mail import EmailMultiAlternatives
 from django.utils.log import logger
+from settings import STATIC_URL
 import threading
 
 class EmailThread(threading.Thread):
@@ -42,7 +43,8 @@ create_mail_template = '''
   <body>  
         感谢您使用After128！<br/><br/>点击下面的链接确认邮件地址
      <br/><br/>
-     <a href="http://192.168.1.1/mail_info/sure_info_create?email=%s&key=%s">http://192.168.1.1/mail_info/sure_info_create?email=%s&key=%s</a>
+     <a href="%s/mail_info/sure_info_create?email=%s&key=%s">
+     %s/mail_info/sure_info_create?email=%s&key=%s</a>
      <br/><br/>%s
    </body>
 </html>
@@ -50,8 +52,8 @@ create_mail_template = '''
 def sendCreateSureMail(mi):
     email = str(mi.email)
     key = str(mi.validateStr)
-    sendinfo = create_mail_template % ( email , key , 
-                                        email , key ,  cancelMailHref(mi) )
+    sendinfo = create_mail_template % ( STATIC_URL, email , key , 
+                                        STATIC_URL, email , key ,  cancelMailHref(mi) )
     send_mail(  "After28邮件确认", sendinfo ,   [email] )
 
 
@@ -63,9 +65,8 @@ update_mail_template = '''
   <head></head>
   <body>  
        感谢您使用After128！<br/>点击下面的链接提醒日期修改为   %s
-     <br/><br/>
-     <a href="http://192.168.1.1/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
-         http://192.168.1.1/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s</a>
+     <br/><br/><a href="%s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
+     %s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s</a>
      <br/><br/>%s
    </body>
 </html>
@@ -77,8 +78,8 @@ def sendUpdateSureMail(request , mi):
     sendDate = str(request.POST['sendDate'])
     email = str(mi.email)
     validateStrUpdate = str(mi.validateStrUpdate)
-    sendinfo = update_mail_template % ( sendDate ,  email, validateStrUpdate , lastDate  , cycle , predays , 
-                                       email , validateStrUpdate , lastDate  , cycle , predays , cancelMailHref(mi) )
+    sendinfo = update_mail_template % ( sendDate ,  STATIC_URL , email, validateStrUpdate , lastDate  , cycle , predays , 
+                                        STATIC_URL, email , validateStrUpdate , lastDate  , cycle , predays , cancelMailHref(mi) )
     send_mail(  "After28邮件确认", sendinfo ,   [email] )
 
 
@@ -88,12 +89,12 @@ def sendUpdateSureMail(request , mi):
 
 cancel_mail_template = '''   
     取消邮件发送（永久有效）
-  <a href="http://192.168.1.1/mail_info/sure_info_cancel?email=%s&key=%s">http://192.168.1.1/mail_info/sure_info_cancel?email=%s&key=%s</a>
+  <a href="%s/mail_info/sure_info_cancel?email=%s&key=%s">%s/mail_info/sure_info_cancel?email=%s&key=%s</a>
 '''
 def cancelMailHref(mi):
     email = str(mi.email)
     key = str(mi.validateStr)
-    return cancel_mail_template % ( email, key , email , key )
+    return cancel_mail_template % ( STATIC_URL, email, key , STATIC_URL,email , key )
 
 
 
