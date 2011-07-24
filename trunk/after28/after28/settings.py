@@ -2,7 +2,10 @@
 #!/usr/bin python
 
 import logging
-import os
+import os,sys
+
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+sys.path.append( SITE_ROOT + '/after28'  )
 
 # Django settings for after28 project.
 
@@ -33,13 +36,13 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'zh-cn'
 
-SITE_ID = 1
+SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -66,7 +69,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://127.0.0.1:9000/after28'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
@@ -110,7 +113,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'after28.urls'
 
-SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -160,21 +162,22 @@ LOGGING = {
 }
 
 
-STATIC_PATH = './media'
+STATIC_PATH = SITE_ROOT+'/media'
 
 logging.basicConfig(
     level = logging.DEBUG,
     format = '%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s',
-    filename = 'logs/development.log', )
+    filename = SITE_ROOT+'/logs/development.log', )
 logger = logging.getLogger(__name__)
 
 INTERNAL_IPS = ('127.0.0.1',)
 
 #mail
-EMAIL_HOST = 'smtp.gmail.com'                   #邮件smtp服务器
-EMAIL_PORT = '25'                                        #端口
-EMAIL_HOST_USER = 'meteorafhd@gmail.com'  #邮件账户
-EMAIL_HOST_PASSWORD = '*'      #密码
+EMAIL_HOST = 'smtp.gmail.com'                   #..smtp...
+EMAIL_PORT = '25'                                        #..
+EMAIL_HOST_USER = 'meteorafhd0425@gmail.com'  #....
+EMAIL_HOST_PASSWORD = '*'      #..
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
 
