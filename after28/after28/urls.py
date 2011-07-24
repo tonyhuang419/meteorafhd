@@ -26,12 +26,12 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^after28/admin/', include(admin.site.urls)),
     
-    (r'^$', 'after28.mail_info.firstPage.index' ),
+    (r'^after28/$', 'after28.mail_info.firstPage.index' ),
     
-    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+    (r'^after28/site_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.STATIC_PATH}),
                        
-    (r'^mail_info/', include('after28.mail_info.urls')),
+    (r'^after28/mail_info/', include('after28.mail_info.urls')),
 )
