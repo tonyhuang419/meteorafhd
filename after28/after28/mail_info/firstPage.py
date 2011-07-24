@@ -9,7 +9,7 @@ from utils import dateutils, emailmutil
 import datetime
 
 def index(request):
-    return render_to_response('afer28.html')
+    return render_to_response('after28.html')
 
 def mailInfoSave(request):
     form = MailInfoForm(request.POST)
