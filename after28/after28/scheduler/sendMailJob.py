@@ -10,22 +10,22 @@ from after28.utils import dateutils
 from after28.utils.dateutils import getNextDayReaminSeconds
 from after28.utils.emailutil import sendMailNotify
 from django.utils.log import logger
-from multiprocessing.sharedctypes import synchronized
 from threading import Timer
 import datetime
 import threading
-import time
 
 
-hasopen=0
 lock = threading.Lock() 
 
 def mailJobToday():
     # 计算当前时间距离24点差
     global hasopen
+    hasopen = 0
     lock.acquire()
+    logger.info(hasopen==0)
     if hasopen == 0:
-        hasopen=1
+        logger.info('###############first send mail###############')
+        ++hasopen
         Timer( getNextDayReaminSeconds() , sendMailEveryDay, ()).start()
         #Timer( 60 , sendMailEveryDay, ()).start()
     lock.release()
@@ -35,13 +35,13 @@ def mailJobDays():
     Timer( 86400 , sendMailEveryDay, ()).start()
     
 def sendMailEveryDay():
-    print('###############schedual send mail###############')
+    logger.info('###############schedual send mail###############')
     
     #get today
     today = datetime.date.today()
     date = today.strftime('%Y')+'-'+today.strftime('%m')+'-'+today.strftime('%d')
     list = MailInfo.objects.filter(hasSent='0', hasBeSured='1' ,sendDate__lte=date)
-    
+    logger.info('need send mail %s ' % len(list))
     try:
         for m in list:
             logger.info(m.email)
