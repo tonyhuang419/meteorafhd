@@ -8,17 +8,27 @@ Created on 2011-7-20
 from after28.mail_info.models import MailInfo
 from after28.utils import dateutils
 from after28.utils.dateutils import getNextDayReaminSeconds
-from after28.utils.emailmutil import sendMailNotify
+from after28.utils.emailutil import sendMailNotify
 from django.utils.log import logger
+from multiprocessing.sharedctypes import synchronized
 from threading import Timer
 import datetime
+import threading
 import time
 
 
+hasopen=0
+lock = threading.Lock() 
+
 def mailJobToday():
     # 计算当前时间距离24点差
-    Timer( getNextDayReaminSeconds() , sendMailEveryDay, ()).start()
-    #Timer( 60 , sendMailEveryDay, ()).start()
+    global hasopen
+    lock.acquire()
+    if hasopen == 0:
+        hasopen=1
+        Timer( getNextDayReaminSeconds() , sendMailEveryDay, ()).start()
+        #Timer( 60 , sendMailEveryDay, ()).start()
+    lock.release()
     
 def mailJobDays():
     #Timer( 10 , sendMailEveryDay, ()).start()
@@ -30,18 +40,18 @@ def sendMailEveryDay():
     #get today
     today = datetime.date.today()
     date = today.strftime('%Y')+'-'+today.strftime('%m')+'-'+today.strftime('%d')
-    list = MailInfo.objects.filter(hasSent='0', sendDate__lte=date)
+    list = MailInfo.objects.filter(hasSent='0', hasBeSured='1' ,sendDate__lte=date)
     
     try:
         for m in list:
-            print(m.email)
+            logger.info(m.email)
             #send mail
             sendMailNotify(m)
             m.hasSent = '1'
             m.save()
             genNewMailInfo(m)
     except Exception, e:
-        print(e)
+        #print(e)
         logger.info(e)
     finally:    
         mailJobDays(); 

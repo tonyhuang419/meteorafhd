@@ -9,7 +9,11 @@ Created on 2011-7-18
 
 from django.core.mail import EmailMultiAlternatives
 from django.utils.log import logger
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from settings import STATIC_URL
+import smtplib
+import sys
 import threading
 
 class EmailThread(threading.Thread):
@@ -22,18 +26,30 @@ class EmailThread(threading.Thread):
         threading.Thread.__init__(self)
         
     def run (self):
-        msg = EmailMultiAlternatives(self.subject, self.body, 'None', self.recipient_list)
-        if self.html:
-            msg.attach_alternative(self.body,self.html)
+        #msg = EmailMultiAlternatives(self.subject, self.body, 'None', self.recipient_list)
+        #if self.html:
+        #    msg.attach_alternative(self.body,self.html)
         logger.info('send mail to %s----%s' %  ( self.recipient_list, self.body ) )
-        msg.send(self.fail_silently)
+        #msg.send(self.fail_silently)  
+        sendinfo = MIMEMultipart('alternative')
+        sendinfo['Subject'] = self.subject
+        sendinfo['From'] = 'root@domu-12-31-39-03-28-87.compute-1.internal'
+        sendinfo['To'] = self.recipient_list   
+        msg = MIMEText( self.body  , 'html')
+       
+        sendinfo.attach(msg)
+        server = smtplib.SMTP('localhost')
+        server.sendmail("root@domu-12-31-39-03-28-87.compute-1.internal", self.recipient_list , msg.as_string() )
+        server.quit()
+        
+ 
         
         
 def send_mail(subject, body, recipient_list, fail_silently=False, *args, **kwargs):
         EmailThread(subject, body, recipient_list, fail_silently ).start()
 
 
- 
+
  
  
 
@@ -41,7 +57,7 @@ create_mail_template = '''
 <html>
   <head></head>
   <body>  
-        感谢您使用After128！<br/><br/>点击下面的链接确认邮件地址
+        感谢您使用After28！<br/><br/>点击下面的链接确认邮件地址
      <br/><br/>
      <a href="%s/mail_info/sure_info_create?email=%s&key=%s">
      %s/mail_info/sure_info_create?email=%s&key=%s</a>
@@ -64,7 +80,7 @@ update_mail_template = '''
 <html>
   <head></head>
   <body>  
-       感谢您使用After128！<br/>点击下面的链接提醒日期修改为   %s
+       感谢您使用After28！<br/>点击下面的链接提醒日期修改为   %s
      <br/><br/><a href="%s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
      %s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s</a>
      <br/><br/>%s
@@ -121,7 +137,3 @@ def test_mail():
                 ["meteorafhd0425@gmail.com"] )
     print('ok')
     return "ok"
-
-
-    
-    
