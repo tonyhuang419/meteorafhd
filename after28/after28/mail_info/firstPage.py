@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.utils.log import logger
 from mail_info.forms import MailInfoForm
 from mail_info.models import MailInfo
-from utils import dateutils, emailmutil
+from utils import dateutils, emailutil
 import datetime
 
 def index(request):
@@ -24,7 +24,7 @@ def mailInfoSave(request):
             mCreate.hasSent = '0'
             mCreate.hasBeSured = '0'
             mCreate.save()
-            emailmutil.sendCreateSureMail(mCreate)
+            emailutil.sendCreateSureMail(mCreate)
             responseInfo = '%s 提交成功，请查收邮件并确认。' % str(email)
             return render_to_response('firstPage.html',{'show': responseInfo })
         else:
@@ -38,7 +38,7 @@ def mailInfoSave(request):
                 #logger.info(request.POST['cycle'])
                 #logger.info(request.POST['predays'])
                 mUpdate.save()
-                emailmutil.sendUpdateSureMail(request,mUpdate)
+                emailutil.sendUpdateSureMail(request,mUpdate)
                 responseInfo = '%s 曾今提交过哦，如果有修改，请查收邮件并重新确认。  ' % str(email)
             return render_to_response('firstPage.html',{'show': responseInfo })
     else:
