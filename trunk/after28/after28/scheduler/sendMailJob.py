@@ -26,13 +26,13 @@ def mailJobToday():
     if hasopen == 0:
         logger.info('###############first send mail###############')
         ++hasopen
-        Timer( getNextDayReaminSeconds() , sendMailEveryDay, ()).start()
-        #Timer( 60 , sendMailEveryDay, ()).start()
+        Timer( getNextDayReaminSeconds()/24, sendMailEveryDay, ()).start()
+        #Timer( 20 , sendMailEveryDay, ()).start()
     lock.release()
     
 def mailJobDays():
     #Timer( 10 , sendMailEveryDay, ()).start()
-    Timer( 86400 , sendMailEveryDay, ()).start()
+    Timer( 86400/24 , sendMailEveryDay, ()).start()
     
 def sendMailEveryDay():
     logger.info('###############schedual send mail###############')
@@ -40,6 +40,7 @@ def sendMailEveryDay():
     #get today
     today = datetime.date.today()
     date = today.strftime('%Y')+'-'+today.strftime('%m')+'-'+today.strftime('%d')
+    logger.info( date )
     list = MailInfo.objects.filter(hasSent='0', hasBeSured='1' ,sendDate__lte=date)
     logger.info('need send mail %s ' % len(list))
     try:
