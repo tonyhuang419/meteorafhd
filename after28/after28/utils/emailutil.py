@@ -26,21 +26,22 @@ class EmailThread(threading.Thread):
         threading.Thread.__init__(self)
         
     def run (self):
-        #msg = EmailMultiAlternatives(self.subject, self.body, 'None', self.recipient_list)
-        #if self.html:
-        #    msg.attach_alternative(self.body,self.html)
+        msg = EmailMultiAlternatives(self.subject, self.body, 'fhdone@after28.com', self.recipient_list)
+        if self.html:
+            msg.attach_alternative(self.body,self.html)
         logger.info('send mail to %s----%s' %  ( self.recipient_list, self.body ) )
-        #msg.send(self.fail_silently)  
-        sendinfo = MIMEMultipart('alternative')
-        sendinfo['Subject'] = self.subject
-        sendinfo['From'] = 'root@domu-12-31-39-03-28-87.compute-1.internal'
-        sendinfo['To'] = self.recipient_list   
-        msg = MIMEText( self.body  , 'html')
+        msg.send(self.fail_silently)  
+        
+        #sendinfo = MIMEMultipart('alternative')
+        #sendinfo['Subject'] = self.subject
+        #sendinfo['From'] = 'root@domu-12-31-39-03-28-87.compute-1.internal'
+        #sendinfo['To'] = self.recipient_list   
+        #msg = MIMEText( self.body  , 'html')
        
-        sendinfo.attach(msg)
-        server = smtplib.SMTP('localhost')
-        server.sendmail("root@domu-12-31-39-03-28-87.compute-1.internal", self.recipient_list , msg.as_string() )
-        server.quit()
+        #sendinfo.attach(msg)
+        #server = smtplib.SMTP('localhost')
+        #server.sendmail("root@domu-12-31-39-03-28-87.compute-1.internal", self.recipient_list , msg.as_string() )
+        #server.quit()
         
  
         
@@ -104,7 +105,7 @@ def sendUpdateSureMail(request , mi):
 
 
 cancel_mail_template = '''   
-    取消邮件发送（永久有效）
+    取消邮件发送
   <a href="%s/mail_info/sure_info_cancel?email=%s&key=%s">%s/mail_info/sure_info_cancel?email=%s&key=%s</a>
 '''
 def cancelMailHref(mi):

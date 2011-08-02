@@ -5,12 +5,12 @@ import logging
 import os,sys
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-sys.path.append( SITE_ROOT + '/after28'  )
+sys.path.append( SITE_ROOT  )
 
 # Django settings for after28 project.
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = False
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -20,12 +20,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'D:\\dev\\project\\after28\\sqlite.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'after28',                      # Or path to database file if using sqlite3.
+        'USER': 'root',                      # Not used with sqlite3.
+        'PASSWORD': '2222',                  # Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -36,7 +36,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Asia/shanghai'
+TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -69,7 +69,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://127.0.0.1:9000'
+STATIC_URL = 'http://www.after28.com'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
@@ -174,11 +174,11 @@ logger = logging.getLogger(__name__)
 INTERNAL_IPS = ('127.0.0.1',)
 
 #mail
-EMAIL_HOST = 'smtp.gmail.com'                   #..smtp...
+EMAIL_HOST = 'smtp.after28.com'                   #..smtp...
 EMAIL_PORT = '25'                                        #..
-EMAIL_HOST_USER = 'meteorafhd0425@gmail.com'  #....
-EMAIL_HOST_PASSWORD = '*'      #..
+EMAIL_HOST_USER = 'fhdone'  #....
+EMAIL_HOST_PASSWORD = '2222'      #..
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
+#EMAIL_PORT = 587
 
 
