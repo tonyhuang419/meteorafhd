@@ -12,6 +12,7 @@ from django.utils.log import logger
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from settings import STATIC_URL
+import datetime
 import smtplib
 import sys
 import threading
@@ -81,7 +82,7 @@ update_mail_template = '''
 <html>
   <head></head>
   <body>  
-       感谢您使用After28！<br/>点击下面的链接提醒日期修改为   %s
+       感谢您使用After28！<br/>点击下面的链接提醒日期修改为  <b>%s</b>
      <br/><br/><a href="%s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
      %s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s</a>
      <br/><br/>%s
@@ -121,13 +122,15 @@ send_mail_notify_template = '''
   <head></head>
   <body>  
     您好，%s！ 您最亲密的朋友最要来了，记得准备好您的闺蜜哦  ^-^
+     <br/><br/>下一封邮件将在<b>%s</b>发送
      <br/><br/>%s
    </body>
 </html>
 '''
 def sendMailNotify(mi):
     email =  str(mi.email)
-    sendinfo = send_mail_notify_template % ( email , cancelMailHref(mi) )
+    nextSendDate = mi.sendDate + datetime.timedelta(days = int(  mi.cycle ))
+    sendinfo = send_mail_notify_template % ( email , str(nextSendDate) , cancelMailHref(mi) )
     send_mail(  "After28提醒邮件", sendinfo ,   [email] )
     
 
