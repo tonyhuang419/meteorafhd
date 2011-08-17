@@ -1,4 +1,4 @@
-package com.javaeye.i2534.annotations;
+package i2534.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
