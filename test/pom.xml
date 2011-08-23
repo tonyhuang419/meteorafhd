@@ -128,6 +128,13 @@
 		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cewolf-1.0.jar</systemPath>
     </dependency>
 	<dependency>
+		<groupId>jpcap</groupId>
+		<artifactId>jpcap</artifactId>
+		<version>0.6</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jpcap.jar</systemPath>
+    </dependency>
+	<dependency>
 		<groupId>batik</groupId>
 		<artifactId>batik-dom</artifactId>
 		<version>1.6-1</version>
