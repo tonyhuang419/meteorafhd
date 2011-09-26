@@ -26,8 +26,8 @@ def mailJobToday():
     if hasopen == 0:
         logger.info('###############first send mail###############')
         ++hasopen
-        Timer( getNextDayReaminSeconds()/24, sendMailEveryDay, ()).start()
-        #Timer( 20 , sendMailEveryDay, ()).start()
+        # Timer( getNextDayReaminSeconds()/24, sendMailEveryDay, ()).start()
+        Timer( 10 , sendMailEveryDay, ()).start()
     lock.release()
     
 def mailJobDays():
@@ -62,9 +62,8 @@ def genNewMailInfo(mi):
     m.email = mi.email
     m.hasBeSured = '1'
     m.cycle = mi.cycle
-    m.validateStr = '-'
+    m.validateStr = mi.validateStr
     m.validateStrUpdate = '-'
-    m.validateStr = dateutils.getMD5Time()
     m.createDate = datetime.datetime.now()
     m.hasSent = '0'
     m.lastDate = mi.sendDate
