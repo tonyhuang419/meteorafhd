@@ -82,8 +82,9 @@ update_mail_template = '''
 <html>
   <head></head>
   <body>  
-       感谢您使用After28！<br/>点击下面的链接提醒日期修改为  <b>%s</b>
-     <br/><br/><a href="%s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
+       感谢您使用After28！
+	 <br/><br/>点击下面的链接提醒日期修改为  <b>%s</b>
+     <br/><a href="%s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s"/>
      %s/mail_info/sure_info_update?email=%s&key=%s&lastDate=%s&cycle=%s&predays=%s</a>
      <br/><br/>%s
    </body>
@@ -122,7 +123,7 @@ send_mail_notify_template = '''
   <head></head>
   <body>  
     您好，%s！ 您最亲密的朋友最要来了，记得准备好您的闺蜜哦  ^-^
-     <br/><br/>下一封邮件将在<b>%s</b>发送
+     <br/><br/>下一封邮件将在 <b>%s</b> 发送
      <br/><br/>%s
    </body>
 </html>
