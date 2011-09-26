@@ -25,5 +25,5 @@ def webSignin():
     
 def webGetJob():
     webSignin()
-    Timer( 86400/24 , webSignin, ()).start()
+    Timer( 86400/2 , webSignin, ()).start()
    
