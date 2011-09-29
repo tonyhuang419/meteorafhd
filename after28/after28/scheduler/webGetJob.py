@@ -9,10 +9,8 @@ Created on 2011-7-20
 from after28.utils.webget.gewara import signin as gSignin
 from after28.utils.webget.xiami import signin as xSignin
 from django.utils.log import logger
-from threading import Timer
-import datetime
-import threading
-
+import thread
+import time
 
 
 def webSignin():
@@ -25,5 +23,5 @@ def webSignin():
     
 def webGetJob():
     webSignin()
-    Timer( 86400/2 , webSignin, ()).start()
-   
+    thread.start_new_thread(webSignin,()) 
+    time.sleep( 86400/2 )
