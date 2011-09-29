@@ -13,6 +13,8 @@ from django.utils.log import logger
 from threading import Timer
 import datetime
 import threading
+import time
+import thread
 
 
 lock = threading.Lock() 
@@ -27,12 +29,13 @@ def mailJobToday():
         logger.info('###############first send mail###############')
         ++hasopen
         # Timer( getNextDayReaminSeconds()/24, sendMailEveryDay, ()).start()
-        Timer( 10 , sendMailEveryDay, ()).start()
+        Timer( 10 , mailJobDays, ()).start()
     lock.release()
     
 def mailJobDays():
     #Timer( 10 , sendMailEveryDay, ()).start()
-    Timer( 86400/24 , sendMailEveryDay, ()).start()
+    thread.start_new_thread(sendMailEveryDay,()) 
+    time.sleep( 86400/3 )
     
 def sendMailEveryDay():
     logger.info('###############schedual send mail###############')
@@ -41,10 +44,10 @@ def sendMailEveryDay():
     today = datetime.date.today()
     date = today.strftime('%Y')+'-'+today.strftime('%m')+'-'+today.strftime('%d')
     logger.info( date )
-    list = MailInfo.objects.filter(hasSent='0', hasBeSured='1' ,sendDate__lte=date)
-    logger.info('need send mail %s ' % len(list))
+    listx = MailInfo.objects.filter(hasSent='0', hasBeSured='1' ,sendDate__lte=date)
+    logger.info('need send mail %s ' % len(listx))
     try:
-        for m in list:
+        for m in listx:
             logger.info(m.email)
             #send mail
             sendMailNotify(m)
@@ -54,8 +57,6 @@ def sendMailEveryDay():
     except Exception, e:
         #print(e)
         logger.info(e)
-    finally:    
-        mailJobDays(); 
         
 def genNewMailInfo(mi):
     m = MailInfo()
