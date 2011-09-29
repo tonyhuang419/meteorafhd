@@ -1,9 +1,12 @@
 import time
+import thread
 
+def prinfinfo():
+    print 'demo'
 
 def recTimer():
     while True:
-        print 'demo'
+        thread.start_new_thread(prinfinfo,()) 
         time.sleep(2)
     
     
