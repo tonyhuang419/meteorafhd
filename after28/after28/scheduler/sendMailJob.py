@@ -34,8 +34,9 @@ def mailJobToday():
     
 def mailJobDays():
     #Timer( 10 , sendMailEveryDay, ()).start()
-    thread.start_new_thread(sendMailEveryDay,()) 
-    time.sleep( 86400/3 )
+    while True:
+        thread.start_new_thread(sendMailEveryDay,()) 
+        time.sleep( 86400/3 )
     
 def sendMailEveryDay():
     logger.info('###############schedual send mail###############')
