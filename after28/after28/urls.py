@@ -10,7 +10,7 @@ import settings
 #import django_cron
 #django_cron.autodiscover()
 mailJobToday()
-webSignin()
+webGetJob()
     
 # Uncomment the next two lines to enable the admin:
 admin.autodiscover()
