@@ -9,8 +9,8 @@ import settings
 
 #import django_cron
 #django_cron.autodiscover()
-mailJobToday()
-webSigninJob()
+#mailJobToday()
+#webSigninJob()
     
 # Uncomment the next two lines to enable the admin:
 admin.autodiscover()
@@ -36,4 +36,5 @@ urlpatterns = patterns('',
         {'document_root': settings.STATIC_PATH}),
                        
     (r'^mail_info/', include('after28.mail_info.urls')),
+    (r'^simple_read/', include('after28.simpleread.urls')),
 )
