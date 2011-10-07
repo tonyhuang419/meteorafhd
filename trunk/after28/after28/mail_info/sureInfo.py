@@ -82,7 +82,7 @@ def sureMailInfoCreate(request):
         m.hasBeSured = '1'
         #m.validateStr = '-'
         m.save()
-        logger.info('%s has be sured' % m.email)
+        logger.info('%s has be sured(create)' % m.email)
         #print('%s has be sured' % m.email)
     if len(list) > 0:
         return True
@@ -148,7 +148,7 @@ def sureMailInfoCancel(request):
     for m in list:
         m.hasBeSured = '3'
         m.save()
-        logger.info('%s has be sured' % m.email)
+        logger.info('%s has be sured(cancel)' % m.email)
         #print('%s has be sured' % m.email)
     if len(list) > 0:
         return True
