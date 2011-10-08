@@ -9,8 +9,8 @@ from django.http import HttpResponseRedirect
 from weibopy import OAuthHandler, oauth, WeibopError
 from django.utils.log import logger
 
-consumer_key = '*' # 设置你申请的appkey
-consumer_secret = '*' # 设置你申请的appkey对于的secret
+consumer_key = '3786122414' # 设置你申请的appkey
+consumer_secret = '3f0d9e2f3ae7f117755971dc358f7b5b' # 设置你申请的appkey对于的secret
 
 class WebOAuthHandler(OAuthHandler):
     
