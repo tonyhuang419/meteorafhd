@@ -29,13 +29,12 @@ def weiboget(request):
     auth.access_token = access_token
     api=API(auth)
    
-    timeline = api.friends_timeline(count=100, page=1)
+    timeline = api.friends_timeline(count=50, page=1)
     
     weiboMap = {}
     ids = ''
     for line in timeline:
         info = weibogetInfo()
-        #wid = line.__getattribute__("id")
         wid = tool.getAtt(line , 'id')
         info.timeline = line
         weiboMap[wid] = info
@@ -45,18 +44,16 @@ def weiboget(request):
         wid = count.__getattribute__("id")
         if weiboMap.has_key(wid):
             info = weiboMap[wid]
-            #info.comment = count.__getattribute__("comments")
-            info.comment = tool.getAtt(count , 'comments')
-            #info.rt = count.__getattribute__("rt")
-            info.rt = tool.getAtt(count , 'rt')
-    for k, v in weiboMap.items():
-        #user = v.timeline.__getattribute__("user").name
-        user = tool.getAtt(v.timeline , 'user').name
-        #text = v.timeline.__getattribute__("text")
-        text = tool.getAtt(v.timeline , 'text')
-        comment = v.comment
-        rt = v.rt
-        print "%s:%s,%s,%s" % (user, text ,comment , rt)          
+            info.commentNum = int(tool.getAtt(count , 'comments'))
+            info.rtNum = int(tool.getAtt(count , 'rt'))
+            info.sum = info.commentNum + info.rtNum 
+    weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].sum , reverse = True )
+    #for k, v in weiboMap.items():
+    for v in weiboList:
+        user = tool.getAtt(v[1].timeline , 'user').name
+        text = tool.getAtt(v[1].timeline , 'text')
+        #text = text.encode('ascii' , 'ignore')
+        print "%s:%s,%d,%d,%d" % (user, text , v[1].commentNum , v[1].rtNum , v[1].sum )          
     return render_to_response('simplereadget.html')
 
 
