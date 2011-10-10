@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	.odd{
+		 background-color: #D2D2D2
+	}
+</style>
 <title>simpleread</title>
 </head>
 <body>
-	<h1>simpleread</h1>
+	{% for item in weiboList %}
+		{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
+		{% for i in item %}
+			{% if forloop.counter|divisibleby:2 %}
+				{{ i.timeline.user.name }}:{{ i.timeline.text }}
+			{%endif%} 
+		{% endfor %}</br>
+		{% if forloop.counter|divisibleby:2 %}</div>{%endif%} 
+	{% endfor %}
 </body>
 </html>
