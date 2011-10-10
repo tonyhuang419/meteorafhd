@@ -49,14 +49,15 @@ def weiboget(request):
             info.sum = info.commentNum + info.rtNum 
     weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].sum , reverse = True )
     #for k, v in weiboMap.items():
+    '''
     for v in weiboList:
         user = tool.getAtt(v[1].timeline , 'user').name
         text = tool.getAtt(v[1].timeline , 'text')
         #next 2lines for ms-dos
         text = text.encode('gb2312' , 'ignore')
-        text = unicode(text,'gb2312')
-        
-        print "%s:%s,%d,%d,%d" % (user, text , v[1].commentNum , v[1].rtNum , v[1].sum )          
-    return render_to_response('simplereadget.html')
+        text = unicode(text,'gb2312')       
+        print "%s:%s,%d,%d,%d" % (user, text , v[1].commentNum , v[1].rtNum , v[1].sum )
+    '''
+    return render_to_response('simplereadget.html' , {'weiboList': weiboList })
 
 
