@@ -24,11 +24,12 @@ class weibogetInfo():
         
 def weiboget(request):
     access_token = request.session['oauth_access_token']
-    print access_token
+    #logger.info(access_token)
     auth = OAuthHandler(WebOAuthHandler.consumer_key, WebOAuthHandler.consumer_secret)
     auth.access_token = access_token
     api=API(auth)
-   
+    
+    logger.info('get sina weibo info start')
     timeline = api.friends_timeline(count=50, page=1)
     
     weiboMap = {}
@@ -58,6 +59,7 @@ def weiboget(request):
         text = unicode(text,'gb2312')       
         print "%s:%s,%d,%d,%d" % (user, text , v[1].commentNum , v[1].rtNum , v[1].sum )
     '''
+    logger.info('get sina weibo info finish')
     return render_to_response('simplereadget.html' , {'weiboList': weiboList })
 
 
