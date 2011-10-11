@@ -3,17 +3,19 @@
 <head>
 <style type="text/css">
 	.odd{
-		 background-color: #D2D2D2
+		 background-color: #AAAAAA;
+		 margin-top:10px;
+		 margin-bottom:10px
 	}
 	.retweeted{
-		 background-color: #AAAAAA
+		 background-color: #D2D2D2;
 	}
 </style>
 <title>sinaUISucks</title>
 </head>
 <body>
 	{% for item in weiboList %}
-		<li>{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
+		{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
 		{% for i in item %}
 			{% if forloop.counter|divisibleby:2 %}
 				{{ i.timeline.user.name }}:{{ i.timeline.text }}
@@ -24,7 +26,7 @@
 				{% endif %} 
 			{%endif%} 
 		{% endfor %}
-		{% if forloop.counter|divisibleby:2 %}</div>{%endif%}</li>
+		{% if forloop.counter|divisibleby:2 %}</div>{%endif%}
 	{% endfor %}
 </body>
 </html>
