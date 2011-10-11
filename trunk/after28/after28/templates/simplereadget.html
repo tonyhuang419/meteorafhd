@@ -3,9 +3,7 @@
 <head>
 <style type="text/css">
 	.odd{
-		 background-color: #AAAAAA;
-		 margin-top:10px;
-		 margin-bottom:10px
+		#background-color: #AAAAAA;
 	}
 	.retweeted{
 		 background-color: #D2D2D2;
@@ -16,7 +14,7 @@
 <body>
 	{% for item in weiboList %}
 		{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
-		{% for i in item %}
+		---{% for i in item %}
 			{% if forloop.counter|divisibleby:2 %}
 				{{ i.timeline.user.name }}:{{ i.timeline.text }}
 				{% if i.timeline.retweeted_status.user.name %}
