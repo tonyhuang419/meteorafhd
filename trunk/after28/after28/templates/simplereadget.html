@@ -5,18 +5,26 @@
 	.odd{
 		 background-color: #D2D2D2
 	}
+	.retweeted{
+		 background-color: #AAAAAA
+	}
 </style>
 <title>simpleread</title>
 </head>
 <body>
 	{% for item in weiboList %}
-		{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
+		<li>{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
 		{% for i in item %}
 			{% if forloop.counter|divisibleby:2 %}
 				{{ i.timeline.user.name }}:{{ i.timeline.text }}
+				{% if i.timeline.retweeted_status.user.name %}
+					<div class="retweeted">
+					@{{  i.timeline.retweeted_status.user.name }} : {{ i.timeline.retweeted_status.text  }}
+					</div>
+				{% endif %} 
 			{%endif%} 
-		{% endfor %}</br>
-		{% if forloop.counter|divisibleby:2 %}</div>{%endif%} 
+		{% endfor %}
+		{% if forloop.counter|divisibleby:2 %}</div>{%endif%}</li>
 	{% endfor %}
 </body>
 </html>
