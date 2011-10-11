@@ -27,4 +27,4 @@ def webSignin():
 def webGetJob():
     while True:
         thread.start_new_thread(webSignin,()) 
-        time.sleep( 86400 )
+        time.sleep( 86400/2 )
