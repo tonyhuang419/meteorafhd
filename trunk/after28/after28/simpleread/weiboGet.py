@@ -47,8 +47,18 @@ def weiboget(request):
             info = weiboMap[wid]
             info.commentNum = int(tool.getAtt(count , 'comments'))
             info.rtNum = int(tool.getAtt(count , 'rt'))
-            info.sum = info.commentNum + info.rtNum 
-    weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].sum , reverse = True )
+            info.sum = info.commentNum + info.rtNum
+    
+    sortby = request.GET['sortby']
+    print sortby
+    weiboList
+    if sortby==1:
+        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].commentNum , reverse = True )
+    elif sortby==2:
+        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].rtNum , reverse = True )
+    else:
+        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].sum , reverse = True )
+    
     #for k, v in weiboMap.items():
     '''
     for v in weiboList:
