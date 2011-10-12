@@ -49,9 +49,8 @@ def weiboget(request):
             info.rtNum = int(tool.getAtt(count , 'rt'))
             info.sum = info.commentNum + info.rtNum
     
-    sortby = request.GET['sortby']
-    print sortby
-    weiboList
+    sortby = request.GET.get('sortby',-1)
+    weiboList=None
     if sortby==1:
         weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].commentNum , reverse = True )
     elif sortby==2:

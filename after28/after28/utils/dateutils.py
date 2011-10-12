@@ -15,7 +15,8 @@ import time
 def getMD5Time():
     now = time.time()
     return hashlib.md5(str(now)).hexdigest()
-    
+
+# 计算当前时间距离0点时差+300秒
 def getNextDayReaminSeconds():
     tm = datetime.date.today() + datetime.timedelta( days = 1 )
     arr = tm.strftime( '%Y,%m,%d'   ).split(',')

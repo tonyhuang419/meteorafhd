@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,9 @@
 <title>sinaUISucks</title>
 </head>
 <body>
-	<div>排序：<a href="、">全部</a>&nbsp;<a href="">评论数</a>&nbsp;<a href="">转发数</a></div>
+	<div>排序：<a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=0">全部</a>&nbsp;
+	<a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=1">评论数</a>&nbsp;
+	<a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=2">转发数</a></div>
 	{% for item in weiboList %}
 		{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
 		---{% for i in item %}
