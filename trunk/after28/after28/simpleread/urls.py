@@ -10,6 +10,6 @@ from django.conf.urls.defaults import patterns, include, url
 urlpatterns = patterns('',
     (r'^index/$', 'after28.simpleread.WebOAuthHandler.login'),
     (r'^login_check/$', 'after28.simpleread.WebOAuthHandler.login_check'),
-    (r'^weibo_get/$', 'after28.simpleread.weiboGet.weiboget'),
+    (r'^weibo_get$', 'after28.simpleread.weiboGet.weiboget'),
     
 )

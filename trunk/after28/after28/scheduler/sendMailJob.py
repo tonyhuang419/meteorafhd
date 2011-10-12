@@ -20,7 +20,6 @@ import thread
 lock = threading.Lock() 
 
 def mailJobToday():
-    # 计算当前时间距离24点差
     global hasopen
     hasopen = 0
     lock.acquire()
@@ -28,15 +27,14 @@ def mailJobToday():
     if hasopen == 0:
         logger.info('###############first send mail###############')
         ++hasopen
-        # Timer( getNextDayReaminSeconds()/24, sendMailEveryDay, ()).start()
-        Timer( 10 , mailJobDays, ()).start()
+        Timer( getNextDayReaminSeconds(), mailJobDays, ()).start()
     lock.release()
     
 def mailJobDays():
     #Timer( 10 , sendMailEveryDay, ()).start()
     while True:
         thread.start_new_thread(sendMailEveryDay,()) 
-        time.sleep( 86400/2 )
+        time.sleep( 86400 )
     
 def sendMailEveryDay():
     logger.info('###############schedual send mail###############')

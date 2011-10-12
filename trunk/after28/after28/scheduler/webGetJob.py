@@ -8,16 +8,27 @@ Created on 2011-7-20
 
 from after28.utils.webget.gewara import signin as gSignin
 from after28.utils.webget.xiami import signin as xSignin
+from after28.utils.dateutils import getNextDayReaminSeconds
 from django.utils.log import logger
 from threading import Timer
 import thread
+import threading
 import time
 
+lock = threading.Lock() 
 
 def webSigninJob():
-    webSignin
-    Timer( 10 , webGetJob, ()).start()
-
+    global hasopen
+    hasopen = 0
+    lock.acquire()
+    logger.info(hasopen==0)
+    if hasopen == 0:
+        logger.info('###############website login###############') 
+        ++hasopen
+        webSignin
+        Timer( getNextDayReaminSeconds(), webGetJob, ()).start()
+    lock.release()
+     
 def webSignin():
     logger.info('###############gewara signin###############')
     gSignin()
