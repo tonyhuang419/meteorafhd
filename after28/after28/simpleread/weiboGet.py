@@ -12,7 +12,7 @@ class Tool():
         try:
             return obj.__getattribute__(key)
         except Exception, e:
-            print e
+            #print e
             return ''
 
         
@@ -40,6 +40,10 @@ def weiboget(request):
         info.timeline = line
         weiboMap[wid] = info
         ids = '%s,%s' % (ids, wid )
+        
+        if tool.getAtt(line , 'retweeted_status'):
+            print info.timeline.retweeted_status.id
+        
     counts = api.counts(ids)
     for count in counts:
         wid = count.__getattribute__("id")
