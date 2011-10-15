@@ -19,8 +19,13 @@ class Tool():
 tool = Tool()
 
 class weibogetInfo():
-    pass
-    
+    timeline=None
+    commentNum=0
+    rtNum=0
+    reid=''
+    reRtNum=0
+    reCommentNum=0
+    countSum=0
         
 def weiboget(request):
     access_token = request.session['oauth_access_token']
@@ -32,35 +37,51 @@ def weiboget(request):
     logger.info('get sina weibo info start')
     timeline = api.friends_timeline(count=50, page=1)
     
-    weiboMap = {}
-    ids = ''
+    weiboMap={}
+    weiboReMap={}
+    ids=''
+    reids=''
     for line in timeline:
         info = weibogetInfo()
         wid = tool.getAtt(line , 'id')
         info.timeline = line
         weiboMap[wid] = info
         ids = '%s,%s' % (ids, wid )
-        
         if tool.getAtt(line , 'retweeted_status'):
-            print info.timeline.retweeted_status.id
-        
+            reid=info.timeline.retweeted_status.id
+            info.reid=reid
+            reids = '%s,%s' % (reids, reid )
+            weiboReMap[reid]=wid
+
     counts = api.counts(ids)
+    recounts = api.counts(reids)
     for count in counts:
         wid = count.__getattribute__("id")
         if weiboMap.has_key(wid):
             info = weiboMap[wid]
             info.commentNum = int(tool.getAtt(count , 'comments'))
             info.rtNum = int(tool.getAtt(count , 'rt'))
-            info.sum = info.commentNum + info.rtNum
-    
+            info.countSum = info.commentNum + info.rtNum
+    for count in recounts:
+        rewid = count.__getattribute__("id")
+        wid = weiboReMap[rewid]
+        info =  weiboMap[wid]
+        info.reCommentNum=int(tool.getAtt(count , 'rt'))
+        info.reRtNum=int(tool.getAtt(count , 'rt'))
+        info.countSum=info.countSum+info.reCommentNum+info.reRtNum
+        
     sortby = request.GET.get('sortby',-1)
     weiboList=None
     if sortby==1:
         weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].commentNum , reverse = True )
     elif sortby==2:
         weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].rtNum , reverse = True )
+    elif sortby==3:
+        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].reCommentNum , reverse = True )
+    elif sortby==4:
+        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].reRtNum , reverse = True )
     else:
-        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].sum , reverse = True )
+        weiboList = sorted( weiboMap.iteritems(), key=lambda d:d[1].countSum , reverse = True )
     
     #for k, v in weiboMap.items():
     '''
