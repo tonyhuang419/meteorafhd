@@ -4,7 +4,7 @@ import time
 import urllib
 import urllib2
 
-loginUrl = 'http://www.gewara.com/check_user.xhtml'
+loginUrl = 'http://www.gewara.com/cas/check_user.xhtml'
 values = {'j_username' : 'meteorafhd@gmail.com',
           'j_password' : '*',
           'rememberMe' : 'true' }
