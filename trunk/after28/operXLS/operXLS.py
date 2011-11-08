@@ -7,18 +7,13 @@ import re
 from xlutils.copy import copy  
 
 def procRow( sh , nrow , shbak ):
-    col=0
     cell_value = shbak.cell_value(nrow,0)
     listNum =  re.findall(r'\d{11}',cell_value)
+    strNum=''
     for num in listNum:
         #print type(i)
-        col+=1
-        ctype = 1 # 类型 0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error
-        xf = 0 # 扩展的格式化 (默认是0)
-        #sh.put_cell(nrow, col, ctype, num, xf)
-        sh.write(nrow, col, num)
-        #print i,cell_value    
-    
+        strNum = strNum + '\n'+ num
+        sh.write(nrow, 1, strNum)
     
 if __name__ == '__main__':
     fname = "info.xls"
