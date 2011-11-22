@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	.odd{
+		#background-color: #AAAAAA;
+	}
+	.retweeted{
+		 background-color: #D2D2D2;
+	}
+</style>
+<title>sinaUISucks</title>
+</head>
+<body>
+	<div>排序：<a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=0">全部</a>&nbsp;
+	<!-- <a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=1">评论数</a>&nbsp;  -->
+	<!-- <a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=2">转发数</a>&nbsp; -->
+	<a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=3">评论数</a>&nbsp;
+	<a href="{% get_static_prefix %}/simple_read/weibo_get?sortby=4">转发数</a></div>
+	{% for item in weiboList %}
+		{% if forloop.counter|divisibleby:2 %}<div class="odd">{%endif%} 
+		---{% for i in item %}
+			{% if forloop.counter|divisibleby:2 %}
+				{{ i.timeline.user.name }}:{{ i.timeline.text }}
+				{% if i.timeline.thumbnail_pic %}
+						<a href="{{i.timeline.thumbnail_pic}}">图片</a>
+				{% endif %}
+				{% if i.timeline.retweeted_status %}
+					<div class="retweeted">
+					@{{  i.timeline.retweeted_status.user.name }} : {{ i.timeline.retweeted_status.text  }}
+					{% if i.timeline.retweeted_status.thumbnail_pic %}
+						<a href="{{i.timeline.retweeted_status.thumbnail_pic}}">图片</a>
+					{% endif %}
+					</div>
+				{% endif %} 
+			{%endif%} 
+		{% endfor %}
+		{% if forloop.counter|divisibleby:2 %}</div>{%endif%}
+	{% endfor %}
+</body>
+</html>
