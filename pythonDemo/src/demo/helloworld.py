@@ -207,8 +207,6 @@ print(L)
 
 T1,T2,T3 = (1,2,3),(4,5,6),(7,8,9)
 print(zip(T1,T2,T3))
-T1,T2,T3 = [1,2,3],[4,5,6],[7,8,9]
-print(zip(T1,T2,T3))
 
 x = [1,2,3,4,5]
 x = [x+10 for x in x]
@@ -220,23 +218,5 @@ print( random.randint(1,9))
 print( random.randint(1,9))
 print( random.randint(1,9))
 print( random.randint(1,9))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
