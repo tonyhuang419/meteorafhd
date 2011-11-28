@@ -13,4 +13,4 @@ for i in list1:
 comment = '''1234556789'''
 print comment
 
-u.p('print it')
+u.p('print it' , 3)
