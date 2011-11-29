@@ -14,3 +14,6 @@ comment = '''1234556789'''
 print comment
 
 u.p('print it' , 3)
+
+print '--------------------'
+u.readfile('test.txt')
