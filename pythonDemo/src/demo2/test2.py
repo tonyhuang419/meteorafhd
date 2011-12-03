@@ -17,3 +17,5 @@ u.p('print it' , 3)
 
 print '--------------------'
 u.readfile('test.txt')
+
+print 'a:b:c' .split(':',1)
