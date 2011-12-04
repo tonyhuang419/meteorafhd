@@ -7,35 +7,22 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 import time
+import utils
 
-
+logger = utils.initlog('log.txt')
+mailinfo = utils.readProperties('mailuser.properties')
 mail_host="smtp.sina.com"
-mail_user="js_ctrl"
-mail_pass="xx"
-mail_postfix="sina.com"
-mailto_list=[]
-
-logfile = 'log.txt'
-def initlog():
-    import logging
-    logger = logging.getLogger()
-    hdlr = logging.FileHandler(logfile)
-    console = logging.StreamHandler()
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    hdlr.setFormatter(formatter)
-    logger.addHandler(hdlr)
-    logger.addHandler(console)
-    logger.setLevel(logging.NOTSET)
-    return logger
-logger = initlog()
+mail_user=mailinfo['username']
+mail_pass=mailinfo['password']
 
 def getMailList():
+    mailto_list=[]
     try:
         f = open('maillist.txt', 'r')
         for line in f:
-            line = line.split()
+            line = line.strip()
             if len(line)>0:
-                mailto_list.extend(line)
+                mailto_list.append(line)
         f.close() 
     except Exception as ex: 
         logger.info ('\nSome error/exception occurred.')
@@ -43,21 +30,21 @@ def getMailList():
         # here, we are not exiting the program
     finally:
         logger.info ('email list has be read')
-
+    return mailto_list    
+        
 def b64_utf8(data):
     """encode into base64."""
     return '=?utf-8?B?%s?=' % b64encode(data)
 
 
-def send_mail(to,sub,text,html):
-    me=mail_user+"<"+mail_user+"@"+mail_postfix+">"
+def send_mail(fromUser,to,sub,text,html):
     msg = MIMEMultipart('alternative')
     part1 = MIMEText(text, 'plain', 'utf-8')
     part2 = MIMEText(html, 'html', 'utf-8')
     msg.attach(part1)
     msg.attach(part2)
     msg['Subject'] = b64_utf8(sub)
-    msg['From'] = me
+    msg['From'] = fromUser
     msg['To'] = to
     msg.add_header("Disposition-Notification-To","1")
     
@@ -71,8 +58,8 @@ def send_mail(to,sub,text,html):
     try:
         s = smtplib.SMTP()
         s.connect(mail_host)
-        s.login(mail_user,mail_pass)
-        s.sendmail(me, to, msg.as_string())
+        s.login(fromUser,mail_pass)
+        s.sendmail(fromUser, to, msg.as_string())
         s.close()
         logger.info ( "发送成功 %s" % (to))
         return True
@@ -99,9 +86,9 @@ href='http://blog.sina.com.cn/secsung'>http://blog.sina.com.cn/secsung</a>
 ''' 
     
 if __name__ == '__main__':
-    getMailList()
+    mailto_list=getMailList()
     for to in mailto_list:
-        send_mail(to,sub,'',html_content)
+        send_mail(mail_user,to,sub,'',html_content)
         time.sleep(2)
     
         

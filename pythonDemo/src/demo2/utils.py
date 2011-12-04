@@ -20,4 +20,24 @@ def readfile(path):
     
     data.close( )
     
-        
+def initlog(path):
+    import logging
+    logger = logging.getLogger()
+    hdlr = logging.FileHandler(path)
+    console = logging.StreamHandler()
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+    logger.addHandler(console)
+    logger.setLevel(logging.NOTSET)
+    return logger        
+
+def readProperties(path):
+    pf = open(path)  
+    re={}  
+    for line in pf:   #遍历文件的每行
+        tmp = line.split("=",1)   #以“=”分割每行
+        re[tmp[0]] = tmp[1].strip()   #插入字典
+    pf.close()
+    return re
+
