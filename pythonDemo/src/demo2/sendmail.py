@@ -6,6 +6,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
+import time
 
 
 mail_host="smtp.sina.com"
@@ -101,5 +102,6 @@ if __name__ == '__main__':
     getMailList()
     for to in mailto_list:
         send_mail(to,sub,'',html_content)
+        time.sleep(2)
     
         
