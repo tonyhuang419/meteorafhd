@@ -1,6 +1,8 @@
 # coding=UTF-8
 #!/usr/bin python
 
+import logging
+
 def p(str , num=0):
     print str
     for i in range(num):
@@ -20,17 +22,25 @@ def readfile(path):
     
     data.close( )
     
-def initlog(path):
-    import logging
-    logger = logging.getLogger()
+def initCommonLog(path):
+    logger = logging.getLogger('c')
     hdlr = logging.FileHandler(path)
     console = logging.StreamHandler()
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
     logger.addHandler(console)
-    logger.setLevel(logging.NOTSET)
-    return logger        
+    logger.setLevel(logging.DEBUG)
+    return logger
+
+def initFailLog(path):
+    logger = logging.getLogger('f')
+    hdlr = logging.FileHandler(path)
+    formatter = logging.Formatter('%(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+    logger.setLevel(logging.DEBUG)
+    return logger    
 
 def readProperties(path):
     pf = open(path)  
@@ -41,3 +51,7 @@ def readProperties(path):
     pf.close()
     return re
 
+
+
+if __name__ == '__main__':
+    pass
