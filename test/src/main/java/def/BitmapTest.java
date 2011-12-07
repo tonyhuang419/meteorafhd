@@ -35,13 +35,17 @@ public class BitmapTest {
 	        for (int i = 0; i < list1.length; i++)
 	            bs.set(list1[i]);
 
-	        List<Integer> list = new ArrayList<Integer>();
+//	        List<Integer> list = new ArrayList<Integer>();
+//	        for( int i=0;i<bs.length();i++)
+//	           if( bs.get(i) ) 
+//	        	   list.add(i);
+//	           
+//	        for (Iterator<Integer> it = list.iterator(); it.hasNext();)
+//	            System.out.println(it.next());
+	        
 	        for( int i=0;i<bs.length();i++)
-	           if( bs.get(i) ) 
-	        	   list.add(i);
-	           
-	        for (Iterator<Integer> it = list.iterator(); it.hasNext();)
-	            System.out.println(it.next());
+		           if( bs.get(i) ) 
+		        	   System.out.println( i );
 	    }
 
 	    public static void main(String[] args) {
