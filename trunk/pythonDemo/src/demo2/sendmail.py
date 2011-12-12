@@ -5,11 +5,10 @@ from base64 import b64encode
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import random
 import smtplib
 import time
 import utils
-import random
-import mailuser
 
 c_logger = utils.initCommonLog('log.txt')
 f_logger = utils.initFailLog('log.fail.txt')
@@ -88,7 +87,7 @@ href='http://blog.sina.com.cn/secsung'>http://blog.sina.com.cn/secsung</a>
     
 if __name__ == '__main__':
     mailto_list=getMailList()
-    userList = mailuser.getUser('mailuser.properties')
+    userList = utils.getUser('mailuser.properties')
     userSize = len(userList)
     for to in mailto_list:
         user=userList[random.randint(0,userSize-1)];

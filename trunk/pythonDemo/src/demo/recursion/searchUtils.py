@@ -7,7 +7,7 @@ def binarySearch( arr , key ):
         if arr[mid] == key :  return mid
         elif arr[mid] < key : beg = mid+1
         elif arr[mid] > key : end = mid-1
-    return -key
+    return -key #not find
 
 def bubblSearch( arrs ):
     for i in range(len(arrs)):
@@ -27,7 +27,7 @@ def qsort(L):
 if __name__ ==  "__main__":
     arr = [1,2,3,4,9,6,7,8,0]
     #print ( qsort(arr) )
-    print ( bubblSearch(arr) )  
-    print(arr)  
-    #print ( binarySearch(arr, 5) )  
+    #print ( bubblSearch(arr) )  
+    #print(arr)  
+    print ( binarySearch(arr, 5) )  
         
