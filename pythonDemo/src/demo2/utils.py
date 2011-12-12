@@ -3,6 +3,14 @@
 
 import logging
 
+class user:
+    def __init__(self,host,username,password):
+        self.host=host
+        self.username=username
+        self.password=password
+    
+
+
 def p(str , num=0):
     print str
     for i in range(num):
@@ -51,7 +59,15 @@ def readProperties(path):
     pf.close()
     return re
 
+def getUser(path):
+    userlist=[]
+    um=readProperties(path)
+    u=user(um['host'],um['username'],um['password'])
+    userlist.append(u)
+    u=user(um['host2'],um['username2'],um['password2'])
+    userlist.append(u)
+    return userlist
 
 
 if __name__ == '__main__':
-    pass
+    print getUser('mailuser.properties')
