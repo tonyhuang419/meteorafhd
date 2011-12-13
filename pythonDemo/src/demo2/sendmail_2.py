@@ -15,7 +15,7 @@ def sendmail_2():
     sub='美国江森自控安防系统产品资料' 
     html_content = '''<HTML><HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=GB2312"></HEAD><BODY>
     <div class="gmail_quote"><div style="line-height:1.7;color:#000000;font-size:14px;font-family:arial">
-    <div>您好！<br>&nbsp;&nbsp;美国江森自控上海总代理，现诚招一级代理，欢迎有资源的工程商、集成商、经销商加盟，请看附件！<br><br>&nbsp;</div>
+    <div>您好！<br>&nbsp;&nbsp;美国江森自控安防系统产品请看附件！<br><br>&nbsp;</div>
     <div><div style="color:rgb(0,0,0);line-height:1.7;font-family:arial;font-size:14px">
     <div style="color:rgb(0,0,0);line-height:1.7;font-family:arial;font-size:14px"><div><div>
     <div>顺颂商祺！</div>
