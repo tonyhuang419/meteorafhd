@@ -35,6 +35,7 @@ def initCommonLog(path):
     console = logging.StreamHandler()
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     hdlr.setFormatter(formatter)
+    console.setFormatter(formatter)
     logger.addHandler(hdlr)
     logger.addHandler(console)
     logger.setLevel(logging.DEBUG)
