@@ -2,6 +2,7 @@
 #!/usr/bin python
 
 import logging
+from base64 import b64encode
 
 class user:
     def __init__(self,host,username,password):
@@ -9,8 +10,6 @@ class user:
         self.username=username
         self.password=password
     
-
-
 def p(str , num=0):
     print str
     for i in range(num):
@@ -68,6 +67,29 @@ def getUser(path):
     userlist.append(u)
     return userlist
 
+def getMailList(path):
+    mailto_list=[]
+    try:
+        f = open(path, 'r')
+        for line in f:
+            line = line.strip()
+            if len(line)>0:
+                mailto_list.append(line)
+        f.close() 
+    except Exception as ex: 
+        c_logger.info ('\nSome error/exception occurred.')
+        c_logger.info ( ex );
+        # here, we are not exiting the program
+    finally:
+        c_logger.info ('email list has be read')
+    return mailto_list    
+        
+def b64_utf8(data):
+    """encode into base64."""
+    return '=?utf-8?B?%s?=' % b64encode(data)
+
+c_logger = initCommonLog('log.txt')
+f_logger = initFailLog('log.fail.txt')
 
 if __name__ == '__main__':
     print getUser('mailuser.properties')
