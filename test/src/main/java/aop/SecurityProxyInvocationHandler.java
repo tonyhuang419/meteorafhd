@@ -13,7 +13,13 @@ public class SecurityProxyInvocationHandler implements InvocationHandler {
 		if (object instanceof IAccount && method.getName().equals("operation")) {
 			SecurityChecker.checkSecurity();
 		}
-		return method.invoke(proxyedObject, arguments);
+		
+		method.invoke(proxyedObject, arguments);
+		
+		if (object instanceof IAccount && method.getName().equals("operation")) {
+			SecurityChecker.checkSecurity();
+		}
+		return null;
 	}
-
+	
 }
