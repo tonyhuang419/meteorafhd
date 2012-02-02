@@ -4,16 +4,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.apache.lucene.analysis.StopAnalyzer;
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
 public class Indexer {
+	
 	public static void main(String[] args) throws IOException {
 		int numIndexed = index();
 		System.out.println(numIndexed);
@@ -27,10 +30,14 @@ public class Indexer {
 			throw new IOException();
 		}
 		Directory  dir = FSDirectory.open(indexDir);
-		IndexWriter writer = new IndexWriter(dir, 
-				new StandardAnalyzer(Version.LUCENE_35,StopAnalyzer.ENGLISH_STOP_WORDS_SET) , 
-				true, IndexWriter.MaxFieldLength.LIMITED);
-		writer.setUseCompoundFile(false);
+//		IndexWriter writer = new IndexWriter(dir, 
+//				new StandardAnalyzer(Version.LUCENE_35,StopAnalyzer.ENGLISH_STOP_WORDS_SET) , 
+//				true, IndexWriter.MaxFieldLength.LIMITED);
+		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_35);  
+		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, analyzer);
+		indexWriterConfig.setOpenMode(OpenMode.CREATE);
+		IndexWriter writer = new IndexWriter(dir,indexWriterConfig);
+//		writer.setUseCompoundFile(false);
 		indexDirectory(writer, dataDir);
 		int numIndexed = writer.maxDoc();
 		writer.optimize();
@@ -56,9 +63,8 @@ public class Indexer {
 		}
 		System.out.println("Indexing " + f.getCanonicalPath());
 		Document doc = new Document();
-		doc.add(new Field("filename", f.getCanonicalPath(), Field.Store.YES,
-				Field.Index.NOT_ANALYZED));
 		doc.add(new Field("contents", new FileReader(f)));
+		doc.add(new Field("filename", f.getCanonicalPath(), Field.Store.YES, Field.Index.ANALYZED));
 		writer.addDocument(doc);
 	}	
 }
