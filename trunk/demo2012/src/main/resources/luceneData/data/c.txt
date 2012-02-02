@@ -1,1 +1,5 @@
-3
+IndexWriter writer = new IndexWriter(directory, new IKAnalyzer(), false, 
+  IndexWriter.MaxFieldLength.LIMITED); 
+这个构造函数在Lucene3.1里面不提倡使用了，请问有没有其他的设置增量索引的方法？ 
+Lucene3.1的索引构造函数统一建议为： IndexWriter(Directory d, IndexWriterConfig conf)  
+然后在这个函数里就不知道要怎么设置了，是在IndexWriterConfig里设置么？怎么设？

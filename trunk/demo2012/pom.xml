@@ -40,6 +40,18 @@
     	<version>3.5.0</version>
     </dependency>
     <dependency>
+    	<groupId>org.apache.lucene</groupId>
+    	<artifactId>lucene-highlighter</artifactId>
+    	<version>3.5.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.wltea.analyzer</groupId>
+      <artifactId>IKAnalyzer</artifactId>
+      <version>3.2.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/IKAnalyzer3.2.0Stable.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.10</version>
