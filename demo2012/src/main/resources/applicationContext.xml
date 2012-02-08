@@ -6,7 +6,7 @@
 
 
 	<!-- Provided by annotation-based configuration  -->
-	<context:annotation-config/>
+	<context:component-scan base-package="*" />
 
 	<!--JDBC Transaction  Manage -->
 	<bean id="dataSourceProxy" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
@@ -31,6 +31,6 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory"  ref="sqlSessionFactory"/>
-		<property name="basePackage" value="com.fhdone.demo2012.service"></property>
+		<property name="basePackage" value="com.fhdone.demo2012.dao"></property>
 	</bean>
 </beans>
