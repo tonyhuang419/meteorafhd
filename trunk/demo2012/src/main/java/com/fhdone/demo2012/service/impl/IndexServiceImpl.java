@@ -26,7 +26,7 @@ public class IndexServiceImpl implements IndexService {
 		Long end = new Long(0);
 		while(end<maxId){
 			beg=end;
-			end+=1999;
+			end+=2000;
 			Map<String,Long> paras = new HashMap<String,Long>();
 			paras.put("id1", beg+1 );
 			paras.put("id2", end );
