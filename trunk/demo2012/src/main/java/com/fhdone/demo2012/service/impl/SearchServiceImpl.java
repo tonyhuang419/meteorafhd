@@ -9,12 +9,14 @@ import com.fhdone.demo2012.utils.lucene.SearchUtils;
 @Service("searchService")
 public class SearchServiceImpl implements SearchService {
 
-	public void searchLoginfo(String key) {
+	public boolean searchLoginfo(String key) {
 		try {
-			SearchUtils.search(key);
+			SearchUtils.search2(key);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 }

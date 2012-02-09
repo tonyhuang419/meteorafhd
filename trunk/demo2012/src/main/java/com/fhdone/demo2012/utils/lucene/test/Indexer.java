@@ -36,6 +36,7 @@ public class Indexer {
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_35);  
 		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, analyzer);
 		indexWriterConfig.setOpenMode(OpenMode.CREATE_OR_APPEND);
+//		indexWriterConfig.setOpenMode(OpenMode.CREATE);
 		IndexWriter writer = new IndexWriter(dir,indexWriterConfig);
 //		writer.setUseCompoundFile(false);
 		indexDirectory(writer, dataDir);

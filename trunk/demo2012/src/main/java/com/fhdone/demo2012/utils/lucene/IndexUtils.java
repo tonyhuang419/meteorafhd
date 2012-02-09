@@ -26,7 +26,7 @@ public class IndexUtils {
 		Directory  dir = FSDirectory.open(Constants.INDEX_DIR);
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_35);  
 		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, analyzer);
-		indexWriterConfig.setOpenMode(OpenMode.CREATE);
+		indexWriterConfig.setOpenMode(OpenMode.CREATE_OR_APPEND);
 		IndexWriter writer = new IndexWriter(dir,indexWriterConfig);
 		//writer.setUseCompoundFile(false);
 		indexUserLog(writer, userLogList);
@@ -40,7 +40,7 @@ public class IndexUtils {
 		for(UserLog u:userLogList){
 			Document doc = new Document();
 			if(StringUtils.isNotBlank(u.getId().toString())){
-				doc.add(new Field("companyCd", u.getId().toString(), Field.Store.YES, Field.Index.ANALYZED));
+				doc.add(new Field("id", u.getId().toString(), Field.Store.YES, Field.Index.ANALYZED));
 			}
 			if(StringUtils.isNotBlank(u.getCompanyCd())){
 				doc.add(new Field("companyCd", u.getCompanyCd(), Field.Store.YES, Field.Index.ANALYZED));
