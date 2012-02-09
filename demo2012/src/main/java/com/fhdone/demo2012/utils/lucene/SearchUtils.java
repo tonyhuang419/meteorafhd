@@ -59,12 +59,14 @@ public class SearchUtils {
 			System.out.println(i);
 			int docId = hits[i].doc;
 			Document d = searcher.doc(docId);
-			System.out.println("companyCd" + d.get("companyCd"));
-			System.out.println("userCd" + d.get("userCd"));
-			System.out.println("actionName" + d.get("actionName"));
+			System.out.println("id" + d.get("id"));
+			System.out.println("companyCd:" + d.get("companyCd"));
+			System.out.println("userCd:" + d.get("userCd"));
+			System.out.println("actionName:" + d.get("actionName"));
+			System.out.println("operationTime:" + d.get("operationTime"));
+			System.out.println("parameterInfo:" + d.get("parameterInfo"));
 			System.out.println("===============================");
 		}
-
 		searcher.close();
 	}
 

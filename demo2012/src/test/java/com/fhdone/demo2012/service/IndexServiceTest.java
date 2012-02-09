@@ -3,11 +3,10 @@ package com.fhdone.demo2012.service;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-@ContextConfiguration(locations = { "/applicationContext.xml"})  
-public class IndexServiceTest extends AbstractJUnit4SpringContextTests{  
+import com.fhdone.demo2012.BaseTest;
+
+public class IndexServiceTest extends BaseTest {  
 
     @Autowired  
     @Qualifier("indexService")

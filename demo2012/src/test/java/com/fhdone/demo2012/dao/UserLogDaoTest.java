@@ -7,14 +7,11 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.fhdone.demo2012.dao.UserLogDao;
+import com.fhdone.demo2012.BaseTest;
 import com.fhdone.demo2012.entity.UserLog;
 
-@ContextConfiguration(locations = { "/applicationContext.xml"})  
-public class UserLogDaoTest extends AbstractJUnit4SpringContextTests{  
+public class UserLogDaoTest extends BaseTest {  
   
     @Autowired  
     public UserLogDao userLogDao;  
