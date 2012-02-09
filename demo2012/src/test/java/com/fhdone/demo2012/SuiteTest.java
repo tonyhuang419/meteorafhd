@@ -13,8 +13,8 @@ import com.fhdone.demo2012.service.SearchServiceTest;
 
 @RunWith(Suite.class)  
 @SuiteClasses({  
-//	UserLogDaoTest.class,  
-//	IndexServiceTest.class,  
+	UserLogDaoTest.class,  
+	IndexServiceTest.class,  
 	SearchServiceTest.class})  
 public class SuiteTest extends TestCase{
 
