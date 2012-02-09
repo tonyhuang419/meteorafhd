@@ -16,7 +16,7 @@ public class SearchServiceTest extends AbstractJUnit4SpringContextTests{
 	
     @Test  
     public void testSearchLoginfo(){  
-    	searchService.searchLoginfo("main");
+    	searchService.searchLoginfo("mainMenu.action");
     } 
 	
     
