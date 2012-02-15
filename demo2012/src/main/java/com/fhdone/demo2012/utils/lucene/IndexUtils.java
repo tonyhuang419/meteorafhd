@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
@@ -24,7 +23,7 @@ public class IndexUtils {
 			throw new IOException();
 		}
 		Directory  dir = FSDirectory.open(Constants.INDEX_DIR);
-		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_35);  
+		Analyzer analyzer = LuceneUtils.getAnalyzer(0);
 		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, analyzer);
 		indexWriterConfig.setOpenMode(OpenMode.CREATE_OR_APPEND);
 		IndexWriter writer = new IndexWriter(dir,indexWriterConfig);
