@@ -20,7 +20,7 @@ public class SearchUtils {
 	public static void search(String q) throws Exception {
 		IndexReader reader = IndexReader.open(FSDirectory.open(Constants.INDEX_DIR), true);
 		IndexSearcher searcher = new IndexSearcher(reader);
-		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_35); 
+		Analyzer analyzer = LuceneUtils.getAnalyzer(0);
 		QueryParser parser = new QueryParser(Version.LUCENE_35,"actionName", analyzer);
 		Query query = parser.parse(q);
 
@@ -54,19 +54,19 @@ public class SearchUtils {
 		TopDocs td = collector.topDocs();
 		int totalHits = td.totalHits;
 		System.out.println("Amount:" + searcher.maxDoc() + " records, hit " + totalHits);
-		ScoreDoc[] hits = td.scoreDocs;
-		for(int i=0;i<hits.length;++i) {
-			System.out.println(i);
-			int docId = hits[i].doc;
-			Document d = searcher.doc(docId);
-			System.out.println("id" + d.get("id"));
-			System.out.println("companyCd:" + d.get("companyCd"));
-			System.out.println("userCd:" + d.get("userCd"));
-			System.out.println("actionName:" + d.get("actionName"));
-			System.out.println("operationTime:" + d.get("operationTime"));
-			System.out.println("parameterInfo:" + d.get("parameterInfo"));
-			System.out.println("===============================");
-		}
+//		ScoreDoc[] hits = td.scoreDocs;
+//		for(int i=0;i<hits.length;++i) {
+//			System.out.println(i);
+//			int docId = hits[i].doc;
+//			Document d = searcher.doc(docId);
+//			System.out.println("id" + d.get("id"));
+//			System.out.println("companyCd:" + d.get("companyCd"));
+//			System.out.println("userCd:" + d.get("userCd"));
+//			System.out.println("actionName:" + d.get("actionName"));
+//			System.out.println("operationTime:" + d.get("operationTime"));
+//			System.out.println("parameterInfo:" + d.get("parameterInfo"));
+//			System.out.println("===============================");
+//		}
 		searcher.close();
 	}
 
