@@ -28,7 +28,7 @@ public class IndexUtils {
 		indexWriterConfig.setOpenMode(OpenMode.CREATE_OR_APPEND);
 		IndexWriter writer = new IndexWriter(dir,indexWriterConfig);
 //		writer.deleteAll();
-		//writer.setUseCompoundFile(false);
+//		writer.setUseCompoundFile(false);
 		indexUserLog(writer, userLogList);
 		int numIndexed = writer.maxDoc();
 		writer.optimize();
