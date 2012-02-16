@@ -20,6 +20,7 @@ public class Indexer {
 	public static void main(String[] args) throws IOException {
 		int numIndexed = index();
 		System.out.println(numIndexed);
+		
 	}
 
 	public static int index() throws IOException {

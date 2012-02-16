@@ -8,9 +8,12 @@ import java.io.Reader;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.util.Version;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LuceneUtils {
 
+	private static Logger logger = LoggerFactory.getLogger(LuceneUtils.class); 
 
 	public static Reader getMyEnglishStopWords() throws IOException{
 		InputStream is = LuceneUtils.class.getClassLoader().getResourceAsStream("my.dic");
@@ -27,7 +30,7 @@ public class LuceneUtils {
 			case 0:
 				Reader r = LuceneUtils.getMyEnglishStopWords();
 				analyzer = new StandardAnalyzer(Version.LUCENE_35 , r );
-				System.out.println("use MyEnglishStopWords");
+				logger.info("use MyEnglishStopWords");
 				break;
 			default:
 				analyzer = new StandardAnalyzer(Version.LUCENE_35 );
