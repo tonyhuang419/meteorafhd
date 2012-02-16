@@ -10,7 +10,7 @@ import com.fhdone.demo2012.BaseTest;
 
 public class SearchServiceTest extends BaseTest {  
 
-	Logger logger = LoggerFactory.getLogger(SearchServiceTest.class);  
+	private Logger logger = LoggerFactory.getLogger(SearchServiceTest.class);  
 
 	@Autowired  
 	@Qualifier("searchService")

@@ -8,12 +8,11 @@
 		</layout>
 	</appender>
 
-
 	<substitutionProperty name="log.base" value="./logs/demo2012" />
-
-	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<File>${log.base}.log</File>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.base}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${log.base}.%i.log</fileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>
