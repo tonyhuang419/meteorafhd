@@ -1,6 +1,7 @@
 package com.fhdone.demo2012.utils.lucene;
 
 
+import java.io.IOException;
 import java.io.Reader;
 
 import org.junit.Assert;
@@ -10,7 +11,12 @@ public class LuceneUtilsTest {
 
 	@Test  
 	public void testGetMyEnglishStopWordsFile(){
-		Reader r = LuceneUtils.getMyEnglishStopWords();
+		Reader r = null;
+		try {
+			r = LuceneUtils.getMyEnglishStopWords();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Assert.assertNotNull(r);
 	}
 	
