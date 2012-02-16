@@ -12,19 +12,22 @@ import org.apache.lucene.util.Version;
 public class LuceneUtils {
 
 
-	public static Reader getMyEnglishStopWords(){
+	public static Reader getMyEnglishStopWords() throws IOException{
 		InputStream is = LuceneUtils.class.getClassLoader().getResourceAsStream("my.dic");
 		Reader r = new  InputStreamReader(is);
+//		r.close();
+//		is.close();
 		return  r;
 	}
 
 	static public Analyzer getAnalyzer(int i){
-		Reader r = LuceneUtils.getMyEnglishStopWords();
 		Analyzer analyzer;
 		try {
 			switch(i){
 			case 0:
+				Reader r = LuceneUtils.getMyEnglishStopWords();
 				analyzer = new StandardAnalyzer(Version.LUCENE_35 , r );
+				System.out.println("use MyEnglishStopWords");
 				break;
 			default:
 				analyzer = new StandardAnalyzer(Version.LUCENE_35 );

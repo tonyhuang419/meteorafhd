@@ -44,7 +44,7 @@ public class SearchUtils {
 
 	public static void search2(String key) throws Exception {
 		int hitsPerPage = 5000;
-		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_35); 
+		Analyzer analyzer = LuceneUtils.getAnalyzer(0);
 		Query q = new QueryParser(Version.LUCENE_35, "actionName", analyzer).parse(key);
 		IndexReader reader = IndexReader.open(FSDirectory.open(Constants.INDEX_DIR), true);
 		IndexSearcher searcher = new IndexSearcher(reader);
