@@ -10,6 +10,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.util.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 public class LuceneUtils {
 
@@ -30,10 +31,15 @@ public class LuceneUtils {
 			case 0:
 				Reader r = LuceneUtils.getMyEnglishStopWords();
 				analyzer = new StandardAnalyzer(Version.LUCENE_35 , r );
-				logger.info("use MyEnglishStopWords");
+				logger.info("EnglishStopWords created");
+				break;
+			case 1:
+				analyzer = new IKAnalyzer();
+				logger.info("IKAnalyzer created");
 				break;
 			default:
 				analyzer = new StandardAnalyzer(Version.LUCENE_35 );
+				logger.info("default Analyzer created");
 			}
 		} catch (IOException e) {
 			analyzer = new StandardAnalyzer(Version.LUCENE_35);
