@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.fhdone.demo2012.entity.UserLog;
 
@@ -16,7 +17,9 @@ public interface  UserLogDao {
 	String getUserLogltId = "select * from nasa2.Z_USER_LOG where id<#{id}";
 	String getUserLogsByTwoId = "select * from nasa2.Z_USER_LOG where id between  #{id1} and #{id2} ";
 	String getUserLogByMaxId = "select max(id) from nasa2.Z_USER_LOG ";
-
+	String updateCompanyCD = "update t set t.COMPANY_CD = #{ccUpdate}" +
+			" from  nasa2.Z_USER_LOG t where t.COMPANY_CD = #{ccSelect}";
+	
 	@Select(countUserLog)  
 	int countUserLog();  
 
@@ -40,5 +43,8 @@ public interface  UserLogDao {
 	
 	@Select(getUserLogByMaxId) 
 	Long getUserLogByMaxId(); 
+	
+	@Update(updateCompanyCD)
+	int updateCompanyCD(Map<String,Long> ids);
 	
 }

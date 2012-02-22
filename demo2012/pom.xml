@@ -119,5 +119,15 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.5.4</version>
+		</dependency>
 	</dependencies>
 </project>
