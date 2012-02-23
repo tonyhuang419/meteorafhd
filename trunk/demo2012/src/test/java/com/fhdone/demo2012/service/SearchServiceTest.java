@@ -20,6 +20,7 @@ public class SearchServiceTest extends BaseTest {
 	public void testSearchLoginfo(){  
 		logger.info("start testSearchLoginfo");
 		searchService.searchLoginfo(".");
+		logger.info("end testSearchLoginfo");
 	} 
 
 

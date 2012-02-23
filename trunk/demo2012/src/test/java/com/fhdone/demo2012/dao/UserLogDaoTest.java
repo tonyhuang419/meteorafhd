@@ -54,17 +54,7 @@ public class UserLogDaoTest extends BaseTest {
     	long maxid = userLogDao.getUserLogByMaxId();
     	logger.info("{}",maxid);
     }
-    
-    @Test
-    public void testUpdateCompanyCD(){
-      	Map<String,Long> m = new HashMap<String,Long>();
-    	m.put("ccSelect", new Long("2"));
-    	m.put("ccUpdate", new Long("1"));
-    	int i = userLogDao.updateCompanyCD(m);
-    	logger.info("updated {}",i);
-    	throw new RuntimeException();
-    }
-    
+
 }    
     
 
