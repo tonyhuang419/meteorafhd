@@ -14,7 +14,9 @@ public class IndexServiceTest extends BaseTest {
 	
     @Test  
     public void testIndexLoginfo(){  
+    	logger.info("start testIndexLoginfo");
     	indexService.indexLoginfo();
+    	logger.info("end testIndexLoginfo");
     } 
 	
 }

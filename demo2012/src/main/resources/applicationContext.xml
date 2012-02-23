@@ -29,23 +29,21 @@
 		<property name="configLocation"  value="classpath:sqlMapConfig.xml"/> 
 	</bean>
 
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<tx:advice id="transactionManagerAdivice" transaction-manager="transactionManager">
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.RuntionException" />
-			<tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.RuntionException" />
-			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.RuntionException" />
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>  
 
-	<aop:config>
-		<aop:pointcut expression="execution(* com.fhdone.demo2012.service.*(..))" id="service" />
-		<aop:advisor advice-ref="transactionManagerAdivice" pointcut-ref="service" />
-	</aop:config> 
+<!-- 	<aop:config> -->
+<!-- 		<aop:pointcut expression="execution(* com.fhdone.demo2012.service.impl.*(..))" id="serviceOperation" /> -->
+<!-- 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" /> -->
+<!-- 	</aop:config>  -->
  
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory"  ref="sqlSessionFactory"/>
