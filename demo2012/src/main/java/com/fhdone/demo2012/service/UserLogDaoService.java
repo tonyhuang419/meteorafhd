@@ -6,4 +6,6 @@ public interface UserLogDaoService {
 	
 	public int updateCompanyCD( Map<String,Long> m );
 	
+	public void readT(Map<String, Long> m);
+	
 }

@@ -6,13 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.fhdone.demo2012.dao.UserLogDao;
 import com.fhdone.demo2012.service.UserLogDaoService;
 
 @Service("userLogDaoService")
-@Transactional
+//@Transactional
 public class UserLogDaoServiceImpl implements UserLogDaoService {
 
 	private static Logger logger = LoggerFactory.getLogger(UserLogDaoServiceImpl.class); 
@@ -25,6 +24,10 @@ public class UserLogDaoServiceImpl implements UserLogDaoService {
     	logger.info("updated {}",i);
     	throw new RuntimeException();
 //		return i;
+	}
+	
+	public void readT(Map<String, Long> m){
+		this.updateCompanyCD(m);
 	}
 
 }

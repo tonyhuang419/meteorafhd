@@ -15,22 +15,23 @@
 		</constructor-arg>
 	</bean>
 
-<!--	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">-->
-<!--		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />-->
-<!--		<property name="jdbcUrl" value="jdbc:sqlserver://10.171.17.88:1433;instanceName=nasa;databaseName=nasa2_Preprd_dev;SelectMethod=cursor;useUnicode=true;characterEncoding=utf-8;autoReconnectForPools=true;autoReconnect=true" />-->
-<!--		<property name="user" value="nasadev" />-->
-<!--		<property name="password" value="nasadev" />-->
-<!--	</bean>-->
-	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="jdbcUrl" value="jdbc:sqlserver://10.171.17.88:1433;instanceName=nasa;databaseName=nasa2_Preprd_dev;SelectMethod=cursor;useUnicode=true;characterEncoding=utf-8;autoReconnectForPools=true;autoReconnect=true" />
+		<property name="user" value="nasadev" />
+		<property name="password" value="nasadev" />
+	</bean>
+
+<!--	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/test" />
-<!--	    <property name="connection.useUnicode">true</property>-->
-<!--        <property name="connection.characterEncoding">UTF8</property>-->
+	    <property name="connection.useUnicode">true</property>
+        <property name="connection.characterEncoding">UTF8</property>
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 	</bean>
-	
+-->	
 
 	<!--MyBatis integration with Spring as define sqlSessionFactory  -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -43,32 +44,23 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
-	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="transactionAttributeSource">
-			<bean class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
-		</property>
-	</bean>
-	<bean id="baseTransactionProxy"	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="transactionAttributes">
-			<props>
-				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
-			</props>
-		</property>
-	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="load*" read-only="true" />
+			<tx:method name="list*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="uniqueResult*" read-only="true" />
+			<tx:method name="save*" read-only="false" rollback-for="java.lang.Exception" />
+			<tx:method name="update*" read-only="false" rollback-for="java.lang.Exception" />
+			<tx:method name="delete*" read-only="false" rollback-for="java.lang.Exception" />
+			<tx:method name="*" read-only="false" rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice> 
 
-<!--	<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-<!--		<tx:attributes>-->
-<!--			<tx:method name="*" read-only="true" />-->
-<!--		</tx:attributes>-->
-<!--	</tx:advice>  -->
-
-<!-- 	<aop:config> -->
-<!-- 		<aop:pointcut expression="execution(* com.fhdone.demo2012.service.impl.*(..))" id="serviceOperation" /> -->
-<!-- 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" /> -->
-<!-- 	</aop:config>  -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.fhdone.demo2012.service.impl.*.*(..))" id="serviceOperation" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
+	</aop:config> 
  
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory"  ref="sqlSessionFactory"/>
