@@ -26,6 +26,7 @@ public class UserLogDaoServiceTest extends BaseTest{
     	m.put("ccSelect", new Long("2"));
     	m.put("ccUpdate", new Long("1"));
 		int n = userLogDaoService.updateCompanyCD(m);
+		userLogDaoService.readT(m);
 		logger.info("end testSearchLoginfo {}" , n);
 	} 
 	
