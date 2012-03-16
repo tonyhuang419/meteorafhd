@@ -22,8 +22,9 @@ public class UserLogDaoTest extends BaseTest {
       
     @Test  
     public void testCountUserLog(){  
-        Assert.assertNotNull(userLogDao.countUserLog());
-        logger.info("{}",userLogDao.countUserLog());
+    	Long count = userLogDao.countUserLog();
+        Assert.assertNotNull(count);
+        logger.info("count:{}",count);
     } 
     
     

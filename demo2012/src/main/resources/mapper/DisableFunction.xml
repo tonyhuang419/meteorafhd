@@ -3,12 +3,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="demo2012">
-	<resultMap type="userLog" id="userLogResult">
+	<resultMap type="disableFunction" id="disableFunctionResult">
 		<id property="id" column="id" />
 		<result property="companyCd" column="COMPANY_CD" />
-		<result property="userCd" column="USER_CD" />
-		<result property="actionName" column="ACTION_NAME" />
-		<result property="operationTime" column="OPERATION_TIME" />
-		<result property="parameterInfo" column="PARAMETER_INFO" />
+		<result property="functionName" column="FUNCTION_NAME" />
 	</resultMap>
 </mapper> 
