@@ -10,41 +10,41 @@ import org.apache.ibatis.annotations.Update;
 
 import com.fhdone.demo2012.entity.UserLog;
 
-public interface  UserLogDao {
+public interface UserLogDao {
 
-	String countUserLog = "select count(*) from  nasa2.Z_USER_LOG";
-	String getUserLogById = "select * from nasa2.Z_USER_LOG where id=#{id}";
-	String getUserLogltId = "select * from nasa2.Z_USER_LOG where id<#{id}";
-	String getUserLogsByTwoId = "select * from nasa2.Z_USER_LOG where id between  #{id1} and #{id2} ";
-	String getUserLogByMaxId = "select max(id) from nasa2.Z_USER_LOG ";
-	String updateCompanyCD = "update t set t.COMPANY_CD = #{ccUpdate}" +
+	String COUNT_USER_LOG = "select count(*) from  nasa2.Z_USER_LOG";
+	String GET_USERLOG_BY_ID = "select * from nasa2.Z_USER_LOG where id=#{id}";
+	String GET_USER_LOG_LT_ID = "select * from nasa2.Z_USER_LOG where id<#{id}";
+	String GET_USER_LOGS_BY_TWOID = "select * from nasa2.Z_USER_LOG where id between  #{id1} and #{id2} ";
+	String GET_USER_LOG_BY_MAXID = "select max(id) from nasa2.Z_USER_LOG ";
+	String UPDATE_COMPANY_CD = "update t set t.COMPANY_CD = #{ccUpdate}" +
 			" from  nasa2.Z_USER_LOG t where t.COMPANY_CD = #{ccSelect}";
 	
-	@Select(countUserLog)  
-	int countUserLog();  
+	@Select(COUNT_USER_LOG)  
+	Long countUserLog();  
 
 
-	@Select(getUserLogById)
+	@Select(GET_USERLOG_BY_ID)
 //	@Results(value = {
 //			@Result(property="id"),
 //			@Result(property="companyCd",column="COMPANY_CD")
 //	})
-	@ResultMap(value = "UserLogService.userLogResult")
+	@ResultMap(value = "demo2012.userLogResult")
 	UserLog getUserLogById(@Param("id") Long logId); 
 
 
-	@Select(getUserLogltId) 
-	@ResultMap(value = "UserLogService.userLogResult")
+	@Select(GET_USER_LOG_LT_ID) 
+	@ResultMap(value = "demo2012.userLogResult")
 	List<UserLog> getUserLogltId(@Param("id") Long logId); 
 
-	@Select(getUserLogsByTwoId) 
-	@ResultMap(value = "UserLogService.userLogResult")
+	@Select(GET_USER_LOGS_BY_TWOID) 
+	@ResultMap(value = "demo2012.userLogResult")
 	List<UserLog> getUserLogsByTwoId(Map<String,Long> ids); 
 	
-	@Select(getUserLogByMaxId) 
+	@Select(GET_USER_LOG_BY_MAXID) 
 	Long getUserLogByMaxId(); 
 	
-	@Update(updateCompanyCD)
+	@Update(UPDATE_COMPANY_CD)
 	int updateCompanyCD(Map<String,Long> ids);
 	
 }

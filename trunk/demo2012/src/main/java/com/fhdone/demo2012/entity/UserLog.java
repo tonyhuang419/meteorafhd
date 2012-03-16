@@ -3,8 +3,6 @@ package com.fhdone.demo2012.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-
-
 public class UserLog implements Serializable {
 
 	private static final long serialVersionUID = -2838133393991085585L;
@@ -15,7 +13,6 @@ public class UserLog implements Serializable {
     private Date operationTime;
     private String parameterInfo;
 	
-    
     public Long getId() {
 		return id;
 	}

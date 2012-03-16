@@ -22,7 +22,7 @@ public class UserLogDaoServiceImpl implements UserLogDaoService {
 	public int updateCompanyCD(Map<String, Long> m) {
     	int i = userLogDao.updateCompanyCD(m);
     	logger.info("updated {}",i);
-    	throw new RuntimeException();
+    	throw new RuntimeException("test transactional rollback");
 //		return i;
 	}
 	
