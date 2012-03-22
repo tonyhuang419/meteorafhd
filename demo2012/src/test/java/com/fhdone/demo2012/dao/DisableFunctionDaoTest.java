@@ -27,14 +27,14 @@ public class DisableFunctionDaoTest extends BaseTest {
     } 
     
     
-    //@Test  
+    @Test  
     public void testGetUserLog(){  
       	List<UserLog> userLog = disableFunctionDao.getUserLog();
         Assert.assertNotNull(userLog);
         logger.info("count:{}",userLog.size());
     }
     
-    @Test  
+    //@Test  
     public void testDisableFunctionName(){
     	List<DisableFunction> list  =  disableFunctionDao.groupDisableFunctionName();
     	this.scanDisableFunction(list);
