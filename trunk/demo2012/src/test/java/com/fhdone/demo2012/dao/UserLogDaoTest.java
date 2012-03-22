@@ -42,7 +42,7 @@ public class UserLogDaoTest extends BaseTest {
     } 
     
     @Test
-    public void getUserLogsByTwoId(){
+    public void testGetUserLogsByTwoId(){
     	Map<String,Long> m = new HashMap<String,Long>();
     	m.put("id1", new Long(4690000));
     	m.put("id2", new Long(4693232));
