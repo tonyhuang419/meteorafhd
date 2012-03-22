@@ -10,8 +10,9 @@
 		<result property="functionName" column="FUNCTION_NAME" />
 		<collection property="userLogList" javaType="ArrayList" ofType="DisableFunction" 
 			resultMap="demo2012.userLogResult"/>
-<!-- 		<collection property="userLogList"  javaType="ArrayList" select="subQuery"   -->
-<!-- 			ofType="DisableFunction" column="FUNCTION_NAME"/>   -->
+<!--        testDisableFunctionName  			 -->
+<!-- 	<collection property="userLogList"  javaType="ArrayList" select="subQuery"   -->
+<!-- 		ofType="DisableFunction" column="FUNCTION_NAME"/>   -->
 	</resultMap>
 
 	<select id="subQuery" parameterType="DisableFunction" 
