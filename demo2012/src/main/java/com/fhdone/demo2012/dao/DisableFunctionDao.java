@@ -21,6 +21,7 @@ public interface DisableFunctionDao {
 	String GROUP_DISABLE_FUNCTION_NAME = "select df.FUNCTION_NAME , df.COMPANY_CD FROM  " +
 			" nasa2.Z_DISABLE_FUNCTION df GROUP BY df.FUNCTION_NAME, df.COMPANY_CD ";
 	
+	// DF_ID 用了别名查询，避免级联查询时和其他表产生名字冲突  
 	String  CASCADE_QUERY = " select df.ID as DF_ID, df.COMPANY_CD , df.FUNCTION_NAME , ul.* from nasa2.Z_USER_LOG ul " +
 			" left join nasa2.Z_DISABLE_FUNCTION df on ul.COMPANY_CD = df.COMPANY_CD and ul.ACTION_NAME = df.FUNCTION_NAME" +
 			" where " +
