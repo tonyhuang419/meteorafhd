@@ -4,8 +4,17 @@
     
 <mapper namespace="demo2012">
 	<resultMap type="disableFunction" id="disableFunctionResult">
-		<id property="id" column="id" />
+		<id property="id" column="DF_ID" />
 		<result property="companyCd" column="COMPANY_CD" />
 		<result property="functionName" column="FUNCTION_NAME" />
+		<collection property="userLogList" javaType="ArrayList" ofType="DisableFunction" 
+			resultMap="demo2012.userLogResult"/>
+<!-- 		<collection property="userLogList"  javaType="ArrayList" select="subQuery"   -->
+<!-- 			ofType="DisableFunction" column="FUNCTION_NAME"/>   -->
 	</resultMap>
-</mapper> 
+
+	<select id="subQuery" parameterType="DisableFunction" 
+	resultMap="demo2012.userLogResult" resultType="userLog" >
+		SELECT * FROM nasa2.Z_USER_LOG ul WHERE ul.ACTION_NAME =  #{FUNCTION_NAME} 
+	</select> 
+</mapper>

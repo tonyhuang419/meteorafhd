@@ -3,6 +3,12 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="false" />
+	</settings>
+
 	<typeAliases>
 		<typeAlias type="com.fhdone.demo2012.entity.UserLog" alias="userLog" />
 		<typeAlias type="com.fhdone.demo2012.entity.DisableFunction" alias="disableFunction" />
@@ -11,5 +17,5 @@
 		<mapper resource="mapper/UserLog.xml" />
 		<mapper resource="mapper/DisableFunction.xml" />
 	</mappers>
-	
+
 </configuration>  

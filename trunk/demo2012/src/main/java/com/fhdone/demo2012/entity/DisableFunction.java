@@ -1,6 +1,7 @@
 package com.fhdone.demo2012.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class DisableFunction  implements Serializable {
    
@@ -8,7 +9,7 @@ public class DisableFunction  implements Serializable {
 	private Long id;
     private String companyCd;
     private String functionName;
-    private UserLog userLog;
+    private List<UserLog> userLogList;
     
 	public Long getId() {
 		return id;
@@ -28,12 +29,10 @@ public class DisableFunction  implements Serializable {
 	public void setFunctionName(String functionName) {
 		this.functionName = functionName;
 	}
-	public UserLog getUserLog() {
-		return userLog;
+	public List<UserLog> getUserLogList() {
+		return userLogList;
 	}
-	public void setUserLog(UserLog userLog) {
-		this.userLog = userLog;
+	public void setUserLogList(List<UserLog> userLogList) {
+		this.userLogList = userLogList;
 	}
-
- 
 }
