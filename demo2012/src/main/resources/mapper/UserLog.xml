@@ -4,7 +4,7 @@
     
 <mapper namespace="demo2012">
 	<resultMap type="userLog" id="userLogResult">
-		<id property="id" column="id" />
+		<id property="id" column="ID" />
 		<result property="companyCd" column="COMPANY_CD" />
 		<result property="userCd" column="USER_CD" />
 		<result property="actionName" column="ACTION_NAME" />
