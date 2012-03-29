@@ -1,5 +1,6 @@
 package com.fhdone.demo2012.service;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,7 @@ public class IndexServiceTest extends BaseTest {
     public IndexService indexService;  
 	
     @Test  
+    @Ignore
     public void testIndexLoginfo(){  
     	logger.info("start testIndexLoginfo");
     	indexService.indexLoginfo();
