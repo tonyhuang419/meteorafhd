@@ -8,6 +8,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import com.fhdone.demo2012.dao.DisableFunctionDaoTest;
 import com.fhdone.demo2012.dao.UserLogDaoTest;
+import com.fhdone.demo2012.service.IndexServiceTest;
 import com.fhdone.demo2012.service.SearchServiceTest;
 import com.fhdone.demo2012.service.UserLogDaoServiceTest;
 import com.fhdone.demo2012.utils.lucene.LuceneUtilsTest;
@@ -17,7 +18,7 @@ import com.fhdone.demo2012.utils.lucene.LuceneUtilsTest;
 @SuiteClasses({  
 	LuceneUtilsTest.class,
 	UserLogDaoTest.class,  
-//	IndexServiceTest.class,  
+	IndexServiceTest.class,  
 	SearchServiceTest.class,
 	UserLogDaoServiceTest.class,
 	DisableFunctionDaoTest.class
