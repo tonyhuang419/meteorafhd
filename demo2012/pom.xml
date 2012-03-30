@@ -18,14 +18,14 @@
 		</repository>
 	</repositories>
  -->	
- 	<!-- http://yangphere.iteye.com/blog/458510 -->
-	<repositories>
-		<repository>
-			<id>org.ibiblio.mirrors</id>
-			<name>ibiblio</name>
-			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
-		</repository>
-	</repositories>
+ 	<!-- http://www.blogjava.net/itvincent/archive/2009/08/04/289715.html -->
+<!-- 	<repositories> -->
+<!-- 		<repository> -->
+<!-- 			<id>org.ibiblio.mirrors</id> -->
+<!-- 			<name>ibiblio</name> -->
+<!-- 			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url> -->
+<!-- 		</repository> -->
+<!-- 	</repositories> -->
  	
 	<build>
 		<plugins>
