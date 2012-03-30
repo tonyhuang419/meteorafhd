@@ -34,15 +34,15 @@ public interface DisableFunctionDao {
 	
 	
 	@Select(GET_USER_LOG) 
-	@ResultMap(value = "demo2012.userLogResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.UserLogDao.userLogResult")
 	List<UserLog> getUserLog();  
 	
 	@Select(GROUP_DISABLE_FUNCTION_NAME)
-	@ResultMap(value = "demo2012.disableFunctionResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.DisableFunctionDao.disableFunctionResult")
 	List<DisableFunction> groupDisableFunctionName();  
 	
 	@Select(CASCADE_QUERY)
-	@ResultMap(value = "demo2012.disableFunctionResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.DisableFunctionDao.disableFunctionResult")
 	List<DisableFunction> cascadeQuery();  
 	
 }
