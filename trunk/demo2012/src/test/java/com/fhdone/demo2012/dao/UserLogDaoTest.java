@@ -31,6 +31,7 @@ public class UserLogDaoTest extends BaseTest {
     @Test  
     public void testGetUserLogById(){  
     	UserLog u = userLogDao.getUserLogById(new Long(4692234));
+    	userLogDao.getUserLogById(new Long(4692234));
         Assert.assertNotNull(u);
         logger.info("{}",u.getCompanyCd());
     } 
@@ -55,6 +56,25 @@ public class UserLogDaoTest extends BaseTest {
     	long maxid = userLogDao.getUserLogByMaxId();
     	logger.info("{}",maxid);
     }
+    
+    @Test
+    public void testSelectUserLogByIdX(){
+    	List<UserLog> list = userLogDao.selectUserLogByIdX(new Long(4693232));
+    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	logger.info("{}",list.size());
+    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	logger.info("{}",list.size());
+    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	logger.info("{}",list.size());
+    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	logger.info("{}",list.size());
+    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	logger.info("{}",list.size());
+    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	logger.info("{}",list.size());
+    }
+    
+    
 
 }    
     
