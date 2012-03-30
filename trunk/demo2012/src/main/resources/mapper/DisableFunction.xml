@@ -3,6 +3,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.fhdone.demo2012.dao.DisableFunctionDao">
+	
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
 	<resultMap type="disableFunction" id="disableFunctionResult">
 		<!-- DF_ID 用了别名查询，避免级联查询时和其他表产生名字冲突  -->
 		<id property="id" column="DF_ID" />
