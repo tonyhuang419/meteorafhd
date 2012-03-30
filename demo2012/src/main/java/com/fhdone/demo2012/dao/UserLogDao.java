@@ -50,7 +50,7 @@ public interface UserLogDao {
 	/**
 	 * cache test
 	 */
-	List<UserLog> selectUserLogByIdX(Long logId); 
+	List<UserLog> selectUserLogByIdX(Map<String,Object> paras); 
 	
 	
 }

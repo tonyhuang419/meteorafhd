@@ -59,18 +59,21 @@ public class UserLogDaoTest extends BaseTest {
     
     @Test
     public void testSelectUserLogByIdX(){
-    	List<UserLog> list = userLogDao.selectUserLogByIdX(new Long(4693232));
-    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	Map<String , Object> paras = new HashMap<String , Object>() ;
+    	paras.put("ID", 4692233L);
+    	paras.put("COMPANY_CD", "0270");
+    	List<UserLog> list = userLogDao.selectUserLogByIdX(paras);
+    	list = userLogDao.selectUserLogByIdX(paras);
     	logger.info("{}",list.size());
-    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	list = userLogDao.selectUserLogByIdX(paras);
     	logger.info("{}",list.size());
-    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	list = userLogDao.selectUserLogByIdX(paras);
     	logger.info("{}",list.size());
-    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	list = userLogDao.selectUserLogByIdX(paras);
     	logger.info("{}",list.size());
-    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	list = userLogDao.selectUserLogByIdX(paras);
     	logger.info("{}",list.size());
-    	userLogDao.selectUserLogByIdX(new Long(4693232));
+    	list = userLogDao.selectUserLogByIdX(paras);
     	logger.info("{}",list.size());
     }
     

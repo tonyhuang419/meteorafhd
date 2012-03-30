@@ -18,7 +18,13 @@
 	
 	<!-- if use cache , u should statement sql at XML-->
 	<select id="selectUserLogByIdX" parameterType="Long" resultType="userLog">  
-        select * from nasa2.Z_USER_LOG where id=#{id}   
+        select * from nasa2.Z_USER_LOG where 1=1 
+        <if test="ID!= null">  
+        	and ID=#{ID}  
+        </if>
+         <if test="COMPANY_CD!= NULL">  
+        	and COMPANY_CD=#{COMPANY_CD}  
+        </if>
     </select>
     
 </mapper> 
