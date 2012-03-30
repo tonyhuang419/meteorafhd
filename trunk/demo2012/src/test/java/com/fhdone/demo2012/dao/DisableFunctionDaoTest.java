@@ -45,7 +45,7 @@ public class DisableFunctionDaoTest extends BaseTest {
 
     
     @Test
-    public void testgGroupBy(){
+    public void testgCascadeQuery(){
     	List<DisableFunction> list  =  disableFunctionDao.cascadeQuery();
     	this.scanDisableFunction(list);
     }
