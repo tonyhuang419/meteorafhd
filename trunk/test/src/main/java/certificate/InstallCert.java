@@ -1,4 +1,4 @@
-package def;
+package certificate;
 
 /*
  * Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
