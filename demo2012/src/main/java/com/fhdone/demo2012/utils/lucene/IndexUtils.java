@@ -23,6 +23,7 @@ public class IndexUtils {
 			throw new IOException();
 		}
 		Directory  dir = FSDirectory.open(Constants.INDEX_DIR);
+		//choose analyzer
 		Analyzer analyzer = LuceneUtils.getAnalyzer(1);
 		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, analyzer);
 		indexWriterConfig.setOpenMode(OpenMode.CREATE_OR_APPEND);
