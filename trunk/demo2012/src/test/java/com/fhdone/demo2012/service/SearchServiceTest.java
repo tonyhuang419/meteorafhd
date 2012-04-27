@@ -19,7 +19,7 @@ public class SearchServiceTest extends BaseTest {
 	@Test  
 	public void testSearchLoginfo(){  
 		logger.info("start testSearchLoginfo");
-		searchService.searchLoginfo(".");
+		searchService.searchLoginfo("mainMenu");
 		logger.info("end testSearchLoginfo");
 	} 
 
