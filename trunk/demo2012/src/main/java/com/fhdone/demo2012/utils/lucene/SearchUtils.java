@@ -17,7 +17,7 @@ public class SearchUtils {
 
 	private static Logger logger = LoggerFactory.getLogger(SearchUtils.class);  
 
-	public static void search2(String key) throws Exception {
+	public static void search(String key) throws Exception {
 		int hitsPerPage = 5000;
 		Analyzer analyzer = LuceneUtils.getAnalyzer(1);
 		Query q = new QueryParser(Version.LUCENE_35, "actionName", analyzer).parse(key);

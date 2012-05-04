@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.fhdone.demo2012.BaseTest;
+import com.fhdone.demo2012.service.luncene.SearchService;
 
 public class SearchServiceTest extends BaseTest {  
 
@@ -19,9 +20,8 @@ public class SearchServiceTest extends BaseTest {
 	@Test  
 	public void testSearchLoginfo(){  
 		logger.info("start testSearchLoginfo");
-		searchService.searchLoginfo("mainMenu");
+		searchService.searchLoginfo("显示");
 		logger.info("end testSearchLoginfo");
 	} 
-
 
 }
