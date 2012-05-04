@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fhdone.demo2012.BaseTest;
+import com.fhdone.demo2012.dao.demo.DisableFunctionDao;
 import com.fhdone.demo2012.entity.DisableFunction;
 import com.fhdone.demo2012.entity.UserLog;
 
@@ -36,7 +37,7 @@ public class DisableFunctionDaoTest extends BaseTest {
     }
     
     @Ignore
-    @Test 
+    @Test
     public void testDisableFunctionName(){
     	List<DisableFunction> list  =  disableFunctionDao.groupDisableFunctionName();
     	this.scanDisableFunction(list);

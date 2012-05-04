@@ -6,18 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.fhdone.demo2012.BaseTest;
+import com.fhdone.demo2012.service.luncene.IndexLogInfoService;
 
 public class IndexServiceTest extends BaseTest {  
 
     @Autowired  
-    @Qualifier("indexService")
-    public IndexService indexService;  
+    @Qualifier("indexLogInfoService")
+    public IndexLogInfoService indexLogInfoService;  
 	
-    @Test  
+    @Test 
     @Ignore
-    public void testIndexLoginfo(){  
+    public void testIndexLoginfo() throws Exception{  
     	logger.info("start testIndexLoginfo");
-    	indexService.indexLoginfo();
+    	logger.info("{}" , indexLogInfoService.indexLoginfo());
     	logger.info("end testIndexLoginfo");
     } 
 	

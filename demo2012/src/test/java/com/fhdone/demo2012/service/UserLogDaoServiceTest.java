@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.fhdone.demo2012.BaseTest;
+import com.fhdone.demo2012.service.demo.UserLogDaoService;
 
 public class UserLogDaoServiceTest extends BaseTest{
 

@@ -1,4 +1,4 @@
-package com.fhdone.demo2012.dao;
+package com.fhdone.demo2012.dao.demo;
 
 import java.util.List;
 
@@ -34,15 +34,15 @@ public interface DisableFunctionDao {
 	
 	
 	@Select(GET_USER_LOG) 
-	@ResultMap(value = "com.fhdone.demo2012.dao.UserLogDao.userLogResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.demo.UserLogDao.userLogResult")
 	List<UserLog> getUserLog();  
 	
 	@Select(GROUP_DISABLE_FUNCTION_NAME)
-	@ResultMap(value = "com.fhdone.demo2012.dao.DisableFunctionDao.disableFunctionResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.demo.DisableFunctionDao.disableFunctionResult")
 	List<DisableFunction> groupDisableFunctionName();  
 	
 	@Select(CASCADE_QUERY)
-	@ResultMap(value = "com.fhdone.demo2012.dao.DisableFunctionDao.disableFunctionResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.demo.DisableFunctionDao.disableFunctionResult")
 	List<DisableFunction> cascadeQuery();  
 	
 }

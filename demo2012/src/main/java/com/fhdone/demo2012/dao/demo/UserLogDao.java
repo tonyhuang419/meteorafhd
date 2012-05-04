@@ -1,4 +1,4 @@
-package com.fhdone.demo2012.dao;
+package com.fhdone.demo2012.dao.demo;
 
 import java.util.List;
 import java.util.Map;
@@ -29,16 +29,16 @@ public interface UserLogDao {
 //			@Result(property="id"),
 //			@Result(property="companyCd",column="COMPANY_CD")
 //	})
-	@ResultMap(value = "com.fhdone.demo2012.dao.UserLogDao.userLogResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.demo.UserLogDao.userLogResult")
 	UserLog getUserLogById(@Param("id") Long logId); 
 
 
 	@Select(GET_USER_LOG_LT_ID) 
-	@ResultMap(value = "com.fhdone.demo2012.dao.UserLogDao.userLogResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.demo.UserLogDao.userLogResult")
 	List<UserLog> getUserLogltId(@Param("id") Long logId); 
 
 	@Select(GET_USER_LOGS_BY_TWOID) 
-	@ResultMap(value = "com.fhdone.demo2012.dao.UserLogDao.userLogResult")
+	@ResultMap(value = "com.fhdone.demo2012.dao.demo.UserLogDao.userLogResult")
 	List<UserLog> getUserLogsByTwoId(Map<String,Long> ids); 
 	
 	@Select(GET_USER_LOG_BY_MAXID) 
@@ -50,7 +50,7 @@ public interface UserLogDao {
 	/**
 	 * cache test
 	 */
-	List<UserLog> selectUserLogByIdX(Map<String,Object> paras); 
+	List<UserLog> selectUserLogByIdFromCache(Map<String,Object> paras); 
 	
 	
 }

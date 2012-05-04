@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.fhdone.demo2012.dao.DisableFunctionDao">
+<mapper namespace="com.fhdone.demo2012.dao.demo.DisableFunctionDao">
 	
 	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
@@ -12,14 +12,14 @@
 		<result property="companyCd" column="COMPANY_CD" />
 		<result property="functionName" column="FUNCTION_NAME" />
 		<collection property="userLogList" javaType="ArrayList" ofType="DisableFunction" 
-			resultMap="com.fhdone.demo2012.dao.UserLogDao.userLogResult"/>
+			resultMap="com.fhdone.demo2012.dao.demo.UserLogDao.userLogResult"/>
 <!--        testDisableFunctionName  			 -->
 <!-- 	<collection property="userLogList"  javaType="ArrayList" select="subQuery"   -->
 <!-- 		ofType="DisableFunction" column="FUNCTION_NAME"/>   -->
 	</resultMap>
 
 	<select id="subQuery" parameterType="DisableFunction" 
-	resultMap="com.fhdone.demo2012.dao.UserLogDao.userLogResult" resultType="userLog" >
+	resultMap="com.fhdone.demo2012.dao.demo.UserLogDao.userLogResult" resultType="userLog" >
 		SELECT * FROM nasa2.Z_USER_LOG ul WHERE ul.ACTION_NAME =  #{FUNCTION_NAME} 
 	</select> 
 </mapper>

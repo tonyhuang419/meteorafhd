@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fhdone.demo2012.BaseTest;
+import com.fhdone.demo2012.dao.demo.UserLogDao;
 import com.fhdone.demo2012.entity.UserLog;
 
 public class UserLogDaoTest extends BaseTest {  
@@ -58,22 +59,22 @@ public class UserLogDaoTest extends BaseTest {
     }
     
     @Test
-    public void testSelectUserLogByIdX(){
+    public void selectUserLogByIdFromCache(){
     	Map<String , Object> paras = new HashMap<String , Object>() ;
     	paras.put("ID", 4692233L);
     	paras.put("COMPANY_CD", "0270");
-    	List<UserLog> list = userLogDao.selectUserLogByIdX(paras);
-    	list = userLogDao.selectUserLogByIdX(paras);
+    	List<UserLog> list = userLogDao.selectUserLogByIdFromCache(paras);
+    	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
-    	list = userLogDao.selectUserLogByIdX(paras);
+    	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
-    	list = userLogDao.selectUserLogByIdX(paras);
+    	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
-    	list = userLogDao.selectUserLogByIdX(paras);
+    	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
-    	list = userLogDao.selectUserLogByIdX(paras);
+    	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
-    	list = userLogDao.selectUserLogByIdX(paras);
+    	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
     }
     
