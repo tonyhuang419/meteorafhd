@@ -20,7 +20,8 @@ public class SearchServiceTest extends BaseTest {
 	@Test  
 	public void testSearchLoginfo(){  
 		logger.info("start testSearchLoginfo");
-		searchService.searchLoginfo("显示");
+		searchService.search("actionName","action");
+		searchService.search("contents","的");
 		logger.info("end testSearchLoginfo");
 	} 
 
