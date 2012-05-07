@@ -15,7 +15,6 @@ public class SearchServiceTest extends BaseTest {
 	private Logger logger = LoggerFactory.getLogger(SearchServiceTest.class);  
 
 	@Test  
-	@Ignore
 	public void testSearch() throws Exception{  
 		logger.info("start testSearchLoginfo");
 		SearchUtils.search("actionName","expenseApplicationEditJC-38072");
