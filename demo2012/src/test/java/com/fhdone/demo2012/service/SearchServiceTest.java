@@ -22,7 +22,11 @@ public class SearchServiceTest extends BaseTest {
 		logger.info("end testSearchLoginfo");
 	} 
 	
-	@Test  
+	
+	/**
+	 * http://www.cnblogs.com/bysshijiajia/archive/2008/01/24/1051401.html
+	 */
+	@Test 
 	public void testSearch2() throws Exception{  
 		PhraseQuery query = new PhraseQuery();
 		query.setSlop(5);
