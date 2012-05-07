@@ -22,7 +22,7 @@ def delCopy(menuList):
     for line in menuList:
         if line not in newMenuList:
             newMenuList.append(line)
-    print 'scan file finished'
+    print 'scan file finished, found copies %d' % ( len(menuList) - len(newMenuList) )
     return newMenuList
     
 def writeListToNewFile(menuList):
