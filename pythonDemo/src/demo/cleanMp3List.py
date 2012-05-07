@@ -5,6 +5,7 @@ Created on May 7, 2012
 '''
 
 def getFileList(filePath):
+    print 'read file start'
     menuList=[]
     try:
         for line in open(filePath).readlines():      
@@ -13,6 +14,7 @@ def getFileList(filePath):
         print ( ex )
 #    finally:
 #        pass
+    print 'read file success'
     return menuList
 
 def delCopy(menuList):
@@ -20,6 +22,7 @@ def delCopy(menuList):
     for line in menuList:
         if line not in newMenuList:
             newMenuList.append(line)
+    print 'scan file finished'
     return newMenuList
     
 def writeListToNewFile(menuList):
@@ -27,6 +30,7 @@ def writeListToNewFile(menuList):
     f = file('newList.txt', 'w') 
     f.write(newMeunStr) 
     f.close()
+    print 'new file has generated'
 
 def cleanMp3List(filePath):
     menuList = getFileList(filePath);
