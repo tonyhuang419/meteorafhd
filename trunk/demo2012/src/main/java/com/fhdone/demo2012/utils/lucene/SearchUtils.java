@@ -47,7 +47,7 @@ public class SearchUtils {
 		searcher.close();
 	}
 	
-	public static void search(String fieldName , Query  query) throws Exception {
+	public static void search(Query  query) throws Exception {
 		IndexReader reader = IndexReader.open(FSDirectory.open(Constants.INDEX_DIR), true);
 		IndexSearcher searcher = new IndexSearcher(reader);
 		TopScoreDocCollector collector = TopScoreDocCollector.create(HIT_SPER_PAGE, true);
