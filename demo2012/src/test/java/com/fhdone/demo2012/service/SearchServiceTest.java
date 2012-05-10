@@ -1,8 +1,8 @@
 package com.fhdone.demo2012.service;
 
 import org.apache.lucene.index.Term;
+import org.apache.lucene.search.MatchAllDocsQuery;
 import org.apache.lucene.search.PhraseQuery;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +27,12 @@ public class SearchServiceTest extends BaseTest {
 	 * http://www.cnblogs.com/bysshijiajia/archive/2008/01/24/1051401.html
 	 */
 	@Test 
-	public void testSearch2() throws Exception{  
+	public void testPhraseQuery() throws Exception{  
 		PhraseQuery query = new PhraseQuery();
 		query.setSlop(5);
 		query.add(new Term("contents", "上午"));
 		query.add(new Term("contents", "下午"));
-		SearchUtils.search( "contents" , query );
-	} 
-
+		SearchUtils.search( query );
+	}
+	
 }
