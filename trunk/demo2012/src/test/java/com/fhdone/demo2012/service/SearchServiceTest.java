@@ -40,7 +40,7 @@ public class SearchServiceTest extends BaseTest {
 	@Test
 	public void testFuzzyQuery() throws Exception{ 
 		logger.info("start testPhraseQuery");
-		FuzzyQuery query = new FuzzyQuery(new Term("file_contents", "IndexWriter想"));
+		FuzzyQuery query = new FuzzyQuery(new Term("file_contents", "IndexWriterX"));
 		SearchUtils.search( query );
 		logger.info("end testPhraseQuery");
 	}
