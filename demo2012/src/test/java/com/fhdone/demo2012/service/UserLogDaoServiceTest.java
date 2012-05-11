@@ -22,7 +22,7 @@ public class UserLogDaoServiceTest extends BaseTest{
 	@Qualifier("userLogDaoService")
 	public UserLogDaoService userLogDaoService;  
 
-	@Test  
+	@Test
 	public void testSearchLoginfo(){  
 		logger.info("start testSearchLoginfo");
 		Map<String,Long> m = new HashMap<String,Long>();
