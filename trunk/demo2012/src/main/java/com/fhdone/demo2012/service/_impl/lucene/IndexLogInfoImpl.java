@@ -42,10 +42,9 @@ public class IndexLogInfoImpl implements IndexLogInfoService {
 			List<UserLog> ul = userLogDao.getUserLogsByTwoId(paras);
 			if( 0!=ul.size()){
 				logger.info("{}" , ul.size());
-				logger.info(beg+"~"+end);
+				logger.info("{}~{}",beg,end);
 				try {
 					logger.info( "indexed:"+index(ul) );
-
 				} catch (IOException e) {
 					e.printStackTrace();
 					return false;
@@ -58,15 +57,16 @@ public class IndexLogInfoImpl implements IndexLogInfoService {
 	private int index( List<UserLog> userLogList ) throws Exception {
 		IndexWriter writer = LuceneUtils.getWriter();
 		indexUserLog(writer, userLogList);
-		int numIndexed = writer.maxDoc();
-		writer.optimize();
+//		int numIndexed = writer.maxDoc();
+		int numIndexed = writer.numDocs();
+//		writer.optimize();
 		writer.close();
 		return numIndexed;
 	}
 
 	private void indexUserLog(IndexWriter writer, List<UserLog> userLogList ) throws IOException {
 		for(UserLog u:userLogList){
-			writer.deleteDocuments(new Term("id",u.getId().toString())); 
+			writer.deleteDocuments(new Term("id",u.getId().toString()));
 			Document doc = new Document();
 			if(StringUtilsX.isNotBlank(u.getId().toString())){
 				doc.add(new Field("id", u.getId().toString(), Field.Store.YES, Field.Index.ANALYZED));

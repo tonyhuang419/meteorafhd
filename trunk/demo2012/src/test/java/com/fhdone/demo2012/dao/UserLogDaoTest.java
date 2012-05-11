@@ -40,6 +40,7 @@ public class UserLogDaoTest extends BaseTest {
     @Test  
     public void testGetUserLogltId(){  
     	List<UserLog> list = userLogDao.getUserLogltId(new Long(4693232));
+    	Assert.assertNotNull(list.size());
     	logger.info("{}",list.size());
     } 
     
@@ -49,12 +50,14 @@ public class UserLogDaoTest extends BaseTest {
     	m.put("id1", new Long(4690000));
     	m.put("id2", new Long(4693232));
     	List<UserLog> list = userLogDao.getUserLogsByTwoId(m);
+    	Assert.assertNotNull(list.size());
     	logger.info("{}",list.size());
     }
     
     @Test  
     public void testGetUserLogByMaxId(){  
     	long maxid = userLogDao.getUserLogByMaxId();
+    	Assert.assertNotNull(maxid);
     	logger.info("{}",maxid);
     }
     
@@ -76,6 +79,8 @@ public class UserLogDaoTest extends BaseTest {
     	logger.info("{}",list.size());
     	list = userLogDao.selectUserLogByIdFromCache(paras);
     	logger.info("{}",list.size());
+    	Assert.assertNotNull(list.size());
+    	
     }
     
     

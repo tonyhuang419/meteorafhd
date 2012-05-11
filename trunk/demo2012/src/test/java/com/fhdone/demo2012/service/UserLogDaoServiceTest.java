@@ -38,7 +38,6 @@ public class UserLogDaoServiceTest extends BaseTest{
 		}  
 		catch(Exception e){  
 			Assert.assertEquals("test transactional rollback", e.getMessage());  
-
 		} 
 	} 
 	

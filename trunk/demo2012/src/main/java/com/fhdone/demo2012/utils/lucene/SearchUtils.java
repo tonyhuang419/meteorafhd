@@ -1,5 +1,7 @@
 package com.fhdone.demo2012.utils.lucene;
 
+import java.io.File;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.QueryParser;
@@ -18,10 +20,19 @@ public class SearchUtils {
 	private static Logger logger = LoggerFactory.getLogger(SearchUtils.class);  
 	private static int HIT_SPER_PAGE = 5000;
 	
+	public static File getIndexDir(){
+		return new File(Constants.INDEX_DIR);
+	}
+	
+	public static File getDataDir(){
+		return new File(Constants.DATA_DIR);
+	}
+	
 	public static void search(String fieldName , String key) throws Exception {
+		File indexFile = SearchUtils.getIndexDir();
 		Analyzer analyzer = LuceneUtils.getAnalyzer(1);
 		Query q = new QueryParser(Version.LUCENE_35, fieldName , analyzer).parse(key);
-		IndexReader reader = IndexReader.open(FSDirectory.open(Constants.INDEX_DIR), true);
+		IndexReader reader = IndexReader.open(FSDirectory.open(indexFile), true);
 		IndexSearcher searcher = new IndexSearcher(reader);
 		TopScoreDocCollector collector = TopScoreDocCollector.create(HIT_SPER_PAGE, true);
 		searcher.search(q, collector);
@@ -48,7 +59,8 @@ public class SearchUtils {
 	}
 	
 	public static void search(Query  query) throws Exception {
-		IndexReader reader = IndexReader.open(FSDirectory.open(Constants.INDEX_DIR), true);
+		File indexFile = SearchUtils.getIndexDir();
+		IndexReader reader = IndexReader.open(FSDirectory.open(indexFile), true);
 		IndexSearcher searcher = new IndexSearcher(reader);
 		TopScoreDocCollector collector = TopScoreDocCollector.create(HIT_SPER_PAGE, true);
 		searcher.search(query, collector);

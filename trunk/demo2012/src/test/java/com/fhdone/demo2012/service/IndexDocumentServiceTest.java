@@ -1,5 +1,7 @@
 package com.fhdone.demo2012.service;
 
+import junit.framework.Assert;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,13 @@ public class IndexDocumentServiceTest extends BaseTest {
     @Qualifier("indexDocumentService")
     public IndexDocumentService indexDocumentService;  
 	
-    @Test 
-    @Ignore
+    @Test
+//    @Ignore
     public void testIndexDocument() throws Exception{  
     	logger.info("start testIndexDocument");
-    	logger.info("{}" , indexDocumentService.indexDocument());
+    	int num = indexDocumentService.indexDocument();
+    	logger.info("{}" , num);
+    	Assert.assertFalse(0==num);
     	logger.info("end testIndexDocument");
     } 
-	
 }

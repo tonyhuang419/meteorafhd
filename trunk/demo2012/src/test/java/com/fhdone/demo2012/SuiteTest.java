@@ -18,11 +18,11 @@ import com.fhdone.demo2012.utils.lucene.LuceneUtilsTest;
 @RunWith(Suite.class)  
 @SuiteClasses({  
 	LuceneUtilsTest.class,
-	UserLogDaoTest.class,  
 	IndexServiceTest.class, 
 	IndexDocumentServiceTest.class,
-	SearchServiceTest.class,
+	UserLogDaoTest.class,  
 	UserLogDaoServiceTest.class,
+	SearchServiceTest.class,
 	DisableFunctionDaoTest.class
 })  
 public class SuiteTest extends TestCase{
