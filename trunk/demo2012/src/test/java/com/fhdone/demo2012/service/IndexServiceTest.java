@@ -16,7 +16,7 @@ public class IndexServiceTest extends BaseTest {
     public IndexLogInfoService indexLogInfoService;  
 	
     @Test
-//    @Ignore
+    @Ignore
     public void testIndexLoginfo() throws Exception{  
     	logger.info("start testIndexLoginfo");
     	boolean succ = indexLogInfoService.indexLoginfo();
