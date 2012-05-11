@@ -4,22 +4,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.IndexWriterConfig.OpenMode;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.Version;
+import org.apache.lucene.index.Term;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.fhdone.demo2012.service.luncene.IndexDocumentService;
 import com.fhdone.demo2012.utils.lucene.LuceneUtils;
+import com.fhdone.demo2012.utils.lucene.SearchUtils;
 
 
 @Service("indexDocumentService")
@@ -27,14 +22,13 @@ public class IndexDocumentImpl implements IndexDocumentService {
 
 	private Logger logger = LoggerFactory.getLogger(IndexDocumentImpl.class); 
 	
-	final public static File INDEX_DIR = new File("src\\main\\resources\\luceneData\\index");
-	final public static File DATA_DIR = new File("src\\main\\resources\\luceneData\\data");
-	
 	public int indexDocument( ) throws Exception {
+		File dataFile = SearchUtils.getDataDir();
 		IndexWriter writer = LuceneUtils.getWriter();
-		indexDirectory(writer, DATA_DIR);
-		int numIndexed = writer.maxDoc();
-		writer.optimize();
+		indexDirectory(writer, dataFile);
+//		int numIndexed = writer.maxDoc();
+		int numIndexed = writer.numDocs();
+//		writer.optimize();
 		writer.close();
 		return numIndexed;
 	}
@@ -55,11 +49,14 @@ public class IndexDocumentImpl implements IndexDocumentService {
 		if (f.isHidden() || !f.exists() || !f.canRead()) {
 			return;
 		}
-		logger.info("Indexing " + f.getCanonicalPath());
+		String filePath = f.getCanonicalPath();
+		String fileName = f.getName();
+		logger.info("Indexing " + fileName);
+		writer.deleteDocuments(new Term("file_name",fileName));
 		Document doc = new Document();
-		doc.add(new Field("contents", new FileReader(f)));
-		doc.add(new Field("contents", f.getName(), Field.Store.YES, Field.Index.ANALYZED));
-		doc.add(new Field("filename", f.getCanonicalPath(), Field.Store.YES, Field.Index.ANALYZED));
+		doc.add(new Field("file_name", fileName, Field.Store.YES, Field.Index.ANALYZED));
+		doc.add(new Field("file_path", filePath, Field.Store.YES, Field.Index.ANALYZED));
+		doc.add(new Field("file_contents", new FileReader(f)));
 		writer.addDocument(doc);
 	}	
 

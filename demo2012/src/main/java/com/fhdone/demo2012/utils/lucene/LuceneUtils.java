@@ -1,5 +1,6 @@
 package com.fhdone.demo2012.utils.lucene;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,11 +32,12 @@ public class LuceneUtils {
 	}
 
 	public static IndexWriter getWriter() throws IOException{
-		if (! Constants.INDEX_DIR.exists() || ! Constants.DATA_DIR.isDirectory()) {
+		File indexFile = SearchUtils.getIndexDir();
+		File dataFile = SearchUtils.getDataDir();
+		if (! indexFile.exists() || ! dataFile.isDirectory()) {
 			throw new IOException();
 		}
-		Directory  dir = FSDirectory.open( Constants.INDEX_DIR);
-
+		Directory  dir = FSDirectory.open( indexFile );
 		//IndexWriter writer = new IndexWriter(dir, 
 		//new StandardAnalyzer(Version.LUCENE_35,StopAnalyzer.ENGLISH_STOP_WORDS_SET) , 
 		//true, IndexWriter.MaxFieldLength.LIMITED);

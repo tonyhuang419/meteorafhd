@@ -17,8 +17,9 @@ public class SearchServiceTest extends BaseTest {
 	@Test
 	public void testSearch() throws Exception{  
 		logger.info("start testSearchLoginfo");
-		SearchUtils.search("actionName","expenseApplicationEditJC-38072");
-		SearchUtils.search("contents","的");
+		SearchUtils.search("actionName","action");
+		SearchUtils.search("file_contents","的");
+		SearchUtils.search("file_name","a.txt");
 		logger.info("end testSearchLoginfo");
 	} 
 	
@@ -26,18 +27,22 @@ public class SearchServiceTest extends BaseTest {
 	 * http://www.cnblogs.com/bysshijiajia/archive/2008/01/24/1051401.html
 	 */
 	@Test
-	public void testPhraseQuery() throws Exception{  
+	public void testPhraseQuery() throws Exception{
+		logger.info("start testPhraseQuery");
 		PhraseQuery query = new PhraseQuery();
 		query.setSlop(5);
-		query.add(new Term("contents", "上午"));
-		query.add(new Term("contents", "下午"));
+		query.add(new Term("file_contents", "上午"));
+		query.add(new Term("file_contents", "下午"));
 		SearchUtils.search( query );
+		logger.info("end testPhraseQuery");
 	}
 	
 	@Test
-	public void testFuzzyQuery() throws Exception{  
-		FuzzyQuery query = new FuzzyQuery(new Term("contents", "IndexWriter"));
+	public void testFuzzyQuery() throws Exception{ 
+		logger.info("start testPhraseQuery");
+		FuzzyQuery query = new FuzzyQuery(new Term("file_contents", "IndexWriter想"));
 		SearchUtils.search( query );
+		logger.info("end testPhraseQuery");
 	}
 	
 }

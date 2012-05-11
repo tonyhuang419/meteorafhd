@@ -1,5 +1,6 @@
 package com.fhdone.demo2012.service;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,13 @@ public class IndexServiceTest extends BaseTest {
     @Qualifier("indexLogInfoService")
     public IndexLogInfoService indexLogInfoService;  
 	
-    @Test 
-    @Ignore
+    @Test
+//    @Ignore
     public void testIndexLoginfo() throws Exception{  
     	logger.info("start testIndexLoginfo");
+    	boolean succ = indexLogInfoService.indexLoginfo();
     	logger.info("{}" , indexLogInfoService.indexLoginfo());
+    	Assert.assertTrue(succ);
     	logger.info("end testIndexLoginfo");
     } 
 	
