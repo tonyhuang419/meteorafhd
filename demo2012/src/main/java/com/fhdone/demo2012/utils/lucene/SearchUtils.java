@@ -7,6 +7,7 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.TopScoreDocCollector;
 import org.apache.lucene.store.FSDirectory;
@@ -18,7 +19,7 @@ import org.slf4j.LoggerFactory;
 public class SearchUtils {
 
 	private static Logger logger = LoggerFactory.getLogger(SearchUtils.class);  
-	private static int HIT_SPER_PAGE = 5000;
+	private static int HIT_SPER_PAGE = 500;
 	
 	public static File getIndexDir(){
 		return new File(Constants.INDEX_DIR);
@@ -36,13 +37,13 @@ public class SearchUtils {
 		IndexSearcher searcher = new IndexSearcher(reader);
 		TopScoreDocCollector collector = TopScoreDocCollector.create(HIT_SPER_PAGE, true);
 		searcher.search(q, collector);
-		
 		TopDocs td = collector.topDocs();
-		int totalHits = td.totalHits;
-		logger.info("Amount:" + searcher.maxDoc() + " records, hit " + totalHits);
-
+		ScoreDoc[] hits = td.scoreDocs;
+		logger.info("MaxDoc:{}  TotalHits:{}  HitsLength:{}",
+			new Object[]{(Integer)searcher.maxDoc() , (Integer)td.totalHits , (Integer)hits.length } );
+		
 //		ScoreDoc[] hits = td.scoreDocs;
-//		for(int /i=0;i<hits.length;++i) {
+//		for(int i=0;i<hits.length;++i) {
 //			logger.info(i);
 //			int docId = hits[i].doc;
 //			Document d = searcher.doc(docId);
@@ -65,8 +66,9 @@ public class SearchUtils {
 		TopScoreDocCollector collector = TopScoreDocCollector.create(HIT_SPER_PAGE, true);
 		searcher.search(query, collector);
 		TopDocs td = collector.topDocs();
-		int totalHits = td.totalHits;
-		logger.info("Amount:" + searcher.maxDoc() + " records, hit " + totalHits);
+		ScoreDoc[] hits = td.scoreDocs;
+		logger.info("MaxDoc:{}  TotalHits:{}  HitsLength:{}",
+			new Object[]{(Integer)searcher.maxDoc() , (Integer)td.totalHits , (Integer)hits.length } );
 		searcher.close();
 	}
 
