@@ -17,7 +17,7 @@ public class IndexDocumentServiceTest extends BaseTest {
     public IndexDocumentService indexDocumentService;  
 	
     @Test
-    @Ignore
+//    @Ignore
     public void testIndexDocument() throws Exception{  
     	logger.info("start testIndexDocument");
     	int num = indexDocumentService.indexDocument();

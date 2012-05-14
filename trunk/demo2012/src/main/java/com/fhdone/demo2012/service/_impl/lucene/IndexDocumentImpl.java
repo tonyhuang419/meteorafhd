@@ -29,6 +29,8 @@ public class IndexDocumentImpl implements IndexDocumentService {
 //		int numIndexed = writer.maxDoc();
 		int numIndexed = writer.numDocs();
 //		writer.optimize();
+		logger.info("MaxDoc:{}  NumDocs:{} ",
+				new Object[]{ (Integer)writer.maxDoc() , (Integer)writer.numDocs() } );
 		writer.close();
 		return numIndexed;
 	}
@@ -53,6 +55,8 @@ public class IndexDocumentImpl implements IndexDocumentService {
 		String fileName = f.getName();
 		logger.info("Indexing " + fileName);
 		writer.deleteDocuments(new Term("file_name",fileName));
+		logger.info("MaxDoc:{}  NumDocs:{} ",
+				new Object[]{ (Integer)writer.maxDoc() , (Integer)writer.numDocs() } );
 		Document doc = new Document();
 		doc.add(new Field("file_name", fileName, Field.Store.YES, Field.Index.ANALYZED));
 		doc.add(new Field("file_path", filePath, Field.Store.YES, Field.Index.ANALYZED));
