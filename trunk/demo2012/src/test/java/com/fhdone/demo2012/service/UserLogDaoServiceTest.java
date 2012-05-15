@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.fhdone.demo2012.BaseTest;
-import com.fhdone.demo2012.service.demo.UserLogDaoService;
+import com.fhdone.demo2012.service.demo.UserLogService;
 
 public class UserLogDaoServiceTest extends BaseTest{
 
@@ -20,7 +20,7 @@ public class UserLogDaoServiceTest extends BaseTest{
 
 	@Autowired  
 	@Qualifier("userLogDaoService")
-	public UserLogDaoService userLogDaoService;  
+	public UserLogService userLogDaoService;  
 
 	@Test
 	public void testSearchLoginfo(){  
