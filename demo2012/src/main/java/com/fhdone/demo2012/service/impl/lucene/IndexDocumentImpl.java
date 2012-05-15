@@ -25,6 +25,7 @@ public class IndexDocumentImpl implements IndexDocumentService {
 	public int indexDocument( ) throws Exception {
 		File dataFile = SearchUtils.getDataDir();
 		IndexWriter writer = LuceneUtils.getWriter();
+//		writer.setInfoStream(System.out);
 		indexDirectory(writer, dataFile);
 //		int numIndexed = writer.maxDoc();
 		int numIndexed = writer.numDocs();
