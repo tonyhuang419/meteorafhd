@@ -1,4 +1,4 @@
-package com.fhdone.demo2012.service._impl.demo;
+package com.fhdone.demo2012.service.impl.demo;
 
 import java.util.Map;
 
@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fhdone.demo2012.dao.demo.UserLogDao;
-import com.fhdone.demo2012.service.demo.UserLogDaoService;
+import com.fhdone.demo2012.service.demo.UserLogService;
 
 @Service("userLogDaoService")
 //@Transactional
-public class UserLogDaoServiceImpl implements UserLogDaoService {
+public class UserLogServiceImpl implements UserLogService {
 
-	private static Logger logger = LoggerFactory.getLogger(UserLogDaoServiceImpl.class); 
+	private static Logger logger = LoggerFactory.getLogger(UserLogServiceImpl.class); 
 
     @Autowired  
     public UserLogDao userLogDao;  

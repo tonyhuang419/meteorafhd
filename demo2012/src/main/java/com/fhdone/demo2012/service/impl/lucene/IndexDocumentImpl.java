@@ -1,4 +1,4 @@
-package com.fhdone.demo2012.service._impl.lucene;
+package com.fhdone.demo2012.service.impl.lucene;
 
 import java.io.File;
 import java.io.FileReader;
