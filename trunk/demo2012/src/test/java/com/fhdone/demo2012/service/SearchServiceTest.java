@@ -28,7 +28,6 @@ public class SearchServiceTest extends BaseTest {
 	 * http://www.cnblogs.com/bysshijiajia/archive/2008/01/24/1051401.html
 	 */
 	@Test
-	@Ignore
 	public void testPhraseQuery() throws Exception{
 		logger.info("start testPhraseQuery");
 		PhraseQuery query = new PhraseQuery();
@@ -40,7 +39,6 @@ public class SearchServiceTest extends BaseTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testFuzzyQuery() throws Exception{ 
 		logger.info("start testPhraseQuery");
 		FuzzyQuery query = new FuzzyQuery(new Term("file_contents", "IndexWriterX"));

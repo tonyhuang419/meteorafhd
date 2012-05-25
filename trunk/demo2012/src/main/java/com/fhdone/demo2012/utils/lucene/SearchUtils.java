@@ -3,8 +3,10 @@ package com.fhdone.demo2012.utils.lucene;
 import java.io.File;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.search.FieldCache;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
@@ -34,6 +36,10 @@ public class SearchUtils {
 		Analyzer analyzer = LuceneUtils.getAnalyzer(1);
 		Query q = new QueryParser(Version.LUCENE_35, fieldName , analyzer).parse(key);
 		IndexReader reader = IndexReader.open(FSDirectory.open(indexFile), true);
+		
+		//cache field value
+		String[] actionNameValueCache = FieldCache.DEFAULT.getStrings(reader, "actionName");
+		
 		IndexSearcher searcher = new IndexSearcher(reader);
 		TopScoreDocCollector collector = TopScoreDocCollector.create(HIT_SPER_PAGE, true);
 		searcher.search(q, collector);
@@ -41,21 +47,20 @@ public class SearchUtils {
 		ScoreDoc[] hits = td.scoreDocs;
 		logger.info("MaxDoc:{}  TotalHits:{}  HitsLength:{}",
 			new Object[]{(Integer)searcher.maxDoc() , (Integer)td.totalHits , (Integer)hits.length } );
-		
-//		ScoreDoc[] hits = td.scoreDocs;
-//		for(int i=0;i<hits.length;++i) {
-//			logger.info(i);
-//			int docId = hits[i].doc;
-//			Document d = searcher.doc(docId);
+		for(int i=0;i<hits.length;++i) {
+			logger.info( "{}" , (i) );
+			int docId = hits[i].doc;
+			Document d = searcher.doc(docId);
 //			System.out.println(d.get("contents"));
-//			logger.info("id" + d.get("id"));
-//			logger.info("companyCd:" + d.get("companyCd"));
-//			logger.info("userCd:" + d.get("userCd"));
-//			logger.info("actionName:" + d.get("actionName"));
-//			logger.info("operationTime:" + d.get("operationTime"));
-//			logger.info("parameterInfo:" + d.get("parameterInfo"));
-//			logger.info("===============================");
-//		}
+			logger.info("id: {}" , d.get("id"));
+			logger.info("companyCd: {}" , d.get("companyCd"));
+			logger.info("userCd: {}" , d.get("userCd"));
+			logger.info("actionName: {}" , d.get("actionName") );
+			logger.info("get actionName from cache:{}" , actionNameValueCache[ docId ]  );
+			logger.info("operationTime: {}" , d.get("operationTime") );
+			logger.info("parameterInfo: {}" , d.get("parameterInfo") );
+			logger.info("===============================");
+		}
 		searcher.close();
 	}
 	
