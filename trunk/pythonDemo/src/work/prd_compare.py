@@ -28,8 +28,8 @@ def getWebPrdMap():
             
 def compareFile():
     destFile = xlrd.open_workbook(DEST_FILE_PATH , formatting_info=True)
-    compareFile = copy(destFile)
-    compareSheet = compareFile.get_sheet(0)
+    rstFile = copy(destFile)
+    compareSheet = rstFile.get_sheet(0)
     
     destSheetCtx = destFile.sheet_by_index(0)    
     nrows = destSheetCtx.nrows
@@ -45,21 +45,21 @@ def compareFile():
         print "%s,\nRemote PRD Version:%s , Local PRD Version:%s" %( filePath, remotePreVer , prdVersion )
         if remotePreVer!=prdVersion:
             compareSheet.write(i, 5, remotePreVer )
-    compareFile.save('new.xls')
+    rstFile.save('new.xls')
 
+prdMap = getWebPrdMap()
 def getPrdVer(filePath):
     tmpList = filePath.split('/')
     tmpListLen = len(tmpList)
     fileName = tmpList[tmpListLen-2]+'/'+tmpList[tmpListLen-1]
-    
-    prdMap = getWebPrdMap()
     for k in prdMap.keys():
         if  fileName in k :
             return prdMap[k]
 
 if __name__ == '__main__':
-    prdMap = getWebPrdMap()
+    print 'start compare'
     compareFile()
+    print 'end compare'
     
     
 
