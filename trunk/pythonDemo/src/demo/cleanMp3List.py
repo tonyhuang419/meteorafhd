@@ -8,7 +8,7 @@ def getFileList(filePath):
     print 'read file start'
     menuList=[]
     try:
-        for line in open(filePath).readlines():      
+        for line in open(filePath):      
             menuList.append(line.split()[0])
     except Exception as ex: 
         print ( ex )
