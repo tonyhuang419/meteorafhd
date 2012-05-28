@@ -3,6 +3,7 @@
 
 import xlrd
 import xlwt
+import os
 from xlutils.copy import copy
 
 PRD_LIST_PATH='D:\\dev\\workspace\\Document\\Filelist of NASAII-PRD.xls'
@@ -42,7 +43,7 @@ def compareFile():
         #filePath = tmpList[tmpListLen-2]+'/'+tmpList[tmpListLen-1]
         prdVersion = (str)(destSheetCtx.cell_value(i,6))
         remotePreVer = getPrdVer(filePath)
-        print "%s,\nRemote PRD Version:%s , Local PRD Version:%s" %( filePath, remotePreVer , prdVersion )
+        print "%s,%sRemote PRD Version:%s , Local PRD Version:%s" %(  filePath, os.linesep, remotePreVer , prdVersion )
         if remotePreVer!=prdVersion:
             compareSheet.write(i, 5, remotePreVer )
     rstFile.save('new.xls')
