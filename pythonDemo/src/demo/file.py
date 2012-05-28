@@ -20,11 +20,11 @@ try:
         line = f.readline()
         #print( len(line) );
         if len(line) == 0: # Zero length indicates EOF
-           # can get null when finish the file
-           # line = f.readline()
-           # print (line+".....")
-           # line = f.readline()
-           # print (line+".....")
+            # can get null when finish the file
+            # line = f.readline()
+            # print (line+".....")
+            # line = f.readline()
+            # print (line+".....")
             break
         print (line,)
         # Notice comma to avoid automatic newline added by Python
@@ -35,13 +35,15 @@ try:
         #for line in open('poem.txt')     
         print(line)
     
+        print('--------------------------')
+    for line in open('poem.txt'):  
+        print(line,)
+    
 except Exception as ex: 
     print ('\nSome error/exception occurred.')
     print ( ex );
     # here, we are not exiting the program
 finally:
-     print ('finally')
-
-
+    print ('finally')
 
 print ('Done') 
