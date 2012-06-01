@@ -8,6 +8,9 @@ from xlutils.copy import copy
 
 PRD_LIST_PATH='D:\\dev\\workspace\\Document\\Filelist of NASAII-PRD.xls'
 DEST_FILE_PATH='D:\\work\\Case C0038214 Change Information_Approved.xls'
+DEST_SOURCE_INDEX=4
+DEST_COMMENT=5
+DEST_PRDVERSION=6
 SHEET_NAME='Web PRD Files list'
 
 def getWebPrdMap():
@@ -35,17 +38,17 @@ def compareFile():
     destSheetCtx = destFile.sheet_by_index(0)    
     nrows = destSheetCtx.nrows
     for i in range(4,nrows):
-        filePath = (str)(destSheetCtx.cell_value(i,4))
+        filePath = (str)(destSheetCtx.cell_value(i,DEST_SOURCE_INDEX))
         if filePath.strip()=='':
             continue
         #tmpList = filePath.split('/')
         #tmpListLen = len(tmpList)
         #filePath = tmpList[tmpListLen-2]+'/'+tmpList[tmpListLen-1]
-        prdVersion = (str)(destSheetCtx.cell_value(i,6))
+        prdVersion = (str)(destSheetCtx.cell_value(i,DEST_PRDVERSION))
         remotePreVer = getPrdVer(filePath)
         print "%s,%sRemote PRD Version:%s , Local PRD Version:%s" %(  filePath, os.linesep, remotePreVer , prdVersion )
         if remotePreVer!=prdVersion:
-            compareSheet.write(i, 5, remotePreVer )
+            compareSheet.write(i, DEST_COMMENT , remotePreVer )
     rstFile.save('new.xls')
 
 prdMap = getWebPrdMap()
