@@ -1,3 +1,4 @@
+# coding=UTF-8
 '''
 Created on May 7, 2012
 
@@ -9,7 +10,8 @@ def getFileList(filePath):
     menuList=[]
     try:
         for line in open(filePath):      
-            menuList.append(line.split()[0])
+#            menuList.append(line.split()[0])
+            menuList.append(line)
     except Exception as ex: 
         print ( ex )
 #    finally:
