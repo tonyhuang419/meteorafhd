@@ -202,7 +202,10 @@ args = [ (func2,1,2),(func2,3,4)  ]
 for(func,arg1,arg2) in args:
     func(arg1,arg2)
     
-  
-
+def a():
+    y=5
+    b = lambda x:x+y
+    print b(10)
+a()
 
     
