@@ -5,4 +5,6 @@ public interface IndexLogInfoService {
 	
 	public boolean indexLoginfo() throws Exception;
 	
+	public boolean indexEcel(String path) throws Exception;
+	
 }
