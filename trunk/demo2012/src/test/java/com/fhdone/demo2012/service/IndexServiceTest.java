@@ -24,5 +24,14 @@ public class IndexServiceTest extends BaseTest {
     	Assert.assertTrue(succ);
     	logger.info("end testIndexLoginfo");
     } 
+    
+    @Test
+    @Ignore
+    public void testIndexEcel() throws Exception{  
+    	logger.info("start testIndexEcel");
+    	boolean succ = indexLogInfoService.indexEcel("src/main/resources/weibo20120625_2.xls");
+    	Assert.assertTrue(succ);
+    	logger.info("end testIndexEcel");
+    }
 	
 }

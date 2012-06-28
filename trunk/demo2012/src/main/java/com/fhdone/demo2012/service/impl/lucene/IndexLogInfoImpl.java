@@ -1,6 +1,10 @@
 package com.fhdone.demo2012.service.impl.lucene;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,10 +13,17 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.microsoft.OfficeParser;
+import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
+import org.apache.tika.sax.BodyContentHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.xml.sax.ContentHandler;
 
 import com.fhdone.demo2012.dao.demo.UserLogDao;
 import com.fhdone.demo2012.entity.UserLog;
@@ -89,5 +100,20 @@ public class IndexLogInfoImpl implements IndexLogInfoService {
 			writer.addDocument(doc);
 		}
 	}	
+	
+	//http://www.cnblogs.com/heshizhu/archive/2011/06/30/2094371.html
+	public boolean indexEcel(String path) throws Exception{
+		Parser parser = new OfficeParser();//解析微软格式文档
+		InputStream iStream = new BufferedInputStream(new FileInputStream(new File(path)));//定义输入流      
+		//OutputStream oStream = new BufferedOutputStream(new FileOutputStream(new File(OUTPATH)));//定义输出流
+		//下面定义内容处理器
+		ContentHandler iHandler = new BodyContentHandler();
+		Metadata meta = new Metadata();
+        meta.add(Metadata.CONTENT_ENCODING, "UTF-8");
+        parser.parse(iStream, iHandler, meta, new ParseContext());//解析
+        //输出解析结果，如果采用输出流的方式就直接在输出流中获得解析结果
+        System.out.println(iHandler.toString());
+		return true;
+	}
 
 }
