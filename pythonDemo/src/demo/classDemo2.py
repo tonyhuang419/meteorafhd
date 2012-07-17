@@ -1,4 +1,6 @@
 # coding=UTF-8
+from operator import * # import all operators
+import os
 
 class DevNull1(object): 
     def __get__(self, obj, typ=None): 
@@ -28,9 +30,6 @@ c2.foo = 'bar'
 x = c2.foo 
 print 'c2.foo contains:', x  
 
-
-
-from operator import * # import all operators 
 vec1 = [12, 24] 
 vec2 = [2, 3, 4] 
 opvec = (add, sub, mul, div)  # using +, -, *, / 
@@ -41,5 +40,15 @@ for eachOp in opvec: # loop thru operators
             (eachOp.__name__, i, j, eachOp(i, j)) 
 
 
+print 'the total is: %s' % reduce((lambda x,y:x+y),range(10))
+print map(lambda x : x * 2,[1,2,3,4])
 
- 
+def sayHello():
+    '''sayHello_doc'''
+    print ('Hello World!') # block belonging to the function
+print sayHello.__name__
+print sayHello.func_name
+print sayHello.__doc__
+print os.getpid()
+
+
