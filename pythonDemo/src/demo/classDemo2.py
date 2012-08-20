@@ -51,4 +51,7 @@ print sayHello.func_name
 print sayHello.__doc__
 print os.getpid()
 
+print eval("1+2")
+import time
+print eval("time.time()")
 
