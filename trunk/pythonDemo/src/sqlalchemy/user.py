@@ -40,17 +40,16 @@ email_table = Table('email', metadata,
 
 
 def create():
+    Session = sessionmaker(bind=engine)  
+    session = Session()  
     mike_user = User("mike", "Mike Driscoll", "password")  
-    print "User name: %s, fullname: %s, password: %s" % (mike_user.name,  
-                                                     mike_user.fullname,  
-                                                     mike_user.password)  
+    session.add(mike_user)
+    session.commit()   
 
 
 def select():
     Session = sessionmaker(bind=engine)  
     session = Session()  
-#    mike_user = User("mike", "Mike Driscoll", "password")  
-#    session.add(mike_user) 
     all_users = session.query(User).all()  
     print all_users  
 
