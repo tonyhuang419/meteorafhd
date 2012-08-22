@@ -52,6 +52,9 @@ def select():
     session = Session()  
     all_users = session.query(User).all()  
     print all_users  
+    
+    our_user = session.query(User).filter_by(name='mike').first()  
+    print our_user  
 
 if __name__ == "__main__":
     # create the table and tell it to create it in the 
