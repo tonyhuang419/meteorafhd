@@ -22,7 +22,8 @@ class User(object):
  
 # create a connection to a sqlite database
 # turn echo on to see the auto-generated SQL
-engine = create_engine("sqlite:///tutorial.db", echo=True)
+#engine = create_engine("sqlite:///tutorial.db", echo=True)
+engine = create_engine('postgresql://postgres:Hello2222@localhost/test')
  
 # this is used to keep track of tables and their attributes
 metadata = MetaData()
@@ -63,8 +64,8 @@ if __name__ == "__main__":
     
     # create a mapping between the users_table and the User class
     mapper(User, users_table)
-    
-#    create()
+    # for i in range(1,10):
+    #     create()
     select()
     
     
