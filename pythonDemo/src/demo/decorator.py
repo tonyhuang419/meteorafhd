@@ -1,6 +1,5 @@
 # coding=UTF-8
 
-
 def log(func): 
     def wrapper(*args, **kw): 
         print(args)
