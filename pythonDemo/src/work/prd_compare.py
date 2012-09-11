@@ -2,12 +2,12 @@
 #!/usr/bin python
 
 import xlrd
-import xlwt
 import os
 from xlutils.copy import copy
 
 PRD_LIST_PATH='D:\\dev\\workspace\\Document\\Filelist of NASAII-PRD.xls'
-DEST_FILE_PATH='D:\\work\\Case C0038214 Change Information_Approved.xls'
+DEST_FILE_PATH='D:\\work\\C0039649\\CaseC0039649 Change Information.xls'
+DEST_PATH_INDEX=3
 DEST_SOURCE_INDEX=4
 DEST_COMMENT=5
 DEST_PRDVERSION=6
@@ -30,7 +30,7 @@ def getWebPrdMap():
                 prdMap[filePath.strip()]=fileVersion.strip()
             return prdMap
             
-def compareFile():
+def compareVersion():
     destFile = xlrd.open_workbook(DEST_FILE_PATH , formatting_info=True)
     rstFile = copy(destFile)
     compareSheet = rstFile.get_sheet(0)
@@ -38,7 +38,7 @@ def compareFile():
     destSheetCtx = destFile.sheet_by_index(0)    
     nrows = destSheetCtx.nrows
     for i in range(4,nrows):
-        filePath = (str)(destSheetCtx.cell_value(i,DEST_SOURCE_INDEX))
+        filePath = (str)(destSheetCtx.cell_value(i,DEST_PATH_INDEX + DEST_SOURCE_INDEX))
         if filePath.strip()=='':
             continue
         #tmpList = filePath.split('/')
@@ -49,6 +49,23 @@ def compareFile():
         print "%s,%sRemote PRD Version:%s , Local PRD Version:%s" %(  filePath, os.linesep, remotePreVer , prdVersion )
         if remotePreVer!=prdVersion:
             compareSheet.write(i, DEST_COMMENT , remotePreVer )
+    rstFile.save('new.xls')
+    
+def writePrdVersion():
+    destFile = xlrd.open_workbook(DEST_FILE_PATH , formatting_info=True)
+    rstFile = copy(destFile)
+    compareSheet = rstFile.get_sheet(0)
+    
+    destSheetCtx = destFile.sheet_by_index(0)    
+    nrows = destSheetCtx.nrows
+    for i in range(4,nrows):
+        filePath = (str)(destSheetCtx.cell_value(i,DEST_PATH_INDEX)) \
+            + (str)(destSheetCtx.cell_value(i,DEST_SOURCE_INDEX))
+        if filePath.strip()=='':
+            continue
+        remotePreVer = getPrdVer(filePath)
+        print "%s,%sRemote PRD Version:%s" %(  filePath, os.linesep, remotePreVer  )
+        compareSheet.write(i, DEST_PRDVERSION , remotePreVer )
     rstFile.save('new.xls')
 
 prdMap = getWebPrdMap()
@@ -62,7 +79,8 @@ def getPrdVer(filePath):
 
 if __name__ == '__main__':
     print 'start compare'
-    compareFile()
+#    compareVersion()
+    writePrdVersion()
     print 'end compare'
     
     
