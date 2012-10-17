@@ -18,6 +18,10 @@ class MainHandler(tornado.web.RequestHandler):
         loader = template.Loader( getTemplatePath() )
         returnHtml =  loader.load("base.html").generate( message="Hello World",add=add )
         self.write(returnHtml)
+        
+    #modify get to post
+    def write_error(self, status_code, **kwargs):
+        self.write("Gosh darnit, user! You caused a %d error." % status_code)
 
 class StoryHandler(tornado.web.RequestHandler):
     def get(self, story_id):
