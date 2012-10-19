@@ -21,7 +21,8 @@ class MainHandler(tornado.web.RequestHandler):
 #        loader = template.Loader( getTemplatePath() )
 #        returnHtml =  loader.load("base.html").generate( message="Hello World",add=add,substring=substring )
 #        self.write(returnHtml)
-        self.render("base.html",message="Hello World",add=add,substring=substring)
+#        {% autoescape None %}
+        self.render("base.html",message="Hello World<script>alert(1)</script>",add=add,substring=substring)
         
     #modify get to post
     def write_error(self, status_code, **kwargs):
