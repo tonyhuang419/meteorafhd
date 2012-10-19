@@ -44,6 +44,9 @@ class RedirectDemo(tornado.web.RedirectHandler):
 
 
 settings = {
+#    "static_url_prefix":"/staticx/",
+#    "static_path": os.path.join(os.path.dirname(__file__), "staticx"),
+    "debug":"true",
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
     "template_path": os.path.join(os.path.dirname(__file__), "template"),
 }
