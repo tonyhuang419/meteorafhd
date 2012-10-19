@@ -1,9 +1,13 @@
 <html>
 <head>
 <title>Hello world</title>
+<script src="{{ static_url('js/demo.js') }}"></script>
 </head>
 <body>
+	<img src="/static/img/1.jpg"></img><br/>
+	<img src="{{ static_url('img/1.jpg') }}"></img>
 	{{message}}<br/>
-	{{ add(100, 2) }}
+	{{ add(100, 2) }}<br/>
+	{{ substring('0123456789',1,4) }}
 </body>
 </html>
