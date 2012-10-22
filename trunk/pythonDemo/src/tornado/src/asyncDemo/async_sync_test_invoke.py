@@ -1,13 +1,27 @@
 #http://joy2everyone.iteye.com/blog/949561
 
+from tornado.httpclient import AsyncHTTPClient
 import logging
-
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
+import tornado.gen
 
-from tornado.httpclient import AsyncHTTPClient
 
+
+class AsyGenHandler(tornado.web.RequestHandler):
+   
+    @tornado.web.asynchronous
+    @tornado.gen.engine
+    def get(self):
+        client = tornado.httpclient.AsyncHTTPClient()
+        response = yield tornado.gen.Task(client.fetch, "http://www.baidu.com/")
+        self.write("Hello World")
+#        print(response.body)
+        self.write(response.body.decode('gb2312').encode('utf-8'))
+        self.finish()
+            
+            
 class AsyncMainHandler(tornado.web.RequestHandler):
     def get(self):
         '''
@@ -17,9 +31,6 @@ class AsyncMainHandler(tornado.web.RequestHandler):
         for i in range(1, 100000):
             print "kill time"
         self.write("hello")
-
-
-
 
 class MainHandler(tornado.web.RequestHandler):
 
@@ -50,6 +61,7 @@ settings = {
 application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/async-sync-test/", AsyncMainHandler),
+    (r"/asygen/", AsyGenHandler),
 ], **settings)
 
 if __name__ == "__main__":
