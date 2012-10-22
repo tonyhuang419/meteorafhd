@@ -4,6 +4,7 @@
 <!-- <script src="{{ static_url('js/demo.js') }}"></script> -->
 </head>
 <body>
+	{% raw xsrf_form_html() %}
 	<img src="/static/img/1.jpg"></img><br/>
 	<img src="{{ static_url('img/1.jpg') }}"></img>
 	{{message}}<br/>

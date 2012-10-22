@@ -1,3 +1,5 @@
+# coding=UTF-8
+
 #http://joy2everyone.iteye.com/blog/949561
 
 from tornado.httpclient import AsyncHTTPClient
@@ -18,6 +20,7 @@ class AsyGenHandler(tornado.web.RequestHandler):
         response = yield tornado.gen.Task(client.fetch, "http://www.baidu.com/")
         self.write("Hello World")
 #        print(response.body)
+#        self.write(response.body);
         self.write(response.body.decode('gb2312').encode('utf-8'))
         self.finish()
             
