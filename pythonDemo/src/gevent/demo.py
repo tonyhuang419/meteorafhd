@@ -1,5 +1,7 @@
 # coding=UTF-8
 
+#http://blog.csdn.net/ewing333/article/details/7611742
+
 import gevent
 
 def foo():
