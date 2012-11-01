@@ -1,4 +1,7 @@
 # -*- coding: utf8 -*-
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf-8')  
 
 #http://blog.ez2learn.com/2010/07/17/talk-about-coroutine-and-gevent/
 
