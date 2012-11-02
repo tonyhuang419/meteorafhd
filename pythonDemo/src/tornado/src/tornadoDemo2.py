@@ -17,7 +17,7 @@ def substring(s,beg,end):
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        print 8888
+        print 8882
 #        self.write("Hello, world")
 #        loader = template.Loader( getTemplatePath() )
 #        returnHtml =  loader.load("base.html").generate( message="Hello World",add=add,substring=substring )
@@ -64,6 +64,6 @@ application = tornado.web.Application([
 ],  **settings)
 
 if __name__ == "__main__":
-    application.listen(8888)
+    application.listen(8882)
     tornado.ioloop.IOLoop.instance().start()
     
