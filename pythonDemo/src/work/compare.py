@@ -97,10 +97,8 @@ def compareList():
                     compareSheet.write(orgRowNum, 11, i.bill_no )
                     compareSheet.write(orgRowNum, 12, i.total_amount )
                     compareSheet.write(orgRowNum, 13, mark )
-                    compareSheet.write(destRowNum, 19, mark )
+                    compareSheet.write(destRowNum,19, mark )
     print 'same count:%d' % count
-    
-    
     rstFile.save('new.xls')
     
 
