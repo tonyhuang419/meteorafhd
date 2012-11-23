@@ -6,7 +6,7 @@ import os
 from xlutils.copy import copy
 
 PRD_LIST_PATH='D:\\dev\\workspace\\Document\\Filelist of NASAII-PRD.xls'
-DEST_FILE_PATH='D:\\work\\C0039649\\CaseC0039649 Change Information.xls'
+DEST_FILE_PATH='D:\\work\\C0039702\\C0039702 Change Information.xls'
 DEST_PATH_INDEX=3
 DEST_SOURCE_INDEX=4
 DEST_COMMENT=5
