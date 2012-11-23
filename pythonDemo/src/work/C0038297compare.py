@@ -37,7 +37,7 @@ def loadOrgInfoList():
     nrows = sheetCtx.nrows
     for i in range(ORG_STRAT_ROW,nrows):
 #        exclude done info
-        if sheetCtx.cell_value(i,7)=='':
+        if sheetCtx.cell_value(i,8)=='':
             dateStr = (str)(sheetCtx.cell_value(i,0))
             subcon_id = (long)(sheetCtx.cell_value(i,1))
             vender_code = (str)(sheetCtx.cell_value(i,2))
@@ -48,6 +48,7 @@ def loadOrgInfoList():
             orgInfoList.append(info)
         else:
             info = Info('','','','','')
+            orgInfoList.append(info)
     print 'count:%d' % len(orgInfoList)
     print 'end loadOrgInfoList'
     return orgInfoList
