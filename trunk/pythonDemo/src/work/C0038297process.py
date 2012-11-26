@@ -55,34 +55,57 @@ def loadProcessInfoList():
     print 'end loadProcessInfoList'
     return orgInfoList
     
-    
+
+def processInfo(processSheet, cur, info, count, i):
+    if (float)(i.amount) == (float)(info.total_amount):
+        processSheet.write(cur, 8, 'These billings were not manual posting data, they are web posting data.')
+        print count+1
+        return True
+    return False
 
 def process():
     orgInfoList=loadProcessInfoList()
     destFile = xlrd.open_workbook(FILE_PATH , formatting_info=True)
     rstFile = copy(destFile)
     processSheet = rstFile.get_sheet(0)
-    
-    cur=0
-    for info in orgInfoList: 
-        #search db by i
-#       2012/4->2013/1
-#        year = info.date.
-        fisDate=dateutils.dateStrToFisDate(info.date)
-        year = fisDate.year
-        month = fisDate.month
-#        C0038297_sql_prepare.sapBuPostingByBillNo(year, month, info.billNo)
-#        C0038297_sql_prepare.sapBuPostingByVendorCode(year, month, info.vender_code)
-        
-          
-       
-#    for info in orgInfoList:
-#        print info.date
-#        print info.subcon_id
-#        print info.vender_code
-#        print info.bill_no
-#        print info.total_amount
-    
+    cur=LINE_OFFSET-2
+    count=0
+    for info in orgInfoList:
+        cur+=1
+        if info.date!='' :
+            #search db by i
+    #       2012/4->2013/1
+            year = info.date
+            fisDate=dateutils.dateStrToFisDate(info.date)
+            year = fisDate.year
+            month = fisDate.month
+            if cmp( info.bill_no , '(null)') <> 0:
+                result = C0038297_sql_prepare.sapBuPostingByBillNo(year, month, info.bill_no)
+                for i in result:
+                    if processInfo(processSheet, cur, info, count, i):
+                        count+=1
+                        continue
+                
+                result = C0038297_sql_prepare.sapTimsheetPostingByBillNo(year, month, info.bill_no)
+                for i in result:
+                    if processInfo(processSheet, cur, info, count, i):
+                        count+=1
+                        continue
+                    
+            result = C0038297_sql_prepare.sapBuPostingByVendorCode(year, month, info.vender_code[3:])
+            for i in result:
+                if processInfo(processSheet, cur, info, count, i):
+                    count+=1
+                    continue
+                
+            result = C0038297_sql_prepare.sapTimsheetPostingByVendorCode(year, month, info.vender_code[3:])
+            for i in result:
+                if processInfo(processSheet, cur, info, count, i):
+                    count+=1
+                    continue
+    print 'finish count:%d' % count
+    rstFile.save('new.xls')
+
 
 if __name__ == '__main__':
     print 'start process'
