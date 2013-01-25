@@ -1,6 +1,6 @@
 // ==UserScript==  
 // @name         gewara get ticket
-// @version		 0.1
+// @versionv     0.1
 // @author       fhdone
 // @namespace    http://www.fhdone.com
 // @description  gewara get ticket
