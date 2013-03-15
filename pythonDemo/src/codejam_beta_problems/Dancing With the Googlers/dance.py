@@ -1,4 +1,5 @@
-#!/usr/bin/python2.5
+# -*- coding: utf-8 -*-
+#!/usr/bin/python2.6
 
 #http://code.google.com/codejam/contest/1460488/dashboard#s=p1
 #http://united-coders.com/christian-harms/solutions-for-the-google-code-jam-2012-qualify-round/

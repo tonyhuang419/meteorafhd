@@ -1,4 +1,5 @@
-#!/usr/bin/python2.5
+# -*- coding: utf-8 -*-
+#!/usr/bin/python2.6
 
 #https://code.google.com/codejam/contest/1460488/dashboard#s=p0
 exp = 'zq ejp mysljylc kd kxveddknmc re jsicpdrysi rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd de kr kd eoya kw aej tysr re ujdr lkgc jv'
