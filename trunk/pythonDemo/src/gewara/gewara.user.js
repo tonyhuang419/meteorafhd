@@ -24,13 +24,8 @@ function getTicket(){
 
 function checkProcess( radioObj ){
 	innerText = radioObj.parentNode.innerText
-	if ( innerText.indexOf('10元') != -1){
-		if( radioObj.disabled == false ){
-			radioObj.checked = true
-			return true;
-		}
-	}
-	if ( innerText.indexOf('不使用优惠') != -1){
+	if ( innerText.indexOf('8元') != -1 || 
+		 innerText.indexOf('两人同行') != -1  ){
 		if( radioObj.disabled == false ){
 			radioObj.checked = true
 			return true;
@@ -62,7 +57,7 @@ var now = new Date();
 var day = now.getDay();
 var hour = now.getHours();
 if (  ( day==3 || day==4 || day==5 ) &&
-	  ( hour==11 ) ){
+	  ( hour==11 || hour==13  ) ){
 	setTimeout(getTicket, 1000 )
 }
 
