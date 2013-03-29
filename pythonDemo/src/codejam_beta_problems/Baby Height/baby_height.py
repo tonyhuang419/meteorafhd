@@ -37,6 +37,7 @@ def calcHeigh():
             return '%s\'%s\"' %  ( int(h//12), int(h%12) )
         
         out_str =  'Case #%s: %s to %s\n' % ( i+1 , formatHeight(low) , formatHeight(high) )
+        print out_str
         file_object.write(out_str)
         
     file_object.close()
