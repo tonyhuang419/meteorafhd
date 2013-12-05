@@ -1,5 +1,12 @@
 
-import pack as p
+from pack.packX import *
+p()
 
-p.packX.p()
+
+# import pack as p
+# p.packX.p()
+
+
+
+
 
