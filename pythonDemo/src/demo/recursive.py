@@ -1,4 +1,5 @@
 # coding=UTF-8
+# http://blog.zhaojie.me/2009/03/tail-recursion-and-continuation.html
 
 def fact(n):
     if n==1:
