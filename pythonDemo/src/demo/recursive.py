@@ -7,15 +7,13 @@ def fact(n):
         return n * fact(n-1)
 
 def factTail(n , acc=1):
-    if n==1:
+    if n==0:
         return acc
     else:
         return factTail(n-1 , acc*n)
 
 print fact(5)
 print factTail(5)
-
-
 
 
 # 1 1 2 3 5 8 11
