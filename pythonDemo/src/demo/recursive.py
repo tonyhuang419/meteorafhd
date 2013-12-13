@@ -19,26 +19,26 @@ print factTail(5)
 
 
 # 1 1 2 3 5 8 11
-def fibonacc(n):
+def fibonacci(n):
     if n<3:
         return 1
     else:
-        return fibonacc(n-1) + fibonacc(n-2)
+        return fibonacci(n-1) + fibonacci(n-2)
     
-def fibonaccTail(n ,cur=0 , next=1):
+def fibonacciTail(n ,cur=0 , next=1):
     if n==0:
         return cur
     else:
-        return fibonaccTail(n-1 ,next , cur + next )    
+        return fibonacciTail(n-1 ,next , cur + next )    
    
 import time
 
 # begin = time.time()   
-print fibonacc(5)   #so slower
+print fibonacci(5)   #so slower
 # end = time.time()
 # print end-beginn
 
 # begin = time.time())
-print fibonaccTail(5)
+print fibonacciTail(5)
 # end = time.time()
 # print end-begin  
