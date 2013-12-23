@@ -10,17 +10,17 @@ import com.google.common.util.concurrent.RateLimiter;
 
 public class RateLimiterDemo {
 	
-	final RateLimiter rateLimiter = RateLimiter.create(100.0);
+	final RateLimiter rateLimiter = RateLimiter.create(5);
 	
 	public void submitTasks(List<Runnable> tasks, Executor executor) {
 		for (Runnable task : tasks) {
-			rateLimiter.acquire(); // may wait
+			rateLimiter.acquire(2); // may wait
 			executor.execute(task);
 		}
 	}
 	
 	public static void main(String[] args) {
-		ExecutorService exec = Executors.newFixedThreadPool(15);
+		ExecutorService exec = Executors.newFixedThreadPool(5);
 		List<Runnable> list = new ArrayList<Runnable>();
 		int i=100;
 		while(i-->0){
@@ -35,8 +35,15 @@ class PrintX implements Runnable{
 	public PrintX(int i){
 		this.i = i;
 	}
-	
 	public void run(){
+		try {
+			double d = Math.random();
+			long l = Long.valueOf((int)(d*1000));
+			System.out.println("sleep:"+l);
+			Thread.sleep(Long.valueOf(l));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println(i);
 	}
 }
