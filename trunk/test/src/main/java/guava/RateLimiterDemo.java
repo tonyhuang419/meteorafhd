@@ -5,22 +5,23 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import com.google.common.util.concurrent.RateLimiter;
 
 public class RateLimiterDemo {
 	
-	final RateLimiter rateLimiter = RateLimiter.create(5);
+	final RateLimiter rateLimiter = RateLimiter.create(10,10,TimeUnit.SECONDS);
 	
 	public void submitTasks(List<Runnable> tasks, Executor executor) {
 		for (Runnable task : tasks) {
-			rateLimiter.acquire(2); // may wait
+			rateLimiter.acquire(3); // may wait
 			executor.execute(task);
 		}
 	}
 	
 	public static void main(String[] args) {
-		ExecutorService exec = Executors.newFixedThreadPool(5);
+		ExecutorService exec = Executors.newFixedThreadPool(10);
 		List<Runnable> list = new ArrayList<Runnable>();
 		int i=100;
 		while(i-->0){
