@@ -33,11 +33,11 @@ def fibonacciTail(n ,cur=0 , next=1):
 import time
 
 # begin = time.time()   
-print fibonacci(5)   #so slower
+print fibonacci(40)   #so slower
 # end = time.time()
 # print end-beginn
 
 # begin = time.time())
-print fibonacciTail(5)
+print fibonacciTail(40)
 # end = time.time()
 # print end-begin  

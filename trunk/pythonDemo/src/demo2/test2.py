@@ -32,5 +32,6 @@ f = lambda ip: sum( [ int(k)*v[1] for k, v in zip(ip.split('.'),[('192',0x100000
 a = f('192.168.10.214')
 print hex(a)
 
-
+import calendar
+print calendar.monthrange(2013,12)
 

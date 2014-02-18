@@ -1,10 +1,12 @@
-from fabric.api import run
+from fabric.api import *
 
-def dir():
-    try:
-        cmd_output = run("dir")
-        print cmd_output
-    except Exception as ex: 
-        print ( ex )
-        
-dir();
+def hello():
+    print("Hello world!")
+
+def dirTest():
+    with cd('C'):
+    	local('dir')
+    from fabric.api import green,red
+    print (red("This sentence is red, except for " + green("these words, which are green") + "."))
+
+    
