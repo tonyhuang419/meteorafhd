@@ -4,7 +4,7 @@
 // @author       fhdone
 // @namespace    http://www.fhdone.com
 // @description  gewara get ticket
-// @include      *://m.gewara.com/home/movie/showOrder.xhtml?tradeNo=*
+// @include      *://www.gewara.com/gewapay/order.xhtml?orderId=*
 // @require
 // ==/UserScript== 
 
@@ -24,8 +24,8 @@ function getTicket(){
 
 function checkProcess( radioObj ){
 	innerText = radioObj.parentNode.innerText
-	if ( innerText.indexOf('8元') != -1 || 
-		 innerText.indexOf('两人同行') != -1  ){
+	if ( innerText.indexOf('5元抢票') != -1  ){
+		alert(1);
 		if( radioObj.disabled == false ){
 			radioObj.checked = true
 			return true;
@@ -56,8 +56,8 @@ function nofity(str , timeout ){
 var now = new Date();
 var day = now.getDay();
 var hour = now.getHours();
-if (  ( day==3 || day==4 || day==5 ) &&
-	  ( hour==11 || hour==13  ) ){
+if (  ( day==5 ) &&
+	  ( hour==13 || hour==14  ) ){
 	setTimeout(getTicket, 1000 )
 }
 
