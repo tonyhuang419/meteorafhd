@@ -71,8 +71,21 @@ public class Test {
 				System.out.println(m1.group());  
 			}
 		}
-		
+	}
 	
+	public  void test7(){  
+		Pattern p = Pattern.compile(">(\\w*)<");  
+		Matcher m1 = p.matcher(" <h1>Title</h1><p>This is a "
+				+ "<a href='http://www.udacity.com'>link</a>.<p> ");  
+
+		while( m1.find() ){  
+			int gc = m1.groupCount();  
+			for(int i = 0; i <= gc; i++) {
+				System.out.println("group " + i + " :" + m1.group(i));  
+			}
+		}  
+
+//		System.out.println(m1.pattern());  
 	}
 
 	public void testX(){
@@ -81,7 +94,8 @@ public class Test {
 //		test3();
 //		test4();
 //		test5();
-		test6();
+//		test6();
+		test7();
 	}
 
 	public static void main(String[] args) {
