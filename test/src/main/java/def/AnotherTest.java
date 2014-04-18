@@ -14,6 +14,8 @@ public class AnotherTest {
 		ab += ab++  + ab++;
 		System.out.println(ab);
 		
+		StringBuffer sb = new StringBuffer("");
+		System.out.println(sb.toString().equals("")); //true
 	}
 
 }
