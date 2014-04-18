@@ -19,3 +19,13 @@ print 'main:hello baby!'
 # 回到剛才foo這個coroutine中斷的地方繼續執行
 print bar.next()
 print bar.next()
+
+
+a = range(0,100)
+print type(a)
+print a
+print a[0], a[1] 
+a = xrange(0,100)
+print type(a)
+print a
+print a[0], a[1] 
