@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from bson.code import Code
+from bson.son import SON
 import pymongo
+
+conn = pymongo.Connection()
+db = conn.local
+
+print db.users.aggregate([
+         {"$group": { "_id": "$age", "count": {"$sum": 1}  }  },
+         {"$sort": SON([("count", -1), ("_id", -1)] ) }
+     ])
 
 mapper = Code("""
             function() {
@@ -28,8 +37,7 @@ reducer = Code("""
               """     
              )
 
-conn = pymongo.Connection()
-db = conn.local
+
 result = db.users.map_reduce(mapper, reducer, "myresults")
 for doc in result.find():
     print doc
