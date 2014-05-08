@@ -15,8 +15,8 @@ users = db['users'] # 获取数据库里的 users 集合,也可以用字典来�
 #     db.users.save(u) # 用 save 也可以插入
     
 
-for u in db.users.find(): 
-    print u
+# for u in db.users.find(): 
+#     print u
 #     db.users.remove( u["_id"] ) 
 print users.count()   
 
