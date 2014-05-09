@@ -12,6 +12,11 @@ print db.users.aggregate([
          {"$sort": SON([("count", -1), ("_id", -1)] ) }
      ])
 
+print db.users.aggregate([
+         {"$group": { "_id": "$age", "count": {"$avg": "$age" }  }  },
+         {"$sort": SON([("count", -1), ("_id", -1)] ) }
+     ])
+
 mapper = Code("""
             function() {
                 var category;
