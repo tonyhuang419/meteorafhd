@@ -14,21 +14,32 @@
 		<url>http://meteorafhd.googlecode.com/svn/trunk/test</url>
 	</scm>
 	<repositories>
+<!-- 		<repository> -->
+<!-- 			<id>guice-maven</id> -->
+<!-- 			<name>guice maven</name> -->
+<!-- 			<url>http://guice-maven.googlecode.com/svn/trunk</url> -->
+<!-- 		</repository> -->
+<!-- 		<repository> -->
+<!-- 			<id>maven2</id> -->
+<!-- 			<name>maven2</name> -->
+<!-- 			<url>http://repo1.maven.org/maven2</url> -->
+<!-- 		</repository> -->
+<!-- 		<repository> -->
+<!-- 			<id>codehaus repository</id> -->
+<!-- 			<name>codehaus repository</name> -->
+<!-- 			<url>http://repository.codehaus.org/</url> -->
+<!-- 		</repository> -->
+		<!-- http://maven.oschina.net/help.html -->
 		<repository>
-			<id>guice-maven</id>
-			<name>guice maven</name>
-			<url>http://guice-maven.googlecode.com/svn/trunk</url>
+			<id>nexus-osc</id>
+			<name>Nexus osc</name>
+			<url>http://maven.oschina.net/content/groups/public</url>
 		</repository>
 		<repository>
-			<id>maven2</id>
-			<name>maven2</name>
-			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-		<repository>
-			<id>codehaus repository</id>
-			<name>codehaus repository</name>
-			<url>http://repository.codehaus.org/</url>
-		</repository>
+			<id>nexus-osc-thirdparty</id>
+			<name>Nexus osc thirdpart</name>
+			<url>http://maven.oschina.net/content/repositories/thirdparty/</url>
+		</repository>	
 	</repositories>
 	<build>
 		<plugins>
@@ -86,6 +97,36 @@
 						</plugin>
 					</reportPlugins>
 				</configuration>
+			</plugin>
+			<!-- Prepares Agent JAR before test execution -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-jar-plugin</artifactId>
+			    <version>2.4</version>
+			    <executions>
+					<execution>
+			            <phase>process-classes</phase>
+			            <goals>
+			                <goal>jar</goal>
+			            </goals>
+			            <configuration>
+			                <archive>
+			                    <manifestEntries>
+			                        <premain-class>instrumentationDemo.SleepingAgent</premain-class>
+			                    </manifestEntries>
+			                </archive>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+			<!-- executes test with -javaagent option -->
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <version>2.14</version>
+			    <configuration>
+			        <argLine>-javaagent:target/test-0.0.1.jar</argLine>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -185,10 +226,16 @@
 			<artifactId>batik-svg-dom</artifactId>
 			<version>1.6-1</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.testng</groupId> -->
+<!-- 			<artifactId>testng</artifactId> -->
+<!-- 			<version>5.8</version> -->
+<!-- 			<classifier>jdk15</classifier> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.5</version>
+			<version>4.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
@@ -216,12 +263,6 @@
 			<version>1.0</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/iTextAsian.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>5.8</version>
-			<classifier>jdk15</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
@@ -312,6 +353,12 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.18.1-GA</version>
+		    <type>jar</type>
 		</dependency>
 	</dependencies>
 	<properties>
