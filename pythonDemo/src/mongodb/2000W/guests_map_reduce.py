@@ -32,5 +32,15 @@ reducer = Code("""
 
 result = db.guests.map_reduce(mapper, reducer, "myresults")
 for doc in result.find():
-    if doc['value'] and doc['value'] >1 :
-        print doc
+    if  doc['value'] and doc['value'] >3 :
+        
+        history = db.guests.find ({ "ctfId": doc['_id'] })     
+        for i in history:
+            print  '%s,%s,%s,%s,%s' % ( i['name'].encode('utf-8'),
+                      i['gender'],
+                      i['address'].encode('utf-8'),
+                      i['birthday'], 
+                      i['ctfId']  )
+        print '--------------------------'
+            
+        
