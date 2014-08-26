@@ -60,7 +60,12 @@ def loadExamStyleInfo():
 #         print  '%s,%s' % ( lesson  ,examStyle )
         
         
-if __name__ == '__main__':  
+if __name__ == '__main__' :
+    print ''.ljust(100,'*')
+    readme = ' 开闭卷信息   初始值：-1 ，   开卷：1 ，   闭卷：0 '
+    print readme.center(100,'*')
+    print ''.ljust(100,'*')
+     
     stuList = loadStuInfo()
 #     for s in stuList:
 #         print u'%s' % s
@@ -98,8 +103,8 @@ if __name__ == '__main__':
             for room  in classroomListCopy: 
                 remain = room.remain
                 if  len(examInfo[1]) == remain :
-                    print u"考场号： %s, 考生数量 ： %s , 开闭卷： %s , 班级：%s , 班级实际数量： %s " %  ( examInfo[0], len(examInfo[1]) ,
-                                                                       examInfo[1][0].examStyle ,  room.no  , room.maxSpace ) 
+                    print u"考场号：%s,     考生数量：%s ,     课程：%s ,     开闭卷：%s ,     班级：%s , 班级实际数量：%s " %  ( examInfo[0], len(examInfo[1]) ,
+                                                                       examInfo[1][0]. lesson , examInfo[1][0].examStyle ,  room.no  , room.maxSpace ) 
                     room.remain = room.remain -  len(examInfo[1])
                     room.examStyle = examInfo[1][0].examStyle
                     result [ examInfo[0] ] =  room.no
@@ -109,20 +114,21 @@ if __name__ == '__main__':
             for room  in classroomListCopy: 
                 if  examInfo[0] not in result.keys() and room.remain >= len(examInfo[1])  \
                     and (  room.examStyle ==-1 or room.examStyle ==  examInfo[1][0].examStyle ) :
-                    print u"考场号： %s, 考生数量 ： %s , 开闭卷： %s , 班级：%s , 班级实际数量： %s " %  ( examInfo[0], len(examInfo[1]) ,
-                                                                     examInfo[1][0].examStyle ,  room.no  , room.maxSpace ) 
+                    print u"考场号：%s,     考生数量 ：%s ,     课程：%s ,     开闭卷：%s ,     班级：%s ,     班级实际数量：%s " %  ( examInfo[0], len(examInfo[1]) ,
+                                                                    examInfo[1][0]. lesson , examInfo[1][0].examStyle ,  room.no  , room.maxSpace ) 
                     room.remain = room.remain -  len(examInfo[1])
                     room.examStyle = examInfo[1][0].examStyle
                     result [ examInfo[0] ] =  room.no
                     break
+
 #                     print u"考场号： %s, 考生数量 ： %s , 开闭卷： %s  " %  ( examInfo[0], len(examInfo[1]) , examInfo[1][0].examStyle  )  
        
         for room  in classroomListCopy: 
-            print u"%s'" % room      
+            print u"%s" % room      
+            for k,v in result.iteritems(): 
+                if v == room.no:
+                    print u"    考场号：%s,     班级：%s,"  % ( k, v)
+            
+        print ''  
         
-        for k,v in result.iteritems(): 
-            print "%s,%s" % ( k,v )
-        
-        
-
-        
+                
