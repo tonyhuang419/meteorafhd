@@ -13,8 +13,9 @@ def colNameToNum(name):
 def checkStuInfo(stuInfoList , examStyleMap ):
     for s in stuInfoList:
         if not examStyleMap.has_key(s.lesson):
-            print u'%s 没有”开闭卷信息“，请补充' % s.lesson
-            return False
+            print u'%s 没有”开闭卷信息“，默认闭卷' % s.lesson
+            s.examStyle = 0
+#             return False
         else:
 #             print examStyleMap[s.lesson]
             if u'开卷' in examStyleMap[s.lesson]:
