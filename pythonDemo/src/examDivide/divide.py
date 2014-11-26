@@ -7,9 +7,9 @@ import utils
 import stuInfo
 import classroom
 
-STU_INFO_FILE_PATH   = unicode('files//097圆梦深圳考生名单.xls','utf8')
-CLASS_ROOM_FILE_PATH = unicode('files//桃源中学本学期学生人数(增加座椅数量).xls','utf8')
-EXAM_STYLE_INFO_PATH = unicode('files//097圆梦深圳考场安排 (开卷闭卷).xls','utf8')
+STU_INFO_FILE_PATH   = unicode('files//097深圳考生名单.xls','utf8')
+CLASS_ROOM_FILE_PATH = unicode('files//各个教室人数.xls','utf8')
+EXAM_STYLE_INFO_PATH = unicode('files//097深圳考场安排-开卷闭卷.xls','utf8')
 
 def loadSheet(filePath):
     file = xlrd.open_workbook(filePath)
@@ -22,11 +22,11 @@ def loadStuInfo():
     nrows = sheetCtx.nrows
     for i in range(1,nrows):
         stuNo  = (str)(sheetCtx.cell_value(i, utils.colNameToNum('A') ))
-        examNo = sheetCtx.cell_value(i, utils.colNameToNum('C') )
-        examSeq = sheetCtx.cell_value(i, utils.colNameToNum('E') )
-        lesson= sheetCtx.cell_value(i, utils.colNameToNum('F') )
+        examNo = sheetCtx.cell_value(i, utils.colNameToNum('B') )
+        examSeq = sheetCtx.cell_value(i, utils.colNameToNum('C') )
+        lesson= sheetCtx.cell_value(i, utils.colNameToNum('D') )
         if '0' not in examSeq:
-#             print '%s,%s,%s,%s' % ( stuNo , examNo , examSeq , lesson )
+            #print '%s,%s,%s,%s' % ( stuNo , examNo , examSeq , lesson )
             stu = stuInfo.Stu(  stuNo, examNo ,examSeq , lesson )
             stuList.append(stu)
     return stuList
@@ -37,9 +37,9 @@ def loadClassRoomInfo():
     nrows = sheetCtx.nrows
     for i in range(4,nrows):
         roomNo = (sheetCtx.cell_value(i,utils.colNameToNum('B') ))
-        if not (sheetCtx.cell_value(i, utils.colNameToNum('H') )) :
+        if not (sheetCtx.cell_value(i, utils.colNameToNum('AE') )) :
             continue
-        roomMax = (long)(sheetCtx.cell_value(i, utils.colNameToNum('H') ))
+        roomMax = (long)(sheetCtx.cell_value(i, utils.colNameToNum('AE') ))
         room = classroom.Classroom( roomNo  ,roomMax  ,roomMax )
         classroomList.append(room)      
     return classroomList
@@ -55,7 +55,7 @@ def loadExamStyleInfo():
             continue
         examStyle = sheetCtx.cell_value(i, utils.colNameToNum('M') )
         if not examStyleMap.has_key(lesson):
-            examStyleMap[lesson] = examStyle
+            examStyleMap[lesson.strip()] = examStyle
     return examStyleMap
 #         print  '%s,%s' % ( lesson  ,examStyle )
         
@@ -65,7 +65,7 @@ if __name__ == '__main__' :
     readme = ' 开闭卷信息   初始值：-1 ，   开卷：1 ，   闭卷：0 '
     print readme.center(100,'*')
     print ''.ljust(100,'*')
-     
+    
     stuList = loadStuInfo()
 #     for s in stuList:
 #         print u'%s' % s
@@ -78,8 +78,10 @@ if __name__ == '__main__' :
         exit()
     
     classroomList = loadClassRoomInfo()  
+    classroomList = sorted(classroomList, key = lambda x: x.maxSpace, reverse=True)
+    
 #     for room in classroomList: 
-#         print "%s" % room
+#         print "%s" % room.maxSpace
         
     mapByExamSeq = utils.mapStuInfoByAttr(stuList, 'examSeq')
     
@@ -114,7 +116,7 @@ if __name__ == '__main__' :
             for room  in classroomListCopy: 
                 if  examInfo[0] not in result.keys() and room.remain >= len(examInfo[1])  \
                     and (  room.examStyle ==-1 or room.examStyle ==  examInfo[1][0].examStyle ) :
-                    print u"考场号：%s,     考生数量 ：%s ,     课程：%s ,     开闭卷：%s ,     班级：%s ,     班级实际数量：%s " %  ( examInfo[0], len(examInfo[1]) ,
+                    print u"考场号：%s,   考生数量 ：%s ,   课程：%s ,   开闭卷：%s ,   班级：%s ,   班级实际数量：%s " %  ( examInfo[0], len(examInfo[1]) ,
                                                                     examInfo[1][0]. lesson , examInfo[1][0].examStyle ,  room.no  , room.maxSpace ) 
                     room.remain = room.remain -  len(examInfo[1])
                     room.examStyle = examInfo[1][0].examStyle
@@ -127,7 +129,7 @@ if __name__ == '__main__' :
             print u"%s" % room      
             for k,v in result.iteritems(): 
                 if v == room.no:
-                    print u"    考场号：%s,     班级：%s,"  % ( k, v)
+                    print u"   考场号：%s,   班级：%s,"  % ( k, v)
             
         print ''  
         
